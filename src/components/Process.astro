@@ -1,0 +1,197 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Free Discovery",
+    description:
+      "We start with a world-class free audit — identifying opportunities, competition, and fit before you commit to anything.",
+  },
+  {
+    number: "02",
+    title: "Strategic Onboarding",
+    description:
+      "Every campaign kicks off with a strategic onboard that lays the foundation — priorities, quick wins, and a clear roadmap.",
+  },
+  {
+    number: "03",
+    title: "Quarterly Planning",
+    description:
+      "We balance business priorities, competition, and opportunity in quarterly strategic plans that drive focused growth.",
+  },
+  {
+    number: "04",
+    title: "Execute & Optimize",
+    description:
+      "On-page optimization, content marketing, link acquisition, and technical improvements — all driven by the strategic plan.",
+  },
+  {
+    number: "05",
+    title: "Report & Scale",
+    description:
+      "Real-time dashboards and monthly reports keep you informed. Scale campaigns up or down as your clients' needs evolve.",
+  },
+];
+---
+
+<section class="process">
+  <div class="container">
+    <div class="process-header" data-animate>
+      <span class="section-label">How It Works</span>
+      <h2 class="section-heading">
+        A Proven Process.<br />
+        From Discovery to Results.
+      </h2>
+      <p class="section-subtext">
+        Our repeatable, strategic approach ensures every campaign starts strong
+        and continues to deliver.
+      </p>
+    </div>
+
+    <div class="process-timeline">
+      <div class="process-line"></div>
+      {
+        steps.map((step) => (
+          <div class="process-step" data-animate>
+            <div class="process-step-marker">
+              <span class="process-step-number">{step.number}</span>
+            </div>
+            <div class="process-step-content">
+              <h3 class="process-step-title">{step.title}</h3>
+              <p class="process-step-desc">{step.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .process {
+    padding: 120px 0;
+    background: var(--white);
+  }
+
+  .process-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+
+  .process-header .section-subtext {
+    margin: 0 auto;
+  }
+
+  .process-timeline {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+  }
+
+  .process-line {
+    position: absolute;
+    top: 24px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      var(--teal),
+      var(--purple),
+      var(--green)
+    );
+    opacity: 0.3;
+  }
+
+  .process-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .process-step-marker {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    transition: all var(--transition);
+  }
+
+  .process-step:hover .process-step-marker {
+    border-color: var(--teal);
+    background: rgba(40, 165, 177, 0.05);
+    box-shadow: 0 0 0 6px rgba(40, 165, 177, 0.08);
+  }
+
+  .process-step-number {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--teal);
+  }
+
+  .process-step-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .process-step-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 900px) {
+    .process-timeline {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .process-line {
+      top: 0;
+      bottom: 0;
+      left: 23px;
+      right: auto;
+      width: 2px;
+      height: auto;
+    }
+
+    .process-step {
+      flex-direction: row;
+      text-align: left;
+      align-items: flex-start;
+      gap: 24px;
+      padding-bottom: 40px;
+    }
+
+    .process-step-marker {
+      flex-shrink: 0;
+      margin-bottom: 0;
+    }
+
+    .process-step-desc {
+      max-width: none;
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .process {
+      padding: 80px 0;
+    }
+  }
+</style>

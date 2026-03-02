@@ -1,0 +1,323 @@
+---
+import IndustryPage from "../layouts/IndustryPage.astro";
+
+const heroTitle = `Be the Plumber Customers Find on Search, Maps, and AI`;
+
+const heroSubtitle = `When someone in your area is looking for a plumber, they should find you — whether they use Maps, search, or AI. We make sure they do.`;
+
+const whyItMatters = {
+  title: "Your Customers Are Searching Right Now",
+  description: "When a pipe bursts or a water heater dies, nobody flips through the phone book. They grab their phone and search. If your plumbing company isn't showing up, your competitors are getting those calls instead.",
+  stats: [
+    { value: "97%", label: "of people search online before calling a local service provider (BrightLocal)" },
+    { value: "76%", label: "of local searches result in a phone call within 24 hours (Google)" },
+    { value: "42%", label: "of searchers click on the first result they see in the Map Pack (Moz)" },
+  ],
+};
+
+const services = [
+  {
+    icon: "map-pin",
+    title: "Show Up on Google Maps",
+    description: "When customers search for a plumber near them, we make sure your business shows up at the top of the map results — the spot that gets the most calls.",
+  },
+  {
+    icon: "search",
+    title: "Rank for Every Service You Offer",
+    description: "Drain cleaning, water heater repair, emergency plumbing, sewer lines — we build your website so you show up when customers search for each specific service.",
+  },
+  {
+    icon: "star",
+    title: "Get More 5-Star Reviews",
+    description: "Reviews are the #1 thing customers look at before calling. We help you consistently earn more reviews and manage your online reputation.",
+  },
+  {
+    icon: "globe",
+    title: "Dominate Every Area You Serve",
+    description: "Whether you cover one town or twenty, we make sure you're visible in every city and neighborhood where you want new customers.",
+  },
+  {
+    icon: "smartphone",
+    title: "Show Up in AI & Voice Search",
+    description: "More people are asking Siri, Alexa, and ChatGPT to find a plumber. We make sure your business is the one these tools recommend.",
+  },
+  {
+    icon: "phone",
+    title: "More Calls, Tracked & Proven",
+    description: "No guesswork. We track calls, form fills, and new customers coming from your online presence so you always know what's working.",
+  },
+];
+
+const approach = {
+  label: "Our Promise",
+  title: "Proven Systems, Not Empty Promises",
+  description: "A lot of SEO companies promise you the #1 spot on Google. Nobody can guarantee that — and anyone who does is selling you smoke. Here's how we're different.",
+  contrast: {
+    dont: [
+      "Promise you a specific ranking position",
+      "Guarantee a certain number of leads",
+      "Lock you into long-term contracts",
+      "Use shortcuts that risk your reputation",
+    ],
+    do: [
+      "Use proven systems that have worked for hundreds of businesses",
+      "Focus relentlessly on driving more calls and leads to your business",
+      "Give you full transparency into what we're doing and why",
+      "Build a lasting online presence that compounds over time",
+    ],
+  },
+  items: [
+    {
+      title: "We Audit Your Market",
+      description: "We start by understanding your service area, your competition, and where the biggest opportunities are to get you more calls.",
+    },
+    {
+      title: "We Build the Strategy",
+      description: "A clear, custom plan for your business — which searches to target, what your website needs, and how to stand out locally.",
+    },
+    {
+      title: "We Execute & Optimize",
+      description: "Our team does the work — optimizing your website, managing your online profiles, building your visibility across search, Maps, and AI.",
+    },
+    {
+      title: "You See the Results",
+      description: "Monthly reporting you'll actually understand. More calls, more visibility, more customers — tracked and proven.",
+    },
+  ],
+};
+
+const testimonials = [
+  {
+    text: "Before working with SEO Brothers, we were barely getting any calls from Google. Now we're booked out two weeks in advance and had to hire two more techs. The leads just keep coming.",
+    name: "Mike R.",
+    role: "Owner, Residential Plumbing Company",
+    initials: "MR",
+    color: "teal" as const,
+  },
+  {
+    text: "They actually explain what they're doing in plain English. No jargon, no runaround. Our map rankings have improved significantly and we're getting calls from areas we never used to reach.",
+    name: "Sarah T.",
+    role: "Operations Manager, Multi-Location Plumbing",
+    initials: "ST",
+    color: "purple" as const,
+  },
+];
+
+const guideIntro = `Everything you need to know about getting your plumbing business to the top of search results. Read through it, or skip straight to <a href="#ind-hero" style="color:var(--teal); text-decoration:underline;">getting your free visibility audit</a> and let us handle it.`;
+
+const guideContent = [
+  {
+    id: "how-customers-find-plumbers",
+    title: "How Customers Find Plumbers Online",
+    content: `
+      <p>When someone has a plumbing problem, they're not browsing — they need help now. They pick up their phone and search. Understanding how these searches work is the key to getting more of those calls.</p>
+
+      <h3>The Searches That Turn Into Calls</h3>
+      <p>Not all searches are created equal. The ones that matter most for your business:</p>
+      <ul>
+        <li><strong>Emergency searches:</strong> "emergency plumber near me," "burst pipe repair" — these people are calling the first plumber they find, right now</li>
+        <li><strong>Service searches:</strong> "water heater installation," "drain cleaning service" — they know what they need and are comparing options</li>
+        <li><strong>Location searches:</strong> "plumber in [your city]," "best plumber [your neighborhood]" — they want someone local and fast</li>
+        <li><strong>"How much" searches:</strong> "water heater replacement cost," "plumbing repair estimate" — they're getting ready to hire and want to know what to expect</li>
+      </ul>
+
+      <h3>Seasonal Trends That Affect Your Business</h3>
+      <p>Plumbing searches are predictable. Knowing when demand spikes means you can be ready when the calls pour in:</p>
+      <ul>
+        <li><strong>Winter:</strong> Frozen pipes, water heater failures, and furnace-related plumbing issues drive the biggest search spikes of the year</li>
+        <li><strong>Spring:</strong> Sewer line problems, outdoor faucet repairs, and post-winter maintenance searches pick up</li>
+        <li><strong>Summer:</strong> Sprinkler systems, water conservation, and AC-related plumbing issues</li>
+        <li><strong>Fall:</strong> Winterization prep — smart plumbers start showing up for these searches before the rush hits</li>
+      </ul>
+
+      <h3>Who You're Competing Against Online</h3>
+      <p>It's not just other local plumbers. You're also competing with Angi, HomeAdvisor, Thumbtack, and the big national franchises — all of whom spend heavily to show up first. The good news: with the right strategy, a local plumbing company can outrank all of them in map results and local searches. That's where we come in.</p>
+    `,
+  },
+  {
+    id: "google-maps-plumbers",
+    title: "Getting to the Top of Google Maps",
+    content: `
+      <p>When someone searches "plumber near me," the map results (the top 3 businesses shown with the map) get the majority of clicks and calls. This is the single most valuable piece of online real estate for a plumbing company.</p>
+
+      <h3>Your Google Business Profile</h3>
+      <p>Think of your Google Business Profile as your storefront on Google. We optimize every part of it:</p>
+      <ul>
+        <li><strong>Categories:</strong> We set your primary category as "Plumber" and add every relevant secondary category — Water Heater Installation, Drain Cleaning, etc.</li>
+        <li><strong>Services:</strong> Every service you offer gets listed with a clear description so Google knows exactly what you do</li>
+        <li><strong>Service areas:</strong> Defined exactly where you work so Google shows you to the right people in the right places</li>
+        <li><strong>Photos:</strong> Real photos of your team, trucks, and completed jobs — customers want to see the people they're hiring</li>
+        <li><strong>Updates:</strong> Regular posts about seasonal tips, completed projects, and promotions to keep your profile active</li>
+      </ul>
+
+      <h3>Your Online Listings</h3>
+      <p>Google cross-references your business info across the internet. If your name, address, or phone number is inconsistent — or you're missing from key directories — it hurts your visibility. We make sure your business info is accurate and consistent across Yelp, BBB, Angi, HomeAdvisor, and dozens of other sites.</p>
+
+      <h3>Reviews: Your Most Powerful Asset</h3>
+      <p>More reviews and higher ratings directly impact where you show up on Maps. We help you build a simple system for asking happy customers to leave a review. We also help you respond to every review — positive or negative — because engagement matters.</p>
+
+      <h3>Covering All Your Service Areas</h3>
+      <p>If you serve multiple cities or towns, you need to show up in each one. We build separate strategies for each area so you're not just ranking in one place — you're visible everywhere you serve.</p>
+    `,
+  },
+  {
+    id: "plumbing-website-seo",
+    title: "Making Your Website Work Harder",
+    content: `
+      <p>Your website needs to do two things: show up in search results and turn visitors into callers. Most plumbing websites fail at one or both. Here's what a website that actually generates business looks like.</p>
+
+      <h3>A Page for Every Service</h3>
+      <p>You don't just offer "plumbing." You offer specific services that people are actively searching for. Your website needs a dedicated page for each one:</p>
+      <ul>
+        <li>Emergency plumbing</li>
+        <li>Drain cleaning & unclogging</li>
+        <li>Water heater repair & installation</li>
+        <li>Sewer line repair & replacement</li>
+        <li>Leak detection</li>
+        <li>Bathroom & kitchen plumbing</li>
+        <li>Garbage disposal repair</li>
+        <li>Gas line services</li>
+        <li>Sump pump installation & repair</li>
+      </ul>
+      <p>Each page gets optimized so that when someone searches for that specific service in your area, your page shows up. One generic "Services" page doesn't cut it.</p>
+
+      <h3>Pages for Every Area You Serve</h3>
+      <p>If you serve multiple cities, neighborhoods, or counties, you need pages that specifically target each location. Each one includes local details, area-specific info, and content that tells both search engines and customers that you know and serve that community.</p>
+
+      <h3>Built for Mobile</h3>
+      <p>Over 70% of people searching for a plumber are on their phone — often in a panic. Your website has to load fast, look good on a small screen, and make it dead simple to tap-to-call. If your site is slow or hard to use on mobile, you're losing calls to competitors with better websites.</p>
+
+      <h3>The Technical Stuff (We Handle This)</h3>
+      <p>Behind the scenes, there's a layer of technical work that helps search engines understand your website. You don't need to worry about the details. That's our job. You just see the results.</p>
+    `,
+  },
+  {
+    id: "content-that-brings-customers",
+    title: "Content That Brings Customers to You",
+    content: `
+      <p>Beyond your main service pages, the right content on your website can bring in a steady stream of potential customers who are researching plumbing problems — and turn them into callers.</p>
+
+      <h3>Topics That Drive Calls</h3>
+      <p>The best content answers the questions your customers are already asking:</p>
+      <ul>
+        <li><strong>Cost guides:</strong> "How much does a water heater replacement cost?" — these searchers are getting ready to hire someone</li>
+        <li><strong>Problem explainers:</strong> "Why is my water heater making noise?" "Signs you need a sewer line repair" — these build trust and often end with a phone call</li>
+        <li><strong>Seasonal tips:</strong> "How to winterize your pipes," "Spring plumbing checklist" — reliable traffic every year</li>
+        <li><strong>Comparisons:</strong> "Tankless vs. traditional water heaters" — positions you as the expert who can advise, not just fix</li>
+      </ul>
+
+      <h3>Showing Up in "People Also Ask"</h3>
+      <p>You've seen the "People Also Ask" box in search results. Those FAQ-style results get massive visibility. We create content that directly answers common plumbing questions so your business shows up in those spots — putting your name in front of customers before they've even clicked a search result.</p>
+
+      <h3>Before & After Content</h3>
+      <p>Plumbing is visual. A corroded pipe next to a clean new one. A flooded basement turned dry. A brand new water heater installation. This kind of content builds instant credibility and gives search engines more reason to surface your site.</p>
+
+      <h3>Video: The Opportunity Most Plumbers Ignore</h3>
+      <p>Short videos explaining common issues, showing your team at work, or walking through a job go a long way. They rank on YouTube and in search results, build trust, and give potential customers a feel for who they're hiring. Most of your competitors aren't doing this — which makes it a huge advantage.</p>
+    `,
+  },
+  {
+    id: "building-online-authority",
+    title: "Building Your Online Authority",
+    content: `
+      <p>Search engines don't just look at your website. They look at how the rest of the internet references your business. The more credible mentions that exist online, the more visible you become.</p>
+
+      <h3>Getting Listed Everywhere That Matters</h3>
+      <p>Beyond Yelp and Google, there are dozens of directories and platforms where your plumbing company should have a presence — home services platforms, local business directories, contractor networks, trade association listings. Each one reinforces that your business is real, established, and trustworthy.</p>
+
+      <h3>Industry Connections</h3>
+      <p>Plumbing suppliers like Rinnai, Rheem, and Moen maintain directories of authorized installers and service providers. Getting listed on these manufacturer pages is a credibility signal that both search engines and customers recognize.</p>
+
+      <h3>Community Involvement Pays Off Online Too</h3>
+      <p>Sponsoring a local Little League team, participating in a Habitat for Humanity build, or contributing to community events doesn't just feel good — it generates real online references and mentions of your business that boost your visibility. If you're already doing community work, we make sure it's amplified online.</p>
+
+      <h3>Earning Local Press & Mentions</h3>
+      <p>Local news sites, community blogs, and neighborhood newsletters are always looking for expert sources. A plumber who can comment on local water quality issues, winter pipe safety, or home maintenance tips becomes a go-to source — and every mention strengthens your online presence.</p>
+    `,
+  },
+  {
+    id: "tracking-your-results",
+    title: "How We Track Your Results",
+    content: `
+      <p>We know you're running a business, not studying analytics dashboards. That's why we keep reporting simple: here's how many calls you got, here's where you're showing up, and here's what we're working on next.</p>
+
+      <h3>What We Track for You</h3>
+      <p>The numbers that actually matter for your plumbing business:</p>
+      <ul>
+        <li><strong>Phone calls:</strong> How many people found you online and called — the metric that matters most</li>
+        <li><strong>Search visibility:</strong> Where you show up when someone searches for a plumber in each area you serve</li>
+        <li><strong>Website visitors:</strong> How many people are finding your website through search, month over month</li>
+        <li><strong>Form submissions:</strong> Online booking requests and contact form fills from people who found you</li>
+        <li><strong>Review growth:</strong> New reviews per month, your average rating, and how it compares to local competitors</li>
+      </ul>
+
+      <h3>Reporting You'll Actually Read</h3>
+      <p>We don't send 30-page reports full of jargon. You get a clear, visual summary that leads with the results you care about — more calls, more customers — and shows you the progress behind it.</p>
+
+      <blockquote>Every report includes a "what we're working on next" section so you always know the plan and what's coming.</blockquote>
+
+      <h3>What to Expect & When</h3>
+      <p>SEO isn't a light switch — it builds over time. Here's a realistic timeline:</p>
+      <ul>
+        <li><strong>Month 1–2:</strong> We set up the foundation — optimizing your online profiles, improving your website, building your listings. The groundwork is critical.</li>
+        <li><strong>Month 3–4:</strong> You start showing up for more searches. Calls begin to increase. You see your business climbing in results.</li>
+        <li><strong>Month 5–6:</strong> Real momentum. More calls, more visibility, more reviews.</li>
+        <li><strong>Month 7+:</strong> Compounding results. The calls keep growing because everything we built is working together.</li>
+      </ul>
+      <p>Unlike ads where you stop paying and the calls stop, SEO builds an asset that keeps delivering. The longer you invest, the stronger it gets.</p>
+    `,
+  },
+];
+
+const faqs = [
+  {
+    question: "How long does it take to start getting more calls?",
+    answer: "Most plumbing companies start seeing an increase in calls within 3–4 months, with significant growth by months 6–8. It depends on your local competition, the current state of your online presence, and your review profile. We set clear expectations upfront so you always know what to expect.",
+  },
+  {
+    question: "How much does SEO cost for a plumbing company?",
+    answer: "Our plumbing SEO campaigns typically range from $800 to $2,500 per month depending on your market size, how many areas you serve, and how competitive your local market is. Most plumbers see a strong return because SEO leads keep coming without a per-click cost.",
+  },
+  {
+    question: "I serve multiple cities — can you help me show up in all of them?",
+    answer: "Absolutely. Multi-area plumbing companies are one of our specialties. We build separate strategies for each city and service area, manage your online profiles for each location, and create location-specific content. Whether you serve 2 towns or 20, our systems scale to get you visible everywhere.",
+  },
+  {
+    question: "Will you manage my Google Business Profile?",
+    answer: "Yes — it's a core part of every campaign. We handle full setup and optimization, post updates regularly, manage photos, monitor Q&A, and help you get more reviews. For most plumbers, the Google Business Profile is the single biggest source of new calls.",
+  },
+  {
+    question: "How is this different from running Google Ads?",
+    answer: "With Google Ads, you pay every time someone clicks — and for plumbing keywords, that can be $30–50 per click. When you stop paying, the clicks stop. With SEO, we build your online presence so you show up naturally in search results, Maps, and AI recommendations. It takes longer to build, but the leads keep coming without a per-click cost.",
+  },
+  {
+    question: "Do I need a new website?",
+    answer: "Not necessarily. We can optimize most existing plumbing websites to perform significantly better. If your current site has serious issues, we'll let you know — but in most cases, we work with what you have and make it work much harder for you.",
+  },
+];
+---
+
+<IndustryPage
+  industry="Plumbers"
+  industrySlug="plumbers"
+  seoTitle="SEO for Plumbers | Get Found on Search, Maps & AI | SEO Brothers"
+  seoDescription="Get your plumbing company found on Google, Maps, and AI search. More calls, more customers — with proven systems that work. Free strategy call available."
+  heroTitle={heroTitle}
+  heroSubtitle={heroSubtitle}
+  heroBadge="Helping local service businesses get found online"
+  heroFormHeading="Get Your Free Visibility Audit"
+  whyItMatters={whyItMatters}
+  services={services}
+  servicesHeading="How We Get Your Phone Ringing"
+  approach={approach}
+  testimonials={testimonials}
+  guideIntro={guideIntro}
+  guideContent={guideContent}
+  guideHeading="The Complete Guide to Getting Found Online as a Plumber"
+  faqs={faqs}
+  ctaHeading="Ready to Be the Plumber Customers Find First?"
+  ctaText="Get a free visibility audit. We'll show you exactly where you stand online, where your competitors are beating you, and how to fix it."
+  midCtaHeading="Stop Losing Calls to Competitors Who Rank Higher"
+  midCtaText="Get a free visibility audit — we'll show you where you stand online and where you're leaving money on the table."
+  floatingCtaText="Get more plumbing calls from search, maps & AI"
+/>

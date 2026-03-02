@@ -1,0 +1,175 @@
+<section class="testimonials">
+  <div class="container">
+    <div class="testimonials-header" data-animate>
+      <span class="section-label">Partner Feedback</span>
+      <h2 class="section-heading">What Our Partners Say</h2>
+    </div>
+
+    <div class="testimonials-grid" data-stagger>
+      <blockquote class="testimonial-card" data-animate>
+        <div class="testimonial-quote">
+          <svg
+            class="testimonial-mark"
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+          >
+            <path
+              d="M18 20H10C10 15.58 13.58 12 18 12V8C11.37 8 6 13.37 6 20V32H18V20ZM38 20H30C30 15.58 33.58 12 38 12V8C31.37 8 26 13.37 26 20V32H38V20Z"
+              fill="currentColor"></path>
+          </svg>
+          <p class="testimonial-text">
+            Honestly, working with the SEO Brothers has been incredible. The
+            process is great and I always know what I'm getting on every single
+            project.
+          </p>
+        </div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">RG</div>
+          <div>
+            <div class="testimonial-name">Rob Gillan</div>
+            <div class="testimonial-role">Owner, RedEarMedia.ca</div>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="testimonial-card" data-animate>
+        <div class="testimonial-quote">
+          <svg
+            class="testimonial-mark"
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+          >
+            <path
+              d="M18 20H10C10 15.58 13.58 12 18 12V8C11.37 8 6 13.37 6 20V32H18V20ZM38 20H30C30 15.58 33.58 12 38 12V8C31.37 8 26 13.37 26 20V32H38V20Z"
+              fill="currentColor"></path>
+          </svg>
+          <p class="testimonial-text">
+            They've been really great at working with us to develop a process
+            that really is seamless and works well for us and helping us
+            understand how we can bring the most benefit to our clients.
+          </p>
+        </div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar testimonial-avatar--purple">JF</div>
+          <div>
+            <div class="testimonial-name">Joy Fraser</div>
+            <div class="testimonial-role">
+              Creative Director, Roddis Communications
+            </div>
+          </div>
+        </div>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    padding: 120px 0;
+    background: var(--light);
+  }
+
+  .testimonials-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .testimonial-card {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+    transition: all var(--transition);
+  }
+
+  .testimonial-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  .testimonial-quote {
+    position: relative;
+  }
+
+  .testimonial-mark {
+    color: var(--teal);
+    opacity: 0.15;
+    margin-bottom: 16px;
+  }
+
+  .testimonial-text {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-primary);
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .testimonial-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .testimonial-avatar--purple {
+    background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+  }
+
+  .testimonial-name {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .testimonial-role {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .testimonials {
+      padding: 80px 0;
+    }
+
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .testimonial-card {
+      padding: 32px;
+    }
+  }
+</style>

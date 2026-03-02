@@ -1,0 +1,247 @@
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-orb hero-orb--teal"></div>
+    <div class="hero-orb hero-orb--purple"></div>
+    <div class="hero-orb hero-orb--green"></div>
+    <div class="hero-grid"></div>
+  </div>
+
+  <div class="hero-content container">
+    <div class="hero-badge" data-animate>
+      <span class="hero-badge-dot"></span>
+      Trusted by 200+ agencies worldwide
+    </div>
+
+    <h1 class="hero-title" data-animate>
+      Scale Your Agency's SEO.<br />
+      <span class="hero-title-gradient">We'll Handle the Rest.</span>
+    </h1>
+
+    <p class="hero-subtitle" data-animate>
+      Expert SEO campaigns delivered under your brand. From strategy to
+      execution, we're the partner your agency needs to grow organic revenue
+      without the overhead.
+    </p>
+
+    <div class="hero-actions" data-animate>
+      <a href="#book-call" class="btn btn-primary btn-lg">
+        Book a Good Fit Call
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path
+            d="M3 8h10M9 4l4 4-4 4"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </a>
+      <a href="#demo" class="btn btn-outline">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"
+          ></circle>
+          <path d="M6.5 5.5l4 2.5-4 2.5V5.5z" fill="currentColor"></path>
+        </svg>
+        Watch Demo
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: var(--dark);
+    overflow: hidden;
+    padding: 140px 0 120px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.35;
+    animation: heroFloat 20s ease-in-out infinite;
+  }
+
+  .hero-orb--teal {
+    width: 600px;
+    height: 600px;
+    background: var(--teal);
+    top: -15%;
+    left: -5%;
+    animation-delay: 0s;
+  }
+
+  .hero-orb--purple {
+    width: 500px;
+    height: 500px;
+    background: var(--purple);
+    top: -5%;
+    right: -10%;
+    animation-delay: -7s;
+  }
+
+  .hero-orb--green {
+    width: 400px;
+    height: 400px;
+    background: var(--green);
+    bottom: -15%;
+    left: 35%;
+    animation-delay: -14s;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px
+      );
+    background-size: 60px 60px;
+    mask-image: radial-gradient(
+      ellipse at 50% 50%,
+      black 20%,
+      transparent 70%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse at 50% 50%,
+      black 20%,
+      transparent 70%
+    );
+  }
+
+  @keyframes heroFloat {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(30px, -30px) scale(1.05);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.95);
+    }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-full);
+    padding: 8px 16px;
+    margin-bottom: 32px;
+    backdrop-filter: blur(8px);
+  }
+
+  .hero-badge-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+      box-shadow: 0 0 0 0 rgba(68, 185, 123, 0.4);
+    }
+    50% {
+      opacity: 0.8;
+      box-shadow: 0 0 0 6px rgba(68, 185, 123, 0);
+    }
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 7vw, 72px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--text-on-dark);
+    margin-bottom: 24px;
+  }
+
+  .hero-title-gradient {
+    background: linear-gradient(
+      135deg,
+      var(--teal) 0%,
+      var(--purple) 50%,
+      var(--green) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(16px, 2vw, 19px);
+    line-height: 1.7;
+    color: var(--text-on-dark-muted);
+    margin-bottom: 40px;
+    max-width: 560px;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-lg {
+    padding: 16px 32px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 120px 0 80px;
+      min-height: auto;
+    }
+
+    .hero-content {
+      text-align: center;
+    }
+
+    .hero-subtitle {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-actions {
+      justify-content: center;
+    }
+
+    .hero-badge {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+</style>

@@ -1,0 +1,1013 @@
+---
+import Layout from "./Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+interface ServiceItem {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+interface GuideSectionItem {
+  id: string;
+  title: string;
+  content: string;
+}
+
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface TestimonialItem {
+  text: string;
+  name: string;
+  role: string;
+  initials: string;
+  color?: "teal" | "purple" | "green";
+}
+
+interface ApproachItem {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  industry: string;
+  industrySlug: string;
+  seoTitle: string;
+  seoDescription: string;
+  heroTitle: string;
+  heroSubtitle: string;
+  heroBadge?: string;
+  heroFormHeading?: string;
+  whyItMatters: {
+    title: string;
+    description: string;
+    stats: Array<{ value: string; label: string }>;
+  };
+  services: ServiceItem[];
+  servicesHeading?: string;
+  approach: {
+    label?: string;
+    title: string;
+    description: string;
+    contrast?: { dont: string[]; do: string[] };
+    items: ApproachItem[];
+  };
+  testimonials?: TestimonialItem[];
+  guideIntro?: string;
+  guideContent: GuideSectionItem[];
+  guideHeading?: string;
+  faqs: FaqItem[];
+  ctaHeading?: string;
+  ctaText?: string;
+  midCtaHeading?: string;
+  midCtaText?: string;
+  floatingCtaText?: string;
+}
+
+const {
+  industry,
+  industrySlug,
+  seoTitle,
+  seoDescription,
+  heroTitle,
+  heroSubtitle,
+  heroBadge = "Trusted by 200+ local service businesses",
+  heroFormHeading = "Get Your Free Strategy Call",
+  whyItMatters,
+  services,
+  servicesHeading,
+  approach,
+  testimonials = [],
+  guideIntro,
+  guideContent,
+  guideHeading,
+  faqs,
+  ctaHeading = `Ready to Grow Your ${industry} Business?`,
+  ctaText = "Get a free visibility audit. We'll show you exactly where you stand online, where the opportunity is, and how to take advantage of it.",
+  midCtaHeading,
+  midCtaText = "Get a free visibility audit — we'll show you where you stand and where you're leaving money on the table.",
+  floatingCtaText,
+} = Astro.props;
+
+const iconColors = ["teal", "purple", "green"];
+const avatarColors = { teal: "teal", purple: "purple", green: "green" };
+---
+
+<Layout title={seoTitle} description={seoDescription}>
+  <Nav />
+
+  <!-- ===== HERO ===== -->
+  <section class="ind-hero" id="ind-hero">
+    <div class="ind-hero-bg">
+      <div class="ind-hero-orb ind-hero-orb--teal"></div>
+      <div class="ind-hero-orb ind-hero-orb--purple"></div>
+      <div class="ind-hero-orb ind-hero-orb--green"></div>
+      <div class="ind-hero-grid"></div>
+    </div>
+    <div class="ind-hero-inner container">
+      <div class="ind-hero-content">
+        <div class="ind-hero-badge" data-animate>
+          <span class="ind-hero-badge-dot"></span>
+          {heroBadge}
+        </div>
+        <h1 class="ind-hero-title" data-animate>
+          <span class="ind-hero-title-gradient" set:html={heroTitle} />
+        </h1>
+        <p class="ind-hero-subtitle" data-animate>{heroSubtitle}</p>
+        <div class="ind-hero-trust" data-animate>
+          <div class="ind-hero-trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            No contracts
+          </div>
+          <div class="ind-hero-trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Free visibility audit
+          </div>
+          <div class="ind-hero-trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Cancel anytime
+          </div>
+        </div>
+      </div>
+
+      <div class="ind-hero-form-wrap" data-animate>
+        <div class="ind-hero-form-card">
+          <h2 class="ind-hero-form-heading">{heroFormHeading}</h2>
+          <p class="ind-hero-form-sub">Enter your details and we'll show you exactly where you stand online.</p>
+          <form class="ind-hero-form" id="hero-form">
+            <div class="ind-form-field">
+              <label for="ind-name">Your Name</label>
+              <input type="text" id="ind-name" name="name" placeholder="John Smith" required data-lpignore="true" autocomplete="off" />
+            </div>
+            <div class="ind-form-field">
+              <label for="ind-company">Business Name</label>
+              <input type="text" id="ind-company" name="company" placeholder="Smith's Plumbing" required data-lpignore="true" autocomplete="off" />
+            </div>
+            <div class="ind-form-row">
+              <div class="ind-form-field">
+                <label for="ind-phone">Phone</label>
+                <input type="tel" id="ind-phone" name="phone" placeholder="(555) 123-4567" required data-lpignore="true" autocomplete="off" />
+              </div>
+              <div class="ind-form-field">
+                <label for="ind-email">Email</label>
+                <input type="email" id="ind-email" name="email" placeholder="john@email.com" required data-lpignore="true" autocomplete="off" />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary ind-form-submit">
+              Get My Free Visibility Audit
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <p class="ind-form-disclaimer">Free. No commitment. Takes 30 seconds.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY IT MATTERS ===== -->
+  <section class="ind-why">
+    <div class="container">
+      <div class="ind-why-top" data-animate>
+        <span class="section-label">Why It Matters</span>
+        <h2 class="section-heading">{whyItMatters.title}</h2>
+        <p class="section-subtext" style="margin:0 auto;">{whyItMatters.description}</p>
+      </div>
+      <div class="ind-why-stats" data-stagger>
+        {whyItMatters.stats.map((stat) => (
+          <div class="ind-stat" data-animate>
+            <span class="ind-stat-value">{stat.value}</span>
+            <span class="ind-stat-label">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="ind-services">
+    <div class="container">
+      <div class="ind-services-header" data-animate>
+        <span class="section-label">What We Do</span>
+        <h2 class="section-heading" set:html={servicesHeading || `What We Do to Get Your<br />${industry} Business Found`} />
+      </div>
+      <div class="ind-services-grid" data-stagger>
+        {services.map((svc, i) => (
+          <div class="ind-svc-card" data-animate>
+            <div class={`ind-svc-icon ind-svc-icon--${iconColors[i % 3]}`}>
+              {svc.icon === "map-pin" && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>}
+              {svc.icon === "edit" && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>}
+              {svc.icon === "link" && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>}
+              {svc.icon === "star" && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>}
+              {svc.icon === "globe" && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>}
+              {svc.icon === "code" && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>}
+              {svc.icon === "file-text" && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>}
+              {svc.icon === "bar-chart" && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>}
+              {svc.icon === "search" && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>}
+              {svc.icon === "smartphone" && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>}
+              {svc.icon === "shield" && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>}
+              {svc.icon === "phone" && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>}
+            </div>
+            <h3 class="ind-svc-title">{svc.title}</h3>
+            <p class="ind-svc-desc">{svc.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OUR APPROACH ===== -->
+  <section class="ind-approach">
+    <div class="container">
+      <div class="ind-approach-header" data-animate>
+        <span class="section-label">{approach.label || "Our Approach"}</span>
+        <h2 class="section-heading" set:html={approach.title} />
+        <p class="section-subtext" style="margin:0 auto;" set:html={approach.description} />
+      </div>
+
+      {approach.contrast && (
+        <div class="ind-approach-contrast" data-animate>
+          <div class="ind-contrast-col ind-contrast-col--dont">
+            <div class="ind-contrast-header">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              <span>We don't</span>
+            </div>
+            {approach.contrast.dont.map((item) => (
+              <p class="ind-contrast-item">{item}</p>
+            ))}
+          </div>
+          <div class="ind-contrast-col ind-contrast-col--do">
+            <div class="ind-contrast-header">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>We do</span>
+            </div>
+            {approach.contrast.do.map((item) => (
+              <p class="ind-contrast-item">{item}</p>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div class="ind-approach-grid" data-stagger>
+        {approach.items.map((item, i) => (
+          <div class="ind-approach-card" data-animate>
+            <div class={`ind-approach-num ind-approach-num--${iconColors[i % 3]}`}>{String(i + 1).padStart(2, '0')}</div>
+            <h3 class="ind-approach-title">{item.title}</h3>
+            <p class="ind-approach-desc">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  {testimonials.length > 0 && (
+    <section class="ind-testimonials">
+      <div class="container">
+        <div class="ind-testimonials-header" data-animate>
+          <span class="section-label">Real Results</span>
+          <h2 class="section-heading">What Our Clients Say</h2>
+        </div>
+        <div class="ind-testimonials-grid" data-stagger>
+          {testimonials.map((t) => (
+            <blockquote class="ind-testimonial" data-animate>
+              <div class="ind-testimonial-quote">
+                <svg class="ind-testimonial-mark" width="36" height="36" viewBox="0 0 40 40" fill="none">
+                  <path d="M18 20H10C10 15.58 13.58 12 18 12V8C11.37 8 6 13.37 6 20V32H18V20ZM38 20H30C30 15.58 33.58 12 38 12V8C31.37 8 26 13.37 26 20V32H38V20Z" fill="currentColor"/>
+                </svg>
+                <p class="ind-testimonial-text">{t.text}</p>
+              </div>
+              <div class="ind-testimonial-author">
+                <div class={`ind-testimonial-avatar ind-testimonial-avatar--${t.color || "teal"}`}>{t.initials}</div>
+                <div>
+                  <div class="ind-testimonial-name">{t.name}</div>
+                  <div class="ind-testimonial-role">{t.role}</div>
+                </div>
+              </div>
+            </blockquote>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ===== MID CTA ===== -->
+  <section class="ind-mid-cta">
+    <div class="ind-mid-cta-bg">
+      <div class="ind-mid-cta-orb ind-mid-cta-orb--1"></div>
+      <div class="ind-mid-cta-orb ind-mid-cta-orb--2"></div>
+    </div>
+    <div class="container">
+      <div class="ind-mid-cta-content" data-animate>
+        <h2 class="ind-mid-cta-heading" set:html={midCtaHeading || `Ready to Get More Customers<br/>From Online Search?`} />
+        <p class="ind-mid-cta-text">{midCtaText}</p>
+        <a href="#ind-hero" class="btn btn-primary ind-btn-lg">
+          Get My Free Visibility Audit
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GUIDE ===== -->
+  <section class="ind-guide" id="guide">
+    <div class="container">
+      <div class="ind-guide-header" data-animate>
+        <span class="section-label">The Complete Guide</span>
+        <h2 class="section-heading" set:html={guideHeading || `SEO for ${industry}:<br/>Everything You Need to Know`} />
+        {guideIntro && <p class="section-subtext" style="margin:0 auto;" set:html={guideIntro} />}
+      </div>
+
+      <div class="ind-guide-layout">
+        <div class="ind-guide-main">
+          {guideContent.map((section) => (
+            <article class="ind-guide-section" id={section.id} data-animate>
+              <h2 class="ind-guide-h2">{section.title}</h2>
+              <div class="ind-guide-body" set:html={section.content} />
+            </article>
+          ))}
+        </div>
+
+        <aside class="ind-guide-toc">
+          <div class="ind-guide-toc-inner" id="guide-toc">
+            <span class="ind-guide-toc-label">On This Page</span>
+            <nav>
+              {guideContent.map((section) => (
+                <a href={`#${section.id}`} class="ind-guide-toc-link" data-toc-link={section.id}>
+                  {section.title}
+                </a>
+              ))}
+            </nav>
+            <div class="ind-guide-toc-cta">
+              <a href="#ind-hero" class="btn btn-primary" style="width:100%; font-size:13px; padding:10px 16px;">Get a Free Visibility Audit</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="ind-faq">
+    <div class="container">
+      <div class="ind-faq-header" data-animate>
+        <span class="section-label">Common Questions</span>
+        <h2 class="section-heading">{industry} SEO<br />Frequently Asked Questions</h2>
+      </div>
+      <div class="ind-faq-list" data-animate>
+        {faqs.map((faq, i) => (
+          <details class="ind-faq-item" open={i === 0}>
+            <summary class="ind-faq-question">
+              <span>{faq.question}</span>
+              <svg class="ind-faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="ind-faq-answer"><p>{faq.answer}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOTTOM CTA ===== -->
+  <section class="ind-bottom-cta" id="ind-cta">
+    <div class="ind-bottom-cta-bg">
+      <div class="ind-bottom-cta-orb ind-bottom-cta-orb--1"></div>
+      <div class="ind-bottom-cta-orb ind-bottom-cta-orb--2"></div>
+    </div>
+    <div class="container">
+      <div class="ind-bottom-cta-content" data-animate>
+        <h2 class="ind-bottom-cta-heading" set:html={ctaHeading} />
+        <p class="ind-bottom-cta-text">{ctaText}</p>
+        <div class="ind-bottom-cta-actions">
+          <a href="#ind-hero" class="btn btn-primary ind-btn-lg">
+            Get My Free Visibility Audit
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div class="ind-bottom-cta-meta">
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> No contracts</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Free visibility audit</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Cancel anytime</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FLOATING CTA BAR ===== -->
+  <div class="ind-float-cta" id="float-cta">
+    <div class="ind-float-cta-inner container">
+      <span class="ind-float-cta-text">{floatingCtaText || `Ready to grow your ${industry.toLowerCase()} business?`}</span>
+      <a href="#ind-hero" class="btn btn-primary ind-float-cta-btn">Get a Free Visibility Audit</a>
+    </div>
+  </div>
+
+  <Footer />
+</Layout>
+
+<script>
+  // Floating CTA: show after scrolling past hero
+  const floatCta = document.getElementById("float-cta");
+  const hero = document.getElementById("ind-hero");
+
+  if (floatCta && hero) {
+    const heroObserver = new IntersectionObserver(
+      ([entry]) => {
+        floatCta.classList.toggle("visible", !entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+    heroObserver.observe(hero);
+  }
+
+  // Sticky TOC: track active section
+  const tocLinks = document.querySelectorAll("[data-toc-link]");
+  const guideSections = document.querySelectorAll(".ind-guide-section");
+
+  if (tocLinks.length > 0 && guideSections.length > 0) {
+    const tocObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            tocLinks.forEach((link) => {
+              link.classList.toggle(
+                "active",
+                (link as HTMLElement).dataset.tocLink === id
+              );
+            });
+          }
+        });
+      },
+      { rootMargin: "-100px 0px -60% 0px", threshold: 0 }
+    );
+
+    guideSections.forEach((section) => tocObserver.observe(section));
+  }
+</script>
+
+<style>
+  /* ===== HERO ===== */
+  .ind-hero {
+    position: relative;
+    background: var(--dark);
+    overflow: hidden;
+    padding: 140px 0 100px;
+  }
+
+  .ind-hero-bg { position: absolute; inset: 0; overflow: hidden; }
+
+  .ind-hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.35;
+    animation: indFloat 20s ease-in-out infinite;
+  }
+
+  .ind-hero-orb--teal { width: 600px; height: 600px; background: var(--teal); top: -15%; left: -5%; }
+  .ind-hero-orb--purple { width: 500px; height: 500px; background: var(--purple); top: -5%; right: -10%; animation-delay: -7s; }
+  .ind-hero-orb--green { width: 400px; height: 400px; background: var(--green); bottom: -15%; left: 35%; animation-delay: -14s; }
+
+  .ind-hero-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 70%);
+  }
+
+  @keyframes indFloat {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    33% { transform: translate(30px,-30px) scale(1.05); }
+    66% { transform: translate(-20px,20px) scale(0.95); }
+  }
+
+  .ind-hero-inner {
+    position: relative; z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .ind-hero-content { max-width: 600px; }
+
+  .ind-hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-full); padding: 8px 16px; margin-bottom: 28px;
+    backdrop-filter: blur(8px);
+  }
+
+  .ind-hero-badge-dot {
+    width: 6px; height: 6px; background: var(--green); border-radius: 50%;
+    animation: indPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes indPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(68,185,123,0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(68,185,123,0); }
+  }
+
+  .ind-hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
+    color: var(--text-on-dark); margin-bottom: 20px;
+  }
+
+  .ind-hero-title-gradient {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--purple) 50%, var(--green) 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .ind-hero-subtitle {
+    font-size: clamp(15px, 1.8vw, 18px); line-height: 1.7;
+    color: var(--text-on-dark-muted); margin-bottom: 28px;
+  }
+
+  .ind-hero-trust { display: flex; flex-wrap: wrap; gap: 20px; }
+  .ind-hero-trust-item {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 14px; color: var(--text-on-dark-muted);
+  }
+  .ind-hero-trust-item svg { color: var(--green); flex-shrink: 0; }
+
+  /* Hero Form */
+  .ind-hero-form-wrap { position: relative; }
+
+  .ind-hero-form-card {
+    background: rgba(255,255,255,0.97);
+    border-radius: var(--radius-xl);
+    padding: 36px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);
+  }
+
+  .ind-hero-form-heading {
+    font-family: var(--font-display);
+    font-size: 22px; font-weight: 700;
+    color: var(--text-primary); margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .ind-hero-form-sub {
+    font-size: 14px; line-height: 1.55;
+    color: var(--text-secondary); margin-bottom: 24px;
+  }
+
+  .ind-hero-form { display: flex; flex-direction: column; gap: 16px; }
+  .ind-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .ind-form-field { display: flex; flex-direction: column; }
+
+  .ind-form-field label {
+    font-family: var(--font-display);
+    font-size: 13px; font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+  }
+
+  .ind-form-field input,
+  .ind-form-field textarea {
+    font-family: var(--font-body);
+    font-size: 15px; line-height: 1.5;
+    padding: 10px 14px;
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    background: var(--white);
+    transition: border-color var(--transition), box-shadow var(--transition);
+    outline: none;
+    resize: vertical;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .ind-form-field input:focus,
+  .ind-form-field textarea:focus {
+    border-color: var(--teal);
+  }
+
+  .ind-form-field input::placeholder,
+  .ind-form-field textarea::placeholder {
+    color: var(--text-muted);
+  }
+
+  .ind-form-submit {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 24px;
+    font-size: 16px;
+    margin-top: 4px;
+    cursor: pointer;
+    border: none;
+  }
+
+  .ind-form-disclaimer {
+    font-size: 12px; color: var(--text-muted); text-align: center;
+    margin-top: -4px;
+  }
+
+  @media (max-width: 1024px) {
+    .ind-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .ind-hero-content { max-width: none; text-align: center; }
+    .ind-hero-trust { justify-content: center; }
+    .ind-hero-form-wrap { max-width: 480px; margin: 0 auto; }
+  }
+
+  @media (max-width: 768px) {
+    .ind-hero { padding: 120px 0 60px; }
+    .ind-hero-form-card { padding: 28px 24px; }
+    .ind-form-row { grid-template-columns: 1fr; }
+  }
+
+  /* ===== WHY IT MATTERS ===== */
+  .ind-why { padding: 100px 0; background: var(--white); }
+  .ind-why-top { text-align: center; margin-bottom: 56px; }
+
+  .ind-why-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 900px; margin: 0 auto; }
+
+  .ind-stat {
+    text-align: center; padding: 32px 24px;
+    background: var(--light); border-radius: var(--radius-xl);
+    border: 1px solid var(--border-light);
+    transition: all var(--transition);
+  }
+
+  .ind-stat:hover { border-color: var(--teal); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+  .ind-stat-value {
+    display: block; font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 36px); font-weight: 700;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--teal), var(--purple));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+
+  .ind-stat-label { font-size: 14px; line-height: 1.5; color: var(--text-secondary); }
+
+  @media (max-width: 600px) {
+    .ind-why { padding: 80px 0; }
+    .ind-why-stats { grid-template-columns: 1fr; max-width: 360px; }
+  }
+
+  /* ===== SERVICES ===== */
+  .ind-services { padding: 120px 0; background: var(--light); }
+  .ind-services-header { text-align: center; margin-bottom: 64px; }
+
+  .ind-services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+  .ind-svc-card {
+    background: var(--white); border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg); padding: 32px;
+    transition: all var(--transition); position: relative; overflow: hidden;
+  }
+
+  .ind-svc-card::before {
+    content: ""; position: absolute; inset: 0;
+    border-radius: var(--radius-lg); padding: 1px;
+    background: linear-gradient(135deg, var(--teal), var(--purple), var(--green));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude; -webkit-mask-composite: xor;
+    opacity: 0; transition: opacity var(--transition);
+  }
+
+  .ind-svc-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: transparent; }
+  .ind-svc-card:hover::before { opacity: 1; }
+
+  .ind-svc-icon {
+    width: 48px; height: 48px; border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+  }
+
+  .ind-svc-icon--teal { background: rgba(40,165,177,0.1); color: var(--teal); }
+  .ind-svc-icon--purple { background: rgba(140,99,170,0.1); color: var(--purple); }
+  .ind-svc-icon--green { background: rgba(68,185,123,0.1); color: var(--green); }
+
+  .ind-svc-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--text-primary); margin-bottom: 10px; letter-spacing: -0.01em; }
+  .ind-svc-desc { font-size: 15px; line-height: 1.65; color: var(--text-secondary); }
+
+  @media (max-width: 900px) { .ind-services-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .ind-services { padding: 80px 0; } .ind-services-grid { grid-template-columns: 1fr; } }
+
+  /* ===== OUR APPROACH ===== */
+  .ind-approach { padding: 100px 0; background: var(--white); }
+  .ind-approach-header { text-align: center; margin-bottom: 56px; }
+
+  .ind-approach-contrast {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 820px;
+    margin: 0 auto 56px;
+  }
+
+  .ind-contrast-col {
+    border-radius: var(--radius-xl);
+    padding: 32px;
+  }
+
+  .ind-contrast-col--dont {
+    background: rgba(220, 50, 50, 0.04);
+    border: 1px solid rgba(220, 50, 50, 0.12);
+  }
+
+  .ind-contrast-col--do {
+    background: rgba(68, 185, 123, 0.04);
+    border: 1px solid rgba(68, 185, 123, 0.15);
+  }
+
+  .ind-contrast-header {
+    display: flex; align-items: center; gap: 8px;
+    font-family: var(--font-display);
+    font-size: 16px; font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .ind-contrast-col--dont .ind-contrast-header { color: #c0392b; }
+  .ind-contrast-col--do .ind-contrast-header { color: var(--green); }
+
+  .ind-contrast-item {
+    font-size: 15px; line-height: 1.6;
+    color: var(--text-secondary);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .ind-contrast-item:last-child { border-bottom: none; }
+
+  .ind-approach-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .ind-approach-card {
+    padding: 28px;
+    background: var(--light);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition);
+  }
+
+  .ind-approach-card:hover { border-color: var(--teal); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+  .ind-approach-num {
+    font-family: var(--font-display);
+    font-size: 28px; font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    opacity: 0.7;
+  }
+
+  .ind-approach-num--teal { color: var(--teal); }
+  .ind-approach-num--purple { color: var(--purple); }
+  .ind-approach-num--green { color: var(--green); }
+
+  .ind-approach-title { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; letter-spacing: -0.01em; }
+  .ind-approach-desc { font-size: 14px; line-height: 1.6; color: var(--text-secondary); }
+
+  @media (max-width: 900px) { .ind-approach-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) {
+    .ind-approach { padding: 80px 0; }
+    .ind-approach-contrast { grid-template-columns: 1fr; }
+    .ind-approach-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===== TESTIMONIALS ===== */
+  .ind-testimonials { padding: 100px 0; background: var(--light); }
+  .ind-testimonials-header { text-align: center; margin-bottom: 56px; }
+
+  .ind-testimonials-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 28px; max-width: 960px; margin: 0 auto;
+  }
+
+  .ind-testimonial {
+    background: var(--white); border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl); padding: 36px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    gap: 28px; transition: all var(--transition);
+  }
+
+  .ind-testimonial:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+
+  .ind-testimonial-mark { color: var(--teal); opacity: 0.15; margin-bottom: 12px; }
+
+  .ind-testimonial-text {
+    font-size: 17px; line-height: 1.7;
+    color: var(--text-primary); font-style: italic;
+  }
+
+  .ind-testimonial-author { display: flex; align-items: center; gap: 14px; }
+
+  .ind-testimonial-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    color: white; display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 14px; font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .ind-testimonial-avatar--teal { background: linear-gradient(135deg, var(--teal), var(--teal-dark)); }
+  .ind-testimonial-avatar--purple { background: linear-gradient(135deg, var(--purple), var(--purple-dark)); }
+  .ind-testimonial-avatar--green { background: linear-gradient(135deg, var(--green), #2d8a56); }
+
+  .ind-testimonial-name { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--text-primary); }
+  .ind-testimonial-role { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+  @media (max-width: 768px) {
+    .ind-testimonials { padding: 80px 0; }
+    .ind-testimonials-grid { grid-template-columns: 1fr; }
+    .ind-testimonial { padding: 28px; }
+  }
+
+  /* ===== MID CTA ===== */
+  .ind-mid-cta { padding: 100px 0; background: var(--dark); position: relative; overflow: hidden; }
+  .ind-mid-cta-bg { position: absolute; inset: 0; }
+
+  .ind-mid-cta-orb { position: absolute; border-radius: 50%; filter: blur(150px); opacity: 0.2; }
+  .ind-mid-cta-orb--1 { width: 400px; height: 400px; background: var(--teal); bottom: -30%; left: -5%; }
+  .ind-mid-cta-orb--2 { width: 350px; height: 350px; background: var(--purple); top: -30%; right: -5%; }
+
+  .ind-mid-cta-content { text-align: center; position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+
+  .ind-mid-cta-heading {
+    font-family: var(--font-display); font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700; line-height: 1.15; letter-spacing: -0.02em;
+    color: var(--text-on-dark); margin-bottom: 16px;
+  }
+
+  .ind-mid-cta-text { font-size: 17px; line-height: 1.7; color: var(--text-on-dark-muted); margin-bottom: 32px; }
+  .ind-btn-lg { padding: 16px 32px; font-size: 16px; }
+
+  /* ===== GUIDE ===== */
+  .ind-guide { padding: 120px 0 100px; background: var(--white); }
+  .ind-guide-header { text-align: center; margin-bottom: 64px; }
+
+  .ind-guide-layout {
+    display: grid; grid-template-columns: 1fr 240px; gap: 56px;
+    max-width: 1040px; margin: 0 auto; align-items: start;
+  }
+
+  .ind-guide-main { min-width: 0; }
+
+  .ind-guide-section {
+    padding-bottom: 48px; margin-bottom: 48px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .ind-guide-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .ind-guide-h2 {
+    font-family: var(--font-display); font-size: clamp(24px, 3vw, 30px);
+    font-weight: 700; line-height: 1.2; letter-spacing: -0.02em;
+    color: var(--text-primary); margin-bottom: 24px;
+    padding-top: 8px;
+  }
+
+  .ind-guide-body {
+    font-size: 16.5px; line-height: 1.8; color: var(--text-secondary);
+  }
+
+  .ind-guide-body :global(h3) {
+    font-family: var(--font-display); font-size: 20px; font-weight: 600;
+    color: var(--text-primary); margin: 32px 0 12px; letter-spacing: -0.01em;
+  }
+
+  .ind-guide-body :global(p) { margin-bottom: 16px; }
+  .ind-guide-body :global(p:last-child) { margin-bottom: 0; }
+
+  .ind-guide-body :global(ul), .ind-guide-body :global(ol) {
+    margin: 16px 0; padding-left: 24px;
+  }
+
+  .ind-guide-body :global(li) { margin-bottom: 8px; }
+  .ind-guide-body :global(strong) { color: var(--text-primary); font-weight: 600; }
+
+  .ind-guide-body :global(blockquote) {
+    border-left: 3px solid var(--teal); padding: 16px 20px; margin: 24px 0;
+    background: var(--light); border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    font-style: italic; color: var(--text-primary);
+  }
+
+  /* TOC */
+  .ind-guide-toc { position: sticky; top: 100px; }
+
+  .ind-guide-toc-inner {
+    background: var(--light); border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg); padding: 24px;
+  }
+
+  .ind-guide-toc-label {
+    font-family: var(--font-display); font-size: 12px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);
+    display: block; margin-bottom: 16px;
+  }
+
+  .ind-guide-toc-inner nav { display: flex; flex-direction: column; gap: 2px; }
+
+  .ind-guide-toc-link {
+    font-size: 13px; line-height: 1.5; color: var(--text-secondary);
+    padding: 8px 12px; border-radius: var(--radius-sm); border-left: 2px solid transparent;
+    transition: all var(--transition); display: block;
+  }
+
+  .ind-guide-toc-link:hover { color: var(--text-primary); background: rgba(0,0,0,0.02); }
+  .ind-guide-toc-link.active { color: var(--teal); border-left-color: var(--teal); background: rgba(40,165,177,0.04); font-weight: 600; }
+
+  .ind-guide-toc-cta { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-light); }
+
+  @media (max-width: 900px) {
+    .ind-guide-layout { grid-template-columns: 1fr; gap: 0; }
+    .ind-guide-toc { display: none; }
+  }
+
+  @media (max-width: 600px) { .ind-guide { padding: 80px 0 60px; } }
+
+  /* ===== FAQ ===== */
+  .ind-faq { padding: 100px 0; background: var(--light); }
+  .ind-faq-header { text-align: center; margin-bottom: 56px; }
+  .ind-faq-list { max-width: 760px; margin: 0 auto; }
+
+  .ind-faq-item { border-bottom: 1px solid var(--border-light); }
+  .ind-faq-item:first-child { border-top: 1px solid var(--border-light); }
+
+  .ind-faq-question {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 24px 0; cursor: pointer;
+    font-family: var(--font-display); font-size: 17px; font-weight: 600;
+    color: var(--text-primary); list-style: none; transition: color var(--transition);
+  }
+
+  .ind-faq-question::-webkit-details-marker { display: none; }
+  .ind-faq-question::marker { display: none; content: ""; }
+  .ind-faq-question:hover { color: var(--teal); }
+
+  .ind-faq-chevron { flex-shrink: 0; color: var(--text-muted); transition: transform var(--transition); }
+  .ind-faq-item[open] .ind-faq-chevron { transform: rotate(180deg); }
+
+  .ind-faq-answer { padding-bottom: 24px; }
+  .ind-faq-answer p { font-size: 15px; line-height: 1.7; color: var(--text-secondary); }
+
+  @media (max-width: 600px) { .ind-faq { padding: 80px 0; } }
+
+  /* ===== BOTTOM CTA ===== */
+  .ind-bottom-cta { padding: 120px 0; background: var(--dark); position: relative; overflow: hidden; }
+  .ind-bottom-cta-bg { position: absolute; inset: 0; }
+
+  .ind-bottom-cta-orb { position: absolute; border-radius: 50%; filter: blur(150px); opacity: 0.2; }
+  .ind-bottom-cta-orb--1 { width: 400px; height: 400px; background: var(--teal); bottom: -20%; left: -5%; }
+  .ind-bottom-cta-orb--2 { width: 350px; height: 350px; background: var(--purple); top: -25%; right: 10%; }
+
+  .ind-bottom-cta-content { text-align: center; position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+
+  .ind-bottom-cta-heading {
+    font-family: var(--font-display); font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700; line-height: 1.15; letter-spacing: -0.02em;
+    color: var(--text-on-dark); margin-bottom: 20px;
+  }
+
+  .ind-bottom-cta-text { font-size: 18px; line-height: 1.7; color: var(--text-on-dark-muted); margin-bottom: 36px; }
+  .ind-bottom-cta-actions { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+
+  .ind-bottom-cta-meta { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; }
+  .ind-bottom-cta-meta span { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-on-dark-muted); }
+  .ind-bottom-cta-meta svg { color: var(--green); }
+
+  @media (max-width: 600px) {
+    .ind-bottom-cta { padding: 80px 0; }
+    .ind-bottom-cta-meta { flex-direction: column; gap: 12px; }
+  }
+
+  /* ===== FLOATING CTA BAR ===== */
+  .ind-float-cta {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 900;
+    background: rgba(10, 15, 26, 0.9);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 12px 0;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .ind-float-cta.visible { transform: translateY(0); }
+
+  .ind-float-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .ind-float-cta-text { font-size: 14px; font-weight: 500; color: var(--text-on-dark-muted); }
+  .ind-float-cta-btn { font-size: 13px; padding: 10px 22px; }
+
+  @media (max-width: 600px) {
+    .ind-float-cta-text { display: none; }
+    .ind-float-cta-inner { justify-content: center; }
+  }
+</style>

@@ -1,0 +1,200 @@
+<section class="clients">
+  <div class="container">
+    <div class="clients-header" data-animate>
+      <span class="section-label">Who We Serve</span>
+      <h2 class="section-heading">
+        Campaign Strategies for<br />
+        Every Type of Business
+      </h2>
+      <p class="section-subtext">
+        Our proven process adapts to the unique needs of each industry and
+        business type your clients operate in.
+      </p>
+    </div>
+
+    <div class="clients-grid" data-stagger>
+      <div class="client-card" data-animate>
+        <div class="client-icon">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+            ></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+        </div>
+        <h3 class="client-title">Local Businesses</h3>
+        <p class="client-desc">
+          Restaurants, dentists, law firms, and service providers looking to
+          dominate their local market and maps results.
+        </p>
+      </div>
+
+      <div class="client-card" data-animate>
+        <div class="client-icon">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M8 21h8M12 17v4"></path>
+          </svg>
+        </div>
+        <h3 class="client-title">SaaS Websites</h3>
+        <p class="client-desc">
+          Software companies that need organic growth through strategic content
+          marketing and technical SEO excellence.
+        </p>
+      </div>
+
+      <div class="client-card" data-animate>
+        <div class="client-icon">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+            ></path>
+          </svg>
+        </div>
+        <h3 class="client-title">eCommerce Shops</h3>
+        <p class="client-desc">
+          Online stores that need product and category page optimization,
+          technical SEO at scale, and content strategy.
+        </p>
+      </div>
+
+      <div class="client-card" data-animate>
+        <div class="client-icon">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path
+              d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+            ></path>
+          </svg>
+        </div>
+        <h3 class="client-title">National & B2B</h3>
+        <p class="client-desc">
+          Companies targeting broader markets that need authority building,
+          competitive analysis, and long-term organic growth.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .clients {
+    padding: 120px 0;
+    background: var(--white);
+  }
+
+  .clients-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .clients-header .section-subtext {
+    margin: 0 auto;
+  }
+
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .client-card {
+    text-align: center;
+    padding: 40px 24px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+    transition: all var(--transition);
+  }
+
+  .client-card:hover {
+    border-color: var(--teal);
+    background: rgba(40, 165, 177, 0.02);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .client-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--light);
+    color: var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    transition: all var(--transition);
+  }
+
+  .client-card:hover .client-icon {
+    background: rgba(40, 165, 177, 0.1);
+  }
+
+  .client-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .client-desc {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 900px) {
+    .clients-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .clients {
+      padding: 80px 0;
+    }
+
+    .clients-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

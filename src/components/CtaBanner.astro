@@ -1,0 +1,151 @@
+<section class="cta-banner" id="book-call">
+  <div class="cta-bg">
+    <div class="cta-orb cta-orb--1"></div>
+    <div class="cta-orb cta-orb--2"></div>
+  </div>
+
+  <div class="container">
+    <div class="cta-content" data-animate>
+      <h2 class="cta-heading">Ready to Scale Your SEO Offering?</h2>
+      <p class="cta-text">
+        Start with a free discovery call. No commitment, no pressure — just a
+        conversation about how we can help your agency grow its organic revenue.
+      </p>
+      <div class="cta-actions">
+        <a href="#" class="btn btn-primary btn-lg">
+          Book a Good Fit Call
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path
+              d="M3 8h10M9 4l4 4-4 4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </a>
+      </div>
+      <div class="cta-meta">
+        <span class="cta-meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          No upfront cost
+        </span>
+        <span class="cta-meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Cancel anytime
+        </span>
+        <span class="cta-meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Free discovery audit
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-banner {
+    padding: 120px 0;
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .cta-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(150px);
+    opacity: 0.2;
+  }
+
+  .cta-orb--1 {
+    width: 500px;
+    height: 500px;
+    background: var(--teal);
+    bottom: -30%;
+    left: -10%;
+  }
+
+  .cta-orb--2 {
+    width: 400px;
+    height: 400px;
+    background: var(--purple);
+    top: -30%;
+    right: -10%;
+  }
+
+  .cta-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .cta-heading {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--text-on-dark);
+    margin-bottom: 20px;
+  }
+
+  .cta-text {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-on-dark-muted);
+    margin-bottom: 36px;
+  }
+
+  .cta-actions {
+    margin-bottom: 28px;
+  }
+
+  .btn-lg {
+    padding: 16px 36px;
+    font-size: 16px;
+  }
+
+  .cta-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .cta-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--text-on-dark-muted);
+  }
+
+  .cta-meta-item svg {
+    color: var(--green);
+  }
+
+  @media (max-width: 600px) {
+    .cta-banner {
+      padding: 80px 0;
+    }
+
+    .cta-meta {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+</style>

@@ -1,0 +1,2743 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+const processSteps = [
+  {
+    number: "01",
+    title: "World-Class Free Discovery",
+    description:
+      "We offer free audits that others charge thousands for. We identify opportunities, assess competition, and support your sales efforts before you commit to anything. No other white-label provider offers this.",
+  },
+  {
+    number: "02",
+    title: "Strategic Campaign Onboarding",
+    description:
+      "Every campaign starts with our strategic onboard — identifying priorities, capitalizing on quick wins, and laying out a clear roadmap. Your account manager walks you through every detail.",
+  },
+  {
+    number: "03",
+    title: "Quarterly Campaign Planning",
+    description:
+      "This is where we separate ourselves. Instead of obsessing over keyword counts, we take a strategic approach that balances performance, business priorities, competition, and opportunity.",
+  },
+  {
+    number: "04",
+    title: "Optimize, Implement, Execute",
+    description:
+      "On-page optimizations, content marketing, technical improvements, link acquisition, and more — all driven by the quarterly strategic plan for each campaign.",
+  },
+  {
+    number: "05",
+    title: "Reports & Dashboards",
+    description:
+      "White-label branded reports and real-time data dashboards you can reference at any point. Always know what is happening across all of your campaigns.",
+  },
+];
+
+const components = [
+  {
+    icon: "strategy",
+    title: "Quality Onboarding & Strategy",
+    description:
+      "Every campaign starts with our strategic onboarding month — setting the campaign up for success while capitalizing on quick wins.",
+  },
+  {
+    icon: "keywords",
+    title: "Keyword Research & Mapping",
+    description:
+      "The backbone of campaign success. Understanding existing content, identifying gaps, and mapping keywords to the right pages.",
+  },
+  {
+    icon: "onpage",
+    title: "On-Page Optimizations",
+    description:
+      "Page-specific meta data, headers, body copy, and content optimized to improve relevance and search visibility.",
+  },
+  {
+    icon: "technical",
+    title: "Technical SEO & Crawl Fixes",
+    description:
+      "Page speed, schema, broken links, canonical tags, and other technical elements reviewed and improved continuously.",
+  },
+  {
+    icon: "links",
+    title: "High-Quality Link Acquisition",
+    description:
+      "Quality links from authoritative sources with well-balanced anchor text for long-term website authority and campaign success.",
+  },
+  {
+    icon: "local",
+    title: "GBP & Local SEO",
+    description:
+      "Strategic GBP profile improvements, local citation building, and geo-targeted optimization for local map visibility.",
+  },
+  {
+    icon: "content",
+    title: "Strategic Content Marketing",
+    description:
+      "Improvements to existing pages, new content creation, and blog support to build topical authority and relevance.",
+  },
+  {
+    icon: "reporting",
+    title: "Reporting & Data Access",
+    description:
+      "Real-time campaign data dashboards and formatted monthly reports delivered to your inbox on the first of every month.",
+  },
+];
+
+const faqs = [
+  {
+    question: "What exactly is white label SEO?",
+    answer:
+      "White label SEO is when you partner with an SEO provider (like us) who delivers SEO services under your agency's brand. Your clients see your branding on reports and communications — they never know we exist. It allows you to offer expert SEO services without hiring in-house or building the infrastructure yourself.",
+  },
+  {
+    question: "How is this different from reseller SEO packages?",
+    answer:
+      "Reseller SEO is typically a pre-set package of actions at a fixed price with limited customization and support. White label SEO with SEO Brothers gives you access to a dedicated team, strategic guidance, education, and campaigns tailored to each client's needs. We combine the best of both — the predictability of reseller packages with the strategic depth of a true white-label partnership.",
+  },
+  {
+    question: "What kind of margins can I expect?",
+    answer:
+      "Most of our partners experience 50%+ gross service margins on their SEO offerings. We work with you to price campaigns at a point that makes sense for your business while delivering exceptional value to your clients.",
+  },
+  {
+    question: "Do I need SEO experience to get started?",
+    answer:
+      "Not at all. That's the beauty of a true white-label partnership. We provide the SEO expertise, training, and support. Many of our most successful partners came to us with little to no SEO experience. Your dedicated account manager will help you understand the process and communicate effectively with your clients.",
+  },
+  {
+    question: "How long before I see results for my clients?",
+    answer:
+      "SEO is a long-term strategy, but our onboarding process is designed to capitalize on quick wins. Most campaigns start showing meaningful movement within the first 3-4 months, with compounding results over time. Your account manager will set clear expectations during the discovery process.",
+  },
+  {
+    question: "Can I start with just one campaign?",
+    answer:
+      "Absolutely. Many of our partners start with a single campaign to test the process before scaling. There's no minimum commitment — start with one campaign and grow at your own pace.",
+  },
+  {
+    question: "What does the partner portal include?",
+    answer:
+      "Our self-serve partner portal lets you order new campaigns, manage billing (start, stop, upgrade, downgrade), access real-time campaign data, communicate with your team through our support system, and add team members for collaboration. Everything you need in one place.",
+  },
+  {
+    question: "Do you offer any kind of free trial or audit?",
+    answer:
+      "We offer unlimited free discovery audits to all partners. These audits are the same quality that competitors charge thousands for, and they help you identify good-fit campaigns, support your sales process, and close more deals.",
+  },
+];
+---
+
+<Layout
+  title="White Label SEO Services | SEO Brothers"
+  description="Partner with SEO Brothers for white label SEO services. No upfront cost, dedicated campaign managers, and 50%+ margins for your agency."
+>
+  <Nav />
+
+  <!-- ===== HERO ===== -->
+  <section class="wl-hero">
+    <div class="wl-hero-bg">
+      <div class="wl-hero-orb wl-hero-orb--teal"></div>
+      <div class="wl-hero-orb wl-hero-orb--purple"></div>
+      <div class="wl-hero-orb wl-hero-orb--green"></div>
+      <div class="wl-hero-grid"></div>
+    </div>
+
+    <div class="wl-hero-content container">
+      <div class="wl-hero-badge" data-animate>
+        <span class="wl-hero-badge-dot"></span>
+        Trusted by 200+ agency partners
+      </div>
+
+      <h1 class="wl-hero-title" data-animate>
+        White Label SEO<br />
+        <span class="wl-hero-title-gradient">Without the Headaches</span>
+      </h1>
+
+      <p class="wl-hero-subtitle" data-animate>
+        No up-front cost. Dedicated campaign manager. Effortless scaling.
+        Deliver expert SEO services under your own brand while keeping 50%+
+        margins.
+      </p>
+
+      <div class="wl-hero-actions" data-animate>
+        <a href="#wl-cta" class="btn btn-primary wl-btn-lg">
+          Book a Good Fit Call
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path
+              d="M3 8h10M9 4l4 4-4 4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </a>
+        <a href="#demo" class="btn btn-outline">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle
+              cx="8"
+              cy="8"
+              r="6"
+              stroke="currentColor"
+              stroke-width="1.5"></circle>
+            <path d="M6.5 5.5l4 2.5-4 2.5V5.5z" fill="currentColor"></path>
+          </svg>
+          Watch a Demo
+        </a>
+      </div>
+
+      <div class="wl-hero-pills" data-animate>
+        <span class="wl-hero-pill">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          No upfront cost
+        </span>
+        <span class="wl-hero-pill">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Cancel anytime
+        </span>
+        <span class="wl-hero-pill">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Free discovery audits
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHAT IS WHITE LABEL SEO ===== -->
+  <section class="wl-what">
+    <div class="container">
+      <div class="wl-what-grid">
+        <div class="wl-what-content" data-animate>
+          <span class="section-label">More Than a Reseller</span>
+          <h2 class="section-heading">
+            What is White Label SEO<br />
+            at SEO Brothers?
+          </h2>
+          <p class="wl-what-text">
+            White Label SEO at SEO Brothers involves a <strong
+              >true partnership</strong
+            >. We are more than a basic reseller solution. We enable your
+            marketing or digital agency to offer and sell organic SEO services to
+            your clients without hiring an in-house team or piecing together
+            outsourced contractors.
+          </p>
+          <p class="wl-what-text">
+            You deliver high-quality SEO services through your own brand without
+            having to do any of the work — oftentimes while still leaving plenty
+            of margin for your business.
+          </p>
+        </div>
+        <div class="wl-what-benefits" data-animate>
+          <div class="wl-benefit-card">
+            <div class="wl-benefit-icon">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path
+                  d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+                ></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="wl-benefit-title">Fully White-Labeled</h3>
+              <p class="wl-benefit-desc">
+                Your brand on every report, dashboard, and deliverable. Your
+                clients never know we exist.
+              </p>
+            </div>
+          </div>
+          <div class="wl-benefit-card">
+            <div class="wl-benefit-icon wl-benefit-icon--purple">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
+                ></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="wl-benefit-title">No Hiring Required</h3>
+              <p class="wl-benefit-desc">
+                Skip the $50k+ salary, training, and management overhead. Get a
+                full SEO team instantly.
+              </p>
+            </div>
+          </div>
+          <div class="wl-benefit-card">
+            <div class="wl-benefit-icon wl-benefit-icon--green">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+              </svg>
+            </div>
+            <div>
+              <h3 class="wl-benefit-title">50%+ Service Margins</h3>
+              <p class="wl-benefit-desc">
+                Pricing structured to ensure healthy margins for your agency from
+                day one.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROVEN PROCESS ===== -->
+  <section class="wl-process">
+    <div class="container">
+      <div class="wl-process-header" data-animate>
+        <span class="section-label">Proven Campaign Process</span>
+        <h2 class="section-heading">
+          SEO Brothers' White Label<br />
+          Campaign Success Formula
+        </h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          We follow a proven process to ensure you can bring to market a highly
+          profitable SEO solution while providing the best value to your clients.
+        </p>
+      </div>
+
+      <div class="wl-process-timeline">
+        <div class="wl-process-line"></div>
+        {
+          processSteps.map((step) => (
+            <div class="wl-process-step" data-animate>
+              <div class="wl-process-marker">
+                <span class="wl-process-number">{step.number}</span>
+              </div>
+              <div class="wl-process-step-body">
+                <h3 class="wl-process-step-title">{step.title}</h3>
+                <p class="wl-process-step-desc">{step.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="wl-process-cta" data-animate>
+        <a href="#wl-cta" class="btn btn-primary">
+          Start With Free Discovery
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path
+              d="M3 8h10M9 4l4 4-4 4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CAMPAIGN COMPONENTS ===== -->
+  <section class="wl-components">
+    <div class="container">
+      <div class="wl-components-header" data-animate>
+        <span class="section-label">What's Included</span>
+        <h2 class="section-heading">
+          White Label SEO<br />
+          Campaign Components
+        </h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          We combine essential SEO components with quality reporting and the
+          ability to scale each campaign up and down as needed.
+        </p>
+      </div>
+
+      <div class="wl-components-grid" data-stagger>
+        {
+          components.map((comp, i) => (
+            <div class="wl-comp-card" data-animate>
+              <div
+                class={`wl-comp-icon wl-comp-icon--${i % 3 === 0 ? "teal" : i % 3 === 1 ? "purple" : "green"}`}
+              >
+                {comp.icon === "strategy" && (
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                )}
+                {comp.icon === "keywords" && (
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  </svg>
+                )}
+                {comp.icon === "onpage" && (
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                  </svg>
+                )}
+                {comp.icon === "technical" && (
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="16 18 22 12 16 6" />
+                    <polyline points="8 6 2 12 8 18" />
+                  </svg>
+                )}
+                {comp.icon === "links" && (
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                  </svg>
+                )}
+                {comp.icon === "local" && (
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                )}
+                {comp.icon === "content" && (
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                  </svg>
+                )}
+                {comp.icon === "reporting" && (
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="18" y1="20" x2="18" y2="10" />
+                    <line x1="12" y1="20" x2="12" y2="4" />
+                    <line x1="6" y1="20" x2="6" y2="14" />
+                    <line x1="2" y1="20" x2="22" y2="20" />
+                  </svg>
+                )}
+              </div>
+              <h3 class="wl-comp-title">{comp.title}</h3>
+              <p class="wl-comp-desc">{comp.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PARTNER PORTAL ===== -->
+  <section class="wl-portal">
+    <div class="wl-portal-bg">
+      <div class="wl-portal-orb wl-portal-orb--1"></div>
+      <div class="wl-portal-orb wl-portal-orb--2"></div>
+    </div>
+    <div class="container">
+      <div class="wl-portal-content" data-animate>
+        <span class="section-label section-label--light"
+          >Partner Portal</span
+        >
+        <h2 class="section-heading section-heading--light">
+          Manage Everything<br />
+          From One Place
+        </h2>
+        <p class="section-subtext section-subtext--light">
+          Our self-serve partner portal takes the hassle out of ordering
+          campaigns, getting support, and having visibility on existing
+          campaigns.
+        </p>
+      </div>
+
+      <div class="wl-portal-grid" data-stagger>
+        <div class="wl-portal-feature" data-animate>
+          <div class="wl-portal-feature-icon">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"
+              ></rect>
+              <line x1="1" y1="10" x2="23" y2="10"></line>
+            </svg>
+          </div>
+          <h3 class="wl-portal-feature-title">Order & Manage Billing</h3>
+          <p class="wl-portal-feature-desc">
+            Order white label SEO campaigns and projects. Start, stop,
+            upgrade, or downgrade with self-serve billing.
+          </p>
+        </div>
+
+        <div class="wl-portal-feature" data-animate>
+          <div class="wl-portal-feature-icon">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path
+                d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="wl-portal-feature-title">Support When You Need It</h3>
+          <p class="wl-portal-feature-desc">
+            Access our partner-only knowledge base or start a conversation
+            with your team for campaign questions and support.
+          </p>
+        </div>
+
+        <div class="wl-portal-feature" data-animate>
+          <div class="wl-portal-feature-icon">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
+              ></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <line x1="19" y1="8" x2="19" y2="14"></line>
+              <line x1="22" y1="11" x2="16" y2="11"></line>
+            </svg>
+          </div>
+          <h3 class="wl-portal-feature-title">Add Team Members</h3>
+          <p class="wl-portal-feature-desc">
+            Add multiple people to your account — great for agencies with
+            multiple account managers overseeing different clients.
+          </p>
+        </div>
+      </div>
+
+      <div class="wl-portal-mockup" data-animate>
+        <div class="wl-portal-mockup-inner">
+          <div class="wl-portal-mockup-bar">
+            <div class="wl-portal-mockup-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <span class="wl-portal-mockup-url">portal.seobrothers.com</span>
+          </div>
+          <div class="wl-portal-mockup-body">
+            <div class="wl-portal-mockup-placeholder">
+              [Image: Partner portal dashboard — campaign management interface
+              showing active campaigns, performance metrics, and quick actions]
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== POPULAR PRODUCTS ===== -->
+  <section class="wl-products">
+    <div class="container">
+      <div class="wl-products-header" data-animate>
+        <span class="section-label">Our Products</span>
+        <h2 class="section-heading">
+          Most Popular White Label<br />
+          SEO Products
+        </h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          From full managed campaigns to standalone services — pick what your
+          clients need most.
+        </p>
+      </div>
+
+      <div class="wl-products-grid" data-stagger>
+        <div class="wl-product-card wl-product-card--featured" data-animate>
+          <span class="wl-product-badge">Most Popular</span>
+          <h3 class="wl-product-title">Managed SEO Campaigns</h3>
+          <p class="wl-product-desc">
+            By far the most popular, most valuable, and most profitable. Our
+            strategic managed campaigns are what we specialize in — the full
+            package your clients need to drive massive organic value.
+          </p>
+          <a href="#wl-cta" class="btn btn-primary wl-product-btn"
+            >Get Started</a
+          >
+        </div>
+
+        <div class="wl-product-card" data-animate>
+          <h3 class="wl-product-title">One-Time Optimizations</h3>
+          <p class="wl-product-desc">
+            Not every client is ready for ongoing SEO. Our one-time projects
+            with defined scope and deliverables provide excellent value and
+            results without the ongoing commitment. Redesign consultations
+            available too.
+          </p>
+          <a
+            href="#wl-cta"
+            class="btn btn-outline--dark wl-product-btn"
+            >Learn More</a
+          >
+        </div>
+
+        <div class="wl-product-card" data-animate>
+          <h3 class="wl-product-title">Link Acquisition Plans</h3>
+          <p class="wl-product-desc">
+            Acquire high-quality, relevant links you won't find anywhere else.
+            Our link building plans let you focus purely on authority building
+            when that's the biggest need for a campaign.
+          </p>
+          <a
+            href="#wl-cta"
+            class="btn btn-outline--dark wl-product-btn"
+            >Learn More</a
+          >
+        </div>
+
+        <div class="wl-product-card" data-animate>
+          <h3 class="wl-product-title">Content Marketing</h3>
+          <p class="wl-product-desc">
+            Whether you need strategic support building out new content, an
+            ongoing content marketing plan, or end-to-end creation — our managed
+            content plans put that into action.
+          </p>
+          <a
+            href="#wl-cta"
+            class="btn btn-outline--dark wl-product-btn"
+            >Learn More</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRICING ===== -->
+  <section class="wl-pricing">
+    <div class="container">
+      <div class="wl-pricing-header" data-animate>
+        <span class="section-label">Transparent Pricing</span>
+        <h2 class="section-heading">
+          White Label SEO Pricing<br />
+          for Local Businesses
+        </h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          Packages shown are examples for local businesses. Our partners have
+          access to unlimited free discovery for accurate pricing based on
+          budgets, competition, and expectations.
+        </p>
+      </div>
+
+      <div class="wl-pricing-grid" data-stagger>
+        <div class="wl-pricing-card" data-animate>
+          <div class="wl-pricing-card-header">
+            <h3 class="wl-pricing-tier">Tiny</h3>
+            <p class="wl-pricing-tier-desc">
+              Base-level managed campaign for ultra-low competitive industries
+              or low population locations.
+            </p>
+          </div>
+          <div class="wl-pricing-price">
+            <span class="wl-pricing-amount">$320</span>
+            <span class="wl-pricing-period">per month</span>
+          </div>
+          <ul class="wl-pricing-features">
+            <li>Strategic campaign guidance</li>
+            <li>Prioritize maps or organic</li>
+            <li>Live reporting dashboard</li>
+            <li>Technical SEO optimization</li>
+            <li>Ongoing specialist time</li>
+            <li>Basic link building or GBP</li>
+          </ul>
+          <a href="#wl-cta" class="btn btn-outline--dark wl-pricing-btn"
+            >Start Risk Free</a
+          >
+        </div>
+
+        <div class="wl-pricing-card wl-pricing-card--featured" data-animate>
+          <span class="wl-pricing-badge">Recommended</span>
+          <div class="wl-pricing-card-header">
+            <h3 class="wl-pricing-tier">Typical</h3>
+            <p class="wl-pricing-tier-desc">
+              The standard local SEO campaign — including GBP, geo pages, link
+              building, and specialist time to support it all.
+            </p>
+          </div>
+          <div class="wl-pricing-price">
+            <span class="wl-pricing-amount">$620</span>
+            <span class="wl-pricing-period">per month</span>
+          </div>
+          <ul class="wl-pricing-features">
+            <li>Strategic campaign guidance</li>
+            <li>Prioritize maps and organic</li>
+            <li>Live reporting dashboard</li>
+            <li>Technical SEO optimization</li>
+            <li>Monthly geo pages or blog posts</li>
+            <li>Ongoing specialist time</li>
+            <li>Robust link building and GBP</li>
+          </ul>
+          <a href="#wl-cta" class="btn btn-primary wl-pricing-btn"
+            >Start Risk Free</a
+          >
+        </div>
+
+        <div class="wl-pricing-card" data-animate>
+          <div class="wl-pricing-card-header">
+            <h3 class="wl-pricing-tier">Turbo</h3>
+            <p class="wl-pricing-tier-desc">
+              For higher competitive industries and areas, or when you need to
+              show success faster.
+            </p>
+          </div>
+          <div class="wl-pricing-price">
+            <span class="wl-pricing-amount">$1,020</span>
+            <span class="wl-pricing-period">per month</span>
+          </div>
+          <ul class="wl-pricing-features">
+            <li>Strategic campaign guidance</li>
+            <li>Prioritize maps and organic</li>
+            <li>Live reporting dashboard</li>
+            <li>Everything in Typical campaign</li>
+            <li>"More" of what's needed</li>
+            <li>Priority response and support</li>
+          </ul>
+          <a href="#wl-cta" class="btn btn-outline--dark wl-pricing-btn"
+            >Start Risk Free</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CLIENT TYPES ===== -->
+  <section class="wl-clients">
+    <div class="container">
+      <div class="wl-clients-header" data-animate>
+        <span class="section-label">Best-Fit Campaigns</span>
+        <h2 class="section-heading">
+          What Types of Clients Work<br />
+          Best With White Label SEO?
+        </h2>
+      </div>
+
+      <div class="wl-clients-grid" data-stagger>
+        <div class="wl-client-card" data-animate>
+          <div class="wl-client-icon">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+              ></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </div>
+          <h3 class="wl-client-title">Local Businesses</h3>
+          <p class="wl-client-desc">
+            Restaurants, dentists, law firms, and service providers looking to
+            dominate their local market and maps results.
+          </p>
+        </div>
+        <div class="wl-client-card" data-animate>
+          <div class="wl-client-icon">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"
+              ></rect>
+              <path d="M8 21h8M12 17v4"></path>
+            </svg>
+          </div>
+          <h3 class="wl-client-title">SaaS Websites</h3>
+          <p class="wl-client-desc">
+            Software companies needing organic growth through strategic content
+            marketing and technical SEO.
+          </p>
+        </div>
+        <div class="wl-client-card" data-animate>
+          <div class="wl-client-icon">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path
+                d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="wl-client-title">eCommerce Shops</h3>
+          <p class="wl-client-desc">
+            Online stores that need product and category optimization,
+            technical SEO at scale, and content strategy.
+          </p>
+        </div>
+        <div class="wl-client-card" data-animate>
+          <div class="wl-client-icon">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path
+                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="wl-client-title">National & B2B</h3>
+          <p class="wl-client-desc">
+            Companies targeting broader markets that need authority building,
+            competitive analysis, and long-term growth.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WL vs RESELLER ===== -->
+  <section class="wl-compare">
+    <div class="wl-compare-bg">
+      <div class="wl-compare-orb"></div>
+    </div>
+    <div class="container">
+      <div class="wl-compare-header" data-animate>
+        <span class="section-label section-label--light"
+          >Best of Both Worlds</span
+        >
+        <h2 class="section-heading section-heading--light">
+          White Label SEO vs<br />
+          Reseller SEO
+        </h2>
+        <p class="section-subtext section-subtext--light" style="margin:0 auto;">
+          We've designed our service to combine the predictability of reseller
+          packages with the strategic depth of a true white-label partnership.
+        </p>
+      </div>
+
+      <div class="wl-compare-table" data-animate>
+        <div class="wl-compare-row wl-compare-row--header">
+          <div class="wl-compare-cell"></div>
+          <div class="wl-compare-cell wl-compare-cell--label">Reseller SEO</div>
+          <div class="wl-compare-cell wl-compare-cell--label wl-compare-cell--highlight">SEO Brothers</div>
+        </div>
+        <div class="wl-compare-row">
+          <div class="wl-compare-cell wl-compare-cell--feature">Access to a dedicated team</div>
+          <div class="wl-compare-cell">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <div class="wl-compare-cell wl-compare-cell--highlight">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+        <div class="wl-compare-row">
+          <div class="wl-compare-cell wl-compare-cell--feature">Support & education</div>
+          <div class="wl-compare-cell">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <div class="wl-compare-cell wl-compare-cell--highlight">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+        <div class="wl-compare-row">
+          <div class="wl-compare-cell wl-compare-cell--feature">Custom strategy per campaign</div>
+          <div class="wl-compare-cell">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <div class="wl-compare-cell wl-compare-cell--highlight">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+        <div class="wl-compare-row">
+          <div class="wl-compare-cell wl-compare-cell--feature">Predictable, clear pricing</div>
+          <div class="wl-compare-cell">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="wl-compare-cell wl-compare-cell--highlight">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+        <div class="wl-compare-row">
+          <div class="wl-compare-cell wl-compare-cell--feature">Consistent, repeatable process</div>
+          <div class="wl-compare-cell">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="wl-compare-cell wl-compare-cell--highlight">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+        <div class="wl-compare-row">
+          <div class="wl-compare-cell wl-compare-cell--feature">Easy to sell to your clients</div>
+          <div class="wl-compare-cell">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="wl-compare-cell wl-compare-cell--highlight">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW TO CHOOSE ===== -->
+  <section class="wl-choose">
+    <div class="container">
+      <div class="wl-choose-header" data-animate>
+        <span class="section-label">Finding the Right Fit</span>
+        <h2 class="section-heading">
+          How to Choose a White<br />
+          Label SEO Provider
+        </h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          Research, interview, and a little gut feeling. Here are the key things
+          we recommend you look for.
+        </p>
+      </div>
+
+      <div class="wl-choose-grid" data-stagger>
+        <div class="wl-choose-card" data-animate>
+          <div class="wl-choose-number">01</div>
+          <h3 class="wl-choose-title">Choose a Specialist</h3>
+          <p class="wl-choose-desc">
+            Partner with a firm that only provides SEO. Specialization means
+            better processes, better pricing, and better communication. We only
+            do SEO — nothing else.
+          </p>
+        </div>
+        <div class="wl-choose-card" data-animate>
+          <div class="wl-choose-number">02</div>
+          <h3 class="wl-choose-title">Ask About Their Process</h3>
+          <p class="wl-choose-desc">
+            They should be able to walk you through both a partner onboarding
+            process and their project onboarding process in detail. We love
+            sharing ours.
+          </p>
+        </div>
+        <div class="wl-choose-card" data-animate>
+          <div class="wl-choose-number">03</div>
+          <h3 class="wl-choose-title">Meet the Team</h3>
+          <p class="wl-choose-desc">
+            Get face time with the people you'll be working with — sales,
+            account managers, and strategists. At SEO Brothers, you're welcome
+            to book a "meet the team" call anytime.
+          </p>
+        </div>
+        <div class="wl-choose-card" data-animate>
+          <div class="wl-choose-number">04</div>
+          <h3 class="wl-choose-title">Review Deliverables</h3>
+          <p class="wl-choose-desc">
+            What will your clients see? What do you have access to? How do they
+            communicate progress and reporting? Make sure it meets your
+            standards.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="wl-testimonials">
+    <div class="container">
+      <div class="wl-testimonials-header" data-animate>
+        <span class="section-label">Partner Feedback</span>
+        <h2 class="section-heading">What Our Partners Say</h2>
+      </div>
+
+      <div class="wl-testimonials-grid" data-stagger>
+        <blockquote class="wl-testimonial" data-animate>
+          <div class="wl-testimonial-quote">
+            <svg
+              class="wl-testimonial-mark"
+              width="40"
+              height="40"
+              viewBox="0 0 40 40"
+              fill="none"
+            >
+              <path
+                d="M18 20H10C10 15.58 13.58 12 18 12V8C11.37 8 6 13.37 6 20V32H18V20ZM38 20H30C30 15.58 33.58 12 38 12V8C31.37 8 26 13.37 26 20V32H38V20Z"
+                fill="currentColor"></path>
+            </svg>
+            <p class="wl-testimonial-text">
+              Honestly, working with the SEO Brothers has been incredible. The
+              process is great and I always know what I'm getting on every
+              single project.
+            </p>
+          </div>
+          <div class="wl-testimonial-author">
+            <div class="wl-testimonial-avatar">RG</div>
+            <div>
+              <div class="wl-testimonial-name">Rob Gillan</div>
+              <div class="wl-testimonial-role">Owner, RedEarMedia.ca</div>
+            </div>
+          </div>
+        </blockquote>
+
+        <blockquote class="wl-testimonial" data-animate>
+          <div class="wl-testimonial-quote">
+            <svg
+              class="wl-testimonial-mark"
+              width="40"
+              height="40"
+              viewBox="0 0 40 40"
+              fill="none"
+            >
+              <path
+                d="M18 20H10C10 15.58 13.58 12 18 12V8C11.37 8 6 13.37 6 20V32H18V20ZM38 20H30C30 15.58 33.58 12 38 12V8C31.37 8 26 13.37 26 20V32H38V20Z"
+                fill="currentColor"></path>
+            </svg>
+            <p class="wl-testimonial-text">
+              They've been really great at working with us to develop a process
+              that really is seamless and works well for us and helping us
+              understand how we can bring the most benefit to our clients.
+            </p>
+          </div>
+          <div class="wl-testimonial-author">
+            <div class="wl-testimonial-avatar wl-testimonial-avatar--purple"
+              >JF</div
+            >
+            <div>
+              <div class="wl-testimonial-name">Joy Fraser</div>
+              <div class="wl-testimonial-role">
+                Creative Director, Roddis Communications
+              </div>
+            </div>
+          </div>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="wl-faq">
+    <div class="container">
+      <div class="wl-faq-header" data-animate>
+        <span class="section-label">Common Questions</span>
+        <h2 class="section-heading">
+          White Label SEO<br />
+          Frequently Asked Questions
+        </h2>
+      </div>
+
+      <div class="wl-faq-list" data-animate>
+        {
+          faqs.map((faq, i) => (
+            <details class="wl-faq-item" open={i === 0}>
+              <summary class="wl-faq-question">
+                <span>{faq.question}</span>
+                <svg
+                  class="wl-faq-chevron"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </summary>
+              <div class="wl-faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOTTOM CTA ===== -->
+  <section class="wl-bottom-cta" id="wl-cta">
+    <div class="wl-bottom-cta-bg">
+      <div class="wl-bottom-cta-orb wl-bottom-cta-orb--1"></div>
+      <div class="wl-bottom-cta-orb wl-bottom-cta-orb--2"></div>
+      <div class="wl-bottom-cta-orb wl-bottom-cta-orb--3"></div>
+    </div>
+
+    <div class="container">
+      <div class="wl-bottom-cta-content" data-animate>
+        <h2 class="wl-bottom-cta-heading">
+          Ready to Start Your<br />
+          <span class="wl-bottom-cta-gradient"
+            >White Label SEO Partnership?</span
+          >
+        </h2>
+        <p class="wl-bottom-cta-text">
+          Schedule a service walkthrough today. We'll show you the process,
+          introduce you to the team, and answer every question you have.
+        </p>
+        <div class="wl-bottom-cta-actions">
+          <a href="#" class="btn btn-primary wl-btn-lg">
+            Book a Good Fit Call
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M3 8h10M9 4l4 4-4 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+          </a>
+          <a href="#" class="btn btn-outline">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle
+                cx="8"
+                cy="8"
+                r="6"
+                stroke="currentColor"
+                stroke-width="1.5"></circle>
+              <path d="M6.5 5.5l4 2.5-4 2.5V5.5z" fill="currentColor"
+              ></path>
+            </svg>
+            Watch a Demo
+          </a>
+        </div>
+        <div class="wl-bottom-cta-meta">
+          <span>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            No upfront cost
+          </span>
+          <span>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Cancel anytime
+          </span>
+          <span>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Free discovery audit
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ===== HERO ===== */
+  .wl-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: var(--dark);
+    overflow: hidden;
+    padding: 140px 0 100px;
+  }
+
+  .wl-hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .wl-hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.35;
+    animation: wlFloat 20s ease-in-out infinite;
+  }
+
+  .wl-hero-orb--teal {
+    width: 600px;
+    height: 600px;
+    background: var(--teal);
+    top: -15%;
+    left: -5%;
+  }
+
+  .wl-hero-orb--purple {
+    width: 500px;
+    height: 500px;
+    background: var(--purple);
+    top: -5%;
+    right: -10%;
+    animation-delay: -7s;
+  }
+
+  .wl-hero-orb--green {
+    width: 400px;
+    height: 400px;
+    background: var(--green);
+    bottom: -15%;
+    left: 35%;
+    animation-delay: -14s;
+  }
+
+  .wl-hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px
+      );
+    background-size: 60px 60px;
+    mask-image: radial-gradient(
+      ellipse at 50% 50%,
+      black 20%,
+      transparent 70%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse at 50% 50%,
+      black 20%,
+      transparent 70%
+    );
+  }
+
+  @keyframes wlFloat {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(30px, -30px) scale(1.05);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.95);
+    }
+  }
+
+  .wl-hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .wl-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-full);
+    padding: 8px 16px;
+    margin-bottom: 32px;
+    backdrop-filter: blur(8px);
+  }
+
+  .wl-hero-badge-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: wlPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes wlPulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(68, 185, 123, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 6px rgba(68, 185, 123, 0);
+    }
+  }
+
+  .wl-hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 7vw, 72px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--text-on-dark);
+    margin-bottom: 24px;
+  }
+
+  .wl-hero-title-gradient {
+    background: linear-gradient(
+      135deg,
+      var(--teal) 0%,
+      var(--purple) 50%,
+      var(--green) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .wl-hero-subtitle {
+    font-size: clamp(16px, 2vw, 19px);
+    line-height: 1.7;
+    color: var(--text-on-dark-muted);
+    margin-bottom: 36px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .wl-hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+
+  .wl-btn-lg {
+    padding: 16px 32px;
+    font-size: 16px;
+  }
+
+  .wl-hero-pills {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .wl-hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-on-dark-muted);
+  }
+
+  .wl-hero-pill svg {
+    color: var(--green);
+  }
+
+  @media (max-width: 768px) {
+    .wl-hero {
+      padding: 120px 0 80px;
+      min-height: auto;
+    }
+  }
+
+  /* ===== WHAT IS WHITE LABEL SEO ===== */
+  .wl-what {
+    padding: 120px 0;
+    background: var(--white);
+  }
+
+  .wl-what-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .wl-what-text {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+  }
+
+  .wl-what-text strong {
+    color: var(--text-primary);
+  }
+
+  .wl-what-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .wl-benefit-card {
+    display: flex;
+    gap: 16px;
+    padding: 24px;
+    background: var(--light);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+    transition: all var(--transition);
+  }
+
+  .wl-benefit-card:hover {
+    border-color: var(--teal);
+    box-shadow: var(--shadow-md);
+  }
+
+  .wl-benefit-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: rgba(40, 165, 177, 0.1);
+    color: var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .wl-benefit-icon--purple {
+    background: rgba(140, 99, 170, 0.1);
+    color: var(--purple);
+  }
+
+  .wl-benefit-icon--green {
+    background: rgba(68, 185, 123, 0.1);
+    color: var(--green);
+  }
+
+  .wl-benefit-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  .wl-benefit-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 900px) {
+    .wl-what-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .wl-what {
+      padding: 80px 0;
+    }
+  }
+
+  /* ===== PROCESS ===== */
+  .wl-process {
+    padding: 120px 0;
+    background: var(--light);
+  }
+
+  .wl-process-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+
+  .wl-process-timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .wl-process-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 23px;
+    width: 2px;
+    background: linear-gradient(
+      180deg,
+      var(--teal),
+      var(--purple),
+      var(--green)
+    );
+    opacity: 0.25;
+  }
+
+  .wl-process-step {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    padding-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .wl-process-step:last-child {
+    padding-bottom: 0;
+  }
+
+  .wl-process-marker {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--light);
+    border: 2px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all var(--transition);
+  }
+
+  .wl-process-step:hover .wl-process-marker {
+    border-color: var(--teal);
+    background: rgba(40, 165, 177, 0.05);
+    box-shadow: 0 0 0 6px rgba(40, 165, 177, 0.08);
+  }
+
+  .wl-process-number {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--teal);
+  }
+
+  .wl-process-step-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .wl-process-step-desc {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+
+  .wl-process-cta {
+    text-align: center;
+    margin-top: 56px;
+  }
+
+  @media (max-width: 600px) {
+    .wl-process {
+      padding: 80px 0;
+    }
+  }
+
+  /* ===== COMPONENTS ===== */
+  .wl-components {
+    padding: 120px 0;
+    background: var(--white);
+  }
+
+  .wl-components-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .wl-components-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .wl-comp-card {
+    background: var(--light);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wl-comp-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      var(--teal),
+      var(--purple),
+      var(--green)
+    );
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+
+  .wl-comp-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: transparent;
+    background: var(--white);
+  }
+
+  .wl-comp-card:hover::before {
+    opacity: 1;
+  }
+
+  .wl-comp-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .wl-comp-icon--teal {
+    background: rgba(40, 165, 177, 0.1);
+    color: var(--teal);
+  }
+
+  .wl-comp-icon--purple {
+    background: rgba(140, 99, 170, 0.1);
+    color: var(--purple);
+  }
+
+  .wl-comp-icon--green {
+    background: rgba(68, 185, 123, 0.1);
+    color: var(--green);
+  }
+
+  .wl-comp-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .wl-comp-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 900px) {
+    .wl-components-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .wl-components {
+      padding: 80px 0;
+    }
+
+    .wl-components-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===== PARTNER PORTAL ===== */
+  .wl-portal {
+    padding: 120px 0;
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wl-portal-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .wl-portal-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(150px);
+    opacity: 0.15;
+  }
+
+  .wl-portal-orb--1 {
+    width: 500px;
+    height: 500px;
+    background: var(--teal);
+    top: -20%;
+    left: -10%;
+  }
+
+  .wl-portal-orb--2 {
+    width: 400px;
+    height: 400px;
+    background: var(--purple);
+    bottom: -20%;
+    right: -10%;
+  }
+
+  .wl-portal-content {
+    text-align: center;
+    margin-bottom: 56px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .wl-portal-content .section-subtext--light {
+    margin: 0 auto;
+  }
+
+  .wl-portal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 56px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .wl-portal-feature {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    transition: all var(--transition);
+  }
+
+  .wl-portal-feature:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .wl-portal-feature-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: rgba(40, 165, 177, 0.12);
+    color: var(--teal-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .wl-portal-feature-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-on-dark);
+    margin-bottom: 8px;
+  }
+
+  .wl-portal-feature-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-on-dark-muted);
+  }
+
+  .wl-portal-mockup {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .wl-portal-mockup-inner {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--dark-800);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+  }
+
+  .wl-portal-mockup-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .wl-portal-mockup-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .wl-portal-mockup-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .wl-portal-mockup-url {
+    font-size: 12px;
+    color: var(--text-on-dark-muted);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 4px 12px;
+    border-radius: var(--radius-sm);
+  }
+
+  .wl-portal-mockup-body {
+    padding: 40px;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wl-portal-mockup-placeholder {
+    color: var(--text-on-dark-muted);
+    font-size: 14px;
+    text-align: center;
+    max-width: 500px;
+    font-style: italic;
+    padding: 40px;
+    border: 2px dashed rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+  }
+
+  @media (max-width: 768px) {
+    .wl-portal {
+      padding: 80px 0;
+    }
+
+    .wl-portal-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===== PRODUCTS ===== */
+  .wl-products {
+    padding: 120px 0;
+    background: var(--light);
+  }
+
+  .wl-products-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .wl-products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .wl-product-card {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    transition: all var(--transition);
+    position: relative;
+  }
+
+  .wl-product-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  .wl-product-card--featured {
+    border-color: var(--teal);
+    background: linear-gradient(
+      135deg,
+      rgba(40, 165, 177, 0.03),
+      rgba(140, 99, 170, 0.03)
+    );
+  }
+
+  .wl-product-badge {
+    position: absolute;
+    top: -1px;
+    right: 24px;
+    background: var(--teal);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  }
+
+  .wl-product-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .wl-product-desc {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    flex-grow: 1;
+  }
+
+  .wl-product-btn {
+    align-self: flex-start;
+  }
+
+  @media (max-width: 600px) {
+    .wl-products {
+      padding: 80px 0;
+    }
+
+    .wl-products-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===== PRICING ===== */
+  .wl-pricing {
+    padding: 120px 0;
+    background: var(--white);
+  }
+
+  .wl-pricing-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .wl-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .wl-pricing-card {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    transition: all var(--transition);
+    position: relative;
+  }
+
+  .wl-pricing-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  .wl-pricing-card--featured {
+    border-color: var(--teal);
+    box-shadow: var(--shadow-lg);
+    transform: scale(1.03);
+  }
+
+  .wl-pricing-card--featured:hover {
+    transform: scale(1.03) translateY(-2px);
+  }
+
+  .wl-pricing-badge {
+    position: absolute;
+    top: -1px;
+    right: 24px;
+    background: var(--teal);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  }
+
+  .wl-pricing-tier {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .wl-pricing-tier-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  .wl-pricing-price {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 24px;
+  }
+
+  .wl-pricing-amount {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  .wl-pricing-period {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-left: 4px;
+  }
+
+  .wl-pricing-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+    flex-grow: 1;
+  }
+
+  .wl-pricing-features li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    padding-left: 24px;
+    position: relative;
+  }
+
+  .wl-pricing-features li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2328a5b1' stroke-width='2.5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .wl-pricing-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .wl-pricing-grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+    }
+
+    .wl-pricing-card--featured {
+      transform: none;
+    }
+
+    .wl-pricing-card--featured:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .wl-pricing {
+      padding: 80px 0;
+    }
+  }
+
+  /* ===== CLIENT TYPES ===== */
+  .wl-clients {
+    padding: 120px 0;
+    background: var(--light);
+  }
+
+  .wl-clients-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .wl-clients-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .wl-client-card {
+    text-align: center;
+    padding: 40px 24px;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+    transition: all var(--transition);
+  }
+
+  .wl-client-card:hover {
+    border-color: var(--teal);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .wl-client-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--light);
+    color: var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    transition: all var(--transition);
+  }
+
+  .wl-client-card:hover .wl-client-icon {
+    background: rgba(40, 165, 177, 0.1);
+  }
+
+  .wl-client-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+  }
+
+  .wl-client-desc {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 900px) {
+    .wl-clients-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .wl-clients {
+      padding: 80px 0;
+    }
+
+    .wl-clients-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===== COMPARISON ===== */
+  .wl-compare {
+    padding: 120px 0;
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wl-compare-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .wl-compare-orb {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: var(--purple);
+    filter: blur(200px);
+    opacity: 0.08;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .wl-compare-header {
+    text-align: center;
+    margin-bottom: 56px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .wl-compare-table {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .wl-compare-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .wl-compare-row:last-child {
+    border-bottom: none;
+  }
+
+  .wl-compare-row--header {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .wl-compare-cell {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--text-on-dark-muted);
+  }
+
+  .wl-compare-cell--feature {
+    justify-content: flex-start;
+    color: var(--text-on-dark);
+    font-weight: 500;
+  }
+
+  .wl-compare-cell--label {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-on-dark-muted);
+  }
+
+  .wl-compare-cell--highlight {
+    background: rgba(40, 165, 177, 0.06);
+  }
+
+  .wl-compare-cell--label.wl-compare-cell--highlight {
+    color: var(--teal-light);
+  }
+
+  @media (max-width: 600px) {
+    .wl-compare {
+      padding: 80px 0;
+    }
+
+    .wl-compare-cell {
+      padding: 12px 12px;
+      font-size: 13px;
+    }
+  }
+
+  /* ===== HOW TO CHOOSE ===== */
+  .wl-choose {
+    padding: 120px 0;
+    background: var(--white);
+  }
+
+  .wl-choose-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .wl-choose-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .wl-choose-card {
+    padding: 36px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    transition: all var(--transition);
+  }
+
+  .wl-choose-card:hover {
+    border-color: var(--teal);
+    box-shadow: var(--shadow-md);
+  }
+
+  .wl-choose-number {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--teal), var(--purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+  }
+
+  .wl-choose-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .wl-choose-desc {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 600px) {
+    .wl-choose {
+      padding: 80px 0;
+    }
+
+    .wl-choose-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===== TESTIMONIALS ===== */
+  .wl-testimonials {
+    padding: 120px 0;
+    background: var(--light);
+  }
+
+  .wl-testimonials-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .wl-testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .wl-testimonial {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+    transition: all var(--transition);
+  }
+
+  .wl-testimonial:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  .wl-testimonial-mark {
+    color: var(--teal);
+    opacity: 0.15;
+    margin-bottom: 16px;
+  }
+
+  .wl-testimonial-text {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-primary);
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .wl-testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .wl-testimonial-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .wl-testimonial-avatar--purple {
+    background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+  }
+
+  .wl-testimonial-name {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .wl-testimonial-role {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .wl-testimonials {
+      padding: 80px 0;
+    }
+
+    .wl-testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===== FAQ ===== */
+  .wl-faq {
+    padding: 120px 0;
+    background: var(--white);
+  }
+
+  .wl-faq-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .wl-faq-list {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .wl-faq-item {
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .wl-faq-item:first-child {
+    border-top: 1px solid var(--border-light);
+  }
+
+  .wl-faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 0;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-primary);
+    list-style: none;
+    transition: color var(--transition);
+  }
+
+  .wl-faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .wl-faq-question::marker {
+    display: none;
+    content: "";
+  }
+
+  .wl-faq-question:hover {
+    color: var(--teal);
+  }
+
+  .wl-faq-chevron {
+    flex-shrink: 0;
+    color: var(--text-muted);
+    transition: transform var(--transition);
+  }
+
+  .wl-faq-item[open] .wl-faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  .wl-faq-answer {
+    padding-bottom: 24px;
+  }
+
+  .wl-faq-answer p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 600px) {
+    .wl-faq {
+      padding: 80px 0;
+    }
+
+    .wl-faq-question {
+      font-size: 16px;
+    }
+  }
+
+  /* ===== BOTTOM CTA ===== */
+  .wl-bottom-cta {
+    padding: 120px 0;
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wl-bottom-cta-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .wl-bottom-cta-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(150px);
+    opacity: 0.2;
+  }
+
+  .wl-bottom-cta-orb--1 {
+    width: 400px;
+    height: 400px;
+    background: var(--teal);
+    bottom: -20%;
+    left: -5%;
+  }
+
+  .wl-bottom-cta-orb--2 {
+    width: 350px;
+    height: 350px;
+    background: var(--purple);
+    top: -25%;
+    right: 10%;
+  }
+
+  .wl-bottom-cta-orb--3 {
+    width: 300px;
+    height: 300px;
+    background: var(--green);
+    bottom: -10%;
+    right: -5%;
+    opacity: 0.1;
+  }
+
+  .wl-bottom-cta-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .wl-bottom-cta-heading {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--text-on-dark);
+    margin-bottom: 20px;
+  }
+
+  .wl-bottom-cta-gradient {
+    background: linear-gradient(
+      135deg,
+      var(--teal) 0%,
+      var(--purple) 50%,
+      var(--green) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .wl-bottom-cta-text {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-on-dark-muted);
+    margin-bottom: 36px;
+  }
+
+  .wl-bottom-cta-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .wl-bottom-cta-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .wl-bottom-cta-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--text-on-dark-muted);
+  }
+
+  .wl-bottom-cta-meta svg {
+    color: var(--green);
+  }
+
+  @media (max-width: 600px) {
+    .wl-bottom-cta {
+      padding: 80px 0;
+    }
+
+    .wl-bottom-cta-meta {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+</style>
