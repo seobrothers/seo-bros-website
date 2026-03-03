@@ -13,7 +13,8 @@
     </div>
 
     <div class="nav-actions">
-      <a href="#book-call" class="btn btn-primary nav-cta">Book a Call</a>
+      <a href="/sign-in" class="nav-sign-in">Sign In</a>
+      <a href="#book-call" class="btn btn-primary nav-cta">Get Started</a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
         <span></span>
         <span></span>
@@ -50,7 +51,7 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: 20px 0;
+    padding: 24px 0;
     transition: all var(--transition);
   }
 
@@ -58,7 +59,7 @@
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    padding: 12px 0;
+    padding: 16px 0;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
   }
 
@@ -74,7 +75,7 @@
   }
 
   .nav-logo-img {
-    height: 34px;
+    height: 40px;
     width: auto;
     filter: brightness(0) invert(1);
     transition: filter var(--transition);
@@ -87,13 +88,13 @@
   .nav-links {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 36px;
   }
 
   .nav-link {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.9);
     transition: color var(--transition);
     letter-spacing: 0.01em;
   }
@@ -116,9 +117,28 @@
     gap: 16px;
   }
 
+  .nav-sign-in {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    transition: color var(--transition);
+  }
+
+  .nav-sign-in:hover {
+    color: white;
+  }
+
+  :global(.nav.scrolled) .nav-sign-in {
+    color: var(--text-secondary);
+  }
+
+  :global(.nav.scrolled) .nav-sign-in:hover {
+    color: var(--text-primary);
+  }
+
   .nav-cta {
-    font-size: 13px;
-    padding: 10px 22px;
+    font-size: 14px;
+    padding: 12px 26px;
   }
 
   .nav-toggle {
@@ -186,6 +206,7 @@
       color: rgba(255, 255, 255, 0.85);
     }
 
+    .nav-sign-in,
     .nav-cta {
       display: none;
     }
