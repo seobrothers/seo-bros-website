@@ -1,0 +1,22 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+import GuideList from "../../components/GuideList.astro";
+---
+
+<Layout
+  title="Agency Guides | SEO Brothers"
+  description="Founder conversations and operating playbooks with actionable ideas for digital agency owners — selling SEO, scaling delivery, white-label reporting, and more."
+>
+  <Nav />
+  <GuideList
+    category="agency"
+    label="Agency Guides"
+    blurb="Founder conversations and operating playbooks with actionable ideas for digital agency owners. Selling SEO, scaling delivery, white-label reporting, pricing — the operational layer."
+    accent="green"
+  />
+  <CtaBanner />
+  <Footer />
+</Layout>

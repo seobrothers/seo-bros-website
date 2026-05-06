@@ -1,0 +1,122 @@
+# SEO Brothers redirect map
+# Migrating from seobrothers.com (legacy WordPress) to seobrothers.co (Astro)
+# Format: OLD_PATH  NEW_PATH  STATUS
+
+# ============================================================================
+# CITY PAGES — slugs shortened, content angle reframed as Local Markets
+# ============================================================================
+/guides/halifax-seo-companies/                              /guides/halifax-seo/                              301
+/guides/kitchener-waterloo-seo-companies/                   /guides/kitchener-waterloo-seo/                   301
+/guides/hamilton-on-seo-companies/                          /guides/hamilton-seo/                             301
+/guides/vancouver-bc-seo-companies/                         /guides/vancouver-seo/                            301
+
+# ============================================================================
+# PILLAR: Private Blog Networks (4 -> 1)
+# ============================================================================
+/guides/private-blog-networks-pbns/                         /guides/private-blog-networks/                    301
+/guides/private-blog-networks-pbn-hosting/                  /guides/private-blog-networks/                    301
+/guides/private-blog-networks-domain-registration/          /guides/private-blog-networks/                    301
+/guides/5-pbn-mistakes/                                     /guides/private-blog-networks/                    301
+
+# ============================================================================
+# PILLAR: Link Building (4 -> 1, plus disavow which is now standalone anti-guide)
+# ============================================================================
+/guides/low-hanging-fruit-backlink-sources/                 /guides/link-building/                            301
+/guides/reclaiming-broken-backlinks/                        /guides/link-building/                            301
+/guides/understanding-your-link-profile-4-link-profile-elements-to-monitor/  /guides/link-building/           301
+/guides/when-to-use-google-disavow-links-tool/              /guides/google-disavow-tool/                      301
+
+# ============================================================================
+# PILLAR: Keyword Mapping (3 -> 1)
+# ============================================================================
+/guides/competitive-keyword-insights/                       /guides/keyword-mapping/                          301
+/guides/understanding-keyword-groups/                       /guides/keyword-mapping/                          301
+
+# ============================================================================
+# PILLAR: On-Page SEO (4 -> 1)
+# ============================================================================
+/guides/our-on-page-optimization-documents/                 /guides/on-page-seo/                              301
+/guides/website-structure-content-silos/                    /guides/on-page-seo/                              301
+/guides/the-four-most-important-on-page-elements-to-optimize/  /guides/on-page-seo/                           301
+
+# ============================================================================
+# PILLAR: SERP Features Evolution (featured-answer-box reframed into new guide)
+# ============================================================================
+/guides/optimizing-your-content-for-the-featured-answer-box/  /guides/serp-features-evolution/                301
+
+# ============================================================================
+# PILLAR: Local SEO (4 -> 1)
+# ============================================================================
+/guides/10-steps-to-dominating-local-seo/                   /guides/local-seo/                                301
+/guides/seo-vs-local-seo/                                   /guides/local-seo/                                301
+/guides/how-to-structure-a-website-structure-local-business/  /guides/local-seo/                              301
+/guides/google-my-business/                                 /guides/local-seo/                                301
+
+# ============================================================================
+# PILLAR: SEO Audit (2 -> 1)
+# ============================================================================
+/guides/seo-audit-deliverables/                             /guides/seo-audit/                                301
+
+# ============================================================================
+# PILLAR: Content Strategy (2 -> 1)
+# ============================================================================
+/guides/blogging-for-seo-improving-content/                 /guides/what-to-blog-about/                       301
+
+# ============================================================================
+# PILLAR: Legal Services (4 -> 1)
+# ============================================================================
+/guides/seo-for-lawyers/                                    /guides/legal-services-seo/                       301
+/guides/seo-for-family-lawyers/                             /guides/legal-services-seo/                       301
+/guides/seo-for-immigration-lawyers/                        /guides/legal-services-seo/                       301
+/guides/seo-for-personal-injury-law/                        /guides/legal-services-seo/                       301
+
+# ============================================================================
+# PILLAR: Financial Services (3 -> 1)
+# ============================================================================
+/guides/seo-for-accountants/                                /guides/financial-services-seo/                   301
+/guides/insurance-seo/                                      /guides/financial-services-seo/                   301
+/guides/mortgage-seo/                                       /guides/financial-services-seo/                   301
+
+# ============================================================================
+# PILLAR: Property Management (2 -> 1)
+# ============================================================================
+/guides/seo-for-property-management/                        /guides/property-management-seo/                  301
+/guides/seo-for-apartments/                                 /guides/property-management-seo/                  301
+
+# ============================================================================
+# PILLAR: Plastic Surgery (2 -> 1)
+# ============================================================================
+/guides/plastic-surgery-leads/                              /guides/plastic-surgery-seo/                      301
+
+# ============================================================================
+# Industry guides — slug changes only, no consolidation
+# ============================================================================
+/guides/our-new-and-improved-tree-service-seo-guide-seo-for-arborists/  /guides/tree-service-seo/             301
+/guides/dental-seo-for-dentists/                            /guides/dental-seo/                               301
+/guides/seo-for-auto-repair-shops/                          /guides/auto-repair-seo/                          301
+/guides/maximizing-seo-for-your-medspa/                     /guides/medspa-seo/                               301
+/guides/seo-hair-transplant-clinics/                        /guides/hair-transplant-seo/                      301
+/guides/how-to-sell-seo-services-to-clients/                /guides/how-to-sell-seo-services/                 301
+
+# ============================================================================
+# General SEO guides — slug changes only
+# ============================================================================
+/guides/searcher-intent-hierarchy/                          /guides/searcher-intent/                          301
+/guides/redesign-seo/                                       /guides/website-redesign-seo/                     301
+/guides/googles-search-generative-experience/               /guides/google-search-generative-experience/      301
+/guides/seo-for-wordpress-websites/                         /guides/seo-for-wordpress/                        301
+/guides/sitebulb-best-seo-crawler-auditor-never-knew/       /guides/sitebulb-review/                          301
+
+# ============================================================================
+# Hard drops — content not migrated, redirect to closest hub
+# ============================================================================
+/guides/seo-software-tools/                                 /guides/                                          301
+/guides/mobile-first-index-seo/                             /guides/                                          301
+
+# ============================================================================
+# WordPress category archives — collapse onto existing taxonomy hubs
+# ============================================================================
+/guides/category/seo/                                       /guides/seo/                                      301
+/guides/category/industry/                                  /guides/industry/                                 301
+/guides/category/agency/                                    /guides/agency/                                   301
+/guides/category/cities/                                    /guides/cities/                                   301

@@ -1,0 +1,22 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+import GuideList from "../../components/GuideList.astro";
+---
+
+<Layout
+  title="SEO Guides | SEO Brothers"
+  description="Tactical SEO guides written for agency owners and the strategists who deliver for them. Keyword research, Core Web Vitals, content strategy, and more."
+>
+  <Nav />
+  <GuideList
+    category="seo"
+    label="SEO Guides"
+    blurb="Tactical resources written for agency owners and the strategists who deliver for them. Keyword research, Core Web Vitals, content strategy, and more."
+    accent="teal"
+  />
+  <CtaBanner />
+  <Footer />
+</Layout>

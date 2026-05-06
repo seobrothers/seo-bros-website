@@ -1,0 +1,186 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout
+  title="SEO Brothers Acquires Smart Web Solutions"
+  description="Smart Web Solutions (smartwebsolutions.ca) has joined the SEO Brothers family. Read the announcement and what it means going forward."
+>
+  <Nav />
+
+  <article class="acq">
+    <div class="container acq__inner">
+      <header class="acq__head" data-animate>
+        <span class="section-label">Announcement</span>
+        <h1 class="acq__title">
+          SEO Brothers Acquires Smart Web Solutions
+        </h1>
+        <p class="acq__lede">
+          The Canadian digital property at <strong>smartwebsolutions.ca</strong>
+          is now part of the SEO Brothers portfolio.
+        </p>
+        <time class="acq__date" datetime="2026-04">April 2026</time>
+      </header>
+
+      <div class="acq__body" data-animate>
+        <p>
+          We're pleased to share that Smart Web Solutions has joined the
+          SEO Brothers family. The brand and its body of work, built up
+          over years of helping Canadian businesses establish and grow
+          their online presence, become part of our broader agency
+          portfolio.
+        </p>
+
+        <h2>About Smart Web Solutions</h2>
+        <p>
+          Smart Web Solutions earned a reputation as a practical,
+          results-focused digital partner for Canadian small and mid-size
+          businesses. The work covered the kinds of fundamentals every
+          local business relies on: clean websites, sensible structure,
+          and the steady, unglamorous improvements that compound into
+          real organic visibility over time.
+        </p>
+        <p>
+          That posture, work hard, do the right thing, communicate
+          honestly, lines up with how we operate at SEO Brothers. It's
+          the reason this joining made sense for both sides.
+        </p>
+
+        <h2>What this means going forward</h2>
+        <p>
+          Smart Web Solutions is now stewarded by SEO Brothers. The
+          historical contributions, relationships, and reputation built
+          under the brand are preserved, and the work continues under
+          the SEO Brothers umbrella from our headquarters in Halifax,
+          Nova Scotia.
+        </p>
+        <p>
+          If you arrived here from a link pointing to
+          <strong>smartwebsolutions.ca</strong>, you're in the right
+          place. We've consolidated the property here so the story stays
+          intact and easy to find.
+        </p>
+
+        <h2>About SEO Brothers</h2>
+        <p>
+          SEO Brothers is a white-label SEO partner that helps marketing
+          agencies, web designers, and growth-focused operators offer
+          high-quality SEO to their clients. We run managed local
+          campaigns, build links, produce content, and deliver the
+          reporting and account management that lets our partners scale
+          without the operational drag of building an in-house SEO team.
+        </p>
+        <p>
+          To learn more, see our{" "}
+          <a href="/white-label-seo">white-label SEO offering</a>,
+          browse{" "}
+          <a href="/guides">our library of agency and SEO guides</a>, or
+          {" "}<a href="/sign-up">sign up</a> to get started with the team.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <Footer />
+</Layout>
+
+<style>
+  .acq {
+    padding: 120px 0 80px;
+    background: var(--white);
+    position: relative;
+  }
+
+  .acq__inner {
+    max-width: 760px;
+  }
+
+  .acq__head {
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+  }
+
+  .acq__title {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 8px 0 20px;
+  }
+
+  .acq__lede {
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+  }
+
+  .acq__lede strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .acq__date {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .acq__body {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+  }
+
+  .acq__body p {
+    margin-bottom: 22px;
+  }
+
+  .acq__body h2 {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin: 44px 0 16px;
+  }
+
+  .acq__body strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .acq__body a {
+    color: var(--teal);
+    border-bottom: 1px solid rgba(40, 165, 177, 0.25);
+    transition: border-color var(--transition);
+  }
+
+  .acq__body a:hover {
+    border-color: var(--teal);
+  }
+
+  @media (max-width: 700px) {
+    .acq {
+      padding: 88px 0 56px;
+    }
+
+    .acq__head {
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+    }
+
+    .acq__body {
+      font-size: 16px;
+    }
+  }
+</style>

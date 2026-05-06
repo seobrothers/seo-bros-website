@@ -1,0 +1,992 @@
+---
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+
+export async function getStaticPaths() {
+  const studies = await getCollection("caseStudies");
+  return studies.map((study) => ({
+    params: { slug: study.id },
+    props: { study },
+  }));
+}
+
+interface Props {
+  study: CollectionEntry<"caseStudies">;
+}
+
+const { study } = Astro.props;
+const d = study.data;
+const { Content } = await render(study);
+
+const isPartner = d.type === "partner";
+
+// Series colors cycle through brand vars. Solid per series for multi-series
+// readability; single-series falls back to a teal->purple gradient line.
+const SERIES_COLOR_VARS = ["--teal", "--purple", "--green"];
+
+const charts = d.charts.map((c, idx) => {
+  const vbW = 1000;
+  const vbH = 300;
+  const padTop = 24;
+  const padBot = 24;
+  const innerH = vbH - padTop - padBot;
+  const xCount = c.xAxis.length;
+  const isMulti = c.series.length > 1;
+
+  const seriesRendered = c.series.map((s, sIdx) => {
+    const max = Math.max(...s.values, 1);
+    const points = s.values.map((v, i) => {
+      const x = xCount === 1 ? vbW / 2 : (i / (xCount - 1)) * vbW;
+      const y = padTop + (1 - v / max) * innerH;
+      return { x, y, value: v, xLabel: c.xAxis[i] ?? "" };
+    });
+    const linePath = points
+      .map((p, i) => `${i === 0 ? "M" : "L"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`)
+      .join(" ");
+    const areaPath =
+      points.length > 0
+        ? `${linePath} L ${points[points.length - 1].x.toFixed(1)} ${vbH - padBot} L ${points[0].x.toFixed(1)} ${vbH - padBot} Z`
+        : "";
+    const colorVar = SERIES_COLOR_VARS[sIdx % SERIES_COLOR_VARS.length];
+    return { ...s, sIdx, max, points, linePath, areaPath, colorVar };
+  });
+
+  return { ...c, idx, vbW, vbH, padBot, isMulti, seriesRendered };
+});
+---
+
+<Layout
+  title={`${d.title} | SEO Brothers Case Study`}
+  description={d.summary}
+>
+  <Nav />
+
+  <article class="study">
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <header class="study-hero">
+      <div class="study-hero__bg">
+        <div class="study-hero__orb study-hero__orb--1"></div>
+        <div class="study-hero__orb study-hero__orb--2"></div>
+        <div class="study-hero__grid"></div>
+      </div>
+
+      <div class="container study-hero__inner">
+        <a href="/case-studies/" class="study-hero__back">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M13 8H3M7 12L3 8l4-4" />
+          </svg>
+          All case studies
+        </a>
+
+        <div class="study-hero__badges" data-animate>
+          <span
+            class:list={[
+              "study-hero__type",
+              isPartner
+                ? "study-hero__type--partner"
+                : "study-hero__type--campaign",
+            ]}
+          >
+            {isPartner ? "Partner story" : "Campaign"}
+          </span>
+          {d.vertical && <span class="study-hero__pill">{d.vertical}</span>}
+          {d.region && <span class="study-hero__pill">{d.region}</span>}
+          {
+            d.redacted && (
+              <span class="study-hero__redacted">
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="11" width="18" height="11" rx="2" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+                Confidential — details anonymized
+              </span>
+            )
+          }
+        </div>
+
+        <h1 class="study-hero__title" data-animate>{d.title}</h1>
+
+        <p class="study-hero__subject" data-animate>
+          <span class="study-hero__subject-label">Subject:</span>
+          {d.subject}
+          {d.agencySize && <span> · {d.agencySize}</span>}
+          {d.timeframe && <span> · {d.timeframe}</span>}
+        </p>
+
+        <div class="study-hero__metric" data-animate>
+          <span class="study-hero__metric-value">
+            {d.headlineMetric.value}
+          </span>
+          <span class="study-hero__metric-label">
+            {d.headlineMetric.label}
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══════════════ CHARTS ═══════════════ -->
+    {
+      charts.length > 0 && (
+        <section class="study-chart">
+          <div class="container">
+            <div class="study-chart__stack">
+              {charts.map((c) => (
+                <div class="study-chart__card" data-animate>
+                  {c.yLabel && (
+                    <p class="study-chart__y-label">{c.yLabel}</p>
+                  )}
+
+                  {c.isMulti && (
+                    <div class="study-chart__legend">
+                      {c.seriesRendered.map((s) => (
+                        <span class="study-chart__legend-item">
+                          <span
+                            class="study-chart__legend-swatch"
+                            style={`background: var(${s.colorVar});`}
+                          />
+                          {s.label}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {c.kind === "line" && (
+                    <div class="study-chart__line">
+                      <svg
+                        class="study-chart__line-svg"
+                        viewBox={`0 0 ${c.vbW} ${c.vbH}`}
+                        preserveAspectRatio="none"
+                        aria-hidden="true"
+                      >
+                        <defs>
+                          {!c.isMulti && (
+                            <>
+                              <linearGradient
+                                id={`study-line-stroke-${c.idx}`}
+                                x1="0"
+                                x2="1"
+                                y1="0"
+                                y2="0"
+                              >
+                                <stop offset="0%" stop-color="var(--teal)" />
+                                <stop
+                                  offset="100%"
+                                  stop-color="var(--purple)"
+                                />
+                              </linearGradient>
+                              <linearGradient
+                                id={`study-line-area-${c.idx}`}
+                                x1="0"
+                                x2="0"
+                                y1="0"
+                                y2="1"
+                              >
+                                <stop
+                                  offset="0%"
+                                  stop-color="var(--teal)"
+                                  stop-opacity="0.18"
+                                />
+                                <stop
+                                  offset="100%"
+                                  stop-color="var(--teal)"
+                                  stop-opacity="0"
+                                />
+                              </linearGradient>
+                            </>
+                          )}
+                        </defs>
+                        {!c.isMulti &&
+                          c.seriesRendered.map((s) => (
+                            <>
+                              <path
+                                d={s.areaPath}
+                                fill={`url(#study-line-area-${c.idx})`}
+                              />
+                              <path
+                                d={s.linePath}
+                                fill="none"
+                                stroke={`url(#study-line-stroke-${c.idx})`}
+                                stroke-width="2.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                vector-effect="non-scaling-stroke"
+                              />
+                            </>
+                          ))}
+                        {c.isMulti &&
+                          c.seriesRendered.map((s) => (
+                            <path
+                              d={s.linePath}
+                              fill="none"
+                              stroke={`var(${s.colorVar})`}
+                              stroke-width="2.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              vector-effect="non-scaling-stroke"
+                            />
+                          ))}
+                      </svg>
+
+                      {c.seriesRendered.map((s) => (
+                        <div
+                          class:list={[
+                            "study-chart__line-points",
+                            s.sIdx === 1 && "study-chart__line-points--below",
+                          ]}
+                        >
+                          {s.points.map((p) => (
+                            <div
+                              class="study-chart__line-point"
+                              style={`left: ${(p.x / c.vbW) * 100}%; top: ${(p.y / c.vbH) * 100}%; --series-color: var(${s.colorVar});`}
+                            >
+                              <span class="study-chart__line-dot" />
+                              <span class="study-chart__line-value">
+                                {p.value.toLocaleString()}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      ))}
+
+                      <div class="study-chart__line-axis">
+                        {c.xAxis.map((label) => (
+                          <span class="study-chart__line-axis-label">
+                            {label}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {c.kind === "bars" && c.seriesRendered[0] && (
+                    <div class="study-chart__bars">
+                      {c.seriesRendered[0].points.map((p) => (
+                        <div class="study-chart__bar">
+                          <span class="study-chart__bar-value">
+                            {p.value.toLocaleString()}
+                          </span>
+                          <div class="study-chart__bar-track">
+                            <div
+                              class="study-chart__bar-fill"
+                              style={`height: ${(p.value / c.seriesRendered[0].max) * 100}%`}
+                            />
+                          </div>
+                          <span class="study-chart__bar-label">
+                            {p.xLabel}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    <!-- ═══════════════ BODY ═══════════════ -->
+    <section class="study-body">
+      <div class="container study-body__grid">
+        <div class="study-body__prose">
+          <Content />
+        </div>
+
+        <aside class="study-body__sidebar">
+          {
+            d.secondaryMetrics.length > 0 && (
+              <div class="study-side study-side--metrics">
+                <h3 class="study-side__heading">Results at a glance</h3>
+                <div class="study-side__metrics">
+                  {d.secondaryMetrics.map((m) => (
+                    <div class="study-side__metric">
+                      <span class="study-side__metric-value">{m.value}</span>
+                      <span class="study-side__metric-label">{m.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )
+          }
+
+          {
+            d.keyTactics.length > 0 && (
+              <div class="study-side">
+                <h3 class="study-side__heading">What we shipped</h3>
+                <ul class="study-side__list">
+                  {d.keyTactics.map((t) => (
+                    <li>
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="var(--green)"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      <span>{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
+
+          {
+            d.pullQuote && (
+              <blockquote class="study-quote">
+                <svg
+                  class="study-quote__mark"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M9.583 17.321C8.553 16.227 8 15 8 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm-9 0C-.448 16.227-1 15-1 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
+                </svg>
+                <p class="study-quote__text">{d.pullQuote.text}</p>
+                <cite class="study-quote__cite">
+                  — {d.pullQuote.attribution}
+                </cite>
+              </blockquote>
+            )
+          }
+        </aside>
+      </div>
+    </section>
+
+    <CtaBanner />
+  </article>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ═══════════════════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════════════════ */
+  .study-hero {
+    position: relative;
+    background: var(--dark);
+    overflow: hidden;
+    padding: 140px 0 100px;
+  }
+
+  .study-hero__bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .study-hero__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.18;
+  }
+
+  .study-hero__orb--1 {
+    width: 460px;
+    height: 460px;
+    background: var(--teal);
+    top: -10%;
+    right: -5%;
+  }
+
+  .study-hero__orb--2 {
+    width: 380px;
+    height: 380px;
+    background: var(--purple);
+    bottom: -25%;
+    left: -8%;
+  }
+
+  .study-hero__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at 50% 30%, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(
+      ellipse at 50% 30%,
+      black 30%,
+      transparent 75%
+    );
+  }
+
+  .study-hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+  }
+
+  .study-hero__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-on-dark-muted);
+    margin-bottom: 32px;
+    transition: color var(--transition);
+  }
+
+  .study-hero__back:hover {
+    color: var(--teal-light);
+  }
+
+  .study-hero__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .study-hero__type {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+  }
+
+  .study-hero__type--partner {
+    background: rgba(140, 99, 170, 0.18);
+    color: var(--purple-light);
+  }
+
+  .study-hero__type--campaign {
+    background: rgba(68, 185, 123, 0.18);
+    color: var(--green-light);
+  }
+
+  .study-hero__pill {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-on-dark-muted);
+  }
+
+  .study-hero__redacted {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px dashed rgba(255, 255, 255, 0.16);
+    color: var(--text-muted);
+  }
+
+  .study-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 5.5vw, 56px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-on-dark);
+    margin-bottom: 20px;
+  }
+
+  .study-hero__subject {
+    font-size: 16px;
+    color: var(--text-on-dark-muted);
+    margin-bottom: 56px;
+  }
+
+  .study-hero__subject-label {
+    font-weight: 600;
+    color: var(--teal-light);
+    margin-right: 8px;
+  }
+
+  .study-hero__metric {
+    padding: 32px 36px;
+    border-radius: var(--radius-xl);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: inline-flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .study-hero__metric-value {
+    font-family: var(--font-display);
+    font-size: clamp(56px, 10vw, 96px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    background: linear-gradient(
+      135deg,
+      var(--teal-light) 0%,
+      var(--purple-light) 60%,
+      var(--green-light) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .study-hero__metric-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-on-dark-muted);
+    letter-spacing: 0.01em;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     CHARTS
+     ═══════════════════════════════════════════════════════════════════ */
+  .study-chart {
+    padding: 60px 0 0;
+    background: var(--white);
+  }
+
+  .study-chart__stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .study-chart__card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-xl);
+    padding: 40px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .study-chart__stack .study-chart__card:first-child {
+    margin-top: -48px;
+  }
+
+  .study-chart__y-label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  /* ── Legend ────────────────────────────────────────────────────── */
+  .study-chart__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 24px;
+  }
+
+  .study-chart__legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .study-chart__legend-swatch {
+    width: 14px;
+    height: 3px;
+    border-radius: 2px;
+  }
+
+  /* ── Line chart ─────────────────────────────────────────────────── */
+  .study-chart__line {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    padding-bottom: 28px;
+  }
+
+  .study-chart__line-svg {
+    position: absolute;
+    inset: 0 0 28px 0;
+    width: 100%;
+    height: calc(100% - 28px);
+    overflow: visible;
+  }
+
+  .study-chart__line-points {
+    position: absolute;
+    inset: 0 0 28px 0;
+  }
+
+  .study-chart__line-point {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    --series-color: var(--teal);
+  }
+
+  .study-chart__line-value {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 8px);
+    transform: translateX(-50%);
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--series-color);
+    white-space: nowrap;
+    background: var(--white);
+    padding: 0 4px;
+  }
+
+  /* Second series puts value labels below the dot to avoid collision. */
+  .study-chart__line-points--below .study-chart__line-value {
+    bottom: auto;
+    top: calc(100% + 8px);
+  }
+
+  .study-chart__line-dot {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2.5px solid var(--series-color);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--series-color) 14%, transparent);
+  }
+
+  .study-chart__line-axis {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .study-chart__line-axis-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+
+  /* ── Bar chart ──────────────────────────────────────────────────── */
+  .study-chart__bars {
+    display: flex;
+    align-items: stretch;
+    gap: 16px;
+    height: 280px;
+  }
+
+  .study-chart__bar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .study-chart__bar-value {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    flex-shrink: 0;
+  }
+
+  .study-chart__bar-track {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .study-chart__bar-fill {
+    width: 100%;
+    background: linear-gradient(180deg, var(--teal) 0%, var(--purple) 100%);
+    border-radius: 6px 6px 0 0;
+    min-height: 6px;
+    animation: study-bar-grow 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    transform-origin: bottom;
+  }
+
+  @keyframes study-bar-grow {
+    from { transform: scaleY(0); }
+    to { transform: scaleY(1); }
+  }
+
+  .study-chart__bar-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     BODY
+     ═══════════════════════════════════════════════════════════════════ */
+  .study-body {
+    padding: 80px 0 120px;
+    background: var(--white);
+  }
+
+  .study-body__grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 64px;
+    align-items: start;
+  }
+
+  /* Prose styling for rendered Markdown */
+  .study-body__prose {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+
+  .study-body__prose :global(h2) {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 56px 0 16px;
+  }
+
+  .study-body__prose :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .study-body__prose :global(h3) {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 36px 0 12px;
+  }
+
+  .study-body__prose :global(p) {
+    margin-bottom: 20px;
+  }
+
+  .study-body__prose :global(ul),
+  .study-body__prose :global(ol) {
+    margin: 0 0 20px 1.5em;
+  }
+
+  .study-body__prose :global(li) {
+    margin-bottom: 8px;
+  }
+
+  .study-body__prose :global(a) {
+    color: var(--teal-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .study-body__prose :global(a:hover) {
+    color: var(--teal);
+  }
+
+  .study-body__prose :global(strong) {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  /* Sidebar */
+  .study-body__sidebar {
+    position: sticky;
+    top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .study-side {
+    padding: 28px;
+    border-radius: var(--radius-lg);
+    background: var(--light);
+    border: 1px solid var(--border-light);
+  }
+
+  .study-side__heading {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 20px;
+  }
+
+  .study-side__metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .study-side__metric {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .study-side__metric-value {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--teal) 0%, var(--purple) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .study-side__metric-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .study-side__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .study-side__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  .study-side__list li svg {
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .study-quote {
+    position: relative;
+    padding: 32px 28px 28px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(
+      135deg,
+      rgba(40, 165, 177, 0.08) 0%,
+      rgba(140, 99, 170, 0.08) 100%
+    );
+    border: 1px solid rgba(140, 99, 170, 0.18);
+  }
+
+  .study-quote__mark {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: var(--purple);
+    opacity: 0.25;
+  }
+
+  .study-quote__text {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .study-quote__cite {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    font-style: normal;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════════════════════════════════ */
+  @media (max-width: 960px) {
+    .study-body__grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .study-body__sidebar {
+      position: static;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .study-hero {
+      padding: 120px 0 80px;
+    }
+
+    .study-hero__metric {
+      padding: 24px 28px;
+    }
+
+    .study-chart__card {
+      padding: 28px 20px;
+    }
+
+    .study-chart__bars {
+      gap: 8px;
+    }
+
+    .study-chart__bar-value,
+    .study-chart__line-value {
+      font-size: 12px;
+    }
+
+    .study-chart__line {
+      height: 200px;
+    }
+
+    .study-body {
+      padding: 60px 0 80px;
+    }
+
+    .study-side__metrics {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

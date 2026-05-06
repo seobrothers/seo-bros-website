@@ -1,4 +1,13 @@
-<nav class="nav" id="nav">
+---
+interface Props {
+  variant?: "default" | "light";
+  hideCta?: boolean;
+}
+
+const { variant = "default", hideCta = false } = Astro.props;
+---
+
+<nav class:list={["nav", variant === "light" && "nav-light"]} id="nav">
   <div class="nav-inner container">
     <a href="/" class="nav-logo">
       <img src="/images/logo.png" alt="SEO Brothers" class="nav-logo-img" />
@@ -6,7 +15,7 @@
 
     <div class="nav-links" id="nav-links">
       <a href="/about" class="nav-link">About</a>
-      <a href="/services" class="nav-link">Services</a>
+      <a href="/white-label-seo" class="nav-link">White Label SEO</a>
       <a href="/case-studies" class="nav-link">Case Studies</a>
       <a href="/guides" class="nav-link">Guides</a>
       <a href="/pricing" class="nav-link">Pricing</a>
@@ -14,7 +23,9 @@
 
     <div class="nav-actions">
       <a href="/sign-in" class="nav-sign-in">Sign In</a>
-      <a href="#book-call" class="btn btn-primary nav-cta">Get Started</a>
+      {!hideCta && (
+        <a href="/sign-up" class="btn btn-primary nav-cta">Sign Up</a>
+      )}
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
         <span></span>
         <span></span>
@@ -61,6 +72,31 @@
     -webkit-backdrop-filter: blur(20px);
     padding: 16px 0;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Light variant: dark text from page load (for pages without a dark hero) */
+  .nav.nav-light .nav-logo-img {
+    filter: brightness(0);
+  }
+
+  .nav.nav-light .nav-link {
+    color: var(--text-secondary);
+  }
+
+  .nav.nav-light .nav-link:hover {
+    color: var(--text-primary);
+  }
+
+  .nav.nav-light .nav-sign-in {
+    color: var(--text-secondary);
+  }
+
+  .nav.nav-light .nav-sign-in:hover {
+    color: var(--text-primary);
+  }
+
+  .nav.nav-light .nav-toggle span {
+    background: var(--text-primary);
   }
 
   .nav-inner {

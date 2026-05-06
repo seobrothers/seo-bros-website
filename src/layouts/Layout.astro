@@ -1,13 +1,23 @@
 ---
+import ConsentBanner from "../components/ConsentBanner.astro";
+import { CONSENT_VERSION, CONSENT_STORAGE_KEY } from "../lib/consent";
+
 interface Props {
   title?: string;
   description?: string;
+  schema?: Record<string, unknown> | Record<string, unknown>[] | null;
 }
+
+const GA4_ID = "G-YQF485ZPJ7";
+const GOOGLE_ADS_ID = "AW-388162196";
 
 const {
   title = "SEO Brothers | Your Agency's SEO Partner",
-  description = "SEO Brothers partners with agencies to deliver expert SEO campaigns. Managed campaigns, link building, content marketing, and more — all under your brand."
+  description = "SEO Brothers partners with agencies to deliver expert SEO campaigns. Managed campaigns, link building, content marketing, and more, all under your brand.",
+  schema = null
 } = Astro.props;
+
+const schemaList = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 ---
 
 <!doctype html>
@@ -18,6 +28,48 @@ const {
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+
+    {schemaList.map((s) => (
+      <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
+
+    <script is:inline define:vars={{ GA4_ID, GOOGLE_ADS_ID, CONSENT_VERSION, CONSENT_STORAGE_KEY }}>
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+
+      window.gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+        personalization_storage: "denied",
+        functionality_storage: "granted",
+        security_storage: "granted",
+        wait_for_update: 500,
+      });
+
+      try {
+        var raw = localStorage.getItem(CONSENT_STORAGE_KEY);
+        if (raw) {
+          var stored = JSON.parse(raw);
+          if (stored && stored.version === CONSENT_VERSION && stored.choice === "accept") {
+            window.gtag("consent", "update", {
+              ad_storage: "granted",
+              ad_user_data: "granted",
+              ad_personalization: "granted",
+              analytics_storage: "granted",
+              personalization_storage: "granted",
+            });
+          }
+        }
+      } catch (e) {}
+
+      window.gtag("js", new Date());
+      window.gtag("config", GA4_ID);
+      window.gtag("config", GOOGLE_ADS_ID);
+    </script>
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -27,6 +79,8 @@ const {
   </head>
   <body>
     <slot />
+
+    <ConsentBanner />
 
     <script>
       const observer = new IntersectionObserver(

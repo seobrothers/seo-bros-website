@@ -1,0 +1,22 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+import GuideList from "../../components/GuideList.astro";
+---
+
+<Layout
+  title="Local Markets | SEO Brothers"
+  description="Local search behavior and SEO insights for the markets where we live and work. How people actually search in each city, what that means for local SEO, and where we partner."
+>
+  <Nav />
+  <GuideList
+    category="cities"
+    label="Local Markets"
+    blurb="Local search behavior is messier than most keyword tools suggest. People search by abbreviation, by neighborhood, by region, by old name. These are the markets where we live and work, and what we've learned about how local search actually plays out in each one."
+    accent="neutral"
+  />
+  <CtaBanner />
+  <Footer />
+</Layout>

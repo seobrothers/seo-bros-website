@@ -3,18 +3,45 @@ import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Hero from "../components/Hero.astro";
 import TrustBar from "../components/TrustBar.astro";
+import AboutBrand from "../components/AboutBrand.astro";
 import Services from "../components/Services.astro";
 import Process from "../components/Process.astro";
 import WhyUs from "../components/WhyUs.astro";
 import Testimonials from "../components/Testimonials.astro";
 import CtaBanner from "../components/CtaBanner.astro";
 import Footer from "../components/Footer.astro";
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "SEO Brothers",
+  url: "https://seobrothers.com",
+  logo: "https://seobrothers.com/images/logo.png",
+  description:
+    "White label SEO company for growth-focused agencies. Managed campaigns, link building, content marketing, and more, all under your brand.",
+  foundingDate: "2015",
+  founders: [
+    { "@type": "Person", name: "Devon Bate" },
+    { "@type": "Person", name: "Adam Bate" },
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Halifax",
+    addressRegion: "NS",
+    addressCountry: "CA",
+  },
+};
 ---
 
-<Layout>
+<Layout
+  title="SEO Brothers | White Label SEO Company for Agencies"
+  description="SEO Brothers is a white label SEO company partnering with growth-focused agencies. Halifax-founded, 100+ partners, 5,000+ campaigns delivered under your brand."
+  schema={orgSchema}
+>
   <Nav />
   <Hero />
   <TrustBar />
+  <AboutBrand />
   <Services />
   <Process />
   <WhyUs />

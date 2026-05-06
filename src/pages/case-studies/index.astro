@@ -1,0 +1,612 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+
+// Partner stories are soft-hidden from the listing until we have refreshed,
+// in-date partner case studies. Detail pages still resolve at their direct URL.
+const studies = (await getCollection("caseStudies"))
+  .filter((s) => s.data.type !== "partner")
+  .sort(
+    (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+  );
+
+const verticals = Array.from(
+  new Set(
+    studies
+      .map((s) => s.data.vertical)
+      .filter((v): v is string => Boolean(v))
+  )
+).sort();
+---
+
+<Layout
+  title="Case Studies | SEO Brothers"
+  description="Real growth from the SEO campaigns we run for clients. Many details are anonymized at the partner's request, the results are not."
+>
+  <Nav />
+
+  <section class="cs-hero">
+    <div class="cs-hero__bg">
+      <div class="cs-hero__orb cs-hero__orb--1"></div>
+      <div class="cs-hero__orb cs-hero__orb--2"></div>
+      <div class="cs-hero__grid"></div>
+    </div>
+
+    <div class="container cs-hero__inner">
+      <span class="cs-hero__label" data-animate>
+        <span class="cs-hero__label-dot"></span>
+        Case Studies
+      </span>
+      <h1 class="cs-hero__title" data-animate>
+        Results we can talk about<br />
+        <span class="cs-hero__title-gradient">(and a few we can't).</span>
+      </h1>
+      <p class="cs-hero__subtitle" data-animate>
+        Most of our partners ask us to keep their names off the internet, and
+        we respect that. What we can share is the campaign-level work that
+        moved the needle and the numbers it produced.
+      </p>
+    </div>
+  </section>
+
+  <section class="cs-filters">
+    <div class="container">
+      <div class="cs-chips" aria-label="Filter by industry">
+        <button
+          class="cs-chip is-active"
+          data-filter-vertical="all"
+          type="button"
+        >
+          All industries
+        </button>
+        {
+          verticals.map((v) => (
+            <button class="cs-chip" data-filter-vertical={v} type="button">
+              {v}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-grid-section">
+    <div class="container">
+      <div class="cs-grid" id="cs-grid">
+        {
+          studies.map((study) => {
+            const d = study.data;
+            const isPartner = d.type === "partner";
+            return (
+              <a
+                href={`/case-studies/${study.id}/`}
+                class="cs-card"
+                data-type={d.type}
+                data-vertical={d.vertical ?? ""}
+              >
+                <div class="cs-card__top">
+                  <span
+                    class:list={[
+                      "cs-card__type",
+                      isPartner
+                        ? "cs-card__type--partner"
+                        : "cs-card__type--campaign",
+                    ]}
+                  >
+                    {isPartner ? "Partner story" : "Campaign"}
+                  </span>
+                  {d.redacted && (
+                    <span class="cs-card__redacted" title="Details anonymized">
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <rect x="3" y="11" width="18" height="11" rx="2" />
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                      </svg>
+                      Confidential
+                    </span>
+                  )}
+                </div>
+
+                <div class="cs-card__metric">
+                  <span class="cs-card__metric-value">
+                    {d.headlineMetric.value}
+                  </span>
+                  <span class="cs-card__metric-label">
+                    {d.headlineMetric.label}
+                  </span>
+                </div>
+
+                <h2 class="cs-card__title">{d.title}</h2>
+
+                <p class="cs-card__summary">{d.summary}</p>
+
+                <div class="cs-card__meta">
+                  {d.vertical && (
+                    <span class="cs-card__pill">{d.vertical}</span>
+                  )}
+                  {d.region && (
+                    <span class="cs-card__pill cs-card__pill--muted">
+                      {d.region}
+                    </span>
+                  )}
+                </div>
+
+                <span class="cs-card__cta">
+                  Read full study
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M3 8h10M9 4l4 4-4 4" />
+                  </svg>
+                </span>
+              </a>
+            );
+          })
+        }
+      </div>
+
+      <p class="cs-empty" id="cs-empty" hidden>
+        No case studies match those filters yet — try widening the search.
+      </p>
+    </div>
+  </section>
+
+  <CtaBanner />
+  <Footer />
+</Layout>
+
+<script>
+  const grid = document.getElementById("cs-grid");
+  const empty = document.getElementById("cs-empty");
+  const chips = document.querySelectorAll<HTMLButtonElement>(
+    "[data-filter-vertical]"
+  );
+
+  let activeVertical = "all";
+
+  function applyFilters() {
+    if (!grid || !empty) return;
+    const cards = grid.querySelectorAll<HTMLElement>(".cs-card");
+    let visible = 0;
+    cards.forEach((card) => {
+      const vertical = card.dataset.vertical ?? "";
+      const matches = activeVertical === "all" || vertical === activeVertical;
+      card.style.display = matches ? "" : "none";
+      if (matches) visible += 1;
+    });
+    empty.hidden = visible > 0;
+  }
+
+  chips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      activeVertical = chip.dataset.filterVertical ?? "all";
+      chips.forEach((c) => c.classList.toggle("is-active", c === chip));
+      applyFilters();
+    });
+  });
+</script>
+
+<style>
+  /* ═══════════════════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════════════════ */
+  .cs-hero {
+    position: relative;
+    background: var(--dark);
+    overflow: hidden;
+    padding: 180px 0 96px;
+  }
+
+  .cs-hero__bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .cs-hero__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.22;
+    animation: cs-float 22s ease-in-out infinite;
+  }
+
+  .cs-hero__orb--1 {
+    width: 520px;
+    height: 520px;
+    background: var(--teal);
+    top: -10%;
+    right: -8%;
+  }
+
+  .cs-hero__orb--2 {
+    width: 420px;
+    height: 420px;
+    background: var(--purple);
+    bottom: -25%;
+    left: -8%;
+    animation-delay: -8s;
+  }
+
+  .cs-hero__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at 50% 30%, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(
+      ellipse at 50% 30%,
+      black 30%,
+      transparent 75%
+    );
+  }
+
+  @keyframes cs-float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(20px, -20px) scale(1.04); }
+  }
+
+  .cs-hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+  }
+
+  .cs-hero__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 28px;
+  }
+
+  .cs-hero__label-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(68, 185, 123, 0.18);
+  }
+
+  .cs-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(38px, 6vw, 64px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--text-on-dark);
+    margin-bottom: 24px;
+  }
+
+  .cs-hero__title-gradient {
+    background: linear-gradient(
+      135deg,
+      var(--teal) 0%,
+      var(--purple) 60%,
+      var(--green) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .cs-hero__subtitle {
+    font-size: clamp(16px, 1.8vw, 19px);
+    line-height: 1.7;
+    color: var(--text-on-dark-muted);
+    max-width: 620px;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     FILTERS
+     ═══════════════════════════════════════════════════════════════════ */
+  .cs-filters {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 24px 0 20px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .cs-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .cs-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    padding: 10px 18px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-light);
+    background: var(--white);
+    transition: all var(--transition);
+  }
+
+  .cs-tab:hover {
+    border-color: var(--teal);
+    color: var(--text-primary);
+  }
+
+  .cs-tab.is-active {
+    background: var(--text-primary);
+    color: var(--white);
+    border-color: var(--text-primary);
+  }
+
+  .cs-tab__count {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    background: var(--light-100);
+    color: var(--text-secondary);
+  }
+
+  .cs-tab.is-active .cs-tab__count {
+    background: rgba(255, 255, 255, 0.18);
+    color: var(--white);
+  }
+
+  .cs-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .cs-chip {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-light);
+    background: transparent;
+    transition: all var(--transition);
+  }
+
+  .cs-chip:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+
+  .cs-chip.is-active {
+    background: rgba(40, 165, 177, 0.1);
+    border-color: var(--teal);
+    color: var(--teal-dark);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     GRID
+     ═══════════════════════════════════════════════════════════════════ */
+  .cs-grid-section {
+    padding: 56px 0 120px;
+    background: var(--white);
+  }
+
+  .cs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .cs-card {
+    display: flex;
+    flex-direction: column;
+    padding: 36px;
+    border-radius: var(--radius-xl);
+    background: var(--light);
+    border: 1px solid var(--border-light);
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+    color: inherit;
+  }
+
+  .cs-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--teal), var(--purple), var(--green));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    opacity: 0;
+    transition: opacity var(--transition);
+    pointer-events: none;
+  }
+
+  .cs-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .cs-card:hover::before {
+    opacity: 1;
+  }
+
+  .cs-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .cs-card__type {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+  }
+
+  .cs-card__type--partner {
+    background: rgba(140, 99, 170, 0.1);
+    color: var(--purple-dark);
+  }
+
+  .cs-card__type--campaign {
+    background: rgba(68, 185, 123, 0.1);
+    color: var(--green-dark);
+  }
+
+  .cs-card__redacted {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+  }
+
+  .cs-card__metric {
+    margin-bottom: 24px;
+  }
+
+  .cs-card__metric-value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(40px, 5vw, 56px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, var(--teal) 0%, var(--purple) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 6px;
+  }
+
+  .cs-card__metric-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .cs-card__title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+
+  .cs-card__summary {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    flex-grow: 1;
+  }
+
+  .cs-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .cs-card__pill {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    color: var(--text-secondary);
+  }
+
+  .cs-card__pill--muted {
+    background: transparent;
+    color: var(--text-muted);
+  }
+
+  .cs-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--teal);
+    transition: gap var(--transition);
+  }
+
+  .cs-card:hover .cs-card__cta {
+    gap: 10px;
+  }
+
+  .cs-empty {
+    text-align: center;
+    padding: 48px 0;
+    color: var(--text-muted);
+    font-size: 16px;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════════════════════════════════ */
+  @media (max-width: 768px) {
+    .cs-hero {
+      padding: 140px 0 64px;
+    }
+
+    .cs-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cs-card {
+      padding: 28px;
+    }
+
+    .cs-grid-section {
+      padding: 40px 0 80px;
+    }
+
+    .cs-filters {
+      position: static;
+    }
+  }
+</style>

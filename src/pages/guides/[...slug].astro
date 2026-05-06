@@ -1,0 +1,505 @@
+---
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+
+export async function getStaticPaths() {
+  const reservedSlugs = new Set(["seo", "industry", "agency", "cities"]);
+  const guides = await getCollection("guides");
+  return guides
+    .filter((g) => !reservedSlugs.has(g.id))
+    .map((guide) => ({
+      params: { slug: guide.id },
+      props: { guide },
+    }));
+}
+
+interface Props {
+  guide: CollectionEntry<"guides">;
+}
+
+const { guide } = Astro.props;
+const d = guide.data;
+const { Content, headings } = await render(guide);
+
+const categoryLabels: Record<typeof d.category, { label: string; href: string }> = {
+  seo: { label: "SEO Guide", href: "/guides/seo/" },
+  industry: { label: "Industry Guide", href: "/guides/industry/" },
+  agency: { label: "Agency Guide", href: "/guides/agency/" },
+  cities: { label: "Local Market", href: "/guides/cities/" },
+};
+
+const cat = categoryLabels[d.category];
+
+const tocHeadings = d.showToc
+  ? headings.filter((h) => h.depth === 2 || h.depth === 3)
+  : [];
+
+function fmtDate(date: Date) {
+  return date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+---
+
+<Layout
+  title={`${d.title} | SEO Brothers`}
+  description={d.summary}
+>
+  <Nav />
+
+  <article class="guide">
+    <!-- ═══════════════ HEADER ═══════════════ -->
+    <header class="guide-hero">
+      <div class="guide-hero__bg">
+        <div class="guide-hero__orb"></div>
+        <div class="guide-hero__grid"></div>
+      </div>
+
+      <div class="container guide-hero__inner">
+        <a href={cat.href} class="guide-hero__back">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M13 8H3M7 12L3 8l4-4" />
+          </svg>
+          {cat.label}s
+        </a>
+
+        <h1 class="guide-hero__title" data-animate>{d.title}</h1>
+
+        <div class="guide-hero__meta" data-animate>
+          <span class="guide-hero__author">{d.author}</span>
+          <span class="guide-hero__dot">·</span>
+          <span>{fmtDate(d.publishDate)}</span>
+          {d.updatedDate && (
+            <>
+              <span class="guide-hero__dot">·</span>
+              <span class="guide-hero__updated">
+                Updated {fmtDate(d.updatedDate)}
+              </span>
+            </>
+          )}
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══════════════ BODY ═══════════════ -->
+    <section class="guide-body">
+      <div class="container guide-body__grid">
+        {
+          tocHeadings.length > 0 && (
+            <aside class="guide-toc">
+              <p class="guide-toc__label">In this guide</p>
+              <ol class="guide-toc__list">
+                {tocHeadings.map((h) => (
+                  <li
+                    class:list={[
+                      "guide-toc__item",
+                      h.depth === 3 && "guide-toc__item--sub",
+                    ]}
+                  >
+                    <a href={`#${h.slug}`}>{h.text}</a>
+                  </li>
+                ))}
+              </ol>
+            </aside>
+          )
+        }
+
+        <div
+          class:list={[
+            "guide-body__prose",
+            tocHeadings.length === 0 && "guide-body__prose--centered",
+          ]}
+        >
+          {
+            d.coverImage && (
+              <img
+                src={d.coverImage}
+                alt={d.coverImageAlt ?? ""}
+                class="guide-cover"
+                width="1200"
+                height="675"
+              />
+            )
+          }
+
+          <p class="guide-summary">{d.summary}</p>
+
+          <Content />
+
+          {
+            d.showAuditCta && (
+              <aside class="guide-audit-cta">
+                <h3>Get a free SEO audit</h3>
+                <p>
+                  Want a tailored take on your client's site? We'll run a
+                  no-strings audit and walk you through what we'd do.
+                </p>
+                <a href="/#book-call" class="btn btn-primary">
+                  Request audit
+                </a>
+              </aside>
+            )
+          }
+        </div>
+      </div>
+    </section>
+
+    <CtaBanner />
+  </article>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ═══════════════════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════════════════ */
+  .guide-hero {
+    position: relative;
+    background: var(--dark);
+    overflow: hidden;
+    padding: 140px 0 80px;
+  }
+
+  .guide-hero__bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .guide-hero__orb {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: var(--teal);
+    filter: blur(140px);
+    opacity: 0.15;
+    top: -20%;
+    right: -10%;
+  }
+
+  .guide-hero__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at 50% 30%, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(
+      ellipse at 50% 30%,
+      black 30%,
+      transparent 75%
+    );
+  }
+
+  .guide-hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+  }
+
+  .guide-hero__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-on-dark-muted);
+    margin-bottom: 28px;
+    transition: color var(--transition);
+  }
+
+  .guide-hero__back:hover {
+    color: var(--teal-light);
+  }
+
+  .guide-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: var(--text-on-dark);
+    margin-bottom: 20px;
+  }
+
+  .guide-hero__meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 14px;
+    color: var(--text-on-dark-muted);
+  }
+
+  .guide-hero__author {
+    font-weight: 600;
+    color: var(--teal-light);
+  }
+
+  .guide-hero__dot {
+    opacity: 0.5;
+  }
+
+  .guide-hero__updated {
+    font-style: italic;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     BODY
+     ═══════════════════════════════════════════════════════════════════ */
+  .guide-body {
+    padding: 80px 0 120px;
+    background: var(--white);
+  }
+
+  .guide-body__grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 64px;
+    align-items: start;
+    max-width: 1100px;
+  }
+
+  .guide-body__prose--centered {
+    grid-column: 1 / -1;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  /* TOC */
+  .guide-toc {
+    position: sticky;
+    top: 32px;
+  }
+
+  .guide-toc__label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .guide-toc__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-left: 1px solid var(--border-light);
+    counter-reset: toc;
+  }
+
+  .guide-toc__item {
+    padding: 8px 0 8px 16px;
+    font-size: 14px;
+    line-height: 1.45;
+    border-left: 2px solid transparent;
+    margin-left: -1px;
+    transition: all var(--transition);
+  }
+
+  .guide-toc__item:hover {
+    border-left-color: var(--teal);
+  }
+
+  .guide-toc__item a {
+    color: var(--text-secondary);
+    transition: color var(--transition);
+  }
+
+  .guide-toc__item:hover a {
+    color: var(--text-primary);
+  }
+
+  .guide-toc__item--sub {
+    padding-left: 32px;
+    font-size: 13px;
+  }
+
+  /* Prose */
+  .guide-body__prose {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 760px;
+  }
+
+  .guide-cover {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    margin-bottom: 40px;
+  }
+
+  .guide-summary {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--text-primary);
+    padding-bottom: 32px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .guide-body__prose :global(h2) {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 56px 0 16px;
+    scroll-margin-top: 80px;
+  }
+
+  .guide-body__prose :global(h3) {
+    font-family: var(--font-display);
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 36px 0 12px;
+    scroll-margin-top: 80px;
+  }
+
+  .guide-body__prose :global(p) {
+    margin-bottom: 20px;
+  }
+
+  .guide-body__prose :global(ul),
+  .guide-body__prose :global(ol) {
+    margin: 0 0 24px 1.5em;
+  }
+
+  .guide-body__prose :global(li) {
+    margin-bottom: 10px;
+    line-height: 1.7;
+  }
+
+  .guide-body__prose :global(a) {
+    color: var(--teal-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color var(--transition);
+  }
+
+  .guide-body__prose :global(a:hover) {
+    color: var(--teal);
+  }
+
+  .guide-body__prose :global(strong) {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .guide-body__prose :global(blockquote) {
+    margin: 32px 0;
+    padding: 20px 28px;
+    border-left: 3px solid var(--teal);
+    background: var(--light);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    font-style: italic;
+    color: var(--text-primary);
+  }
+
+  .guide-body__prose :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    margin: 32px 0;
+  }
+
+  /* Audit CTA */
+  .guide-audit-cta {
+    margin-top: 56px;
+    padding: 36px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(
+      135deg,
+      rgba(40, 165, 177, 0.08) 0%,
+      rgba(140, 99, 170, 0.08) 100%
+    );
+    border: 1px solid rgba(140, 99, 170, 0.2);
+  }
+
+  .guide-audit-cta h3 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+  }
+
+  .guide-audit-cta p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════════════════════════════════ */
+  @media (max-width: 960px) {
+    .guide-body__grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .guide-toc {
+      position: static;
+      padding: 20px 24px;
+      background: var(--light);
+      border-radius: var(--radius-md);
+    }
+
+    .guide-toc__list {
+      border-left: none;
+    }
+
+    .guide-toc__item {
+      padding: 6px 0;
+    }
+
+    .guide-toc__item--sub {
+      padding-left: 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .guide-hero {
+      padding: 120px 0 60px;
+    }
+
+    .guide-body {
+      padding: 56px 0 80px;
+    }
+
+    .guide-summary {
+      font-size: 18px;
+    }
+
+    .guide-audit-cta {
+      padding: 28px;
+    }
+  }
+</style>

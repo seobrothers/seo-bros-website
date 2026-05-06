@@ -352,6 +352,14 @@ import Footer from "../components/Footer.astro";
 
         <div class="team__member" data-animate>
           <div class="team__avatar">
+            <span class="team__avatar-initials" aria-hidden="true">LP</span>
+          </div>
+          <h3 class="team__name">Lynelle Potgieter</h3>
+          <p class="team__role">Account Manager</p>
+        </div>
+
+        <div class="team__member" data-animate>
+          <div class="team__avatar">
             <img src="/images/team/sino-baduza.png" alt="Sino Baduza" class="team__avatar-img" loading="lazy" width="300" height="300" />
           </div>
           <h3 class="team__name">Sino Baduza</h3>
@@ -368,42 +376,66 @@ import Footer from "../components/Footer.astro";
 
         <div class="team__member" data-animate>
           <div class="team__avatar">
+            <span class="team__avatar-initials" aria-hidden="true">JW</span>
+          </div>
+          <h3 class="team__name">Jared Warrington</h3>
+          <p class="team__role">Partner Discovery Specialist</p>
+        </div>
+
+        <div class="team__member" data-animate>
+          <div class="team__avatar">
             <img src="/images/team/zach-ames.png" alt="Zach Ames" class="team__avatar-img" loading="lazy" width="300" height="300" />
           </div>
           <h3 class="team__name">Zach Ames</h3>
-          <p class="team__role">Campaign Management</p>
+          <p class="team__role">Director of Operations</p>
         </div>
 
         <div class="team__member" data-animate>
           <div class="team__avatar">
-            <img src="/images/team/kristen-hortalez.png" alt="Kristen Hortalez" class="team__avatar-img" loading="lazy" width="300" height="300" />
+            <span class="team__avatar-initials" aria-hidden="true">KF</span>
           </div>
-          <h3 class="team__name">Kristen Hortalez</h3>
-          <p class="team__role">Content Creation</p>
+          <h3 class="team__name">Kelly-Anne Forbes</h3>
+          <p class="team__role">SEO Manager</p>
         </div>
 
         <div class="team__member" data-animate>
           <div class="team__avatar">
-            <img src="/images/team/ivana-djudic.png" alt="Ivana Djudic" class="team__avatar-img" loading="lazy" width="300" height="300" />
+            <span class="team__avatar-initials" aria-hidden="true">AK</span>
           </div>
-          <h3 class="team__name">Ivana Djudic</h3>
-          <p class="team__role">SEO Implementation</p>
+          <h3 class="team__name">Alexa Kanchuk</h3>
+          <p class="team__role">SEO Manager</p>
         </div>
 
         <div class="team__member" data-animate>
           <div class="team__avatar">
-            <img src="/images/team/milos-plavsic.png" alt="Milos Plavsic" class="team__avatar-img" loading="lazy" width="300" height="300" />
+            <span class="team__avatar-initials" aria-hidden="true">MJ</span>
           </div>
-          <h3 class="team__name">Milos Plavsic</h3>
-          <p class="team__role">Campaign Onboarding</p>
+          <h3 class="team__name">Maja Jeremic</h3>
+          <p class="team__role">SEO Manager</p>
         </div>
 
         <div class="team__member" data-animate>
           <div class="team__avatar">
-            <img src="/images/team/maja-burzevska.png" alt="Maja Burzevska" class="team__avatar-img" loading="lazy" width="300" height="300" />
+            <span class="team__avatar-initials" aria-hidden="true">MF</span>
           </div>
-          <h3 class="team__name">Maja Burzevska</h3>
-          <p class="team__role">Analytics & Reporting</p>
+          <h3 class="team__name">Molly From</h3>
+          <p class="team__role">SEO Manager</p>
+        </div>
+
+        <div class="team__member" data-animate>
+          <div class="team__avatar">
+            <span class="team__avatar-initials" aria-hidden="true">SP</span>
+          </div>
+          <h3 class="team__name">Sinisa Pajic</h3>
+          <p class="team__role">SEO Manager</p>
+        </div>
+
+        <div class="team__member" data-animate>
+          <div class="team__avatar">
+            <span class="team__avatar-initials" aria-hidden="true">IP</span>
+          </div>
+          <h3 class="team__name">Igor Pančić</h3>
+          <p class="team__role">SEO Manager</p>
         </div>
 
         <div class="team__member" data-animate>
@@ -411,7 +443,15 @@ import Footer from "../components/Footer.astro";
             <img src="/images/team/sasa-ratkovic.png" alt="Sasa Ratkovic" class="team__avatar-img" loading="lazy" width="300" height="300" />
           </div>
           <h3 class="team__name">Sasa Ratkovic</h3>
-          <p class="team__role">Lead Technical Specialist</p>
+          <p class="team__role">SEO Manager</p>
+        </div>
+
+        <div class="team__member" data-animate>
+          <div class="team__avatar">
+            <img src="/images/team/ivana-djudic.png" alt="Ivana Djudic" class="team__avatar-img" loading="lazy" width="300" height="300" />
+          </div>
+          <h3 class="team__name">Ivana Djudic</h3>
+          <p class="team__role">SEO Strategist</p>
         </div>
       </div>
 
@@ -1213,6 +1253,21 @@ import Footer from "../components/Footer.astro";
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
+  }
+
+  .team__avatar-initials {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--purple));
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
   }
 
   .team__name {

@@ -1,0 +1,182 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout
+  title="Cookie Policy | SEO Brothers"
+  description="How SEO Brothers uses cookies and similar tracking technologies on our website."
+>
+  <Nav />
+
+  <section class="legal-hero">
+    <div class="legal-hero__bg">
+      <div class="legal-hero__orb legal-hero__orb--1"></div>
+      <div class="legal-hero__orb legal-hero__orb--2"></div>
+      <div class="legal-hero__grid-overlay"></div>
+    </div>
+
+    <div class="container legal-hero__inner">
+      <span class="legal-hero__label">
+        <span class="legal-hero__label-dot"></span>
+        Legal
+      </span>
+      <h1 class="legal-hero__title">Cookie Policy</h1>
+      <p class="legal-hero__meta">Coming soon</p>
+    </div>
+  </section>
+
+  <section class="legal-body">
+    <div class="container legal-body__inner">
+      <article class="legal-prose">
+        <p>
+          A dedicated cookie policy is being prepared and will be posted here shortly.
+        </p>
+        <p>
+          In the meantime, our use of cookies and similar tracking technologies is described in our <a href="/privacy">Privacy Policy</a>, including the section on <a href="/privacy#how-we-collect">information we collect through cookies and other automatic data collection technologies</a>.
+        </p>
+        <p>
+          If you have questions, please contact us at <a href="mailto:privacy@seobrothers.co">privacy@seobrothers.co</a>.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .legal-hero {
+    position: relative;
+    background: var(--dark);
+    overflow: hidden;
+    padding: 180px 0 80px;
+  }
+
+  .legal-hero__bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .legal-hero__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.15;
+  }
+
+  .legal-hero__orb--1 {
+    width: 400px;
+    height: 400px;
+    background: var(--teal);
+    top: -20%;
+    right: -5%;
+  }
+
+  .legal-hero__orb--2 {
+    width: 320px;
+    height: 320px;
+    background: var(--purple);
+    bottom: -30%;
+    left: -10%;
+  }
+
+  .legal-hero__grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .legal-hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+  }
+
+  .legal-hero__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 24px;
+  }
+
+  .legal-hero__label-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+  }
+
+  .legal-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 6vw, 60px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--text-on-dark);
+    margin-bottom: 16px;
+  }
+
+  .legal-hero__meta {
+    font-size: 15px;
+    color: var(--text-on-dark-muted);
+    letter-spacing: 0.01em;
+  }
+
+  .legal-body {
+    padding: 80px 0 120px;
+    background: var(--white);
+  }
+
+  .legal-body__inner {
+    display: flex;
+    justify-content: center;
+  }
+
+  .legal-prose {
+    max-width: 760px;
+    width: 100%;
+  }
+
+  .legal-prose p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+  }
+
+  .legal-prose a {
+    color: var(--teal);
+    border-bottom: 1px solid rgba(40, 165, 177, 0.25);
+    transition: all var(--transition);
+  }
+
+  .legal-prose a:hover {
+    color: var(--teal-dark);
+    border-bottom-color: var(--teal);
+  }
+
+  @media (max-width: 768px) {
+    .legal-hero {
+      padding: 140px 0 64px;
+    }
+
+    .legal-body {
+      padding: 60px 0 80px;
+    }
+
+    .legal-prose p {
+      font-size: 15px;
+    }
+  }
+</style>
