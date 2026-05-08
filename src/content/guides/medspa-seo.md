@@ -2,6 +2,8 @@
 title: "Medspa SEO: Ranking a Medical Aesthetics Practice in a Saturated Market"
 category: industry
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Devon Bate"
 summary: Medspa SEO sits at the intersection of medical and beauty search behavior. The framework that gets aesthetic injectables, laser, and body contouring practices ranking against Groupon, RealSelf, and the practice across the street.
 featured: false
 ---
@@ -93,4 +95,4 @@ A medspa SEO program that works has the same shape every time: a clean treatment
 
 The timeline is six to twelve months for visible compounding, faster if the local pack work is the starting point and the existing content is genuinely thin (which it usually is).
 
-If you're running a medspa or aesthetic practice and the local pack isn't showing your name where it should, [book a call](/#book-call) and we'll diagnose where the leverage actually is.
+If you're running a medspa or aesthetic practice and the local pack isn't showing your name where it should, [get in touch](/sign-up/) and we'll diagnose where the leverage actually is.

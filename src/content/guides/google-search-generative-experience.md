@@ -2,6 +2,8 @@
 title: "Google AI Overviews and SGE: How They Changed Search and What to Do About It"
 category: seo
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Devon Bate"
 summary: AI Overviews are the largest single shift in Google's SERP layout in a decade. What changed, the impact on click-through rates, the optimization tactics that work in the new layout, and where the dust is still settling.
 featured: false
 ---
@@ -138,4 +140,4 @@ Standard SEO fundamentals still produce most of the value. What's changed is the
 
 For partner agencies whose clients are seeing traffic shifts from AI Overviews, we run targeted analyses to identify which of the client's content types are most affected and where to focus the rebalanced investment.
 
-If your traffic has been moving and you're not sure how much is AI Overview impact versus other factors, [book a call](/#book-call) and we'll diagnose where the shift is coming from.
+If your traffic has been moving and you're not sure how much is AI Overview impact versus other factors, [get in touch](/sign-up/) and we'll diagnose where the shift is coming from.

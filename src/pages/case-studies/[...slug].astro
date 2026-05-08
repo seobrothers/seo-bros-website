@@ -28,6 +28,18 @@ const isPartner = d.type === "partner";
 // readability; single-series falls back to a teal->purple gradient line.
 const SERIES_COLOR_VARS = ["--teal", "--purple", "--green"];
 
+const studyUrl = new URL(`/case-studies/${study.id}/`, Astro.site).href;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", Astro.site).href },
+    { "@type": "ListItem", position: 2, name: "Case Studies", item: new URL("/case-studies/", Astro.site).href },
+    { "@type": "ListItem", position: 3, name: d.title, item: studyUrl },
+  ],
+};
+
 const charts = d.charts.map((c, idx) => {
   const vbW = 1000;
   const vbH = 300;
@@ -62,6 +74,8 @@ const charts = d.charts.map((c, idx) => {
 <Layout
   title={`${d.title} | SEO Brothers Case Study`}
   description={d.summary}
+  ogType="article"
+  schema={breadcrumbSchema}
 >
   <Nav />
 

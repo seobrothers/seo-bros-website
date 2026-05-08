@@ -2,6 +2,8 @@
 title: "Searcher Intent: How to Read What People Actually Want From a Query"
 category: seo
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Adam Bate"
 summary: A strategic framework for understanding searcher intent. The classic taxonomy, the modern intent signals, how AI search has shifted what intent means, and how to reverse-engineer Google's intent interpretation from the SERP itself.
 featured: false
 ---
@@ -142,4 +144,4 @@ Quarterly review checks for intent shifts on the priority keywords. Where Google
 
 For partner agencies running campaigns through us, intent analysis is part of the standard deliverable. The mapping document includes the classification, and the strategic recommendations reflect any intent shifts identified during quarterly review.
 
-If you're trying to figure out whether your existing pages match the intent of the queries you're targeting, [book a call](/#book-call) and we'll walk through the SERP analysis with you.
+If you're trying to figure out whether your existing pages match the intent of the queries you're targeting, [get in touch](/sign-up/) and we'll walk through the SERP analysis with you.

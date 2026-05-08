@@ -2,6 +2,7 @@
 title: "Link Building: How to Build Links That Actually Move Rankings"
 category: seo
 publishDate: 2023-08-15
+updatedDate: 2026-05-06
 author: "Adam Bate"
 summary: An honest guide to link building. The strategies that work, the ones that get sites penalized, the metrics worth watching, and the budget reality most SEO content avoids talking about.
 featured: true
@@ -194,4 +195,4 @@ Our default is layered. The foundation is on-page work, technical SEO, and conte
 
 For partner agencies, we operate the link-building layer on their behalf so the agency can sell SEO without having to manage the full operational side. Our partners see exactly what we're doing and how it maps to their clients' risk tolerance.
 
-If you're trying to figure out what link-building strategy actually maps to your client's situation, [get in touch](/sign-up) and we'll walk through the budget-timeline-risk math with you.
+If you're trying to figure out what link-building strategy actually maps to your client's situation, [get in touch](/sign-up/) and we'll walk through the budget-timeline-risk math with you.

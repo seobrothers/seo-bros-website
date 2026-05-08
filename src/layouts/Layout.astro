@@ -6,6 +6,9 @@ interface Props {
   title?: string;
   description?: string;
   schema?: Record<string, unknown> | Record<string, unknown>[] | null;
+  ogImage?: string;
+  ogType?: "website" | "article";
+  noindex?: boolean;
 }
 
 const GA4_ID = "G-YQF485ZPJ7";
@@ -14,10 +17,16 @@ const GOOGLE_ADS_ID = "AW-388162196";
 const {
   title = "SEO Brothers | Your Agency's SEO Partner",
   description = "SEO Brothers partners with agencies to deliver expert SEO campaigns. Managed campaigns, link building, content marketing, and more, all under your brand.",
-  schema = null
+  schema = null,
+  ogImage,
+  ogType = "website",
+  noindex = false,
 } = Astro.props;
 
 const schemaList = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const socialImageUrl = new URL(ogImage ?? "/images/logo.png", Astro.site).href;
 ---
 
 <!doctype html>
@@ -26,8 +35,23 @@ const schemaList = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="robots" content={noindex ? "noindex,nofollow" : "index,follow"} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:site_name" content="SEO Brothers" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl} />
 
     {schemaList.map((s) => (
       <script type="application/ld+json" set:html={JSON.stringify(s)} />
@@ -83,6 +107,9 @@ const schemaList = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     <ConsentBanner />
 
     <script>
+      import { initOutboundTracking } from "../lib/analytics";
+      initOutboundTracking();
+
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {

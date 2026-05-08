@@ -2,6 +2,7 @@
 title: "SEO for Tree Service Companies and Arborists"
 category: industry
 publishDate: 2025-02-13
+author: "Adam Bate"
 updatedDate: 2026-04-30
 summary: Tree service is a seasonal, hyper-local business where SEO can be the difference between a thriving company and a quiet phone. The architecture, the keyword strategy, the GBP and emergency-storm tactics that fill an arborist's calendar.
 ---
@@ -244,4 +245,4 @@ Our default tree service playbook follows the framework above. Foundation work f
 
 For partner agencies serving tree service clients, we operate the SEO layer end-to-end while the agency manages the contractor relationship. Tree service is also part of the broader [home services SEO](/guides/home-services-seo/) hub, with cross-linking between this guide and adjacent trades.
 
-If you have an arborist client and want a tailored take on the campaign, [book a call](/#book-call) and we'll walk through the approach.
+If you have an arborist client and want a tailored take on the campaign, [get in touch](/sign-up/) and we'll walk through the approach.

@@ -301,7 +301,7 @@ Most of our local-SEO work follows the 10-step framework directly. We build it o
 
 For partner agencies, we run the operational layers (citations, GBP optimization, content, link acquisition) and report to the agency, who reports to the end client. The agency keeps the relationship and we handle the work.
 
-If you're trying to figure out which of these steps your local-SEO campaign is missing, [get in touch](/sign-up) and we'll walk through it.
+If you're trying to figure out which of these steps your local-SEO campaign is missing, [get in touch](/sign-up/) and we'll walk through it.
 
 That's it. That's all.
 

@@ -26,3 +26,7 @@ pnpm-debug.log*
 # local-only working files (Workbench scripts, raw case-study sources, etc.)
 shared/
 .env.local
+
+# AC->Bento migration tooling: contains subscriber PII in verification.csv and
+# operational scripts that read .env.local. Keep local; never publish.
+migration/

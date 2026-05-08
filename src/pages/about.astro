@@ -2,6 +2,75 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import CtaBanner from "../components/CtaBanner.astro";
+
+interface Brother {
+  name: string;
+  role: string;
+  bio: string;
+  photo: string;
+}
+
+interface TeamMember {
+  name: string;
+  role: string;
+  photo: string;
+}
+
+const brothers: Brother[] = [
+  {
+    name: "Devon Bate",
+    role: "Founder & CEO",
+    bio: "The visionary behind SEO Brothers. Devon cut his teeth as Lead SEO Specialist before channeling that hands-on expertise into building a company dedicated to helping agencies scale their organic offering.",
+    photo: "/images/team/devon-bate.png",
+  },
+  {
+    name: "Adam Bate",
+    role: "Founder & COO",
+    bio: "With 20+ years in online marketing and SEO, Adam is the operational backbone of SEO Brothers. He brings decades of real-world agency experience to every process, partnership, and campaign we deliver.",
+    photo: "/images/team/adam-bate.png",
+  },
+  {
+    name: "Peter Bate",
+    role: "Director of Fulfillment",
+    bio: "Peter ensures every campaign meets the high bar our agency partners expect. From strategy to execution, he oversees fulfillment so your clients get results they can see.",
+    photo: "/images/team/peter-bate.png",
+  },
+  {
+    name: "Colin Bate",
+    role: "CTO",
+    bio: "Colin spent 17+ years building internal software for a Bermuda-based mutual fund company before joining his brothers. He leads our technology efforts, including the ground-up rebuild of our Portal and the AI-native tooling powering our team.",
+    photo: "/images/team/colin-bate.png",
+  },
+];
+
+const teamMembers: TeamMember[] = [
+  { name: "Zach Ames", role: "Director of Operations", photo: "/images/team/zach-ames.png" },
+  { name: "Mike Eaton", role: "Account Executive", photo: "/images/team/mike-eaton.png" },
+  { name: "Sino Baduza", role: "Partner Onboarding", photo: "/images/team/sino-baduza.png" },
+  { name: "Tracy Milsom", role: "Account Manager", photo: "/images/team/tracy-milsom.png" },
+  { name: "Lynelle Potgieter", role: "Account Manager", photo: "/images/team/lynelle-potgieter.png" },
+  { name: "Jared Warrington", role: "Campaign Onboarding", photo: "/images/team/jared-warrington.png" },
+  { name: "Alexa Kanchuk", role: "SEO Manager", photo: "/images/team/alexa-kanchuk.png" },
+  { name: "Chelsey Skrebiec", role: "SEO Manager", photo: "/images/team/chelsey-skrebiec.png" },
+  { name: "Kelly-Anne Forbes", role: "SEO Manager", photo: "/images/team/kelly-anne-forbes.png" },
+  { name: "Maja Jeremic", role: "SEO Manager", photo: "/images/team/maja-jeremic.png" },
+  { name: "Molly From", role: "SEO Manager", photo: "/images/team/molly-from.png" },
+  { name: "Sasa Ratkovic", role: "SEO Manager", photo: "/images/team/sasa-ratkovic.png" },
+  { name: "Igor Pančić", role: "SEO Strategist", photo: "/images/team/igor-pancic.png" },
+  { name: "Ivana Djudic", role: "SEO Strategist", photo: "/images/team/ivana-djudic.png" },
+  { name: "Joemar Pasco", role: "Lead SEO Specialist", photo: "/images/team/joemar-pasco.png" },
+  { name: "James Pasco", role: "SEO Specialist", photo: "/images/team/james-pasco.png" },
+  { name: "Jay Pasco", role: "SEO Specialist", photo: "/images/team/jay-pasco.png" },
+  { name: "Meca Pasco-Asuro", role: "SEO Specialist", photo: "/images/team/meca-pasco-asuro.png" },
+  { name: "Carl Lemagne", role: "SEO Specialist", photo: "/images/team/carl-lemagne.png" },
+  { name: "Christian Songalia", role: "SEO Specialist", photo: "/images/team/christian-songalia.png" },
+  { name: "Hamza Rivera", role: "SEO Specialist", photo: "/images/team/hamza-rivera.png" },
+  { name: "Ron Concepcion", role: "SEO Specialist", photo: "/images/team/ron-concepcion.png" },
+  { name: "Russel Ramos", role: "SEO Specialist", photo: "/images/team/russel-ramos.png" },
+  { name: "Jacob Amanza", role: "SEO Specialist", photo: "/images/team/jacob-amanza.png" },
+  { name: "Tyler Ewald", role: "Hosting & Security", photo: "/images/team/tyler-ewald.png" },
+];
 ---
 
 <Layout
@@ -31,10 +100,10 @@ import Footer from "../components/Footer.astro";
 
       <p class="about-hero__subtitle" data-animate>
         <span class="about-hero__subtitle-aside">(we get asked that a lot)</span>
-        Founded in 2015 by Devon & Adam Bate, SEO Brothers is a collaborative
-        and fully remote team of talented white-label SEO professionals serving
-        the digital agency community. Our mission is simple: growth through
-        exceptional service.
+        Founded in 2015 by Devon and Adam Bate, SEO Brothers is now a
+        four-brother technology-first SEO company serving the digital
+        agency community. We built the software powering our distributed
+        team and our partners' campaigns.
       </p>
 
       <div class="about-hero__scroll-cue" data-animate>
@@ -51,126 +120,23 @@ import Footer from "../components/Footer.astro";
         <span class="section-label">The Brothers</span>
         <h2 class="section-heading">Meet the Bates</h2>
         <p class="section-subtext">
-          Three brothers who turned their agency experience into the white-label
-          SEO partner they always wished existed.
+          Four brothers. Two decades in SEO. One software platform we're
+          building from the ground up.
         </p>
       </div>
 
       <div class="brothers__grid" data-stagger>
-        <div class="brothers__card" data-animate>
-          <div class="brothers__photo-wrap">
-            <img src="/images/team/devon-bate.png" alt="Devon Bate" class="brothers__photo" loading="lazy" width="300" height="300" />
-            <div class="brothers__photo-ring"></div>
-          </div>
-          <h3 class="brothers__name">Devon Bate</h3>
-          <p class="brothers__role">Founder & CEO</p>
-          <p class="brothers__bio">
-            The visionary behind SEO Brothers. Devon cut his teeth as Lead SEO
-            Specialist before channeling that hands-on expertise into building
-            a company dedicated to helping agencies scale their organic offering.
-          </p>
-        </div>
-
-        <div class="brothers__card" data-animate>
-          <div class="brothers__photo-wrap">
-            <img src="/images/team/adam-bate.png" alt="Adam Bate" class="brothers__photo" loading="lazy" width="300" height="300" />
-            <div class="brothers__photo-ring"></div>
-          </div>
-          <h3 class="brothers__name">Adam Bate</h3>
-          <p class="brothers__role">Founder & COO</p>
-          <p class="brothers__bio">
-            With 20+ years in online marketing and SEO, Adam is the operational
-            backbone of SEO Brothers. He brings decades of real-world agency
-            experience to every process, partnership, and campaign we deliver.
-          </p>
-        </div>
-
-        <div class="brothers__card" data-animate>
-          <div class="brothers__photo-wrap">
-            <img src="/images/team/peter-bate.png" alt="Peter Bate" class="brothers__photo" loading="lazy" width="300" height="300" />
-            <div class="brothers__photo-ring"></div>
-          </div>
-          <h3 class="brothers__name">Peter Bate</h3>
-          <p class="brothers__role">Director of Fulfillment</p>
-          <p class="brothers__bio">
-            Peter ensures every campaign meets the high bar our agency
-            partners expect. From strategy to execution, he oversees
-            fulfillment so your clients get results they can see.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════ ORIGIN STORY ═══════════════════════════════════ -->
-  <section class="origin">
-    <div class="container">
-      <div class="origin__grid" data-animate>
-        <div class="origin__content">
-          <span class="section-label--light">The Beginning</span>
-          <h2 class="origin__heading">
-            We didn't set out to build an SEO company.
-          </h2>
-          <p class="origin__text">
-            We were running a digital agency — managing PPC, web design, and yes,
-            SEO — when we hit the same wall every growing agency hits. Clients
-            wanted more SEO. We needed to deliver. But hiring in-house was
-            expensive, outsourcing was unreliable, and the "white-label" options
-            out there felt like they were run by people who'd never actually sat
-            across from a client.
-          </p>
-          <p class="origin__text">
-            So we built the service we wished existed. One that understands agency
-            life — the pressure of client calls, the stakes of monthly reports,
-            the need for a partner who performs like an extension of your team,
-            not a faceless vendor.
-          </p>
-        </div>
-
-        <div class="origin__timeline">
-          <div class="origin__milestone" data-animate>
-            <span class="origin__year">2015</span>
-            <div class="origin__milestone-content">
-              <h3>SEO Brothers Founded</h3>
-              <p>
-                Devon & Adam Bate launch SEO Brothers, building on
-                years of firsthand agency experience to create the
-                partner they wished they had.
-              </p>
+        {brothers.map((b) => (
+          <div class="brothers__card" data-animate>
+            <div class="brothers__photo-wrap">
+              <img src={b.photo} alt={b.name} class="brothers__photo" loading="lazy" width="300" height="300" />
+              <div class="brothers__photo-ring"></div>
             </div>
+            <h3 class="brothers__name">{b.name}</h3>
+            <p class="brothers__role">{b.role}</p>
+            <p class="brothers__bio">{b.bio}</p>
           </div>
-          <div class="origin__milestone" data-animate>
-            <span class="origin__year">2017</span>
-            <div class="origin__milestone-content">
-              <h3>The Pivot</h3>
-              <p>
-                Began offering white-label SEO after other agencies kept asking
-                how we ran our campaigns so effectively.
-              </p>
-            </div>
-          </div>
-          <div class="origin__milestone" data-animate>
-            <span class="origin__year">2020</span>
-            <div class="origin__milestone-content">
-              <h3>Going All-In</h3>
-              <p>
-                Transitioned fully to white-label, investing in the processes,
-                team, and technology to serve agencies at scale.
-              </p>
-            </div>
-          </div>
-          <div class="origin__milestone" data-animate>
-            <span class="origin__year">Now</span>
-            <div class="origin__milestone-content">
-              <h3>100+ Agency Partners</h3>
-              <p>
-                A 40+ person fully remote team trusted by agencies across every
-                vertical to deliver campaigns their clients love — all under
-                their brand.
-              </p>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -204,6 +170,37 @@ import Footer from "../components/Footer.astro";
           <p class="stats__label">Avg. Partner Margin</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ TEAM ═══════════════════════════════════════════ -->
+  <section class="team">
+    <div class="container">
+      <div class="team__header" data-animate>
+        <span class="section-label">The Team</span>
+        <h2 class="section-heading">The people powering your campaigns</h2>
+        <p class="section-subtext">
+          Strategists, specialists, and managers who deliver results
+          your clients love, all behind the scenes.
+        </p>
+      </div>
+
+      <div class="team__grid" data-stagger>
+        {teamMembers.map((m) => (
+          <div class="team__member" data-animate>
+            <div class="team__avatar">
+              <img src={m.photo} alt={m.name} class="team__avatar-img" loading="lazy" width="300" height="300" />
+            </div>
+            <h3 class="team__name">{m.name}</h3>
+            <p class="team__role">{m.role}</p>
+          </div>
+        ))}
+      </div>
+
+      <p class="team__more" data-animate>
+        Plus 30+ more SEO specialists, content writers, and strategists
+        working behind the scenes.
+      </p>
     </div>
   </section>
 
@@ -329,215 +326,116 @@ import Footer from "../components/Footer.astro";
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════ TEAM ═══════════════════════════════════════════ -->
-  <section class="team">
+  <!-- ═══════════════════════════════════════════ ORIGIN STORY ═══════════════════════════════════ -->
+  <section class="origin">
     <div class="container">
-      <div class="team__header" data-animate>
-        <span class="section-label">The Team</span>
-        <h2 class="section-heading">The people powering your campaigns</h2>
-        <p class="section-subtext">
-          Strategists, specialists, and managers who deliver results
-          your clients love — all behind the scenes.
-        </p>
-      </div>
-
-      <div class="team__grid" data-stagger>
-        <div class="team__member" data-animate>
-          <div class="team__avatar">
-            <img src="/images/team/tracy-milsom.png" alt="Tracy Milsom" class="team__avatar-img" loading="lazy" width="300" height="300" />
-          </div>
-          <h3 class="team__name">Tracy Milsom</h3>
-          <p class="team__role">Account Manager</p>
+      <div class="origin__grid" data-animate>
+        <div class="origin__content">
+          <span class="section-label">The Beginning</span>
+          <h2 class="origin__heading">
+            We didn't set out to build a white-label company.
+          </h2>
+          <p class="origin__text">
+            White-label happened to us before we chose it. The first paying
+            work back in 2015 came as agency overflow, and it took COVID
+            to make us realize it was the side that scaled. The deliberate
+            move is the one we're making now: rebuilding from the ground
+            up as a technology-first SEO company that owns its software
+            top to bottom.
+          </p>
         </div>
 
-        <div class="team__member" data-animate>
-          <div class="team__avatar">
-            <span class="team__avatar-initials" aria-hidden="true">LP</span>
+        <div class="origin__timeline">
+          <div class="origin__milestone" data-animate>
+            <span class="origin__year">2015</span>
+            <div class="origin__milestone-content">
+              <h3>A partnership and a false start</h3>
+              <p>
+                Adam and Devon register Cognatio Media as an Ontario
+                partnership on June 1. Their first concept (Flip Marketing:
+                build digital properties, rank them, sell them) doesn't
+                pan out. They pivot hard to client work.
+              </p>
+            </div>
           </div>
-          <h3 class="team__name">Lynelle Potgieter</h3>
-          <p class="team__role">Account Manager</p>
-        </div>
-
-        <div class="team__member" data-animate>
-          <div class="team__avatar">
-            <img src="/images/team/sino-baduza.png" alt="Sino Baduza" class="team__avatar-img" loading="lazy" width="300" height="300" />
+          <div class="origin__milestone" data-animate>
+            <span class="origin__year">2016</span>
+            <div class="origin__milestone-content">
+              <h3>Becoming SEO Brothers</h3>
+              <p>
+                Cognatio Media gets a friendlier name. SEO Brothers
+                launches first as a knowledge brand, then quietly starts
+                taking on agency overflow alongside direct-to-business
+                client work.
+              </p>
+            </div>
           </div>
-          <h3 class="team__name">Sino Baduza</h3>
-          <p class="team__role">Partner Onboarding</p>
-        </div>
-
-        <div class="team__member" data-animate>
-          <div class="team__avatar">
-            <img src="/images/team/mike-eaton.png" alt="Mike Eaton" class="team__avatar-img" loading="lazy" width="300" height="300" />
+          <div class="origin__milestone" data-animate>
+            <span class="origin__year">2017</span>
+            <div class="origin__milestone-content">
+              <h3>The first real white-label partner</h3>
+              <p>
+                An agency finds the brothers via their local Google
+                Business Profile and signs a multi-location HVAC dealer
+                co-op campaign. White-label wasn't the founding strategy,
+                but it was the one that compounded.
+              </p>
+            </div>
           </div>
-          <h3 class="team__name">Mike Eaton</h3>
-          <p class="team__role">Account Executive</p>
-        </div>
-
-        <div class="team__member" data-animate>
-          <div class="team__avatar">
-            <span class="team__avatar-initials" aria-hidden="true">JW</span>
+          <div class="origin__milestone" data-animate>
+            <span class="origin__year">2018</span>
+            <div class="origin__milestone-content">
+              <h3>Adam full-time</h3>
+              <p>
+                A breakthrough client in the cannabis space frees enough
+                revenue for Adam to join SEO Brothers full-time.
+              </p>
+            </div>
           </div>
-          <h3 class="team__name">Jared Warrington</h3>
-          <p class="team__role">Partner Discovery Specialist</p>
-        </div>
-
-        <div class="team__member" data-animate>
-          <div class="team__avatar">
-            <img src="/images/team/zach-ames.png" alt="Zach Ames" class="team__avatar-img" loading="lazy" width="300" height="300" />
+          <div class="origin__milestone" data-animate>
+            <span class="origin__year">2019</span>
+            <div class="origin__milestone-content">
+              <h3>Peter joins</h3>
+              <p>
+                Brother Peter Bate comes on as an SEO specialist. Today
+                he runs fulfillment for every campaign that ships.
+              </p>
+            </div>
           </div>
-          <h3 class="team__name">Zach Ames</h3>
-          <p class="team__role">Director of Operations</p>
-        </div>
-
-        <div class="team__member" data-animate>
-          <div class="team__avatar">
-            <span class="team__avatar-initials" aria-hidden="true">KF</span>
+          <div class="origin__milestone" data-animate>
+            <span class="origin__year">2020</span>
+            <div class="origin__milestone-content">
+              <h3>Building a real business</h3>
+              <p>
+                COVID changes everything. Agencies lay off in-house SEO
+                staff and lean harder on subcontractors. "White label SEO"
+                demand explodes; we're already ranking for it. The juggling
+                era ends. We start hiring real roles, building real systems,
+                and treating this like a company instead of a hustle.
+              </p>
+            </div>
           </div>
-          <h3 class="team__name">Kelly-Anne Forbes</h3>
-          <p class="team__role">SEO Manager</p>
-        </div>
-
-        <div class="team__member" data-animate>
-          <div class="team__avatar">
-            <span class="team__avatar-initials" aria-hidden="true">AK</span>
+          <div class="origin__milestone" data-animate>
+            <span class="origin__year">2025</span>
+            <div class="origin__milestone-content">
+              <h3>Technology-first</h3>
+              <p>
+                A ground-up rebuild of our partner Portal and internal
+                tooling, led by our brother Colin Bate, who joined as CTO
+                after 17 years building internal software for a
+                Bermuda-based mutual fund company. The new chapter: a
+                technology-first SEO partner, not just a service team
+                running on Google Sheets.
+              </p>
+            </div>
           </div>
-          <h3 class="team__name">Alexa Kanchuk</h3>
-          <p class="team__role">SEO Manager</p>
-        </div>
-
-        <div class="team__member" data-animate>
-          <div class="team__avatar">
-            <span class="team__avatar-initials" aria-hidden="true">MJ</span>
-          </div>
-          <h3 class="team__name">Maja Jeremic</h3>
-          <p class="team__role">SEO Manager</p>
-        </div>
-
-        <div class="team__member" data-animate>
-          <div class="team__avatar">
-            <span class="team__avatar-initials" aria-hidden="true">MF</span>
-          </div>
-          <h3 class="team__name">Molly From</h3>
-          <p class="team__role">SEO Manager</p>
-        </div>
-
-        <div class="team__member" data-animate>
-          <div class="team__avatar">
-            <span class="team__avatar-initials" aria-hidden="true">SP</span>
-          </div>
-          <h3 class="team__name">Sinisa Pajic</h3>
-          <p class="team__role">SEO Manager</p>
-        </div>
-
-        <div class="team__member" data-animate>
-          <div class="team__avatar">
-            <span class="team__avatar-initials" aria-hidden="true">IP</span>
-          </div>
-          <h3 class="team__name">Igor Pančić</h3>
-          <p class="team__role">SEO Manager</p>
-        </div>
-
-        <div class="team__member" data-animate>
-          <div class="team__avatar">
-            <img src="/images/team/sasa-ratkovic.png" alt="Sasa Ratkovic" class="team__avatar-img" loading="lazy" width="300" height="300" />
-          </div>
-          <h3 class="team__name">Sasa Ratkovic</h3>
-          <p class="team__role">SEO Manager</p>
-        </div>
-
-        <div class="team__member" data-animate>
-          <div class="team__avatar">
-            <img src="/images/team/ivana-djudic.png" alt="Ivana Djudic" class="team__avatar-img" loading="lazy" width="300" height="300" />
-          </div>
-          <h3 class="team__name">Ivana Djudic</h3>
-          <p class="team__role">SEO Strategist</p>
         </div>
       </div>
-
-      <p class="team__more" data-animate>
-        Plus 30+ more SEO specialists, content writers, and strategists
-        working behind the scenes.
-      </p>
     </div>
   </section>
-
-  <!-- ═══════════════════════════════════════════ MARQUEE ═══════════════════════════════════════ -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee__track">
-      <span class="marquee__item">Transparent</span>
-      <span class="marquee__divider">&bull;</span>
-      <span class="marquee__item">Agency-First</span>
-      <span class="marquee__divider">&bull;</span>
-      <span class="marquee__item">Results-Driven</span>
-      <span class="marquee__divider">&bull;</span>
-      <span class="marquee__item">White-Label</span>
-      <span class="marquee__divider">&bull;</span>
-      <span class="marquee__item">Scalable</span>
-      <span class="marquee__divider">&bull;</span>
-      <span class="marquee__item">Trusted</span>
-      <span class="marquee__divider">&bull;</span>
-      <span class="marquee__item">Transparent</span>
-      <span class="marquee__divider">&bull;</span>
-      <span class="marquee__item">Agency-First</span>
-      <span class="marquee__divider">&bull;</span>
-      <span class="marquee__item">Results-Driven</span>
-      <span class="marquee__divider">&bull;</span>
-      <span class="marquee__item">White-Label</span>
-      <span class="marquee__divider">&bull;</span>
-      <span class="marquee__item">Scalable</span>
-      <span class="marquee__divider">&bull;</span>
-      <span class="marquee__item">Trusted</span>
-      <span class="marquee__divider">&bull;</span>
-    </div>
-  </div>
 
   <!-- ═══════════════════════════════════════════ CTA ═══════════════════════════════════════════ -->
-  <section class="about-cta">
-    <div class="about-cta__bg">
-      <div class="about-cta__orb about-cta__orb--1"></div>
-      <div class="about-cta__orb about-cta__orb--2"></div>
-    </div>
-    <div class="container about-cta__inner" data-animate>
-      <h2 class="about-cta__heading">
-        Ready to see what a real<br />partnership looks like?
-      </h2>
-      <p class="about-cta__text">
-        No contracts. No minimums. Just a conversation about how we
-        can help your agency grow its SEO offering — profitably.
-      </p>
-      <div class="about-cta__actions">
-        <a href="#book-call" class="btn btn-primary btn-lg">
-          Book a Call
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"/>
-            <polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </a>
-        <a href="/pricing" class="btn btn-outline">View Pricing</a>
-      </div>
-      <div class="about-cta__meta">
-        <span class="about-cta__meta-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
-          No long-term contracts
-        </span>
-        <span class="about-cta__meta-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
-          Free strategy session
-        </span>
-        <span class="about-cta__meta-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
-          100% white-label
-        </span>
-      </div>
-    </div>
-  </section>
+  <CtaBanner />
 
   <Footer />
 
@@ -748,8 +646,8 @@ import Footer from "../components/Footer.astro";
 
   .brothers__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 48px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
   }
 
   .brothers__card {
@@ -825,16 +723,21 @@ import Footer from "../components/Footer.astro";
      ═══════════════════════════════════════════════════════════════════ */
   .origin {
     padding: 120px 0;
-    background: var(--dark);
+    background: var(--white);
     position: relative;
     overflow: hidden;
   }
 
   .origin__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
+    grid-template-columns: 1fr;
+    gap: 72px;
+  }
+
+  .origin__content {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
   }
 
   .origin__heading {
@@ -843,14 +746,14 @@ import Footer from "../components/Footer.astro";
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.02em;
-    color: var(--text-on-dark);
+    color: var(--text-primary);
     margin-bottom: 28px;
   }
 
   .origin__text {
     font-size: 17px;
     line-height: 1.75;
-    color: var(--text-on-dark-muted);
+    color: var(--text-secondary);
     margin-bottom: 20px;
   }
 
@@ -861,6 +764,9 @@ import Footer from "../components/Footer.astro";
   .origin__timeline {
     position: relative;
     padding-left: 32px;
+    max-width: 680px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .origin__timeline::before {
@@ -891,13 +797,16 @@ import Footer from "../components/Footer.astro";
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: var(--dark);
+    background: var(--white);
     border: 2px solid var(--teal);
     transition: all var(--transition);
   }
 
-  .origin__milestone:nth-child(2)::before { border-color: var(--purple); }
-  .origin__milestone:nth-child(3)::before { border-color: var(--purple); }
+  .origin__milestone:nth-child(2)::before,
+  .origin__milestone:nth-child(3)::before,
+  .origin__milestone:nth-child(4)::before,
+  .origin__milestone:nth-child(5)::before,
+  .origin__milestone:nth-child(6)::before { border-color: var(--purple); }
   .origin__milestone:last-child::before {
     border-color: var(--green);
     background: var(--green);
@@ -910,27 +819,30 @@ import Footer from "../components/Footer.astro";
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--teal-light);
+    color: var(--teal);
     display: block;
     margin-bottom: 8px;
   }
 
   .origin__milestone:nth-child(2) .origin__year,
-  .origin__milestone:nth-child(3) .origin__year { color: var(--purple-light); }
-  .origin__milestone:last-child .origin__year { color: var(--green-light); }
+  .origin__milestone:nth-child(3) .origin__year,
+  .origin__milestone:nth-child(4) .origin__year,
+  .origin__milestone:nth-child(5) .origin__year,
+  .origin__milestone:nth-child(6) .origin__year { color: var(--purple); }
+  .origin__milestone:last-child .origin__year { color: var(--green); }
 
   .origin__milestone-content h3 {
     font-family: var(--font-display);
     font-size: 18px;
     font-weight: 600;
-    color: var(--text-on-dark);
+    color: var(--text-primary);
     margin-bottom: 6px;
   }
 
   .origin__milestone-content p {
     font-size: 15px;
     line-height: 1.65;
-    color: var(--text-on-dark-muted);
+    color: var(--text-secondary);
   }
 
   /* ═══════════════════════════════════════════════════════════════════
@@ -1035,7 +947,7 @@ import Footer from "../components/Footer.astro";
      ═══════════════════════════════════════════════════════════════════ */
   .manifesto {
     padding: 120px 0;
-    background: var(--white);
+    background: var(--light);
   }
 
   .manifesto__inner {
@@ -1074,7 +986,7 @@ import Footer from "../components/Footer.astro";
   .manifesto__belief {
     padding: 32px;
     border-radius: var(--radius-lg);
-    background: var(--light);
+    background: var(--white);
     border: 1px solid var(--border-light);
     transition: all var(--transition);
   }
@@ -1296,132 +1208,6 @@ import Footer from "../components/Footer.astro";
   /* ═══════════════════════════════════════════════════════════════════
      MARQUEE
      ═══════════════════════════════════════════════════════════════════ */
-  .marquee {
-    padding: 28px 0;
-    background: var(--light);
-    overflow: hidden;
-    border-top: 1px solid var(--border-light);
-    border-bottom: 1px solid var(--border-light);
-  }
-
-  .marquee__track {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    white-space: nowrap;
-    animation: marquee-scroll 25s linear infinite;
-    width: max-content;
-  }
-
-  .marquee__item {
-    font-family: var(--font-display);
-    font-size: clamp(18px, 2.5vw, 28px);
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    color: var(--text-primary);
-    opacity: 0.15;
-    transition: opacity 0.4s;
-  }
-
-  .marquee__divider {
-    font-size: 10px;
-    color: var(--text-muted);
-    opacity: 0.3;
-  }
-
-  @keyframes marquee-scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  /* ═══════════════════════════════════════════════════════════════════
-     CTA
-     ═══════════════════════════════════════════════════════════════════ */
-  .about-cta {
-    position: relative;
-    padding: 120px 0;
-    background: var(--dark);
-    overflow: hidden;
-  }
-
-  .about-cta__bg {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-  }
-
-  .about-cta__orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(130px);
-    opacity: 0.15;
-  }
-
-  .about-cta__orb--1 {
-    width: 400px;
-    height: 400px;
-    background: var(--teal);
-    bottom: -20%;
-    left: -5%;
-  }
-
-  .about-cta__orb--2 {
-    width: 350px;
-    height: 350px;
-    background: var(--purple);
-    top: -20%;
-    right: -5%;
-  }
-
-  .about-cta__inner {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    max-width: 640px;
-    margin: 0 auto;
-  }
-
-  .about-cta__heading {
-    font-family: var(--font-display);
-    font-size: clamp(32px, 5vw, 48px);
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    color: var(--text-on-dark);
-    margin-bottom: 20px;
-  }
-
-  .about-cta__text {
-    font-size: 18px;
-    line-height: 1.7;
-    color: var(--text-on-dark-muted);
-    margin-bottom: 40px;
-  }
-
-  .about-cta__actions {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    margin-bottom: 40px;
-  }
-
-  .about-cta__meta {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 28px;
-    flex-wrap: wrap;
-  }
-
-  .about-cta__meta-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    color: var(--text-on-dark-muted);
-  }
-
   /* ═══════════════════════════════════════════════════════════════════
      RESPONSIVE
      ═══════════════════════════════════════════════════════════════════ */
@@ -1436,6 +1222,13 @@ import Footer from "../components/Footer.astro";
 
     .values__card--wide {
       grid-column: span 2;
+    }
+
+    .brothers__grid {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 720px;
+      margin: 0 auto;
+      gap: 32px;
     }
   }
 
@@ -1511,19 +1304,6 @@ import Footer from "../components/Footer.astro";
     .team__grid {
       grid-template-columns: repeat(3, 1fr);
       gap: 28px 16px;
-    }
-
-    .about-cta {
-      padding: 80px 0;
-    }
-
-    .about-cta__actions {
-      flex-direction: column;
-    }
-
-    .about-cta__meta {
-      flex-direction: column;
-      gap: 12px;
     }
   }
 

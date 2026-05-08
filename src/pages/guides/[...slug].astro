@@ -45,11 +45,46 @@ function fmtDate(date: Date) {
     year: "numeric",
   });
 }
+
+const guideUrl = new URL(`/guides/${guide.id}/`, Astro.site).href;
+const imageUrl = new URL(d.coverImage ?? "/images/logo.png", Astro.site).href;
+const logoUrl = new URL("/images/logo.png", Astro.site).href;
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: d.title,
+  description: d.summary,
+  author: { "@type": "Person", name: d.author },
+  datePublished: d.publishDate.toISOString(),
+  dateModified: (d.updatedDate ?? d.publishDate).toISOString(),
+  publisher: {
+    "@type": "Organization",
+    name: "SEO Brothers",
+    logo: { "@type": "ImageObject", url: logoUrl },
+  },
+  mainEntityOfPage: guideUrl,
+  image: imageUrl,
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", Astro.site).href },
+    { "@type": "ListItem", position: 2, name: "Guides", item: new URL("/guides/", Astro.site).href },
+    { "@type": "ListItem", position: 3, name: `${cat.label}s`, item: new URL(cat.href, Astro.site).href },
+    { "@type": "ListItem", position: 4, name: d.title, item: guideUrl },
+  ],
+};
 ---
 
 <Layout
   title={`${d.title} | SEO Brothers`}
   description={d.summary}
+  ogType="article"
+  ogImage={d.coverImage}
+  schema={[articleSchema, breadcrumbSchema]}
 >
   <Nav />
 
@@ -144,13 +179,14 @@ function fmtDate(date: Date) {
           {
             d.showAuditCta && (
               <aside class="guide-audit-cta">
-                <h3>Get a free SEO audit</h3>
+                <h3>Get your free SEO audit</h3>
                 <p>
-                  Want a tailored take on your client's site? We'll run a
-                  no-strings audit and walk you through what we'd do.
+                  Sign up as a partner and your first audit is on us. Real
+                  audit by our team, walked through on a call. No automated
+                  score, no commitment to anything else.
                 </p>
-                <a href="/#book-call" class="btn btn-primary">
-                  Request audit
+                <a href="/sign-up/" class="btn btn-primary">
+                  Get my free audit
                 </a>
               </aside>
             )
@@ -426,6 +462,71 @@ function fmtDate(date: Date) {
     height: auto;
     border-radius: var(--radius-md);
     margin: 32px 0;
+  }
+
+  /* Tables: data-tables for keyword research, comparison rows, etc. */
+  .guide-body__prose :global(table) {
+    width: 100%;
+    margin: 0 0 40px;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 15px;
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .guide-body__prose :global(thead) {
+    background: var(--light-100);
+  }
+
+  .guide-body__prose :global(th) {
+    padding: 14px 20px;
+    text-align: left;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .guide-body__prose :global(td) {
+    padding: 13px 20px;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-secondary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .guide-body__prose :global(tbody tr:last-child td) {
+    border-bottom: none;
+  }
+
+  .guide-body__prose :global(tbody tr:hover) {
+    background: var(--light-100);
+  }
+
+  /* Right-aligned numeric columns get a touch more weight */
+  .guide-body__prose :global(th[align="right"]),
+  .guide-body__prose :global(td[align="right"]) {
+    text-align: right;
+  }
+
+  .guide-body__prose :global(td[align="right"]) {
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  /* Mobile: let wide tables scroll rather than overflow the column */
+  @media (max-width: 600px) {
+    .guide-body__prose :global(table) {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
   }
 
   /* Audit CTA */

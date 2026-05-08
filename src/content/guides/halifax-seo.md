@@ -2,6 +2,7 @@
 title: "Halifax SEO: How Local Search Actually Works in the HRM"
 category: cities
 publishDate: 2025-02-13
+author: "Adam Bate"
 updatedDate: 2026-04-30
 summary: We're a Nova Scotia company with most of our Canadian team based around the HRM. A guide to local search behavior in our home market, the variations people actually use, and why "Halifax" can mean three different things to three different searchers.
 coverImage: /images/cities/halifax-seo.jpg
@@ -41,6 +42,28 @@ The query universe for businesses serving this market is broader than "Halifax" 
 
 For service businesses, mapping content against this full set, not just "Halifax," captures meaningful additional volume.
 
+## What the volume actually looks like
+
+Real Keyword Planner data, Canada targeting, May 2026. We're using "dentist [area]" as the sample query because dentists exist anywhere there's population, which makes the cross-area variation a read on search behaviour rather than something specific to the industry. We don't specialize in dental SEO. The same shape holds for plumber and roofer at different absolute numbers.
+
+![Choropleth map of HRM community plan areas tinted by Google search volume for "dentist [area]". Halifax peninsula and core dominate, Bedford and Dartmouth show meaningful volume, smaller communities trail off, the rural HRM polygons sit in light gray with no commercial volume.](/images/cities/halifax-search-heatmap.svg)
+
+| Query | Avg monthly searches |
+|---|---:|
+| dentist halifax | 1,900 |
+| dentist bedford | 880 |
+| dentist dartmouth | 720 |
+| dentist sackville | 140 |
+| dentist spryfield | 110 |
+| dentist hammonds plains | 90 |
+| dentist cole harbour | 30 |
+| dentist hrm | 0 |
+| dentist halifax regional municipality | 0 |
+
+Bedford and Dartmouth combined pull about as much volume as Halifax proper for dentists. The same pattern holds for plumbers: "plumber Dartmouth" runs 590/mo and actually outpulls "plumber Halifax" at 320/mo. Roofing is smaller across the board, but the geographic split is the same shape.
+
+The HRM entries returning zero is the cleanest finding here. The Halifax Regional Municipality is real geographically and politically, but it isn't where the searches live. Optimize a service-area page around "HRM plumber" and you're targeting a query nobody types.
+
 ## Service-area considerations
 
 Halifax sits at the head of a region that extends in three directions. Many service businesses cover not just HRM but also:
@@ -68,10 +91,10 @@ Practical implications for businesses serving this market.
 
 For the broader local SEO framework that applies to any market, see our [local SEO guide](/guides/local-seo/).
 
-## Working with us in Halifax
+## How we approach Halifax SEO at SEO Brothers
 
-Halifax is the one market where we're not just looking for a partner agency. It's our home base. We're registered as a Nova Scotia company, most of our Canadian team is based here, and our day-to-day operations run from the HRM.
+Halifax is home base. SEO Brothers is registered as a Nova Scotia company, our office is here, and most of our Canadian team works from around the HRM. The local-search nuance in this guide comes from running campaigns in this market for years, not from a tool's keyword export.
 
-That changes the relationship slightly. In other markets we work exclusively through one local agency partner. In Halifax we still partner where it makes sense, but we also work directly with local businesses who want SEO done right and prefer to engage with someone in their own city.
+When we work with a Halifax business, the keyword strategy maps to the actual search behavior, not just the Halifax head term. Real Dartmouth content, real Bedford content, real coverage of the smaller communities the business serves. Service-area pages get built for the regions the business actually reaches, not a single generic catch-all.
 
-If you're a Halifax-area business looking for SEO, or an agency looking for a white-label partner, [book a call](/#book-call) and we'll walk through which fits your situation better.
+If you're a Halifax-area business or agency, [get in touch](/sign-up/) and we'll walk through what works in your specific market.

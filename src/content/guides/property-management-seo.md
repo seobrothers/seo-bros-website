@@ -2,6 +2,8 @@
 title: "SEO for Property Management and Apartment Communities"
 category: industry
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Devon Bate"
 summary: "Property management SEO has to serve two audiences at once: owners looking for management services and tenants searching for places to rent. The framework, the dual-audience content strategy, and the local SEO tactics that drive both leasing and acquisition."
 featured: true
 ---
@@ -192,4 +194,4 @@ Property management campaigns are some of the more structurally interesting SEO 
 
 For partner agencies serving property management clients, we operate the SEO layer while the agency handles client relationships. The dual-audience content strategy is one of the things we get asked about most, and we have templates for both owner-side and tenant-side page architectures we can adapt.
 
-If you're running a property management or apartment community site and not sure why SEO isn't producing results, [book a call](/#book-call) and we'll diagnose where the structure or content is breaking down.
+If you're running a property management or apartment community site and not sure why SEO isn't producing results, [get in touch](/sign-up/) and we'll diagnose where the structure or content is breaking down.

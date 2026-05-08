@@ -2,6 +2,8 @@
 title: "SEO for Home Services Businesses: Local Search for Service-Area Trades"
 category: industry
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Devon Bate"
 summary: A hub guide for home services SEO. What makes the category different from other local-business SEO, the GBP and review tactics that drive booked service calls, and links down to vertical-specific guides for plumbers, HVAC, carpet cleaning, and more.
 featured: true
 ---
@@ -144,4 +146,4 @@ The framework above is our default for home services campaigns. Vertical-specifi
 
 For partner agencies serving home services clients, we operate the SEO layer end-to-end while the agency manages the contractor relationship.
 
-If you run a home services business or work with one, [book a call](/#book-call) and we'll walk through how the framework applies to your specific situation.
+If you run a home services business or work with one, [get in touch](/sign-up/) and we'll walk through how the framework applies to your specific situation.

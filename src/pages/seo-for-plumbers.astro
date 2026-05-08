@@ -1,4 +1,8 @@
 ---
+// Paid-only landing page. noindex is set so this doesn't compete organically
+// with /guides/seo-for-plumbers/ (the canonical guide). The hero form is also
+// not wired up yet — see the warning in IndustryPage.astro before sending
+// any traffic to this URL.
 import IndustryPage from "../layouts/IndustryPage.astro";
 
 const heroTitle = `Be the Plumber Customers Find on Search, Maps, and AI`;
@@ -300,6 +304,7 @@ const faqs = [
 <IndustryPage
   industry="Plumbers"
   industrySlug="plumbers"
+  noindex={true}
   seoTitle="SEO for Plumbers | Get Found on Search, Maps & AI | SEO Brothers"
   seoDescription="Get your plumbing company found on Google, Maps, and AI search. More calls, more customers — with proven systems that work. Free strategy call available."
   heroTitle={heroTitle}

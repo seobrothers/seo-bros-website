@@ -2,6 +2,8 @@
 title: "SEO for Orthodontists: Braces, Invisalign, and Pediatric Practice Growth"
 category: industry
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Devon Bate"
 summary: How orthodontic practices win local search across Invisalign and traditional braces queries, parent-driven pediatric searches, and the consultation-to-treatment conversion model that defines the category.
 featured: false
 ---
@@ -121,4 +123,4 @@ GBP and reviews run in parallel: profile fully built out, photos refreshed quart
 
 The biggest unlocks we usually find on a new orthodontic client: real per-treatment hub pages instead of one thin services page, honest cost content, and a review collection process that turns existing patient satisfaction into actual public reviews.
 
-If you run an orthodontic practice and you're losing consultations to a competitor who's outranking you in the local pack, [book a call](/#book-call) and we'll walk through what's actually holding the rankings back.
+If you run an orthodontic practice and you're losing consultations to a competitor who's outranking you in the local pack, [get in touch](/sign-up/) and we'll walk through what's actually holding the rankings back.

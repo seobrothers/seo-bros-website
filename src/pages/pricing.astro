@@ -8,6 +8,7 @@ interface Tier {
   name: string;
   price: string;
   blurb: string;
+  highlights: string[];
   featured?: boolean;
   accent: "teal" | "purple" | "green";
 }
@@ -18,6 +19,11 @@ const tiers: Tier[] = [
     price: "$360",
     blurb:
       "Base-level managed campaign. Right for ultra-low-competition industries or sparsely-populated locations where steady fundamentals win.",
+    highlights: [
+      "Semi-annual strategy review",
+      "1 Focus Page + 1 backlink each month",
+      "Best for low-competition local",
+    ],
     accent: "teal",
   },
   {
@@ -25,6 +31,11 @@ const tiers: Tier[] = [
     price: "$680",
     blurb:
       "Our most-quoted package. Full-stack local SEO with content, links, Maps, and the Focus Page work to rank the pages that matter.",
+    highlights: [
+      "Quarterly strategy + monthly content",
+      "3 Focus Pages + 2 backlinks each month",
+      "Best for most local businesses",
+    ],
     featured: true,
     accent: "purple",
   },
@@ -33,6 +44,11 @@ const tiers: Tier[] = [
     price: "$1,210",
     blurb:
       "When the market is tougher or speed matters more. Monthly strategy reviews, more Focus Pages, more links, more content.",
+    highlights: [
+      "Monthly strategy reviews",
+      "5 Focus Pages + 4 backlinks each month",
+      "Best for competitive markets",
+    ],
     accent: "green",
   },
 ];
@@ -68,8 +84,8 @@ const comparison: ComparisonRow[] = [
     values: ["1", "3", "5"],
   },
   {
-    label: "SEO Work hours per month",
-    values: ["1", "2", "3"],
+    label: "Extra Flex Work",
+    values: ["1 hour", "2 hours", "3 hours"],
   },
   {
     label: "New content per month",
@@ -97,7 +113,7 @@ const definitions: Definition[] = [
   },
   {
     term: "Local Maps focus location",
-    body: "One geographic target where we concentrate the work that drives map ranking: citation building, on-page optimizations to the GBP-linked landing page, and ongoing GBP profile updates (photos, service area, full services list build-out, and similar). Typically one of these per month. Additional locations available as an add-on at $60 each. (GBP posting is handled separately by our in-house posting tool and is not part of this line item.)",
+    body: "One geographic target where we concentrate the work that drives map ranking: citation building, on-page optimizations to the GBP-linked landing page, and ongoing GBP profile updates (photos, service area, full services list build-out, and similar). Typically one of these per month. Additional locations available as an add-on starting at $60 each. (GBP posting is handled separately by our in-house posting tool and is not part of this line item.)",
   },
   {
     term: "Backlinks",
@@ -108,12 +124,12 @@ const definitions: Definition[] = [
     body: "A batched monthly task where a specialist takes a defined number of pages (1, 3, or 5 depending on tier) and does whatever it takes to get each page ranking better for its mapped keywords.",
   },
   {
-    term: "SEO Work hours",
-    body: "Time allocated each month for the strategist's prioritized site-wide task list. Covers things like site-wide on-page improvements, optimizations on pages outside the Focus Page set, schema rollouts, and ongoing fixes.",
+    term: "Extra Flex Work",
+    body: "Flexible specialist time set aside each month and allocated based on what your site actually needs that month, on top of the bundled deliverables. Goes toward the strategist's prioritized task list: site-wide on-page improvements, optimizations on pages outside the Focus Page set, schema rollouts, and ongoing fixes.",
   },
   {
     term: "Content",
-    body: "A new blog post or geo / location page written, optimized, and published. Available à la carte at $90 per piece for any tier.",
+    body: "A new blog post or geo / location page written, optimized, and published. Available à la carte from $90 per piece for any tier.",
   },
 ];
 
@@ -238,6 +254,21 @@ const faqs: { q: string; a: string }[] = [
         </p>
       </div>
 
+      <div class="wholesale-banner-wrap" data-animate>
+        <div class="wholesale-banner">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+          <span>
+            <strong>Partner pricing.</strong> Direct clients receive proposals
+            from a partner agency.
+          </span>
+        </div>
+      </div>
+
       <div class="tiers__grid" data-stagger>
         {
           tiers.map((tier) => (
@@ -262,8 +293,29 @@ const faqs: { q: string; a: string }[] = [
                 <span class="tier__price-suffix">/ month</span>
               </div>
 
+              <ul class="tier__highlights">
+                {tier.highlights.map((h) => (
+                  <li>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
+
               <a
-                href="/sign-up"
+                href="/sign-up/"
                 class:list={[
                   "tier__cta",
                   tier.featured ? "btn btn-primary" : "btn btn-outline--dark",
@@ -373,11 +425,11 @@ const faqs: { q: string; a: string }[] = [
         <ul class="cadence__examples">
           <li>
             <span class="cadence__example-label">Blog every other month</span>
-            <span class="cadence__example-price">$45 / mo</span>
+            <span class="cadence__example-price">From $60 / mo</span>
           </li>
           <li>
             <span class="cadence__example-label">Extra Local Maps focus location</span>
-            <span class="cadence__example-price">$60 / mo each</span>
+            <span class="cadence__example-price">From $60 / mo each</span>
           </li>
           <li>
             <span class="cadence__example-label">Custom backlink or Focus Page count</span>
@@ -628,6 +680,34 @@ const faqs: { q: string; a: string }[] = [
     background: var(--white);
     border: 1px solid var(--border-light);
     transition: all var(--transition);
+    overflow: hidden;
+  }
+
+  .tier::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    pointer-events: none;
+  }
+
+  .tier--teal::after {
+    background: var(--teal);
+  }
+
+  .tier--purple::after {
+    background: linear-gradient(
+      90deg,
+      var(--teal) 0%,
+      var(--purple) 50%,
+      var(--green) 100%
+    );
+  }
+
+  .tier--green::after {
+    background: var(--green-dark);
   }
 
   .tier:hover {
@@ -760,6 +840,38 @@ const faqs: { q: string; a: string }[] = [
     color: var(--text-on-dark-muted);
   }
 
+  .tier__highlights {
+    list-style: none;
+    margin: 0 0 32px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tier__highlights li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+
+  .tier--featured .tier__highlights li {
+    color: var(--text-on-dark);
+  }
+
+  .tier__highlights svg {
+    flex-shrink: 0;
+    margin-top: 3px;
+    color: var(--green);
+  }
+
+  .tier--featured .tier__highlights svg {
+    color: var(--green-light);
+  }
+
   .tier__cta {
     width: 100%;
     margin-top: auto;
@@ -773,6 +885,43 @@ const faqs: { q: string; a: string }[] = [
   .tier--featured .tier__cta.btn-outline--dark:hover {
     border-color: rgba(255, 255, 255, 0.4);
     background: rgba(255, 255, 255, 0.06);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     WHOLESALE BANNER
+     ═══════════════════════════════════════════════════════════════════ */
+  .wholesale-banner-wrap {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .wholesale-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background: linear-gradient(
+      90deg,
+      rgba(40, 165, 177, 0.06),
+      rgba(124, 89, 184, 0.06) 50%,
+      rgba(68, 185, 123, 0.06)
+    );
+    border: 1px solid rgba(40, 165, 177, 0.22);
+    border-radius: var(--radius-full);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    text-align: left;
+  }
+
+  .wholesale-banner strong {
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+
+  .wholesale-banner svg {
+    flex-shrink: 0;
+    color: var(--teal);
   }
 
   /* ═══════════════════════════════════════════════════════════════════

@@ -2,6 +2,8 @@
 title: "White Hat SEO: What It Actually Means and Where the Limits Are"
 category: seo
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Adam Bate"
 summary: A practical look at white hat SEO. The legitimate version of the strategy, the honest limits of "white hat only" promises, and the relationship between white hat, grey hat, and the realities of competing in modern search.
 featured: false
 ---
@@ -106,4 +108,4 @@ Our default approach is layered. The foundation is white hat: on-page optimizati
 
 We don't market ourselves as white hat only. The claim isn't accurate for the work most clients need, and we'd rather have the honest conversation about risk and trade-offs than overpromise on a label.
 
-If you're trying to figure out which approach makes sense for your situation, [book a call](/#book-call) and we'll walk through the trade-offs.
+If you're trying to figure out which approach makes sense for your situation, [get in touch](/sign-up/) and we'll walk through the trade-offs.

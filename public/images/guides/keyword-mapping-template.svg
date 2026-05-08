@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 460" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <rect width="1040" height="460" fill="#fafbfc"/>
+
+  <!-- Title -->
+  <g transform="translate(40, 32)">
+    <text x="0" y="0" font-size="11" font-weight="700" fill="#28a5b1" letter-spacing="0.14em">KEYWORD MAPPING DOCUMENT</text>
+    <text x="0" y="22" font-size="13" font-weight="500" fill="#475569">One row per page. Current vs recommended in separate columns.</text>
+  </g>
+
+  <!-- Spreadsheet -->
+  <g transform="translate(40, 90)">
+    <!-- Outer border -->
+    <rect x="0" y="0" width="960" height="324" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+
+    <!-- Header row -->
+    <rect x="0" y="0" width="960" height="44" rx="8" fill="#0f172a"/>
+    <rect x="0" y="20" width="960" height="24" fill="#0f172a"/>
+
+    <g font-size="11" font-weight="700" fill="#ffffff" letter-spacing="0.04em">
+      <text x="16" y="28">URL SLUG</text>
+      <text x="170" y="28">MAPPED KEYWORDS</text>
+      <text x="370" y="28">INTENT</text>
+      <text x="460" y="28">CURRENT TITLE</text>
+      <text x="640" y="28">RECOMMENDED TITLE</text>
+      <text x="830" y="28">NOTES</text>
+    </g>
+
+    <!-- Vertical column dividers -->
+    <line x1="155" y1="44" x2="155" y2="324" stroke="#e2e8f0" stroke-width="1"/>
+    <line x1="355" y1="44" x2="355" y2="324" stroke="#e2e8f0" stroke-width="1"/>
+    <line x1="445" y1="44" x2="445" y2="324" stroke="#e2e8f0" stroke-width="1"/>
+    <line x1="625" y1="44" x2="625" y2="324" stroke="#e2e8f0" stroke-width="1"/>
+    <line x1="815" y1="44" x2="815" y2="324" stroke="#e2e8f0" stroke-width="1"/>
+
+    <!-- Row 1 -->
+    <line x1="0" y1="113" x2="960" y2="113" stroke="#f1f5f9" stroke-width="1"/>
+    <g font-size="11" fill="#0f172a">
+      <text x="16" y="68">/</text>
+      <text x="16" y="86" font-size="10" fill="#94a3b8">homepage</text>
+
+      <text x="170" y="68">Halifax dentist</text>
+      <text x="170" y="86" font-size="10" fill="#94a3b8">dentist Halifax</text>
+      <text x="170" y="102" font-size="10" fill="#94a3b8">dentist near me</text>
+
+      <g transform="translate(370, 60)">
+        <rect x="0" y="0" width="68" height="20" rx="10" fill="#dcfce7"/>
+        <text x="34" y="14" text-anchor="middle" font-size="10" font-weight="600" fill="#166534">Navigational</text>
+      </g>
+
+      <text x="460" y="68" font-size="10" fill="#475569">Home | ABC Dental</text>
+
+      <text x="640" y="68" font-size="10" fill="#0f172a" font-weight="500">Dentist in Halifax,</text>
+      <text x="640" y="84" font-size="10" fill="#0f172a" font-weight="500">NS | ABC Dental</text>
+
+      <text x="830" y="68" font-size="10" fill="#475569">Brand-and-overview</text>
+      <text x="830" y="84" font-size="10" fill="#475569">term, GBP-linked</text>
+    </g>
+
+    <!-- Row 2 -->
+    <line x1="0" y1="190" x2="960" y2="190" stroke="#f1f5f9" stroke-width="1"/>
+    <g font-size="11" fill="#0f172a">
+      <text x="16" y="142">/services/invisalign/</text>
+      <text x="16" y="160" font-size="10" fill="#94a3b8">service page</text>
+
+      <text x="170" y="142">Invisalign Halifax</text>
+      <text x="170" y="160" font-size="10" fill="#94a3b8">clear braces Halifax</text>
+      <text x="170" y="176" font-size="10" fill="#94a3b8">Invisalign cost</text>
+
+      <g transform="translate(370, 134)">
+        <rect x="0" y="0" width="72" height="20" rx="10" fill="#cffafe"/>
+        <text x="36" y="14" text-anchor="middle" font-size="10" font-weight="600" fill="#0e7490">Transactional</text>
+      </g>
+
+      <text x="460" y="142" font-size="10" fill="#475569">Invisalign Treatment</text>
+
+      <text x="640" y="142" font-size="10" fill="#0f172a" font-weight="500">Invisalign in Halifax,</text>
+      <text x="640" y="158" font-size="10" fill="#0f172a" font-weight="500">NS | Clear Braces</text>
+
+      <text x="830" y="142" font-size="10" fill="#475569">Add cost FAQ,</text>
+      <text x="830" y="158" font-size="10" fill="#475569">~1500 words</text>
+    </g>
+
+    <!-- Row 3 -->
+    <line x1="0" y1="265" x2="960" y2="265" stroke="#f1f5f9" stroke-width="1"/>
+    <g font-size="11" fill="#0f172a">
+      <text x="16" y="218">/blog/wisdom-teeth-recovery/</text>
+      <text x="16" y="236" font-size="10" fill="#94a3b8">blog post</text>
+
+      <text x="170" y="218">wisdom teeth recovery</text>
+      <text x="170" y="236" font-size="10" fill="#94a3b8">wisdom tooth healing</text>
+      <text x="170" y="252" font-size="10" fill="#94a3b8">wisdom tooth aftercare</text>
+
+      <g transform="translate(370, 210)">
+        <rect x="0" y="0" width="78" height="20" rx="10" fill="#fef3c7"/>
+        <text x="39" y="14" text-anchor="middle" font-size="10" font-weight="600" fill="#92400e">Informational</text>
+      </g>
+
+      <text x="460" y="218" font-size="10" fill="#475569">[no title set]</text>
+
+      <text x="640" y="218" font-size="10" fill="#0f172a" font-weight="500">Wisdom Teeth Recovery:</text>
+      <text x="640" y="234" font-size="10" fill="#0f172a" font-weight="500">A Day-by-Day Guide</text>
+
+      <text x="830" y="218" font-size="10" fill="#475569">Internal link to</text>
+      <text x="830" y="234" font-size="10" fill="#475569">/services/extractions/</text>
+    </g>
+
+    <!-- Row 4 (placeholder) -->
+    <g font-size="11" fill="#cbd5e1">
+      <text x="16" y="296">…</text>
+      <text x="170" y="296">…</text>
+      <text x="370" y="296">…</text>
+      <text x="460" y="296">…</text>
+      <text x="640" y="296">…</text>
+      <text x="830" y="296">…</text>
+    </g>
+  </g>
+</svg>

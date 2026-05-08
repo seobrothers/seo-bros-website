@@ -2,6 +2,8 @@
 title: "SEO for Auto Repair Shops and Mechanic Services"
 category: industry
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Devon Bate"
 summary: How auto repair shops win local search across vehicle-make and service-type combinations, urgent breakdown queries, and the fleet versus consumer split that defines most independent shops.
 featured: false
 ---
@@ -128,4 +130,4 @@ GBP gets fully built out and maintained. Reviews collection moves to a structure
 
 The biggest unlocks we usually find: real per-service pages instead of one generic services page, symptom and cost content that captures queries the shop was invisible for, and a fleet section that turns existing fleet relationships into a real lead source.
 
-If you run an auto repair shop and you're stuck below the local pack, [book a call](/#book-call) and we'll walk through what's holding the rankings back.
+If you run an auto repair shop and you're stuck below the local pack, [get in touch](/sign-up/) and we'll walk through what's holding the rankings back.

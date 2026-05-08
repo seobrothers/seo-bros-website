@@ -2,6 +2,8 @@
 title: "How Google SERPs Have Evolved (and Where They're Going)"
 category: seo
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Devon Bate"
 summary: A history and current state of Google's search results page. From the original 10 blue links to universal search, featured snippets, knowledge panels, and AI Overviews. What each shift meant for SEO, and how to optimize for the modern SERP layout.
 featured: true
 ---
@@ -152,4 +154,4 @@ Our default playbook now treats SERP feature visibility as a first-class campaig
 
 For partner agencies, the implication for client reporting is that we report on share of voice across SERP features, not just keyword rank position. The richer reporting is more useful for clients and reflects how the SERP actually works in 2026.
 
-If you're looking at flat or declining traffic from organic search and trying to figure out whether SERP layout changes are a factor, [book a call](/#book-call) and we'll diagnose where the visibility is actually going.
+If you're looking at flat or declining traffic from organic search and trying to figure out whether SERP layout changes are a factor, [get in touch](/sign-up/) and we'll diagnose where the visibility is actually going.

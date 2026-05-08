@@ -64,7 +64,7 @@ const accessItems = [
             />
             <div>
               <p class="signup__mike-name">Mike Eaton</p>
-              <p class="signup__mike-role">Partner Success, SEO Brothers</p>
+              <p class="signup__mike-role">Account Executive, SEO Brothers</p>
             </div>
           </div>
 
@@ -219,6 +219,8 @@ const accessItems = [
 </Layout>
 
 <script>
+  import { track } from "../lib/analytics";
+
   const form = document.querySelector<HTMLFormElement>(".signup__form");
   const submitBtn = form?.querySelector<HTMLButtonElement>(".signup__submit");
 
@@ -228,6 +230,7 @@ const accessItems = [
       form.reportValidity();
       return;
     }
+    track("portal_signups");
     if (submitBtn) {
       submitBtn.disabled = true;
       submitBtn.textContent = "Signing up...";

@@ -2,6 +2,8 @@
 title: "SEO for Carpet Cleaning Companies: Driving Local Service Calls"
 category: industry
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Devon Bate"
 summary: Carpet cleaning is a hyper-local, conversion-driven service category where the SEO program lives or dies on Google Business Profile, location pages, and review velocity. Here is the playbook we use with carpet cleaning clients.
 featured: false
 ---
@@ -100,4 +102,4 @@ Carpet cleaning is a vertical where most of the leverage is in the foundation: G
 
 For multi-location operators or franchise groups, the work scales meaningfully across territories. For single-location operators, the goal is local-pack dominance in the served city.
 
-If you're running a carpet cleaning business and the call volume isn't matching what your equipment and team could handle, [book a call](/#book-call) and we'll figure out where the rankings are stuck.
+If you're running a carpet cleaning business and the call volume isn't matching what your equipment and team could handle, [get in touch](/sign-up/) and we'll figure out where the rankings are stuck.

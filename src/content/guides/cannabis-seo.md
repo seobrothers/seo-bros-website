@@ -2,6 +2,8 @@
 title: "SEO for Cannabis Businesses: Dispensaries, CBD Brands, and Cannabis Service Providers"
 category: industry
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Devon Bate"
 summary: Cannabis businesses cannot run paid ads on Google or Meta in most markets, which makes organic search the primary acquisition channel. This guide covers dispensary, CBD, and ancillary-service SEO with the regulatory and trust signals the category demands.
 featured: false
 ---
@@ -91,4 +93,4 @@ Cannabis is one of the verticals where the foundation matters disproportionately
 
 For partner agencies serving cannabis clients, we operate the SEO layer end-to-end. The category's regulatory complexity means most generalist agencies under-serve it; specialized work pays back faster.
 
-If you're operating a dispensary, CBD brand, or cannabis service business and trying to figure out where the leverage actually is, [book a call](/#book-call) and we'll diagnose what's holding the rankings back.
+If you're operating a dispensary, CBD brand, or cannabis service business and trying to figure out where the leverage actually is, [get in touch](/sign-up/) and we'll diagnose what's holding the rankings back.

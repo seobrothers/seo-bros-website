@@ -62,7 +62,7 @@ Things that matter:
 
 Keyword stuffing doesn't work. Mentioning the keyword and its variations naturally throughout the content does.
 
-<!-- TODO: replace with a current chart on word count vs ranking position; legacy referenced a Backlinko study image -->
+![Bar chart of average word count for pages on Google's first page, ranked positions 1 through 10. Position 1 averages around 2,050 words; position 10 averages around 1,660. Source: Backlinko.](/images/guides/word-count-vs-ranking.svg)
 
 ### 4. URL slug
 
@@ -156,7 +156,7 @@ Here's the framework in writing.
 
 **Third, internal links should stay within relevant content.** When Google crawls a piece of content, the other content it finds should be very relevant. Supporting content links to siblings within its silo and back up to the parent. A "how to fix a leaky toilet" page does not link to "how to wire a light switch." Different silos. Different intents. Crossing the wires breaks the relevance signal the silo structure exists to build.
 
-<!-- TODO: replace with a current diagram comparing siloed URL structure vs flat / mixed structure; legacy had a comparison image -->
+![Side-by-side comparison of URL structures. Left: a siloed hierarchy with /services/ branching into /plumbing/ and /electrical/, each with its own child pages, and a green "Why it works" callout. Right: a flat structure with all pages at the same level (services, blog posts, admin pages mixed together) and a red "Why it fails" callout.](/images/guides/url-structure-comparison.svg)
 
 A plumbing example. Parent page: `/services/plumbing/` targeting "[city] plumbing services." Child pages within the silo: `/services/plumbing/leaky-faucet-repair/`, `/services/plumbing/water-heater-installation/`, `/services/plumbing/drain-cleaning/`. Each child page targets a more specific, longer-tail keyword. Each links back to the parent and laterally to closely related sibling pages.
 
@@ -200,4 +200,4 @@ On-page is the foundation for everything else. We start every campaign with a fu
 
 For partner agencies, we deliver the optimization sheet as a complete artifact. The agency or their developers can implement directly, or we can handle deployment depending on the engagement.
 
-If your site is underperforming and you're not sure whether the issue is on-page, technical, or off-page, [get in touch](/sign-up) and we'll diagnose where the leverage is.
+If your site is underperforming and you're not sure whether the issue is on-page, technical, or off-page, [get in touch](/sign-up/) and we'll diagnose where the leverage is.

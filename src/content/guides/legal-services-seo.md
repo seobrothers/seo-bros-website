@@ -2,6 +2,8 @@
 title: "SEO for Law Firms: A Practical Guide for Family, Immigration, Personal Injury, and General Practice"
 category: industry
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Devon Bate"
 summary: Legal SEO is one of the most competitive verticals in search. The framework that works across practice areas, plus the specific tactics that separate family law, immigration, and personal injury campaigns from general practice work.
 featured: true
 ---
@@ -22,9 +24,7 @@ A few factors stack to make legal SEO uniquely demanding:
 - **Ad-heavy SERPs.** For high-intent legal queries, the first screen is often four ads, three local pack results, and the organic listings start below the fold. Ranking #1 organic is no longer enough on its own.
 - **Trust signal expectations.** Author credentials, bar association memberships, case results, real attorney bios with qualifications. Google rewards firms that signal expertise; thin sites struggle.
 
-The compensating factor: most law firm websites are mediocre. The bar for outranking competitors is lower than the difficulty would suggest, if the work is done well.
-
-## Statistic worth knowing
+The compensating factor: most law firm websites are mediocre. Stock photos of gavels, generic boilerplate copy, attorney bios that say nothing. The bar for outranking competitors is lower than the difficulty would suggest, if the work is done well.
 
 Roughly 86% of people who need a lawyer use Google to find one, according to ilawyermarketing. That's the entire reason this category attracts the SEO investment it does. The lawyer who shows up first for a high-intent query in their market wins disproportionately.
 
@@ -175,4 +175,4 @@ Legal is one of the verticals where our framework gets the most use. We've worke
 
 For partner agencies serving law firm clients, we operate the SEO layer end-to-end while the agency handles the firm relationship. Clean handoff, full transparency about tactics, no client confusion.
 
-If your firm is competing in a tough legal market and you're not sure where the leverage is, [book a call](/#book-call) and we'll diagnose what's actually holding rankings back.
+If your firm is competing in a tough legal market and you're not sure where the leverage is, [get in touch](/sign-up/) and we'll diagnose what's actually holding rankings back.

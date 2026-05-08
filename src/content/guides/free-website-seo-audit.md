@@ -2,6 +2,8 @@
 title: "Free Website SEO Audit: What's Included and How It Works"
 category: agency
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Devon Bate"
 summary: A real audit done by real people, not a 60-second automated score. What our free SEO audit covers, how the process works, what you get, and what happens after.
 featured: false
 showAuditCta: true
@@ -132,4 +134,4 @@ A short list of typical paths after delivery:
 
 Any of those is fine. The audit produces value either way.
 
-If you're ready to send your URL through, [book a call](/#book-call) and we'll get the audit moving.
+If you're ready to send your URL through, [get in touch](/sign-up/) and we'll get the audit moving.

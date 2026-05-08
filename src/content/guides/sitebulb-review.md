@@ -2,6 +2,8 @@
 title: "Sitebulb: The Desktop SEO Crawler We Actually Use"
 category: seo
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Adam Bate"
 summary: A full review of Sitebulb, the desktop SEO crawler our team has used for years. What it does well, where Screaming Frog still wins, and why the visualization layer is what makes Sitebulb worth keeping in the stack.
 featured: false
 ---
@@ -74,4 +76,4 @@ It's the default crawler for client audits, especially those that get delivered 
 
 For partner agencies, we white-label the audit output by branding the slide deck and PDF deliverables. The Sitebulb data feeds that, but the deliverable goes out under the agency's brand.
 
-If you're trying to figure out which crawler to standardize on for your agency, [book a call](/#book-call) and we'll walk through how each fits different workflow shapes.
+If you're trying to figure out which crawler to standardize on for your agency, [get in touch](/sign-up/) and we'll walk through how each fits different workflow shapes.

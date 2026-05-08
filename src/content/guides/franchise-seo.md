@@ -2,6 +2,8 @@
 title: "Franchise SEO: Multi-Location Architecture, Franchisee Ownership, and Local Visibility"
 category: industry
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Devon Bate"
 summary: "Franchise SEO has to solve two problems at once: a corporate brand campaign and a network of local campaigns that don't cannibalize each other. The framework that actually works across hundreds of locations."
 featured: false
 ---
@@ -127,4 +129,4 @@ A franchise SEO program that holds together has the same shape: a single-domain 
 
 Once the architecture is right and the ownership model is clear, network-wide performance compounds month over month.
 
-If you're running a franchise system and the local-pack visibility doesn't match the size of the network, [book a call](/#book-call) and we'll work through where the architecture or ownership model is leaking ranking signal.
+If you're running a franchise system and the local-pack visibility doesn't match the size of the network, [get in touch](/sign-up/) and we'll work through where the architecture or ownership model is leaking ranking signal.

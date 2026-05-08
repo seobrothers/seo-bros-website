@@ -2,6 +2,8 @@
 title: "White-Label SEO Audits: How We Run Them for Partner Agencies"
 category: agency
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Devon Bate"
 summary: White-label audits for digital agencies who want to offer SEO without operating an in-house SEO team. The deliverable, the process, and the difference between automated audit software and human-run audits.
 featured: false
 ---
@@ -125,4 +127,4 @@ We're an SEO-only agency that operates almost exclusively through partner agency
 
 The audits are run by our senior SEO team. The branding and presentation is built around each partner agency's identity. The end-client never sees us in the deliverable.
 
-If you're a digital agency thinking about offering SEO to your clients without building an in-house team, [book a call](/#book-call) and we'll walk through how the partnership works.
+If you're a digital agency thinking about offering SEO to your clients without building an in-house team, [get in touch](/sign-up/) and we'll walk through how the partnership works.

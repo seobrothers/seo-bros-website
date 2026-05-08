@@ -2,6 +2,8 @@
 title: "Hair Transplant SEO: Ranking FUE, FUT, and Destination Clinic Practices"
 category: industry
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Devon Bate"
 summary: Hair transplant SEO is built on FUE versus FUT keyword splits, cost-driven research content, and gallery-led conversion. The framework that wins for clinics ranging from a single-city practice to a destination clinic serving international patients.
 featured: false
 ---
@@ -110,4 +112,4 @@ A hair transplant SEO program follows the same shape: a clean technique-led keyw
 
 The timeline is real: 9 to 18 months for a clinic starting from a thin baseline, with the gallery and content work front-loaded so the link building lands on a site that can actually convert the traffic.
 
-If you're running a hair transplant practice and the consultations aren't matching the search volume you know is in your market, [book a call](/#book-call) and we'll work through where the leverage is.
+If you're running a hair transplant practice and the consultations aren't matching the search volume you know is in your market, [get in touch](/sign-up/) and we'll work through where the leverage is.

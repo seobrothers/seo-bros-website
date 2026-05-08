@@ -1,6 +1,6 @@
 # Website Wishlist
 
-Things we want on seobrothers.co eventually but aren't ready to ship yet. Add to this list as ideas come up; promote items into actual tasks when the supporting work (recording, copy, asset, etc.) is ready.
+Things we want on seobrothers.com eventually but aren't ready to ship yet. Add to this list as ideas come up; promote items into actual tasks when the supporting work (recording, copy, asset, etc.) is ready.
 
 ## Video / media
 
@@ -24,3 +24,5 @@ Things we want on seobrothers.co eventually but aren't ready to ship yet. Add to
 
 - **Partner agency type framing.** "Trusted by digital marketing, web design, and creative agencies" framing somewhere prominent on `/white-label-seo` if we keep running ads on the `[white label digital marketing]` keyword (otherwise pause that keyword).
 - **Partner logo bar above the fold.** TrustBar already exists on the homepage; consider porting to `/white-label-seo` once we have permission to feature current partners.
+- **Decide what to do with `/acquires-smart-web-solutions/`.** The page exists in `src/pages/` but has no inbound links from Nav, Footer, or anywhere else (orphan). Options: (1) link it from About or a new `/news/` index, (2) `noindex` it via the new `noindex` prop on Layout if it's archival, or (3) delete it. Slug also breaks our convention (verbs in slugs).
+- **Brand refresh of social profiles before linking from new site.** Footer now links to LinkedIn / YouTube / Facebook, but those profiles are outdated and need a refresh for consistency with the new site identity. Coordinate with whoever owns brand.

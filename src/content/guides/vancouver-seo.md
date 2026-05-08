@@ -2,6 +2,7 @@
 title: "Vancouver SEO: Search Behavior Across Metro Vancouver and the Lower Mainland"
 category: cities
 publishDate: 2025-02-13
+author: "Adam Bate"
 updatedDate: 2026-04-30
 summary: Vancouver, Greater Vancouver, Metro Vancouver, Lower Mainland. Plus North Van, West Van, East Van, and a dozen separate municipalities people often think of as "Vancouver." A guide to local search behavior in one of Canada's most fragmented urban search landscapes.
 coverImage: /images/cities/vancouver-seo.jpg
@@ -71,6 +72,43 @@ For a business with a service area covering multiple of these municipalities, ea
 - **Lower Mainland** as regional framing. Common in news, real estate, weather. Some commercial categories use it.
 - **Pacific Northwest** (PNW) framing. Some categories blur Vancouver with Seattle and Portland for regional positioning. Mostly tourism, food, outdoor.
 
+## What the volume actually looks like
+
+Real Keyword Planner data, Canada targeting, May 2026. We're using "dentist [area]" as the sample query because dentists exist anywhere there's population, which makes the cross-area variation a read on search behaviour rather than something specific to the industry. We don't specialize in dental SEO. The same shape holds for plumber and roofer at different absolute numbers.
+
+![Choropleth map of Metro Vancouver municipalities tinted by Google search volume for "dentist [area]". Vancouver dominates but Surrey, Langley, and New Westminster each pull 2,400/mo, Burnaby 1,600, North Van and Coquitlam 1,300 each, with substantial volume continuing across Maple Ridge, Pitt Meadows, Richmond, and the Tri-Cities.](/images/cities/vancouver-search-heatmap.svg)
+
+| Query | Avg monthly searches |
+|---|---:|
+| dentists vancouver | 2,900 |
+| dentist surrey bc | 2,400 |
+| dentist langley | 2,400 |
+| dentist new westminster | 2,400 |
+| dentist burnaby | 1,600 |
+| dentist north vancouver | 1,300 |
+| dentist coquitlam | 1,300 |
+| dentist maple ridge | 1,000 |
+| dentist pitt meadows | 880 |
+| dentists richmond bc | 480 |
+| dentists port coquitlam | 480 |
+| dentists port moody | 480 |
+| dentists west vancouver | 390 |
+| dentist white rock | 320 |
+| dentist kitsilano | 260 |
+| dentist delta bc | 70 |
+| dentist gastown | 40 |
+| dentist greater vancouver | 0 |
+| dentist metro vancouver | 0 |
+| dentist lower mainland | 0 |
+
+This is the most striking dataset across any Canadian market we've looked at. Vancouver itself pulls 2,900/mo for dentist queries. Surrey, Langley, and New Westminster each pull 2,400. Burnaby pulls 1,600. North Vancouver and Coquitlam each pull 1,300. Maple Ridge runs 1,000, Pitt Meadows 880. Richmond, Port Coquitlam, and Port Moody each pull 480. The volume is genuinely distributed across the region, not concentrated in the city of Vancouver.
+
+A business optimizing only for "Vancouver" in this region misses more search volume than it captures. The other municipalities aren't a long-tail rounding error; they're comparable markets in their own right.
+
+The other half of the table is the inverse. "Greater Vancouver," "Metro Vancouver," and "Lower Mainland" all return zero across dentist, plumber, and roofing exact-match volume. The regional designations exist for media, government, and real-estate framing, not for service queries. A page titled "Greater Vancouver Plumber" is targeting a query that doesn't really get typed.
+
+Plumber follows the same shape with bigger numbers (Vancouver 4,400, Surrey 2,400, Coquitlam 1,900, Burnaby 1,600, North Van 1,300, Langley 1,300, West Van 390). Roofing is more compressed and concentrated in Vancouver proper.
+
 ## What this means for local SEO in Vancouver
 
 Practical takeaways for businesses serving this market.
@@ -89,8 +127,10 @@ Practical takeaways for businesses serving this market.
 
 For the broader local SEO framework that applies to any market, see our [local SEO guide](/guides/local-seo/).
 
-## Where SEO Brothers fits in Vancouver
+## How we approach Vancouver SEO at SEO Brothers
 
-Vancouver is a market where we're actively looking for an exclusive partnership with one local agency or web professional. The agency landscape here is mature and competitive, which means a focused white-label SEO partnership behind a strong local agency produces meaningful differentiation in client outcomes.
+Vancouver campaigns get built municipality by municipality. Real Burnaby content. Real Surrey content. Real Richmond content. North Van and West Van treated as the separate cities they are, not Vancouver neighborhoods. Where the business genuinely serves a specific neighborhood inside the city of Vancouver (Yaletown, Kitsilano, Mount Pleasant, Gastown), we add neighborhood-level content with real local references rather than a city name swapped into a template.
 
-If you run an agency anywhere in Metro Vancouver and want a senior SEO team behind your existing client relationships, [book a call](/#book-call) and we'll walk through what a partnership looks like.
+The biggest unlocks we usually find: the dedicated Surrey or Burnaby page that captures the volume Vancouver alone can't, and the honest decision about whether the business genuinely serves that municipality before building content for it.
+
+If you're a business or agency anywhere in Metro Vancouver, [get in touch](/sign-up/) and we'll walk through what works in your specific market.

@@ -2,6 +2,8 @@
 title: "SEO for Dentists and Dental Practices"
 category: industry
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Devon Bate"
 summary: How general and family dental practices win local search across emergency dental queries, cosmetic premium services, insurance acceptance content, and the family-positioning that drives most general practice growth.
 featured: false
 ---
@@ -123,4 +125,4 @@ Reviews and local link building run continuously. Reviews specifically get moved
 
 The biggest unlocks we usually find on a new dental client: an emergency funnel that didn't exist before, real per-insurance pages that capture queries the practice was invisible for, and honest cost content that brings in qualified searchers instead of price-shoppers calling for quotes.
 
-If you run a dental practice and you're losing patients to a competitor who outranks you, or you've never built out emergency or insurance content, [book a call](/#book-call) and we'll walk through what's actually holding the visibility back.
+If you run a dental practice and you're losing patients to a competitor who outranks you, or you've never built out emergency or insurance content, [get in touch](/sign-up/) and we'll walk through what's actually holding the visibility back.

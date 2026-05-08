@@ -2,6 +2,8 @@
 title: "SEO for Financial Services: Accountants, Insurance, and Mortgage"
 category: industry
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Devon Bate"
 summary: Financial services SEO has tighter regulatory constraints, higher trust expectations, and stronger seasonal patterns than most verticals. The framework, the niche specialization angles, and the practice-specific tactics for accounting firms, insurance brokers, and mortgage professionals.
 featured: true
 ---
@@ -228,4 +230,4 @@ Financial services campaigns get the standard framework with extra attention to 
 
 For partner agencies in this space, we run the SEO layer while the agency manages the firm relationship and any compliance review processes the firm requires.
 
-If you're a financial services firm trying to figure out which of these tactics maps to your specific situation, [book a call](/#book-call) and we'll walk through your market and your competition.
+If you're a financial services firm trying to figure out which of these tactics maps to your specific situation, [get in touch](/sign-up/) and we'll walk through your market and your competition.

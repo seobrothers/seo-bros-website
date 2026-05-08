@@ -2,6 +2,8 @@
 title: "SEO for HVAC Contractors: Heating, Cooling, and Service Calls"
 category: industry
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Devon Bate"
 summary: How HVAC contractors win in local search across seasonal demand, emergency service queries, and the service-area business model. Tactics that turn organic visibility into booked calls.
 featured: false
 ---
@@ -93,4 +95,4 @@ We treat HVAC as a year-round program with seasonal weighting. The foundational 
 
 The biggest unlocks we usually find on a new HVAC client: legitimate cost content where there was none, real service-area pages instead of templated city pages, call tracking that exposes which pages actually book jobs, and a GBP that's actually maintained instead of set up once and forgotten.
 
-If you're an HVAC contractor stuck below the local pack or losing emergency calls to a competitor with a faster site, [book a call](/#book-call) and we'll walk through what's specifically holding the rankings back.
+If you're an HVAC contractor stuck below the local pack or losing emergency calls to a competitor with a faster site, [get in touch](/sign-up/) and we'll walk through what's specifically holding the rankings back.

@@ -2,6 +2,8 @@
 title: "The Google Disavow Tool: Why You Almost Certainly Should Not Use It"
 category: seo
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Devon Bate"
 summary: A direct guide to Google's Disavow Links tool. What it is, the narrow circumstances where it's appropriate, the much wider circumstances where it isn't, and why the tool is misused often enough that we've written this anti-guide.
 featured: false
 ---
@@ -100,4 +102,4 @@ Our default answer when a partner agency or client asks about disavowing links i
 
 In the rare cases where disavow is the right call (manual action, confirmed negative SEO attack, inherited bad profile), we run it with care. Audit, outreach where possible, conservative file construction, careful documentation.
 
-If you're considering the Disavow tool because of a traffic drop or because you saw flagged links in an SEO tool, [book a call](/#book-call) before submitting anything. We'll help diagnose what the real problem is.
+If you're considering the Disavow tool because of a traffic drop or because you saw flagged links in an SEO tool, [get in touch](/sign-up/) before submitting anything. We'll help diagnose what the real problem is.

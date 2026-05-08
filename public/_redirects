@@ -1,5 +1,5 @@
 # SEO Brothers redirect map
-# Migrating from seobrothers.com (legacy WordPress) to seobrothers.co (Astro)
+# Maps legacy WordPress URLs on seobrothers.com to the new Astro routes on the same domain.
 # Format: OLD_PATH  NEW_PATH  STATUS
 
 # ============================================================================

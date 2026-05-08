@@ -2,6 +2,7 @@
 title: "Keyword Research: How to Identify the Right Keywords for SEO"
 category: seo
 publishDate: 2025-02-13
+author: "Adam Bate"
 updatedDate: 2026-04-30
 summary: A step-by-step framework for identifying keywords that drive qualified organic traffic. The keyword types that matter, the tools we use, the validation process, and the spreadsheet structure that makes the output actionable.
 featured: true
@@ -232,4 +233,4 @@ Keyword research is the first deliverable in every campaign we run. We use Ahref
 
 For partner agencies, we deliver the keyword research spreadsheet as the foundation document for the campaign. The agency reviews with the client, and we move into mapping once the priorities are locked.
 
-If you've got a campaign starting and want a tailored keyword research approach, [book a call](/#book-call) and we'll walk through how we'd scope it for your situation.
+If you've got a campaign starting and want a tailored keyword research approach, [get in touch](/sign-up/) and we'll walk through how we'd scope it for your situation.

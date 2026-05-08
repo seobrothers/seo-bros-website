@@ -2,6 +2,8 @@
 title: "Website Redesign SEO: A Nine-Step Process to Preserve Rankings Through a Migration"
 category: seo
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Adam Bate"
 summary: Most websites lose organic traffic after a redesign because the SEO work was an afterthought. The nine-step process for shipping a redesign that holds rankings, plus the specific traps (staging robots.txt, redirect mapping, template regressions) that cause the worst losses.
 featured: false
 ---
@@ -135,4 +137,4 @@ All three are catchable with the audit and QA discipline above.
 
 The redesign that holds rankings starts before visual design begins, audits the current site exhaustively, briefs design and development with SEO constraints baked in, maps redirects against a real new URL structure, QAs the staging environment before launch, and audits the live site for the first month after.
 
-If you're heading into a redesign or recovering from one that didn't go well, [book a call](/#book-call) and we'll work through where the migration is leaking ranking signal.
+If you're heading into a redesign or recovering from one that didn't go well, [get in touch](/sign-up/) and we'll work through where the migration is leaking ranking signal.

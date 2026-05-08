@@ -2,6 +2,8 @@
 title: "SEO for Home Builders and Custom Construction"
 category: industry
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Devon Bate"
 summary: Home builder SEO is a long-sales-cycle, high-project-value category where the buyer researches for months before talking to anyone. The framework that captures that buyer, plus the architecture that separates new construction from home services.
 featured: false
 ---
@@ -97,4 +99,4 @@ Home builders are one of the categories where the work is patient and the payoff
 
 For builders working with brand-and-design agencies, we operate the SEO layer end-to-end. Most builder marketing focuses on the visual experience at the expense of the search architecture. Both can coexist, but it takes deliberate work to make them.
 
-If you're a builder watching competitors fill model homes faster than yours, or if your custom inquiries are skewing toward unqualified shoppers, [book a call](/#book-call) and we'll diagnose what the search work could actually deliver.
+If you're a builder watching competitors fill model homes faster than yours, or if your custom inquiries are skewing toward unqualified shoppers, [get in touch](/sign-up/) and we'll diagnose what the search work could actually deliver.

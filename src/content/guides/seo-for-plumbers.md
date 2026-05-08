@@ -2,6 +2,7 @@
 title: "SEO for Plumbers: Strategies That Actually Move the Needle"
 category: industry
 publishDate: 2025-02-13
+author: "Adam Bate"
 updatedDate: 2026-04-30
 summary: Plumbing is one of the most competitive local-search verticals. The architecture, the GBP and review tactics, the schema for emergency services, and the citation cleanup that drive booked plumbing service calls.
 featured: true
@@ -227,4 +228,4 @@ Plumbing is part of the broader [home services SEO hub](/guides/home-services-se
 
 For partner agencies serving plumbing clients, we operate the SEO layer end-to-end while the agency manages the contractor relationship.
 
-If you have a plumbing client and want a tailored take on the campaign, [book a call](/#book-call) and we'll walk through the approach.
+If you have a plumbing client and want a tailored take on the campaign, [get in touch](/sign-up/) and we'll walk through the approach.

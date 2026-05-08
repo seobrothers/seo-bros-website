@@ -2,6 +2,7 @@
 title: "How to Sell SEO Services Without Being a Subject Matter Expert"
 category: agency
 publishDate: 2025-02-13
+author: "Adam Bate"
 updatedDate: 2026-04-30
 summary: You don't need to be an SEO expert to sell SEO. You need to understand your client's business and bring in the right delivery team. The framework, the sales process, and the pricing reality most agencies avoid.
 featured: true
@@ -162,4 +163,4 @@ For the broader white-label partnership context, see our [white-label SEO report
 
 We help our partner agencies sell SEO by providing the audit, the proposal templates, the case studies, and the kickoff process. The agency owns the client relationship; we provide the operational backbone.
 
-If selling SEO is the bottleneck for your agency, [book a call](/#book-call) and we'll walk through how our partners approach it.
+If selling SEO is the bottleneck for your agency, [get in touch](/sign-up/) and we'll walk through how our partners approach it.

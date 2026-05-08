@@ -2,6 +2,7 @@
 title: "White-Label SEO Reporting: Reporting for Your Clients With Your Brand"
 category: agency
 publishDate: 2025-02-13
+author: "Devon Bate"
 updatedDate: 2026-04-30
 summary: "A good white-label SEO report does three things at once: informs your client, protects your margin, and reinforces your brand instead of your fulfillment partner's. The platforms, the structure, and the reporting cadence that work."
 ---
@@ -228,4 +229,4 @@ For agencies whose clients expect deeper customization, we extend the standard r
 
 The goal in every case: the report looks like the agency produced it, the metrics matter to the client, and the commentary explains what's happening and what's next.
 
-Want a peek at how our partners report? [Book a call](/#book-call) and we'll walk through examples.
+Want a peek at how our partners report? [Get in touch](/sign-up/) and we'll walk through examples.

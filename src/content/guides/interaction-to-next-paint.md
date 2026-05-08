@@ -2,6 +2,7 @@
 title: "Interaction to Next Paint (INP): What Replaced FID and How to Optimize for It"
 category: seo
 publishDate: 2025-02-13
+author: "Adam Bate"
 updatedDate: 2026-04-30
 summary: INP replaced First Input Delay as a Core Web Vital in March 2024. A complete guide to what it measures, why it's stricter than FID, the thresholds that matter, and the optimization tactics that move sites from failing to passing.
 ---
@@ -154,4 +155,4 @@ INP is part of every page-speed audit we run. The diagnostic flow:
 
 For partner agencies whose clients are failing Core Web Vitals due to INP, we run the audit, document the findings, and either implement directly or hand off prioritized recommendations to the client's development team.
 
-If your Search Console is showing INP failures and you're not sure where to start, [book a call](/#book-call) and we'll walk through the diagnostics with you.
+If your Search Console is showing INP failures and you're not sure where to start, [get in touch](/sign-up/) and we'll walk through the diagnostics with you.

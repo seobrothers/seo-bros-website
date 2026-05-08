@@ -2,6 +2,8 @@
 title: "SEO for Acupuncture Clinics and Practitioners"
 category: industry
 publishDate: 2026-04-30
+updatedDate: 2026-05-06
+author: "Devon Bate"
 summary: Acupuncture SEO is a condition-driven category where most patients arrive through searches for specific problems (back pain, fertility, anxiety) rather than for acupuncture itself. Here is the framework we use to capture that demand.
 featured: false
 ---
@@ -97,4 +99,4 @@ Acupuncture is a vertical where condition-content depth is usually the biggest o
 
 For practices working with broader marketing agencies, we operate the SEO layer end-to-end. The condition-content depth is where most of the unrealized traffic lives, and it takes patient, methodical work to build.
 
-If you're running an acupuncture practice and most of your patients still come through word of mouth rather than search, [book a call](/#book-call) and we'll diagnose what the search side could actually look like.
+If you're running an acupuncture practice and most of your patients still come through word of mouth rather than search, [get in touch](/sign-up/) and we'll diagnose what the search side could actually look like.

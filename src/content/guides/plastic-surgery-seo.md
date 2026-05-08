@@ -2,6 +2,7 @@
 title: "SEO for Plastic Surgery Practices: Rankings, Patient Acquisition, and Lead Conversion"
 category: industry
 publishDate: 2026-05-04
+updatedDate: 2026-05-06
 author: "Devon Bate"
 summary: Plastic surgery is one of the most competitive medical SEO verticals. The framework for ranking procedure pages, the dual focus on SEO and lead conversion, before-and-after content strategy, and the local tactics that actually drive consultation bookings.
 featured: true
@@ -212,4 +213,4 @@ Plastic surgery campaigns get the standard framework with category-specific weig
 
 For partner agencies serving plastic surgery practices, we run the SEO and on-site conversion layers while the agency manages the practice relationship.
 
-If you're a plastic surgery practice or an agency partner trying to figure out where the funnel is leaking, [get in touch](/sign-up) and we'll diagnose it.
+If you're a plastic surgery practice or an agency partner trying to figure out where the funnel is leaking, [get in touch](/sign-up/) and we'll diagnose it.
