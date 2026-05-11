@@ -174,7 +174,7 @@ const faqGroups = [
 ---
 
 <Layout
-  title="White Label SEO Services | SEO Brothers"
+  title="White Label SEO: Reselling SEO Services With SEO Brothers"
   description="Partner with SEO Brothers for white label SEO services. No upfront cost, dedicated campaign managers, and 50%+ margins for your agency."
 >
   <Nav />
@@ -2309,32 +2309,17 @@ const faqGroups = [
   }
 
   .wl-pricing-card--featured {
-    background: var(--dark);
-    border: none;
+    background:
+      linear-gradient(var(--dark), var(--dark)) padding-box,
+      linear-gradient(135deg, var(--teal) 0%, var(--purple) 50%, var(--green) 100%) border-box;
+    background:
+      linear-gradient(var(--dark), var(--dark)) padding-box,
+      linear-gradient(135deg in oklch, var(--teal) 0%, var(--purple) 50%, var(--green) 100%) border-box;
+    border: 1.5px solid transparent;
     color: var(--text-on-dark);
     box-shadow: var(--shadow-xl);
     transform: translateY(-12px);
     overflow: hidden;
-  }
-
-  .wl-pricing-card--featured::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1.5px;
-    background: linear-gradient(
-      135deg in oklch,
-      var(--teal) 0%,
-      var(--purple) 50%,
-      var(--green) 100%
-    );
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    pointer-events: none;
   }
 
   .wl-pricing-card--featured:hover {
@@ -2354,12 +2339,8 @@ const faqGroups = [
   }
 
   .wl-pricing-card--featured .wl-pricing-amount {
-    background: linear-gradient(
-      135deg in oklch,
-      var(--teal-light) 0%,
-      var(--purple-light) 60%,
-      var(--green-light) 100%
-    );
+    background: linear-gradient(135deg, var(--teal-light) 0%, var(--purple-light) 60%, var(--green-light) 100%);
+    background: linear-gradient(135deg in oklch, var(--teal-light) 0%, var(--purple-light) 60%, var(--green-light) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -2382,6 +2363,7 @@ const faqGroups = [
     position: absolute;
     top: 24px;
     right: 24px;
+    background: linear-gradient(135deg, var(--teal) 0%, var(--purple) 100%);
     background: linear-gradient(135deg in oklch, var(--teal) 0%, var(--purple) 100%);
     color: white;
     font-size: 11px;
