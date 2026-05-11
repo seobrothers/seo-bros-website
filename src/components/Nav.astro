@@ -52,6 +52,7 @@ const { variant = "default", hideCta = false } = Astro.props;
   toggle?.addEventListener("click", () => {
     links?.classList.toggle("open");
     toggle.classList.toggle("open");
+    nav?.classList.toggle("menu-open");
   });
 </script>
 
@@ -72,6 +73,22 @@ const { variant = "default", hideCta = false } = Astro.props;
     -webkit-backdrop-filter: blur(20px);
     padding: 16px 0;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+
+  /* When the mobile menu is open, neutralize the scrolled-nav background and
+     (critically) its backdrop-filter. backdrop-filter makes the .nav element a
+     containing block for its fixed children, which would clip the .nav-links
+     overlay to the nav bar's height instead of letting it cover the viewport. */
+  .nav.menu-open,
+  .nav.menu-open.scrolled {
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+  }
+
+  .nav.menu-open .nav-link {
+    color: rgba(255, 255, 255, 0.9);
   }
 
   /* Light variant: dark text from page load (for pages without a dark hero) */
