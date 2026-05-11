@@ -6,6 +6,7 @@ updatedDate: 2026-05-06
 author: "Devon Bate"
 summary: Carpet cleaning is a hyper-local, conversion-driven service category where the SEO program lives or dies on Google Business Profile, location pages, and review velocity. Here is the playbook we use with carpet cleaning clients.
 featured: false
+draft: true
 ---
 
 Carpet cleaning is a textbook local-service-business SEO category. The buying decision is almost always made within a tight geographic radius, the conversion happens by phone or quick form fill, and the average customer doesn't comparison-shop the way they do for higher-consideration purchases. If a prospect can find you, see decent reviews, and reach you fast, you usually get the job.

@@ -12,6 +12,7 @@ const { category, label, blurb, accent } = Astro.props;
 
 const guides = (await getCollection("guides"))
   .filter((g) => g.data.category === category)
+  .filter((g) => !import.meta.env.PROD || !g.data.draft)
   .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
 
 function fmtDate(d: Date) {

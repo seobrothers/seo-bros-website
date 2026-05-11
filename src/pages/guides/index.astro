@@ -5,9 +5,9 @@ import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
 
-const allGuides = (await getCollection("guides")).sort(
-  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
-);
+const allGuides = (await getCollection("guides"))
+  .filter((g) => !import.meta.env.PROD || !g.data.draft)
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
 
 interface CategorySpec {
   slug: "seo" | "industry" | "agency";
@@ -257,7 +257,7 @@ function fmtDate(d: Date) {
 
   .guides-hero__title-gradient {
     background: linear-gradient(
-      135deg,
+      135deg in oklch,
       var(--teal) 0%,
       var(--purple) 60%,
       var(--green) 100%
@@ -307,7 +307,7 @@ function fmtDate(d: Date) {
     border-radius: inherit;
     padding: 1px;
     background: linear-gradient(
-      135deg,
+      135deg in oklch,
       var(--teal),
       var(--purple),
       var(--green)

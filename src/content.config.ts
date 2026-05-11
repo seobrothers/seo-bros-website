@@ -71,6 +71,7 @@ const guides = defineCollection({
     coverImage: z.string().optional(),
     coverImageAlt: z.string().optional(),
     featured: z.boolean().default(false),
+    draft: z.boolean().default(false),
     showToc: z.boolean().default(true),
     showAuditCta: z.boolean().default(false),
   }),

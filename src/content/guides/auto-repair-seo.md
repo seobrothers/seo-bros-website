@@ -6,6 +6,7 @@ updatedDate: 2026-05-06
 author: "Devon Bate"
 summary: How auto repair shops win local search across vehicle-make and service-type combinations, urgent breakdown queries, and the fleet versus consumer split that defines most independent shops.
 featured: false
+draft: true
 ---
 
 Auto repair SEO is one of the better-defined local categories. The keyword universe is wide but predictable, the local pack drives most calls, and the competitive set in any given city is usually a mix of independent shops, regional chains, and a few national franchises. The shops that get organic visibility right outgrow their markets without burning the marketing budget on Google Ads they can't afford.

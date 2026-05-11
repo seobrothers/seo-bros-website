@@ -6,6 +6,7 @@ updatedDate: 2026-05-06
 author: "Devon Bate"
 summary: How general and family dental practices win local search across emergency dental queries, cosmetic premium services, insurance acceptance content, and the family-positioning that drives most general practice growth.
 featured: false
+draft: true
 ---
 
 General and family dental SEO is one of the more straightforward healthcare verticals, but most practice sites do it badly. The keyword universe is wide, the local pack is critical, and the conversion path is short: most searches turn into a phone call or an online appointment booking within the same session. The practices that get this right outgrow their markets quickly.

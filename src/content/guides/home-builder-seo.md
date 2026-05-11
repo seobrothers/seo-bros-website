@@ -6,6 +6,7 @@ updatedDate: 2026-05-06
 author: "Devon Bate"
 summary: Home builder SEO is a long-sales-cycle, high-project-value category where the buyer researches for months before talking to anyone. The framework that captures that buyer, plus the architecture that separates new construction from home services.
 featured: false
+draft: true
 ---
 
 Home builder SEO is not the same as home services SEO, even though both categories often get lumped together. A homeowner searching for a plumber is buying within days. A buyer searching for a custom home builder is in a research process that lasts six months to two years before they sign a contract. The keyword universe is different, the content needs are different, and the conversion path is different.

@@ -113,14 +113,11 @@ Ranking gets the phone to ring. Conversion architecture determines whether the c
 
 ## Vertical-specific guides
 
-Home services covers a wide range of trades, each with category-specific tactics. The following guides cover the verticals where the strategy diverges meaningfully from the general framework above.
+Home services covers a wide range of trades, each with category-specific tactics. The dedicated playbook below covers the vertical where the strategy diverges most meaningfully from the general framework above.
 
 - [SEO for Plumbers](/guides/seo-for-plumbers/)
-- [SEO for HVAC Contractors](/guides/hvac-seo/)
-- [SEO for Carpet Cleaning Companies](/guides/carpet-cleaning-seo/)
-- [SEO for Tree Service Companies](/guides/tree-service-seo/)
 
-Other home services categories (roofing, electrical, painting, landscaping, pest control) follow the same framework with vertical-specific keyword and content adjustments. We don't have dedicated guides for those yet but the general approach applies.
+Other home services categories — HVAC, carpet cleaning, tree service, roofing, electrical, painting, landscaping, pest control — follow the same framework with vertical-specific keyword and content adjustments. Dedicated guides for these are in the works.
 
 ## Common home services SEO mistakes
 

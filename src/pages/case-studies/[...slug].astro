@@ -566,7 +566,7 @@ const charts = d.charts.map((c, idx) => {
     line-height: 1;
     letter-spacing: -0.04em;
     background: linear-gradient(
-      135deg,
+      135deg in oklch,
       var(--teal-light) 0%,
       var(--purple-light) 60%,
       var(--green-light) 100%
@@ -748,7 +748,7 @@ const charts = d.charts.map((c, idx) => {
 
   .study-chart__bar-fill {
     width: 100%;
-    background: linear-gradient(180deg, var(--teal) 0%, var(--purple) 100%);
+    background: linear-gradient(180deg in oklch, var(--teal) 0%, var(--purple) 100%);
     border-radius: 6px 6px 0 0;
     min-height: 6px;
     animation: study-bar-grow 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
@@ -883,7 +883,7 @@ const charts = d.charts.map((c, idx) => {
     font-weight: 700;
     line-height: 1.05;
     letter-spacing: -0.02em;
-    background: linear-gradient(135deg, var(--teal) 0%, var(--purple) 100%);
+    background: linear-gradient(135deg in oklch, var(--teal) 0%, var(--purple) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

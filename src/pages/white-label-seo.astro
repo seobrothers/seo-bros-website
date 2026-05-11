@@ -764,10 +764,14 @@ const faqGroups = [
             <span class="wl-portal-mockup-url">portal.seobrothers.com</span>
           </div>
           <div class="wl-portal-mockup-body">
-            <div class="wl-portal-mockup-placeholder">
-              [Image: Partner portal dashboard, campaign management interface
-              showing active campaigns, performance metrics, and quick actions]
-            </div>
+            <img
+              src="/images/partner-portal.png"
+              alt="SEO Brothers Partner Portal dashboard showing campaign management, performance metrics, and quick actions"
+              class="wl-portal-mockup-image"
+              loading="lazy"
+              width="3456"
+              height="1912"
+            />
           </div>
         </div>
       </div>
@@ -1519,7 +1523,7 @@ const faqGroups = [
 
   .wl-hero-title-gradient {
     background: linear-gradient(
-      135deg,
+      135deg in oklch,
       var(--teal) 0%,
       var(--purple) 50%,
       var(--green) 100%
@@ -1701,7 +1705,7 @@ const faqGroups = [
     left: 23px;
     width: 2px;
     background: linear-gradient(
-      180deg,
+      180deg in oklch,
       var(--teal),
       var(--purple),
       var(--green)
@@ -1933,7 +1937,7 @@ const faqGroups = [
     border-radius: var(--radius-lg);
     padding: 1px;
     background: linear-gradient(
-      135deg,
+      135deg in oklch,
       var(--teal),
       var(--purple),
       var(--green)
@@ -2157,22 +2161,17 @@ const faqGroups = [
   }
 
   .wl-portal-mockup-body {
-    padding: 40px;
-    min-height: 300px;
+    padding: 0;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
+    background: var(--dark-800);
   }
 
-  .wl-portal-mockup-placeholder {
-    color: var(--text-on-dark-muted);
-    font-size: 14px;
-    text-align: center;
-    max-width: 500px;
-    font-style: italic;
-    padding: 40px;
-    border: 2px dashed rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-lg);
+  .wl-portal-mockup-image {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   @media (max-width: 768px) {
@@ -2325,7 +2324,7 @@ const faqGroups = [
     border-radius: inherit;
     padding: 1.5px;
     background: linear-gradient(
-      135deg,
+      135deg in oklch,
       var(--teal) 0%,
       var(--purple) 50%,
       var(--green) 100%
@@ -2356,7 +2355,7 @@ const faqGroups = [
 
   .wl-pricing-card--featured .wl-pricing-amount {
     background: linear-gradient(
-      135deg,
+      135deg in oklch,
       var(--teal-light) 0%,
       var(--purple-light) 60%,
       var(--green-light) 100%
@@ -2383,7 +2382,7 @@ const faqGroups = [
     position: absolute;
     top: 24px;
     right: 24px;
-    background: linear-gradient(135deg, var(--teal) 0%, var(--purple) 100%);
+    background: linear-gradient(135deg in oklch, var(--teal) 0%, var(--purple) 100%);
     color: white;
     font-size: 11px;
     font-weight: 700;
@@ -2716,7 +2715,7 @@ const faqGroups = [
     font-family: var(--font-display);
     font-size: 32px;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--teal), var(--purple));
+    background: linear-gradient(135deg in oklch, var(--teal), var(--purple));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -3007,7 +3006,7 @@ const faqGroups = [
 
   .wl-bottom-cta-gradient {
     background: linear-gradient(
-      135deg,
+      135deg in oklch,
       var(--teal) 0%,
       var(--purple) 50%,
       var(--green) 100%

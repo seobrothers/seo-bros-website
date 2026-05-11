@@ -6,6 +6,7 @@ updatedDate: 2026-05-06
 author: "Devon Bate"
 summary: Medspa SEO sits at the intersection of medical and beauty search behavior. The framework that gets aesthetic injectables, laser, and body contouring practices ranking against Groupon, RealSelf, and the practice across the street.
 featured: false
+draft: true
 ---
 
 Medspa is one of the most saturated local categories in search. In any major metro, the local pack for "Botox near me" is a fight between physician-led aesthetics practices, dermatology offices running an aesthetics arm, day spas that added a nurse injector, and chains like Ideal Image. Layer on the aggregator real estate that RealSelf, Groupon, and Yelp occupy on the first page, and the organic ceiling for any single practice is lower than it looks.

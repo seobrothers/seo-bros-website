@@ -558,7 +558,7 @@ const layoutSchema = faqSchema ? [faqSchema, breadcrumbSchema] : [breadcrumbSche
   }
 
   .ind-hero-title-gradient {
-    background: linear-gradient(135deg, var(--teal) 0%, var(--purple) 50%, var(--green) 100%);
+    background: linear-gradient(135deg in oklch, var(--teal) 0%, var(--purple) 50%, var(--green) 100%);
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -681,7 +681,7 @@ const layoutSchema = faqSchema ? [faqSchema, breadcrumbSchema] : [breadcrumbSche
     display: block; font-family: var(--font-display);
     font-size: clamp(28px, 4vw, 36px); font-weight: 700;
     letter-spacing: -0.02em;
-    background: linear-gradient(135deg, var(--teal), var(--purple));
+    background: linear-gradient(135deg in oklch, var(--teal), var(--purple));
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 8px;
@@ -709,7 +709,7 @@ const layoutSchema = faqSchema ? [faqSchema, breadcrumbSchema] : [breadcrumbSche
   .ind-svc-card::before {
     content: ""; position: absolute; inset: 0;
     border-radius: var(--radius-lg); padding: 1px;
-    background: linear-gradient(135deg, var(--teal), var(--purple), var(--green));
+    background: linear-gradient(135deg in oklch, var(--teal), var(--purple), var(--green));
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude; -webkit-mask-composite: xor;

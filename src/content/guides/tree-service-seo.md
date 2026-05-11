@@ -5,6 +5,7 @@ publishDate: 2025-02-13
 author: "Adam Bate"
 updatedDate: 2026-04-30
 summary: Tree service is a seasonal, hyper-local business where SEO can be the difference between a thriving company and a quiet phone. The architecture, the keyword strategy, the GBP and emergency-storm tactics that fill an arborist's calendar.
+draft: true
 ---
 
 Tree service is one of those verticals where local intent dominates and competition is intense, especially in mid-sized markets. The right SEO strategy can fill a crew's calendar months in advance. The wrong one (or none at all) leaves the phone quiet during peak season and crews scrambling for work in slower months.

@@ -304,7 +304,7 @@ const verticals = Array.from(
 
   .cs-hero__title-gradient {
     background: linear-gradient(
-      135deg,
+      135deg in oklch,
       var(--teal) 0%,
       var(--purple) 60%,
       var(--green) 100%
@@ -444,7 +444,7 @@ const verticals = Array.from(
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, var(--teal), var(--purple), var(--green));
+    background: linear-gradient(135deg in oklch, var(--teal), var(--purple), var(--green));
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
     -webkit-mask: linear-gradient(#fff 0 0) content-box,
@@ -512,7 +512,7 @@ const verticals = Array.from(
     font-weight: 800;
     line-height: 1;
     letter-spacing: -0.03em;
-    background: linear-gradient(135deg, var(--teal) 0%, var(--purple) 100%);
+    background: linear-gradient(135deg in oklch, var(--teal) 0%, var(--purple) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

@@ -6,6 +6,7 @@ updatedDate: 2026-05-06
 author: "Devon Bate"
 summary: How to build search visibility for funeral homes across at-need urgency and pre-need planning intent, with location pages, cultural and religious accommodation content, and tone that respects the audience.
 featured: false
+draft: true
 ---
 
 Funeral home SEO sits in an unusual category. The audience is in pain, the search behavior splits cleanly between immediate need and forward planning, and the tone of the content matters more than in almost any other vertical. A site that ranks well but reads like a sales pitch will lose the family that lands on it.

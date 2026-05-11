@@ -6,6 +6,7 @@ updatedDate: 2026-05-06
 author: "Devon Bate"
 summary: How HVAC contractors win in local search across seasonal demand, emergency service queries, and the service-area business model. Tactics that turn organic visibility into booked calls.
 featured: false
+draft: true
 ---
 
 HVAC is a seasonal, urgency-driven, hyper-local category, and the search behavior reflects that. The same homeowner who casually researches "best heat pump for cold climates" in October becomes a panicked "furnace not working" searcher in January. Your SEO program has to capture both moods, often from the same household, on devices that are usually phones.

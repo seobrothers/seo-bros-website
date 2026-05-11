@@ -11,6 +11,7 @@ export async function getStaticPaths() {
   const guides = await getCollection("guides");
   return guides
     .filter((g) => !reservedSlugs.has(g.id))
+    .filter((g) => !import.meta.env.PROD || !g.data.draft)
     .map((guide) => ({
       params: { slug: guide.id },
       props: { guide },
@@ -555,6 +556,18 @@ const breadcrumbSchema = {
     line-height: 1.65;
     color: var(--text-secondary);
     margin-bottom: 20px;
+  }
+
+  .guide-audit-cta .btn-primary {
+    background: var(--dark);
+    color: var(--white);
+    box-shadow: 0 4px 12px rgba(10, 15, 26, 0.18);
+  }
+
+  .guide-audit-cta .btn-primary:hover {
+    background: var(--text-primary);
+    box-shadow: 0 6px 18px rgba(10, 15, 26, 0.25);
+    transform: translateY(-1px);
   }
 
   /* ═══════════════════════════════════════════════════════════════════

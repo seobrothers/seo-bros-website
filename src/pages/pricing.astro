@@ -129,7 +129,7 @@ const definitions: Definition[] = [
   },
   {
     term: "Content",
-    body: "A new blog post or geo / location page written, optimized, and published. Available à la carte from $90 per piece for any tier.",
+    body: "A new blog post or geo / location page written, optimized, and published. Available à la carte from $120 per piece for any tier.",
   },
 ];
 
@@ -608,7 +608,7 @@ const faqs: { q: string; a: string }[] = [
 
   .pricing-hero__title-gradient {
     background: linear-gradient(
-      135deg,
+      135deg in oklch,
       var(--teal) 0%,
       var(--purple) 60%,
       var(--green) 100%
@@ -699,7 +699,7 @@ const faqs: { q: string; a: string }[] = [
 
   .tier--purple::after {
     background: linear-gradient(
-      90deg,
+      90deg in oklch,
       var(--teal) 0%,
       var(--purple) 50%,
       var(--green) 100%
@@ -731,7 +731,7 @@ const faqs: { q: string; a: string }[] = [
     border-radius: inherit;
     padding: 1.5px;
     background: linear-gradient(
-      135deg,
+      135deg in oklch,
       var(--teal) 0%,
       var(--purple) 50%,
       var(--green) 100%
@@ -758,7 +758,7 @@ const faqs: { q: string; a: string }[] = [
     text-transform: uppercase;
     padding: 6px 12px;
     border-radius: var(--radius-full);
-    background: linear-gradient(135deg, var(--teal) 0%, var(--purple) 100%);
+    background: linear-gradient(135deg in oklch, var(--teal) 0%, var(--purple) 100%);
     color: var(--white);
   }
 
@@ -819,7 +819,7 @@ const faqs: { q: string; a: string }[] = [
 
   .tier--featured .tier__price-value {
     background: linear-gradient(
-      135deg,
+      135deg in oklch,
       var(--teal-light) 0%,
       var(--purple-light) 60%,
       var(--green-light) 100%
