@@ -1,0 +1,196 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+export const prerender = true;
+---
+
+<Layout
+  title="Page not found | SEO Brothers"
+  description="The page you were looking for doesn't exist. Head back to the homepage or browse the guides library."
+  noindex={true}
+>
+  <Nav />
+
+  <section class="notfound">
+    <div class="notfound__bg">
+      <div class="notfound__orb notfound__orb--1"></div>
+      <div class="notfound__orb notfound__orb--2"></div>
+      <div class="notfound__grid-overlay"></div>
+    </div>
+
+    <div class="container notfound__inner">
+      <span class="notfound__label">
+        <span class="notfound__label-dot"></span>
+        Error 404
+      </span>
+      <h1 class="notfound__title">This page doesn't exist.</h1>
+      <p class="notfound__lede">
+        The link may be outdated, or the URL was typed incorrectly. Try one of the routes below, or head back to the homepage.
+      </p>
+
+      <div class="notfound__actions">
+        <a href="/" class="btn btn-primary">Back to home</a>
+        <a href="/guides/" class="btn btn-outline">Browse guides</a>
+      </div>
+
+      <div class="notfound__links">
+        <h2 class="notfound__links-heading">Popular destinations</h2>
+        <ul class="notfound__links-list">
+          <li><a href="/white-label-seo/">White label SEO</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+          <li><a href="/case-studies/">Case studies</a></li>
+          <li><a href="/about/">About SEO Brothers</a></li>
+          <li><a href="/sign-up/">Become a partner</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .notfound {
+    position: relative;
+    background: var(--dark);
+    overflow: hidden;
+    padding: 180px 0 140px;
+    color: var(--text-on-dark);
+  }
+
+  .notfound__bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .notfound__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.18;
+  }
+
+  .notfound__orb--1 {
+    width: 480px;
+    height: 480px;
+    background: var(--teal);
+    top: -15%;
+    right: -8%;
+  }
+
+  .notfound__orb--2 {
+    width: 360px;
+    height: 360px;
+    background: var(--purple);
+    bottom: -25%;
+    left: -8%;
+  }
+
+  .notfound__grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .notfound__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+  }
+
+  .notfound__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 24px;
+  }
+
+  .notfound__label-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+  }
+
+  .notfound__title {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 7vw, 68px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--text-on-dark);
+    margin-bottom: 20px;
+  }
+
+  .notfound__lede {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-on-dark-muted);
+    max-width: 560px;
+    margin-bottom: 36px;
+  }
+
+  .notfound__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 64px;
+  }
+
+  .notfound__links {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 36px;
+  }
+
+  .notfound__links-heading {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-on-dark-muted);
+    margin-bottom: 18px;
+  }
+
+  .notfound__links-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+  }
+
+  .notfound__links-list a {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-on-dark);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    padding-bottom: 2px;
+    transition: color var(--transition), border-color var(--transition);
+  }
+
+  .notfound__links-list a:hover {
+    color: var(--teal-light);
+    border-color: var(--teal-light);
+  }
+
+  @media (max-width: 640px) {
+    .notfound {
+      padding: 140px 0 100px;
+    }
+
+    .notfound__actions .btn {
+      flex: 1 1 auto;
+    }
+  }
+</style>
