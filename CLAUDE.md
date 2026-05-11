@@ -18,4 +18,8 @@
 ## Environment
 
 - Database credentials and API keys leveraged by Workbench are in `.env.local` at the repo root. 
-- I have copied a "shared" folder that contains useful scripts from the Workbench app that should reference the `.env.local` automatically. 
+- I have copied a "shared" folder that contains useful scripts from the Workbench app that should reference the `.env.local` automatically.
+
+## Sitemap
+
+- Lives at `src/pages/sitemap.xml.ts` (hand-rolled, single file at `/sitemap.xml`). The top of that file documents how to add new pages, exclude pages, and what the legacy redirects do. Update there, not in `astro.config.mjs`.

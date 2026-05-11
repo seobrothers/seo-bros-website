@@ -120,3 +120,12 @@
 /guides/category/industry/                                  /guides/industry/                                 301
 /guides/category/agency/                                    /guides/agency/                                   301
 /guides/category/cities/                                    /guides/cities/                                   301
+
+# ============================================================================
+# Sitemap consolidation — all variants point at the single /sitemap.xml.
+# /sitemap_index.xml is the Yoast/WordPress convention. /sitemap-index.xml
+# and /sitemap-0.xml are leftovers from when we used @astrojs/sitemap.
+# ============================================================================
+/sitemap_index.xml                                          /sitemap.xml                                      301
+/sitemap-index.xml                                          /sitemap.xml                                      301
+/sitemap-0.xml                                              /sitemap.xml                                      301
