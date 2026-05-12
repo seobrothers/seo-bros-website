@@ -461,7 +461,7 @@ const faqs: { q: string; a: string }[] = [
     <div class="container">
       <div class="faq__head" data-animate>
         <span class="section-label">FAQ</span>
-        <h2 class="section-heading">Questions partners actually ask</h2>
+        <h2 class="section-heading">Questions partners ask</h2>
       </div>
 
       <div class="faq__list" data-stagger>
@@ -607,12 +607,8 @@ const faqs: { q: string; a: string }[] = [
   }
 
   .pricing-hero__title-gradient {
-    background: linear-gradient(
-      135deg in oklch,
-      var(--teal) 0%,
-      var(--purple) 60%,
-      var(--green) 100%
-    );
+    background: linear-gradient(135deg, var(--teal) 0%, var(--purple) 60%, var(--green) 100%);
+    background: linear-gradient(135deg in oklch, var(--teal) 0%, var(--purple) 60%, var(--green) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -698,12 +694,8 @@ const faqs: { q: string; a: string }[] = [
   }
 
   .tier--purple::after {
-    background: linear-gradient(
-      90deg in oklch,
-      var(--teal) 0%,
-      var(--purple) 50%,
-      var(--green) 100%
-    );
+    background: linear-gradient(90deg, var(--teal) 0%, var(--purple) 50%, var(--green) 100%);
+    background: linear-gradient(90deg in oklch, var(--teal) 0%, var(--purple) 50%, var(--green) 100%);
   }
 
   .tier--green::after {
@@ -715,33 +707,21 @@ const faqs: { q: string; a: string }[] = [
     box-shadow: var(--shadow-xl);
   }
 
+  /* background-clip two-layer technique for the gradient border ring.
+     Same approach as .wl-pricing-card--featured. Avoids the ::before +
+     mask-composite trick that broke in Firefox. */
   .tier--featured {
-    border: none;
-    background: var(--dark);
+    background:
+      linear-gradient(var(--dark), var(--dark)) padding-box,
+      linear-gradient(135deg, var(--teal) 0%, var(--purple) 50%, var(--green) 100%) border-box;
+    background:
+      linear-gradient(var(--dark), var(--dark)) padding-box,
+      linear-gradient(135deg in oklch, var(--teal) 0%, var(--purple) 50%, var(--green) 100%) border-box;
+    border: 1.5px solid transparent;
     color: var(--text-on-dark);
     transform: translateY(-12px);
     box-shadow: var(--shadow-xl);
     overflow: hidden;
-  }
-
-  .tier--featured::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1.5px;
-    background: linear-gradient(
-      135deg in oklch,
-      var(--teal) 0%,
-      var(--purple) 50%,
-      var(--green) 100%
-    );
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    pointer-events: none;
   }
 
   .tier--featured:hover {
@@ -758,6 +738,7 @@ const faqs: { q: string; a: string }[] = [
     text-transform: uppercase;
     padding: 6px 12px;
     border-radius: var(--radius-full);
+    background: linear-gradient(135deg, var(--teal) 0%, var(--purple) 100%);
     background: linear-gradient(135deg in oklch, var(--teal) 0%, var(--purple) 100%);
     color: var(--white);
   }
@@ -818,12 +799,8 @@ const faqs: { q: string; a: string }[] = [
   }
 
   .tier--featured .tier__price-value {
-    background: linear-gradient(
-      135deg in oklch,
-      var(--teal-light) 0%,
-      var(--purple-light) 60%,
-      var(--green-light) 100%
-    );
+    background: linear-gradient(135deg, var(--teal-light) 0%, var(--purple-light) 60%, var(--green-light) 100%);
+    background: linear-gradient(135deg in oklch, var(--teal-light) 0%, var(--purple-light) 60%, var(--green-light) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

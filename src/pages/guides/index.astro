@@ -256,12 +256,8 @@ function fmtDate(d: Date) {
   }
 
   .guides-hero__title-gradient {
-    background: linear-gradient(
-      135deg in oklch,
-      var(--teal) 0%,
-      var(--purple) 60%,
-      var(--green) 100%
-    );
+    background: linear-gradient(135deg, var(--teal) 0%, var(--purple) 60%, var(--green) 100%);
+    background: linear-gradient(135deg in oklch, var(--teal) 0%, var(--purple) 60%, var(--green) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -288,47 +284,30 @@ function fmtDate(d: Date) {
     gap: 28px;
   }
 
+  /* Gradient lives behind a solid border; border-color transitions to
+     transparent on hover, revealing it as a border ring. See the matching
+     pattern on .cs-card in case-studies/index.astro. */
   .cat {
     display: flex;
     flex-direction: column;
     padding: 36px;
     border-radius: var(--radius-xl);
-    background: var(--light);
+    background:
+      linear-gradient(var(--light), var(--light)) padding-box,
+      linear-gradient(135deg, var(--teal), var(--purple), var(--green)) border-box;
+    background:
+      linear-gradient(var(--light), var(--light)) padding-box,
+      linear-gradient(135deg in oklch, var(--teal), var(--purple), var(--green)) border-box;
     border: 1px solid var(--border-light);
     transition: all var(--transition);
     position: relative;
     overflow: hidden;
   }
 
-  .cat::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(
-      135deg in oklch,
-      var(--teal),
-      var(--purple),
-      var(--green)
-    );
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    opacity: 0;
-    transition: opacity var(--transition);
-    pointer-events: none;
-  }
-
   .cat:hover {
+    border-color: transparent;
     transform: translateY(-4px);
     box-shadow: var(--shadow-xl);
-  }
-
-  .cat:hover::before {
-    opacity: 1;
   }
 
   .cat__head {

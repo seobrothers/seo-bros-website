@@ -303,12 +303,8 @@ const verticals = Array.from(
   }
 
   .cs-hero__title-gradient {
-    background: linear-gradient(
-      135deg in oklch,
-      var(--teal) 0%,
-      var(--purple) 60%,
-      var(--green) 100%
-    );
+    background: linear-gradient(135deg, var(--teal) 0%, var(--purple) 60%, var(--green) 100%);
+    background: linear-gradient(135deg in oklch, var(--teal) 0%, var(--purple) 60%, var(--green) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -425,12 +421,21 @@ const verticals = Array.from(
     gap: 24px;
   }
 
+  /* The card always paints a gradient layer behind a solid border. On hover
+     the border transitions to transparent and the gradient shows through as
+     a clean border ring. background-clip avoids the ::before + mask-composite
+     pattern that broke in Firefox. */
   .cs-card {
     display: flex;
     flex-direction: column;
     padding: 36px;
     border-radius: var(--radius-xl);
-    background: var(--light);
+    background:
+      linear-gradient(var(--light), var(--light)) padding-box,
+      linear-gradient(135deg, var(--teal), var(--purple), var(--green)) border-box;
+    background:
+      linear-gradient(var(--light), var(--light)) padding-box,
+      linear-gradient(135deg in oklch, var(--teal), var(--purple), var(--green)) border-box;
     border: 1px solid var(--border-light);
     transition: all var(--transition);
     position: relative;
@@ -438,30 +443,10 @@ const verticals = Array.from(
     color: inherit;
   }
 
-  .cs-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg in oklch, var(--teal), var(--purple), var(--green));
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    opacity: 0;
-    transition: opacity var(--transition);
-    pointer-events: none;
-  }
-
   .cs-card:hover {
+    border-color: transparent;
     transform: translateY(-4px);
     box-shadow: var(--shadow-xl);
-  }
-
-  .cs-card:hover::before {
-    opacity: 1;
   }
 
   .cs-card__top {
@@ -512,6 +497,7 @@ const verticals = Array.from(
     font-weight: 800;
     line-height: 1;
     letter-spacing: -0.03em;
+    background: linear-gradient(135deg, var(--teal) 0%, var(--purple) 100%);
     background: linear-gradient(135deg in oklch, var(--teal) 0%, var(--purple) 100%);
     -webkit-background-clip: text;
     background-clip: text;
