@@ -129,3 +129,8 @@
 /sitemap_index.xml                                          /sitemap.xml                                      301
 /sitemap-index.xml                                          /sitemap.xml                                      301
 /sitemap-0.xml                                              /sitemap.xml                                      301
+
+# ============================================================================
+# Removed case studies — placeholder content that should never have shipped.
+# ============================================================================
+/case-studies/campaign-plumbing-traffic/                    /case-studies/                                    301
