@@ -348,4 +348,29 @@ const socialImageUrl = new URL(ogImage ?? "/images/logo.png", Astro.site).href;
     color: var(--teal);
     background: rgba(40, 165, 177, 0.05);
   }
+
+  /* Respect users who prefer reduced motion. Caps transitions and animations
+     at a near-zero duration (still fires transitionend so JS keeps working),
+     reveals scroll-triggered [data-animate] elements immediately, and stops
+     smooth scroll. Continuous loop animations (Hero float, About orbits,
+     pulse dots) are effectively frozen. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    [data-animate] {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
 </style>
