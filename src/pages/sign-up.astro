@@ -7,31 +7,31 @@ const portalUrl = "https://portal.seobrothers.com/onboard";
 
 const accessItems = [
   {
-    title: "Free Portal account",
-    body: "Submit a discovery and message the team while you get set up. Once signed, this is where you'll order and manage every campaign.",
+    title: "A walkthrough with Mike",
+    body: "He'll show you how we work, answer questions, and align on what your agency actually needs. Plain conversation, no slide deck pitch.",
   },
   {
     title: "Your first discovery audit, free",
-    body: "Submit it during onboarding to see how we work. Discoveries stay free for every campaign once you're a partner; this first one is your no-strings test drive.",
+    body: "Submit a site during the demo to see how we work in real life. Discoveries stay free for every campaign once you're a partner; this first one is your no-strings test drive.",
   },
   {
-    title: "Dedicated team",
-    body: "An Account Manager for sales support, positioning, package buildout, and team training. An SEO Manager for campaign strategy, onboarding, and quarterly planning.",
+    title: "A free Portal account",
+    body: "We'll set one up so you can follow along, message the team, and submit your discovery. Yours to keep whether you become a partner or not.",
   },
   {
-    title: "White-labeled dashboards and reports",
-    body: "Your branding, your client's view.",
+    title: "A look at the team behind it",
+    body: "An Account Manager for sales support, positioning, and team training. An SEO Manager for campaign strategy, onboarding, and quarterly planning.",
   },
   {
-    title: "Direct team access",
-    body: "Message us through Portal anytime.",
+    title: "How the white-label side works",
+    body: "Dashboards, reports, and client-facing materials under your branding. We'll show you what your clients see.",
   },
 ];
 ---
 
 <Layout
-  title="Become an SEO Brothers Partner | Sign Up"
-  description="Sign up for SEO Brothers. Get a free Portal account, a free first discovery audit, and access to our partner team."
+  title="Book a Demo with SEO Brothers | White Label SEO Partner"
+  description="Book a quick demo with SEO Brothers. See how we work, get your first discovery audit free, and meet the team behind the partnership. No commitment."
 >
   <Nav variant="light" hideCta={true} />
 
@@ -45,12 +45,13 @@ const accessItems = [
     <div class="container signup__inner">
       <div class="signup__layout">
         <div class="signup__pitch" data-animate>
-          <span class="section-label">Become a Partner</span>
-          <h1 class="signup__title">Sign up and get started</h1>
+          <span class="section-label">Book a Demo</span>
+          <h1 class="signup__title">See how we work, no commitment</h1>
           <p class="signup__lede">
-            A few quick details and you're in. From there, submit your first
-            discovery and get a feel for how we work as a partner. Mike will
-            reach out shortly to walk you through it.
+            Share a few quick details and Mike will set up a walkthrough.
+            We'll show you how we work, get your first discovery audit
+            moving, and answer anything you want to ask. No pressure to sign
+            anything before you're ready.
           </p>
 
           <div class="signup__mike">
@@ -68,7 +69,7 @@ const accessItems = [
             </div>
           </div>
 
-          <h2 class="signup__list-title">What you'll get access to</h2>
+          <h2 class="signup__list-title">What you'll get</h2>
           <ul class="signup__list">
             {
               accessItems.map((item) => (
@@ -98,8 +99,10 @@ const accessItems = [
 
           <p class="signup__note">
             Discoveries are always free for partners. Your first one runs
-            during onboarding; before you can buy services or submit more,
-            we'll sign a simple partnership agreement.
+            during the demo. If we're a fit and you want to move forward,
+            a simple partnership agreement comes before any campaigns
+            activate. If we're not a fit, you keep the account and the audit
+            either way.
           </p>
 
           <p class="signup__signoff">— The Brothers</p>
@@ -107,9 +110,10 @@ const accessItems = [
 
         <aside class="signup__form-wrap" data-animate>
           <div class="signup__form-head">
-            <h2 class="signup__form-title">Sign Up</h2>
+            <h2 class="signup__form-title">Book a Demo</h2>
             <p class="signup__form-sub">
-              Tell us a bit about yourself and your agency.
+              Tell us a bit about you and your agency. Mike will reach out to
+              set up the walkthrough.
             </p>
           </div>
 
@@ -196,7 +200,7 @@ const accessItems = [
             </div>
 
             <button type="submit" class="btn btn-primary signup__submit">
-              Sign Up
+              Book a Demo
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path
                   d="M3 8h10M9 4l4 4-4 4"
@@ -234,7 +238,7 @@ const accessItems = [
     track("portal_signups");
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.textContent = "Signing up...";
+      submitBtn.textContent = "Sending...";
     }
   });
 </script>
