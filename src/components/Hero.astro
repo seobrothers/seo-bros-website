@@ -63,7 +63,6 @@
     border-radius: 50%;
     filter: blur(120px);
     opacity: 0.35;
-    animation: heroFloat 20s ease-in-out infinite;
   }
 
   .hero-orb--teal {
@@ -72,7 +71,6 @@
     background: var(--teal);
     top: -15%;
     left: -5%;
-    animation-delay: 0s;
   }
 
   .hero-orb--purple {
@@ -81,7 +79,6 @@
     background: var(--purple);
     top: -5%;
     right: -10%;
-    animation-delay: -7s;
   }
 
   .hero-orb--green {
@@ -90,7 +87,6 @@
     background: var(--green);
     bottom: -15%;
     left: 35%;
-    animation-delay: -14s;
   }
 
   .hero-grid {
@@ -116,19 +112,6 @@
       black 20%,
       transparent 70%
     );
-  }
-
-  @keyframes heroFloat {
-    0%,
-    100% {
-      transform: translate(0, 0) scale(1);
-    }
-    33% {
-      transform: translate(30px, -30px) scale(1.05);
-    }
-    66% {
-      transform: translate(-20px, 20px) scale(0.95);
-    }
   }
 
   .hero-content {
@@ -157,19 +140,6 @@
     height: 6px;
     background: var(--green);
     border-radius: 50%;
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%,
-    100% {
-      opacity: 1;
-      box-shadow: 0 0 0 0 rgba(68, 185, 123, 0.4);
-    }
-    50% {
-      opacity: 0.8;
-      box-shadow: 0 0 0 6px rgba(68, 185, 123, 0);
-    }
   }
 
   .hero-title {

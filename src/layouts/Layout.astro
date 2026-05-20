@@ -110,28 +110,6 @@ const socialImageUrl = new URL(ogImage ?? "/images/logo.png", Astro.site).href;
     <script>
       import { initOutboundTracking } from "../lib/analytics";
       initOutboundTracking();
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("in-view");
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
-      );
-
-      document.querySelectorAll("[data-animate]").forEach((el) => {
-        observer.observe(el);
-      });
-
-      document.querySelectorAll("[data-stagger]").forEach((container) => {
-        const children = container.children;
-        Array.from(children).forEach((child, i) => {
-          (child as HTMLElement).style.transitionDelay = `${i * 80}ms`;
-        });
-      });
     </script>
   </body>
 </html>
@@ -226,19 +204,6 @@ const socialImageUrl = new URL(ogImage ?? "/images/logo.png", Astro.site).href;
     background: none;
     cursor: pointer;
     font-family: inherit;
-  }
-
-  [data-animate] {
-    opacity: 0;
-    transform: translateY(24px);
-    transition:
-      opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-      transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  [data-animate].in-view {
-    opacity: 1;
-    transform: translateY(0);
   }
 
   body::after {
@@ -349,11 +314,6 @@ const socialImageUrl = new URL(ogImage ?? "/images/logo.png", Astro.site).href;
     background: rgba(40, 165, 177, 0.05);
   }
 
-  /* Respect users who prefer reduced motion. Caps transitions and animations
-     at a near-zero duration (still fires transitionend so JS keeps working),
-     reveals scroll-triggered [data-animate] elements immediately, and stops
-     smooth scroll. Continuous loop animations (Hero float, About orbits,
-     pulse dots) are effectively frozen. */
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -366,11 +326,6 @@ const socialImageUrl = new URL(ogImage ?? "/images/logo.png", Astro.site).href;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
-    }
-
-    [data-animate] {
-      opacity: 1 !important;
-      transform: none !important;
     }
   }
 </style>

@@ -476,39 +476,11 @@ const teamMembers: TeamMember[] = [
 
   <Footer />
 
-  <!-- ═══════════════ COUNTER ANIMATION SCRIPT ═══════════════ -->
   <script>
-    function animateCounters() {
-      const counters = document.querySelectorAll("[data-count]");
-      const counterObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const el = entry.target as HTMLElement;
-              const target = parseInt(el.dataset.count || "0", 10);
-              const duration = 2000;
-              const start = performance.now();
-
-              function update(now: number) {
-                const elapsed = now - start;
-                const progress = Math.min(elapsed / duration, 1);
-                const eased = 1 - Math.pow(1 - progress, 4);
-                el.textContent = Math.round(eased * target).toLocaleString();
-                if (progress < 1) requestAnimationFrame(update);
-              }
-
-              requestAnimationFrame(update);
-              counterObserver.unobserve(el);
-            }
-          });
-        },
-        { threshold: 0.3 }
-      );
-
-      counters.forEach((c) => counterObserver.observe(c));
-    }
-
-    animateCounters();
+    document.querySelectorAll<HTMLElement>("[data-count]").forEach((el) => {
+      const target = parseInt(el.dataset.count || "0", 10);
+      el.textContent = target.toLocaleString();
+    });
   </script>
 </Layout>
 
@@ -536,7 +508,6 @@ const teamMembers: TeamMember[] = [
     border-radius: 50%;
     filter: blur(120px);
     opacity: 0.18;
-    animation: hero-float 20s ease-in-out infinite;
   }
 
   .about-hero__orb--1 {
@@ -545,7 +516,6 @@ const teamMembers: TeamMember[] = [
     background: var(--teal);
     top: -10%;
     right: -5%;
-    animation-delay: 0s;
   }
 
   .about-hero__orb--2 {
@@ -554,7 +524,6 @@ const teamMembers: TeamMember[] = [
     background: var(--purple);
     bottom: -15%;
     left: -10%;
-    animation-delay: -7s;
   }
 
   .about-hero__orb--3 {
@@ -565,7 +534,6 @@ const teamMembers: TeamMember[] = [
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: 0.08;
-    animation-delay: -14s;
   }
 
   .about-hero__grid-overlay {
@@ -575,12 +543,6 @@ const teamMembers: TeamMember[] = [
       linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     background-size: 60px 60px;
-  }
-
-  @keyframes hero-float {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, -20px) scale(1.05); }
-    66% { transform: translate(-20px, 15px) scale(0.95); }
   }
 
   .about-hero__inner {
@@ -607,12 +569,6 @@ const teamMembers: TeamMember[] = [
     height: 8px;
     background: var(--green);
     border-radius: 50%;
-    animation: dot-pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes dot-pulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(68, 185, 123, 0.4); }
-    50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(68, 185, 123, 0); }
   }
 
   .about-hero__title {
@@ -659,14 +615,6 @@ const teamMembers: TeamMember[] = [
     width: 1px;
     height: 48px;
     background: linear-gradient(to bottom, var(--teal), transparent);
-    animation: scroll-line 2s ease-in-out infinite;
-  }
-
-  @keyframes scroll-line {
-    0% { transform: scaleY(0); transform-origin: top; }
-    50% { transform: scaleY(1); transform-origin: top; }
-    50.01% { transform-origin: bottom; }
-    100% { transform: scaleY(0); transform-origin: bottom; }
   }
 
   /* ═══════════════════════════════════════════════════════════════════
@@ -725,12 +673,6 @@ const teamMembers: TeamMember[] = [
     border-radius: 50%;
     background: linear-gradient(135deg in oklch, var(--teal), var(--purple), var(--green));
     z-index: 0;
-    animation: ring-rotate 8s linear infinite;
-  }
-
-  @keyframes ring-rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
   }
 
   .brothers__name {

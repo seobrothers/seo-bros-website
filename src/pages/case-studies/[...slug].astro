@@ -751,13 +751,6 @@ const charts = d.charts.map((c, idx) => {
     background: linear-gradient(180deg in oklch, var(--teal) 0%, var(--purple) 100%);
     border-radius: 6px 6px 0 0;
     min-height: 6px;
-    animation: study-bar-grow 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    transform-origin: bottom;
-  }
-
-  @keyframes study-bar-grow {
-    from { transform: scaleY(0); }
-    to { transform: scaleY(1); }
   }
 
   .study-chart__bar-label {

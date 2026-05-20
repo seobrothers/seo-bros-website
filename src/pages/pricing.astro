@@ -521,7 +521,6 @@ const faqs: { q: string; a: string }[] = [
     border-radius: 50%;
     filter: blur(120px);
     opacity: 0.22;
-    animation: pricing-float 22s ease-in-out infinite;
   }
 
   .pricing-hero__orb--1 {
@@ -538,7 +537,6 @@ const faqs: { q: string; a: string }[] = [
     background: var(--purple);
     top: -5%;
     right: -8%;
-    animation-delay: -7s;
   }
 
   .pricing-hero__orb--3 {
@@ -547,7 +545,6 @@ const faqs: { q: string; a: string }[] = [
     background: var(--green);
     bottom: -25%;
     left: 40%;
-    animation-delay: -14s;
   }
 
   .pricing-hero__grid {
@@ -563,11 +560,6 @@ const faqs: { q: string; a: string }[] = [
       black 30%,
       transparent 75%
     );
-  }
-
-  @keyframes pricing-float {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(20px, -20px) scale(1.04); }
   }
 
   .pricing-hero__inner {

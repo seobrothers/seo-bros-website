@@ -226,7 +226,6 @@ const verticals = Array.from(
     border-radius: 50%;
     filter: blur(120px);
     opacity: 0.22;
-    animation: cs-float 22s ease-in-out infinite;
   }
 
   .cs-hero__orb--1 {
@@ -243,7 +242,6 @@ const verticals = Array.from(
     background: var(--purple);
     bottom: -25%;
     left: -8%;
-    animation-delay: -8s;
   }
 
   .cs-hero__grid {
@@ -259,11 +257,6 @@ const verticals = Array.from(
       black 30%,
       transparent 75%
     );
-  }
-
-  @keyframes cs-float {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(20px, -20px) scale(1.04); }
   }
 
   .cs-hero__inner {
