@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <rect width="960" height="540" fill="#fafbfc"/>
+
+  <!-- HEADER -->
+  <g transform="translate(60, 40)">
+    <text x="0" y="0" font-size="11" font-weight="700" fill="#44b97b" letter-spacing="0.14em">ONE TOPIC &#8226; FIVE SERP SURFACES</text>
+    <text x="0" y="22" font-size="13" font-weight="500" fill="#475569">One researched topic produces five outputs that each compete for different real estate.</text>
+  </g>
+
+  <!-- SOURCE NODE (left) -->
+  <g transform="translate(80, 220)">
+    <rect x="0" y="0" width="200" height="80" rx="8" fill="#0f172a"/>
+    <text x="100" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="#94a3b8" letter-spacing="0.12em">SOURCE</text>
+    <text x="100" y="58" text-anchor="middle" font-size="14" font-weight="600" fill="#ffffff">Researched topic</text>
+  </g>
+
+  <!-- CONNECTOR LINES (source to each output) -->
+  <g stroke="#cbd5e1" stroke-width="2" fill="none">
+    <path d="M 280 260 C 380 260, 420 130, 540 130"/>
+    <path d="M 280 260 C 380 260, 420 195, 540 195"/>
+    <path d="M 280 260 C 380 260, 420 260, 540 260"/>
+    <path d="M 280 260 C 380 260, 420 325, 540 325"/>
+    <path d="M 280 260 C 380 260, 420 390, 540 390"/>
+  </g>
+
+  <!-- OUTPUT 1: Blog post -->
+  <g transform="translate(540, 100)">
+    <rect x="0" y="0" width="340" height="60" rx="6" fill="#28a5b1"/>
+    <text x="20" y="25" font-size="13" font-weight="600" fill="#ffffff">Long-form blog post</text>
+    <text x="20" y="44" font-size="11" font-weight="500" fill="#cbf2f6">Organic listing</text>
+  </g>
+
+  <!-- OUTPUT 2: YouTube long-form -->
+  <g transform="translate(540, 165)">
+    <rect x="0" y="0" width="340" height="60" rx="6" fill="#33c4d1"/>
+    <text x="20" y="25" font-size="13" font-weight="600" fill="#ffffff">Long-form YouTube video</text>
+    <text x="20" y="44" font-size="11" font-weight="500" fill="#e0f7fa">Video carousel + YouTube search</text>
+  </g>
+
+  <!-- OUTPUT 3: Vertical short -->
+  <g transform="translate(540, 230)">
+    <rect x="0" y="0" width="340" height="60" rx="6" fill="#44b97b"/>
+    <text x="20" y="25" font-size="13" font-weight="600" fill="#ffffff">Vertical short</text>
+    <text x="20" y="44" font-size="11" font-weight="500" fill="#d6f5e3">TikTok &#8226; Reels &#8226; YouTube Shorts</text>
+  </g>
+
+  <!-- OUTPUT 4: Podcast -->
+  <g transform="translate(540, 295)">
+    <rect x="0" y="0" width="340" height="60" rx="6" fill="#33c4d1"/>
+    <text x="20" y="25" font-size="13" font-weight="600" fill="#ffffff">Podcast episode</text>
+    <text x="20" y="44" font-size="11" font-weight="500" fill="#e0f7fa">Google Podcasts &#8226; Spotify &#8226; Apple</text>
+  </g>
+
+  <!-- OUTPUT 5: Images + audiograms -->
+  <g transform="translate(540, 360)">
+    <rect x="0" y="0" width="340" height="60" rx="6" fill="#28a5b1"/>
+    <text x="20" y="25" font-size="13" font-weight="600" fill="#ffffff">Images and audiograms</text>
+    <text x="20" y="44" font-size="11" font-weight="500" fill="#cbf2f6">Image search + social distribution</text>
+  </g>
+
+  <!-- FOOTER NOTE -->
+  <g transform="translate(80, 480)">
+    <text x="0" y="0" font-size="11" font-weight="500" fill="#94a3b8" letter-spacing="0.04em">A text-only page competes for a shrinking share of the SERP. Multimedia outputs claim distinct surfaces.</text>
+  </g>
+</svg>
