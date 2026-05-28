@@ -39,45 +39,51 @@ const processSteps = [
 const components = [
   {
     icon: "strategy",
-    title: "Quality Onboarding & Strategy",
+    title: "Onboarding & Priority Intents",
     description:
-      "Every campaign starts with our strategic onboarding month, setting the campaign up for success while capitalizing on quick wins.",
+      "Every campaign starts with strategic onboarding that sets the Priority Intents we'll be chasing and captures the early quick wins.",
   },
   {
     icon: "keywords",
     title: "Keyword Research & Mapping",
     description:
-      "The backbone of campaign success. Understanding existing content, identifying gaps, and mapping keywords to the right pages.",
+      "Deep keyword research and competitor analysis. Understanding what's ranking, where the gaps are, and mapping target keywords to the pages best positioned to win them.",
   },
   {
     icon: "onpage",
-    title: "On-Page Optimizations",
+    title: "On-Page Optimization",
     description:
-      "Page-specific meta data, headers, body copy, and content optimized to improve relevance and search visibility.",
+      "Page-specific meta data, headers, body copy, and content optimized for target keywords and user intent to improve relevance and search visibility.",
   },
   {
     icon: "technical",
     title: "Technical SEO & Crawl Fixes",
     description:
-      "Page speed, schema, broken links, canonical tags, and other technical elements reviewed and improved continuously.",
+      "Page speed, structured data and schema, broken links, canonical tags, and the other technical SEO elements reviewed and improved continuously.",
   },
   {
     icon: "links",
-    title: "High-Quality Link Acquisition",
+    title: "Link Building & Digital PR",
     description:
-      "Quality links from authoritative sources with well-balanced anchor text for long-term website authority and campaign success.",
+      "Quality link building from authoritative, relevant sources with balanced anchor text, plus digital PR placements that earn high-authority backlinks.",
   },
   {
     icon: "local",
     title: "GBP & Local SEO",
     description:
-      "Strategic GBP profile improvements, local citation building, and geo-targeted optimization for local map visibility.",
+      "Strategic Google Business Profile improvements, local citation building with consistent business details across listings, and geo-targeted optimization for local search.",
   },
   {
     icon: "content",
     title: "Strategic Content Marketing",
     description:
-      "Improvements to existing pages, new content creation, and blog support to build topical authority and relevance.",
+      "Improvements to existing pages, new content creation, and blog support to build topical authority and rank for adjacent intents.",
+  },
+  {
+    icon: "ai",
+    title: "AI Search Optimization",
+    description:
+      "Tracking visibility across AI Overviews, ChatGPT, Perplexity, and Gemini. Structuring content for LLM citation. Monitoring where your client shows up across AI surfaces, not just traditional rankings.",
   },
   {
     icon: "reporting",
@@ -118,6 +124,11 @@ const faqGroups = [
         answer:
           "Yes. AI surfaces (Google AI Overviews, ChatGPT, Perplexity, Gemini) increasingly send traffic alongside traditional rankings, and the playbook is still evolving. We handle AI surfaces the same way we've always handled algorithm shifts: track them closely, test what works, fold the proven plays in. Concretely, that means structured content answer engines can cite, entity markup that helps LLMs understand who the brand is, and ongoing monitoring of where each client shows up across AI responses. It's part of every campaign, not a separate add-on.",
       },
+      {
+        question: "How is white label SEO different from outsourcing or freelancers?",
+        answer:
+          "The work is similar but the model is different. A freelancer works for you on a project-by-project basis, often with their own brand visible. Outsourcing is the broad category. White label SEO is a structured partnership where everything client-facing carries your brand. The benefit over freelancers is predictability and capacity. The benefit over hiring is variable cost and no management overhead.",
+      },
     ],
   },
   {
@@ -154,6 +165,16 @@ const faqGroups = [
           "You decide. The work belongs to your agency. If a client cancels, you can pause or cancel the matching campaign on our end through Portal. We don't lock you into long contracts and we don't poach. We've never approached a partner's client.",
       },
       {
+        question: "Who owns the content and links created during a campaign?",
+        answer:
+          "Your agency. The content we publish, the optimizations we run, and the backlinks we acquire all belong to your client's site and your agency's relationship with that client. If a partnership ever ends, you keep the work. We don't reclaim links, we don't strip content, and we don't approach the client.",
+      },
+      {
+        question: "What if a campaign isn't performing?",
+        answer:
+          "First, we figure out why. Strategic reviews exist for exactly this. We compare actual performance to the plan, look at what competitors have shifted, and re-set the Priority Intents if needed. SEO is a long game, but a campaign that isn't moving after 4 to 6 months usually has a specific cause: wrong intent targeting, undercompetitive link velocity, technical drag, or budget set below what the competition demands. Your account manager will walk you through what we see and what the options are.",
+      },
+      {
         question: "How long before I see results for my clients?",
         answer:
           "SEO is a long-term play, but our onboarding is built around early wins. Most campaigns show meaningful movement in the first 3 to 4 months, with compounding results over time. Your account manager sets clear expectations during the discovery call.",
@@ -171,11 +192,27 @@ const faqGroups = [
     ],
   },
 ];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqGroups.flatMap((group) =>
+    group.items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  ),
+};
 ---
 
 <Layout
-  title="White Label SEO: Reselling SEO Services With SEO Brothers"
-  description="Partner with SEO Brothers for white label SEO services. No upfront cost, dedicated campaign managers, and 50%+ margins for your agency."
+  title="White Label SEO Services for Agencies | SEO Brothers"
+  description="White label SEO services for growth-focused agencies. Deliver SEO under your brand with dedicated account managers, free discovery audits, and 50%+ margins."
+  schema={faqSchema}
 >
   <Nav />
 
@@ -195,7 +232,7 @@ const faqGroups = [
       </div>
 
       <h1 class="wl-hero-title" data-animate>
-        White Label SEO<br />
+        White Label SEO Services<br />
         <span class="wl-hero-title-gradient">Without the Headaches</span>
       </h1>
 
@@ -266,99 +303,279 @@ const faqGroups = [
   <!-- ===== WHAT IS WHITE LABEL SEO ===== -->
   <section class="wl-what">
     <div class="container">
-      <div class="wl-what-grid">
-        <div class="wl-what-content" data-animate>
-          <span class="section-label">More Than a Reseller</span>
-          <h2 class="section-heading">
-            A True Partnership,<br />
-            Not a Reseller Box
-          </h2>
-          <p class="wl-what-text">
-            White Label SEO at SEO Brothers involves a <strong
-              >true partnership</strong
-            >. We are more than a basic reseller solution. We enable your
-            marketing or digital agency to offer and sell organic SEO services to
-            your clients without hiring an in-house team or piecing together
-            outsourced contractors.
-          </p>
-          <p class="wl-what-text">
-            You deliver high-quality SEO services through your own brand without
-            having to do any of the work, oftentimes while still leaving plenty
-            of margin for your business.
+      <div class="wl-what-content" data-animate>
+        <span class="section-label">SEO Basics</span>
+        <h2 class="section-heading">What Is White Label SEO?</h2>
+
+        <p class="wl-what-text">
+          White label SEO is the model where a specialist provider does the
+          SEO work and a partner agency delivers it to the end client under
+          its own brand. The agency owns the relationship, the strategy
+          conversations, and the reporting. The provider runs the actual
+          search engine optimization in the background. The client sees one
+          brand, one invoice, one point of contact.
+        </p>
+        <p class="wl-what-text">
+          For a marketing agency or digital agency, the point is simple. You
+          can offer SEO services without building and managing an in-house
+          team. You sell what your clients are already asking for, you keep
+          the margin, and you don't take on the overhead of hiring SEO
+          experts, buying tools, and managing fulfillment yourself.
+        </p>
+
+        <h3 class="wl-what-subhead">How White Label SEO Works in Practice</h3>
+        <p class="wl-what-text">
+          Most partnerships follow the same shape. The agency brings a client
+          need, the white label SEO provider runs a discovery, both teams
+          align on scope and pricing, and then delivery starts under the
+          agency's brand. Reports come back in agency colors. Dashboards live
+          at agency URLs. Communication routes through the agency's account
+          team.
+        </p>
+        <p class="wl-what-text">
+          What changes between providers is the depth of partnership. Some
+          operate like a vending machine: order a package, get a deliverable.
+          Others (us included) operate like an extension of your team, with
+          named account managers, strategy calls, and direct access when
+          something complicated comes up.
+        </p>
+
+        <h3 class="wl-what-subhead">What's Usually Included</h3>
+        <p class="wl-what-text">
+          A full white label SEO partnership covers the work an in-house SEO
+          team would handle:
+        </p>
+        <ul class="wl-what-list">
+          <li><a href="/guides/keyword-research/">Keyword research</a> and mapping</li>
+          <li>Technical SEO and on-page optimization</li>
+          <li>Content production for new and existing pages</li>
+          <li><a href="/guides/link-building/">Link building</a> from authoritative, relevant sources</li>
+          <li><a href="/guides/local-seo/">Local SEO</a> and Google Business Profile management</li>
+          <li>Reporting and live dashboards</li>
+        </ul>
+        <p class="wl-what-text">
+          Some agencies use white label for the full stack. Others bring us in
+          only for the parts they don't want to build, usually link building
+          and content. Both work.
+        </p>
+
+        <h3 class="wl-what-subhead">Who White Label SEO Is For</h3>
+        <p class="wl-what-text">
+          The model fits agencies that already have client relationships and
+          want to add SEO without hiring. That's a broad set:
+        </p>
+        <ul class="wl-what-list">
+          <li>Marketing and digital agencies adding SEO to existing service offerings</li>
+          <li>Web design and development shops whose clients keep asking about ranking</li>
+          <li>PR firms and content agencies looking to bundle organic search</li>
+          <li>Solo consultants who don't want to be the bottleneck on delivery</li>
+        </ul>
+        <p class="wl-what-text">
+          The campaigns underneath span the same variety: local service
+          businesses, SaaS, eCommerce, and national B2B. Each needs a
+          different prioritization, but the underlying model is the same. It
+          tends not to fit anyone sending one campaign a year. The math works
+          once you have a couple of clients, and it scales cleanly from there.
+        </p>
+
+        <h3 class="wl-what-subhead">
+          White Label SEO vs. Outsourced SEO vs. Reseller SEO
+        </h3>
+        <p class="wl-what-text">
+          These terms get used interchangeably and they shouldn't be.
+        </p>
+        <p class="wl-what-text">
+          <strong>Outsourced SEO</strong> is the broad category. Any time an
+          agency pays an external team to do SEO work for clients, that's
+          outsourcing. The relationship can be public or private.
+        </p>
+        <p class="wl-what-text">
+          <strong>White label SEO</strong> is a specific kind of outsourcing
+          where everything client-facing carries the agency's brand. Reports,
+          dashboards, deliverables, and sometimes the calls themselves. The
+          provider stays invisible.
+        </p>
+        <p class="wl-what-text">
+          <strong>Reseller SEO</strong> is usually a pre-set package at a
+          fixed price with limited customization. Cheaper, faster to order,
+          lighter on strategy. Good if you need volume and consistency, less
+          good if your clients need real strategic depth.
+        </p>
+        <p class="wl-what-text">
+          We sit in the white label category but operate more like a partner
+          than a reseller. The packages on this page have predictable pricing,
+          but every campaign gets a real strategy and a real account manager.
+          That's the part most reseller models leave out.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ROLES (RESELLER VS PROVIDER) ===== -->
+  <section class="wl-roles">
+    <div class="container">
+      <div class="wl-roles-header" data-animate>
+        <span class="section-label">Who Does What</span>
+        <h2 class="section-heading">Reseller vs. Provider</h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          A white label SEO partnership splits the work in two. Understanding
+          who owns what saves a lot of back-and-forth later.
+        </p>
+      </div>
+
+      <div class="wl-roles-grid" data-stagger>
+        <div class="wl-role-card" data-animate>
+          <span class="wl-role-tag">The Reseller</span>
+          <h3 class="wl-role-who">Your Agency</h3>
+          <p class="wl-role-desc">
+            Sales, account ownership, billing the client, and most day-to-day
+            client communication. You're the brand. You're the relationship.
           </p>
         </div>
-        <div class="wl-what-benefits" data-animate>
-          <div class="wl-benefit-card">
-            <div class="wl-benefit-icon">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <path
-                  d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
-                ></path>
-              </svg>
-            </div>
-            <div>
-              <h3 class="wl-benefit-title">Fully White-Labeled</h3>
-              <p class="wl-benefit-desc">
-                Your brand on every report, dashboard, and deliverable. Your
-                clients never know we exist.
-              </p>
-            </div>
-          </div>
-          <div class="wl-benefit-card">
-            <div class="wl-benefit-icon wl-benefit-icon--purple">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
-                ></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-            </div>
-            <div>
-              <h3 class="wl-benefit-title">No Hiring Required</h3>
-              <p class="wl-benefit-desc">
-                Skip the $50k+ salary, training, and management overhead. Get a
-                full SEO team instantly.
-              </p>
-            </div>
-          </div>
-          <div class="wl-benefit-card">
-            <div class="wl-benefit-icon wl-benefit-icon--green">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                <polyline points="17 6 23 6 23 12"></polyline>
-              </svg>
-            </div>
-            <div>
-              <h3 class="wl-benefit-title">50%+ Service Margins</h3>
-              <p class="wl-benefit-desc">
-                Pricing structured to ensure healthy margins for your agency from
-                day one.
-              </p>
-            </div>
-          </div>
+        <div class="wl-role-card wl-role-card--provider" data-animate>
+          <span class="wl-role-tag">The Provider</span>
+          <h3 class="wl-role-who">SEO Brothers</h3>
+          <p class="wl-role-desc">
+            Strategy, fulfillment, quality control, and reporting. We work
+            behind the scenes, deliver under your brand, and stay close
+            enough to your team to answer the harder questions when they
+            come up.
+          </p>
         </div>
+      </div>
+
+      <p class="wl-roles-footer" data-animate>
+        The cleaner the split, the easier the partnership runs. We've worked
+        with agencies that want us fully behind the scenes and never on a
+        client call. We've worked with others that want us on QBRs as "their
+        senior strategist." Both models work. The wrong model is the one
+        where neither side knows whose job it is to spot a problem.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== WHY AGENCIES USE WL SEO ===== -->
+  <section class="wl-why">
+    <div class="container">
+      <div class="wl-why-header" data-animate>
+        <span class="section-label">Why It Works</span>
+        <h2 class="section-heading">
+          Why Agencies Use<br />
+          White Label SEO
+        </h2>
+      </div>
+
+      <div class="wl-why-grid" data-stagger>
+        <div class="wl-why-card" data-animate>
+          <div class="wl-why-icon wl-why-icon--teal">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23"></line>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <h3 class="wl-why-title">Cash flow flexibility, not a fixed team cost</h3>
+          <p class="wl-why-desc">
+            White label SEO is a variable cost. You flex up when you sign
+            clients and flex down when a campaign ends. An in-house team is
+            a fixed cost that keeps drawing salary whether your campaigns
+            are billing or not, which ties your cash flow directly to your
+            client roster. White label moves salary, benefits, and tooling
+            off your balance sheet and turns them into a line item that
+            scales with revenue.
+          </p>
+        </div>
+
+        <div class="wl-why-card" data-animate>
+          <div class="wl-why-icon wl-why-icon--purple">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="8.5" cy="7" r="4"></circle>
+              <polyline points="17 11 19 13 23 9"></polyline>
+            </svg>
+          </div>
+          <h3 class="wl-why-title">Specialized expertise without the hiring lift</h3>
+          <p class="wl-why-desc">
+            SEO has gotten more specialized, not less. Keyword research,
+            technical fixes, link acquisition, content production, and AI
+            search optimization each lean on different skill sets, and good
+            people in each are expensive and hard to find. A white label SEO
+            partner gives you a full team on day one. You don't manage them,
+            you don't train them, and you don't lose three months when one
+            of them leaves.
+          </p>
+        </div>
+
+        <div class="wl-why-card" data-animate>
+          <div class="wl-why-icon wl-why-icon--green">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="13 17 18 12 13 7"></polyline>
+              <polyline points="6 17 11 12 6 7"></polyline>
+            </svg>
+          </div>
+          <h3 class="wl-why-title">Speed to market</h3>
+          <p class="wl-why-desc">
+            Adding SEO to your service catalog in-house is a multi-quarter
+            project. Hire, onboard, build process, buy tools, build reports.
+            A white label partnership compresses that to weeks. You can
+            quote the next prospect that asks about SEO without waiting for
+            any of the buildout.
+          </p>
+        </div>
+
+        <div class="wl-why-card" data-animate>
+          <div class="wl-why-icon wl-why-icon--teal">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+              <polyline points="17 6 23 6 23 12"></polyline>
+            </svg>
+          </div>
+          <h3 class="wl-why-title">Predictable wholesale pricing, healthy margins</h3>
+          <p class="wl-why-desc">
+            Our pricing is wholesale and predictable so your packages can be
+            predictable too. Most partners run 50%+ gross service margins on
+            their SEO offerings, with room to undercut competitors or upsell
+            strategically depending on the market.
+          </p>
+        </div>
+
+        <div class="wl-why-card" data-animate>
+          <div class="wl-why-icon wl-why-icon--purple">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h3 class="wl-why-title">Your brand, your relationship</h3>
+          <p class="wl-why-desc">
+            Reports, dashboards, and deliverables ship under your brand. We
+            don't approach your clients, we don't show up in their inbox,
+            and the work belongs to your agency. If a partnership ever ends,
+            your clients stay with you.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MID-PAGE CTA ===== -->
+  <section class="wl-mid-cta">
+    <div class="container">
+      <div class="wl-mid-cta-card" data-animate>
+        <h2 class="wl-mid-cta-title">See it on your client's site first</h2>
+        <p class="wl-mid-cta-text">
+          Every prospective partner gets a free discovery audit. No
+          commitment, no credit card. Mike walks you through it.
+        </p>
+        <a href="/sign-up/" class="btn btn-primary wl-mid-cta-btn">
+          Book a Demo
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path
+              d="M3 8h10M9 4l4 4-4 4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </a>
       </div>
     </div>
   </section>
@@ -455,9 +672,12 @@ const faqGroups = [
           <h3 class="wl-approach-card-title">Close the Gap to #1</h3>
           <p class="wl-approach-card-desc">
             Every campaign starts with a clear question: what's already
-            ranking, and what do they have? If a competitor has better content,
-            we need better content. More links, more links. Better page speed,
-            better page speed.
+            ranking, and what do they have? The answer sets the campaign's
+            Priority Intents, the specific searches we're chasing this cycle,
+            mapped to whichever pages are best positioned to win them. From
+            there, the work is competitive: if a competitor has better
+            content, we need better content. More links, more links. Better
+            page speed, better page speed.
           </p>
           <p class="wl-approach-card-desc">
             But we don't chase what isn't moving the needle. If we're at a B
@@ -467,8 +687,9 @@ const faqGroups = [
           </p>
           <p class="wl-approach-card-desc">
             We look at AI surfaces the same way. If competitors are showing up
-            in Google AI Overviews or ChatGPT responses while your client
-            isn't, that gap matters as much as the rankings gap.
+            in <a href="https://blog.google/products/search/generative-ai-search/" target="_blank" rel="noopener">Google AI Overviews</a>
+            or ChatGPT responses while your client isn't, that gap matters as
+            much as the rankings gap.
           </p>
         </div>
 
@@ -649,6 +870,22 @@ const faqGroups = [
                     <line x1="12" y1="20" x2="12" y2="4" />
                     <line x1="6" y1="20" x2="6" y2="14" />
                     <line x1="2" y1="20" x2="22" y2="20" />
+                  </svg>
+                )}
+                {comp.icon === "ai" && (
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z" />
+                    <path d="M19 15l.6 1.8L21.4 17.4 19.6 18l-.6 1.8L18.4 18l-1.8-.6 1.8-.6z" />
+                    <path d="M5 13l.6 1.8L7.4 15.4 5.6 16l-.6 1.8L4.4 16l-1.8-.6 1.8-.6z" />
                   </svg>
                 )}
               </div>
@@ -845,16 +1082,49 @@ const faqGroups = [
       <div class="wl-pricing-header" data-animate>
         <span class="section-label">Wholesale Partner Rates</span>
         <h2 class="section-heading">
-          Standard Pricing<br />
-          for Local Businesses
+          White Label SEO<br />
+          Pricing Models
         </h2>
         <p class="section-subtext" style="margin:0 auto;">
-          The packages below are real, frequently-quoted starting points for
-          local SEO campaigns. Every campaign includes a free discovery, so the
-          actual quote reflects budget, current performance, competition, and
-          expectations.
+          White label SEO pricing falls into three rough buckets, and knowing
+          which one you're being quoted matters because it determines how
+          predictable your margin is.
         </p>
       </div>
+
+      <div class="wl-pricing-models" data-stagger>
+        <div class="wl-pricing-model" data-animate>
+          <h3 class="wl-pricing-model-title">Flat-rate retainer</h3>
+          <p class="wl-pricing-model-desc">
+            A monthly fee for a defined scope. Predictable for both sides,
+            easy to mark up. Works best for ongoing managed campaigns where
+            the work is steady.
+          </p>
+        </div>
+        <div class="wl-pricing-model" data-animate>
+          <h3 class="wl-pricing-model-title">Per-project pricing</h3>
+          <p class="wl-pricing-model-desc">
+            Pay for specific deliverables (an audit, a content piece, a
+            batch of links). Flexible, but harder to budget against if your
+            client load is unpredictable.
+          </p>
+        </div>
+        <div class="wl-pricing-model" data-animate>
+          <h3 class="wl-pricing-model-title">Tiered packages</h3>
+          <p class="wl-pricing-model-desc">
+            Multiple managed retainer tiers at different price points. Lets
+            you match the package to client size and budget without
+            renegotiating from scratch every time.
+          </p>
+        </div>
+      </div>
+
+      <p class="wl-pricing-models-footer" data-animate>
+        Our pricing leans tiered. The three packages below are real,
+        frequently-quoted starting points for local SEO campaigns. Every
+        campaign gets a free discovery first, so the final quote reflects
+        budget, competition, current performance, and expectations.
+      </p>
 
       <div class="wl-pricing-grid" data-stagger>
         <div class="wl-pricing-card" data-animate>
@@ -871,12 +1141,12 @@ const faqGroups = [
           </div>
           <ul class="wl-pricing-features">
             <li>Semi-annual strategic review</li>
+            <li>Priority Intents set semi-annually</li>
             <li>Technical crawl review + fixes</li>
             <li>Live reporting dashboard</li>
             <li>1 Local Maps focus location</li>
-            <li>1 Focus Page per month</li>
             <li>1 backlink per month</li>
-            <li>1 SEO work hour per month</li>
+            <li>1.5 hours of SEO Time per month</li>
           </ul>
           <a href="/sign-up/" class="btn btn-outline--dark wl-pricing-btn">Book a Demo</a>
         </div>
@@ -887,7 +1157,8 @@ const faqGroups = [
             <h3 class="wl-pricing-tier">Typical</h3>
             <p class="wl-pricing-tier-desc">
               Our most-quoted package. Full-stack local SEO with content,
-              links, Maps, and Focus Page work to rank the pages that matter.
+              links, Maps, and SEO Time directed at the Priority Intents that
+              move the campaign.
             </p>
           </div>
           <div class="wl-pricing-price">
@@ -896,12 +1167,12 @@ const faqGroups = [
           </div>
           <ul class="wl-pricing-features">
             <li>Quarterly strategic review</li>
+            <li>Priority Intents set quarterly</li>
             <li>Technical crawl review + fixes</li>
             <li>Live reporting dashboard</li>
             <li>1 Local Maps focus location</li>
-            <li>3 Focus Pages per month</li>
             <li>2 backlinks per month</li>
-            <li>2 SEO work hours per month</li>
+            <li>3.5 hours of SEO Time per month</li>
             <li>1 new content piece per month</li>
           </ul>
           <a href="/sign-up/" class="btn btn-primary wl-pricing-btn">Book a Demo</a>
@@ -912,7 +1183,7 @@ const faqGroups = [
             <h3 class="wl-pricing-tier">Turbo</h3>
             <p class="wl-pricing-tier-desc">
               When the market is tougher or speed matters more. Monthly
-              strategy reviews, more Focus Pages, more links, more content.
+              strategy reviews, more SEO Time, more links, more content.
             </p>
           </div>
           <div class="wl-pricing-price">
@@ -921,10 +1192,10 @@ const faqGroups = [
           </div>
           <ul class="wl-pricing-features">
             <li>Monthly strategic review</li>
+            <li>Priority Intents set monthly</li>
             <li>Everything in Typical</li>
-            <li>5 Focus Pages per month</li>
             <li>4 backlinks per month</li>
-            <li>3 SEO work hours per month</li>
+            <li>5.5 hours of SEO Time per month</li>
             <li>2 new content pieces per month</li>
           </ul>
           <a href="/sign-up/" class="btn btn-outline--dark wl-pricing-btn">Book a Demo</a>
@@ -934,110 +1205,6 @@ const faqGroups = [
       <p class="wl-pricing-footnote" data-animate>
         <a href="/pricing/">See the full deliverable breakdown, à la carte options, and FAQ on our pricing page</a>
       </p>
-    </div>
-  </section>
-
-  <!-- ===== CLIENT TYPES ===== -->
-  <section class="wl-clients">
-    <div class="container">
-      <div class="wl-clients-header" data-animate>
-        <span class="section-label">Best-Fit Campaigns</span>
-        <h2 class="section-heading">
-          What Types of Clients Work<br />
-          Best With White Label SEO?
-        </h2>
-      </div>
-
-      <div class="wl-clients-grid" data-stagger>
-        <div class="wl-client-card" data-animate>
-          <div class="wl-client-icon">
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            >
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
-              ></path>
-              <polyline points="9 22 9 12 15 12 15 22"></polyline>
-            </svg>
-          </div>
-          <h3 class="wl-client-title">Local Businesses</h3>
-          <p class="wl-client-desc">
-            Restaurants, dentists, law firms, and service providers looking to
-            dominate their local market and maps results.
-          </p>
-        </div>
-        <div class="wl-client-card" data-animate>
-          <div class="wl-client-icon">
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            >
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"
-              ></rect>
-              <path d="M8 21h8M12 17v4"></path>
-            </svg>
-          </div>
-          <h3 class="wl-client-title">SaaS Websites</h3>
-          <p class="wl-client-desc">
-            Software companies needing organic growth through strategic content
-            marketing and technical SEO.
-          </p>
-        </div>
-        <div class="wl-client-card" data-animate>
-          <div class="wl-client-icon">
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            >
-              <circle cx="9" cy="21" r="1"></circle>
-              <circle cx="20" cy="21" r="1"></circle>
-              <path
-                d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
-              ></path>
-            </svg>
-          </div>
-          <h3 class="wl-client-title">eCommerce Shops</h3>
-          <p class="wl-client-desc">
-            Online stores that need product and category optimization,
-            technical SEO at scale, and content strategy.
-          </p>
-        </div>
-        <div class="wl-client-card" data-animate>
-          <div class="wl-client-icon">
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            >
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path
-                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
-              ></path>
-            </svg>
-          </div>
-          <h3 class="wl-client-title">National & B2B</h3>
-          <p class="wl-client-desc">
-            Companies targeting broader markets that need authority building,
-            competitive analysis, and long-term growth.
-          </p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1135,46 +1302,146 @@ const faqGroups = [
           Label SEO Provider
         </h2>
         <p class="section-subtext" style="margin:0 auto;">
-          Research, interview, and a little gut feeling. Here are the key things
-          we recommend you look for.
+          The right partner is the difference between a service you can sell
+          confidently and one you regret quoting. Some questions you'll only
+          get good answers to by asking directly. Here's what we recommend
+          looking at.
         </p>
       </div>
 
       <div class="wl-choose-grid" data-stagger>
         <div class="wl-choose-card" data-animate>
           <div class="wl-choose-number">01</div>
-          <h3 class="wl-choose-title">Choose a Specialist</h3>
+          <h3 class="wl-choose-title">Choose a specialist, not a generalist</h3>
           <p class="wl-choose-desc">
-            Partner with a firm that only provides SEO. Specialization means
-            better processes, better pricing, and better communication. We only
-            do SEO, nothing else.
+            The shops that only do SEO build better processes, set sharper
+            pricing, and communicate more clearly than full-service agencies
+            that bolt SEO on as one of ten services. Specialization compounds.
+            We only do SEO, which is part of why our process is built around
+            running dozens of campaigns concurrently without quality drift.
           </p>
         </div>
         <div class="wl-choose-card" data-animate>
           <div class="wl-choose-number">02</div>
-          <h3 class="wl-choose-title">Ask About Their Process</h3>
+          <h3 class="wl-choose-title">Walk both onboarding processes</h3>
           <p class="wl-choose-desc">
-            They should be able to walk you through both a partner onboarding
-            process and their project onboarding process in detail. We love
-            sharing ours.
+            Two onboardings matter. Yours as a partner (how do you get up and
+            running with them?) and your client's (what happens in the first
+            30 days of a campaign?). A good provider can walk you through
+            both in detail without hesitating. We love sharing ours because
+            we've sweated the details.
           </p>
         </div>
         <div class="wl-choose-card" data-animate>
           <div class="wl-choose-number">03</div>
-          <h3 class="wl-choose-title">Meet the Team</h3>
+          <h3 class="wl-choose-title">Meet the actual delivery team</h3>
           <p class="wl-choose-desc">
-            Get face time with the people you'll be working with: sales,
-            account managers, and strategists. At SEO Brothers, you're welcome
-            to book a "meet the team" call anytime.
+            Sales and delivery are not the same people. Before you commit,
+            get face time with the account managers and strategists who will
+            actually run your campaigns. At SEO Brothers, "meet the team"
+            calls are open to any prospective partner at any time.
           </p>
         </div>
         <div class="wl-choose-card" data-animate>
           <div class="wl-choose-number">04</div>
-          <h3 class="wl-choose-title">Review Deliverables</h3>
+          <h3 class="wl-choose-title">Ask for sample deliverables</h3>
           <p class="wl-choose-desc">
-            What will your clients see? What do you have access to? How do they
-            communicate progress and reporting? Make sure it meets your
-            standards.
+            What do reports look like? What do dashboards look like? What's
+            actually being optimized inside their SEO Time bucket each
+            month? Examples are easier to evaluate than promises. Providers
+            that won't share sample work usually have a reason.
+          </p>
+        </div>
+        <div class="wl-choose-card" data-animate>
+          <div class="wl-choose-number">05</div>
+          <h3 class="wl-choose-title">Understand the link methodology</h3>
+          <p class="wl-choose-desc">
+            Link quality varies wildly. Ask about the types of placements,
+            how outreach happens, and what the editorial standards are.
+            Then ask what they refuse to do. A provider with no "won't do"
+            list is one to be cautious of.
+          </p>
+        </div>
+        <div class="wl-choose-card" data-animate>
+          <div class="wl-choose-number">06</div>
+          <h3 class="wl-choose-title">Brand protection and contract flexibility</h3>
+          <p class="wl-choose-desc">
+            Your clients are your clients. The contract should say so
+            explicitly: no poaching, no direct contact, work and assets
+            belong to your agency. And terms should let you scale month to
+            month. Anyone asking for a year-long lock-in is hedging their
+            own quality concerns.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMMON PITFALLS ===== -->
+  <section class="wl-pitfalls">
+    <div class="container">
+      <div class="wl-pitfalls-header" data-animate>
+        <span class="section-label">What to Watch For</span>
+        <h2 class="section-heading">
+          Common White Label SEO<br />
+          Pitfalls to Avoid
+        </h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          Most white label partnerships go wrong for the same handful of
+          reasons. None of them are subtle. All of them are visible in the
+          discovery call if you know what to ask.
+        </p>
+      </div>
+
+      <div class="wl-pitfalls-grid" data-stagger>
+        <div class="wl-pitfall-card" data-animate>
+          <div class="wl-pitfall-marker">01</div>
+          <h3 class="wl-pitfall-title">Opaque delivery timelines</h3>
+          <p class="wl-pitfall-desc">
+            "We'll get to it" is not a delivery timeline. A real provider
+            can tell you what gets done in week one, week four, and month
+            three. If the timeline is fuzzy at sign-up, it stays fuzzy.
+          </p>
+        </div>
+        <div class="wl-pitfall-card" data-animate>
+          <div class="wl-pitfall-marker">02</div>
+          <h3 class="wl-pitfall-title">Reporting that doesn't reach your brand</h3>
+          <p class="wl-pitfall-desc">
+            Some "white label" providers will brand the cover page and call
+            it done while their logo lives in the footer of every chart.
+            Look at a real report end to end before signing. Your brand
+            belongs everywhere or it's not white label.
+          </p>
+        </div>
+        <div class="wl-pitfall-card" data-animate>
+          <div class="wl-pitfall-marker">03</div>
+          <h3 class="wl-pitfall-title">Vague link methodology</h3>
+          <p class="wl-pitfall-desc">
+            Specific source domains are proprietary at most reputable
+            providers (publishing the full list publicly tanks the value).
+            But the methodology shouldn't be a mystery. A good provider
+            explains placement types, editorial standards, what they refuse
+            to do, and can show sample placements. If all you get is
+            "trust us, the links are great," walk.
+          </p>
+        </div>
+        <div class="wl-pitfall-card" data-animate>
+          <div class="wl-pitfall-marker">04</div>
+          <h3 class="wl-pitfall-title">Contracts that lock you in</h3>
+          <p class="wl-pitfall-desc">
+            A long lock-in is a vote of low confidence from the provider.
+            If they're not earning the relationship month by month, they
+            shouldn't be paid for months they didn't earn. Look for
+            month-to-month terms, or at minimum clear exit provisions.
+          </p>
+        </div>
+        <div class="wl-pitfall-card" data-animate>
+          <div class="wl-pitfall-marker">05</div>
+          <h3 class="wl-pitfall-title">No defined client ownership</h3>
+          <p class="wl-pitfall-desc">
+            The work, content, and links your provider creates should
+            belong to your agency without question. Get that in writing
+            before the campaign starts, not after a client tries to leave.
           </p>
         </div>
       </div>
@@ -1245,6 +1512,39 @@ const faqGroups = [
               <div class="wl-testimonial-name">Joy Fraser</div>
               <div class="wl-testimonial-role">
                 Creative Director, Roddis Communications
+              </div>
+            </div>
+          </div>
+        </blockquote>
+
+        <blockquote class="wl-testimonial" data-animate>
+          <div class="wl-testimonial-quote">
+            <svg
+              class="wl-testimonial-mark"
+              width="40"
+              height="40"
+              viewBox="0 0 40 40"
+              fill="none"
+            >
+              <path
+                d="M18 20H10C10 15.58 13.58 12 18 12V8C11.37 8 6 13.37 6 20V32H18V20ZM38 20H30C30 15.58 33.58 12 38 12V8C31.37 8 26 13.37 26 20V32H38V20Z"
+                fill="currentColor"></path>
+            </svg>
+            <p class="wl-testimonial-text">
+              Thank you for all that you did for our company over the years.
+              You and your company were hands down the best partners we ever
+              worked with and I appreciate all the support over the many
+              years together.
+            </p>
+          </div>
+          <div class="wl-testimonial-author">
+            <div class="wl-testimonial-avatar wl-testimonial-avatar--green"
+              >JH</div
+            >
+            <div>
+              <div class="wl-testimonial-name">Jeff Horst, CFE</div>
+              <div class="wl-testimonial-role">
+                Former CEO, RocketBarn
               </div>
             </div>
           </div>
@@ -1563,11 +1863,19 @@ const faqGroups = [
     background: var(--white);
   }
 
-  .wl-what-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
+  .wl-what-content {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .wl-what-content > .section-label,
+  .wl-what-content > .section-heading {
+    text-align: center;
+    display: block;
+  }
+
+  .wl-what-content > .section-heading {
+    margin-bottom: 40px;
   }
 
   .wl-what-text {
@@ -1581,73 +1889,302 @@ const faqGroups = [
     color: var(--text-primary);
   }
 
-  .wl-what-benefits {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .wl-benefit-card {
-    display: flex;
-    gap: 16px;
-    padding: 24px;
-    background: var(--light);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-light);
-    transition: all var(--transition);
-  }
-
-  .wl-benefit-card:hover {
-    border-color: var(--teal);
-    box-shadow: var(--shadow-md);
-  }
-
-  .wl-benefit-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: var(--radius-md);
-    background: rgba(40, 165, 177, 0.1);
-    color: var(--teal);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .wl-benefit-icon--purple {
-    background: rgba(140, 99, 170, 0.1);
-    color: var(--purple);
-  }
-
-  .wl-benefit-icon--green {
-    background: rgba(68, 185, 123, 0.1);
-    color: var(--green);
-  }
-
-  .wl-benefit-title {
+  .wl-what-subhead {
     font-family: var(--font-display);
-    font-size: 16px;
+    font-size: 24px;
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 4px;
+    margin: 40px 0 16px;
+    letter-spacing: -0.01em;
   }
 
-  .wl-benefit-desc {
-    font-size: 14px;
-    line-height: 1.6;
+  .wl-what-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 20px;
+  }
+
+  .wl-what-list li {
+    position: relative;
+    padding-left: 26px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 1.65;
     color: var(--text-secondary);
   }
 
-  @media (max-width: 900px) {
-    .wl-what-grid {
-      grid-template-columns: 1fr;
-      gap: 48px;
-    }
+  .wl-what-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 14px;
+    height: 14px;
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2328a5b1' stroke-width='2.5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .wl-what-list a,
+  .wl-what-text a,
+  .wl-approach-card-desc a {
+    color: var(--teal);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: color var(--transition);
+  }
+
+  .wl-what-list a:hover,
+  .wl-what-text a:hover,
+  .wl-approach-card-desc a:hover {
+    color: var(--teal-dark);
   }
 
   @media (max-width: 600px) {
     .wl-what {
       padding: 80px 0;
+    }
+
+    .wl-what-subhead {
+      font-size: 20px;
+      margin-top: 32px;
+    }
+  }
+
+  /* ===== ROLES (RESELLER VS PROVIDER) ===== */
+  .wl-roles {
+    padding: 120px 0;
+    background: var(--light);
+  }
+
+  .wl-roles-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .wl-roles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    max-width: 900px;
+    margin: 0 auto 40px;
+  }
+
+  .wl-role-card {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 36px;
+    transition: all var(--transition);
+  }
+
+  .wl-role-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .wl-role-card--provider {
+    border-color: rgba(40, 165, 177, 0.3);
+    background: linear-gradient(135deg, rgba(40, 165, 177, 0.04), rgba(140, 99, 170, 0.04));
+  }
+
+  .wl-role-tag {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .wl-role-card--provider .wl-role-tag {
+    color: var(--teal);
+  }
+
+  .wl-role-who {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+
+  .wl-role-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .wl-roles-footer {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 700px) {
+    .wl-roles-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .wl-roles {
+      padding: 80px 0;
+    }
+  }
+
+  /* ===== WHY AGENCIES USE WL SEO ===== */
+  .wl-why {
+    padding: 120px 0;
+    background: var(--white);
+  }
+
+  .wl-why-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .wl-why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  .wl-why-card {
+    background: var(--light);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    transition: all var(--transition);
+  }
+
+  .wl-why-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(40, 165, 177, 0.25);
+    background: var(--white);
+  }
+
+  .wl-why-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+  }
+
+  .wl-why-icon--teal {
+    background: rgba(40, 165, 177, 0.12);
+    color: var(--teal);
+  }
+
+  .wl-why-icon--purple {
+    background: rgba(140, 99, 170, 0.12);
+    color: var(--purple);
+  }
+
+  .wl-why-icon--green {
+    background: rgba(68, 185, 123, 0.12);
+    color: var(--green);
+  }
+
+  .wl-why-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .wl-why-desc {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  @media (max-width: 1000px) {
+    .wl-why-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .wl-why {
+      padding: 80px 0;
+    }
+
+    .wl-why-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===== MID-PAGE CTA ===== */
+  .wl-mid-cta {
+    padding: 40px 0 80px;
+    background: var(--white);
+  }
+
+  .wl-mid-cta-card {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 48px 32px;
+    background: linear-gradient(
+      135deg,
+      rgba(40, 165, 177, 0.05),
+      rgba(140, 99, 170, 0.05)
+    );
+    border: 1px solid rgba(40, 165, 177, 0.18);
+    border-radius: var(--radius-xl);
+  }
+
+  .wl-mid-cta-title {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .wl-mid-cta-text {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    max-width: 460px;
+    margin: 0 auto 24px;
+  }
+
+  .wl-mid-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  @media (max-width: 600px) {
+    .wl-mid-cta {
+      padding: 24px 0 60px;
+    }
+
+    .wl-mid-cta-card {
+      padding: 36px 24px;
     }
   }
 
@@ -1889,7 +2426,7 @@ const faqGroups = [
 
   .wl-components-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
 
@@ -2254,7 +2791,53 @@ const faqGroups = [
 
   .wl-pricing-header {
     text-align: center;
-    margin-bottom: 64px;
+    margin-bottom: 40px;
+  }
+
+  .wl-pricing-models {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto 24px;
+  }
+
+  .wl-pricing-model {
+    background: var(--light);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    transition: all var(--transition);
+  }
+
+  .wl-pricing-model:hover {
+    border-color: rgba(40, 165, 177, 0.25);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .wl-pricing-model-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .wl-pricing-model-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .wl-pricing-models-footer {
+    max-width: 760px;
+    margin: 0 auto 56px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-secondary);
   }
 
   .wl-pricing-grid {
@@ -2457,85 +3040,6 @@ const faqGroups = [
     }
   }
 
-  /* ===== CLIENT TYPES ===== */
-  .wl-clients {
-    padding: 120px 0;
-    background: var(--light);
-  }
-
-  .wl-clients-header {
-    text-align: center;
-    margin-bottom: 56px;
-  }
-
-  .wl-clients-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-  }
-
-  .wl-client-card {
-    text-align: center;
-    padding: 40px 24px;
-    background: var(--white);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-light);
-    transition: all var(--transition);
-  }
-
-  .wl-client-card:hover {
-    border-color: var(--teal);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
-  }
-
-  .wl-client-icon {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: var(--light);
-    color: var(--teal);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
-    transition: all var(--transition);
-  }
-
-  .wl-client-card:hover .wl-client-icon {
-    background: rgba(40, 165, 177, 0.1);
-  }
-
-  .wl-client-title {
-    font-family: var(--font-display);
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 10px;
-  }
-
-  .wl-client-desc {
-    font-size: 14px;
-    line-height: 1.65;
-    color: var(--text-secondary);
-  }
-
-  @media (max-width: 900px) {
-    .wl-clients-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 600px) {
-    .wl-clients {
-      padding: 80px 0;
-    }
-
-    .wl-clients-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
   /* ===== COMPARISON ===== */
   .wl-compare {
     padding: 120px 0;
@@ -2715,9 +3219,9 @@ const faqGroups = [
 
   .wl-testimonials-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
-    max-width: 960px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1180px;
     margin: 0 auto;
   }
 
@@ -2777,6 +3281,10 @@ const faqGroups = [
     background: linear-gradient(135deg, var(--purple), var(--purple-dark));
   }
 
+  .wl-testimonial-avatar--green {
+    background: linear-gradient(135deg, var(--green), var(--green-dark));
+  }
+
   .wl-testimonial-name {
     font-family: var(--font-display);
     font-size: 15px;
@@ -2790,7 +3298,14 @@ const faqGroups = [
     margin-top: 2px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
+    .wl-testimonials-grid {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 800px;
+    }
+  }
+
+  @media (max-width: 600px) {
     .wl-testimonials {
       padding: 80px 0;
     }
@@ -2893,6 +3408,83 @@ const faqGroups = [
 
     .wl-faq-question {
       font-size: 16px;
+    }
+  }
+
+  /* ===== COMMON PITFALLS ===== */
+  .wl-pitfalls {
+    padding: 120px 0;
+    background: var(--light);
+  }
+
+  .wl-pitfalls-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .wl-pitfalls-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  .wl-pitfall-card {
+    position: relative;
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-left: 3px solid rgba(216, 132, 60, 0.7);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    transition: all var(--transition);
+  }
+
+  .wl-pitfall-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-left-color: rgba(216, 132, 60, 1);
+  }
+
+  .wl-pitfall-marker {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: rgba(216, 132, 60, 0.9);
+    margin-bottom: 12px;
+  }
+
+  .wl-pitfall-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .wl-pitfall-desc {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  @media (max-width: 1000px) {
+    .wl-pitfalls-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .wl-pitfalls {
+      padding: 80px 0;
+    }
+
+    .wl-pitfalls-grid {
+      grid-template-columns: 1fr;
     }
   }
 

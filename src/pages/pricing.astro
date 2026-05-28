@@ -21,7 +21,7 @@ const tiers: Tier[] = [
       "Base-level managed campaign. Right for ultra-low-competition industries or sparsely-populated locations where steady fundamentals win.",
     highlights: [
       "Semi-annual strategy review",
-      "1 Focus Page + 1 backlink each month",
+      "1 backlink + 1.5 hours of SEO Time each month",
       "Best for low-competition local",
     ],
     accent: "teal",
@@ -30,10 +30,10 @@ const tiers: Tier[] = [
     name: "Typical",
     price: "$680",
     blurb:
-      "Our most-quoted package. Full-stack local SEO with content, links, Maps, and the Focus Page work to rank the pages that matter.",
+      "Our most-quoted package. Full-stack local SEO with content, links, Maps, and SEO Time directed at the Priority Intents that move the campaign.",
     highlights: [
       "Quarterly strategy + monthly content",
-      "3 Focus Pages + 2 backlinks each month",
+      "2 backlinks + 3.5 hours of SEO Time each month",
       "Best for most local businesses",
     ],
     featured: true,
@@ -43,10 +43,10 @@ const tiers: Tier[] = [
     name: "Turbo",
     price: "$1,210",
     blurb:
-      "When the market is tougher or speed matters more. Monthly strategy reviews, more Focus Pages, more links, more content.",
+      "When the market is tougher or speed matters more. Monthly strategy reviews, more SEO Time, more links, more content.",
     highlights: [
       "Monthly strategy reviews",
-      "5 Focus Pages + 4 backlinks each month",
+      "4 backlinks + 5.5 hours of SEO Time each month",
       "Best for competitive markets",
     ],
     accent: "green",
@@ -80,12 +80,12 @@ const comparison: ComparisonRow[] = [
     values: ["1", "2", "4"],
   },
   {
-    label: "Focus Pages per month",
-    values: ["1", "3", "5"],
+    label: "Priority Intents set",
+    values: ["Semi-annually", "Quarterly", "Monthly"],
   },
   {
-    label: "Extra Flex Work",
-    values: ["1 hour", "2 hours", "3 hours"],
+    label: "SEO Time per month",
+    values: ["1.5 hours", "3.5 hours", "5.5 hours"],
   },
   {
     label: "New content per month",
@@ -120,12 +120,12 @@ const definitions: Definition[] = [
     body: "Editorial links built to your site each month from various publishing sources.",
   },
   {
-    term: "Focus Pages",
-    body: "A batched monthly task where a specialist takes a defined number of pages (1, 3, or 5 depending on tier) and does whatever it takes to get each page ranking better for its mapped keywords.",
+    term: "Priority Intents",
+    body: "The search intents we're actively working to rank for this cycle, set at each strategic review. Each intent maps to whichever page is best positioned to win it (sometimes the page you'd expect, sometimes a different one we surface during planning). Intents can be organic ('invisalign halifax') or map-based ('dentist in halifax'). Strategic review cadence determines re-setting: semi-annually on Tiny, quarterly on Typical, monthly on Turbo.",
   },
   {
-    term: "Extra Flex Work",
-    body: "Flexible specialist time set aside each month and allocated based on what your site actually needs that month, on top of the bundled deliverables. Goes toward the strategist's prioritized task list: site-wide on-page improvements, optimizations on pages outside the Focus Page set, schema rollouts, and ongoing fixes.",
+    term: "SEO Time",
+    body: "Flexible specialist time set aside each month and directed at the work that moves the active Priority Intents forward: on-page improvements, schema rollouts, content tune-ups, optimizations to whichever pages best serve each intent, and ongoing technical fixes. Tiny gets 1.5 hours, Typical 3.5, Turbo 5.5.",
   },
   {
     term: "Content",
@@ -179,11 +179,25 @@ const faqs: { q: string; a: string }[] = [
     a: "Your first step is to book a demo. Mike will walk you through the deliverables and systems you'll use, answer your questions, align on hot topics, and confirm we're a good fit. Once we're aligned, campaigns activate on a Monday or the 1st of the month, whichever you prefer. Your first month prorates from the start date, and after that billing runs on the 1st with cancel-anytime terms.",
   },
 ];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: f.a,
+    },
+  })),
+};
 ---
 
 <Layout
   title="White Label SEO Pricing and Packages | SEO Brothers"
   description="Transparent, customizable white-label SEO pricing for agency partners. Three example packages plus full custom builds, with no annual contracts."
+  schema={faqSchema}
 >
   <Nav />
 
@@ -432,7 +446,7 @@ const faqs: { q: string; a: string }[] = [
             <span class="cadence__example-price">From $60 / mo each</span>
           </li>
           <li>
-            <span class="cadence__example-label">Custom backlink or Focus Page count</span>
+            <span class="cadence__example-label">Custom backlink or SEO Time hours</span>
             <span class="cadence__example-price">Scoped during discovery</span>
           </li>
         </ul>
