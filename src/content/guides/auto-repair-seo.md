@@ -27,17 +27,57 @@ A few patterns shape this category in ways generic local-services advice misses.
 
 ## Keyword strategy by intent
 
-Group auto repair queries into five buckets and assign each to the right page type.
+Group auto repair queries into five buckets and assign each to the right page type. Volumes below are US monthly from Ahrefs, May 2026. Difficulty is Ahrefs KD on a 0-100 scale; anything in single digits is essentially uncontested.
 
-**Service head terms with geo modifiers.** "Auto repair [city]," "mechanic near me," "car repair shop [city]." Homepage and core service-page targets. Local pack ranking is the primary objective. National volumes are substantial: "mechanic near me" pulls 258,000 US searches per month, "auto repair near me" pulls 105,000.
+**Service head terms with geo modifiers.** "Auto repair [city]," "mechanic near me," "car repair shop [city]." Homepage and core service-page targets. Local pack ranking is the primary objective.
 
-**Service-specific queries.** "Brake repair [city]," "oil change [city]," "transmission repair [city]," "tire rotation [city]," "wheel alignment [city]," "engine diagnostics [city]." Each gets its own service page with real depth. Competition is lower than most shop owners assume: "brake repair near me" is 61,000 monthly at low difficulty, "wheel alignment near me" 83,000 at near-zero difficulty, "car AC repair near me" 16,000 at near-zero difficulty. "Oil change near me" is the outlier at 829,000 because the national quick-lube chains have captured it.
+| Query | Monthly searches | Difficulty |
+|---|---:|---:|
+| mechanic near me | 258,000 | 12 |
+| auto repair near me | 105,000 | 44 |
 
-**Make and model queries.** "BMW repair [city]," "Toyota service center [city]," "Honda specialist [city]," "European car repair [city]." Build pages for the makes you actually specialize in. This is the cell almost nobody contests: "BMW repair near me" and "Honda mechanic near me" each pull around 6,500 monthly at near-zero difficulty, with Audi, Mercedes, and Subaru variants sitting between 1,800 and 2,200 each at the same low competition. A shop with a real BMW page outranks the generalists by default.
+**Service-specific queries.** "Brake repair [city]," "oil change [city]," "transmission repair [city]," "tire rotation [city]," "wheel alignment [city]," "engine diagnostics [city]." Each gets its own service page with real depth.
+
+| Query | Monthly searches | Difficulty |
+|---|---:|---:|
+| oil change near me | 829,000 | 49 |
+| tire shop near me | 424,000 | 77 |
+| wheel alignment near me | 83,000 | 0 |
+| brake repair near me | 61,000 | 3 |
+| car AC repair near me | 16,000 | 0 |
+| transmission repair near me | 12,000 | 15 |
+| engine repair near me | 3,800 | 16 |
+
+Competition is lower than most shop owners assume. The two outliers ("oil change near me" and "tire shop near me") are dominated by national chains. The rest are wide open for a well-built per-service page.
+
+**Make and model queries.** "BMW repair [city]," "Toyota service center [city]," "Honda specialist [city]," "European car repair [city]." Build pages for the makes you actually specialize in.
+
+| Query | Monthly searches | Difficulty |
+|---|---:|---:|
+| diesel mechanic near me | 15,000 | 30 |
+| toyota mechanic near me | 9,400 | 3 |
+| honda mechanic near me | 6,600 | 0 |
+| bmw repair near me | 6,500 | 0 |
+| ford repair near me | 3,600 | 0 |
+| audi repair near me | 2,200 | 0 |
+| mercedes repair near me | 2,200 | 0 |
+| subaru repair near me | 1,800 | 14 |
+| european auto repair near me | 1,500 | 0 |
+
+This is the cell almost nobody contests. A shop with a real BMW page outranks the generalists by default.
 
 **Make-plus-service combinations.** "Audi brake repair [city]," "Subaru transmission [city]," "Ford F-150 service [city]." Lower competition, higher relevance, strong commercial intent. The shops that build these out capture queries their competitors don't even target.
 
-**Urgent breakdown and diagnostic queries.** "Car making grinding noise," "check engine light blinking," "car overheating," "battery not starting." Often consumed in AI Overviews now, but still produce strong call volume from searchers who realize they need professional help. National volumes are real: "check engine light on" 5,600 monthly, "why are my brakes squeaking" 6,200, "car overheating" 6,200, "car won't start" 5,800.
+**Urgent breakdown and diagnostic queries.** "Car making grinding noise," "check engine light blinking," "car overheating," "battery not starting." Often consumed in AI Overviews now, but still produce strong call volume from searchers who realize they need professional help.
+
+| Query | Monthly searches | Difficulty |
+|---|---:|---:|
+| car overheating | 6,200 | 6 |
+| why are my brakes squeaking | 6,200 | 1 |
+| car won't start | 5,800 | 11 |
+| check engine light on | 5,600 | 39 |
+| transmission slipping | 3,400 | 1 |
+| car shaking when braking | 3,000 | 0 |
 
 For the broader methodology, see our [keyword mapping guide](/guides/keyword-mapping/).
 
