@@ -39,6 +39,8 @@ const STATIC_PAGES = [
   "/",
   "/about/",
   "/acquires-smart-web-solutions/",
+  "/ai-seo/",
+  "/ai-seo/local/",
   "/careers/",
   "/case-studies/",
   "/guides/",
