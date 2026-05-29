@@ -23,3 +23,9 @@
 ## Sitemap
 
 - Lives at `src/pages/sitemap.xml.ts` (hand-rolled, single file at `/sitemap.xml`). The top of that file documents how to add new pages, exclude pages, and what the legacy redirects do. Update there, not in `astro.config.mjs`.
+
+## Deployment
+
+- **To deploy, just push to `main`.** That is the entire deploy step. Cloudflare is connected to the GitHub repo (`seobrothers/seo-bros-website`) and auto-deploys the site whenever `main` updates. There is no CI workflow or deploy script in the repo because the build/deploy lives on Cloudflare's side.
+- **Do NOT run `wrangler deploy` locally.** The app is a Cloudflare Worker (`wrangler.jsonc`, name `seobrothers`, serves `dist/`), but the local wrangler token sees multiple CF accounts and is not the production deploy path. Manual deploys hit account-selection prompts and auth errors. Pushing is correct and sufficient.
+- Production is seobrothers.com (the `.com`). Allow a couple of minutes after pushing for Cloudflare to build and go live.
