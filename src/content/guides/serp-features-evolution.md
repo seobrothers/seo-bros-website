@@ -2,7 +2,7 @@
 title: "How Google SERPs Have Evolved (and Where They're Going)"
 category: seo
 publishDate: 2026-04-30
-updatedDate: 2026-05-06
+updatedDate: 2026-05-28
 author: "Devon Bate"
 summary: A history and current state of Google's search results page. From the original 10 blue links to universal search, featured snippets, knowledge panels, and AI Overviews. What each shift meant for SEO, and how to optimize for the modern SERP layout.
 featured: true
@@ -12,11 +12,15 @@ The Google SERP has changed more in the last decade than in the decade before it
 
 This guide traces how the SERP evolved, what each major shift meant for the way SEO works, and how to optimize for the current layout.
 
+![Timeline of major Google SERP changes from 2007 to 2026: Universal Search in 2007, Knowledge Graph and panels in 2012, featured snippets in 2014, People Also Ask and the local 3-pack in 2015, rich features like video and shopping from 2016 to 2019, the SGE experiment in 2023, and AI Overviews becoming the default in 2024. Each shift added a new layer on top of the previous results page.](/images/guides/serp-features-evolution/serp-evolution-timeline.svg)
+
 ## The original SERP: ten blue links
 
 Through roughly 2007, a Google search result page was a list. Ten organic listings on the first page, each with a title, a URL, and a snippet of meta description. A small number of paid results above and to the right. That was it.
 
-SEO in this era was about rank position and not much else. Get to the top of the list, get the click. The first organic position captured something like 35% to 40% of clicks; the second around 15%; the third around 10%; everything below position 5 fought for scraps.
+SEO in this era was about rank position and not much else. Get to the top of the list, get the click. The 2006 AOL search data, the most-cited dataset from this period, put the first organic position at around 42% of clicks, the second under 12%, and the third about 8%. The top three captured roughly 63% of all clicks; everything below position five fought for scraps.
+
+![Bar chart of click share by organic position in the ten-blue-links era, from the 2006 AOL search data: position 1 captured 42.1 percent of clicks, position 2 captured 11.9 percent, position 3 captured 8.5 percent, then a steep decline through positions 4 to 10, which each captured only low single-digit percentages.](/images/guides/serp-features-evolution/ctr-by-position.svg)
 
 The ten blue links era is the foundation of what most SEO advice on the internet was originally written for. A lot of that advice still circulates, even though the SERP it was written for barely exists anymore.
 
@@ -117,6 +121,8 @@ In 2026, a typical SERP for an informational query might include, top to bottom:
 11. **Related searches**
 
 The traditional organic listings are now interspersed throughout the page rather than dominating it. A user searching for an informational query may scroll through the AI Overview, expand a PAA question, watch a video preview, and find their answer without ever clicking a traditional organic result.
+
+![Side-by-side comparison of a 2007 search results page and a 2026 one. The 2007 page is a simple list of ten organic listings with a couple of ads. The 2026 page is a stack of sponsored results, an AI Overview with cited sources, a local pack, a featured snippet, People Also Ask, organic results 1 to 3, a video carousel, organic results 4 to 10, and related searches, with the organic listings highlighted to show how they are interspersed and pushed down the page.](/images/guides/serp-features-evolution/serp-then-vs-now.svg)
 
 ## Optimizing for the modern SERP
 

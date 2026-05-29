@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <rect width="960" height="470" fill="#fafbfc"/>
+
+  <!-- Title -->
+  <g transform="translate(40, 34)">
+    <text x="0" y="0" font-size="11" font-weight="700" fill="#28a5b1" letter-spacing="0.14em">WHERE CONTENT VALUE IS SHIFTING</text>
+    <text x="0" y="22" font-size="13" font-weight="500" fill="#475569">AI Overviews compress top-of-funnel traffic and push value toward commercial intent.</text>
+  </g>
+
+  <!-- Funnel bands -->
+  <!-- Band 1: informational (muted) -->
+  <polygon points="230,110 730,110 668,230 292,230" fill="#eef1f5" stroke="#dbe2ea" stroke-width="1.5"/>
+  <text x="480" y="158" font-size="14" font-weight="700" fill="#64748b" text-anchor="middle">Top of funnel: informational</text>
+  <text x="480" y="180" font-size="11.5" fill="#94a3b8" text-anchor="middle">&quot;how does X work&quot;, definitions, simple how-to</text>
+
+  <!-- Band 2: consideration (teal light) -->
+  <polygon points="292,230 668,230 621,320 339,320" fill="#dff0f2" stroke="#a9d6db" stroke-width="1.5"/>
+  <text x="480" y="266" font-size="14" font-weight="700" fill="#1e8892" text-anchor="middle">Middle: comparison &amp; research</text>
+  <text x="480" y="288" font-size="11.5" fill="#5a8a8f" text-anchor="middle">&quot;best X 2026&quot;, X vs Y, decision-stage</text>
+
+  <!-- Band 3: decision (green) -->
+  <polygon points="339,320 621,320 580,400 380,400" fill="#d6f0e0" stroke="#8fd3ab" stroke-width="1.5"/>
+  <text x="480" y="360" font-size="14" font-weight="700" fill="#369962" text-anchor="middle">Bottom: commercial intent</text>
+  <text x="480" y="380" font-size="11.5" fill="#4f8e6c" text-anchor="middle">product pages, reviews, buy-now queries</text>
+
+  <!-- Left annotation: harder (down) -->
+  <g transform="translate(150,140)" stroke="#94a3b8" stroke-width="2.5" fill="none">
+    <line x1="0" y1="0" x2="0" y2="56"/>
+  </g>
+  <path d="M150 200 l-6 -10 l12 0 Z" fill="#94a3b8"/>
+  <text x="60" y="135" font-size="11.5" font-weight="700" fill="#64748b">Harder</text>
+  <text x="60" y="151" font-size="10.5" fill="#94a3b8">Answered in-SERP,</text>
+  <text x="60" y="165" font-size="10.5" fill="#94a3b8">less traffic for the</text>
+  <text x="60" y="179" font-size="10.5" fill="#94a3b8">same effort.</text>
+
+  <!-- Right annotation: more valuable (up) -->
+  <g transform="translate(810,400)" stroke="#369962" stroke-width="2.5" fill="none">
+    <line x1="0" y1="0" x2="0" y2="-56"/>
+  </g>
+  <path d="M810 340 l-6 10 l12 0 Z" fill="#369962"/>
+  <text x="760" y="372" font-size="11.5" font-weight="700" fill="#369962">More valuable</text>
+  <text x="760" y="388" font-size="10.5" fill="#4f8e6c">Commercial intent</text>
+  <text x="760" y="402" font-size="10.5" fill="#4f8e6c">still drives clicks;</text>
+  <text x="760" y="416" font-size="10.5" fill="#4f8e6c">invest more here.</text>
+
+  <!-- Footnote -->
+  <text x="40" y="446" font-size="11" fill="#94a3b8">Informational content shifts toward brand visibility and authority; clicks concentrate lower in the funnel.</text>
+</svg>

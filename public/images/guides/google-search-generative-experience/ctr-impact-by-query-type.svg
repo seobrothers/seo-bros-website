@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 440" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <rect width="880" height="440" fill="#fafbfc"/>
+
+  <!-- Title -->
+  <g transform="translate(40, 34)">
+    <text x="0" y="0" font-size="11" font-weight="700" fill="#28a5b1" letter-spacing="0.14em">AI OVERVIEW CTR IMPACT BY QUERY TYPE</text>
+    <text x="0" y="22" font-size="13" font-weight="500" fill="#475569">How much AI Overviews have reduced click-through, by search intent. Informational figure: Ahrefs &amp; Seer Interactive, 2025.</text>
+  </g>
+
+  <!-- Bars start at x=230, baseline. Row height 44, gap. -->
+  <!-- Informational -->
+  <text x="210" y="124" font-size="13" font-weight="600" fill="#0f172a" text-anchor="end">Informational</text>
+  <rect x="230" y="106" width="470" height="36" rx="5" fill="#1e8892"/>
+  <text x="712" y="129" font-size="12" font-weight="700" fill="#1e8892">&#8722;58% to &#8722;61%</text>
+
+  <!-- Commercial / product -->
+  <text x="210" y="194" font-size="13" font-weight="600" fill="#0f172a" text-anchor="end">Commercial / product</text>
+  <rect x="230" y="176" width="250" height="36" rx="5" fill="#28a5b1"/>
+  <text x="492" y="199" font-size="12" font-weight="600" fill="#475569">Variable, smaller</text>
+
+  <!-- Local -->
+  <text x="210" y="264" font-size="13" font-weight="600" fill="#0f172a" text-anchor="end">Local</text>
+  <rect x="230" y="246" width="90" height="36" rx="5" fill="#94c9cf"/>
+  <text x="332" y="269" font-size="12" fill="#475569">Minimal (local pack sits above)</text>
+
+  <!-- Navigational -->
+  <text x="210" y="334" font-size="13" font-weight="600" fill="#0f172a" text-anchor="end">Navigational</text>
+  <rect x="230" y="316" width="60" height="36" rx="5" fill="#c2dde0"/>
+  <text x="302" y="339" font-size="12" fill="#475569">Mostly unaffected</text>
+
+  <!-- baseline axis -->
+  <line x1="230" y1="92" x2="230" y2="366" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="230" y="392" font-size="10" fill="#94a3b8">Less click-through lost</text>
+  <text x="700" y="392" font-size="10" fill="#94a3b8" text-anchor="end">More click-through lost</text>
+  <line x1="230" y1="378" x2="700" y2="378" stroke="#e2e8f0" stroke-width="1"/>
+</svg>

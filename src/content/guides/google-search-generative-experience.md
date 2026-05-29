@@ -2,7 +2,7 @@
 title: "Google AI Overviews and SGE: How They Changed Search and What to Do About It"
 category: seo
 publishDate: 2026-04-30
-updatedDate: 2026-05-06
+updatedDate: 2026-05-28
 author: "Devon Bate"
 summary: AI Overviews are the largest single shift in Google's SERP layout in a decade. What changed, the impact on click-through rates, the optimization tactics that work in the new layout, and where the dust is still settling.
 featured: false
@@ -26,17 +26,21 @@ Three things are happening simultaneously when an AI Overview appears:
 
 The third point is what changed the SEO conversation. Even if your page is the source for the AI Overview, your traditional organic listing is now lower on the page than it used to be.
 
+![Diagram of an AI Overview on a results page showing three things happening at once: Google's Gemini model synthesizes a generated answer at the top of the page, Google selects and links a small set of source pages within that answer, and the traditional organic results are pushed down the page even when a site is one of the cited sources.](/images/guides/google-search-generative-experience/ai-overview-anatomy.svg)
+
 ## The click-through impact
 
 Pre-rollout estimates predicted dramatic drops in click-through rates as users got their answers from the overview without clicking through. The reality has been mixed and depends heavily on query type.
 
-**Informational queries** see the largest impact. Pure informational searches where the user wanted a quick answer (definitional queries, factual queries, simple how-to queries) have shown CTR drops in the 20% to 40% range across the studies that have been published. The user gets the answer in the overview and doesn't click through.
+**Informational queries** see the largest impact. Pure informational searches where the user wanted a quick answer (definitional queries, factual queries, simple how-to queries) have shown steep CTR drops. Studies published through 2025 put the decline for the top-ranking page on these queries at around 58% to 61%. Ahrefs measured a 58% drop in clicks for the number-one result when an AI Overview is present, and Seer Interactive found a 61% fall in organic CTR on informational queries. The user gets the answer in the overview and doesn't click through.
 
 **Commercial and product queries** show variable impact. AI Overviews on commercial queries often display product summaries with multiple linked sources, and click-through to specific products has held up better than to information sites. The intent matters: a query about "best running shoes 2026" still drives clicks to product reviews, even if the overview surfaces top picks.
 
 **Local queries** are largely unchanged. Local pack results sit above AI Overviews in most layouts, and the local-business intent isn't well-served by a generated summary, so the overview frequency and impact on local CTR has been smaller than feared.
 
 **Navigational queries** are mostly unaffected. Users searching for a specific brand or product know where they're going, and AI Overviews rarely intercede on these queries.
+
+![Horizontal bar chart of how much AI Overviews reduce click-through by query type. Informational queries see the largest drop, roughly 58 to 61 percent per 2025 studies from Ahrefs and Seer Interactive. Commercial and product queries see a smaller, variable impact. Local queries see minimal impact because the local pack sits above the overview. Navigational queries are mostly unaffected.](/images/guides/google-search-generative-experience/ctr-impact-by-query-type.svg)
 
 The cumulative impact for sites whose traffic skews informational has been real. Sites whose traffic skews commercial or local have been less affected.
 
@@ -89,6 +93,8 @@ The broader implication for SEO strategy isn't a tactical recipe. It's a shift i
 **Brand visibility through citation matters more.** Even when users don't click, being cited in the overview produces brand impressions. Sites that show up consistently in overviews for their topic build brand presence even when traffic doesn't flow.
 
 **Authority and expertise signals compound.** The model's source selection rewards genuine expertise. The investment in real authority (credentialed authors, original research, deep topical coverage) pays off more than it did in the prior era.
+
+![Marketing funnel showing where content value is shifting under AI Overviews. The top of the funnel, informational content like definitions and simple how-to queries, gets harder because answers are summarized in the results page and produce less traffic. The middle, comparison and decision-stage research, and the bottom, commercial intent such as product pages, reviews, and buy-now queries, become more valuable because commercial intent still drives clicks.](/images/guides/google-search-generative-experience/funnel-value-shift.svg)
 
 For broader content strategy implications, see our [what to blog about guide](/guides/what-to-blog-about/), updated for the post-AI-Overviews reality.
 

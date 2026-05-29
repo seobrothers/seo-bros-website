@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 380" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <rect width="1040" height="380" fill="#fafbfc"/>
+
+  <!-- Title -->
+  <g transform="translate(40, 34)">
+    <text x="0" y="0" font-size="11" font-weight="700" fill="#28a5b1" letter-spacing="0.14em">SERP EVOLUTION</text>
+    <text x="0" y="22" font-size="13" font-weight="500" fill="#475569">Major changes to Google's results page, 2007 to 2026. Each shift added a layer on top of the last.</text>
+  </g>
+
+  <!-- Timeline baseline -->
+  <line x1="90" y1="200" x2="980" y2="200" stroke="#cbd5e1" stroke-width="2"/>
+
+  <!-- Nodes: x = 110,255,400,545,690,835,955 -->
+  <!-- 2007 Universal Search (above) -->
+  <line x1="110" y1="200" x2="110" y2="150" stroke="#cbd5e1" stroke-width="1"/>
+  <circle cx="110" cy="200" r="7" fill="#28a5b1"/>
+  <text x="110" y="138" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">2007</text>
+  <text x="110" y="120" font-size="11" fill="#475569" text-anchor="middle">Universal</text>
+  <text x="110" y="106" font-size="11" fill="#475569" text-anchor="middle">Search</text>
+
+  <!-- 2012 Knowledge Graph (below) -->
+  <line x1="255" y1="200" x2="255" y2="250" stroke="#cbd5e1" stroke-width="1"/>
+  <circle cx="255" cy="200" r="7" fill="#28a5b1"/>
+  <text x="255" y="276" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">2012</text>
+  <text x="255" y="294" font-size="11" fill="#475569" text-anchor="middle">Knowledge Graph</text>
+  <text x="255" y="308" font-size="11" fill="#475569" text-anchor="middle">&amp; panels</text>
+
+  <!-- 2014 Featured Snippets (above) -->
+  <line x1="400" y1="200" x2="400" y2="150" stroke="#cbd5e1" stroke-width="1"/>
+  <circle cx="400" cy="200" r="7" fill="#28a5b1"/>
+  <text x="400" y="138" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">2014</text>
+  <text x="400" y="120" font-size="11" fill="#475569" text-anchor="middle">Featured</text>
+  <text x="400" y="106" font-size="11" fill="#475569" text-anchor="middle">snippets</text>
+
+  <!-- 2015 PAA + Local 3-pack (below) -->
+  <line x1="545" y1="200" x2="545" y2="250" stroke="#cbd5e1" stroke-width="1"/>
+  <circle cx="545" cy="200" r="7" fill="#28a5b1"/>
+  <text x="545" y="276" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">2015</text>
+  <text x="545" y="294" font-size="11" fill="#475569" text-anchor="middle">People Also Ask</text>
+  <text x="545" y="308" font-size="11" fill="#475569" text-anchor="middle">+ local 3-pack</text>
+
+  <!-- 2016-19 Rich features (above) -->
+  <line x1="690" y1="200" x2="690" y2="150" stroke="#cbd5e1" stroke-width="1"/>
+  <circle cx="690" cy="200" r="7" fill="#28a5b1"/>
+  <text x="690" y="138" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">2016&#8211;19</text>
+  <text x="690" y="120" font-size="11" fill="#475569" text-anchor="middle">Rich features</text>
+  <text x="690" y="106" font-size="11" fill="#475569" text-anchor="middle">(video, shopping)</text>
+
+  <!-- 2023 SGE experiment (below) -->
+  <line x1="835" y1="200" x2="835" y2="250" stroke="#cbd5e1" stroke-width="1"/>
+  <circle cx="835" cy="200" r="7" fill="#8c63aa"/>
+  <text x="835" y="276" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">2023</text>
+  <text x="835" y="294" font-size="11" fill="#475569" text-anchor="middle">SGE</text>
+  <text x="835" y="308" font-size="11" fill="#475569" text-anchor="middle">experiment</text>
+
+  <!-- 2024 AI Overviews (above, highlighted) -->
+  <line x1="955" y1="200" x2="955" y2="150" stroke="#44b97b" stroke-width="1.5"/>
+  <circle cx="955" cy="200" r="9" fill="#44b97b"/>
+  <text x="955" y="138" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">2024</text>
+  <text x="955" y="120" font-size="11" font-weight="700" fill="#369962" text-anchor="middle">AI Overviews</text>
+  <text x="955" y="106" font-size="11" fill="#475569" text-anchor="middle">(default)</text>
+
+  <!-- Footnote -->
+  <text x="90" y="356" font-size="11" fill="#94a3b8">From ten blue links to a layered surface: ads, AI Overviews, local packs, snippets, carousels, and organic results combined.</text>
+</svg>
