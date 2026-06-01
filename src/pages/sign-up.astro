@@ -123,6 +123,25 @@ const accessItems = [
             class="signup__form"
             novalidate
           >
+            {/*
+              Honeypot. Hidden from humans (off-screen, not focusable, not
+              announced to screen readers) but visible in the raw HTML, so
+              automated spam bots tend to fill it in. The Portal rejects any
+              submission where `phoneNumber` is non-empty. Real users never
+              see or touch this field. Do not add a real phone field with
+              this name.
+            */}
+            <div class="signup__hp" aria-hidden="true">
+              <label for="phoneNumber">Phone number</label>
+              <input
+                type="text"
+                id="phoneNumber"
+                name="phoneNumber"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </div>
+
             <div class="signup__field-row">
               <div class="signup__field">
                 <label for="firstName" class="signup__label">
@@ -481,6 +500,16 @@ const accessItems = [
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 14px;
+  }
+
+  /* Honeypot: kept in the DOM (and the rendered HTML bots scrape) but
+     pushed off-screen so no real user can see or reach it. */
+  .signup__hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
   }
 
   .signup__field {
