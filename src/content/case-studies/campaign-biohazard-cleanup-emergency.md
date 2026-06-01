@@ -5,7 +5,7 @@ publishDate: 2026-03-23
 featured: false
 redacted: true
 subject: Biohazard and trauma cleanup company
-vertical: Biohazard & trauma cleanup
+vertical: Restoration & cleanup
 region: Arizona
 summary: Specialty service pages plus geographic expansion content moved a Phoenix-area cleanup specialist from invisible on emergency-response searches to #1 for the highest-intent terms in the category.
 headlineMetric:

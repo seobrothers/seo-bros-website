@@ -5,7 +5,7 @@ publishDate: 2026-03-09
 featured: false
 redacted: true
 subject: Full-service dental practice
-vertical: Dental
+vertical: Healthcare
 region: Atlanta metro
 summary: Specialty pages for TMJ, pediatric, denture, and emergency dental services moved a 52-session baseline to top-3 placements across the high-intent searches that book actual appointments.
 headlineMetric:

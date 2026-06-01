@@ -5,7 +5,7 @@ publishDate: 2026-05-04
 featured: true
 redacted: true
 subject: Auto window tinting and paint protection studio
-vertical: Window tint, PPF, and ceramic coating
+vertical: Automotive
 region: Atlanta metro
 summary: Splitting ceramic coating, paint protection film, and window tinting into discrete service pages plus premium-positioning content delivered traffic growth in eleven of thirteen months and top-3 placements across the highest-margin terms.
 headlineMetric:

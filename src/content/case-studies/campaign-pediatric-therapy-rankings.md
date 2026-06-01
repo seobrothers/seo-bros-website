@@ -5,7 +5,7 @@ publishDate: 2026-04-06
 featured: true
 redacted: true
 subject: Pediatric therapy and ABA practice
-vertical: Pediatric therapy
+vertical: Healthcare
 region: Western Colorado
 summary: Service-specific pages for ABA, speech, occupational, and behavioral therapy plus E-E-A-T authority work moved core terms from outside the top 70 to multiple #1 placements in six months.
 headlineMetric:

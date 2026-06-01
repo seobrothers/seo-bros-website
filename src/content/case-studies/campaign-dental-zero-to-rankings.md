@@ -5,7 +5,7 @@ publishDate: 2026-04-20
 featured: true
 redacted: true
 subject: New-domain dental practice
-vertical: Dental
+vertical: Healthcare
 region: Atlanta metro
 summary: A from-zero build with every core service page live in month one took a five-session baseline to nearly 500 monthly organic sessions in seven months, with consistent compounding growth.
 headlineMetric:

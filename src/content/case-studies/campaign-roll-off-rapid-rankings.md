@@ -5,7 +5,7 @@ publishDate: 2026-05-04
 featured: false
 redacted: true
 subject: Roll-off and portable sanitation operator
-vertical: Roll-off & dumpster rental
+vertical: Home services
 region: Western Colorado
 summary: A foundational technical rebuild and dedicated location pages took a near-zero organic footprint to 202 monthly sessions in five months, with rankings still climbing at campaign end.
 headlineMetric:

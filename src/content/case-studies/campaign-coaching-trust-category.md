@@ -5,7 +5,7 @@ publishDate: 2026-01-26
 featured: false
 redacted: true
 subject: Business coaching firm
-vertical: Business coaching
+vertical: Coaching
 region: Los Angeles
 summary: Authority content built for a high-consideration buyer plus location-specific service pages moved a 22-session baseline to multiple #1 rankings across one-on-one and team coaching terms.
 headlineMetric:

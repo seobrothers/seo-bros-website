@@ -5,7 +5,7 @@ publishDate: 2026-01-12
 featured: false
 redacted: true
 subject: Window treatment installer
-vertical: Window treatments
+vertical: Home services
 region: Southern California
 summary: Community-level location pages and a clean blinds, shutters, and shades taxonomy moved a near-zero organic footprint into top-10 placements across multiple SoCal cities, with monthly leads growing 5x.
 headlineMetric:
