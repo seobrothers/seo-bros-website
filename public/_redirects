@@ -3,6 +3,20 @@
 # Format: OLD_PATH  NEW_PATH  STATUS
 
 # ============================================================================
+# Top-level pages — renamed/reframed
+# ============================================================================
+/who-we-help/                                               /white-label-seo/                                 301
+
+# ============================================================================
+# PODCAST — legacy niched-agency-podcast hub + episodes collapse to /podcast/
+# ============================================================================
+/guides/niched-agency-podcast/                              /podcast/                                         301
+/guides/podcast/building-a-niche-that-deepens-connections-with-prashant-mahajan-and-bianca-blake/  /podcast/  301
+/guides/podcast/the-evolution-of-simple-impact-media-with-evan-lazarus/  /podcast/                            301
+/guides/podcast/from-tire-installer-to-ceo-the-journey-of-stewart-gandolf-in-the-world-of-medical-marketing/  /podcast/  301
+/guides/podcast/how-ai-is-revolutionizing-content-creation-with-cody-schneider/  /podcast/                    301
+
+# ============================================================================
 # CITY PAGES — slugs shortened, content angle reframed as Local Markets
 # ============================================================================
 /guides/halifax-seo-companies/                              /guides/halifax-seo/                              301
