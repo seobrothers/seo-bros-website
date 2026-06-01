@@ -2,7 +2,7 @@
 title: "SEO for Acupuncture Clinics and Practitioners"
 category: industry
 publishDate: 2026-04-30
-updatedDate: 2026-05-06
+updatedDate: 2026-06-01
 author: "Devon Bate"
 summary: Acupuncture SEO is a condition-driven category where most patients arrive through searches for specific problems (back pain, fertility, anxiety) rather than for acupuncture itself. Here is the framework we use to capture that demand.
 featured: false
@@ -28,15 +28,32 @@ A few category traits matter:
 
 ## Keyword strategy by intent
 
-We map acupuncture keywords across four buckets.
+Start with the single most important number in this category. "Acupuncture" on its own pulls about 126,000 US searches a month, but it carries a keyword difficulty of 74 and the first page is Wikipedia, Mayo Clinic, Cleveland Clinic, and WebMD. A local practice is not ranking there, and the traffic wouldn't convert if it did. The volume that turns into booked appointments lives in two places: local transactional terms and condition queries. That is where the work goes.
 
-**Condition-based informational and commercial.** "Acupuncture for back pain," "acupuncture for fertility," "acupuncture for anxiety," "acupuncture for migraines," "acupuncture for chronic pain," "acupuncture for IVF support," "acupuncture for sciatica," "acupuncture for menopause." This is the primary growth lever. Each condition gets a real page with depth.
+We map acupuncture keywords across five buckets. The figures below are US monthly search volumes with Ahrefs keyword difficulty (KD) in parentheses, pulled while writing this guide.
 
-**Local transactional.** "Acupuncture [city]," "acupuncturist near me," "[neighborhood] acupuncture clinic." Geographic, high-intent, and where local-pack work pays off.
+**Local transactional.** "Acupuncture near me" alone is about 52,000 searches a month (KD 22), with "acupuncturist near me" adding another 3,300 (KD 16), plus "acupuncture [city]" and "[neighborhood] acupuncture clinic." This is the highest-intent, highest-volume bucket a local practice can realistically win, and it's where local-pack work pays off first.
 
-**Insurance-related.** "Does insurance cover acupuncture," "Medicare acupuncture coverage," "acupuncture covered by [insurer]," "affordable acupuncture [city]." High commercial intent, often skipped by practices that don't want to address billing publicly.
+**Condition-based.** The primary growth lever, and the data backs it hard. Almost every condition term sits at a difficulty a local site can clear:
 
-**Modality-specific.** "Cupping therapy," "electroacupuncture," "Chinese herbal medicine," "moxibustion," "Gua Sha." For practices offering related TCM services, each becomes its own page and its own keyword target.
+- Acupuncture for weight loss: 2,500 (KD 15)
+- Acupuncture for sciatica: 2,000 (KD 8)
+- Acupuncture for migraines: 2,000 (KD 9)
+- Acupuncture for anxiety: 2,000 (KD 27)
+- Fertility acupuncture: 1,800, plus "acupuncture for fertility" 1,100 (KD 11 to 20)
+- Acupuncture for neuropathy: 1,400 (KD 20)
+- Acupuncture for back pain: 1,300 (KD 16)
+- Acupuncture for tinnitus: 1,300 (KD 2)
+- Acupuncture for plantar fasciitis: 800 (KD 1)
+- Acupuncture for TMJ: 700 (KD 2)
+
+Several of these (tinnitus, plantar fasciitis, TMJ, shoulder pain, vertigo) sit below KD 5. A practice that treats those conditions and has no page for them is leaving easy rankings on the table. Each condition earns a real page with depth, not a line on a shared services page.
+
+**The dry needling comparison.** Worth pulling out on its own: "dry needling vs acupuncture" runs about 6,100 searches a month at a keyword difficulty of 0. It is the most winnable high-volume page in the category, the question comes up in nearly every new-patient conversation, and most acupuncture sites don't have it. If a practice ships one comparison page this quarter, it's this one.
+
+**Insurance and cost.** High commercial intent, low difficulty, and routinely skipped by practices that won't discuss billing publicly. "Is acupuncture covered by insurance" is 2,100 (KD 2), "does insurance cover acupuncture" 1,200 (KD 2), "does Medicare pay for acupuncture" 800 (KD 3), and "how much does acupuncture cost" 1,800 (KD 3). That's four pages of easy, bottom-funnel traffic competitors are handing over.
+
+**Modality-specific.** "Gua sha" (137,000), "cupping therapy" (61,000), and "moxibustion" (16,000) look tempting, but be honest about what they are: high-volume, mostly informational terms at national difficulty (KD 55 to 59), dominated by health publishers. They earn a page for topical authority and top-of-funnel reach, not because they convert into local bookings. "Auricular acupuncture" (1,500, KD 2) and "electroacupuncture" (700, KD 11) are the more rankable, more practice-relevant modality terms.
 
 For the broader keyword approach, see [our keyword research guide](/guides/keyword-research/) and [keyword mapping guide](/guides/keyword-mapping/).
 
@@ -44,7 +61,8 @@ For the broader keyword approach, see [our keyword research guide](/guides/keywo
 
 Content patterns that earn rankings and bookings:
 
-- **Condition pages.** This is the highest-leverage content category. One page per condition the practice treats: back pain, fertility, IVF support, anxiety, depression, migraines, sciatica, neuropathy, insomnia, menopause, PCOS, plantar fasciitis, TMJ. Each page should explain how acupuncture fits the condition, what to expect, typical session frequency, and supporting evidence where it exists.
+- **Condition pages.** This is the highest-leverage content category. One page per condition the practice treats: back pain, sciatica, migraines, anxiety, weight loss, fertility, IVF support, neuropathy, tinnitus, depression, insomnia, menopause, PCOS, plantar fasciitis, TMJ. Each page should explain how acupuncture fits the condition, what to expect, typical session frequency, and supporting evidence where it exists. The low-difficulty, decent-volume terms (tinnitus, plantar fasciitis, TMJ) are the fastest wins; the high-volume ones (weight loss, sciatica, migraines, anxiety) are the bigger long-term prizes.
+- **The dry needling comparison.** A dedicated "dry needling vs acupuncture" page answers the question new patients actually ask, ranks easily, and routes a high-volume informational search toward the practice. Most acupuncture sites skip it. Don't.
 - **Fertility and IVF support content.** Often a sub-vertical in itself. Fertility patients research deeply, often for months. Practices serving this audience benefit from a dedicated content section: pre-IVF support, transfer-day acupuncture, recurrent miscarriage support, partner support, hormonal balance content.
 - **What to expect content.** First-visit guides, what to wear, how to prepare, do needles hurt, how many sessions, what acupuncture feels like. Captures the nervous first-time patient and removes booking friction.
 - **Modality explainers.** What is cupping, what is moxibustion, what is electroacupuncture, what is auricular acupuncture, what is Gua Sha. Educational content that ranks well and supports the practice's broader offerings.

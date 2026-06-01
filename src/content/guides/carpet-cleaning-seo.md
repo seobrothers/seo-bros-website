@@ -2,7 +2,7 @@
 title: "SEO for Carpet Cleaning Companies: Driving Local Service Calls"
 category: industry
 publishDate: 2026-04-30
-updatedDate: 2026-05-06
+updatedDate: 2026-06-01
 author: "Devon Bate"
 summary: Carpet cleaning is a hyper-local, conversion-driven service category where the SEO program lives or dies on Google Business Profile, location pages, and review velocity. Here is the playbook we use with carpet cleaning clients.
 featured: false
@@ -26,17 +26,28 @@ A few traits define the category:
 
 ## Keyword strategy by intent
 
-We map carpet cleaning keywords across three intent buckets.
+Two numbers frame this category. "Carpet cleaning near me" pulls about 49,000 US searches a month, but at a keyword difficulty of 37 the local pack and first page are crowded with national franchises (Stanley Steemer, Zerorez, Chem-Dry, Oxi Fresh) and aggregators (Angi, Thumbtack, Yelp). An independent competes there on local relevance and reviews, not by out-muscling the chains for the head term. The second number is the one most operators miss: the adjacent surface-cleaning services a carpet cleaner already performs carry huge volume at almost no competition. More on that below.
 
-**Transactional.** "Carpet cleaning [city]," "carpet cleaners near me," "professional carpet cleaning service," "steam cleaning [neighborhood]," "same day carpet cleaning." These are the bread-and-butter rankings. Geographic modifiers and service-specific qualifiers (steam, dry, eco-friendly, pet-safe) drive the variations.
+We map carpet cleaning keywords across four buckets. Figures are US monthly search volumes with Ahrefs keyword difficulty (KD) in parentheses, pulled while writing this guide.
 
-**Service-specific transactional.** "Pet stain removal," "wine stain removal," "post-construction carpet cleaning," "rental cleaning service," "move-out carpet cleaning." Each becomes its own page with its own targeting. Most carpet cleaning websites lump these into a single services page and lose the long-tail volume.
+**Transactional, the contested core.** "Carpet cleaning" 54,000 (KD 29), "carpet cleaning near me" 49,000 (KD 37), "carpet cleaning service" 14,000 (KD 34), "carpet cleaning services" 13,000 (KD 22), "carpet cleaning company near me" 7,000 (KD 13), "carpet steam cleaning" 2,500 (KD 5), plus "carpet cleaning [city]" terms (Las Vegas 1,600, Houston 1,200, Phoenix 1,200, Los Angeles 1,200). High intent, high competition. This is a local-pack and reviews fight, not a pure-content one.
 
-**Informational.** "How often should you clean carpets," "steam vs dry carpet cleaning," "how to remove pet stains from carpet," "carpet cleaning costs." Captures research-stage prospects and supports topical authority. Useful for residential homeowners, less relevant for commercial buyers.
+**Adjacent surface services, the real unlock.** Most carpet cleaners also do upholstery, rugs, tile, and mattresses, but their site only has a carpet page. The missed volume is large and barely contested:
 
-**Commercial-specific.** "Office carpet cleaning [city]," "commercial carpet cleaning contracts," "hospitality carpet cleaning," "retail carpet cleaning service." Different buyer, different page, different proof points (insurance, certifications, references, after-hours availability).
+- Upholstery cleaning: 21,000 (KD 0)
+- Rug cleaning: 15,000 (KD 3), plus "area rug cleaning" 5,500 (KD 12)
+- Tile and grout cleaning: 5,400 (KD 2)
+- Mattress cleaning: 3,300 (KD 2)
 
-For the keyword research framework underneath this, see [our keyword research guide](/guides/keyword-research/).
+These are not different businesses. They are services the operator already runs with the same truck and crew. A dedicated page for each captures demand the carpet-only site is invisible for, at a difficulty a new site can clear in months.
+
+**Commercial.** "Commercial carpet cleaning" 10,000 (KD 9) and "commercial carpet cleaning services" 5,000 (KD 10) sit at a fraction of the competition the residential head terms carry, with far higher per-deal value and recurring-contract potential. Different buyer (facilities and office managers), different page, different proof points (insurance, certifications, references, after-hours availability). Most sites under-build this because the volume looks small next to residential; the contract math says otherwise.
+
+**Informational and cost.** "How to get stains out of carpet" 2,400 (KD 8), "best carpet cleaning solution" 1,700 (KD 0), and the pricing cluster: "carpet cleaning cost" 1,000 (KD 1), "carpet cleaning prices" 1,000 (KD 0), "how much does carpet cleaning cost" 700 (KD 0). The cost terms are nearly free to rank for, carry real commercial intent, and most operators refuse to publish pricing. Transparent ranges win those searches. This bucket also feeds the stain-type and comparison content covered below.
+
+One number to treat with caution: "carpet cleaner" shows about 148,000 searches a month at KD 5, but the intent is mixed. Rental machines, the appliance itself, and the person doing the work all share the term. It is not the clean service-intent target the volume makes it look like, so chase the qualified phrases above instead.
+
+For the keyword research framework underneath this, see [our keyword research guide](/guides/keyword-research/) and [keyword mapping guide](/guides/keyword-mapping/).
 
 ## Content topics that work
 
@@ -90,17 +101,18 @@ Emergency positioning is a smaller volume but higher-intent stream. "Emergency c
 Patterns we see in audits:
 
 1. **One generic services page covering everything.** Steam, dry, pet, residential, commercial all jammed into a single page. The site can't rank for any of them well.
-2. **No location pages.** A single home page trying to rank in every city in the service area. Google will pick one and the rest stay invisible.
-3. **Ignoring reviews after the job.** The single highest-leverage local activity, treated as an afterthought. The 4-star operator with 200 reviews beats the 4.8-star operator with 12 reviews almost every time.
-4. **Slow, image-heavy sites.** Before-and-after photos are great, but uncompressed full-resolution images tank Core Web Vitals and load times.
-5. **No call tracking.** If conversions aren't measured, optimization is guessing. Every operator above a one-truck operation should run call tracking.
-6. **Thin About and team content.** This is a trust transaction. Real owner photo, team bios, certifications, and history move conversion rates more than most operators expect.
-7. **Treating commercial as a footnote.** A separate commercial section, with its own keyword targeting and content, is usually under-built or missing entirely.
+2. **No pages for the adjacent services they already offer.** Upholstery, rug, tile and grout, and mattress cleaning together pull more low-competition volume than the contested carpet head terms, and most operators perform all of them. A carpet-only site is invisible for the easiest wins in the category.
+3. **No location pages.** A single home page trying to rank in every city in the service area. Google will pick one and the rest stay invisible.
+4. **Ignoring reviews after the job.** The single highest-leverage local activity, treated as an afterthought. The 4-star operator with 200 reviews beats the 4.8-star operator with 12 reviews almost every time.
+5. **Slow, image-heavy sites.** Before-and-after photos are great, but uncompressed full-resolution images tank Core Web Vitals and load times.
+6. **No call tracking.** If conversions aren't measured, optimization is guessing. Every operator above a one-truck operation should run call tracking.
+7. **Thin About and team content.** This is a trust transaction. Real owner photo, team bios, certifications, and history move conversion rates more than most operators expect.
+8. **Treating commercial as a footnote.** A separate commercial section, with its own keyword targeting and content, is usually under-built or missing entirely.
 
 ## How we approach carpet cleaning SEO at SEO Brothers
 
 Carpet cleaning is a vertical where most of the leverage is in the foundation: GBP, reviews, location pages, on-page basics. We start with an audit to identify the local-pack ceiling the current setup is hitting, fix the structural issues, build the location and service-page architecture, and run review and citation work in parallel. Content layered on top compounds over months.
 
-For multi-location operators or franchise groups, the work scales meaningfully across territories. For single-location operators, the goal is local-pack dominance in the served city.
+For multi-location operators or franchise groups, the work scales meaningfully across territories. For single-location operators, the goal is local-pack dominance in the served city. Carpet cleaning is part of the broader [home services SEO](/guides/home-services-seo/) cluster, and the cross-link between this guide and adjacent trades reinforces topical relevance.
 
 If you're running a carpet cleaning business and the call volume isn't matching what your equipment and team could handle, [get in touch](/sign-up/) and we'll figure out where the rankings are stuck.
