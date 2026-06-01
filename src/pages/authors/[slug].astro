@@ -1,0 +1,314 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import { authors, type Author } from "../../data/authors";
+
+export async function getStaticPaths() {
+  // Generate a page for every registered author. Unpublished authors still
+  // build (so they can be previewed) but are noindexed below.
+  return authors.map((author) => ({
+    params: { slug: author.slug },
+    props: { author },
+  }));
+}
+
+interface Props {
+  author: Author;
+}
+
+const { author } = Astro.props;
+
+const CATEGORY_LABELS: Record<string, string> = {
+  seo: "SEO",
+  industry: "Industry",
+  agency: "Agency",
+  cities: "Local",
+};
+
+const guides = (await getCollection("guides"))
+  .filter((g) => !import.meta.env.PROD || !g.data.draft)
+  .filter((g) => g.data.author === author.name)
+  .sort(
+    (a, b) =>
+      (b.data.updatedDate ?? b.data.publishDate).valueOf() -
+      (a.data.updatedDate ?? a.data.publishDate).valueOf()
+  );
+
+const authorUrl = new URL(`/authors/${author.slug}/`, Astro.site).href;
+const imageUrl = new URL(author.photo, Astro.site).href;
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: author.name,
+  jobTitle: author.jobTitle,
+  description: author.bio[0],
+  image: imageUrl,
+  url: authorUrl,
+  worksFor: { "@type": "Organization", name: "SEO Brothers" },
+  ...(author.sameAs.length ? { sameAs: author.sameAs } : {}),
+};
+---
+
+<Layout
+  title={`${author.name} | SEO Brothers`}
+  description={author.bio[0]}
+  schema={personSchema}
+  noindex={!author.published}
+>
+  <Nav variant="light" />
+
+  <section class="author-hero">
+    <div class="container author-hero__inner">
+      <div class="author-hero__photo-wrap" data-animate>
+        <img
+          src={author.photo}
+          alt={author.name}
+          class="author-hero__photo"
+          width="300"
+          height="300"
+        />
+        <div class="author-hero__photo-ring"></div>
+      </div>
+
+      <div class="author-hero__copy">
+        <span class="section-label" data-animate>Author</span>
+        <h1 class="author-hero__name" data-animate>{author.name}</h1>
+        <p class="author-hero__role" data-animate>{author.role}</p>
+        {author.bio.map((para) => (
+          <p class="author-hero__bio" data-animate>{para}</p>
+        ))}
+        {author.podcastHost && (
+          <a href="/podcast/" class="author-hero__podcast" data-animate>
+            <span class="author-hero__podcast-dot"></span>
+            Co-host of the Brothers in Search podcast
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <section class="author-guides">
+    <div class="container">
+      <div class="author-guides__header" data-animate>
+        <span class="section-label">Written by {author.name}</span>
+        <h2 class="section-heading">
+          {guides.length ? `Guides from ${author.name}` : "Guides coming soon"}
+        </h2>
+      </div>
+
+      {guides.length > 0 && (
+        <div class="author-guides__list" data-stagger>
+          {guides.map((g) => (
+            <a href={`/guides/${g.id}/`} class="author-guides__card" data-animate>
+              <span class="author-guides__cat">
+                {CATEGORY_LABELS[g.data.category] ?? g.data.category}
+              </span>
+              <h3 class="author-guides__title">{g.data.title}</h3>
+              <p class="author-guides__summary">{g.data.summary}</p>
+              <span class="author-guides__read">
+                Read guide
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ═══════════════════════════════════════════ HERO ═══════════════════════ */
+  .author-hero {
+    padding: 150px 0 80px;
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  }
+
+  .author-hero__inner {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    align-items: start;
+    max-width: 960px;
+  }
+
+  .author-hero__photo-wrap {
+    position: relative;
+    width: 200px;
+    height: 200px;
+  }
+
+  .author-hero__photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+  }
+
+  .author-hero__photo-ring {
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    background: linear-gradient(135deg in oklch, var(--teal), var(--purple), var(--green));
+    z-index: 0;
+  }
+
+  .author-hero__name {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 12px 0 6px;
+  }
+
+  .author-hero__role {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--teal);
+    margin: 0 0 24px;
+  }
+
+  .author-hero__bio {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin: 0 0 18px;
+    max-width: 620px;
+  }
+
+  .author-hero__podcast {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: 999px;
+    text-decoration: none;
+    transition: border-color var(--transition), box-shadow var(--transition);
+  }
+
+  .author-hero__podcast:hover {
+    border-color: rgba(45, 175, 175, 0.4);
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  }
+
+  .author-hero__podcast-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+  }
+
+  /* ═══════════════════════════════════════════ GUIDES ═════════════════════ */
+  .author-guides {
+    padding: 60px 0 100px;
+    background: var(--white);
+  }
+
+  .author-guides__header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .author-guides__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+
+  .author-guides__card {
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: border-color var(--transition), box-shadow var(--transition),
+      transform var(--transition);
+  }
+
+  .author-guides__card:hover {
+    border-color: rgba(45, 175, 175, 0.4);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    transform: translateY(-2px);
+  }
+
+  .author-guides__cat {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+
+  .author-guides__title {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--text-primary);
+    margin: 0 0 10px;
+  }
+
+  .author-guides__summary {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0 0 18px;
+    flex: 1;
+  }
+
+  .author-guides__read {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--teal);
+  }
+
+  @media (max-width: 768px) {
+    .author-hero {
+      padding: 120px 0 64px;
+    }
+
+    .author-hero__inner {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .author-hero__bio {
+      text-align: left;
+    }
+
+    .author-guides {
+      padding: 48px 0 72px;
+    }
+
+    .author-guides__list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

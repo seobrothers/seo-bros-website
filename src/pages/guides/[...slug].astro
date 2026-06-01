@@ -5,6 +5,7 @@ import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
+import { authorByName } from "../../data/authors";
 
 export async function getStaticPaths() {
   const reservedSlugs = new Set(["seo", "industry", "agency", "cities"]);
@@ -51,12 +52,23 @@ const guideUrl = new URL(`/guides/${guide.id}/`, Astro.site).href;
 const imageUrl = new URL(d.coverImage ?? "/images/logo.png", Astro.site).href;
 const logoUrl = new URL("/images/logo.png", Astro.site).href;
 
+// Link the byline to the author page when the author is a published entry in
+// the registry; otherwise the byline stays plain text.
+const authorEntity = authorByName(d.author);
+const authorHref =
+  authorEntity && authorEntity.published ? `/authors/${authorEntity.slug}/` : null;
+const authorUrl = authorHref ? new URL(authorHref, Astro.site).href : null;
+
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: d.title,
   description: d.summary,
-  author: { "@type": "Person", name: d.author },
+  author: {
+    "@type": "Person",
+    name: d.author,
+    ...(authorUrl ? { url: authorUrl } : {}),
+  },
   datePublished: d.publishDate.toISOString(),
   dateModified: (d.updatedDate ?? d.publishDate).toISOString(),
   publisher: {
@@ -117,7 +129,11 @@ const breadcrumbSchema = {
         <h1 class="guide-hero__title" data-animate>{d.title}</h1>
 
         <div class="guide-hero__meta" data-animate>
-          <span class="guide-hero__author">{d.author}</span>
+          {authorHref ? (
+            <a class="guide-hero__author" href={authorHref}>{d.author}</a>
+          ) : (
+            <span class="guide-hero__author">{d.author}</span>
+          )}
           <span class="guide-hero__dot">·</span>
           <span>{fmtDate(d.publishDate)}</span>
           {d.updatedDate && (

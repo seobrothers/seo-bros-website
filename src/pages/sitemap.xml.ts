@@ -30,6 +30,7 @@
 
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
+import { publishedAuthors } from "../data/authors";
 
 export const prerender = true;
 
@@ -70,7 +71,10 @@ export const GET: APIRoute = async () => {
   const caseStudies = (await getCollection("caseStudies"))
     .map((c) => `/case-studies/${c.id}/`);
 
-  const paths = [...STATIC_PAGES, ...guides, ...caseStudies]
+  // Author pages are gated by `published` in src/data/authors.ts.
+  const authorPages = publishedAuthors().map((a) => `/authors/${a.slug}/`);
+
+  const paths = [...STATIC_PAGES, ...guides, ...caseStudies, ...authorPages]
     .filter((p) => !EXCLUDED_PATHS.has(p))
     .sort();
 
