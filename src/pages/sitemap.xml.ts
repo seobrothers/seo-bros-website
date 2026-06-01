@@ -49,7 +49,6 @@ const STATIC_PAGES = [
   "/guides/cities/",
   "/guides/industry/",
   "/guides/seo/",
-  "/podcast/",
   "/pricing/",
   "/privacy/",
   "/sign-up/",
