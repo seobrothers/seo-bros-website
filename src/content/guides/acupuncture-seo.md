@@ -6,7 +6,7 @@ updatedDate: 2026-06-02
 author: "Devon Bate"
 summary: Acupuncture SEO is a condition-driven category where most patients arrive through searches for specific problems (back pain, fertility, anxiety) rather than for acupuncture itself. Here is the framework we use to capture that demand.
 featured: false
-draft: true
+draft: false
 ---
 
 Most acupuncture patients don't search for acupuncture. They search for back pain. Or fertility help. Or anxiety relief. Or migraine relief. The acupuncture practice that ranks for those condition queries, with content that explains how the modality fits the problem, captures a category of patient that the practice down the street, ranking only for "acupuncture [city]," never sees.

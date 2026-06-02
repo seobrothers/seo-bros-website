@@ -6,7 +6,7 @@ updatedDate: 2026-06-02
 author: "Devon Bate"
 summary: Audiology SEO sits at the intersection of healthcare YMYL signals, an aging demographic that searches differently, and a hearing-aid product category that has shifted significantly since the OTC rules of 2022. Here is the framework we use with audiology clients.
 featured: false
-draft: true
+draft: false
 ---
 
 Audiology is a quietly competitive SEO category. The patient base skews older, the search behavior is different from younger demographics, the average ticket value (especially for premium hearing aid fittings) is high, and the regulatory landscape changed materially when over-the-counter hearing aids became legal in the US in October 2022. That reshaped the category's keyword universe and gave consumers a non-clinical alternative that audiology practices now have to position against.

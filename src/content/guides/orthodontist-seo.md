@@ -6,7 +6,7 @@ updatedDate: 2026-06-02
 author: "Devon Bate"
 summary: How orthodontic practices win local search across Invisalign and traditional braces queries, parent-driven pediatric searches, and the consultation-to-treatment conversion model that defines the category.
 featured: false
-draft: true
+draft: false
 ---
 
 Orthodontics is one of the better verticals for SEO investment. The treatment is high-value, the decision cycle is long enough that content has time to influence it, and the local pack drives a meaningful share of new consultations in most markets. The competitive pressure is real, but the bar for outranking the average orthodontist site is lower than the difficulty would suggest.

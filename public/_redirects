@@ -153,8 +153,7 @@
 # ============================================================================
 # LEGACY NAMESPACE: /resource/ -> /guides/
 # Old WordPress "resource" URLs. The site renamed this whole tree to /guides/.
-# acupuncture/audiology/healthcare have no live guide yet (drafts in revamp),
-# so they point at the industry hub until those guides ship.
+# healthcare has no matching guide, so it points at the industry hub.
 # ============================================================================
 /resource/category/seo/                                     /guides/seo/                                      301
 /resource/free-website-seo-audit/                           /guides/free-website-seo-audit/                   301
@@ -167,8 +166,8 @@
 /resource/seo-for-plumbers/                                 /guides/seo-for-plumbers/                         301
 /resource/white-label-seo-audits/                           /guides/white-label-seo-audits/                   301
 /resource/white-label-seo-reporting/                        /guides/white-label-seo-reporting/                301
-/resource/acupuncture-seo/                                  /guides/industry/                                 301
-/resource/audiology-seo/                                    /guides/industry/                                 301
+/resource/acupuncture-seo/                                  /guides/acupuncture-seo/                          301
+/resource/audiology-seo/                                    /guides/audiology-seo/                            301
 /resource/seo-for-healthcare/                               /guides/industry/                                 301
 /resource/podcast/*                                         /podcast/                                         301
 /resource/*                                                 /guides/                                          301
