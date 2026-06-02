@@ -190,9 +190,11 @@
 /locations                                                  /guides/cities/                                   301
 
 # ============================================================================
-# Strategy-call CTA — booking now flows through /sign-up/.
+# CTA shortcuts — booking/demo flows through /sign-up/.
 # ============================================================================
 /strategy-call/                                             /sign-up/                                         301
+/demo                                                       /sign-up/                                         301
+/demo/                                                      /sign-up/                                         301
 
 # ============================================================================
 # PODCAST — catch-all for any remaining legacy episode URLs (and their feeds).
