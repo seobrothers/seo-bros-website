@@ -149,3 +149,69 @@
 # ============================================================================
 /case-studies/campaign-plumbing-traffic/                    /case-studies/                                    301
 /case-studies/partner-boutique-au/                          /case-studies/                                    301
+
+# ============================================================================
+# LEGACY NAMESPACE: /resource/ -> /guides/
+# Old WordPress "resource" URLs. The site renamed this whole tree to /guides/.
+# acupuncture/audiology/healthcare have no live guide yet (drafts in revamp),
+# so they point at the industry hub until those guides ship.
+# ============================================================================
+/resource/category/seo/                                     /guides/seo/                                      301
+/resource/free-website-seo-audit/                           /guides/free-website-seo-audit/                   301
+/resource/how-to-sell-seo-services-to-clients/              /guides/how-to-sell-seo-services/                 301
+/resource/how-to-structure-a-website-structure-local-business/  /guides/local-seo/                            301
+/resource/keyword-mapping/                                  /guides/keyword-mapping/                          301
+/resource/seo-for-accountants/                              /guides/financial-services-seo/                   301
+/resource/seo-for-apartments/                               /guides/property-management-seo/                  301
+/resource/seo-for-auto-repair-shops/                        /guides/auto-repair-seo/                          301
+/resource/seo-for-plumbers/                                 /guides/seo-for-plumbers/                         301
+/resource/white-label-seo-audits/                           /guides/white-label-seo-audits/                   301
+/resource/white-label-seo-reporting/                        /guides/white-label-seo-reporting/                301
+/resource/acupuncture-seo/                                  /guides/industry/                                 301
+/resource/audiology-seo/                                    /guides/industry/                                 301
+/resource/seo-for-healthcare/                               /guides/industry/                                 301
+/resource/podcast/*                                         /podcast/                                         301
+/resource/*                                                 /guides/                                          301
+
+# ============================================================================
+# LEGACY NAMESPACE: /insights/ -> /guides/
+# ============================================================================
+/insights/seo/keyword-mapping/                              /guides/keyword-mapping/                          301
+/insights/seo/on-page-seo/                                  /guides/on-page-seo/                              301
+/insights/seo/white-label-seo-audits/                       /guides/white-label-seo-audits/                   301
+/insights/*                                                 /guides/                                          301
+
+# ============================================================================
+# LOCATIONS — no equivalent section on the new site.
+# Halifax maps to its city guide; everything else to the cities hub.
+# ============================================================================
+/locations/halifax/                                         /guides/halifax-seo/                              301
+/locations/halifax                                          /guides/halifax-seo/                              301
+/locations/*                                                /guides/cities/                                   301
+/locations                                                  /guides/cities/                                   301
+
+# ============================================================================
+# Strategy-call CTA — booking now flows through /sign-up/.
+# ============================================================================
+/strategy-call/                                             /sign-up/                                         301
+
+# ============================================================================
+# PODCAST — catch-all for any remaining legacy episode URLs (and their feeds).
+# Supplements the explicit episode redirects higher up in this file.
+# ============================================================================
+/guides/podcast/*                                           /podcast/                                         301
+
+# ============================================================================
+# WordPress category archives — pagination + feeds (the bare hubs are mapped
+# explicitly above; this catches /page/N/ and /feed/ variants).
+# ============================================================================
+/guides/category/*                                          /guides/                                          301
+
+# ============================================================================
+# RSS feeds — no feeds on the new site. Drop podcast feeds onto /podcast/,
+# per-guide feeds onto the guides hub, everything else to home.
+# ============================================================================
+/feed/podcast/seo-brothers/                                 /podcast/                                         301
+/feed/podcast/the-niched-agency/                            /podcast/                                         301
+/guides/:slug/feed/                                         /guides/                                          301
+/feed/*                                                     /                                                 301
