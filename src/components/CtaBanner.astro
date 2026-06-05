@@ -1,50 +1,81 @@
-<section class="cta-banner" id="book-call">
+---
+// Closing CTA used across the site.
+//   variant="audit"   (default) business-facing free-audit CTA with an inline
+//                     AuditForm. The #book-audit anchor lives here so hero
+//                     "Get My Free Audit" buttons can scroll to it.
+//   variant="partner" agency/white-label CTA pointing at the partner package.
+import AuditForm from "./AuditForm.astro";
+
+interface Props {
+  variant?: "audit" | "partner";
+}
+
+const { variant = "audit" } = Astro.props;
+---
+
+<section class="cta-banner" id="book-audit">
   <div class="cta-bg">
     <div class="cta-orb cta-orb--1"></div>
     <div class="cta-orb cta-orb--2"></div>
   </div>
 
   <div class="container">
-    <div class="cta-content" data-animate>
-      <h2 class="cta-heading">Ready to Scale Your SEO Offering?</h2>
-      <p class="cta-text">
-        Book a quick demo, get a free discovery audit, and see how we work
-        with our partners. No commitment, no pressure.
-      </p>
-      <div class="cta-actions">
-        <a href="/sign-up/" class="btn btn-primary btn-lg">
-          Book a Demo
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path
-              d="M3 8h10M9 4l4 4-4 4"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"></path>
-          </svg>
-        </a>
+    {variant === "audit" ? (
+      <div class="cta-audit" data-animate>
+        <div class="cta-audit__copy">
+          <h2 class="cta-heading">See Where Your Business Stands in Search</h2>
+          <p class="cta-text">
+            Get a free audit. We'll show you where you rank now, where the
+            opportunity is, and what it would take to get in front of more local
+            customers. An instant snapshot, plus a real audit from our team.
+          </p>
+          <div class="cta-meta">
+            <span class="cta-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Instant results
+            </span>
+            <span class="cta-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Plus a real human audit
+            </span>
+            <span class="cta-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              No contracts
+            </span>
+          </div>
+        </div>
+        <div class="cta-audit__form">
+          <AuditForm source="cta-banner" />
+        </div>
       </div>
-      <div class="cta-meta">
-        <span class="cta-meta-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
-          No upfront cost
-        </span>
-        <span class="cta-meta-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
-          Cancel anytime
-        </span>
-        <span class="cta-meta-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
-          Free discovery audit
-        </span>
+    ) : (
+      <div class="cta-content" data-animate>
+        <h2 class="cta-heading">Are You an Agency? Let's Talk Partnership.</h2>
+        <p class="cta-text">
+          We've been a white-label SEO partner to agencies since 2015. Get
+          access to our partner package: pricing, sample reports, and a walkthrough
+          of how we work under your brand.
+        </p>
+        <div class="cta-actions">
+          <a href="/partner-package/" class="btn btn-primary btn-lg">
+            Get the Partner Package
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
+        <div class="cta-meta">
+          <span class="cta-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            White-label under your brand
+          </span>
+          <span class="cta-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Free discovery audits
+          </span>
+        </div>
       </div>
-    </div>
+    )}
   </div>
 </section>
 
@@ -84,6 +115,34 @@
     right: -10%;
   }
 
+  /* ===== audit variant: copy + form, two columns ===== */
+  .cta-audit {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+
+  .cta-audit__copy .cta-heading,
+  .cta-audit__copy .cta-text {
+    text-align: left;
+  }
+
+  .cta-audit__copy .cta-meta {
+    justify-content: flex-start;
+  }
+
+  .cta-audit__form {
+    width: 100%;
+    max-width: 460px;
+    justify-self: end;
+  }
+
+  /* ===== partner variant: centered ===== */
   .cta-content {
     text-align: center;
     position: relative;
@@ -107,7 +166,7 @@
     font-size: 18px;
     line-height: 1.7;
     color: var(--text-on-dark-muted);
-    margin-bottom: 36px;
+    margin-bottom: 28px;
   }
 
   .cta-actions {
@@ -137,6 +196,28 @@
 
   .cta-meta-item svg {
     color: var(--green);
+  }
+
+  @media (max-width: 900px) {
+    .cta-audit {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      max-width: 520px;
+    }
+
+    .cta-audit__copy .cta-heading,
+    .cta-audit__copy .cta-text {
+      text-align: center;
+    }
+
+    .cta-audit__copy .cta-meta {
+      justify-content: center;
+    }
+
+    .cta-audit__form {
+      justify-self: center;
+      max-width: 100%;
+    }
   }
 
   @media (max-width: 600px) {

@@ -134,4 +134,4 @@ A short list of typical paths after delivery:
 
 Any of those is fine. The audit produces value either way.
 
-If you're ready to send your URL through, [get in touch](/sign-up/) and we'll get the audit moving.
+If you're ready to send your URL through, [get in touch](/#book-audit) and we'll get the audit moving.

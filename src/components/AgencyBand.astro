@@ -1,0 +1,127 @@
+---
+// Homepage band for the secondary audience: agencies and resellers. Keeps the
+// white-label business visible and partners feeling served, without putting
+// wholesale language on the business-facing front door. Carries the agency
+// logo proof that used to live in the TrustBar.
+---
+
+<section class="agency-band">
+  <div class="container">
+    <div class="agency-band__inner" data-animate>
+      <span class="section-label">For Agencies & Resellers</span>
+      <h2 class="agency-band__title">Run an agency? We white-label, too.</h2>
+      <p class="agency-band__text">
+        We've been the SEO partner behind other agencies' work since 2015. Local
+        and multi-location is what we dominate and take direct, but we also have
+        decades of B2B and ecommerce experience. So if you're an agency in any of
+        those spaces, the partner side is wide open: same team, same campaigns,
+        delivered under your brand.
+      </p>
+
+      <a href="/white-label-seo/" class="btn btn-outline--dark agency-band__cta">
+        Explore white-label partnership
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </a>
+
+      <div class="agency-band__logos">
+        <p class="agency-band__logos-label">Agencies we partner with</p>
+        <div class="agency-band__logos-row">
+          <img src="/images/logo-redearmedia.png" alt="Red Ear Media logo" />
+          <img src="/images/logo-dayone.png" alt="Day One Dental Marketing logo" />
+          <img src="/images/logo-digitalenvy.png" alt="Digital Envy logo" />
+          <img src="/images/logo-rocketbarn.png" alt="RocketBarn Marketing logo" />
+          <img src="/images/logo-fourandhalf.png" alt="Fourandhalf logo" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .agency-band {
+    padding: 96px 0;
+    background: var(--light);
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .agency-band__inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .agency-band__inner .section-label {
+    display: inline-block;
+  }
+
+  .agency-band__title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 8px 0 16px;
+  }
+
+  .agency-band__text {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 28px;
+  }
+
+  .agency-band__cta {
+    margin-bottom: 8px;
+  }
+
+  .agency-band__logos {
+    margin-top: 48px;
+  }
+
+  .agency-band__logos-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .agency-band__logos-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .agency-band__logos-row img {
+    height: auto;
+    width: 180px;
+    opacity: 0.7;
+    transition: opacity var(--transition);
+  }
+
+  .agency-band__logos-row img:hover {
+    opacity: 1;
+  }
+
+  @media (max-width: 600px) {
+    .agency-band {
+      padding: 72px 0;
+    }
+
+    .agency-band__logos-row {
+      gap: 28px;
+    }
+
+    .agency-band__logos-row img {
+      width: 140px;
+    }
+  }
+</style>

@@ -9,6 +9,9 @@ const caseStudies = defineCollection({
     publishDate: z.date(),
     featured: z.boolean().default(false),
     redacted: z.boolean().default(true),
+    // Keeps a case study out of the prod build, listing, and sitemap until
+    // it's approved (mirrors the guides collection).
+    draft: z.boolean().default(false),
 
     subject: z.string(),
     vertical: z.string().optional(),

@@ -156,4 +156,4 @@ Acupuncture is a vertical where condition-content depth is usually the biggest o
 
 For practices working with broader marketing agencies, we operate the SEO layer end-to-end. The condition-content depth is where most of the unrealized traffic lives, and it takes patient, methodical work to build.
 
-If you're running an acupuncture practice and most of your patients still come through word of mouth rather than search, [get in touch](/sign-up/) and we'll diagnose what the search side could actually look like.
+If you're running an acupuncture practice and most of your patients still come through word of mouth rather than search, [get in touch](/#book-audit) and we'll diagnose what the search side could actually look like.

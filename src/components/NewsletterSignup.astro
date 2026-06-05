@@ -1,0 +1,283 @@
+---
+// Topic-selectable subscribe. Email + pick which lists (SEO / Agency /
+// Build-Product). Posts to /api/subscribe. No Turnstile (low-cost endpoint,
+// guarded by honeypot + IP rate limit). Local Market Research is intentionally
+// not a topic.
+interface Props {
+  heading?: string;
+  sub?: string;
+}
+const {
+  heading = "Get our guides in your inbox",
+  sub = "Pick what you want to hear about. No spam, unsubscribe anytime.",
+} = Astro.props;
+
+const uid = Math.random().toString(36).slice(2, 9);
+
+const topics = [
+  { value: "seo", label: "SEO tips", note: "Bros Knows, monthly", checked: true },
+  { value: "agency", label: "Agency growth", note: "selling & delivering SEO", checked: false },
+  { value: "build", label: "Build / Product", note: "how we build SEO Brothers", checked: false },
+];
+---
+
+<section class="sub">
+  <div class="container sub__inner">
+    <div class="sub__card" data-animate>
+      <div class="sub__copy">
+        <h2 class="sub__heading">{heading}</h2>
+        <p class="sub__sub">{sub}</p>
+      </div>
+
+      <form class="sub__form" novalidate>
+        {/* Honeypot — /api/subscribe drops any submit where this is filled. */}
+        <div class="sub__hp" aria-hidden="true">
+          <label for={`sub-phone-${uid}`}>Phone number</label>
+          <input type="text" id={`sub-phone-${uid}`} name="phoneNumber" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="sub__row">
+          <input
+            type="email"
+            id={`sub-email-${uid}`}
+            name="email"
+            class="sub__input"
+            placeholder="you@email.com"
+            required
+            autocomplete="email"
+            aria-label="Email address"
+          />
+          <button type="submit" class="btn btn-primary sub__submit">
+            <span class="sub__submit-label">Subscribe</span>
+          </button>
+        </div>
+
+        <fieldset class="sub__topics">
+          <legend class="sub__topics-legend">Send me:</legend>
+          {topics.map((t) => (
+            <label class="sub__topic" for={`sub-${t.value}-${uid}`}>
+              <input type="checkbox" id={`sub-${t.value}-${uid}`} name="topic" value={t.value} checked={t.checked} />
+              <span>{t.label} <em>({t.note})</em></span>
+            </label>
+          ))}
+        </fieldset>
+
+        <p class="sub__error" role="alert" hidden></p>
+      </form>
+
+      <p class="sub__success" hidden>Thanks — you're subscribed. Check your inbox to confirm.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { getLead, saveLead } from "../lib/leadMemory";
+
+  document.querySelectorAll<HTMLFormElement>(".sub__form").forEach((form) => {
+    const card = form.closest(".sub__card");
+    const errorEl = form.querySelector<HTMLElement>(".sub__error");
+    const success = card?.querySelector<HTMLElement>(".sub__success");
+    const btn = form.querySelector<HTMLButtonElement>(".sub__submit");
+    const label = form.querySelector<HTMLElement>(".sub__submit-label");
+
+    // Pre-fill the email from a previous form so it feels connected.
+    const emailInput = form.querySelector<HTMLInputElement>('input[name="email"]');
+    const lead = getLead();
+    if (emailInput && lead.email && !emailInput.value) emailInput.value = lead.email;
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = emailInput?.value.trim() ?? "";
+      const topics = Array.from(
+        form.querySelectorAll<HTMLInputElement>('input[name="topic"]:checked')
+      ).map((c) => c.value);
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      if (topics.length === 0) {
+        if (errorEl) {
+          errorEl.textContent = "Pick at least one topic.";
+          errorEl.hidden = false;
+        }
+        return;
+      }
+
+      if (errorEl) errorEl.hidden = true;
+      if (btn) btn.disabled = true;
+      if (label) label.textContent = "…";
+
+      const phoneNumber =
+        form.querySelector<HTMLInputElement>('input[name="phoneNumber"]')?.value ?? "";
+
+      try {
+        const res = await fetch("/api/subscribe/", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ email, topics, phoneNumber }),
+        });
+        const body = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
+        if (res.ok && body.ok) {
+          saveLead({ email });
+          form.hidden = true;
+          if (success) success.hidden = false;
+          return;
+        }
+        throw new Error(body.error ?? "Something went wrong. Please try again.");
+      } catch (err) {
+        if (errorEl) {
+          errorEl.textContent = err instanceof Error ? err.message : "Something went wrong. Please try again.";
+          errorEl.hidden = false;
+        }
+        if (btn) btn.disabled = false;
+        if (label) label.textContent = "Subscribe";
+      }
+    });
+  });
+</script>
+
+<style>
+  .sub {
+    padding: 64px 0;
+    background: var(--light);
+    border-top: 1px solid var(--border-light);
+  }
+
+  .sub__card {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    padding: 36px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .sub__heading {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+
+  .sub__sub {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 22px;
+  }
+
+  .sub__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .sub__hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .sub__row {
+    display: flex;
+    gap: 12px;
+  }
+
+  .sub__input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 14px;
+    font-size: 15px;
+    font-family: inherit;
+    color: var(--text-primary);
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .sub__input:focus {
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(45, 175, 175, 0.15);
+  }
+
+  .sub__submit {
+    flex-shrink: 0;
+  }
+
+  .sub__submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .sub__topics {
+    border: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    align-items: center;
+  }
+
+  .sub__topics-legend {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-right: 4px;
+    padding: 0;
+  }
+
+  .sub__topic {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text-primary);
+    cursor: pointer;
+  }
+
+  .sub__topic input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--teal);
+    cursor: pointer;
+  }
+
+  .sub__topic em {
+    color: var(--text-muted);
+    font-style: normal;
+    font-size: 13px;
+  }
+
+  .sub__error {
+    font-size: 13px;
+    color: #c0392b;
+    margin: 0;
+  }
+
+  .sub__success {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    text-align: center;
+    padding: 8px 0;
+  }
+
+  @media (max-width: 520px) {
+    .sub__row {
+      flex-direction: column;
+    }
+    .sub__submit {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

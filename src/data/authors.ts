@@ -40,8 +40,9 @@ export const authors: Author[] = [
     role: "Founder & CEO",
     jobTitle: "Founder & CEO",
     bio: [
-      "Devon Bate is the co-founder and CEO of SEO Brothers. He came to SEO from a finance and consulting background, and from day one in 2015 he was the one doing the work, the company's first and only SEO specialist while he and his brother Adam built it from nothing.",
-      "Today he leads the company's technology-first chapter, focused on the software and process that make SEO work faster and more transparent for the agency partners SEO Brothers serves. He writes here about local SEO, industry verticals, and where search is heading, and co-hosts the Brothers in Search podcast with Adam.",
+      "Devon Bate is the co-founder and CEO of SEO Brothers, which he and his brother Adam built from nothing starting in 2015. Adam drove the SEO strategy and the sales and marketing; Devon, who graduated top of his finance class at Dalhousie, ran partner communication and the business administration side, finance, hiring, and the like, and did some of the hands-on work in the early days. Today it's a team of thirty plus, headquartered in Halifax.",
+      "His lens has always been data first: measure what actually drives revenue, the leads and booked jobs, not vanity rankings. That's what he brings to the company's approach, and it's why the current chapter leans so hard on the software and reporting that make results faster and more transparent for the businesses it serves.",
+      "He writes here about local SEO, multi-location search, and where search is heading, and co-hosts the Brothers in Search podcast with Adam.",
     ],
     photo: "/images/team/devon-bate.png",
     sameAs: ["https://www.linkedin.com/in/devonbate/"],
@@ -54,13 +55,13 @@ export const authors: Author[] = [
     role: "Founder & COO",
     jobTitle: "Founder & COO",
     bio: [
-      "Adam Bate is the co-founder and COO of SEO Brothers, with more than twenty years in online marketing and SEO. He has lived through enough algorithm updates to have strong opinions about which tactics last and which ones quietly stop working, and he is the operational backbone of the company.",
-      "His writing leans on that long history: link building, on-page, keyword work, and the strategy guides that anchor the original SEO Brothers content. He co-hosts the Brothers in Search podcast with Devon.",
+      "Adam Bate is the co-founder of SEO Brothers and the person who shaped how the company actually does SEO. Long before he and Devon started it in 2015, he was running his own hosting, web, and SEO businesses and working in-house at a high-end Calgary agency, so he came into SEO Brothers having already seen the field from nearly every angle. That's more than two decades of watching which tactics last and which ones quietly stop working.",
+      "At SEO Brothers he sets the SEO strategy, leads sales and marketing, and as COO runs how the team actually functions and delivers the work. His writing leans on that long history: link building, on-page, keyword work, and the strategy guides that anchor the original SEO Brothers content. He co-hosts the Brothers in Search podcast with Devon.",
     ],
     photo: "/images/team/adam-bate.png",
-    sameAs: ["https://www.linkedin.com/in/adambate/"],
+    sameAs: ["https://ca.linkedin.com/in/adambate"],
     podcastHost: true,
-    published: false, // flip to true once Adam approves his bio
+    published: true,
   },
 ];
 

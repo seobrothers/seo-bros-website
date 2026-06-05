@@ -115,7 +115,7 @@ Ranking gets the phone to ring. Conversion architecture determines whether the c
 
 Home services covers a wide range of trades, each with category-specific tactics. The dedicated playbook below covers the vertical where the strategy diverges most meaningfully from the general framework above.
 
-- [SEO for Plumbers](/guides/seo-for-plumbers/)
+- [SEO for Plumbers](/industries/plumbing/)
 
 Other home services categories — HVAC, carpet cleaning, tree service, roofing, electrical, painting, landscaping, pest control — follow the same framework with vertical-specific keyword and content adjustments. Dedicated guides for these are in the works.
 
@@ -143,4 +143,4 @@ The framework above is our default for home services campaigns. Vertical-specifi
 
 For partner agencies serving home services clients, we operate the SEO layer end-to-end while the agency manages the contractor relationship.
 
-If you run a home services business or work with one, [get in touch](/sign-up/) and we'll walk through how the framework applies to your specific situation.
+If you run a home services business or work with one, [get in touch](/#book-audit) and we'll walk through how the framework applies to your specific situation.

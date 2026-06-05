@@ -229,4 +229,4 @@ For agencies whose clients expect deeper customization, we extend the standard r
 
 The goal in every case: the report looks like the agency produced it, the metrics matter to the client, and the commentary explains what's happening and what's next.
 
-Want a peek at how our partners report? [Get in touch](/sign-up/) and we'll walk through examples.
+Want a peek at how our partners report? [Get in touch](/partner-package/) and we'll walk through examples.

@@ -146,4 +146,4 @@ Standard SEO fundamentals still produce most of the value. What's changed is the
 
 For partner agencies whose clients are seeing traffic shifts from AI Overviews, we run targeted analyses to identify which of the client's content types are most affected and where to focus the rebalanced investment.
 
-If your traffic has been moving and you're not sure how much is AI Overview impact versus other factors, [get in touch](/sign-up/) and we'll diagnose where the shift is coming from.
+If your traffic has been moving and you're not sure how much is AI Overview impact versus other factors, [get in touch](/#book-audit) and we'll diagnose where the shift is coming from.

@@ -7,7 +7,8 @@ import Footer from "../../components/Footer.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
 
 export async function getStaticPaths() {
-  const studies = await getCollection("caseStudies");
+  const studies = (await getCollection("caseStudies"))
+    .filter((s) => !import.meta.env.PROD || !s.data.draft);
   return studies.map((study) => ({
     params: { slug: study.id },
     props: { study },

@@ -1,0 +1,324 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+// Crunching/results page. The audit form redirects here with the audit params
+// (?url=&types=&business=&city=&service=). This page:
+//   1. fires the free_audit_form_submission GA4 event (real submissions only),
+//   2. calls /api/snapshot to run the instant discovery, showing a loading state,
+//   3. renders the report + a book-a-call CTA for the deeper human audit.
+// Direct visits (no ?url=) just see the confirmation. noindex either way.
+//
+// ⚙️ CONFIG — Devon: the Calendly link for the human discovery review call.
+const reviewCallUrl = "https://calendly.com/mike-2473/15-minute-meeting-quick-chat-clone";
+---
+
+<Layout
+  title="Your free discovery | SEO Brothers"
+  description="Your instant SEO discovery from SEO Brothers."
+  noindex={true}
+>
+  <Nav variant="light" hideCta={true} />
+
+  <section class="disco">
+    <div class="disco__bg">
+      <div class="disco__orb disco__orb--1"></div>
+      <div class="disco__orb disco__orb--2"></div>
+    </div>
+
+    <div class="container disco__inner">
+      <!-- Loading state (shown while the snapshot runs) -->
+      <div class="disco__loading" id="disco-loading" hidden>
+        <div class="disco__spinner" aria-hidden="true"></div>
+        <h1 class="disco__loading-title">Analyzing your site…</h1>
+        <p class="disco__loading-sub">Crunching your speed, SEO, and visibility. This can take up to 30 seconds, especially for larger sites, hang tight.</p>
+      </div>
+
+      <!-- Results (populated by JS) -->
+      <div class="disco__results" id="disco-results" hidden>
+        <header class="disco__head">
+          <div class="disco__icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h1 class="disco__title" id="disco-headline">Your free discovery</h1>
+          <p class="disco__lede" id="disco-summary"></p>
+        </header>
+
+        <div class="disco__scores" id="disco-scores"></div>
+        <div class="disco__local" id="disco-local" hidden></div>
+
+        <div class="disco__findings">
+          <h2 class="disco__h2">Where the opportunity is</h2>
+          <div class="disco__sections" id="disco-sections"></div>
+        </div>
+      </div>
+
+      <!-- Confirmation (direct visits, or after results) -->
+      <div class="disco__confirm" id="disco-confirm" hidden>
+        <p class="disco__confirm-text">
+          We've also logged your request. Our team reviews these by hand, so the
+          fastest way to a full human audit is to grab a time below, we'll walk
+          through everything with you.
+        </p>
+      </div>
+
+      <!-- Human-audit CTA (book a call) -->
+      <div class="disco__cta" id="disco-cta" hidden>
+        <h2 class="disco__cta-title">Want our team to go deeper?</h2>
+        <p class="disco__cta-text">
+          Book a 15-minute call and we'll do a full human audit and walk you
+          through exactly what we'd do, no pressure.
+        </p>
+        <a href={reviewCallUrl} class="btn btn-primary disco__cta-btn" target="_blank" rel="noopener noreferrer">
+          Book your review call
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="disco__cta-secondary">
+          <a href="/case-studies/">See results we've gotten</a>
+          <span aria-hidden="true">·</span>
+          <a href="/guides/">Browse our SEO guides</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  import { track } from "../lib/analytics";
+
+  const params = new URLSearchParams(location.search);
+  const url = params.get("url");
+
+  const el = (id: string) => document.getElementById(id);
+  const loading = el("disco-loading");
+  const results = el("disco-results");
+  const confirm = el("disco-confirm");
+  const cta = el("disco-cta");
+
+  function show(node: HTMLElement | null) {
+    if (node) node.hidden = false;
+  }
+
+  // No url => someone landed here directly. Just show confirmation + CTA.
+  if (!url) {
+    show(confirm);
+    show(cta);
+  } else {
+    // Real submission: fire the conversion event and run the snapshot.
+    track("free_audit_form_submission");
+    show(loading);
+
+    interface Snapshot {
+      ok: boolean;
+      seo?: { ok: boolean; performance?: number; seo?: number; accessibility?: number; lcp?: number } | null;
+      local?: { ok: boolean; found?: boolean; name?: string; rating?: number; reviews?: number } | null;
+      report?: {
+        headline: string;
+        summary: string;
+        sections: Array<{ category: string; items: Array<{ title: string; detail: string }> }>;
+      };
+    }
+
+    const qp = new URLSearchParams();
+    for (const k of ["url", "types", "business", "city", "service"]) {
+      const v = params.get(k);
+      if (v) qp.set(k, v);
+    }
+
+    (async () => {
+      try {
+        // Backstop timeout so the page never spins forever if the API hangs.
+        const ctrl = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), 50000);
+        const res = await fetch(`/api/snapshot/?${qp.toString()}`, { signal: ctrl.signal });
+        clearTimeout(timer);
+        const data = (await res.json()) as Snapshot;
+        if (!res.ok || !data.ok || !data.report) throw new Error("snapshot failed");
+        render(data);
+      } catch {
+        // Snapshot failed/timed out — still confirm the request and offer the call.
+        if (loading) loading.hidden = true;
+        show(confirm);
+        show(cta);
+      }
+    })();
+
+    function scoreCard(label: string, value?: number) {
+      if (value == null) return null;
+      const card = document.createElement("div");
+      card.className = "disco__score";
+      const tone = value >= 90 ? "good" : value >= 50 ? "ok" : "bad";
+      card.dataset.tone = tone;
+      const num = document.createElement("span");
+      num.className = "disco__score-num";
+      num.textContent = String(value);
+      const lab = document.createElement("span");
+      lab.className = "disco__score-label";
+      lab.textContent = label;
+      card.append(num, lab);
+      return card;
+    }
+
+    function render(data: Snapshot) {
+      if (loading) loading.hidden = true;
+
+      const r = data.report!;
+      (el("disco-headline") as HTMLElement).textContent = r.headline || "Your free discovery";
+      (el("disco-summary") as HTMLElement).textContent = r.summary || "";
+
+      // Scores
+      const scores = el("disco-scores")!;
+      if (data.seo?.ok) {
+        [
+          scoreCard("Performance", data.seo.performance),
+          scoreCard("SEO", data.seo.seo),
+          scoreCard("Accessibility", data.seo.accessibility),
+        ]
+          .filter(Boolean)
+          .forEach((c) => scores.appendChild(c as Node));
+      } else if (data.seo && !data.seo.ok) {
+        const note = document.createElement("p");
+        note.className = "disco__scores-note";
+        note.textContent =
+          "We couldn't pull live speed and SEO scores for this site automatically. Our team will include them in your full audit.";
+        scores.appendChild(note);
+      }
+
+      // Local
+      if (data.local && data.local.ok) {
+        const localEl = el("disco-local")!;
+        localEl.hidden = false;
+        if (data.local.found) {
+          localEl.textContent = `Google Business Profile: ${data.local.name ?? "found"} — ${data.local.rating ?? "n/a"}★ from ${data.local.reviews ?? 0} reviews.`;
+        } else {
+          localEl.textContent = "Google Business Profile: we couldn't find one in that market. For local search, that's the biggest miss to fix first.";
+        }
+      }
+
+      // Findings, grouped into sections (Local SEO, Technical SEO, etc.)
+      const sectionsEl = el("disco-sections")!;
+      (r.sections || []).forEach((sec) => {
+        const wrap = document.createElement("div");
+        wrap.className = "disco__section";
+        const h = document.createElement("h3");
+        h.className = "disco__section-title";
+        h.textContent = sec.category;
+        const ol = document.createElement("ol");
+        ol.className = "disco__list";
+        (sec.items || []).forEach((it) => {
+          const li = document.createElement("li");
+          const t = document.createElement("strong");
+          t.textContent = it.title;
+          const d = document.createElement("span");
+          d.textContent = " " + it.detail;
+          li.append(t, d);
+          ol.appendChild(li);
+        });
+        wrap.append(h, ol);
+        sectionsEl.appendChild(wrap);
+      });
+
+      show(results);
+      show(confirm);
+      show(cta);
+    }
+  }
+</script>
+
+<!-- is:global because the results (score cards, priorities, etc.) are built by
+     client JS, which doesn't get Astro's scoped-style hash. All selectors are
+     disco__-prefixed and this style only ships on /audit-requested/. -->
+<style is:global>
+  .disco {
+    position: relative;
+    padding: 150px 0 110px;
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    overflow: hidden;
+    min-height: 70vh;
+  }
+  .disco__bg { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .disco__orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.2; }
+  .disco__orb--1 { width: 460px; height: 460px; top: -120px; right: -120px; background: var(--teal); }
+  .disco__orb--2 { width: 420px; height: 420px; bottom: -160px; left: -120px; background: var(--purple); }
+  .disco__inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+
+  /* Loading */
+  .disco__loading { text-align: center; padding: 40px 0; }
+  .disco__spinner {
+    width: 48px; height: 48px; margin: 0 auto 24px;
+    border: 3px solid var(--border-light); border-top-color: var(--teal);
+    border-radius: 50%; animation: disco-spin 0.9s linear infinite;
+  }
+  @keyframes disco-spin { to { transform: rotate(360deg); } }
+  .disco__loading-title { font-family: var(--font-display); font-size: clamp(26px, 4vw, 34px); font-weight: 700; color: var(--text-primary); margin-bottom: 10px; }
+  .disco__loading-sub { font-size: 16px; line-height: 1.6; color: var(--text-secondary); }
+
+  /* Results */
+  .disco__head { text-align: center; margin-bottom: 32px; }
+  .disco__icon {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: rgba(68,185,123,0.14); color: var(--green);
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+  }
+  .disco__title { font-family: var(--font-display); font-size: clamp(28px, 4.5vw, 42px); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 14px; }
+  .disco__lede { font-size: 17px; line-height: 1.7; color: var(--text-secondary); }
+
+  .disco__scores { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-bottom: 24px; }
+  .disco__score {
+    flex: 1 1 140px; max-width: 200px; text-align: center;
+    background: var(--white); border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg); padding: 22px 16px;
+  }
+  .disco__score-num { display: block; font-family: var(--font-display); font-size: 38px; font-weight: 700; line-height: 1; }
+  .disco__score[data-tone="good"] .disco__score-num { color: var(--green); }
+  .disco__score[data-tone="ok"] .disco__score-num { color: #c98a2b; }
+  .disco__score[data-tone="bad"] .disco__score-num { color: #c0392b; }
+  .disco__score-label { display: block; font-size: 13px; color: var(--text-muted); margin-top: 8px; letter-spacing: 0.02em; }
+  .disco__scores-note { width: 100%; text-align: center; font-size: 14px; line-height: 1.6; color: var(--text-muted); background: var(--light); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 14px 18px; }
+
+  .disco__local {
+    background: var(--light); border: 1px solid var(--border-light);
+    border-radius: var(--radius-md); padding: 16px 18px; margin-bottom: 28px;
+    font-size: 15px; line-height: 1.6; color: var(--text-secondary);
+  }
+
+  .disco__h2 { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; letter-spacing: -0.01em; }
+  .disco__findings { margin-bottom: 36px; }
+  .disco__section {
+    margin-bottom: 24px; padding: 22px 24px;
+    background: var(--white); border: 1px solid var(--border-light);
+    border-left: 3px solid var(--teal); border-radius: var(--radius-md);
+  }
+  .disco__section-title {
+    font-family: var(--font-display); font-size: 16px; font-weight: 700;
+    letter-spacing: 0.02em; text-transform: uppercase; color: var(--teal-dark);
+    margin-bottom: 14px;
+  }
+  .disco__list { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 12px; }
+  .disco__list li { font-size: 15px; line-height: 1.65; color: var(--text-secondary); }
+  .disco__list li strong { color: var(--text-primary); }
+
+  .disco__confirm { text-align: center; margin-bottom: 28px; }
+  .disco__confirm-text { font-size: 15px; line-height: 1.7; color: var(--text-muted); max-width: 560px; margin: 0 auto; }
+
+  /* CTA */
+  .disco__cta {
+    text-align: center; padding: 40px; border-radius: var(--radius-xl);
+    background:
+      linear-gradient(var(--white), var(--white)) padding-box,
+      linear-gradient(135deg in oklch, var(--teal), var(--teal-light)) border-box;
+    border: 1px solid transparent; box-shadow: var(--shadow-md);
+  }
+  .disco__cta-title { font-family: var(--font-display); font-size: clamp(24px, 3.4vw, 30px); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 12px; }
+  .disco__cta-text { font-size: 16px; line-height: 1.7; color: var(--text-secondary); max-width: 480px; margin: 0 auto 24px; }
+  .disco__cta-secondary { margin-top: 20px; font-size: 14px; color: var(--text-muted); display: flex; gap: 10px; justify-content: center; }
+  .disco__cta-secondary a { color: var(--teal-dark); text-decoration: underline; text-underline-offset: 3px; }
+
+  @media (max-width: 700px) {
+    .disco { padding: 130px 0 80px; }
+    .disco__cta { padding: 32px 24px; }
+  }
+</style>

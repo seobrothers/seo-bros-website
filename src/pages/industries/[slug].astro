@@ -1,0 +1,274 @@
+---
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+import AuditForm from "../../components/AuditForm.astro";
+import { INDUSTRIES, industryBySlug, type IndustryMeta } from "../../data/industries";
+
+export async function getStaticPaths() {
+  const guides = await getCollection("guides");
+  const byId = new Map(guides.map((g) => [g.id, g]));
+
+  return INDUSTRIES.map((meta) => {
+    const guide = byId.get(meta.guideId);
+    if (!guide) return null;
+    if (import.meta.env.PROD && guide.data.draft) return null;
+    return { params: { slug: meta.slug }, props: { meta, guide } };
+  }).filter(Boolean) as Array<{
+    params: { slug: string };
+    props: { meta: IndustryMeta; guide: CollectionEntry<"guides"> };
+  }>;
+}
+
+interface Props {
+  meta: IndustryMeta;
+  guide: CollectionEntry<"guides">;
+}
+
+const { meta, guide } = Astro.props;
+const d = guide.data;
+const { Content, headings } = await render(guide);
+
+const tocHeadings = d.showToc
+  ? headings.filter((h) => h.depth === 2 || h.depth === 3)
+  : [];
+
+const pageUrl = new URL(`/industries/${meta.slug}/`, Astro.site).href;
+const logoUrl = new URL("/images/logo.png", Astro.site).href;
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: `${meta.name} SEO`,
+  provider: {
+    "@type": "Organization",
+    name: "SEO Brothers",
+    logo: { "@type": "ImageObject", url: logoUrl },
+  },
+  areaServed: "US, Canada",
+  description: d.summary,
+  url: pageUrl,
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", Astro.site).href },
+    { "@type": "ListItem", position: 2, name: "Industries", item: new URL("/industries/", Astro.site).href },
+    { "@type": "ListItem", position: 3, name: meta.name, item: pageUrl },
+  ],
+};
+---
+
+<Layout
+  title={`${meta.name} SEO | SEO Brothers`}
+  description={d.summary}
+  schema={[serviceSchema, breadcrumbSchema]}
+>
+  <Nav />
+
+  <!-- ═══════════════ HERO + FORM ═══════════════ -->
+  <section class="ind-hero" id="ind-hero">
+    <div class="ind-hero__bg">
+      <div class="ind-hero__orb ind-hero__orb--teal"></div>
+      <div class="ind-hero__orb ind-hero__orb--purple"></div>
+      <div class="ind-hero__grid"></div>
+    </div>
+
+    <div class="container ind-hero__inner">
+      <div class="ind-hero__content">
+        <a href="/industries/" class="ind-hero__back">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 8H3M7 12L3 8l4-4" /></svg>
+          Industries We Serve
+        </a>
+        <h1 class="ind-hero__title">{meta.name} SEO</h1>
+        <p class="ind-hero__subtitle">{d.summary}</p>
+        <div class="ind-hero__trust">
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12" /></svg> Free audit</span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12" /></svg> No contracts</span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12" /></svg> A real person on your account</span>
+        </div>
+      </div>
+
+      <div class="ind-hero__form">
+        <AuditForm
+          heading={`Free ${meta.name} SEO Audit`}
+          sub="Enter your details and we'll show you exactly where you stand online."
+          buttonLabel="Get My Free Audit"
+          source={`industry:${meta.slug}`}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ LONG-FORM BODY ═══════════════ -->
+  <section class="guide-body">
+    <div class="container guide-body__grid">
+      {tocHeadings.length > 0 && (
+        <aside class="guide-toc">
+          <p class="guide-toc__label">On this page</p>
+          <ol class="guide-toc__list">
+            {tocHeadings.map((h) => (
+              <li class:list={["guide-toc__item", h.depth === 3 && "guide-toc__item--sub"]}>
+                <a href={`#${h.slug}`}>{h.text}</a>
+              </li>
+            ))}
+          </ol>
+        </aside>
+      )}
+
+      <div class:list={["guide-body__prose", tocHeadings.length === 0 && "guide-body__prose--centered"]}>
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner />
+  <Footer />
+</Layout>
+
+<style>
+  /* ═══════════════ HERO ═══════════════ */
+  .ind-hero {
+    position: relative;
+    background: var(--dark);
+    overflow: hidden;
+    padding: 140px 0 96px;
+  }
+  .ind-hero__bg { position: absolute; inset: 0; overflow: hidden; }
+  .ind-hero__orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.3; }
+  .ind-hero__orb--teal { width: 560px; height: 560px; background: var(--teal); top: -15%; left: -8%; }
+  .ind-hero__orb--purple { width: 460px; height: 460px; background: var(--purple); top: -5%; right: -8%; }
+  .ind-hero__grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at 50% 40%, black 25%, transparent 72%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 40%, black 25%, transparent 72%);
+  }
+  .ind-hero__inner {
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: 1fr 440px; gap: 56px; align-items: center;
+  }
+  .ind-hero__content { max-width: 620px; }
+  .ind-hero__back {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 500; color: var(--text-on-dark-muted);
+    margin-bottom: 24px; transition: color var(--transition);
+  }
+  .ind-hero__back:hover { color: var(--teal-light); }
+  .ind-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 56px); font-weight: 700;
+    line-height: 1.08; letter-spacing: -0.03em;
+    color: var(--text-on-dark); margin-bottom: 18px;
+  }
+  .ind-hero__subtitle {
+    font-size: clamp(16px, 1.8vw, 19px); line-height: 1.7;
+    color: var(--text-on-dark-muted); margin-bottom: 28px;
+  }
+  .ind-hero__trust { display: flex; flex-wrap: wrap; gap: 18px; }
+  .ind-hero__trust span {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; color: var(--text-on-dark-muted);
+  }
+  .ind-hero__trust svg { color: var(--green); flex-shrink: 0; }
+  .ind-hero__form { width: 100%; }
+
+  @media (max-width: 1024px) {
+    .ind-hero__inner { grid-template-columns: 1fr; gap: 40px; }
+    .ind-hero__content { max-width: none; }
+    .ind-hero__form { max-width: 480px; }
+  }
+  @media (max-width: 768px) {
+    .ind-hero { padding: 120px 0 64px; }
+  }
+
+  /* ═══════════════ BODY (mirrors the guide renderer) ═══════════════ */
+  .guide-body { padding: 80px 0 100px; background: var(--white); }
+  .guide-body__grid {
+    display: grid; grid-template-columns: 240px 1fr; gap: 64px;
+    align-items: start; max-width: 1100px; margin: 0 auto;
+  }
+  .guide-body__prose--centered { grid-column: 1 / -1; max-width: 760px; margin: 0 auto; }
+
+  .guide-toc { position: sticky; top: 32px; }
+  .guide-toc__label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;
+  }
+  .guide-toc__list { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--border-light); }
+  .guide-toc__item {
+    padding: 8px 0 8px 16px; font-size: 14px; line-height: 1.45;
+    border-left: 2px solid transparent; margin-left: -1px; transition: all var(--transition);
+  }
+  .guide-toc__item:hover { border-left-color: var(--teal); }
+  .guide-toc__item a { color: var(--text-secondary); transition: color var(--transition); }
+  .guide-toc__item:hover a { color: var(--text-primary); }
+  .guide-toc__item--sub { padding-left: 32px; font-size: 13px; }
+
+  .guide-body__prose { font-size: 17px; line-height: 1.8; color: var(--text-secondary); max-width: 760px; }
+  .guide-body__prose :global(h2) {
+    font-family: var(--font-display); font-size: 28px; font-weight: 700;
+    line-height: 1.25; letter-spacing: -0.02em; color: var(--text-primary);
+    margin: 56px 0 16px; scroll-margin-top: 80px;
+  }
+  .guide-body__prose :global(h3) {
+    font-family: var(--font-display); font-size: 21px; font-weight: 600;
+    color: var(--text-primary); margin: 36px 0 12px; scroll-margin-top: 80px;
+  }
+  .guide-body__prose :global(p) { margin-bottom: 20px; }
+  .guide-body__prose :global(ul), .guide-body__prose :global(ol) { margin: 0 0 24px 1.5em; }
+  .guide-body__prose :global(li) { margin-bottom: 10px; line-height: 1.7; }
+  .guide-body__prose :global(a) {
+    color: var(--teal-dark); text-decoration: underline; text-underline-offset: 3px;
+    transition: color var(--transition);
+  }
+  .guide-body__prose :global(a:hover) { color: var(--teal); }
+  .guide-body__prose :global(strong) { color: var(--text-primary); font-weight: 600; }
+  .guide-body__prose :global(blockquote) {
+    margin: 32px 0; padding: 20px 28px; border-left: 3px solid var(--teal);
+    background: var(--light); border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    font-style: italic; color: var(--text-primary);
+  }
+  .guide-body__prose :global(img) { max-width: 100%; height: auto; border-radius: var(--radius-md); margin: 32px 0; }
+  .guide-body__prose :global(table) {
+    width: 100%; margin: 0 0 40px; border-collapse: separate; border-spacing: 0;
+    font-size: 15px; background: var(--white); border: 1px solid var(--border-light);
+    border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm);
+  }
+  .guide-body__prose :global(thead) { background: var(--light-100); }
+  .guide-body__prose :global(th) {
+    padding: 14px 20px; text-align: left; font-family: var(--font-body);
+    font-weight: 600; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-primary); border-bottom: 1px solid var(--border-light);
+  }
+  .guide-body__prose :global(td) {
+    padding: 13px 20px; border-bottom: 1px solid var(--border-light);
+    color: var(--text-secondary); font-variant-numeric: tabular-nums;
+  }
+  .guide-body__prose :global(tbody tr:last-child td) { border-bottom: none; }
+  .guide-body__prose :global(tbody tr:hover) { background: var(--light-100); }
+  .guide-body__prose :global(th[align="right"]), .guide-body__prose :global(td[align="right"]) { text-align: right; }
+  .guide-body__prose :global(td[align="right"]) { font-weight: 500; color: var(--text-primary); }
+
+  @media (max-width: 960px) {
+    .guide-body__grid { grid-template-columns: 1fr; gap: 32px; }
+    .guide-toc {
+      position: static; padding: 20px 24px; background: var(--light); border-radius: var(--radius-md);
+    }
+    .guide-toc__list { border-left: none; }
+    .guide-toc__item { padding: 6px 0; }
+    .guide-toc__item--sub { padding-left: 20px; }
+  }
+  @media (max-width: 600px) {
+    .guide-body { padding: 56px 0 72px; }
+    .guide-body__prose :global(table) { display: block; overflow-x: auto; white-space: nowrap; }
+  }
+</style>

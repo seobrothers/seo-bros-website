@@ -1,0 +1,252 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { TURNSTILE_SITE_KEY } from "../lib/turnstile";
+
+// This page is the gate: pitch + a soft opt-in (name/email). On success it
+// redirects to /partner-welcome/, which holds the unlocked package (Calendly,
+// resources, request-an-audit). Calendly + Loom config lives on that page.
+
+const whatYouGet = [
+  {
+    title: "Time with Mike",
+    body: "Book a walkthrough of how we run campaigns and how the white-label side works. A real conversation, not a slide-deck pitch.",
+  },
+  {
+    title: "Walkthrough videos",
+    body: "See the Portal in action: discovery, live campaigns, action items, and the white-label features your clients never see our name on.",
+  },
+  {
+    title: "Sample white-label reports",
+    body: "The exact branded, client-facing reporting your clients receive, so you can see the quality before you ever sell it.",
+  },
+  {
+    title: "Partner pricing",
+    body: "Our wholesale rate card and à la carte options, so you can build real margin into what you resell.",
+  },
+];
+---
+
+<Layout
+  title="Partner Package | White Label SEO for Agencies | SEO Brothers"
+  description="Opt in to the SEO Brothers partner package: a walkthrough with our team, partner pricing, sample white-label reports and resources, and free discovery audits for your prospects."
+>
+  <Nav variant="light" hideCta={true} />
+
+  <section class="pp">
+    <div class="pp__bg">
+      <div class="pp__orb pp__orb--1"></div>
+      <div class="pp__orb pp__orb--2"></div>
+      <div class="pp__grid-bg"></div>
+    </div>
+
+    <div class="container pp__inner">
+      <div class="pp__layout">
+        <div class="pp__pitch" data-animate>
+          <span class="section-label">For Agencies & Resellers</span>
+          <h1 class="pp__title">Get our partner package</h1>
+          <p class="pp__lede">
+            We've been the SEO partner behind other agencies' work since 2015:
+            the same team and the same campaigns, delivered under your brand.
+            Local and multi-location is what we dominate and take direct, and we
+            have decades of B2B and ecommerce experience too, so agencies across
+            those spaces partner with us.
+          </p>
+
+          <h2 class="pp__list-title">What's inside</h2>
+          <ul class="pp__list">
+            {whatYouGet.map((item) => (
+              <li class="pp__list-item">
+                <span class="pp__list-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </span>
+                <div>
+                  <span class="pp__list-head">{item.title}</span>
+                  <span class="pp__list-body">{item.body}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <aside class="pp__gate" data-animate>
+          <div class="pp__gate-card" id="pp-gate">
+            <h2 class="pp__gate-title">Unlock the partner package</h2>
+            <p class="pp__gate-sub">Just your name and email. No commitment, and no audit form to fill out, this is for agencies.</p>
+
+            <form class="pp__form" id="pp-form" novalidate>
+              {/* Honeypot — see /api/partner-lead. */}
+              <div class="pp__hp" aria-hidden="true">
+                <label for="pp-phone">Phone number</label>
+                <input type="text" id="pp-phone" name="phoneNumber" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <div class="pp__field">
+                <label for="pp-name">Your name</label>
+                <input type="text" id="pp-name" name="name" placeholder="Jane Doe" required autocomplete="name" />
+              </div>
+              <div class="pp__field">
+                <label for="pp-email">Work email</label>
+                <input type="email" id="pp-email" name="email" placeholder="jane@youragency.com" required autocomplete="email" />
+              </div>
+              <div class="pp__field">
+                <label for="pp-agency">Agency name <span class="pp__optional">(optional)</span></label>
+                <input type="text" id="pp-agency" name="agency" placeholder="Your Agency" autocomplete="organization" />
+              </div>
+
+              <label class="pp__check" for="pp-newsletter">
+                <input type="checkbox" id="pp-newsletter" name="newsletter" />
+                <span>Send me <strong>Bros Knows</strong>, our monthly SEO newsletter.</span>
+              </label>
+
+              {TURNSTILE_SITE_KEY && (
+                <div class="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY} data-size="flexible" />
+              )}
+
+              <button type="submit" class="btn btn-primary pp__submit">
+                <span class="pp__submit-label">Unlock the partner package</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <p class="pp__form-error" role="alert" hidden></p>
+            </form>
+          </div>
+        </aside>
+      </div>
+
+    </div>
+  </section>
+
+  <Footer />
+
+  {TURNSTILE_SITE_KEY && (
+    <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  )}
+</Layout>
+
+<script>
+  import { track } from "../lib/analytics";
+  import { prefillForm, saveLead } from "../lib/leadMemory";
+
+  const form = document.querySelector<HTMLFormElement>("#pp-form");
+  const errorEl = form?.querySelector<HTMLElement>(".pp__form-error");
+  const submitBtn = form?.querySelector<HTMLButtonElement>(".pp__submit");
+  const label = form?.querySelector<HTMLElement>(".pp__submit-label");
+
+  if (form) prefillForm(form);
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    if (errorEl) errorEl.hidden = true;
+    if (submitBtn) submitBtn.disabled = true;
+    if (label) label.textContent = "Unlocking...";
+
+    const data = Object.fromEntries(new FormData(form).entries());
+    try {
+      // Trailing slash required (trailingSlash: 'always').
+      const res = await fetch("/api/partner-lead/", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const body = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
+      if (res.ok && body.ok) {
+        track("partner_optin");
+        saveLead({ name: String(data.name ?? ""), email: String(data.email ?? "") });
+        window.location.assign("/partner-welcome/");
+        return;
+      }
+      throw new Error(body.error ?? "Something went wrong. Please try again.");
+    } catch (err) {
+      if (errorEl) {
+        errorEl.textContent = err instanceof Error ? err.message : "Something went wrong. Please try again.";
+        errorEl.hidden = false;
+      }
+      if (submitBtn) submitBtn.disabled = false;
+      if (label) label.textContent = "Unlock the partner package";
+    }
+  });
+</script>
+
+<style>
+  .pp {
+    position: relative;
+    padding: 120px 0 80px;
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    overflow: hidden;
+  }
+  .pp__bg { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .pp__orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.25; }
+  .pp__orb--1 { width: 480px; height: 480px; top: -120px; left: -160px; background: var(--teal); }
+  .pp__orb--2 { width: 420px; height: 420px; bottom: -160px; right: -120px; background: var(--purple); }
+  .pp__grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(15,23,42,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15,23,42,0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+  .pp__inner { position: relative; z-index: 1; }
+  .pp__layout { display: grid; grid-template-columns: 1fr 1.05fr; gap: 64px; align-items: start; }
+  .pp__pitch .section-label { display: inline-block; }
+  .pp__title {
+    font-family: var(--font-display); font-size: clamp(36px, 5.2vw, 56px);
+    font-weight: 700; line-height: 1.05; letter-spacing: -0.02em;
+    color: var(--text-primary); margin: 12px 0 18px;
+  }
+  .pp__lede { font-size: 17px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 28px; max-width: 520px; }
+  .pp__list-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--text-primary); margin: 0 0 16px; }
+  .pp__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+  .pp__list-item { display: flex; gap: 12px; align-items: flex-start; }
+  .pp__list-icon {
+    flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+    background: rgba(68,185,123,0.12); color: var(--green);
+    display: flex; align-items: center; justify-content: center; margin-top: 2px;
+  }
+  .pp__list-head { display: block; font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--text-primary); line-height: 1.35; }
+  .pp__list-body { display: block; font-size: 14px; line-height: 1.55; color: var(--text-secondary); margin-top: 2px; }
+
+  /* Gate */
+  .pp__gate-card {
+    background: var(--white); border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-lg);
+    position: sticky; top: 96px;
+  }
+  .pp__gate-title { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--text-primary); margin: 0 0 6px; }
+  .pp__gate-sub { font-size: 14px; line-height: 1.5; color: var(--text-secondary); margin: 0 0 20px; }
+  .pp__form { display: flex; flex-direction: column; gap: 16px; }
+  .pp__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .pp__field { display: flex; flex-direction: column; }
+  .pp__field label { font-family: var(--font-display); font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; }
+  .pp__optional { font-weight: 400; color: var(--text-muted); }
+  .pp__field input {
+    font-family: var(--font-body); font-size: 15px; padding: 11px 14px;
+    border: 1px solid var(--border-light); border-radius: var(--radius-md);
+    color: var(--text-primary); background: var(--white); transition: border-color 0.15s ease, box-shadow 0.15s ease; outline: none;
+  }
+  .pp__field input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(45,175,175,0.15); }
+  .pp__check { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; line-height: 1.5; color: var(--text-secondary); cursor: pointer; }
+  .pp__check input { width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0; accent-color: var(--teal); cursor: pointer; }
+  .pp__check strong { color: var(--text-primary); font-weight: 600; }
+  .pp__submit { width: 100%; justify-content: center; margin-top: 4px; }
+  .pp__submit:disabled { opacity: 0.7; cursor: not-allowed; }
+  .pp__form-error {
+    font-size: 13px; line-height: 1.5; color: #c0392b;
+    background: rgba(220,50,50,0.06); border: 1px solid rgba(220,50,50,0.18);
+    border-radius: var(--radius-md); padding: 10px 12px; margin: 0;
+  }
+
+  @media (max-width: 960px) {
+    .pp { padding: 88px 0 64px; }
+    .pp__layout { grid-template-columns: 1fr; gap: 40px; }
+    .pp__gate-card { position: static; }
+  }
+</style>

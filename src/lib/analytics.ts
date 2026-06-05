@@ -2,6 +2,9 @@ export type AnalyticsEvent =
   | "click_to_call"
   | "email_click"
   | "demo_form_submission"
+  | "audit_form_submission"
+  | "free_audit_form_submission"
+  | "partner_optin"
   | "portal_signups";
 
 export type EventProperties = Record<string, string | number | boolean | undefined>;

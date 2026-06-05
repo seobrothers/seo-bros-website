@@ -1,0 +1,398 @@
+---
+// Reusable free-audit lead form. Collects name / email / website and POSTs
+// JSON to /api/audit (ActiveCampaign list 24 + Slack). Renders as a white card
+// that works on both dark heroes and light sections.
+//
+// Multiple instances per page are supported — the client script binds every
+// .audit-form on the page independently. Pass `source` so the Slack message
+// says which page the lead came from.
+interface Props {
+  heading?: string;
+  sub?: string;
+  buttonLabel?: string;
+  /** Identifies the originating page in the Slack notification. */
+  source?: string;
+  /** Reassurance line under the button. */
+  disclaimer?: string;
+}
+
+const {
+  heading = "Get Your Free SEO Audit",
+  sub = "Enter your details for an instant look at where you stand, with a real audit from our team on request.",
+  buttonLabel = "Get My Free Audit",
+  source = Astro.url.pathname,
+  disclaimer = "Free, no commitment. Instant results, plus a human audit when you want one.",
+} = Astro.props;
+
+import { TURNSTILE_SITE_KEY } from "../lib/turnstile";
+
+// Unique per-instance suffix so field ids and label associations stay valid
+// when more than one AuditForm renders on the same page (e.g. an industry
+// page's hero form plus the closing CtaBanner form).
+const uid = Math.random().toString(36).slice(2, 9);
+---
+
+<div class="audit-form-card">
+  <h2 class="audit-form__heading">{heading}</h2>
+  <p class="audit-form__sub">{sub}</p>
+
+  <form class="audit-form" novalidate data-source={source}>
+    {/*
+      Honeypot. Hidden from humans but present in the HTML bots scrape. The
+      /api/audit endpoint silently drops any submission where phoneNumber is
+      filled. Mirrors the pattern in sign-up.astro. Do not add a real phone
+      field with this name.
+    */}
+    <div class="audit-form__hp" aria-hidden="true">
+      <label for={`af-phone-${uid}`}>Phone number</label>
+      <input type="text" id={`af-phone-${uid}`} name="phoneNumber" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <div class="audit-form__field">
+      <label for={`af-name-${uid}`}>Your Name</label>
+      <input
+        type="text"
+        id={`af-name-${uid}`}
+        name="name"
+        placeholder="John Smith"
+        required
+        autocomplete="name"
+      />
+    </div>
+
+    <div class="audit-form__field">
+      <label for={`af-email-${uid}`}>Email</label>
+      <input
+        type="email"
+        id={`af-email-${uid}`}
+        name="email"
+        placeholder="john@email.com"
+        required
+        autocomplete="email"
+      />
+    </div>
+
+    <div class="audit-form__field">
+      <label for={`af-url-${uid}`}>Website</label>
+      <input
+        type="text"
+        id={`af-url-${uid}`}
+        name="url"
+        placeholder="yourbusiness.com"
+        required
+        inputmode="url"
+        autocomplete="url"
+      />
+    </div>
+
+    {/* Add-on audit types. Site & SEO health always runs; these reveal extra
+        fields and switch on the matching snapshot modules. */}
+    <div class="audit-form__addons">
+      <span class="audit-form__addons-label">Add to your free audit:</span>
+      <label class="audit-form__toggle">
+        <input type="checkbox" name="local" value="on" data-reveal="local" />
+        <span>Local audit <em>(Google Business Profile + map pack)</em></span>
+      </label>
+      <label class="audit-form__toggle">
+        <input type="checkbox" name="ai" value="on" data-reveal="ai" />
+        <span>AI citation audit <em>(how AI search sees you)</em></span>
+      </label>
+    </div>
+
+    <div class="audit-form__reveal" data-group="local" hidden>
+      <div class="audit-form__field-row">
+        <div class="audit-form__field">
+          <label for={`af-biz-${uid}`}>Business name</label>
+          <input type="text" id={`af-biz-${uid}`} name="business" placeholder="Smith Plumbing" autocomplete="organization" />
+        </div>
+        <div class="audit-form__field">
+          <label for={`af-city-${uid}`}>City</label>
+          <input type="text" id={`af-city-${uid}`} name="city" placeholder="Halifax, NS" autocomplete="address-level2" />
+        </div>
+      </div>
+    </div>
+
+    <div class="audit-form__reveal" data-group="ai" hidden>
+      <div class="audit-form__field">
+        <label for={`af-service-${uid}`}>Main service</label>
+        <input type="text" id={`af-service-${uid}`} name="service" placeholder="e.g. emergency plumbing" />
+      </div>
+    </div>
+
+    {TURNSTILE_SITE_KEY && (
+      <div
+        class="cf-turnstile audit-form__turnstile"
+        data-sitekey={TURNSTILE_SITE_KEY}
+        data-size="flexible"
+      />
+    )}
+
+    <button type="submit" class="btn btn-primary audit-form__submit">
+      <span class="audit-form__submit-label">{buttonLabel}</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path
+          d="M3 8h10M9 4l4 4-4 4"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+    </button>
+
+    <p class="audit-form__disclaimer">{disclaimer}</p>
+    <p class="audit-form__error" role="alert" hidden></p>
+  </form>
+</div>
+
+{TURNSTILE_SITE_KEY && (
+  <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+)}
+
+<script>
+  import { prefillForm, saveLead } from "../lib/leadMemory";
+
+  document.querySelectorAll<HTMLFormElement>(".audit-form").forEach((form) => {
+    const errorEl = form.querySelector<HTMLElement>(".audit-form__error");
+    const submitBtn = form.querySelector<HTMLButtonElement>(".audit-form__submit");
+    const label = form.querySelector<HTMLElement>(".audit-form__submit-label");
+    const originalLabel = label?.textContent ?? "Get My Free Audit";
+
+    // Pre-fill from a previous form submit so repeat visitors don't re-type.
+    prefillForm(form);
+
+    // Audit-type toggles reveal their extra fields.
+    form.querySelectorAll<HTMLInputElement>("[data-reveal]").forEach((cb) => {
+      const group = form.querySelector<HTMLElement>(`[data-group="${cb.dataset.reveal}"]`);
+      const sync = () => {
+        if (group) group.hidden = !cb.checked;
+      };
+      cb.addEventListener("change", sync);
+      sync();
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      if (errorEl) errorEl.hidden = true;
+      if (submitBtn) submitBtn.disabled = true;
+      if (label) label.textContent = "Sending...";
+
+      const data = Object.fromEntries(new FormData(form).entries());
+      data.source = form.dataset.source ?? location.pathname;
+
+      try {
+        // Trailing slash required: astro.config sets trailingSlash: 'always'.
+        const res = await fetch("/api/audit/", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        const body = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
+
+        if (res.ok && body.ok) {
+          saveLead({ name: String(data.name ?? ""), email: String(data.email ?? "") });
+          // Hand the audit params to the crunching/results page (which runs the
+          // snapshot). It also fires the free_audit_form_submission GA4 event and
+          // is the Ads conversion URL.
+          const types = ["seo"];
+          if (data.local === "on") types.push("local");
+          if (data.ai === "on") types.push("ai");
+          const qp = new URLSearchParams({ url: String(data.url ?? ""), types: types.join(",") });
+          if (data.business) qp.set("business", String(data.business));
+          if (data.city) qp.set("city", String(data.city));
+          if (data.service) qp.set("service", String(data.service));
+          window.location.assign(`/audit-requested/?${qp.toString()}`);
+          return;
+        }
+        throw new Error(body.error ?? "Something went wrong. Please try again.");
+      } catch (err) {
+        if (errorEl) {
+          errorEl.textContent =
+            err instanceof Error ? err.message : "Something went wrong. Please try again.";
+          errorEl.hidden = false;
+        }
+        if (submitBtn) submitBtn.disabled = false;
+        if (label) label.textContent = originalLabel;
+      }
+    });
+  });
+</script>
+
+<style>
+  .audit-form-card {
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: var(--radius-xl);
+    padding: 36px;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .audit-form__heading {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .audit-form__sub {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+
+  /* Audit-type toggles + revealed fields */
+  .audit-form__field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .audit-form__addons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 14px;
+    background: var(--light);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+  }
+
+  .audit-form__addons-label {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .audit-form__toggle {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 14px;
+    color: var(--text-primary);
+    cursor: pointer;
+    line-height: 1.4;
+  }
+
+  .audit-form__toggle input {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: var(--teal);
+    cursor: pointer;
+  }
+
+  .audit-form__toggle em {
+    color: var(--text-muted);
+    font-style: normal;
+    font-size: 13px;
+  }
+
+  .audit-form__reveal[hidden] {
+    display: none;
+  }
+
+  .audit-form__turnstile {
+    margin: 2px 0;
+  }
+
+  .audit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Honeypot: kept in the DOM (and the HTML bots scrape) but off-screen. */
+  .audit-form__hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .audit-form__field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .audit-form__field label {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+  }
+
+  .audit-form__field input {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.5;
+    padding: 10px 14px;
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    background: var(--white);
+    transition: border-color var(--transition);
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .audit-form__field input:focus {
+    border-color: var(--teal);
+  }
+
+  .audit-form__field input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .audit-form__submit {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 24px;
+    font-size: 16px;
+    margin-top: 4px;
+    cursor: pointer;
+    border: none;
+    justify-content: center;
+  }
+
+  .audit-form__submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .audit-form__disclaimer {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: -4px;
+  }
+
+  .audit-form__error {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #c0392b;
+    background: rgba(220, 50, 50, 0.06);
+    border: 1px solid rgba(220, 50, 50, 0.18);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .audit-form-card {
+      padding: 28px 24px;
+    }
+  }
+</style>

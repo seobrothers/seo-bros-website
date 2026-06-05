@@ -127,4 +127,4 @@ We're an SEO-only agency that operates almost exclusively through partner agency
 
 The audits are run by our senior SEO team. The branding and presentation is built around each partner agency's identity. The end-client never sees us in the deliverable.
 
-If you're a digital agency thinking about offering SEO to your clients without building an in-house team, [get in touch](/sign-up/) and we'll walk through how the partnership works.
+If you're a digital agency thinking about offering SEO to your clients without building an in-house team, [get in touch](/partner-package/) and we'll walk through how the partnership works.

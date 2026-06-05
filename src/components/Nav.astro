@@ -7,12 +7,12 @@ interface Props {
 const { variant = "default", hideCta = false } = Astro.props;
 
 const links = [
-  { href: "/about/", label: "About" },
-  { href: "/white-label-seo/", label: "White Label SEO" },
+  { href: "/industries/", label: "Industries" },
+  { href: "/case-studies/", label: "Results" },
   { href: "/ai-seo/", label: "AI SEO" },
-  { href: "/case-studies/", label: "Case Studies" },
   { href: "/guides/", label: "Guides" },
-  { href: "/pricing/", label: "Pricing" },
+  { href: "/about/", label: "About" },
+  { href: "/white-label-seo/", label: "For Agencies" },
 ];
 ---
 
@@ -31,7 +31,7 @@ const links = [
     <div class="nav-actions">
       <a href="https://portal.seobrothers.com/" class="nav-sign-in">Sign In</a>
       {!hideCta && (
-        <a href="/sign-up/" class="btn btn-primary nav-cta">Demo</a>
+        <a href="/#book-audit" class="btn btn-primary nav-cta">Free Audit</a>
       )}
       <button
         class="nav-toggle"
@@ -61,7 +61,7 @@ const links = [
     </li>
     {!hideCta && (
       <li>
-        <a href="/sign-up/" class="btn btn-primary mobile-menu__cta">Book a Demo</a>
+        <a href="/#book-audit" class="btn btn-primary mobile-menu__cta">Free Audit</a>
       </li>
     )}
   </ul>

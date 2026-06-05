@@ -111,4 +111,4 @@ KW campaigns get built city by city, not as one combined Tri-Cities mush. Real K
 
 We use the abbreviated forms (KW, K-W) where they read naturally, even though Keyword Planner won't credit the volume. Search Console will. The bigger unlock we usually find here is the Waterloo-only opportunity that the standard Kitchener-Waterloo combined page misses entirely.
 
-If you're a business or agency anywhere in KW or the Tri-Cities region, [get in touch](/sign-up/) and we'll walk through what works in your specific market.
+If you're a business or agency anywhere in KW or the Tri-Cities region, [get in touch](/#book-audit) and we'll walk through what works in your specific market.

@@ -163,4 +163,4 @@ For the broader white-label partnership context, see our [white-label SEO report
 
 We help our partner agencies sell SEO by providing the audit, the proposal templates, the case studies, and the kickoff process. The agency owns the client relationship; we provide the operational backbone.
 
-If selling SEO is the bottleneck for your agency, [get in touch](/sign-up/) and we'll walk through how our partners approach it.
+If selling SEO is the bottleneck for your agency, [get in touch](/partner-package/) and we'll walk through how our partners approach it.

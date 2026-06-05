@@ -4,13 +4,14 @@ import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
+import NewsletterSignup from "../../components/NewsletterSignup.astro";
 
 const allGuides = (await getCollection("guides"))
   .filter((g) => !import.meta.env.PROD || !g.data.draft)
   .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
 
 interface CategorySpec {
-  slug: "seo" | "industry" | "agency";
+  slug: "seo" | "agency" | "cities";
   label: string;
   blurb: string;
   accent: "teal" | "purple" | "green";
@@ -21,22 +22,22 @@ const categories: CategorySpec[] = [
     slug: "seo",
     label: "SEO Guides",
     blurb:
-      "Level up your SEO. Tactical resources created specifically for agency owners and the strategists who deliver for them.",
+      "Plain-English guides for business owners and marketers. Local, technical, content, AI search, and link building.",
     accent: "teal",
-  },
-  {
-    slug: "industry",
-    label: "Industry Guides",
-    blurb:
-      "World-class industry SEO insights, data, and deliverables to support your agency across every vertical we serve.",
-    accent: "purple",
   },
   {
     slug: "agency",
     label: "Agency Guides",
     blurb:
-      "Founder conversations and operating playbooks with actionable ideas for digital agency owners.",
+      "Operating playbooks for agencies that resell SEO. Selling it, delivering it white-label, reporting, and retention.",
     accent: "green",
+  },
+  {
+    slug: "cities",
+    label: "Local Market Research",
+    blurb:
+      "We rank local businesses across the US and Canada. These are research deep-dives on a few markets we know especially well, examples of how we read a market, not the limit of where we work.",
+    accent: "purple",
   },
 ];
 
@@ -74,13 +75,14 @@ function fmtDate(d: Date) {
         Guides &amp; Resources
       </span>
       <h1 class="guides-hero__title" data-animate>
-        SEO, industry, and agency<br />
+        SEO and agency<br />
         <span class="guides-hero__title-gradient">guides by the brothers.</span>
       </h1>
       <p class="guides-hero__subtitle" data-animate>
-        A growing library built by agency owners just like you. Interviews,
-        in-depth research, and how-to resources to support your agency journey
-        — across every vertical we serve.
+        A growing library of practical SEO resources. How-to guides and research
+        for business owners, plus operating playbooks for the agencies we partner
+        with. Looking for your industry? See
+        <a href="/industries/" class="guides-hero__inline-link">Industries We Serve</a>.
       </p>
     </div>
   </section>
@@ -144,6 +146,7 @@ function fmtDate(d: Date) {
     </div>
   </section>
 
+  <NewsletterSignup />
   <CtaBanner />
   <Footer />
 </Layout>
@@ -259,6 +262,16 @@ function fmtDate(d: Date) {
     line-height: 1.7;
     color: var(--text-on-dark-muted);
     max-width: 640px;
+  }
+
+  .guides-hero__inline-link {
+    color: var(--teal-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .guides-hero__inline-link:hover {
+    color: var(--white);
   }
 
   /* ═══════════════════════════════════════════════════════════════════

@@ -233,4 +233,4 @@ Keyword research is the first deliverable in every campaign we run. We use Ahref
 
 For partner agencies, we deliver the keyword research spreadsheet as the foundation document for the campaign. The agency reviews with the client, and we move into mapping once the priorities are locked.
 
-If you've got a campaign starting and want a tailored keyword research approach, [get in touch](/sign-up/) and we'll walk through how we'd scope it for your situation.
+If you've got a campaign starting and want a tailored keyword research approach, [get in touch](/#book-audit) and we'll walk through how we'd scope it for your situation.

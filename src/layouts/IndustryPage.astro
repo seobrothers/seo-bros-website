@@ -2,6 +2,7 @@
 import Layout from "./Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import AuditForm from "../components/AuditForm.astro";
 
 interface ServiceItem {
   icon: string;
@@ -39,8 +40,8 @@ interface Props {
   seoTitle: string;
   seoDescription: string;
   // Set true for paid-only landers so they don't compete organically with the
-  // matching guide. The hero form on this layout is also not wired up — see
-  // the form block below.
+  // canonical /industries/ page for the same vertical. The hero form is wired
+  // to /api/audit via the AuditForm component.
   noindex?: boolean;
   heroTitle: string;
   heroSubtitle: string;
@@ -163,44 +164,13 @@ const layoutSchema = faqSchema ? [faqSchema, breadcrumbSchema] : [breadcrumbSche
       </div>
 
       <div class="ind-hero-form-wrap" data-animate>
-        <div class="ind-hero-form-card">
-          <h2 class="ind-hero-form-heading">{heroFormHeading}</h2>
-          <p class="ind-hero-form-sub">Enter your details and we'll show you exactly where you stand online.</p>
-          {/*
-            ⚠️ BROKEN FORM — DO NOT POINT TRAFFIC HERE YET ⚠️
-            This form has no submit handler. Submitting reloads the page with
-            form data appended to the URL. Before sending any organic, paid, or
-            email traffic to a page using this layout, wire this up to a real
-            endpoint (Cloudflare Function, Bento, or your CRM webhook) with
-            preventDefault and a redirect to a thank-you page. Until then,
-            every page using IndustryPage must pass noindex={true}.
-          */}
-          <form class="ind-hero-form" id="hero-form">
-            <div class="ind-form-field">
-              <label for="ind-name">Your Name</label>
-              <input type="text" id="ind-name" name="name" placeholder="John Smith" required data-lpignore="true" autocomplete="off" />
-            </div>
-            <div class="ind-form-field">
-              <label for="ind-company">Business Name</label>
-              <input type="text" id="ind-company" name="company" placeholder="Smith's Plumbing" required data-lpignore="true" autocomplete="off" />
-            </div>
-            <div class="ind-form-row">
-              <div class="ind-form-field">
-                <label for="ind-phone">Phone</label>
-                <input type="tel" id="ind-phone" name="phone" placeholder="(555) 123-4567" required data-lpignore="true" autocomplete="off" />
-              </div>
-              <div class="ind-form-field">
-                <label for="ind-email">Email</label>
-                <input type="email" id="ind-email" name="email" placeholder="john@email.com" required data-lpignore="true" autocomplete="off" />
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary ind-form-submit">
-              Get My Free Visibility Audit
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <p class="ind-form-disclaimer">Free. No commitment. Takes 30 seconds.</p>
-          </form>
-        </div>
+        <AuditForm
+          heading={heroFormHeading}
+          sub="Enter your details for an instant look at where you stand, with a real audit from our team on request."
+          buttonLabel="Get My Free Visibility Audit"
+          source={`industry-lander:${industrySlug}`}
+          disclaimer="Free, no commitment. Instant results, plus a human audit when you want one."
+        />
       </div>
     </div>
   </section>

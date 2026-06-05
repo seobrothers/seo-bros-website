@@ -268,6 +268,6 @@ What separates lasting networks from dead ones is operational discipline. Domain
 
 For agencies with the scale to run networks across many client campaigns, this remains one of the strongest levers in local SEO. For individual local businesses trying to do it themselves, the cost and complexity rarely justify the effort. Build a great business, write content people want to read, and pursue the link strategies that don't require running a parallel publishing operation.
 
-If you're trying to figure out the right link strategy for your situation, [get in touch](/sign-up/) and we'll walk through what's likely to work.
+If you're trying to figure out the right link strategy for your situation, [get in touch](/#book-audit) and we'll walk through what's likely to work.
 
 For the broader link-building methodology, see our [link building guide](/guides/link-building/).

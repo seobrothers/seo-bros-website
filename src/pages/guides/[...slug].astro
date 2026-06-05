@@ -5,6 +5,8 @@ import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
+import AuthorCard from "../../components/AuthorCard.astro";
+import NewsletterSignup from "../../components/NewsletterSignup.astro";
 import { authorByName } from "../../data/authors";
 
 export async function getStaticPaths() {
@@ -12,6 +14,10 @@ export async function getStaticPaths() {
   const guides = await getCollection("guides");
   return guides
     .filter((g) => !reservedSlugs.has(g.id))
+    // Industry-category guides are served at /industries/{slug}/ instead (see
+    // src/data/industries.ts and src/pages/industries/[slug].astro), with 301s
+    // from the old /guides/{id}/ URLs in public/_redirects.
+    .filter((g) => g.data.category !== "industry")
     .filter((g) => !import.meta.env.PROD || !g.data.draft)
     .map((guide) => ({
       params: { slug: guide.id },
@@ -129,6 +135,16 @@ const breadcrumbSchema = {
         <h1 class="guide-hero__title" data-animate>{d.title}</h1>
 
         <div class="guide-hero__meta" data-animate>
+          {authorEntity?.published && (
+            <img
+              class="guide-hero__avatar"
+              src={authorEntity.photo}
+              alt={`${d.author}, ${authorEntity.role} at SEO Brothers`}
+              width="36"
+              height="36"
+              loading="lazy"
+            />
+          )}
           {authorHref ? (
             <a class="guide-hero__author" href={authorHref}>{d.author}</a>
           ) : (
@@ -198,20 +214,23 @@ const breadcrumbSchema = {
               <aside class="guide-audit-cta">
                 <h3>Get your free SEO audit</h3>
                 <p>
-                  Book a demo and your first audit is on us. Real audit by
-                  our team, walked through on a call. No automated score,
-                  no commitment to anything else.
+                  An instant snapshot now, plus a real audit from our team, not
+                  just an automated score. We'll show you where you stand and
+                  what's worth doing. Free, no commitment to anything else.
                 </p>
-                <a href="/sign-up/" class="btn btn-primary">
+                <a href="/#book-audit" class="btn btn-primary">
                   Get my free audit
                 </a>
               </aside>
             )
           }
+
+          {authorEntity?.published && <AuthorCard author={authorEntity} variant="full" />}
         </div>
       </div>
     </section>
 
+    <NewsletterSignup />
     <CtaBanner />
   </article>
 
@@ -300,6 +319,14 @@ const breadcrumbSchema = {
     flex-wrap: wrap;
     font-size: 14px;
     color: var(--text-on-dark-muted);
+  }
+
+  .guide-hero__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.15);
   }
 
   .guide-hero__author {

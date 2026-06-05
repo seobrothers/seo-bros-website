@@ -97,4 +97,4 @@ Halifax is home base. SEO Brothers is registered as a Nova Scotia company, our o
 
 When we work with a Halifax business, the keyword strategy maps to the actual search behavior, not just the Halifax head term. Real Dartmouth content, real Bedford content, real coverage of the smaller communities the business serves. Service-area pages get built for the regions the business actually reaches, not a single generic catch-all.
 
-If you're a Halifax-area business or agency, [get in touch](/sign-up/) and we'll walk through what works in your specific market.
+If you're a Halifax-area business or agency, [get in touch](/#book-audit) and we'll walk through what works in your specific market.

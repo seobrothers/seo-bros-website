@@ -1,19 +1,44 @@
 ---
 import { getCollection } from "astro:content";
+import type { GuideGroup } from "../data/guideGroups";
 
 interface Props {
   category: "seo" | "industry" | "agency" | "cities";
   label: string;
   blurb: string;
   accent: "teal" | "purple" | "green" | "neutral";
+  /** Optional topic groupings; when provided, guides render under headings. */
+  groups?: GuideGroup[];
 }
 
-const { category, label, blurb, accent } = Astro.props;
+const { category, label, blurb, accent, groups } = Astro.props;
 
 const guides = (await getCollection("guides"))
   .filter((g) => g.data.category === category)
   .filter((g) => !import.meta.env.PROD || !g.data.draft)
   .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+
+// When groups are provided, organize guides under topic headings. Anything not
+// listed in a group lands in a trailing "More" group so nothing is dropped.
+type GuideEntry = (typeof guides)[number];
+type Section = { title: string | null; blurb?: string; items: GuideEntry[] };
+const byId = new Map(guides.map((g) => [g.id, g]));
+const groupedSections: Section[] = [];
+if (groups?.length) {
+  const used = new Set<string>();
+  for (const grp of groups) {
+    const items = grp.ids.map((id) => byId.get(id)).filter(Boolean) as GuideEntry[];
+    items.forEach((g) => used.add(g.id));
+    if (items.length) groupedSections.push({ title: grp.title, blurb: grp.blurb, items });
+  }
+  const leftover = guides.filter((g) => !used.has(g.id));
+  if (leftover.length) groupedSections.push({ title: "More", items: leftover });
+}
+
+// Unified render list: grouped sections, or a single untitled section (flat).
+const renderSections: Section[] = groupedSections.length
+  ? groupedSections
+  : [{ title: null, items: guides }];
 
 function fmtDate(d: Date) {
   return d.toLocaleDateString("en-US", {
@@ -55,45 +80,50 @@ function fmtDate(d: Date) {
 
 <section class="gl-list-section">
   <div class="container">
-    {
-      guides.length === 0 ? (
-        <p class="gl-empty">More guides coming soon.</p>
-      ) : (
-        <ul class="gl-list" data-stagger>
-          {guides.map((guide) => (
-            <li>
-              <a href={`/guides/${guide.id}/`} class="gl-card" data-animate>
-                <div class="gl-card__main">
-                  <h2 class="gl-card__title">{guide.data.title}</h2>
-                  <p class="gl-card__summary">{guide.data.summary}</p>
-                  <div class="gl-card__meta">
-                    <span>{guide.data.author}</span>
-                    <span class="gl-card__dot">·</span>
-                    <span>{fmtDate(guide.data.publishDate)}</span>
+    {guides.length === 0 ? (
+      <p class="gl-empty">More guides coming soon.</p>
+    ) : (
+      renderSections.map((sec) => (
+        <div class="gl-group">
+          {sec.title && <h2 class="gl-group__title">{sec.title}</h2>}
+          {sec.blurb && <p class="gl-group__blurb">{sec.blurb}</p>}
+          <ul class="gl-list" data-stagger>
+            {sec.items.map((guide) => (
+              <li>
+                <a href={`/guides/${guide.id}/`} class="gl-card" data-animate>
+                  <div class="gl-card__main">
+                    <h3 class="gl-card__title">{guide.data.title}</h3>
+                    <p class="gl-card__summary">{guide.data.summary}</p>
+                    <div class="gl-card__meta">
+                      <span>{guide.data.author}</span>
+                      <span class="gl-card__dot">·</span>
+                      <span>{fmtDate(guide.data.publishDate)}</span>
+                    </div>
                   </div>
-                </div>
-                <span class="gl-card__arrow" aria-hidden="true">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M3 8h10M9 4l4 4-4 4" />
-                  </svg>
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      )
-    }
+                  <span class="gl-card__arrow" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M3 8h10M9 4l4 4-4 4" />
+                    </svg>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    )}
   </div>
 </section>
+
+{
+  Astro.slots.has("default") && (
+    <section class="gl-intro">
+      <div class="container gl-intro__inner">
+        <slot />
+      </div>
+    </section>
+  )
+}
 
 <style>
   .gl-hero {
@@ -211,10 +241,86 @@ function fmtDate(d: Date) {
     max-width: 640px;
   }
 
+  /* Intro (optional slot, rendered BELOW the list so the cards come first) */
+  .gl-intro {
+    padding: 64px 0 104px;
+    background: var(--white);
+    border-top: 1px solid var(--border-light);
+  }
+
+  .gl-intro__inner {
+    max-width: 760px;
+  }
+
+  .gl-intro :global(h2) {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 3vw, 30px);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 40px 0 14px;
+  }
+
+  .gl-intro :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .gl-intro :global(p) {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+  }
+
+  .gl-intro :global(a) {
+    color: var(--teal-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color var(--transition);
+  }
+
+  .gl-intro :global(a:hover) {
+    color: var(--teal);
+  }
+
+  .gl-intro :global(strong) {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
   /* List */
   .gl-list-section {
-    padding: 80px 0 120px;
+    padding: 64px 0 80px;
     background: var(--white);
+  }
+
+  .gl-group {
+    max-width: 880px;
+    margin: 0 auto 48px;
+  }
+
+  .gl-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .gl-group__title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .gl-group__blurb {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 0 18px;
   }
 
   .gl-list {
@@ -225,6 +331,12 @@ function fmtDate(d: Date) {
     display: flex;
     flex-direction: column;
     gap: 16px;
+  }
+
+  /* Inside a group, the group is the width container. */
+  .gl-group .gl-list {
+    max-width: none;
+    margin: 0;
   }
 
   .gl-card {

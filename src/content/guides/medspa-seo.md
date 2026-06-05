@@ -122,6 +122,16 @@ Google rewards the first group, and patients increasingly do too. The signals th
 
 This positioning compounds with the E-E-A-T signals Google looks for in YMYL verticals. The on-page work is in [our on-page SEO guide](/guides/on-page-seo/).
 
+## Hair restoration for practices that offer it
+
+A growing number of aesthetic practices add hair restoration, whether that's PRP and exosome treatments for thinning or surgical FUE and FUT through an on-staff or partner surgeon. The SEO works like the rest of the medspa, with a few specifics worth knowing.
+
+Patients shop the technique before they shop the practice. "FUE hair transplant," "FUT hair transplant," and "PRP for hair loss" are largely separate keyword universes with different intent, so they earn separate pages rather than one catch-all "hair restoration" page. Cost-anchored queries ("hair transplant cost," "cost per graft," "PRP for hair cost") drive heavy volume, and practices that publish realistic ranges beat the ones that hide pricing.
+
+Two things close the patient. First, before-and-after galleries, organized by pattern and shown at real timelines: results compound over a year, so "12 months post-op" beats a generic "after." Second, provider credentials: a real bio for the surgeon or injector, ISHRS membership where applicable, and procedure counts. This is YMYL content, so the credential and evidence signals that matter elsewhere in the medspa matter even more here.
+
+For a local or regional practice, the growth channel is the same local SEO covered above: a fully optimized Google Business Profile, detailed per-technique treatment pages, and real local reviews. We don't chase the international medical-tourism angle, because for a practice serving its own market that's a distraction from the patients actually nearby.
+
 ## Common mistakes
 
 The patterns we see most often when auditing medspa sites:
@@ -167,4 +177,4 @@ A medspa SEO program that works has the same shape every time: a clean treatment
 
 The timeline is six to twelve months for visible compounding, faster if the local pack work is the starting point and the existing content is genuinely thin (which it usually is).
 
-If you're running a medspa or aesthetic practice and the local pack isn't showing your name where it should, [get in touch](/sign-up/) and we'll diagnose where the leverage actually is.
+If you're running a medspa or aesthetic practice and the local pack isn't showing your name where it should, [get in touch](/#book-audit) and we'll diagnose where the leverage actually is.

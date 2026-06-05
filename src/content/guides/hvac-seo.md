@@ -11,7 +11,7 @@ draft: false
 
 HVAC is a seasonal, urgency-driven, hyper-local category, and the search behavior reflects that. The same homeowner who casually researches "best heat pump for cold climates" in October becomes a panicked "furnace not working" searcher in January. Your SEO program has to capture both moods, often from the same household, on devices that are usually phones.
 
-This guide is part of our broader [home services SEO](/guides/home-services-seo/) coverage. The framework that applies to plumbers, electricians, and roofers applies here too, but a few HVAC-specific patterns change the playbook enough to warrant its own breakdown.
+This guide is part of our broader [home services SEO](/industries/home-services/) coverage. The framework that applies to plumbers, electricians, and roofers applies here too, but a few HVAC-specific patterns change the playbook enough to warrant its own breakdown.
 
 ## What makes HVAC search behavior different
 
@@ -191,4 +191,4 @@ We treat HVAC as a year-round program with seasonal weighting. The foundational 
 
 The biggest unlocks we usually find on a new HVAC client: legitimate cost content where there was none, real service-area pages instead of templated city pages, content updated to reflect the current refrigerant and incentive landscape, call tracking that exposes which pages actually book jobs, and a GBP that's maintained instead of set up once and forgotten.
 
-If you're an HVAC contractor stuck below the local pack or losing emergency calls to a competitor with a faster site, [get in touch](/sign-up/) and we'll walk through what's specifically holding the rankings back.
+If you're an HVAC contractor stuck below the local pack or losing emergency calls to a competitor with a faster site, [get in touch](/#book-audit) and we'll walk through what's specifically holding the rankings back.
