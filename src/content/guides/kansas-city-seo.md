@@ -1,0 +1,62 @@
+---
+title: "Kansas City SEO: How Local Search Actually Works Across the State Line"
+category: cities
+publishDate: 2026-06-07
+author: "Adam Bate"
+summary: A read on local search behavior across the Kansas City metro, the variations people actually type, and why the Johnson County, Kansas side is a major distinct market rather than a suburb. Real volume data, with roofing as the sample service.
+showAuditCta: true
+---
+
+Kansas City's defining feature in local search is the state line running through the middle of the metro. The Missouri side carries the city name, but the Kansas side, Johnson County, is a major market in its own right: Overland Park searches nearly as much as Kansas City itself for some services. A business that treats the Kansas suburbs as an afterthought to a Missouri-side Kansas City page misses how a huge share of the metro actually searches.
+
+The observations here come from running local campaigns in markets shaped like this one. We use roofing as the sample service below because demand for it is broad and storm-sensitive, and Kansas City sits in a hail-prone belt, which makes the cross-area variation a clean read on search behavior. The same shape holds for HVAC and plumbing at different absolute numbers.
+
+## What "Kansas City" means in search
+
+**Kansas City as the Missouri-side city** covers downtown, the Plaza, and the close Missouri neighborhoods. **Greater Kansas City or the KC metro** spans both states, Jackson and Clay counties in Missouri, Johnson and Wyandotte in Kansas. The two-state structure is genuine and shows up in real queries; "KC" is heavily used as the shorthand for the whole metro.
+
+A keyword tool reports "Kansas City roofing" as one line, but the searcher might be in Missouri or across the line in Kansas, and the Kansas side is a distinct market.
+
+## The markets that actually carry volume
+
+Kansas City (Missouri) carries the headline term, but the **Kansas side** is the story. **Overland Park** shows strong standalone search, with **Olathe** behind it, both in Johnson County. The Missouri-side suburbs, Independence and Lee's Summit, register lightly.
+
+- **Kansas City**, **KC**: the core term and shorthand for the whole metro.
+- **Overland Park**, **Olathe** (Johnson County, KS): a major distinct market, strong standalone search.
+- **Shawnee**, **Lenexa** (KS): smaller Kansas-side suburbs, light search.
+- **Independence**, **Lee's Summit** (MO): Missouri-side suburbs, light standalone volume.
+
+## What the volume actually looks like
+
+Volumes below are Ahrefs, US targeting, June 2026, using "roofers [area]" as the sample query.
+
+![Shaded bar visualization of monthly Google search volume for roofers by area across the Kansas City metro. Kansas City leads, Overland Park on the Kansas side is a close and genuine second market, and the smaller suburbs trail.](/images/cities/kansas-city-seo-search-heatmap.svg)
+
+| Query | Avg monthly searches |
+|---|---:|
+| roofers kansas city | 200 |
+| roofers overland park | 150 |
+| roofers olathe | 60 |
+| roofers shawnee ks | 20 |
+| roofers lenexa | 20 |
+| roofers independence mo | 20 |
+
+The finding is the Kansas side. Overland Park at 150 is nearly the Kansas City term itself, and Olathe adds more, so Johnson County is a market that rivals the Missouri-side core. On top of the city term, "Kansas City roofing" and "roofing Kansas City" each add about 400 a month, reflecting a hail-driven roofing market. The practical takeaway: a business covering both states needs genuine Overland Park and Olathe pages, not a Kansas City page that lists Kansas suburbs at the bottom.
+
+## What this means for local SEO in Kansas City
+
+**Win the metro term and the map pack first.** "Kansas City [service]" and "[service] near me" carry the headline demand on the Missouri side.
+
+**Treat the Kansas side as its own market.** Overland Park and Olathe carry major standalone search. A business covering Johnson County needs real, locally specific pages for those cities.
+
+**Mind the state line in the profile and citations.** Two-state metros create NAP and service-area complexity; consistency across both sides matters more here than usual.
+
+For the broader local SEO framework, see our [local SEO guide](/guides/local-seo/).
+
+## How we approach Kansas City SEO at SEO Brothers
+
+When we work with a business in a two-state metro like Kansas City, the keyword strategy maps to actual search behavior, which here means winning the Missouri-side metro term and the local pack while treating Overland Park and the Johnson County, Kansas market as a genuine second target with its own pages.
+
+It's the same playbook we run across our [home services SEO](/industries/home-services/) work, the [roofing](/industries/roofing/) and [HVAC](/industries/hvac/) programs in particular, where ranking comes down to a maintained profile, real local content, and call tracking that shows which pages book jobs.
+
+If you run a business anywhere in the Kansas City metro, [get in touch](/#book-audit) and we'll walk through what works in your specific area.

@@ -29,6 +29,7 @@ export const INDUSTRIES: IndustryMeta[] = [
   // Home & Local Services — the direct-to-business / paid focus.
   { guideId: "home-services-seo", slug: "home-services", name: "Home Services", group: "Home & Local Services", featured: true },
   { guideId: "hvac-seo", slug: "hvac", name: "HVAC", group: "Home & Local Services", featured: true },
+  { guideId: "roofing-seo", slug: "roofing", name: "Roofing", group: "Home & Local Services", featured: true },
   { guideId: "seo-for-plumbers", slug: "plumbing", name: "Plumbing", group: "Home & Local Services", featured: true },
   { guideId: "tree-service-seo", slug: "tree-service", name: "Tree Service", group: "Home & Local Services", featured: true },
   { guideId: "carpet-cleaning-seo", slug: "carpet-cleaning", name: "Carpet Cleaning", group: "Home & Local Services", featured: true },
