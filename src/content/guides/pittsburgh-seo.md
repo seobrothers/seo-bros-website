@@ -30,7 +30,7 @@ Pittsburgh itself carries the overwhelming share. The neighborhoods, strong as l
 
 Volumes below are Ahrefs, US targeting, June 2026, using "hvac [area]" as the sample query.
 
-![Shaded bar visualization of monthly Google search volume for HVAC by area across the Pittsburgh market. Pittsburgh overwhelmingly dominates, and the suburbs in every direction show little standalone commercial search.](/images/cities/pittsburgh-seo-search-heatmap.svg)
+![Map of the metro shaded darker where there is more monthly Google search volume for HVAC by area across the Pittsburgh market. Pittsburgh overwhelmingly dominates, and the suburbs in every direction show little standalone commercial search.](/images/cities/pittsburgh-seo-search-heatmap.svg)
 
 | Query | Avg monthly searches |
 |---|---:|

@@ -30,7 +30,7 @@ This is the unusual case where the named metro is not the clear leader. **Akron*
 
 Volumes below are Ahrefs, US targeting, June 2026, using "roofers [area]" as the sample query.
 
-![Shaded bar visualization of monthly Google search volume for roofers by area across Northeast Ohio. Akron leads, Cleveland follows closely, Canton is a genuine third market, and the Cleveland-area suburbs trail.](/images/cities/cleveland-seo-search-heatmap.svg)
+![Map of the metro shaded darker where there is more monthly Google search volume for roofers by area across Northeast Ohio. Akron leads, Cleveland follows closely, Canton is a genuine third market, and the Cleveland-area suburbs trail.](/images/cities/cleveland-seo-search-heatmap.svg)
 
 | Query | Avg monthly searches |
 |---|---:|

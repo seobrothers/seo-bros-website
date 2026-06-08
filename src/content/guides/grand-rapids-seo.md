@@ -37,7 +37,7 @@ The query universe here is narrower than the map of suburbs suggests. The genuin
 
 Volumes below are Ahrefs, US targeting, June 2026, using "HVAC [area]" as the sample query so the cross-area variation reads as search behavior rather than something specific to one trade.
 
-![Shaded bar visualization of monthly Google search volume for HVAC by area across the Grand Rapids market. Grand Rapids dominates at 300 a month, Holland follows at 100, and the inner suburbs trail off to little or no standalone commercial volume.](/images/cities/grand-rapids-seo-search-heatmap.svg)
+![Map of the metro shaded darker where there is more monthly Google search volume for HVAC by area across the Grand Rapids market. Grand Rapids dominates at 300 a month, Holland follows at 100, and the inner suburbs trail off to little or no standalone commercial volume.](/images/cities/grand-rapids-seo-search-heatmap.svg)
 
 | Query | Avg monthly searches |
 |---|---:|

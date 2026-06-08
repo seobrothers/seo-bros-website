@@ -30,7 +30,7 @@ Buffalo carries the most, with the **Northtowns** as a genuine suburban tier. **
 
 Volumes below are Ahrefs, US targeting, June 2026, using "hvac [area]" as the sample query.
 
-![Shaded bar visualization of monthly Google search volume for HVAC by area across the Buffalo market. Buffalo dominates, Amherst and Tonawanda in the Northtowns carry real volume, Niagara Falls is a nearby second market, and the remaining suburbs trail.](/images/cities/buffalo-seo-search-heatmap.svg)
+![Map of the metro shaded darker where there is more monthly Google search volume for HVAC by area across the Buffalo market. Buffalo dominates, Amherst and Tonawanda in the Northtowns carry real volume, Niagara Falls is a nearby second market, and the remaining suburbs trail.](/images/cities/buffalo-seo-search-heatmap.svg)
 
 | Query | Avg monthly searches |
 |---|---:|

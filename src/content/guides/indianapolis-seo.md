@@ -30,7 +30,7 @@ Indianapolis carries the dominant volume, and the north side is the standout. **
 
 Volumes below are Ahrefs, US targeting, June 2026, using "hvac [area]" as the sample query.
 
-![Shaded bar visualization of monthly Google search volume for HVAC by area across the Indianapolis market. Indianapolis dominates, and the north-side suburbs of Fishers, Noblesville, and Carmel carry real standalone volume rather than rolling up into the metro term.](/images/cities/indianapolis-seo-search-heatmap.svg)
+![Map of the metro shaded darker where there is more monthly Google search volume for HVAC by area across the Indianapolis market. Indianapolis dominates, and the north-side suburbs of Fishers, Noblesville, and Carmel carry real standalone volume rather than rolling up into the metro term.](/images/cities/indianapolis-seo-search-heatmap.svg)
 
 | Query | Avg monthly searches |
 |---|---:|

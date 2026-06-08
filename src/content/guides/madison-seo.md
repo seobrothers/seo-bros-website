@@ -30,7 +30,7 @@ The genuinely searched entity is Madison itself, with **Janesville** as a real s
 
 Volumes below are Ahrefs, US targeting, June 2026, using "hvac [area]" as the sample query.
 
-![Shaded bar visualization of monthly Google search volume for HVAC by area across the Madison market. Madison and Janesville carry the volume, and the close suburbs show little or no standalone commercial search.](/images/cities/madison-seo-search-heatmap.svg)
+![Map of the metro shaded darker where there is more monthly Google search volume for HVAC by area across the Madison market. Madison and Janesville carry the volume, and the close suburbs show little or no standalone commercial search.](/images/cities/madison-seo-search-heatmap.svg)
 
 | Query | Avg monthly searches |
 |---|---:|

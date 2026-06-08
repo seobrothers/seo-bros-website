@@ -30,7 +30,7 @@ Columbus itself carries the most demand, but the suburbs here punch above the us
 
 Volumes below are Ahrefs, US targeting, June 2026, using "roofers [area]" as the sample query.
 
-![Shaded bar visualization of monthly Google search volume for roofers by area across the Columbus market. Columbus leads, and the fast-growing suburbs of Gahanna, Westerville, and Dublin carry real standalone volume rather than rolling up into the metro term.](/images/cities/columbus-seo-search-heatmap.svg)
+![Map of the metro shaded darker where there is more monthly Google search volume for roofers by area across the Columbus market. Columbus leads, and the fast-growing suburbs of Gahanna, Westerville, and Dublin carry real standalone volume rather than rolling up into the metro term.](/images/cities/columbus-seo-search-heatmap.svg)
 
 | Query | Avg monthly searches |
 |---|---:|

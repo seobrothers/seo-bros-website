@@ -30,7 +30,7 @@ Des Moines itself carries almost all of it. **Ankeny**, the fast-growing norther
 
 Volumes below are Ahrefs, US targeting, June 2026, using "roofers [area]" as the sample query.
 
-![Shaded bar visualization of monthly Google search volume for roofers by area across the Des Moines market. Des Moines dominates, Ankeny registers modestly, and the western suburbs show little or no standalone commercial search.](/images/cities/des-moines-seo-search-heatmap.svg)
+![Map of the metro shaded darker where there is more monthly Google search volume for roofers by area across the Des Moines market. Des Moines dominates, Ankeny registers modestly, and the western suburbs show little or no standalone commercial search.](/images/cities/des-moines-seo-search-heatmap.svg)
 
 | Query | Avg monthly searches |
 |---|---:|

@@ -29,7 +29,7 @@ Rochester itself carries the demand. The Monroe County towns, **Greece**, **Iron
 
 Volumes below are Ahrefs, US targeting, June 2026, using "roofers [area]" as the sample query.
 
-![Shaded bar visualization of monthly Google search volume for roofers by area across the Rochester market. Rochester carries the demand and the Monroe County towns show little standalone commercial search.](/images/cities/rochester-seo-search-heatmap.svg)
+![Map of the metro shaded darker where there is more monthly Google search volume for roofers by area across the Rochester market. Rochester carries the demand and the Monroe County towns show little standalone commercial search.](/images/cities/rochester-seo-search-heatmap.svg)
 
 | Query | Avg monthly searches |
 |---|---:|

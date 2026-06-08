@@ -30,7 +30,7 @@ Kansas City (Missouri) carries the headline term, but the **Kansas side** is the
 
 Volumes below are Ahrefs, US targeting, June 2026, using "roofers [area]" as the sample query.
 
-![Shaded bar visualization of monthly Google search volume for roofers by area across the Kansas City metro. Kansas City leads, Overland Park on the Kansas side is a close and genuine second market, and the smaller suburbs trail.](/images/cities/kansas-city-seo-search-heatmap.svg)
+![Map of the metro shaded darker where there is more monthly Google search volume for roofers by area across the Kansas City metro. Kansas City leads, Overland Park on the Kansas side is a close and genuine second market, and the smaller suburbs trail.](/images/cities/kansas-city-seo-search-heatmap.svg)
 
 | Query | Avg monthly searches |
 |---|---:|

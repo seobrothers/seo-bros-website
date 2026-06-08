@@ -30,7 +30,7 @@ Omaha itself carries the overwhelming share. The Nebraska suburbs, La Vista, Bel
 
 Volumes below are Ahrefs, US targeting, June 2026, using "hvac [area]" as the sample query.
 
-![Shaded bar visualization of monthly Google search volume for HVAC by area across the Omaha market. Omaha dominates, Council Bluffs across the river in Iowa is the genuine second market, and the Nebraska suburbs show little standalone search.](/images/cities/omaha-seo-search-heatmap.svg)
+![Map of the metro shaded darker where there is more monthly Google search volume for HVAC by area across the Omaha market. Omaha dominates, Council Bluffs across the river in Iowa is the genuine second market, and the Nebraska suburbs show little standalone search.](/images/cities/omaha-seo-search-heatmap.svg)
 
 | Query | Avg monthly searches |
 |---|---:|

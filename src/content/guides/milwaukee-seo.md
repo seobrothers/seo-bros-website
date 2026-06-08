@@ -30,7 +30,7 @@ The genuinely searched entity here is Milwaukee itself. The suburban ring, Wauke
 
 Volumes below are Ahrefs, US targeting, June 2026, using "roofers [area]" as the sample query.
 
-![Shaded bar visualization of monthly Google search volume for roofers by area across the Milwaukee market. Milwaukee dominates, the western suburbs and Kenosha carry small volume, and the inner-ring suburbs show little or no standalone commercial search.](/images/cities/milwaukee-seo-search-heatmap.svg)
+![Map of the metro shaded darker where there is more monthly Google search volume for roofers by area across the Milwaukee market. Milwaukee dominates, the western suburbs and Kenosha carry small volume, and the inner-ring suburbs show little or no standalone commercial search.](/images/cities/milwaukee-seo-search-heatmap.svg)
 
 | Query | Avg monthly searches |
 |---|---:|
