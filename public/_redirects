@@ -123,6 +123,9 @@
 /guides/seo-for-wordpress-websites/                         /guides/seo-for-wordpress/                        301
 /guides/sitebulb-best-seo-crawler-auditor-never-knew/       /guides/sitebulb-review/                          301
 
+# Free-audit guide merged into the /tools/free-seo-audit/ tool page
+/guides/free-website-seo-audit/                             /tools/free-seo-audit/                            301
+
 # ============================================================================
 # Hard drops — content not migrated, redirect to closest hub
 # ============================================================================
@@ -160,7 +163,7 @@
 # healthcare has no matching guide, so it points at the industry hub.
 # ============================================================================
 /resource/category/seo/                                     /guides/seo/                                      301
-/resource/free-website-seo-audit/                           /guides/free-website-seo-audit/                   301
+/resource/free-website-seo-audit/                           /tools/free-seo-audit/                            301
 /resource/how-to-sell-seo-services-to-clients/              /guides/how-to-sell-seo-services/                 301
 /resource/how-to-structure-a-website-structure-local-business/  /guides/local-seo/                            301
 /resource/keyword-mapping/                                  /guides/keyword-mapping/                          301
@@ -194,11 +197,14 @@
 /locations                                                  /guides/cities/                                   301
 
 # ============================================================================
-# CTA shortcuts — booking/demo flows through /sign-up/.
+# CTA shortcuts — business booking flows through the free-audit tool page.
+# (Partner demo still lives at /sign-up/, linked from the white-label pages.)
 # ============================================================================
-/strategy-call/                                             /sign-up/                                         301
-/demo                                                       /sign-up/                                         301
-/demo/                                                      /sign-up/                                         301
+/free-seo-audit/                                            /tools/free-seo-audit/                            301
+/audit/                                                     /tools/free-seo-audit/                            301
+/strategy-call/                                             /tools/free-seo-audit/                            301
+/demo                                                       /tools/free-seo-audit/                            301
+/demo/                                                      /tools/free-seo-audit/                            301
 
 # ============================================================================
 # PODCAST — catch-all for any remaining legacy episode URLs (and their feeds).

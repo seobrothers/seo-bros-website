@@ -53,8 +53,10 @@ const STATIC_PAGES = [
   "/partner-package/",
   "/pricing/",
   "/privacy/",
-  "/sign-up/",
   "/terms/",
+  "/tools/",
+  "/tools/free-seo-audit/",
+  "/tools/seo-forecasting-tool/",
   "/white-label-seo/",
 ];
 
