@@ -155,4 +155,4 @@ INP is part of every page-speed audit we run. The diagnostic flow:
 
 For partner agencies whose clients are failing Core Web Vitals due to INP, we run the audit, document the findings, and either implement directly or hand off prioritized recommendations to the client's development team.
 
-If your Search Console is showing INP failures and you're not sure where to start, [get in touch](/#book-audit) and we'll walk through the diagnostics with you.
+If your Search Console is showing INP failures and you're not sure where to start, [get in touch](/tools/free-seo-audit/) and we'll walk through the diagnostics with you.

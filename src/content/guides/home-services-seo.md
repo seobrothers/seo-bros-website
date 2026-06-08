@@ -143,4 +143,4 @@ The framework above is our default for home services campaigns. Vertical-specifi
 
 For partner agencies serving home services clients, we operate the SEO layer end-to-end while the agency manages the contractor relationship.
 
-If you run a home services business or work with one, [get in touch](/#book-audit) and we'll walk through how the framework applies to your specific situation.
+If you run a home services business or work with one, [get in touch](/tools/free-seo-audit/) and we'll walk through how the framework applies to your specific situation.

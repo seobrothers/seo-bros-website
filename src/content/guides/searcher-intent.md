@@ -144,4 +144,4 @@ Quarterly review checks for intent shifts on the priority keywords. Where Google
 
 For partner agencies running campaigns through us, intent analysis is part of the standard deliverable. The mapping document includes the classification, and the strategic recommendations reflect any intent shifts identified during quarterly review.
 
-If you're trying to figure out whether your existing pages match the intent of the queries you're targeting, [get in touch](/#book-audit) and we'll walk through the SERP analysis with you.
+If you're trying to figure out whether your existing pages match the intent of the queries you're targeting, [get in touch](/tools/free-seo-audit/) and we'll walk through the SERP analysis with you.

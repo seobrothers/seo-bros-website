@@ -93,4 +93,4 @@ Cannabis is one of the verticals where the foundation matters disproportionately
 
 For partner agencies serving cannabis clients, we operate the SEO layer end-to-end. The category's regulatory complexity means most generalist agencies under-serve it; specialized work pays back faster.
 
-If you're operating a dispensary, CBD brand, or cannabis service business and trying to figure out where the leverage actually is, [get in touch](/#book-audit) and we'll diagnose what's holding the rankings back.
+If you're operating a dispensary, CBD brand, or cannabis service business and trying to figure out where the leverage actually is, [get in touch](/tools/free-seo-audit/) and we'll diagnose what's holding the rankings back.

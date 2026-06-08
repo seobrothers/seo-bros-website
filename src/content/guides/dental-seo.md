@@ -212,4 +212,4 @@ Reviews and local link building run continuously. Reviews specifically get moved
 
 The biggest unlocks we usually find on a new dental client: an emergency funnel that didn't exist before, real per-insurance pages that capture queries the practice was invisible for, and honest cost content that brings in qualified searchers instead of price-shoppers calling for quotes.
 
-If you run a dental practice and you're losing patients to a competitor who outranks you, or you've never built out emergency or insurance content, [get in touch](/#book-audit) and we'll walk through what's actually holding the visibility back.
+If you run a dental practice and you're losing patients to a competitor who outranks you, or you've never built out emergency or insurance content, [get in touch](/tools/free-seo-audit/) and we'll walk through what's actually holding the visibility back.

@@ -59,4 +59,4 @@ When we work with a business in a concentrated market like Des Moines, the keywo
 
 It's the same playbook we run across our [home services SEO](/industries/home-services/) work, the [roofing](/industries/roofing/) and [HVAC](/industries/hvac/) programs in particular, where ranking comes down to a maintained profile, real local content, and call tracking that shows which pages book jobs.
 
-If you run a business in the Des Moines or Central Iowa market, [get in touch](/#book-audit) and we'll walk through what works in your specific area.
+If you run a business in the Des Moines or Central Iowa market, [get in touch](/tools/free-seo-audit/) and we'll walk through what works in your specific area.

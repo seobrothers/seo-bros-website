@@ -133,4 +133,4 @@ Vancouver campaigns get built municipality by municipality. Real Burnaby content
 
 The biggest unlocks we usually find: the dedicated Surrey or Burnaby page that captures the volume Vancouver alone can't, and the honest decision about whether the business genuinely serves that municipality before building content for it.
 
-If you're a business or agency anywhere in Metro Vancouver, [get in touch](/#book-audit) and we'll walk through what works in your specific market.
+If you're a business or agency anywhere in Metro Vancouver, [get in touch](/tools/free-seo-audit/) and we'll walk through what works in your specific market.

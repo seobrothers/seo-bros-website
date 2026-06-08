@@ -175,4 +175,4 @@ Legal is one of the verticals where our framework gets the most use. We've worke
 
 For partner agencies serving law firm clients, we operate the SEO layer end-to-end while the agency handles the firm relationship. Clean handoff, full transparency about tactics, no client confusion.
 
-If your firm is competing in a tough legal market and you're not sure where the leverage is, [get in touch](/#book-audit) and we'll diagnose what's actually holding rankings back.
+If your firm is competing in a tough legal market and you're not sure where the leverage is, [get in touch](/tools/free-seo-audit/) and we'll diagnose what's actually holding rankings back.

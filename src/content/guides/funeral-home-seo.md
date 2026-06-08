@@ -147,4 +147,4 @@ We start with the trust layer. Real photos, real staff bios, real licensure, rea
 
 Local optimization runs in parallel: GBP, citations, location pages with real per-location content, and reviews managed gently over time. Link building stays relationship-focused, with hospice, religious, and veterans-organization outreach producing better results than generic guest-post campaigns.
 
-If you run a funeral home or cremation service and your site is invisible to families in your area, or if you're losing pre-need volume to a competitor with a stronger content presence, [get in touch](/#book-audit) and we'll walk through what's actually holding the visibility back.
+If you run a funeral home or cremation service and your site is invisible to families in your area, or if you're losing pre-need volume to a competitor with a stronger content presence, [get in touch](/tools/free-seo-audit/) and we'll walk through what's actually holding the visibility back.

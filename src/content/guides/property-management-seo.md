@@ -194,4 +194,4 @@ Property management campaigns are some of the more structurally interesting SEO 
 
 For partner agencies serving property management clients, we operate the SEO layer while the agency handles client relationships. The dual-audience content strategy is one of the things we get asked about most, and we have templates for both owner-side and tenant-side page architectures we can adapt.
 
-If you're running a property management or apartment community site and not sure why SEO isn't producing results, [get in touch](/#book-audit) and we'll diagnose where the structure or content is breaking down.
+If you're running a property management or apartment community site and not sure why SEO isn't producing results, [get in touch](/tools/free-seo-audit/) and we'll diagnose where the structure or content is breaking down.

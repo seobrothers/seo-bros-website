@@ -182,7 +182,7 @@ Mapping is part of every campaign we run, and we treat the spreadsheet as a livi
 
 For partner agencies, we deliver the mapping document alongside the on-page recommendations so their team can implement directly without us managing the deployment.
 
-If you've got a keyword list and aren't sure how to map it across your site, [get in touch](/#book-audit) and we'll walk through the structure with you.
+If you've got a keyword list and aren't sure how to map it across your site, [get in touch](/tools/free-seo-audit/) and we'll walk through the structure with you.
 
 A parting piece of advice, the same one my first mentor in this space gave me, which I'll repeat because it's the line that matters most: multiple keywords can be mapped to a single page, but a single keyword shouldn't be mapped to multiple pages.
 

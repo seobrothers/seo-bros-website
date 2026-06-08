@@ -145,4 +145,4 @@ Audiology is a category where the foundation work pays back fast. We typically s
 
 For practices working with marketing agencies, we operate the SEO layer end-to-end while the agency handles practice management software and patient communications. Clean handoff, transparent reporting.
 
-If your hearing clinic isn't appearing in the local pack as often as it should, or if the website traffic isn't converting into fittings, [get in touch](/#book-audit) and we'll diagnose what's actually holding the rankings back.
+If your hearing clinic isn't appearing in the local pack as often as it should, or if the website traffic isn't converting into fittings, [get in touch](/tools/free-seo-audit/) and we'll diagnose what's actually holding the rankings back.

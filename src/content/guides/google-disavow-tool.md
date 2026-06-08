@@ -102,4 +102,4 @@ Our default answer when a partner agency or client asks about disavowing links i
 
 In the rare cases where disavow is the right call (manual action, confirmed negative SEO attack, inherited bad profile), we run it with care. Audit, outreach where possible, conservative file construction, careful documentation.
 
-If you're considering the Disavow tool because of a traffic drop or because you saw flagged links in an SEO tool, [get in touch](/#book-audit) before submitting anything. We'll help diagnose what the real problem is.
+If you're considering the Disavow tool because of a traffic drop or because you saw flagged links in an SEO tool, [get in touch](/tools/free-seo-audit/) before submitting anything. We'll help diagnose what the real problem is.

@@ -137,4 +137,4 @@ All three are catchable with the audit and QA discipline above.
 
 The redesign that holds rankings starts before visual design begins, audits the current site exhaustively, briefs design and development with SEO constraints baked in, maps redirects against a real new URL structure, QAs the staging environment before launch, and audits the live site for the first month after.
 
-If you're heading into a redesign or recovering from one that didn't go well, [get in touch](/#book-audit) and we'll work through where the migration is leaking ranking signal.
+If you're heading into a redesign or recovering from one that didn't go well, [get in touch](/tools/free-seo-audit/) and we'll work through where the migration is leaking ranking signal.

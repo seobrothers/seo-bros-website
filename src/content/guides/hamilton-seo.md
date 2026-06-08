@@ -97,4 +97,4 @@ Hamilton campaigns get built around the real geographic structure of the amalgam
 
 The biggest unlocks we usually find: pages for the former municipalities that capture the volume the parent Hamilton page misses, and an honest decision about Burlington that either commits to dedicated content or stays out of it.
 
-If you're a business or agency in Hamilton, Stoney Creek, Dundas, or Ancaster, [get in touch](/#book-audit) and we'll walk through what works in your specific market.
+If you're a business or agency in Hamilton, Stoney Creek, Dundas, or Ancaster, [get in touch](/tools/free-seo-audit/) and we'll walk through what works in your specific market.

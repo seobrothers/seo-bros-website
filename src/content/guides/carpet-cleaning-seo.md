@@ -165,4 +165,4 @@ Carpet cleaning is a vertical where most of the leverage is in the foundation: G
 
 For multi-location operators or franchise groups, the work scales meaningfully across territories. For single-location operators, the goal is local-pack dominance in the served city. Carpet cleaning is part of the broader [home services SEO](/industries/home-services/) cluster, and the cross-link between this guide and adjacent trades reinforces topical relevance.
 
-If you're running a carpet cleaning business and the call volume isn't matching what your equipment and team could handle, [get in touch](/#book-audit) and we'll figure out where the rankings are stuck.
+If you're running a carpet cleaning business and the call volume isn't matching what your equipment and team could handle, [get in touch](/tools/free-seo-audit/) and we'll figure out where the rankings are stuck.

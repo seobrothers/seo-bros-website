@@ -108,4 +108,4 @@ Our default approach is layered. The foundation is white hat: on-page optimizati
 
 We don't market ourselves as white hat only. The claim isn't accurate for the work most clients need, and we'd rather have the honest conversation about risk and trade-offs than overpromise on a label.
 
-If you're trying to figure out which approach makes sense for your situation, [get in touch](/#book-audit) and we'll walk through the trade-offs.
+If you're trying to figure out which approach makes sense for your situation, [get in touch](/tools/free-seo-audit/) and we'll walk through the trade-offs.

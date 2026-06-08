@@ -129,4 +129,4 @@ A franchise SEO program that holds together has the same shape: a single-domain 
 
 Once the architecture is right and the ownership model is clear, network-wide performance compounds month over month.
 
-If you're running a franchise system and the local-pack visibility doesn't match the size of the network, [get in touch](/#book-audit) and we'll work through where the architecture or ownership model is leaking ranking signal.
+If you're running a franchise system and the local-pack visibility doesn't match the size of the network, [get in touch](/tools/free-seo-audit/) and we'll work through where the architecture or ownership model is leaking ranking signal.

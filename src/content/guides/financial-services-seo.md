@@ -230,4 +230,4 @@ Financial services campaigns get the standard framework with extra attention to 
 
 For partner agencies in this space, we run the SEO layer while the agency manages the firm relationship and any compliance review processes the firm requires.
 
-If you're a financial services firm trying to figure out which of these tactics maps to your specific situation, [get in touch](/#book-audit) and we'll walk through your market and your competition.
+If you're a financial services firm trying to figure out which of these tactics maps to your specific situation, [get in touch](/tools/free-seo-audit/) and we'll walk through your market and your competition.

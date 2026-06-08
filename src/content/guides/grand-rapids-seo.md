@@ -85,4 +85,4 @@ When we work with a business in a market like Grand Rapids, the keyword strategy
 
 We run the same playbook across our [home services SEO](/industries/home-services/) work, the [HVAC](/industries/hvac/) and [roofing](/industries/roofing/) programs in particular, where the difference between ranking and not ranking in a metro like this usually comes down to a maintained profile, genuine local content for the markets that carry volume, and call tracking that shows which pages actually book jobs.
 
-If you run a business in the Grand Rapids or West Michigan market, [get in touch](/#book-audit) and we'll walk through what works in your specific area.
+If you run a business in the Grand Rapids or West Michigan market, [get in touch](/tools/free-seo-audit/) and we'll walk through what works in your specific area.

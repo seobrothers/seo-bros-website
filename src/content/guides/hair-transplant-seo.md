@@ -115,4 +115,4 @@ A hair transplant SEO program follows the same shape: a clean technique-led keyw
 
 The timeline is real: 9 to 18 months for a clinic starting from a thin baseline, with the gallery and content work front-loaded so the link building lands on a site that can actually convert the traffic.
 
-If you're running a hair transplant practice and the consultations aren't matching the search volume you know is in your market, [get in touch](/#book-audit) and we'll work through where the leverage is.
+If you're running a hair transplant practice and the consultations aren't matching the search volume you know is in your market, [get in touch](/tools/free-seo-audit/) and we'll work through where the leverage is.
