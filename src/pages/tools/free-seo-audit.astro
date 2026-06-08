@@ -1,0 +1,429 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import AuditForm from "../../components/AuditForm.astro";
+
+// Standalone free-audit landing page. Built to rank for "free SEO audit" /
+// "free SEO audit tool": form at the top, then what we check and how the audit
+// is generated below it. The form is the same AuditForm used sitewide, so the
+// GBP picker, instant snapshot, and lead capture all work identically here.
+
+const checks = [
+  {
+    title: "Site and SEO health",
+    body: "We run your site through Google's PageSpeed and Lighthouse to score performance, technical SEO, and accessibility, then flag the issues holding pages back. This part runs on every audit.",
+  },
+  {
+    title: "Local and Google Business Profile",
+    body: "Add the local check and pick your business on Google. We pull your profile's rating, reviews, category, and whether it's complete, so you see exactly where you stand in the map pack.",
+  },
+  {
+    title: "AI search visibility",
+    body: "Add the AI check to see how AI search and assistants likely read your business for your main service, and what to fix so you show up when customers ask AI instead of typing into Google.",
+  },
+];
+
+const steps = [
+  {
+    title: "You request the audit",
+    body: "Enter your name, email, and website. Toggle on the local and AI checks if you want them, and pick your Google Business Profile so we read the right listing.",
+  },
+  {
+    title: "We generate an instant first pass",
+    body: "In about thirty seconds we run your site, your profile, and your AI visibility, then a plain English report shows you where the biggest opportunities are. No jargon, no fake metrics.",
+  },
+  {
+    title: "Want more? A human goes deeper, free",
+    body: "Like what the instant audit shows and want the full picture? Book a call and a specialist does a deeper audit by hand, with real keyword research in your market. Also free, no commitment, and only if you want it.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Is the SEO audit really free?",
+    answer:
+      "Yes. The instant audit and the human review are both free, with no commitment. We do it because the fastest way to show a local business what we'd improve is to actually look at their site.",
+  },
+  {
+    question: "How long does the audit take?",
+    answer:
+      "The instant report runs in roughly thirty seconds, a little longer for larger sites. A full human audit from our team follows when you request a call.",
+  },
+  {
+    question: "What do I need to provide?",
+    answer:
+      "Just your name, email, and website to start. If you want the local check, you'll pick your business on Google so we read your real profile. For the AI check, tell us your main service.",
+  },
+  {
+    question: "Will this tell me how to actually rank?",
+    answer:
+      "The instant pass surfaces the clearest issues and opportunities. The real plan, which keywords to chase in your market and in what order, comes from the human audit, where we do live research for your business.",
+  },
+  {
+    question: "Do you only audit local businesses?",
+    answer:
+      "We specialize in local and service businesses, so that's where the audit is sharpest. Any site can run the instant check, and we'll be honest about whether we're the right fit.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
+};
+---
+
+<Layout
+  title="Free SEO Audit Tool | Instant Site, Local & AI Check | SEO Brothers"
+  description="Run a free SEO audit in seconds. Get an instant report on your site's speed, technical SEO, Google Business Profile, and AI search visibility, plus a human audit on request."
+  schema={faqSchema}
+>
+  <Nav />
+
+  <!-- ═══════════════ HERO + FORM ═══════════════ -->
+  <section class="fsa-hero">
+    <div class="fsa-hero__bg">
+      <div class="fsa-hero__orb fsa-hero__orb--1"></div>
+      <div class="fsa-hero__orb fsa-hero__orb--2"></div>
+      <div class="fsa-hero__grid"></div>
+    </div>
+    <div class="container fsa-hero__inner">
+      <div class="fsa-hero__copy">
+        <span class="fsa-hero__label">
+          <span class="fsa-hero__label-dot"></span>
+          Free SEO Audit
+        </span>
+        <h1 class="fsa-hero__title">
+          Free SEO audit,<br />
+          <span class="fsa-hero__title-gradient">instant results.</span>
+        </h1>
+        <p class="fsa-hero__subtitle">
+          See where your website really stands in seconds. We check your site's
+          speed and SEO, your Google Business Profile, and how AI search sees
+          you, then our team can go deeper by hand when you're ready.
+        </p>
+        <ul class="fsa-hero__points">
+          <li>Site speed, technical SEO, and accessibility scored by Google</li>
+          <li>Your real Google Business Profile, pulled by name</li>
+          <li>A plain English report, no jargon and no fake numbers</li>
+        </ul>
+      </div>
+      <div class="fsa-hero__form" id="book-audit">
+        <AuditForm source="free-seo-audit" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ WHAT WE LOOK AT ═══════════════ -->
+  <section class="fsa-section fsa-section--light">
+    <div class="container">
+      <header class="fsa-section__head">
+        <h2 class="fsa-section__title">What the free audit looks at</h2>
+        <p class="fsa-section__lede">
+          Every audit checks your site's SEO health. Add the local and AI checks
+          to see the full picture of how customers find you.
+        </p>
+      </header>
+      <div class="fsa-cards">
+        {checks.map((c) => (
+          <div class="fsa-card">
+            <h3 class="fsa-card__title">{c.title}</h3>
+            <p class="fsa-card__body">{c.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ HOW IT'S GENERATED ═══════════════ -->
+  <section class="fsa-section">
+    <div class="container">
+      <header class="fsa-section__head">
+        <h2 class="fsa-section__title">How we generate your audit</h2>
+        <p class="fsa-section__lede">
+          An instant automated pass to show you the lay of the land, then real
+          people to build the plan.
+        </p>
+      </header>
+      <div class="fsa-steps">
+        {steps.map((s, i) => (
+          <div class="fsa-step">
+            <span class="fsa-step__num">{i + 1}</span>
+            <div>
+              <h3 class="fsa-step__title">{s.title}</h3>
+              <p class="fsa-step__body">{s.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="fsa-section__foot">
+        Want to see the kind of results this leads to?
+        <a href="/case-studies/">Browse our case studies</a> or
+        <a href="/tools/">explore our other SEO tools</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ WHAT A FULL AUDIT COVERS ═══════════════ -->
+  <section class="fsa-section fsa-section--light">
+    <div class="container">
+      <header class="fsa-section__head">
+        <h2 class="fsa-section__title">What a full human audit covers</h2>
+        <p class="fsa-section__lede">
+          The instant pass shows you the lay of the land. When you want the full
+          picture, a trained specialist works through five areas by hand, with
+          depth on each depending on what we find.
+        </p>
+      </header>
+      <div class="fsa-cards fsa-cards--five">
+        <div class="fsa-card">
+          <h3 class="fsa-card__title">Technical health</h3>
+          <ul class="fsa-card__list">
+            <li>Page speed and Core Web Vitals across your main templates</li>
+            <li>Crawl errors and indexation issues</li>
+            <li>Robots.txt and XML sitemap review</li>
+            <li>Structured data validation</li>
+            <li>Mobile experience, HTTPS, and security</li>
+            <li>Orphan pages and architecture gaps</li>
+          </ul>
+        </div>
+        <div class="fsa-card">
+          <h3 class="fsa-card__title">Content and on-page</h3>
+          <ul class="fsa-card__list">
+            <li>Titles and meta descriptions on priority pages</li>
+            <li>Heading structure and hierarchy</li>
+            <li>Content depth, thin pages, and duplication</li>
+            <li>Keyword targeting versus intended queries</li>
+            <li>Internal linking and anchor text</li>
+          </ul>
+        </div>
+        <div class="fsa-card">
+          <h3 class="fsa-card__title">Link profile</h3>
+          <ul class="fsa-card__list">
+            <li>Referring domains and overall profile size</li>
+            <li>Authority distribution across your links</li>
+            <li>Anchor text and over-optimization risk</li>
+            <li>Broken backlinks and toxic links</li>
+            <li>Comparison against direct competitors</li>
+          </ul>
+        </div>
+        <div class="fsa-card">
+          <h3 class="fsa-card__title">Local SEO</h3>
+          <ul class="fsa-card__list">
+            <li>Google Business Profile completeness</li>
+            <li>NAP consistency across your citations</li>
+            <li>Review profile and active management</li>
+            <li>Local pack visibility for priority queries</li>
+            <li>Citation gaps versus competitors</li>
+          </ul>
+        </div>
+        <div class="fsa-card">
+          <h3 class="fsa-card__title">Structure and intent</h3>
+          <ul class="fsa-card__list">
+            <li>Whether your architecture supports your target keywords</li>
+            <li>Whether the right pages target the right queries</li>
+            <li>Content gaps you have no page for</li>
+            <li>Cannibalization between competing pages</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ A REAL AUDIT / TRUST ═══════════════ -->
+  <section class="fsa-section">
+    <div class="container fsa-prose">
+      <h2>An instant read now, a human deep-dive when you want one</h2>
+      <p>
+        The instant audit is a genuine first read, not a throwaway score. It runs
+        your site through Google's own PageSpeed and Lighthouse, pulls your real
+        Google Business Profile, and checks how AI search sees you, then lays it
+        out in plain English so you know where you stand in about thirty seconds.
+        That's real signal you can act on, free and on the spot.
+      </p>
+      <p>
+        Where most free audit tools stop at that snapshot, ours treats it as the
+        starting point. When you want the full picture, book a call and a trained
+        specialist takes it further by hand: reading the results in the context of
+        your market, doing real keyword research, and pulling from
+        <strong>Ahrefs</strong>, <strong>Sitebulb</strong>,
+        <strong>Screaming Frog</strong>, and your <strong>Search Console and
+        Analytics</strong> where you grant access. That deeper audit is free too,
+        with no commitment. For the methodology behind it, see our
+        <a href="/guides/seo-audit/">SEO audit guide</a>.
+      </p>
+
+      <h3>What you won't get</h3>
+      <ul>
+        <li><strong>A score with no plan.</strong> We show you what the numbers mean and what to do about them, not just a grade.</li>
+        <li><strong>A generic templated report.</strong> The human audit is built for your specific site and market.</li>
+        <li><strong>Aggressive sales pressure.</strong> The audit is the audit. If there's a fit for further work we'll say so; if not, it's still yours.</li>
+        <li><strong>Recommendations we don't believe in.</strong> If a tactic isn't right for you, we'll tell you, even if it's something we sell.</li>
+      </ul>
+
+      <h3>Who the free audit is for</h3>
+      <p>
+        It makes sense if you run a business with a site you'd like to perform
+        better in search, you're weighing whether SEO is the right investment,
+        or you want a second-opinion read on what's working and what isn't. It's
+        less useful if you don't have a site yet, or you're only after a quick
+        automated score, which we don't produce.
+      </p>
+
+      <h3>Your data stays yours</h3>
+      <p>
+        What you share during the audit stays confidential. We don't publish
+        case studies on free-audit recipients without explicit consent, and any
+        Search Console or Analytics access you grant is used only for the audit;
+        we remove ourselves once it's delivered unless you ask us to stay on.
+      </p>
+
+      <h3>What happens after</h3>
+      <p>
+        Entirely your call. Hand the findings to your in-house team or current
+        agency, have us scope the implementation, file it for later, or partner
+        with us on a white-label basis. The audit produces value either way, and
+        nothing about it is conditional on hiring us.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FAQ ═══════════════ -->
+  <section class="fsa-faq">
+    <div class="container fsa-faq__inner">
+      <h2 class="fsa-faq__title">Free SEO audit FAQ</h2>
+      {faqs.map((faq, i) => (
+        <details class="fsa-faq__item" open={i === 0}>
+          <summary class="fsa-faq__q">
+            <span>{faq.question}</span>
+            <svg class="fsa-faq__chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+          </summary>
+          <div class="fsa-faq__a"><p>{faq.answer}</p></div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* HERO */
+  .fsa-hero { position: relative; background: var(--dark); overflow: hidden; padding: 160px 0 84px; }
+  .fsa-hero__bg { position: absolute; inset: 0; overflow: hidden; }
+  .fsa-hero__orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.22; }
+  .fsa-hero__orb--1 { width: 520px; height: 520px; background: var(--teal); top: -12%; right: -6%; }
+  .fsa-hero__orb--2 { width: 460px; height: 460px; background: var(--purple); bottom: -25%; left: -8%; }
+  .fsa-hero__grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at 50% 30%, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 30%, black 30%, transparent 75%);
+  }
+  .fsa-hero__inner {
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
+  }
+  .fsa-hero__label {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--teal-light); margin-bottom: 24px;
+  }
+  .fsa-hero__label-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; box-shadow: 0 0 0 4px rgba(68,185,123,0.18); }
+  .fsa-hero__title {
+    font-family: var(--font-display); font-size: clamp(36px, 5.4vw, 56px);
+    font-weight: 700; line-height: 1.06; letter-spacing: -0.03em;
+    color: var(--text-on-dark); margin-bottom: 22px;
+  }
+  .fsa-hero__title-gradient {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .fsa-hero__subtitle { font-size: clamp(16px, 1.8vw, 18px); line-height: 1.7; color: var(--text-on-dark-muted); margin-bottom: 24px; }
+  .fsa-hero__points { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .fsa-hero__points li {
+    position: relative; padding-left: 28px;
+    font-size: 15px; line-height: 1.5; color: var(--text-on-dark);
+  }
+  .fsa-hero__points li::before {
+    content: ""; position: absolute; left: 0; top: 3px;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: rgba(68,185,123,0.18) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2344b97b' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / 11px no-repeat;
+  }
+
+  /* SECTIONS */
+  .fsa-section { padding: 80px 0; background: var(--white); }
+  .fsa-section--light { background: var(--light); }
+  .fsa-section__head { max-width: 680px; margin: 0 auto 44px; text-align: center; }
+  .fsa-section__title { font-family: var(--font-display); font-size: clamp(26px, 3.4vw, 34px); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 14px; }
+  .fsa-section__lede { font-size: 17px; line-height: 1.7; color: var(--text-secondary); }
+  .fsa-section__foot { text-align: center; margin-top: 40px; font-size: 15px; color: var(--text-secondary); }
+  .fsa-section__foot a { color: var(--teal-dark); text-decoration: underline; text-underline-offset: 3px; }
+
+  .fsa-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .fsa-card {
+    padding: 28px; border-radius: var(--radius-lg);
+    background: var(--white); border: 1px solid var(--border-light);
+  }
+  .fsa-section--light .fsa-card { background: var(--white); }
+  .fsa-card__title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; }
+  .fsa-card__body { font-size: 15px; line-height: 1.65; color: var(--text-secondary); }
+
+  .fsa-steps { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+  .fsa-step { display: flex; gap: 20px; align-items: flex-start; }
+  .fsa-step__num {
+    flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 17px; font-weight: 700;
+    color: var(--teal-dark); background: rgba(40,165,177,0.1);
+  }
+  .fsa-step__title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+  .fsa-step__body { font-size: 15px; line-height: 1.65; color: var(--text-secondary); }
+
+  /* FAQ */
+  .fsa-faq { padding: 0 0 110px; background: var(--white); }
+  .fsa-faq__inner { max-width: 760px; }
+  .fsa-faq__title { font-family: var(--font-display); font-size: 26px; font-weight: 700; letter-spacing: -0.01em; color: var(--text-primary); margin-bottom: 16px; }
+  .fsa-faq__item { border-bottom: 1px solid var(--border-light); }
+  .fsa-faq__item:first-of-type { border-top: 1px solid var(--border-light); }
+  .fsa-faq__q {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 22px 0; cursor: pointer; list-style: none;
+    font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--text-primary);
+  }
+  .fsa-faq__q::-webkit-details-marker { display: none; }
+  .fsa-faq__chev { flex-shrink: 0; color: var(--text-muted); transition: transform var(--transition); }
+  .fsa-faq__item[open] .fsa-faq__chev { transform: rotate(180deg); }
+  .fsa-faq__a { padding-bottom: 22px; }
+  .fsa-faq__a p { font-size: 15px; line-height: 1.7; color: var(--text-secondary); }
+
+  .fsa-cards--five { grid-template-columns: repeat(3, 1fr); }
+  .fsa-card__list { margin: 8px 0 0; padding-left: 18px; }
+  .fsa-card__list li { font-size: 14.5px; line-height: 1.55; color: var(--text-secondary); margin-bottom: 6px; }
+
+  .fsa-prose { max-width: 760px; }
+  .fsa-prose h2 { font-family: var(--font-display); font-size: clamp(24px, 3vw, 30px); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 16px; }
+  .fsa-prose h3 { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text-primary); margin: 34px 0 10px; }
+  .fsa-prose p { font-size: 16px; line-height: 1.75; color: var(--text-secondary); margin-bottom: 16px; }
+  .fsa-prose ul { margin: 0 0 16px; padding-left: 20px; }
+  .fsa-prose li { font-size: 16px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 8px; }
+  .fsa-prose a { color: var(--teal-dark); text-decoration: underline; text-underline-offset: 3px; }
+  .fsa-prose strong { color: var(--text-primary); font-weight: 600; }
+
+  @media (max-width: 900px) {
+    .fsa-hero__inner { grid-template-columns: 1fr; gap: 40px; }
+    .fsa-cards, .fsa-cards--five { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .fsa-hero { padding: 130px 0 64px; }
+    .fsa-section { padding: 60px 0; }
+  }
+</style>

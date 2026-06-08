@@ -1,0 +1,613 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+
+// Free SEO forecasting tool. A self-contained, client-side calculator (no API
+// calls, no lead gate) built to rank for "seo forecasting tool" / "seo roi
+// calculator". It estimates the traffic, leads, and revenue of ranking a
+// keyword, using an industry-average organic CTR-by-position curve, and ramps
+// it over a first year because SEO is not instant.
+//
+// Honesty matters here: everything is labelled an estimate, the CTR curve and
+// ramp assumptions are shown openly, and we never imply the numbers are
+// guaranteed. The CTA points people to the free audit + a real human forecast.
+
+const ctrRows = [
+  { pos: "1", ctr: "30%" },
+  { pos: "2", ctr: "16%" },
+  { pos: "3", ctr: "10%" },
+  { pos: "4", ctr: "7%" },
+  { pos: "5", ctr: "5%" },
+  { pos: "6-10", ctr: "2 to 4%" },
+];
+
+const faqs = [
+  {
+    question: "How does this SEO forecasting tool work?",
+    answer:
+      "You enter how many people search your target keyword each month, the position you want to reach, your conversion rate, and what a customer is worth. We apply an industry-average click-through rate for that position to estimate monthly clicks, then turn that into leads and revenue, ramp it across a first year, and, if you add your SEO cost, estimate your return on investment.",
+  },
+  {
+    question: "Is this SEO ROI or ROAS?",
+    answer:
+      "For SEO it's ROI, return on investment. ROAS, return on ad spend, is a paid-advertising term because you're buying clicks directly. SEO is an ongoing investment rather than ad spend, so the standard measure is ROI: the return you get back relative to what you spend. This tool shows your estimated return at your target position, plus a first-year view that runs lower while rankings build.",
+  },
+  {
+    question: "Where do the click-through rates come from?",
+    answer:
+      "They're rounded industry averages from public studies of how often searchers click each organic position. Real click-through rates vary by query, intent, and how many ads or map results sit above the organic listings, so treat the output as a directional estimate, not a promise.",
+  },
+  {
+    question: "Why does the forecast ramp up, and what makes it faster?",
+    answer:
+      "SEO is not instant. It takes months to climb to a position and hold it, so year one is lower than every year after. How fast you climb depends most on competition: a low-competition local term might take around six months, a typical market about nine, and a competitive one fourteen or more. Existing domain authority, whether you already rank nearby, and how aggressively you publish also help. Setting the competition level adjusts the ramp and the chart.",
+  },
+  {
+    question: "Is this a guarantee of results?",
+    answer:
+      "No. No honest SEO can guarantee rankings or revenue. This is a planning estimate to help you weigh the opportunity. For a forecast grounded in real keyword data and competition in your market, request a free audit and we'll build one with you.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
+};
+---
+
+<Layout
+  title="Free SEO Forecasting & ROI Tool | Estimate Traffic, Leads & Return | SEO Brothers"
+  description="Free SEO forecasting and ROI calculator. Estimate the monthly traffic, leads, revenue, and return on your SEO investment, with an industry-average CTR model and a realistic first-year ramp. No signup."
+  schema={faqSchema}
+>
+  <Nav variant="light" />
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="sft-hero">
+    <div class="container sft-hero__inner">
+      <span class="sft-hero__label">
+        <span class="sft-hero__label-dot"></span>
+        Free SEO Tool
+      </span>
+      <h1 class="sft-hero__title">SEO forecasting tool</h1>
+      <p class="sft-hero__subtitle">
+        Estimate the traffic, leads, and revenue a keyword could bring if you
+        ranked for it, then add your SEO cost to see the return. Adjust the
+        numbers to your business for a realistic first-year forecast. Free, no signup.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CALCULATOR ═══════════════ -->
+  <section class="sft-calc">
+    <div class="container sft-calc__inner">
+      <!-- Inputs -->
+      <div class="sft-panel sft-inputs">
+        <h2 class="sft-panel__title">Your numbers</h2>
+
+        <div class="sft-field">
+          <label for="sft-volume">Monthly searches for your core keyword</label>
+          <p class="sft-field__hint">Use a transactional, buyer-intent term, the kind people search when they're ready to call or buy (like "emergency plumber Halifax"), not a broad research phrase. Pull the volume from your audit or keyword research.</p>
+          <input type="number" id="sft-volume" min="0" step="10" value="1200" inputmode="numeric" />
+        </div>
+
+        <div class="sft-field">
+          <label for="sft-position">Target ranking position</label>
+          <p class="sft-field__hint">The Google position you're aiming to reach and hold.</p>
+          <select id="sft-position">
+            <option value="1">Position 1</option>
+            <option value="2">Position 2</option>
+            <option value="3" selected>Position 3</option>
+            <option value="4">Position 4</option>
+            <option value="5">Position 5</option>
+            <option value="8">Top 10 (avg of 6 to 10)</option>
+          </select>
+        </div>
+
+        <div class="sft-field">
+          <label for="sft-competition">Keyword competition</label>
+          <p class="sft-field__hint">How hard the keyword is to rank for. This sets how fast you climb. Higher competition, slower ramp.</p>
+          <select id="sft-competition">
+            <option value="6">Low, niche service or smaller town</option>
+            <option value="9" selected>Medium, typical local market</option>
+            <option value="14">High, major metro or competitive term</option>
+          </select>
+        </div>
+
+        <div class="sft-field">
+          <label for="sft-conversion">Conversion rate</label>
+          <p class="sft-field__hint">Share of visitors who become a lead or sale. 2 to 5% is typical for local service sites.</p>
+          <div class="sft-field__suffix">
+            <input type="number" id="sft-conversion" min="0" max="100" step="0.1" value="5" inputmode="decimal" />
+            <span>%</span>
+          </div>
+        </div>
+
+        <div class="sft-field">
+          <label for="sft-value">Average revenue per customer</label>
+          <p class="sft-field__hint">Your average sale, what a new customer pays you. Leave blank to skip revenue.</p>
+          <div class="sft-field__prefix">
+            <span>$</span>
+            <input type="number" id="sft-value" min="0" step="50" value="750" inputmode="numeric" />
+          </div>
+        </div>
+
+        <div class="sft-field">
+          <label for="sft-margin">Profit margin</label>
+          <p class="sft-field__hint">The share of that revenue you keep as profit. Used for a true ROI. Leave blank to use revenue.</p>
+          <div class="sft-field__suffix">
+            <input type="number" id="sft-margin" min="0" max="100" step="1" value="55" inputmode="numeric" />
+            <span>%</span>
+          </div>
+        </div>
+
+        <div class="sft-field">
+          <label for="sft-cost">Monthly SEO investment</label>
+          <p class="sft-field__hint">What you spend on SEO per month. Add it to see your estimated return. Leave blank to skip ROI.</p>
+          <div class="sft-field__prefix">
+            <span>$</span>
+            <input type="number" id="sft-cost" min="0" step="100" value="1500" inputmode="numeric" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="sft-panel sft-results">
+        <h2 class="sft-panel__title">Your estimated forecast</h2>
+
+        <div class="sft-stats">
+          <div class="sft-stat">
+            <span class="sft-stat__num" id="sft-clicks">0</span>
+            <span class="sft-stat__label">Clicks / mo at full ranking</span>
+          </div>
+          <div class="sft-stat">
+            <span class="sft-stat__num" id="sft-leads">0</span>
+            <span class="sft-stat__label">Leads / mo at full ranking</span>
+          </div>
+          <div class="sft-stat" id="sft-revenue-stat">
+            <span class="sft-stat__num" id="sft-revenue">$0</span>
+            <span class="sft-stat__label">Revenue / mo at full ranking</span>
+          </div>
+        </div>
+
+        <div class="sft-roi" id="sft-roi" hidden>
+          <div class="sft-roi__main">
+            <span class="sft-roi__num" id="sft-roi-pct">0%</span>
+            <span class="sft-roi__label">Estimated SEO ROI, ongoing</span>
+          </div>
+          <p class="sft-roi__detail" id="sft-roi-detail"></p>
+        </div>
+
+        <div class="sft-chart">
+          <div class="sft-chart__head">
+            <h3 class="sft-chart__title">First-year ramp</h3>
+            <span class="sft-chart__sub" id="sft-chart-sub">Estimated monthly clicks as you climb to your target</span>
+          </div>
+          <div class="sft-chart__bars" id="sft-bars" aria-hidden="true"></div>
+          <div class="sft-chart__axis"><span>Mo 1</span><span>Mo 6</span><span>Mo 12</span></div>
+        </div>
+
+        <div class="sft-compare" id="sft-compare">
+          <div class="sft-compare__col">
+            <h3 class="sft-compare__title">Year one</h3>
+            <span class="sft-compare__note">While your rankings build</span>
+            <dl class="sft-compare__list">
+              <div data-needs="revenue"><dt>Revenue</dt><dd id="sft-y1-rev">$0</dd></div>
+              <div data-needs="profit"><dt>Profit</dt><dd id="sft-y1-profit">$0</dd></div>
+              <div data-needs="roi"><dt>SEO investment</dt><dd id="sft-y1-cost">$0</dd></div>
+              <div class="sft-compare__net" data-needs="roi"><dt>Net return</dt><dd id="sft-y1-net">$0</dd></div>
+              <div class="sft-compare__roi" data-needs="roi"><dt>ROI</dt><dd id="sft-y1-roi">0%</dd></div>
+            </dl>
+          </div>
+          <div class="sft-compare__col sft-compare__col--ongoing">
+            <h3 class="sft-compare__title">Every year after</h3>
+            <span class="sft-compare__note">At your full ranking</span>
+            <dl class="sft-compare__list">
+              <div data-needs="revenue"><dt>Revenue</dt><dd id="sft-yr-rev">$0</dd></div>
+              <div data-needs="profit"><dt>Profit</dt><dd id="sft-yr-profit">$0</dd></div>
+              <div data-needs="roi"><dt>SEO investment</dt><dd id="sft-yr-cost">$0</dd></div>
+              <div class="sft-compare__net" data-needs="roi"><dt>Net return</dt><dd id="sft-yr-net">$0</dd></div>
+              <div class="sft-compare__roi" data-needs="roi"><dt>ROI</dt><dd id="sft-yr-roi">0%</dd></div>
+            </dl>
+          </div>
+        </div>
+
+        <p class="sft-disclaimer">
+          These are directional estimates based on industry-average click-through
+          rates, not a guarantee of rankings or revenue. For a forecast built on
+          real keyword data and competition in your market,
+          <a href="/tools/free-seo-audit/">start with a free audit</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ METHODOLOGY ═══════════════ -->
+  <section class="sft-method">
+    <div class="container sft-method__inner">
+      <h2 class="sft-method__title">How the forecast is calculated</h2>
+      <p>
+        The tool starts from how many people search your core, buyer-intent
+        keyword each month, the kind of term people use when they're ready to
+        call or buy. It multiplies that by the average share of searchers who click the organic
+        result in your target position, which gives estimated monthly clicks. It
+        then applies your conversion rate to estimate leads, your average revenue
+        per customer to estimate revenue, and your profit margin to estimate
+        profit.
+      </p>
+      <p>
+        Rankings build over time, so the forecast splits into two views: year
+        one, while you climb, and every year after, once you hold the ranking.
+        How fast you climb depends on competition, so that control sets the ramp,
+        roughly six months for a low-competition term, nine for a typical local
+        market, and around fourteen for a competitive one. The click-through
+        rates below are rounded industry averages and vary with search intent,
+        your industry, and how many ads or map results sit above the organic
+        listings.
+      </p>
+      <p>
+        If you add your monthly SEO cost, the tool estimates ROI, your return
+        relative to what you invest. Year one usually runs lower, and can even be
+        negative, because you invest from month one while rankings build; the
+        every-year-after view shows the ongoing return once you are ranking.
+        ROI is based on profit, so enter your margin for a true figure.
+      </p>
+      <div class="sft-ctr">
+        <h3 class="sft-ctr__title">Organic click-through rate by position (estimate)</h3>
+        <div class="sft-ctr__grid">
+          {ctrRows.map((r) => (
+            <div class="sft-ctr__cell">
+              <span class="sft-ctr__pos">Position {r.pos}</span>
+              <span class="sft-ctr__ctr">{r.ctr}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FAQ ═══════════════ -->
+  <section class="sft-faq">
+    <div class="container sft-faq__inner">
+      <h2 class="sft-faq__title">SEO forecasting FAQ</h2>
+      {faqs.map((faq, i) => (
+        <details class="sft-faq__item" open={i === 0}>
+          <summary class="sft-faq__q">
+            <span>{faq.question}</span>
+            <svg class="sft-faq__chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+          </summary>
+          <div class="sft-faq__a"><p>{faq.answer}</p></div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <CtaBanner />
+  <Footer />
+</Layout>
+
+<script>
+  // Rounded industry-average organic CTR by position. Position 8 stands in for
+  // "top 10" (a blended 6 to 10 average). Kept in sync with the table on the page.
+  const CTR: Record<number, number> = {
+    1: 0.3,
+    2: 0.16,
+    3: 0.1,
+    4: 0.07,
+    5: 0.05,
+    8: 0.03,
+  };
+
+  const el = (id: string) => document.getElementById(id);
+  const volume = el("sft-volume") as HTMLInputElement | null;
+  const position = el("sft-position") as HTMLSelectElement | null;
+  const competition = el("sft-competition") as HTMLSelectElement | null;
+  const conversion = el("sft-conversion") as HTMLInputElement | null;
+  const value = el("sft-value") as HTMLInputElement | null;
+  const margin = el("sft-margin") as HTMLInputElement | null;
+  const cost = el("sft-cost") as HTMLInputElement | null;
+
+  const fmtNum = (n: number) => Math.round(n).toLocaleString("en-US");
+  const fmtMoney = (n: number) =>
+    "$" + Math.round(n).toLocaleString("en-US");
+  // Signed money, e.g. -$1,200 for a net loss during the ramp year.
+  const fmtMoneySigned = (n: number) =>
+    (n < 0 ? "-$" : "$") + Math.round(Math.abs(n)).toLocaleString("en-US");
+
+  function num(input: HTMLInputElement | null): number {
+    const v = parseFloat(input?.value ?? "");
+    return Number.isFinite(v) && v > 0 ? v : 0;
+  }
+
+  const setText = (id: string, text: string) => {
+    const node = el(id);
+    if (node) node.textContent = text;
+  };
+
+  // Set a net-return figure and color it red when negative.
+  function setNet(id: string, amount: number) {
+    const node = el(id);
+    if (!node) return;
+    node.textContent = fmtMoneySigned(amount);
+    node.classList.toggle("is-negative", amount < 0);
+  }
+
+  // Toggle the data-needs rows inside #sft-compare on or off.
+  function setNeeds(need: string, show: boolean) {
+    document
+      .querySelectorAll<HTMLElement>(`#sft-compare [data-needs="${need}"]`)
+      .forEach((n) => (n.style.display = show ? "" : "none"));
+  }
+
+  const pct = (net: number, base: number) =>
+    base > 0 ? `${Math.round((net / base) * 100)}%` : "—";
+
+  // Set an ROI percentage and color it red when the return is negative.
+  function setPct(id: string, net: number, base: number) {
+    const node = el(id);
+    if (!node) return;
+    node.textContent = pct(net, base);
+    node.classList.toggle("is-negative", base > 0 && net < 0);
+  }
+
+  function recalc() {
+    if (!volume || !position || !competition || !conversion) return;
+
+    const searches = num(volume);
+    const pos = parseInt(position.value, 10);
+    const ctr = CTR[pos] ?? 0.05;
+    // Competition sets how many months it takes to climb to the target.
+    const rampMonths = parseInt(competition.value, 10) || 9;
+    const convRate = num(conversion) / 100;
+    const revPerCust = num(value);
+    const marginPct = num(margin);
+    // Blank/zero margin → treat revenue as the return (margin = 100%).
+    const marginRate = marginPct > 0 ? marginPct / 100 : 1;
+    const monthlyCost = num(cost);
+
+    // Monthly figures once you hold the target ranking (steady state).
+    const clicks = searches * ctr;
+    const leads = clicks * convRate;
+    const revenue = leads * revPerCust;
+    const profit = revenue * marginRate;
+
+    setText("sft-clicks", fmtNum(clicks));
+    setText("sft-leads", fmtNum(leads));
+    setText("sft-revenue", fmtMoney(revenue));
+
+    const showRevenue = revPerCust > 0;
+    const showProfit = showRevenue && marginPct > 0;
+    const showRoi = showRevenue && monthlyCost > 0;
+
+    const revStat = el("sft-revenue-stat");
+    if (revStat) revStat.style.display = showRevenue ? "" : "none";
+
+    // ROI band (ongoing). Return is profit-based; falls back to revenue when
+    // no margin is given.
+    const roiBand = el("sft-roi");
+    if (roiBand) roiBand.hidden = !showRoi;
+    if (showRoi) {
+      const netMonthly = profit - monthlyCost;
+      const returnMultiple = profit / monthlyCost;
+      const basis = showProfit ? "profit" : "revenue";
+      setText("sft-roi-pct", pct(netMonthly, monthlyCost));
+      setText(
+        "sft-roi-detail",
+        `Once you hold the ranking, every $1 in SEO returns about $${returnMultiple.toFixed(2)} in ${basis}, roughly ${fmtMoneySigned(netMonthly)} net per month. Year one runs lower while rankings build.`
+      );
+    }
+
+    // First-year ramp: climb to target by rampMonths, then hold. rampFactor is
+    // the sum of monthly fractions, i.e. how many "full months" of value year
+    // one delivers (out of 12). Lower competition → faster ramp → bigger factor.
+    let rampFactor = 0;
+    const monthly: number[] = [];
+    for (let m = 1; m <= 12; m++) {
+      const fraction = Math.min(1, m / rampMonths);
+      rampFactor += fraction;
+      monthly.push(clicks * fraction);
+    }
+
+    // Year one (ramped) vs every year after (12 full months at target).
+    const y1 = { revenue: revenue * rampFactor, profit: profit * rampFactor, cost: monthlyCost * 12 };
+    const yr = { revenue: revenue * 12, profit: profit * 12, cost: monthlyCost * 12 };
+
+    setText("sft-y1-rev", fmtMoney(y1.revenue));
+    setText("sft-yr-rev", fmtMoney(yr.revenue));
+    setText("sft-y1-profit", fmtMoney(y1.profit));
+    setText("sft-yr-profit", fmtMoney(yr.profit));
+    setText("sft-y1-cost", fmtMoney(y1.cost));
+    setText("sft-yr-cost", fmtMoney(yr.cost));
+    setNet("sft-y1-net", y1.profit - y1.cost);
+    setNet("sft-yr-net", yr.profit - yr.cost);
+    setPct("sft-y1-roi", y1.profit - y1.cost, y1.cost);
+    setPct("sft-yr-roi", yr.profit - yr.cost, yr.cost);
+
+    // Row + block visibility.
+    setNeeds("revenue", showRevenue);
+    setNeeds("profit", showProfit);
+    setNeeds("roi", showRoi);
+    const compare = el("sft-compare");
+    if (compare) compare.style.display = showRevenue ? "" : "none";
+
+    // Chart caption reflects the competition-driven ramp length.
+    setText(
+      "sft-chart-sub",
+      `Estimated monthly clicks as you climb to your target over about ${rampMonths} months`
+    );
+
+    renderBars(monthly);
+  }
+
+  function renderBars(monthly: number[]) {
+    const wrap = el("sft-bars");
+    if (!wrap) return;
+    const max = Math.max(...monthly, 1);
+    wrap.innerHTML = "";
+    monthly.forEach((c) => {
+      const bar = document.createElement("div");
+      bar.className = "sft-bar";
+      bar.style.height = `${Math.max(4, (c / max) * 100)}%`;
+      bar.title = `${Math.round(c).toLocaleString("en-US")} clicks`;
+      wrap.appendChild(bar);
+    });
+  }
+
+  [volume, position, competition, conversion, value, margin, cost].forEach((input) => {
+    input?.addEventListener("input", recalc);
+    input?.addEventListener("change", recalc);
+  });
+
+  recalc();
+</script>
+
+<style>
+  /* HERO */
+  .sft-hero { padding: 150px 0 48px; background: linear-gradient(180deg, var(--light) 0%, var(--white) 100%); }
+  .sft-hero__inner { max-width: 720px; }
+  .sft-hero__label {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--teal-dark); margin-bottom: 18px;
+  }
+  .sft-hero__label-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; box-shadow: 0 0 0 4px rgba(68,185,123,0.18); }
+  .sft-hero__title { font-family: var(--font-display); font-size: clamp(34px, 5vw, 50px); font-weight: 700; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: 16px; }
+  .sft-hero__subtitle { font-size: clamp(16px, 1.8vw, 19px); line-height: 1.7; color: var(--text-secondary); }
+
+  /* CALCULATOR */
+  .sft-calc { padding: 24px 0 80px; background: var(--white); }
+  .sft-calc__inner { display: grid; grid-template-columns: 5fr 7fr; gap: 28px; align-items: start; }
+  .sft-panel { padding: 32px; border-radius: var(--radius-xl); border: 1px solid var(--border-light); background: var(--white); box-shadow: var(--shadow-md); }
+  .sft-inputs { background: var(--light); box-shadow: none; }
+  .sft-panel__title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 22px; }
+
+  .sft-field { margin-bottom: 22px; }
+  .sft-field:last-child { margin-bottom: 0; }
+  .sft-field label { display: block; font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+  .sft-field__hint { font-size: 12.5px; line-height: 1.5; color: var(--text-muted); margin-bottom: 8px; }
+  .sft-field input, .sft-field select {
+    width: 100%; box-sizing: border-box;
+    font-family: var(--font-body); font-size: 16px; padding: 11px 14px;
+    border: 2px solid var(--border-light); border-radius: var(--radius-md);
+    color: var(--text-primary); background: var(--white); outline: none;
+    transition: border-color var(--transition);
+  }
+  .sft-field input:focus, .sft-field select:focus { border-color: var(--teal); }
+  .sft-field__prefix, .sft-field__suffix { position: relative; display: flex; align-items: center; }
+  .sft-field__prefix span { position: absolute; left: 14px; font-size: 16px; color: var(--text-muted); pointer-events: none; }
+  .sft-field__prefix input { padding-left: 28px; }
+  .sft-field__suffix span { position: absolute; right: 14px; font-size: 16px; color: var(--text-muted); pointer-events: none; }
+  .sft-field__suffix input { padding-right: 32px; }
+
+  /* RESULTS */
+  .sft-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 28px; }
+  .sft-stat { text-align: center; padding: 18px 12px; border-radius: var(--radius-lg); background: var(--light); border: 1px solid var(--border-light); }
+  .sft-stat__num { display: block; font-family: var(--font-display); font-size: clamp(24px, 3vw, 30px); font-weight: 700; line-height: 1; color: var(--teal-dark); }
+  .sft-stat__label { display: block; margin-top: 8px; font-size: 12.5px; line-height: 1.4; color: var(--text-muted); }
+
+  /* ROI band */
+  .sft-roi {
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+    margin-bottom: 26px; padding: 20px 22px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(40,165,177,0.1) 0%, rgba(68,185,123,0.1) 100%);
+    border: 1px solid rgba(40,165,177,0.25);
+  }
+  .sft-roi[hidden] { display: none; }
+  .sft-roi__main { display: flex; flex-direction: column; flex-shrink: 0; }
+  .sft-roi__num { font-family: var(--font-display); font-size: clamp(32px, 4.4vw, 42px); font-weight: 700; line-height: 1; color: var(--teal-dark); }
+  .sft-roi__label { margin-top: 6px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; color: var(--text-muted); }
+  .sft-roi__detail { flex: 1; min-width: 200px; font-size: 14px; line-height: 1.6; color: var(--text-secondary); }
+
+  .sft-chart { margin-bottom: 26px; }
+  .sft-chart__head { margin-bottom: 14px; }
+  .sft-chart__title { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--text-primary); }
+  .sft-chart__sub { font-size: 12.5px; color: var(--text-muted); }
+  .sft-chart__bars {
+    display: flex; align-items: flex-end; gap: 6px;
+    height: 130px; padding: 0 2px;
+  }
+  /* NOTE: .sft-bar elements are created by client JS, so they don't get
+     Astro's scoped-style hash. Their styles live in the is:global block at
+     the end of this file. */
+  .sft-chart__axis { display: flex; justify-content: space-between; margin-top: 8px; font-size: 11px; color: var(--text-muted); }
+
+  /* Year one vs every year after */
+  .sft-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .sft-compare__col { padding: 20px; border-radius: var(--radius-lg); background: var(--light); border: 1px solid var(--border-light); }
+  .sft-compare__col--ongoing {
+    background: linear-gradient(135deg, rgba(40,165,177,0.07) 0%, rgba(68,185,123,0.07) 100%);
+    border-color: rgba(40,165,177,0.28);
+  }
+  .sft-compare__title { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--text-primary); }
+  .sft-compare__note { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
+  .sft-compare__list { margin: 0; }
+  .sft-compare__list > div { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 7px 0; }
+  .sft-compare__list dt { margin: 0; font-size: 13.5px; color: var(--text-secondary); }
+  .sft-compare__list dd { margin: 0; font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--text-primary); }
+  .sft-compare__net { border-top: 1px dashed var(--border-light); margin-top: 4px; padding-top: 11px !important; }
+  .sft-compare__net dd, .sft-compare__roi dd { color: var(--teal-dark); }
+  .sft-compare__net dd.is-negative, .sft-compare__roi dd.is-negative { color: #c0392b; }
+
+  .sft-disclaimer { margin-top: 18px; font-size: 12.5px; line-height: 1.6; color: var(--text-muted); }
+  .sft-disclaimer a { color: var(--teal-dark); text-decoration: underline; text-underline-offset: 2px; }
+
+  /* METHODOLOGY */
+  .sft-method { padding: 72px 0; background: var(--light); }
+  .sft-method__inner { max-width: 760px; }
+  .sft-method__title { font-family: var(--font-display); font-size: clamp(24px, 3vw, 30px); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 18px; }
+  .sft-method__inner p { font-size: 16px; line-height: 1.75; color: var(--text-secondary); margin-bottom: 18px; }
+  .sft-ctr { margin-top: 28px; padding: 24px; border-radius: var(--radius-lg); background: var(--white); border: 1px solid var(--border-light); }
+  .sft-ctr__title { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; }
+  .sft-ctr__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .sft-ctr__cell { display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; border-radius: var(--radius-md); background: var(--light); }
+  .sft-ctr__pos { font-size: 12.5px; color: var(--text-muted); }
+  .sft-ctr__ctr { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--teal-dark); }
+
+  /* FAQ */
+  .sft-faq { padding: 72px 0 110px; background: var(--white); }
+  .sft-faq__inner { max-width: 760px; }
+  .sft-faq__title { font-family: var(--font-display); font-size: 26px; font-weight: 700; letter-spacing: -0.01em; color: var(--text-primary); margin-bottom: 16px; }
+  .sft-faq__item { border-bottom: 1px solid var(--border-light); }
+  .sft-faq__item:first-of-type { border-top: 1px solid var(--border-light); }
+  .sft-faq__q {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 22px 0; cursor: pointer; list-style: none;
+    font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--text-primary);
+  }
+  .sft-faq__q::-webkit-details-marker { display: none; }
+  .sft-faq__chev { flex-shrink: 0; color: var(--text-muted); transition: transform var(--transition); }
+  .sft-faq__item[open] .sft-faq__chev { transform: rotate(180deg); }
+  .sft-faq__a { padding-bottom: 22px; }
+  .sft-faq__a p { font-size: 15px; line-height: 1.7; color: var(--text-secondary); }
+
+  @media (max-width: 860px) {
+    .sft-calc__inner { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .sft-hero { padding: 130px 0 36px; }
+    .sft-stats { grid-template-columns: 1fr; }
+    .sft-compare { grid-template-columns: 1fr; }
+    .sft-ctr__grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+{/* Global because the ramp bars are built by client JS and so don't receive
+    Astro's scoped-style hash. Selectors are sft-bar prefixed, safe to ship
+    globally. */}
+<style is:global>
+  .sft-bar {
+    flex: 1 1 0;
+    min-height: 4px;
+    border-radius: 4px 4px 0 0;
+    background: linear-gradient(180deg, var(--teal) 0%, var(--teal-dark) 100%);
+    transition: height 0.18s ease;
+  }
+</style>

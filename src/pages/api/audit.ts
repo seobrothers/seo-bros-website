@@ -97,6 +97,7 @@ async function notifySlack(
     business,
     city,
     service,
+    placeId,
   }: {
     name: string;
     email: string;
@@ -106,6 +107,7 @@ async function notifySlack(
     business?: string;
     city?: string;
     service?: string;
+    placeId?: string;
   }
 ): Promise<void> {
   const webhook = env.SLACK_AUDIT_WEBHOOK_URL;
@@ -117,6 +119,8 @@ async function notifySlack(
     `*Website:* ${url}`,
     `*Audits:* ${audits}`,
     business ? `*Business:* ${business}${city ? `, ${city}` : ""}` : null,
+    // The picker captures the exact GBP; the Maps link jumps Mike straight to it.
+    placeId ? `*Google Business Profile:* https://www.google.com/maps/place/?q=place_id:${placeId}` : null,
     service ? `*Main service:* ${service}` : null,
     source ? `*From:* ${source}` : null,
   ]
@@ -165,6 +169,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
   const business = String(payload.business ?? "").trim();
   const city = String(payload.city ?? "").trim();
   const service = String(payload.service ?? "").trim();
+  const placeId = String(payload.placeId ?? "").trim();
   const wantsLocal = payload.local === "on" || payload.local === true;
   const wantsAi = payload.ai === "on" || payload.ai === true;
 
@@ -206,7 +211,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
   }
 
   // Slack is best-effort; the lead is already captured in AC by this point.
-  await notifySlack(env, { name, email, url, source, audits, business, city, service });
+  await notifySlack(env, { name, email, url, source, audits, business, city, service, placeId });
 
   const ae = (locals as { runtime?: { env?: { AE?: AnalyticsEngine } } }).runtime?.env?.AE;
   logEvent({ AE: ae }, "audit_lead", {

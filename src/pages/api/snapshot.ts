@@ -74,6 +74,9 @@ export const GET: APIRoute = async ({ request, locals }) => {
   const businessName = (params.get("business") ?? "").trim();
   const city = (params.get("city") ?? "").trim();
   const service = (params.get("service") ?? "").trim();
+  // Captured by the audit form's GBP picker — lets runLocal pull the exact
+  // profile by id instead of guessing from a text search.
+  const placeId = (params.get("placeId") ?? "").trim();
 
   const ip = clientIp(request);
   let domain = "";
@@ -117,8 +120,8 @@ export const GET: APIRoute = async ({ request, locals }) => {
   // Run the data modules in parallel; the LLM synthesis runs after.
   const [seo, local] = await Promise.all([
     wantedTypes.includes("seo") ? runSeo(env, url) : Promise.resolve(null),
-    wantedTypes.includes("local") && businessName && city
-      ? runLocal(env, businessName, city)
+    wantedTypes.includes("local") && (placeId || (businessName && city))
+      ? runLocal(env, { businessName, city, placeId })
       : Promise.resolve(null),
   ]);
 

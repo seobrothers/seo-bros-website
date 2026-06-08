@@ -28,6 +28,18 @@ export interface TeamToolsBinding {
     };
     recommendations?: unknown;
   }>;
+  // GBP lookup by place_id. team-tools owns the Places key; we use the subset
+  // of its (larger) result that the snapshot needs. Optional so older
+  // team-tools deploys without this method degrade to the direct Places call.
+  googlePlacesDetails?(params: { placeId: string; language?: string }): Promise<{
+    place_id: string;
+    name: string;
+    rating: number | null;
+    review_count: number | null;
+    website: string | null;
+    business_status: string | null;
+    primary_type: string | null;
+  }>;
 }
 
 export interface SnapshotEnv extends LlmEnv {
@@ -187,16 +199,92 @@ export async function runSeo(env: SnapshotEnv, url: string): Promise<SeoModule> 
   }
 }
 
-export async function runLocal(
-  env: SnapshotEnv,
-  businessName: string,
-  city: string
-): Promise<LocalModule> {
+// Fields we want back from Google about the business's GBP, shared by both the
+// by-ID (Place Details) and by-text (Text Search) paths.
+const PLACES_FIELDS =
+  "id,displayName,rating,userRatingCount,primaryType,businessStatus,websiteUri";
+
+interface LocalInput {
+  businessName?: string;
+  city?: string;
+  /** Google place_id captured by the audit form's GBP picker, when used. */
+  placeId?: string;
+}
+
+/** Shape a raw Places place object (from either endpoint) into a LocalModule. */
+function shapePlace(place: any, fallbackName?: string): LocalModule {
+  return {
+    ok: true,
+    found: true,
+    name: place.displayName?.text ?? fallbackName ?? "",
+    rating: place.rating ?? null,
+    reviews: place.userRatingCount ?? null,
+    category: place.primaryType ?? null,
+    status: place.businessStatus ?? null,
+    hasWebsite: place.websiteUri ? true : false,
+  };
+}
+
+export async function runLocal(env: SnapshotEnv, input: LocalInput): Promise<LocalModule> {
+  const { businessName = "", city = "", placeId = "" } = input;
   try {
     if (!env.GOOGLE_PLACES_API_KEY) return { ok: false, error: "Places key not configured" };
 
-    // Places API (New) v1 — matches the GOOGLE_PLACES_API_KEY (New API) and
-    // returns rating, review count, category, status, and website in one call.
+    // Preferred path: the form's GBP picker gave us a place_id, so we read the
+    // exact profile the user selected (Place Details) — no guessing which
+    // search result is theirs.
+    if (placeId) {
+      // Prefer the team-tools binding (it owns the key and bypasses the per-IP
+      // keyless limit), mirroring runSeo. Falls through to a direct Places call
+      // if the binding is absent (local dev / not yet wired) or errors.
+      if (env.TEAM_TOOLS?.googlePlacesDetails) {
+        try {
+          const d = await withTimeout(
+            env.TEAM_TOOLS.googlePlacesDetails({ placeId }),
+            PLACES_TIMEOUT_MS,
+            "Places details binding"
+          );
+          if (d?.place_id) {
+            return {
+              ok: true,
+              found: true,
+              name: d.name || businessName || "",
+              rating: d.rating ?? null,
+              reviews: d.review_count ?? null,
+              category: d.primary_type ?? null,
+              status: d.business_status ?? null,
+              hasWebsite: d.website ? true : false,
+            };
+          }
+        } catch (err) {
+          console.error("team-tools googlePlacesDetails failed, falling back to direct Places", err);
+        }
+      }
+
+      // Direct Places API (New) v1 Place Details.
+      const res = await fetchWithTimeout(
+        `https://places.googleapis.com/v1/places/${encodeURIComponent(placeId)}`,
+        PLACES_TIMEOUT_MS,
+        {
+          method: "GET",
+          headers: {
+            "X-Goog-Api-Key": env.GOOGLE_PLACES_API_KEY,
+            "X-Goog-FieldMask": PLACES_FIELDS,
+          },
+        }
+      );
+      if (res.ok) {
+        const place = (await res.json()) as any;
+        if (place?.id) return shapePlace(place, businessName);
+      }
+      // Details lookup failed (bad/stale id, API hiccup). Fall through to a
+      // text search if we have something to search on, rather than give up.
+    }
+
+    if (!businessName) return { ok: false, error: "No business to look up" };
+
+    // Fallback path: free-text search (manual business-name + city entry, or a
+    // failed details lookup). Takes the top match.
     const res = await fetchWithTimeout(
       "https://places.googleapis.com/v1/places:searchText",
       PLACES_TIMEOUT_MS,
@@ -205,8 +293,7 @@ export async function runLocal(
         headers: {
           "content-type": "application/json",
           "X-Goog-Api-Key": env.GOOGLE_PLACES_API_KEY,
-          "X-Goog-FieldMask":
-            "places.id,places.displayName,places.rating,places.userRatingCount,places.primaryType,places.businessStatus,places.websiteUri",
+          "X-Goog-FieldMask": PLACES_FIELDS.split(",").map((f) => `places.${f}`).join(","),
         },
         body: JSON.stringify({ textQuery: `${businessName} ${city}`.trim() }),
       }
@@ -216,16 +303,7 @@ export async function runLocal(
     const top = data.places?.[0];
     if (!top) return { ok: true, found: false };
 
-    return {
-      ok: true,
-      found: true,
-      name: top.displayName?.text ?? businessName,
-      rating: top.rating ?? null,
-      reviews: top.userRatingCount ?? null,
-      category: top.primaryType ?? null,
-      status: top.businessStatus ?? null,
-      hasWebsite: top.websiteUri ? true : false,
-    };
+    return shapePlace(top, businessName);
   } catch (err) {
     return { ok: false, error: err instanceof Error ? err.message : "Places failed" };
   }

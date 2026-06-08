@@ -100,14 +100,67 @@ const uid = Math.random().toString(36).slice(2, 9);
     </div>
 
     <div class="audit-form__reveal" data-group="local" hidden>
-      <div class="audit-form__field-row">
+      {/*
+        GBP picker. The user types their business name; we query /api/places
+        and they pick their actual Google listing, which captures the place_id
+        in the hidden field below. The snapshot then pulls authoritative GBP
+        data by id instead of guessing from a text search.
+
+        The canonical submitted values are the hidden placeId + the business
+        and city inputs inside data-gbp-manual. In picker mode those inputs are
+        hidden and filled programmatically on selection; "Enter manually"
+        reveals them for typing (and is the automatic fallback when the Places
+        lookup is unavailable, e.g. no API key in local dev).
+      */}
+      <input type="hidden" name="placeId" data-gbp-placeid />
+
+      <div class="audit-form__gbp" data-gbp-picker>
         <div class="audit-form__field">
-          <label for={`af-biz-${uid}`}>Business name</label>
-          <input type="text" id={`af-biz-${uid}`} name="business" placeholder="Smith Plumbing" autocomplete="organization" />
+          <label for={`af-gbp-${uid}`}>Find your business on Google</label>
+          <div class="audit-form__gbp-combo">
+            <input
+              type="text"
+              id={`af-gbp-${uid}`}
+              class="audit-form__gbp-search"
+              data-gbp-search
+              placeholder="Start typing your business name…"
+              autocomplete="off"
+              role="combobox"
+              aria-expanded="false"
+              aria-autocomplete="list"
+              aria-controls={`af-gbp-list-${uid}`}
+            />
+            <ul
+              class="audit-form__gbp-results"
+              id={`af-gbp-list-${uid}`}
+              data-gbp-results
+              role="listbox"
+              hidden
+            ></ul>
+          </div>
         </div>
-        <div class="audit-form__field">
-          <label for={`af-city-${uid}`}>City</label>
-          <input type="text" id={`af-city-${uid}`} name="city" placeholder="Halifax, NS" autocomplete="address-level2" />
+
+        <div class="audit-form__gbp-selected" data-gbp-selected hidden>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <span data-gbp-selected-text></span>
+          <button type="button" class="audit-form__gbp-clear" data-gbp-clear>Change</button>
+        </div>
+
+        <button type="button" class="audit-form__gbp-manual-toggle" data-gbp-manual-toggle>
+          Can't find it? Enter manually
+        </button>
+      </div>
+
+      <div class="audit-form__manual" data-gbp-manual hidden>
+        <div class="audit-form__field-row">
+          <div class="audit-form__field">
+            <label for={`af-biz-${uid}`}>Business name</label>
+            <input type="text" id={`af-biz-${uid}`} name="business" placeholder="Smith Plumbing" autocomplete="organization" />
+          </div>
+          <div class="audit-form__field">
+            <label for={`af-city-${uid}`}>City</label>
+            <input type="text" id={`af-city-${uid}`} name="city" placeholder="Halifax, NS" autocomplete="address-level2" />
+          </div>
         </div>
       </div>
     </div>
@@ -170,6 +223,11 @@ const uid = Math.random().toString(36).slice(2, 9);
       sync();
     });
 
+    // GBP picker: type a business name, query /api/places, pick the real Google
+    // listing to capture its place_id. Degrades to the manual business/city
+    // fields when the lookup is unavailable or the user can't find themselves.
+    setupGbpPicker(form);
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       if (!form.checkValidity()) {
@@ -205,6 +263,7 @@ const uid = Math.random().toString(36).slice(2, 9);
           if (data.business) qp.set("business", String(data.business));
           if (data.city) qp.set("city", String(data.city));
           if (data.service) qp.set("service", String(data.service));
+          if (data.placeId) qp.set("placeId", String(data.placeId));
           window.location.assign(`/audit-requested/?${qp.toString()}`);
           return;
         }
@@ -220,6 +279,157 @@ const uid = Math.random().toString(36).slice(2, 9);
       }
     });
   });
+
+  interface PlaceResult {
+    placeId: string;
+    name: string;
+    address: string;
+  }
+
+  function setupGbpPicker(form: HTMLFormElement) {
+    const picker = form.querySelector<HTMLElement>("[data-gbp-picker]");
+    const manual = form.querySelector<HTMLElement>("[data-gbp-manual]");
+    const placeIdInput = form.querySelector<HTMLInputElement>("[data-gbp-placeid]");
+    const search = form.querySelector<HTMLInputElement>("[data-gbp-search]");
+    const resultsEl = form.querySelector<HTMLUListElement>("[data-gbp-results]");
+    const selected = form.querySelector<HTMLElement>("[data-gbp-selected]");
+    const selectedText = form.querySelector<HTMLElement>("[data-gbp-selected-text]");
+    const clearBtn = form.querySelector<HTMLButtonElement>("[data-gbp-clear]");
+    const manualToggle = form.querySelector<HTMLButtonElement>("[data-gbp-manual-toggle]");
+    const bizInput = form.querySelector<HTMLInputElement>('input[name="business"]');
+    const cityInput = form.querySelector<HTMLInputElement>('input[name="city"]');
+    if (!picker || !manual || !placeIdInput || !search || !resultsEl) return;
+
+    let debounce: ReturnType<typeof setTimeout> | undefined;
+    let activeIndex = -1;
+    let current: PlaceResult[] = [];
+
+    function showManual(on: boolean) {
+      manual!.hidden = !on;
+      picker!.hidden = on;
+    }
+
+    function clearResults() {
+      resultsEl!.innerHTML = "";
+      resultsEl!.hidden = true;
+      search!.setAttribute("aria-expanded", "false");
+      activeIndex = -1;
+      current = [];
+    }
+
+    function select(r: PlaceResult) {
+      placeIdInput!.value = r.placeId;
+      if (bizInput) bizInput.value = r.name;
+      if (cityInput) cityInput.value = r.address || "";
+      if (selectedText) selectedText.textContent = r.address ? `${r.name}, ${r.address}` : r.name;
+      if (selected) selected.hidden = false;
+      search!.value = "";
+      search!.hidden = true;
+      clearResults();
+    }
+
+    function clearSelection() {
+      placeIdInput!.value = "";
+      if (bizInput) bizInput.value = "";
+      if (cityInput) cityInput.value = "";
+      if (selected) selected.hidden = true;
+      search!.hidden = false;
+    }
+
+    function renderResults(results: PlaceResult[]) {
+      resultsEl!.innerHTML = "";
+      if (!results.length) {
+        clearResults();
+        return;
+      }
+      current = results;
+      activeIndex = -1;
+      results.forEach((r, i) => {
+        const li = document.createElement("li");
+        li.className = "audit-form__gbp-result";
+        li.setAttribute("role", "option");
+        li.dataset.index = String(i);
+        const name = document.createElement("span");
+        name.className = "audit-form__gbp-result-name";
+        name.textContent = r.name;
+        const addr = document.createElement("span");
+        addr.className = "audit-form__gbp-result-addr";
+        addr.textContent = r.address || "";
+        li.append(name, addr);
+        // mousedown (not click) so it fires before the input's blur clears the list.
+        li.addEventListener("mousedown", (e) => {
+          e.preventDefault();
+          select(r);
+        });
+        resultsEl!.appendChild(li);
+      });
+      resultsEl!.hidden = false;
+      search!.setAttribute("aria-expanded", "true");
+    }
+
+    async function query(q: string) {
+      try {
+        const res = await fetch(`/api/places/?q=${encodeURIComponent(q)}`);
+        const body = (await res.json().catch(() => ({}))) as {
+          ok?: boolean;
+          error?: string;
+          results?: PlaceResult[];
+        };
+        // No Places backend (e.g. local dev without a key) → switch to manual.
+        if (body.ok === false && body.error === "unavailable") {
+          showManual(true);
+          if (manualToggle) manualToggle.hidden = true;
+          return;
+        }
+        renderResults(Array.isArray(body.results) ? body.results : []);
+      } catch {
+        /* transient network error — let the user keep typing or go manual */
+      }
+    }
+
+    search.addEventListener("input", () => {
+      const q = search.value.trim();
+      clearTimeout(debounce);
+      if (q.length < 3) {
+        clearResults();
+        return;
+      }
+      debounce = setTimeout(() => query(q), 250);
+    });
+
+    search.addEventListener("keydown", (e) => {
+      if (resultsEl.hidden) return;
+      const items = Array.from(resultsEl.children);
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        activeIndex = Math.min(activeIndex + 1, items.length - 1);
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        activeIndex = Math.max(activeIndex - 1, 0);
+      } else if (e.key === "Enter") {
+        if (activeIndex >= 0 && current[activeIndex]) {
+          e.preventDefault();
+          select(current[activeIndex]);
+        }
+        return;
+      } else if (e.key === "Escape") {
+        clearResults();
+        return;
+      } else {
+        return;
+      }
+      items.forEach((el, i) => el.classList.toggle("is-active", i === activeIndex));
+    });
+
+    // Delay so a result's mousedown can register before the list is torn down.
+    search.addEventListener("blur", () => setTimeout(clearResults, 120));
+
+    clearBtn?.addEventListener("click", clearSelection);
+    manualToggle?.addEventListener("click", () => {
+      showManual(true);
+      clearSelection();
+    });
+  }
 </script>
 
 <style>
@@ -299,6 +509,119 @@ const uid = Math.random().toString(36).slice(2, 9);
 
   .audit-form__reveal[hidden] {
     display: none;
+  }
+
+  /* GBP picker */
+  .audit-form__gbp[hidden],
+  .audit-form__manual[hidden],
+  .audit-form__gbp-selected[hidden],
+  .audit-form__gbp-results[hidden] {
+    display: none;
+  }
+
+  .audit-form__gbp-combo {
+    position: relative;
+  }
+
+  .audit-form__gbp-search {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.5;
+    padding: 10px 14px;
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    background: var(--white);
+    transition: border-color var(--transition);
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .audit-form__gbp-search:focus {
+    border-color: var(--teal);
+  }
+
+  .audit-form__gbp-search::placeholder {
+    color: var(--text-muted);
+  }
+
+  .audit-form__gbp-search[hidden] {
+    display: none;
+  }
+
+  .audit-form__gbp-results {
+    position: absolute;
+    z-index: 5;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 4px;
+    list-style: none;
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    max-height: 260px;
+    overflow-y: auto;
+  }
+
+  /* NOTE: the result rows (.audit-form__gbp-result*) are created by client JS,
+     so they don't get Astro's scoped-style hash. Their styles live in the
+     is:global block at the end of this file. */
+
+  .audit-form__gbp-selected {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: var(--text-primary);
+    background: rgba(40, 165, 177, 0.08);
+    border: 1px solid rgba(40, 165, 177, 0.25);
+    border-radius: var(--radius-md);
+  }
+
+  .audit-form__gbp-selected svg {
+    color: var(--green);
+    flex-shrink: 0;
+  }
+
+  .audit-form__gbp-selected span[data-gbp-selected-text] {
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .audit-form__gbp-clear {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--teal-dark);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .audit-form__gbp-manual-toggle {
+    margin-top: 10px;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 13px;
+    color: var(--text-muted);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .audit-form__gbp-manual-toggle:hover {
+    color: var(--text-secondary);
   }
 
   .audit-form__turnstile {
@@ -394,5 +717,49 @@ const uid = Math.random().toString(36).slice(2, 9);
     .audit-form-card {
       padding: 28px 24px;
     }
+  }
+</style>
+
+{/* Global because the GBP picker result rows are built by client JS and so
+    don't receive Astro's scoped-style hash. Selectors are audit-form__gbp-
+    prefixed, so this is safe to ship globally. */}
+<style is:global>
+  .audit-form__gbp-result {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.12s ease;
+  }
+
+  .audit-form__gbp-result + .audit-form__gbp-result {
+    border-top: 1px solid var(--border-light);
+  }
+
+  .audit-form__gbp-result:hover,
+  .audit-form__gbp-result.is-active {
+    background: rgba(40, 165, 177, 0.08);
+    border-top-color: transparent;
+  }
+  /* Hide the divider above a row when the row before it is highlighted. */
+  .audit-form__gbp-result:hover + .audit-form__gbp-result,
+  .audit-form__gbp-result.is-active + .audit-form__gbp-result {
+    border-top-color: transparent;
+  }
+
+  .audit-form__gbp-result-name {
+    font-family: var(--font-display);
+    font-size: 14.5px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--text-primary);
+  }
+
+  .audit-form__gbp-result-addr {
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: var(--text-muted);
   }
 </style>
