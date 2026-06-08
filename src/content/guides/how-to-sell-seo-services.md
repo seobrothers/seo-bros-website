@@ -51,7 +51,7 @@ The hardest scenario. You're approaching prospects who haven't asked for SEO and
 
 The audit produces enough insight to demonstrate value and create urgency without giving away the full implementation roadmap. The conversation moves from "look at these issues" to "these issues are costing you customers" to "here's what we'd do about it."
 
-This requires the most discipline because the conversion path is longest. We've covered the audit-as-prospecting model in our [SEO audit guide](/guides/seo-audit/) and our [free website SEO audit guide](/guides/free-website-seo-audit/).
+This requires the most discipline because the conversion path is longest. We've covered the audit-as-prospecting model in our [SEO audit guide](/guides/seo-audit/) and our [free SEO audit tool](/tools/free-seo-audit/).
 
 ## The six-step sales process
 

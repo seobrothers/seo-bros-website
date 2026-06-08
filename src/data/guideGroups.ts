@@ -58,7 +58,7 @@ export const GUIDE_GROUPS: Record<string, GuideGroup[]> = {
       title: "Selling SEO",
       blurb:
         "Where most SEO is won or lost: the pitch, the report-review call, and framing scope and price so deals close.",
-      ids: ["how-to-sell-seo-services", "free-website-seo-audit"],
+      ids: ["how-to-sell-seo-services"],
     },
     {
       title: "Delivering Under Your Brand",
