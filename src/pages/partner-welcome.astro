@@ -209,9 +209,13 @@ const downloads: Download[] = [
 </Layout>
 
 <script>
+  import { prefillForm, saveLead } from "../lib/leadMemory";
+
   const form = document.getElementById("discovery-form") as HTMLFormElement | null;
   const success = document.getElementById("discovery-success");
   if (form) {
+    // Carry the email the agency gave at the opt-in gate so they don't retype it.
+    prefillForm(form);
     const errEl = form.querySelector(".pw__form-error") as HTMLElement | null;
     const btn = form.querySelector(".pw__submit") as HTMLButtonElement | null;
     const label = form.querySelector(".pw__submit-label") as HTMLElement | null;
@@ -242,6 +246,7 @@ const downloads: Download[] = [
         });
         const out = (await res.json()) as { ok: boolean; error?: string };
         if (!res.ok || !out.ok) throw new Error(out.error || "Something went wrong.");
+        saveLead({ email });
         form.hidden = true;
         if (success) success.hidden = false;
       } catch (err) {

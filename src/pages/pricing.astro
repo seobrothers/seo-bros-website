@@ -6,6 +6,8 @@ import CtaBanner from "../components/CtaBanner.astro";
 import {
   SEO_TIERS,
   EXTRA_LOCATION,
+  EXTRA_BLOG,
+  EXTRA_HOUR,
   HOSTING,
   MAINTENANCE,
   WEB_BUILDS,
@@ -479,6 +481,24 @@ const faqSchema = {
               <span class="addon__price-suffix">/ mo each</span>
             </span>
             <span class="addon__note">{EXTRA_LOCATION.note}</span>
+          </div>
+
+          <div class="addon" data-animate>
+            <span class="addon__name">{EXTRA_BLOG.label}</span>
+            <span class="addon__price">
+              <span class="addon__price-value">+{usd(EXTRA_BLOG.price)}</span>
+              <span class="addon__price-suffix">/ mo each</span>
+            </span>
+            <span class="addon__note">{EXTRA_BLOG.note}</span>
+          </div>
+
+          <div class="addon" data-animate>
+            <span class="addon__name">{EXTRA_HOUR.label}</span>
+            <span class="addon__price">
+              <span class="addon__price-value">+{usd(EXTRA_HOUR.price)}</span>
+              <span class="addon__price-suffix">/ mo per hour</span>
+            </span>
+            <span class="addon__note">{EXTRA_HOUR.note}</span>
           </div>
         </div>
 

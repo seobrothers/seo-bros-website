@@ -80,6 +80,18 @@ export const MAINTENANCE = {
   note: "Ongoing content edits, fixes, and small changes so the site never goes stale.",
 };
 
+export const EXTRA_BLOG = {
+  label: "Extra blog post",
+  price: 95,
+  note: "An additional optimized blog post per month, on top of the plan's content.",
+};
+
+export const EXTRA_HOUR = {
+  label: "Extra SEO Time",
+  price: 60,
+  note: "More specialist hours per month aimed at the priority work that moves rankings.",
+};
+
 export interface WebBuild {
   id: "build" | "build-redesign";
   name: string;

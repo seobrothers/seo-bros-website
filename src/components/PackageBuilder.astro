@@ -8,6 +8,8 @@
 import {
   SEO_TIERS,
   EXTRA_LOCATION,
+  EXTRA_BLOG,
+  EXTRA_HOUR,
   HOSTING,
   MAINTENANCE,
   WEB_BUILDS,
@@ -39,21 +41,34 @@ import {
       </fieldset>
 
       <fieldset class="pb__group">
-        <legend class="pb__legend">{EXTRA_LOCATION.label}s</legend>
-        <div class="pb__stepper">
-          <button type="button" class="pb__step" data-step="-1" aria-label="Fewer locations">&minus;</button>
-          <input
-            type="number"
-            id="pb-locations"
-            class="pb__num"
-            min="0"
-            max="50"
-            value="0"
-            data-unit={EXTRA_LOCATION.price}
-            aria-label="Extra Maps locations"
-          />
-          <button type="button" class="pb__step" data-step="1" aria-label="More locations">+</button>
-          <span class="pb__stepper-note">{usd(EXTRA_LOCATION.price)}/mo each</span>
+        <legend class="pb__legend">Scale it up (monthly)</legend>
+        <div class="pb__steppers">
+          {[
+            { id: "pb-locations", label: EXTRA_LOCATION.label, unit: EXTRA_LOCATION.price, suffix: "each" },
+            { id: "pb-blogs", label: EXTRA_BLOG.label, unit: EXTRA_BLOG.price, suffix: "each" },
+            { id: "pb-hours", label: EXTRA_HOUR.label, unit: EXTRA_HOUR.price, suffix: "per hour" },
+          ].map((s) => (
+            <div class="pb__stepper-row">
+              <div class="pb__stepper-meta">
+                <span class="pb__stepper-label">{s.label}</span>
+                <span class="pb__stepper-note">{usd(s.unit)}/mo {s.suffix}</span>
+              </div>
+              <div class="pb__stepper">
+                <button type="button" class="pb__step" data-step="-1" aria-label={`Fewer ${s.label}`}>&minus;</button>
+                <input
+                  type="number"
+                  id={s.id}
+                  class="pb__num"
+                  min="0"
+                  max="50"
+                  value="0"
+                  data-monthly-unit={s.unit}
+                  aria-label={s.label}
+                />
+                <button type="button" class="pb__step" data-step="1" aria-label={`More ${s.label}`}>+</button>
+              </div>
+            </div>
+          ))}
         </div>
       </fieldset>
 
@@ -94,10 +109,10 @@ import {
 
       <fieldset class="pb__group">
         <legend class="pb__legend">
-          Your markup <span class="pb__markup-val" id="pb-markup-val">50%</span>
+          Resale multiple <span class="pb__markup-val" id="pb-markup-val">3.0&times;</span>
         </legend>
-        <input type="range" id="pb-markup" class="pb__range" min="0" max="200" step="5" value="50" />
-        <p class="pb__hint">What you add on top to resell to your client. Slide to model your margin.</p>
+        <input type="range" id="pb-markup" class="pb__range" min="1.5" max="5" step="0.5" value="3" />
+        <p class="pb__hint">White-label SEO typically resells at 2 to 3 times wholesale. Slide to model your margin.</p>
       </fieldset>
     </div>
 
@@ -140,8 +155,6 @@ import {
   if (root) {
     const $ = (id: string) => document.getElementById(id) as HTMLElement | null;
     const money = (n: number) => "$" + Math.round(n).toLocaleString("en-US");
-
-    const locations = $("pb-locations") as HTMLInputElement | null;
     const markup = $("pb-markup") as HTMLInputElement | null;
 
     function recalc() {
@@ -162,15 +175,15 @@ import {
           if (el.checked) onetime += Number(el.dataset.onetime || 0);
         });
 
-      // Extra Maps locations: count x unit price.
-      if (locations) {
-        const n = Math.max(0, Math.min(50, Number(locations.value) || 0));
-        const unit = Number(locations.dataset.unit || 0);
-        monthly += n * unit;
-      }
+      // Number steppers (locations, blogs, hours): count x per-unit monthly price.
+      root!
+        .querySelectorAll<HTMLInputElement>(".pb__num")
+        .forEach((el) => {
+          const n = Math.max(0, Math.min(50, Number(el.value) || 0));
+          monthly += n * Number(el.dataset.monthlyUnit || 0);
+        });
 
-      const pct = markup ? Number(markup.value) || 0 : 0;
-      const factor = 1 + pct / 100;
+      const mult = markup ? Number(markup.value) || 1 : 1;
 
       const setText = (id: string, html: string) => {
         const el = $(id);
@@ -179,19 +192,22 @@ import {
 
       setText("pb-cost-monthly", money(monthly) + "<small>/mo</small>");
       setText("pb-cost-onetime", money(onetime));
-      setText("pb-sell-monthly", money(monthly * factor) + "<small>/mo</small>");
-      setText("pb-sell-onetime", money(onetime * factor));
-      setText("pb-markup-val", pct + "%");
-      setText("pb-margin", money(monthly * factor - monthly) + "/mo");
+      setText("pb-sell-monthly", money(monthly * mult) + "<small>/mo</small>");
+      setText("pb-sell-onetime", money(onetime * mult));
+      setText("pb-markup-val", mult.toFixed(1) + "×");
+      setText("pb-margin", money(monthly * mult - monthly) + "/mo");
     }
 
-    // Stepper buttons.
+    // Stepper buttons: adjust the number input within the same stepper.
     root.querySelectorAll<HTMLButtonElement>(".pb__step").forEach((btn) => {
       btn.addEventListener("click", () => {
-        if (!locations) return;
-        const cur = Number(locations.value) || 0;
+        const input = btn
+          .closest(".pb__stepper")
+          ?.querySelector<HTMLInputElement>(".pb__num");
+        if (!input) return;
+        const cur = Number(input.value) || 0;
         const next = Math.max(0, Math.min(50, cur + Number(btn.dataset.step || 0)));
-        locations.value = String(next);
+        input.value = String(next);
         recalc();
       });
     });
@@ -292,6 +308,27 @@ import {
     color: var(--text-muted);
   }
 
+  .pb__steppers {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .pb__stepper-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .pb__stepper-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .pb__stepper-label {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-primary);
+  }
   .pb__stepper {
     display: flex;
     align-items: center;
