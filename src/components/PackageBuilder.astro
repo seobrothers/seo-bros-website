@@ -144,7 +144,7 @@ import {
         Your monthly margin: <strong id="pb-margin">$0/mo</strong>
       </div>
 
-      <a href="#discovery-form" class="btn btn-primary pb__cta">Request a quote on this scope</a>
+      <a href="#discovery-form" id="pb-quote" class="btn btn-primary pb__cta">Request a quote on this scope</a>
       <p class="pb__disclaimer">Wholesale prices you pay us. Final scope is confirmed on your discovery. Hosting and maintenance start at the rates shown.</p>
     </aside>
   </div>
@@ -214,6 +214,58 @@ import {
 
     root.addEventListener("input", recalc);
     root.addEventListener("change", recalc);
+
+    // "Request a quote on this scope" → drop a readable summary of the current
+    // selection into the discovery form's notes field, then the anchor scrolls
+    // up to it. No-op (just scrolls) if the form isn't on the page.
+    function buildSummary(): string {
+      const lines: string[] = [];
+      const checkedName = (group: string) => {
+        const el = root!.querySelector<HTMLInputElement>(`input[name="${group}"]:checked`);
+        if (!el || el.value === "none") return null;
+        return el.closest(".pb__opt")?.querySelector(".pb__opt-name")?.textContent?.trim() || null;
+      };
+      const seo = checkedName("pb-seo");
+      if (seo) lines.push(`SEO plan: ${seo}`);
+      const web = checkedName("pb-web");
+      if (web) lines.push(`Website: ${web}`);
+
+      const numLabels: Record<string, string> = {
+        "pb-locations": "Extra Maps locations",
+        "pb-blogs": "Extra blogs / month",
+        "pb-hours": "Extra SEO hours / month",
+      };
+      Object.keys(numLabels).forEach((id) => {
+        const n = Number(($(id) as HTMLInputElement | null)?.value || 0);
+        if (n > 0) lines.push(`${numLabels[id]}: ${n}`);
+      });
+
+      if (($("pb-hosting") as HTMLInputElement | null)?.checked) lines.push("Managed hosting: yes");
+      if (($("pb-maint") as HTMLInputElement | null)?.checked) lines.push("Website maintenance: yes");
+
+      if (lines.length === 0) return "I'd like a quote (still deciding on scope).";
+
+      const mult = markup ? Number(markup.value) || 3 : 3;
+      const monthly = $("pb-cost-monthly")?.textContent?.trim() || "";
+      const onetime = $("pb-cost-onetime")?.textContent?.trim() || "";
+      return (
+        "Here's the package I built:\n" +
+        lines.map((l) => "- " + l).join("\n") +
+        `\n- Resale multiple: ${mult.toFixed(1)}x` +
+        `\n\nEstimated wholesale: ${monthly}` +
+        (onetime && onetime !== "$0" ? ` + ${onetime} one-time` : "") +
+        ". Please quote this scope."
+      );
+    }
+
+    $("pb-quote")?.addEventListener("click", () => {
+      const notes = document.getElementById("disco-notes") as HTMLTextAreaElement | null;
+      if (notes) {
+        notes.value = buildSummary();
+        notes.dispatchEvent(new Event("input", { bubbles: true }));
+      }
+    });
+
     recalc();
   }
 </script>
