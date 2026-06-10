@@ -89,7 +89,7 @@ const faqSchema = {
           <h2 class="ih-group__title">{g.group}</h2>
           <div class="ih-group__grid" data-stagger>
             {g.items.map((item) => (
-              <a href={`/industries/${item.slug}/`} class="ih-card" data-animate>
+              <a href={`/guides/${item.guideId}/`} class="ih-card" data-animate>
                 <div class="ih-card__head">
                   <h3 class="ih-card__name">{item.name}</h3>
                   {item.featured && <span class="ih-card__badge">Focus</span>}

@@ -57,6 +57,6 @@ For the broader local SEO framework, see our [local SEO guide](/guides/local-seo
 
 When we work with a business in a market like Buffalo, the keyword strategy maps to actual search behavior: win the metro term and the local pack first, build genuine pages for the Northtowns and Niagara Falls, and weight content toward the heating and storm demand a cold-climate market actually generates.
 
-It's the same playbook we run across our [home services SEO](/industries/home-services/) work, the [HVAC](/industries/hvac/) and [roofing](/industries/roofing/) programs in particular, where ranking comes down to a maintained profile, real local content, and call tracking that shows which pages book jobs.
+It's the same playbook we run across our [home services SEO](/guides/franchise-seo/) work, the [HVAC](/guides/industry/hvac/) and [roofing](/guides/industry/roofing/) programs in particular, where ranking comes down to a maintained profile, real local content, and call tracking that shows which pages book jobs.
 
 If you run a business in the Buffalo or Western New York market, [get in touch](/tools/free-seo-audit/) and we'll walk through what works in your specific area.

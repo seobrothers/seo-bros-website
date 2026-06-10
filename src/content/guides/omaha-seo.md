@@ -57,6 +57,6 @@ For the broader local SEO framework, see our [local SEO guide](/guides/local-seo
 
 When we work with a business in a market like Omaha, the keyword strategy maps to actual search behavior: win the metro term and the local pack first, treat Council Bluffs as a genuine cross-river market when the business serves it, and skip the templated suburb pages that chase demand the data says isn't there.
 
-It's the same playbook we run across our [home services SEO](/industries/home-services/) work, the [HVAC](/industries/hvac/) and [roofing](/industries/roofing/) programs in particular, where ranking comes down to a maintained profile, real local content, and call tracking that shows which pages book jobs.
+It's the same playbook we run across our [home services SEO](/guides/franchise-seo/) work, the [HVAC](/guides/industry/hvac/) and [roofing](/guides/industry/roofing/) programs in particular, where ranking comes down to a maintained profile, real local content, and call tracking that shows which pages book jobs.
 
 If you run a business in the Omaha metro, [get in touch](/tools/free-seo-audit/) and we'll walk through what works in your specific area.

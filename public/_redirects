@@ -6,8 +6,6 @@
 # Top-level pages — renamed/reframed
 # ============================================================================
 /who-we-help/                                               /white-label-seo/                                 301
-/terms-conditions/                                          /terms/                                           301
-/index.php                                                  /                                                 301
 
 # ============================================================================
 # PODCAST — legacy niched-agency-podcast hub + episodes collapse to /podcast/
@@ -81,37 +79,37 @@
 # ============================================================================
 # PILLAR: Legal Services (4 -> 1)
 # ============================================================================
-/guides/seo-for-lawyers/                                    /industries/legal/                       301
-/guides/seo-for-family-lawyers/                             /industries/legal/                       301
-/guides/seo-for-immigration-lawyers/                        /industries/legal/                       301
-/guides/seo-for-personal-injury-law/                        /industries/legal/                       301
+/guides/seo-for-lawyers/                                    /guides/legal-services-seo/                       301
+/guides/seo-for-family-lawyers/                             /guides/legal-services-seo/                       301
+/guides/seo-for-immigration-lawyers/                        /guides/legal-services-seo/                       301
+/guides/seo-for-personal-injury-law/                        /guides/legal-services-seo/                       301
 
 # ============================================================================
 # PILLAR: Financial Services (3 -> 1)
 # ============================================================================
-/guides/seo-for-accountants/                                /industries/financial-services/                   301
-/guides/insurance-seo/                                      /industries/financial-services/                   301
-/guides/mortgage-seo/                                       /industries/financial-services/                   301
+/guides/seo-for-accountants/                                /guides/financial-services-seo/                   301
+/guides/insurance-seo/                                      /guides/financial-services-seo/                   301
+/guides/mortgage-seo/                                       /guides/financial-services-seo/                   301
 
 # ============================================================================
 # PILLAR: Property Management (2 -> 1)
 # ============================================================================
-/guides/seo-for-property-management/                        /industries/property-management/                  301
-/guides/seo-for-apartments/                                 /industries/property-management/                  301
+/guides/seo-for-property-management/                        /guides/property-management-seo/                  301
+/guides/seo-for-apartments/                                 /guides/property-management-seo/                  301
 
 # ============================================================================
 # PILLAR: Plastic Surgery (2 -> 1)
 # ============================================================================
-/guides/plastic-surgery-leads/                              /industries/plastic-surgery/                      301
+/guides/plastic-surgery-leads/                              /guides/plastic-surgery-seo/                      301
 
 # ============================================================================
 # Industry guides — slug changes only, no consolidation
 # ============================================================================
-/guides/our-new-and-improved-tree-service-seo-guide-seo-for-arborists/  /industries/tree-service/             301
-/guides/dental-seo-for-dentists/                            /industries/dental/                               301
-/guides/seo-for-auto-repair-shops/                          /industries/auto-repair/                          301
-/guides/maximizing-seo-for-your-medspa/                     /industries/medspa/                               301
-/guides/seo-hair-transplant-clinics/                        /industries/medspa/                      301
+/guides/our-new-and-improved-tree-service-seo-guide-seo-for-arborists/  /guides/tree-service-seo/             301
+/guides/dental-seo-for-dentists/                            /guides/dental-seo/                               301
+/guides/seo-for-auto-repair-shops/                          /guides/auto-repair-seo/                          301
+/guides/maximizing-seo-for-your-medspa/                     /guides/medspa-seo/                               301
+/guides/seo-hair-transplant-clinics/                        /guides/hair-transplant-seo/                      301
 /guides/how-to-sell-seo-services-to-clients/                /guides/how-to-sell-seo-services/                 301
 
 # ============================================================================
@@ -123,13 +121,6 @@
 /guides/seo-for-wordpress-websites/                         /guides/seo-for-wordpress/                        301
 /guides/sitebulb-best-seo-crawler-auditor-never-knew/       /guides/sitebulb-review/                          301
 
-# Free-audit guide merged into the /tools/free-seo-audit/ tool page
-/guides/free-website-seo-audit/                             /tools/free-seo-audit/                            301
-
-# AI SEO service pages reworked into a single SEO guide
-/ai-seo/                                                    /guides/ai-seo/                                   301
-/ai-seo/local/                                              /guides/ai-seo/                                   301
-
 # ============================================================================
 # Hard drops — content not migrated, redirect to closest hub
 # ============================================================================
@@ -140,7 +131,7 @@
 # WordPress category archives — collapse onto existing taxonomy hubs
 # ============================================================================
 /guides/category/seo/                                       /guides/seo/                                      301
-/guides/category/industry/                                  /industries/                                      301
+/guides/category/industry/                                  /guides/industry/                                 301
 /guides/category/agency/                                    /guides/agency/                                   301
 /guides/category/cities/                                    /guides/cities/                                   301
 
@@ -158,8 +149,6 @@
 # ============================================================================
 /case-studies/campaign-plumbing-traffic/                    /case-studies/                                    301
 /case-studies/partner-boutique-au/                          /case-studies/                                    301
-/case-studies/red-ear-media/                                /case-studies/                                    301
-/case-studies/rocket-barn/                                  /case-studies/                                    301
 
 # ============================================================================
 # LEGACY NAMESPACE: /resource/ -> /guides/
@@ -171,15 +160,15 @@
 /resource/how-to-sell-seo-services-to-clients/              /guides/how-to-sell-seo-services/                 301
 /resource/how-to-structure-a-website-structure-local-business/  /guides/local-seo/                            301
 /resource/keyword-mapping/                                  /guides/keyword-mapping/                          301
-/resource/seo-for-accountants/                              /industries/financial-services/                   301
-/resource/seo-for-apartments/                               /industries/property-management/                  301
-/resource/seo-for-auto-repair-shops/                        /industries/auto-repair/                          301
-/resource/seo-for-plumbers/                                 /industries/plumbing/                         301
+/resource/seo-for-accountants/                              /guides/financial-services-seo/                   301
+/resource/seo-for-apartments/                               /guides/property-management-seo/                  301
+/resource/seo-for-auto-repair-shops/                        /guides/auto-repair-seo/                          301
+/resource/seo-for-plumbers/                                 /guides/seo-for-plumbers/                         301
 /resource/white-label-seo-audits/                           /guides/white-label-seo-audits/                   301
 /resource/white-label-seo-reporting/                        /guides/white-label-seo-reporting/                301
-/resource/acupuncture-seo/                                  /industries/acupuncture/                          301
-/resource/audiology-seo/                                    /industries/audiology/                            301
-/resource/seo-for-healthcare/                               /industries/                                      301
+/resource/acupuncture-seo/                                  /guides/acupuncture-seo/                          301
+/resource/audiology-seo/                                    /guides/audiology-seo/                            301
+/resource/seo-for-healthcare/                               /guides/industry/                                 301
 /resource/podcast/*                                         /podcast/                                         301
 /resource/*                                                 /guides/                                          301
 
@@ -201,13 +190,23 @@
 /locations                                                  /guides/cities/                                   301
 
 # ============================================================================
-# CTA shortcuts — /strategy-call/ and /demo/ are live URLs on production, so
-# they keep their redirects; pointed at the partner package (the agency
-# free-discovery flow) to match the white-label positioning.
+# CTA shortcuts — agency booking/demo flows through the partner package
+# (the free-discovery gate) under the white-label positioning.
 # ============================================================================
 /strategy-call/                                             /partner-package/                                 301
 /demo                                                       /partner-package/                                 301
 /demo/                                                      /partner-package/                                 301
+
+# ============================================================================
+# Pages reworked on the new site (were live, now moved):
+#   - /ai-seo/ marketing pages folded into a single SEO guide
+#   - free-website-seo-audit guide merged into the /tools/ audit tool
+#   - /seo-for-plumbers/ standalone lander now lives as a guide
+# ============================================================================
+/ai-seo/                                                    /guides/ai-seo/                                   301
+/ai-seo/local/                                              /guides/ai-seo/                                   301
+/guides/free-website-seo-audit/                             /tools/free-seo-audit/                            301
+/seo-for-plumbers/                                          /guides/seo-for-plumbers/                         301
 
 # ============================================================================
 # PODCAST — catch-all for any remaining legacy episode URLs (and their feeds).
@@ -229,33 +228,3 @@
 /feed/podcast/the-niched-agency/                            /podcast/                                         301
 /guides/:slug/feed/                                         /guides/                                          301
 /feed/*                                                     /                                                 301
-
-# ============================================================================
-# INDUSTRIES — vertical guides promoted to the /industries/ section.
-# Canonical /guides/{x}-seo/ URLs 301 to /industries/{slug}/. Legacy variants
-# elsewhere in this file point straight at /industries/ to avoid chains.
-# See src/data/industries.ts for the slug map.
-# ============================================================================
-/guides/industry/                                           /industries/                                      301
-/guides/home-services-seo/                                  /industries/home-services/                        301
-/guides/hvac-seo/                                           /industries/hvac/                                 301
-/guides/roofing-seo/                                        /industries/roofing/                              301
-/guides/seo-for-plumbers/                                   /industries/plumbing/                             301
-/seo-for-plumbers/                                          /industries/plumbing/                             301
-/guides/tree-service-seo/                                   /industries/tree-service/                         301
-/guides/carpet-cleaning-seo/                                /industries/carpet-cleaning/                      301
-/guides/auto-repair-seo/                                    /industries/auto-repair/                          301
-/guides/home-builder-seo/                                   /industries/home-builders/                        301
-/guides/property-management-seo/                            /industries/property-management/                  301
-/guides/dental-seo/                                         /industries/dental/                               301
-/guides/orthodontist-seo/                                   /industries/orthodontics/                         301
-/guides/medspa-seo/                                         /industries/medspa/                               301
-/guides/hair-transplant-seo/                                /industries/medspa/                               301
-/guides/plastic-surgery-seo/                                /industries/plastic-surgery/                      301
-/guides/acupuncture-seo/                                    /industries/acupuncture/                          301
-/guides/audiology-seo/                                      /industries/audiology/                            301
-/guides/legal-services-seo/                                 /industries/legal/                                301
-/guides/financial-services-seo/                             /industries/financial-services/                   301
-/guides/funeral-home-seo/                                   /industries/funeral-homes/                        301
-/guides/cannabis-seo/                                       /industries/cannabis/                             301
-/guides/franchise-seo/                                      /industries/franchise/                            301

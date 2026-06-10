@@ -57,6 +57,6 @@ For the broader local SEO framework, see our [local SEO guide](/guides/local-seo
 
 When we work with a business in a two-state metro like Kansas City, the keyword strategy maps to actual search behavior, which here means winning the Missouri-side metro term and the local pack while treating Overland Park and the Johnson County, Kansas market as a genuine second target with its own pages.
 
-It's the same playbook we run across our [home services SEO](/industries/home-services/) work, the [roofing](/industries/roofing/) and [HVAC](/industries/hvac/) programs in particular, where ranking comes down to a maintained profile, real local content, and call tracking that shows which pages book jobs.
+It's the same playbook we run across our [home services SEO](/guides/franchise-seo/) work, the [roofing](/guides/industry/roofing/) and [HVAC](/guides/industry/hvac/) programs in particular, where ranking comes down to a maintained profile, real local content, and call tracking that shows which pages book jobs.
 
 If you run a business anywhere in the Kansas City metro, [get in touch](/tools/free-seo-audit/) and we'll walk through what works in your specific area.

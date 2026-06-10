@@ -6,7 +6,7 @@ updatedDate: 2026-05-06
 author: "Devon Bate"
 summary: Hair transplant SEO is built on FUE versus FUT keyword splits, cost-driven research content, and gallery-led conversion. The framework that wins for clinics ranging from a single-city practice to a destination clinic serving international patients.
 featured: false
-# Retired: rolled into /industries/medspa/. Kept as draft so the file/content
+# Retired: rolled into /guides/industry/medspa/. Kept as draft so the file/content
 # is preserved for folding into the medspa page; URL 301s via public/_redirects.
 draft: true
 ---

@@ -31,7 +31,6 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import { publishedAuthors } from "../data/authors";
-import { INDUSTRIES } from "../data/industries";
 
 export const prerender = true;
 
@@ -46,8 +45,8 @@ const STATIC_PAGES = [
   "/guides/",
   "/guides/agency/",
   "/guides/cities/",
+  "/guides/industry/",
   "/guides/seo/",
-  "/industries/",
   "/partner-package/",
   "/pricing/",
   "/privacy/",
@@ -66,22 +65,11 @@ const RESERVED_GUIDE_SLUGS = new Set(["seo", "industry", "agency", "cities"]);
 export const GET: APIRoute = async () => {
   const allGuides = await getCollection("guides");
 
-  // Industry-category guides are served at /industries/{slug}/ (see
-  // src/data/industries.ts); they're emitted from INDUSTRIES below, not here.
+  // All guides (including industry-category) are served at /guides/{id}/.
   const guides = allGuides
     .filter((g) => !RESERVED_GUIDE_SLUGS.has(g.id))
-    .filter((g) => g.data.category !== "industry")
     .filter((g) => !import.meta.env.PROD || !g.data.draft)
     .map((g) => `/guides/${g.id}/`);
-
-  const liveGuideIds = new Set(
-    allGuides
-      .filter((g) => !import.meta.env.PROD || !g.data.draft)
-      .map((g) => g.id)
-  );
-  const industries = INDUSTRIES
-    .filter((i) => liveGuideIds.has(i.guideId))
-    .map((i) => `/industries/${i.slug}/`);
 
   const caseStudies = (await getCollection("caseStudies"))
     .filter((c) => !import.meta.env.PROD || !c.data.draft)
@@ -90,7 +78,7 @@ export const GET: APIRoute = async () => {
   // Author pages are gated by `published` in src/data/authors.ts.
   const authorPages = publishedAuthors().map((a) => `/authors/${a.slug}/`);
 
-  const paths = [...STATIC_PAGES, ...guides, ...industries, ...caseStudies, ...authorPages]
+  const paths = [...STATIC_PAGES, ...guides, ...caseStudies, ...authorPages]
     .filter((p) => !EXCLUDED_PATHS.has(p))
     .sort();
 

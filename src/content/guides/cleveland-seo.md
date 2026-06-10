@@ -58,6 +58,6 @@ For the broader local SEO framework, see our [local SEO guide](/guides/local-seo
 
 When we work with a business across Northeast Ohio, the keyword strategy maps to actual search behavior, which here means treating Cleveland, Akron, and Canton as three real markets rather than one metro with suburbs, and winning each core term and local pack on its own.
 
-It's the same playbook we run across our [home services SEO](/industries/home-services/) work, the [roofing](/industries/roofing/) and [HVAC](/industries/hvac/) programs in particular, where ranking comes down to a maintained profile, real local content, and call tracking that shows which pages book jobs.
+It's the same playbook we run across our [home services SEO](/guides/franchise-seo/) work, the [roofing](/guides/industry/roofing/) and [HVAC](/guides/industry/hvac/) programs in particular, where ranking comes down to a maintained profile, real local content, and call tracking that shows which pages book jobs.
 
 If you run a business anywhere in the Cleveland, Akron, or Canton market, [get in touch](/tools/free-seo-audit/) and we'll walk through what works in your specific area.

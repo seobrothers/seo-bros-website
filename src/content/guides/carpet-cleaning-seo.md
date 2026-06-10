@@ -163,6 +163,6 @@ For carpet cleaning, yes. This is the most local-SEO-dependent vertical we work 
 
 Carpet cleaning is a vertical where most of the leverage is in the foundation: GBP, reviews, location pages, on-page basics. We start with an audit to identify the local-pack ceiling the current setup is hitting, fix the structural issues, build the location and service-page architecture, and run review and citation work in parallel. Content layered on top compounds over months.
 
-For multi-location operators or franchise groups, the work scales meaningfully across territories. For single-location operators, the goal is local-pack dominance in the served city. Carpet cleaning is part of the broader [home services SEO](/industries/home-services/) cluster, and the cross-link between this guide and adjacent trades reinforces topical relevance.
+For multi-location operators or franchise groups, the work scales meaningfully across territories. For single-location operators, the goal is local-pack dominance in the served city. Carpet cleaning is part of the broader [home services SEO](/guides/franchise-seo/) cluster, and the cross-link between this guide and adjacent trades reinforces topical relevance.
 
 If you've got a carpet cleaning client whose call volume isn't matching what their equipment and team could handle, [run a free discovery with us](/partner-package/) and we'll figure out where the rankings are stuck, then deliver the fix under your brand.

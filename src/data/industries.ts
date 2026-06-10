@@ -1,16 +1,12 @@
-// Industries We Serve — single source of truth for the /industries/ section.
+// Industries — grouping metadata for the industry-guide hub.
 //
-// Each entry maps an existing industry-category guide (the long-form markdown
-// in src/content/guides/) to a clean /industries/{slug}/ URL, a display name,
-// and a grouping for the hub page. The renderer (src/pages/industries/[slug].astro),
-// the hub (src/pages/industries/index.astro), and the sitemap all read from
-// this list, so adding/removing a vertical happens in one place.
+// Industry-category guides are normal guides served at /guides/{guideId}/. This
+// list only provides the grouping + display names for the hub page at
+// /guides/industry/ (src/pages/guides/industry.astro). The `slug` field is
+// retained for reference but is not used for routing (the guides live under
+// /guides/, not /industries/).
 //
-// When you add an entry here, also add a 301 from the old /guides/{guideId}/
-// URL to /industries/{slug}/ in public/_redirects.
-//
-// `featured` marks the home-services / local verticals that lead the hub and
-// are the focus for paid acquisition.
+// `featured` marks the home-services / local verticals that lead the hub.
 
 export interface IndustryMeta {
   /** The guide markdown id in src/content/guides/ (filename without .md). */

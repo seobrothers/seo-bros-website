@@ -30,7 +30,7 @@ const CATEGORY_LABELS: Record<string, string> = {
 const guides = (await getCollection("guides"))
   .filter((g) => !import.meta.env.PROD || !g.data.draft)
   .filter((g) => g.data.author === author.name)
-  // Industry-category content lives at /industries/{slug}/ as service pages,
+  // Industry-category content lives at /guides/industry/{slug}/ as service pages,
   // not bylined guides — exclude it (also avoids dead /guides/{id}/ links).
   .filter((g) => g.data.category !== "industry")
   .sort(

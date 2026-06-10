@@ -44,14 +44,14 @@ function guidesFor(slug: string, n: number): CardItem[] {
     }));
 }
 
-// Industry cards pull from the INDUSTRIES map (clean /industries/{slug}/ URLs),
-// limited to verticals whose guide actually exists and isn't a prod draft.
+// Industry cards pull from the INDUSTRIES map (rendered as guides at
+// /guides/{guideId}/), limited to verticals whose guide exists and isn't a draft.
 const liveIndustries = INDUSTRIES.filter((i) =>
   allGuides.some((g) => g.id === i.guideId),
 );
 const industryItems: CardItem[] = liveIndustries.slice(0, 3).map((i) => ({
   title: `${i.name} SEO`,
-  href: `/industries/${i.slug}/`,
+  href: `/guides/${i.guideId}/`,
   meta: i.group,
 }));
 
@@ -69,7 +69,7 @@ const categories: CategorySpec[] = [
     blurb:
       "How we help agencies dominate specific verticals, from home services to health and professional practices. The playbook behind each campaign you resell.",
     accent: "purple",
-    hubHref: "/industries/",
+    hubHref: "/guides/industry/",
     items: industryItems,
   },
   {
