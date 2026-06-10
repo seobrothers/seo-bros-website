@@ -105,10 +105,10 @@ export const REPORTING = {
 };
 export const HEALTH = {
   label: "Health & crawl score",
-  price: 150,
+  price: 50,
   note: "Monthly site health check and crawl score, plus the fixes it surfaces.",
 };
-/** Always-included managed-campaign base. Sums to $200/mo. */
+/** Always-included managed-campaign base. Sums to $100/mo. */
 export const MANAGED_INCLUDED = [REPORTING, HEALTH];
 export const MANAGED_BASE_TOTAL = MANAGED_INCLUDED.reduce((s, i) => s + i.price, 0);
 
