@@ -201,14 +201,13 @@
 /locations                                                  /guides/cities/                                   301
 
 # ============================================================================
-# CTA shortcuts — business booking flows through the free-audit tool page.
-# (Partner demo still lives at /sign-up/, linked from the white-label pages.)
+# CTA shortcuts — /strategy-call/ and /demo/ are live URLs on production, so
+# they keep their redirects; pointed at the partner package (the agency
+# free-discovery flow) to match the white-label positioning.
 # ============================================================================
-/free-seo-audit/                                            /tools/free-seo-audit/                            301
-/audit/                                                     /tools/free-seo-audit/                            301
-/strategy-call/                                             /tools/free-seo-audit/                            301
-/demo                                                       /tools/free-seo-audit/                            301
-/demo/                                                      /tools/free-seo-audit/                            301
+/strategy-call/                                             /partner-package/                                 301
+/demo                                                       /partner-package/                                 301
+/demo/                                                      /partner-package/                                 301
 
 # ============================================================================
 # PODCAST — catch-all for any remaining legacy episode URLs (and their feeds).
