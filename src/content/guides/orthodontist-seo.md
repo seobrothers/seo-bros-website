@@ -9,7 +9,7 @@ featured: false
 draft: false
 ---
 
-Orthodontics is one of the better verticals for SEO investment. The treatment is high-value, the decision cycle is long enough that content has time to influence it, and the local pack drives a meaningful share of new consultations in most markets. The competitive pressure is real, but the bar for outranking the average orthodontist site is lower than the difficulty would suggest.
+If your agency has an orthodontic client, you've got one of the better verticals to work in. The treatment is high-value, the decision cycle is long enough that content has time to influence it, and the local pack drives a meaningful share of new consultations in most markets. The competitive pressure is real, but the bar for outranking the average orthodontist site is lower than the difficulty would suggest. We run this work white-label for agencies, so your client sees your brand while we handle the vertical specifics.
 
 This guide covers what's specific about orthodontic SEO: the Invisalign-versus-braces keyword split, the parent-as-decision-maker dynamic for pediatric patients, and the consultation-driven conversion model that shapes how the entire site needs to be built.
 
@@ -176,4 +176,4 @@ GBP and reviews run in parallel: profile fully built out, photos refreshed quart
 
 The biggest unlocks we usually find on a new orthodontic client: real per-treatment hub pages instead of one thin services page, honest cost content that captures the enormous Invisalign-cost search volume, and a review collection process that turns existing patient satisfaction into actual public reviews.
 
-If you run an orthodontic practice and you're losing consultations to a competitor who's outranking you in the local pack, [get in touch](/tools/free-seo-audit/) and we'll walk through what's actually holding the rankings back.
+If you've got an orthodontic client losing consultations to a competitor who's outranking them in the local pack, [run a free discovery with us](/partner-package/) and we'll walk through what's actually holding the rankings back, then deliver the fix under your brand.

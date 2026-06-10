@@ -9,11 +9,11 @@ featured: false
 draft: false
 ---
 
-Home builder SEO is not the same as home services SEO, even though both categories often get lumped together. A homeowner searching for a plumber is buying within days. A buyer searching for a custom home builder is in a research process that lasts six months to two years before they sign a contract. The keyword universe is different, the content needs are different, and the conversion path is different.
+Home builder SEO is not the same as home services SEO, even though both categories often get lumped together, and the difference is exactly why an agency with a builder client should treat this as its own program. A homeowner searching for a plumber is buying within days. A buyer searching for a custom home builder is in a research process that lasts six months to two years before they sign a contract. The keyword universe is different, the content needs are different, and the conversion path is different.
 
 Project values are also different. A custom home contract runs $400,000 to several million. A production builder community sale runs $300,000 to $800,000. For context, the average construction cost of a single-family home in the [NAHB's 2024 cost-to-build study](https://www.nahb.org/news-and-economics/housing-economics-plus/special-studies/special-studies-pages/cost-of-constructing-a-home-in-2024) was $428,215, with an average sales price of $665,298. The economics justify a level of SEO investment that most home services categories can't match. The competition tends to be lower than the dollar value would suggest, because most home builder websites are slow, image-heavy, and content-thin.
 
-This guide is the framework we use with home builder clients, both custom and production. The general approach applies to either; the divergence points are called out where they matter.
+This guide is the framework we deliver for home builder clients under an agency's brand, both custom and production. The general approach applies to either; the divergence points are called out where they matter.
 
 ## Why home builder SEO is its own thing
 
@@ -149,4 +149,4 @@ Home builders are one of the categories where the work is patient and the payoff
 
 For builders working with brand-and-design agencies, we operate the SEO layer end-to-end. Most builder marketing focuses on the visual experience at the expense of the search architecture. Both can coexist, but it takes deliberate work to make them.
 
-If you're a builder watching competitors fill model homes faster than yours, or if your custom inquiries are skewing toward unqualified shoppers, [get in touch](/tools/free-seo-audit/) and we'll diagnose what the search work could actually deliver.
+If you've got a builder client watching competitors fill model homes faster, or whose custom inquiries are skewing toward unqualified shoppers, [run a free discovery with us](/partner-package/) and we'll diagnose what the search work could actually deliver, then run it under your brand.

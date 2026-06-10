@@ -8,11 +8,11 @@ summary: Legal SEO is one of the most competitive verticals in search. The frame
 featured: true
 ---
 
-Legal services is one of the toughest verticals in SEO. The PPC costs are some of the highest on the internet, the competition for organic visibility is brutal, and Google watches the category closely under its YMYL (Your Money or Your Life) framework, which raises the quality bar for both content and signals.
+Legal is one of the toughest verticals in SEO, and one of the most lucrative for an agency that can deliver in it. The PPC costs are some of the highest on the internet, the competition for organic visibility is brutal, and Google watches the category closely under its YMYL (Your Money or Your Life) framework, which raises the quality bar for both content and signals. For agencies, that difficulty is the point: it keeps the field thin and the retainers high. We run the legal SEO layer under your brand so you can take on law-firm clients without building the in-house expertise from scratch.
 
-This guide consolidates everything we've published on legal SEO into one framework. The general approach applies to any law firm. The practice-area sections cover the tactics that change when you're optimizing specifically for family law, immigration law, or personal injury.
+This guide consolidates everything we've published on legal SEO into one framework. The general approach applies to any law firm. The practice-area sections cover the tactics that change when the client is optimizing specifically for family law, immigration law, or personal injury.
 
-If you're a generalist firm, the first half is the playbook. If you're a niche practice, read the framework and then jump to the section that matches your area.
+If your client is a generalist firm, the first half is the playbook. If they're a niche practice, read the framework and then jump to the section that matches their area.
 
 ## Why legal SEO is hard
 
@@ -175,4 +175,4 @@ Legal is one of the verticals where our framework gets the most use. We've worke
 
 For partner agencies serving law firm clients, we operate the SEO layer end-to-end while the agency handles the firm relationship. Clean handoff, full transparency about tactics, no client confusion.
 
-If your firm is competing in a tough legal market and you're not sure where the leverage is, [get in touch](/tools/free-seo-audit/) and we'll diagnose what's actually holding rankings back.
+If you've got a law-firm client competing in a tough legal market and you're not sure where the leverage is, [run a free discovery with us](/partner-package/) and we'll diagnose what's actually holding the rankings back, then deliver the fix under your brand.

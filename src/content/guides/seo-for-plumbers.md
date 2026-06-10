@@ -8,7 +8,7 @@ summary: Plumbing is one of the most competitive local-search verticals. The arc
 featured: true
 ---
 
-Plumbing SEO isn't won by the agency with the most blog posts. It's won by the one that understands service-area architecture, Google Business Profile optimization, and the way plumbing customers actually search. The vertical is competitive in almost every market, the conversion economics are favorable, and the gap between strong and weak SEO is the difference between a thriving company and a quiet phone.
+Plumbing SEO isn't won by the agency with the most blog posts. It's won by the one that understands service-area architecture, Google Business Profile optimization, and the way plumbing customers actually search. The vertical is competitive in almost every market, the conversion economics are favorable, and the gap between strong and weak SEO is the difference between a thriving client and a quiet phone. If you've got a plumbing client, this is the part we run for you, under your brand.
 
 This guide covers the framework we use on plumbing SEO campaigns. Architecture, keyword strategy, GBP, citations, reviews, link building, and the tactical layer that produces booked service calls.
 
@@ -228,4 +228,4 @@ Plumbing is part of the broader [home services SEO hub](/industries/home-service
 
 For partner agencies serving plumbing clients, we operate the SEO layer end-to-end while the agency manages the contractor relationship.
 
-If you have a plumbing client and want a tailored take on the campaign, [get in touch](/tools/free-seo-audit/) and we'll walk through the approach.
+If you have a plumbing client and want a tailored take on the campaign, run a [free discovery](/partner-package/) and we'll show you exactly what's holding the rankings back, then deliver the fix under your brand.

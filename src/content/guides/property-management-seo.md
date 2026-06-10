@@ -8,9 +8,9 @@ summary: "Property management SEO has to serve two audiences at once: owners loo
 featured: true
 ---
 
-Property management is a dual-audience business. Owners search for management services. Tenants search for places to rent. Most property management websites serve one audience well and the other badly, which leaves leads on the table.
+Property management is a dual-audience business, and that is exactly what makes it a hard vertical for an agency to handle alone and a profitable one to get right. Owners search for management services. Tenants search for places to rent. Most property management websites serve one audience well and the other badly, which leaves leads on the table.
 
-This guide covers the SEO framework for property management companies, the structural decisions that let one site serve both audiences without compromising either, and the specific tactics that work for apartment communities and multi-family residential properties.
+This guide covers the SEO framework we deliver for property management clients under an agency's brand, the structural decisions that let one site serve both audiences without compromising either, and the specific tactics that work for apartment communities and multi-family residential properties.
 
 ## The dual-audience problem
 
@@ -194,4 +194,4 @@ Property management campaigns are some of the more structurally interesting SEO 
 
 For partner agencies serving property management clients, we operate the SEO layer while the agency handles client relationships. The dual-audience content strategy is one of the things we get asked about most, and we have templates for both owner-side and tenant-side page architectures we can adapt.
 
-If you're running a property management or apartment community site and not sure why SEO isn't producing results, [get in touch](/tools/free-seo-audit/) and we'll diagnose where the structure or content is breaking down.
+If you've got a property management or apartment community client and you're not sure why their SEO isn't producing results, [run a free discovery with us](/partner-package/) and we'll diagnose where the structure or content is breaking down, then deliver the fix under your brand.

@@ -8,7 +8,7 @@ featured: false
 draft: false
 ---
 
-Roofing search splits into two very different searchers who rarely overlap. One has water coming through a ceiling during a storm and needs a tarp on the roof today. The other has been told by an insurer or a neighbor that a fifteen-year-old roof is on borrowed time, and spends two months comparing materials, costs, and contractors before anyone climbs a ladder. A roofing SEO program has to win both: the emergency that converts in minutes and the replacement that converts in weeks.
+Roofing search splits into two very different searchers who rarely overlap. One has water coming through a ceiling during a storm and needs a tarp on the roof today. The other has been told by an insurer or a neighbor that a fifteen-year-old roof is on borrowed time, and spends two months comparing materials, costs, and contractors before anyone climbs a ladder. A roofing SEO program has to win both: the emergency that converts in minutes and the replacement that converts in weeks. This is the breakdown we use when we run that program white-label for agencies whose clients are roofers.
 
 This guide is part of our broader [home services SEO](/industries/home-services/) coverage. The local-search framework that applies to [HVAC contractors](/industries/hvac/) and plumbers applies to roofers too, but the storm cycle, the size of the average ticket, and the role of insurance change the playbook enough to warrant its own breakdown.
 
@@ -182,4 +182,4 @@ The approach that consistently moves roofing campaigns is splitting the work int
 
 The biggest unlocks we usually find on a new roofing client: legitimate cost and material content where there was none, honest insurance and claims pages that build trust, real suburb pages instead of templated ones, storm-response content ready before the weather, call tracking that exposes which pages actually book inspections, and a GBP that is maintained instead of set up once and forgotten.
 
-If you are a roofing contractor stuck below the local pack or watching storm leads go to a competitor with a faster site, [get in touch](/tools/free-seo-audit/) and we will walk through what is specifically holding the rankings back.
+If you've got a roofing client stuck below the local pack or watching storm leads go to a competitor with a faster site, run a [free discovery](/partner-package/) and we will show you exactly what is holding the rankings back, then deliver the fix under your brand.

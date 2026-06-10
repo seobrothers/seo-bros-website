@@ -9,11 +9,11 @@ featured: false
 draft: false
 ---
 
-Medspa is one of the most saturated local categories in search. In any major metro, the local pack for "Botox near me" is a fight between physician-led aesthetics practices, dermatology offices running an aesthetics arm, day spas that added a nurse injector, and chains like Ideal Image. Layer on the aggregator real estate that RealSelf, Groupon, and Yelp occupy on the first page, and the organic ceiling for any single practice is lower than it looks.
+Medspa is one of the most saturated local categories in search, which makes it a hard vertical to win for an agency client and a profitable one once you do. In any major metro, the local pack for "Botox near me" is a fight between physician-led aesthetics practices, dermatology offices running an aesthetics arm, day spas that added a nurse injector, and chains like Ideal Image. Layer on the aggregator real estate that RealSelf, Groupon, and Yelp occupy on the first page, and the organic ceiling for any single practice is lower than it looks.
 
 The good news: most medspa websites are weak. They lean on stock photography, recycle manufacturer copy from Allergan and Galderma, and treat their service pages as brochure ware. A practice that takes the work seriously can outrank far more established competitors inside 12 months.
 
-This guide is the framework we use with medspa clients, with the specifics that change when you're optimizing around aesthetic injectables, laser, body contouring, and the medical-aesthetic crossover that defines a real medspa versus a beauty bar.
+This is the framework we run for agencies whose clients sit in this vertical, delivered white-label, with the specifics that change when you're optimizing around aesthetic injectables, laser, body contouring, and the medical-aesthetic crossover that defines a real medspa versus a beauty bar.
 
 ## Why medspa SEO has its own rules
 
@@ -177,4 +177,4 @@ A medspa SEO program that works has the same shape every time: a clean treatment
 
 The timeline is six to twelve months for visible compounding, faster if the local pack work is the starting point and the existing content is genuinely thin (which it usually is).
 
-If you're running a medspa or aesthetic practice and the local pack isn't showing your name where it should, [get in touch](/tools/free-seo-audit/) and we'll diagnose where the leverage actually is.
+If you've got a medspa or aesthetic client whose name isn't showing in the local pack where it should, [run a free discovery with us](/partner-package/) and we'll diagnose where the leverage actually is, then build it out under your brand.
