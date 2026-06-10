@@ -5,7 +5,11 @@ import Footer from "../components/Footer.astro";
 import CtaBanner from "../components/CtaBanner.astro";
 import {
   SEO_TIERS,
-  EXTRA_LOCATION,
+  REPORTING,
+  HEALTH,
+  STRATEGY,
+  strategyMonthly,
+  BACKLINK,
   EXTRA_BLOG,
   EXTRA_HOUR,
   HOSTING,
@@ -15,6 +19,19 @@ import {
 } from "../data/pricing";
 
 const tiers = SEO_TIERS;
+
+// À-la-carte rate card (the building blocks behind the packages, matching the
+// package builder on /partner-welcome/). Website builds render separately below.
+const rateCard = [
+  { name: REPORTING.label, value: usd(REPORTING.price), suffix: "/ mo", note: REPORTING.note, tag: "In every campaign" },
+  { name: HEALTH.label, value: usd(HEALTH.price), suffix: "/ mo", note: HEALTH.note, tag: "In every campaign" },
+  { name: STRATEGY.label, value: usd(STRATEGY.pricePerReview), suffix: "per review", note: `Cadence sets the monthly cost: semi-annual ${usd(strategyMonthly(2))}/mo, quarterly ${usd(strategyMonthly(4))}/mo, monthly ${usd(strategyMonthly(12))}/mo.` },
+  { name: "SEO Time", value: usd(EXTRA_HOUR.price), suffix: "/ hour, monthly", note: "Specialist time on the priority work. Local business? Budget about 2 hours per location each month." },
+  { name: "Content", value: usd(EXTRA_BLOG.price), suffix: "each, monthly", note: EXTRA_BLOG.note },
+  { name: BACKLINK.label, value: usd(BACKLINK.price), suffix: "each, monthly", note: BACKLINK.note },
+  { name: HOSTING.label, value: "from " + usd(HOSTING.price), suffix: "/ mo", note: HOSTING.note },
+  { name: MAINTENANCE.label, value: "from " + usd(MAINTENANCE.price), suffix: "/ mo", note: MAINTENANCE.note },
+];
 
 interface ComparisonRow {
   label: string;
@@ -419,12 +436,13 @@ const faqSchema = {
       <!-- ─── Websites & add-ons ─── -->
       <div class="addons" data-animate>
         <header class="addons__head">
-          <span class="section-label">Websites &amp; add-ons</span>
-          <h3 class="addons__title">The rest of the rate card</h3>
+          <span class="section-label">À la carte</span>
+          <h3 class="addons__title">The full rate card</h3>
           <p class="addons__subtitle">
-            Wholesale prices for website builds and the recurring extras that
-            sit alongside a campaign. Same deal as the SEO packages: these are
-            what you pay us, and you mark them up to your client.
+            The building blocks behind the packages. Every campaign includes
+            reporting and a health score; strategy, SEO Time, content, and links
+            scale to the plan. Build any mix you want. These are wholesale prices
+            you pay us and mark up to your client.
           </p>
         </header>
 
@@ -456,50 +474,17 @@ const faqSchema = {
             <span class="addon__note">{WEB_BUILDS[1].blurb}</span>
           </a>
 
-          <div class="addon" data-animate>
-            <span class="addon__name">{HOSTING.label}</span>
-            <span class="addon__price">
-              <span class="addon__price-value">from {usd(HOSTING.price)}</span>
-              <span class="addon__price-suffix">/ mo</span>
-            </span>
-            <span class="addon__note">{HOSTING.note}</span>
-          </div>
-
-          <div class="addon" data-animate>
-            <span class="addon__name">{MAINTENANCE.label}</span>
-            <span class="addon__price">
-              <span class="addon__price-value">from {usd(MAINTENANCE.price)}</span>
-              <span class="addon__price-suffix">/ mo</span>
-            </span>
-            <span class="addon__note">{MAINTENANCE.note}</span>
-          </div>
-
-          <div class="addon" data-animate>
-            <span class="addon__name">{EXTRA_LOCATION.label}</span>
-            <span class="addon__price">
-              <span class="addon__price-value">+{usd(EXTRA_LOCATION.price)}</span>
-              <span class="addon__price-suffix">/ mo each</span>
-            </span>
-            <span class="addon__note">{EXTRA_LOCATION.note}</span>
-          </div>
-
-          <div class="addon" data-animate>
-            <span class="addon__name">{EXTRA_BLOG.label}</span>
-            <span class="addon__price">
-              <span class="addon__price-value">+{usd(EXTRA_BLOG.price)}</span>
-              <span class="addon__price-suffix">/ mo each</span>
-            </span>
-            <span class="addon__note">{EXTRA_BLOG.note}</span>
-          </div>
-
-          <div class="addon" data-animate>
-            <span class="addon__name">{EXTRA_HOUR.label}</span>
-            <span class="addon__price">
-              <span class="addon__price-value">+{usd(EXTRA_HOUR.price)}</span>
-              <span class="addon__price-suffix">/ mo per hour</span>
-            </span>
-            <span class="addon__note">{EXTRA_HOUR.note}</span>
-          </div>
+          {rateCard.map((item) => (
+            <div class="addon" data-animate>
+              {item.tag && <span class="addon__badge">{item.tag}</span>}
+              <span class="addon__name">{item.name}</span>
+              <span class="addon__price">
+                <span class="addon__price-value">{item.value}</span>
+                <span class="addon__price-suffix">{item.suffix}</span>
+              </span>
+              <span class="addon__note">{item.note}</span>
+            </div>
+          ))}
         </div>
 
         <p class="addons__footnote">
