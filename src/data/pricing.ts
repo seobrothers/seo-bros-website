@@ -61,9 +61,9 @@ export const SEO_TIERS: SeoTier[] = [
 
 /** Monthly add-ons (recurring). */
 export const EXTRA_LOCATION = {
-  label: "Extra Maps location",
+  label: "Location work",
   price: 60,
-  note: "Each additional geographic target we concentrate map-ranking work on.",
+  note: "Per location, about an hour a month each: GBP updates, citation building, and local landing-page reviews.",
 };
 
 export const GBP_POSTING = {

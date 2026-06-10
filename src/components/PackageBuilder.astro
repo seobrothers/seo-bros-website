@@ -13,6 +13,7 @@ import {
   strategyMonthly,
   EXTRA_HOUR,
   EXTRA_BLOG,
+  EXTRA_LOCATION,
   BACKLINK,
   GBP_POSTING,
   HOSTING,
@@ -21,10 +22,15 @@ import {
   usd,
 } from "../data/pricing";
 
-const lineItems = [
-  { id: "pb-hours", label: "SEO initiatives", unit: EXTRA_HOUR.price, suffix: "per hour", noun: "hours", def: 3, note: "Time on the next most important thing for the site: geo pages, service-page support, on-page optimization. Local business? Budget one to two hours per location each month." },
+// On-site optimization + per-location local work.
+const workItems = [
+  { id: "pb-hours", label: "SEO initiatives", unit: EXTRA_HOUR.price, suffix: "per hour", noun: "hours", def: 3, note: "Time on the next most important thing for the site: geo pages, service-page support, on-page optimization." },
+  { id: "pb-locations", label: EXTRA_LOCATION.label, unit: EXTRA_LOCATION.price, suffix: "each", noun: "locations", def: 0, note: EXTRA_LOCATION.note },
+];
+// The authority-and-freshness levers: content + links.
+const authorityItems = [
   { id: "pb-content", label: "Authority content", unit: EXTRA_BLOG.price, suffix: "each", noun: "pieces", def: 1, note: "Built for freshness and topical authority. Usually one, sometimes two a month depending on site size." },
-  { id: "pb-links", label: "Backlinks", unit: BACKLINK.price, suffix: "each", noun: "links", def: 2 },
+  { id: "pb-links", label: "Backlinks", unit: BACKLINK.price, suffix: "each", noun: "links", def: 2, note: BACKLINK.note },
 ];
 ---
 
@@ -68,9 +74,9 @@ const lineItems = [
       </fieldset>
 
       <fieldset class="pb__group">
-        <legend class="pb__legend">Build the work</legend>
+        <legend class="pb__legend">On-site &amp; local</legend>
         <div class="pb__steppers">
-          {lineItems.map((s) => (
+          {workItems.map((s) => (
             <div class="pb__stepper-wrap">
               <div class="pb__stepper-row">
                 <div class="pb__stepper-meta">
@@ -79,16 +85,7 @@ const lineItems = [
                 </div>
                 <div class="pb__stepper">
                   <button type="button" class="pb__step" data-step="-1" aria-label={`Fewer ${s.noun}`}>&minus;</button>
-                  <input
-                    type="number"
-                    id={s.id}
-                    class="pb__num"
-                    min="0"
-                    max="80"
-                    value={s.def}
-                    data-monthly-unit={s.unit}
-                    aria-label={s.label}
-                  />
+                  <input type="number" id={s.id} class="pb__num" min="0" max="80" value={s.def} data-monthly-unit={s.unit} aria-label={s.label} />
                   <button type="button" class="pb__step" data-step="1" aria-label={`More ${s.noun}`}>+</button>
                 </div>
               </div>
@@ -96,6 +93,29 @@ const lineItems = [
             </div>
           ))}
         </div>
+      </fieldset>
+
+      <fieldset class="pb__group">
+        <legend class="pb__legend">Authority &amp; freshness</legend>
+        <div class="pb__steppers">
+          {authorityItems.map((s) => (
+            <div class="pb__stepper-wrap">
+              <div class="pb__stepper-row">
+                <div class="pb__stepper-meta">
+                  <span class="pb__stepper-label">{s.label}</span>
+                  <span class="pb__stepper-note">{usd(s.unit)}/mo {s.suffix}</span>
+                </div>
+                <div class="pb__stepper">
+                  <button type="button" class="pb__step" data-step="-1" aria-label={`Fewer ${s.noun}`}>&minus;</button>
+                  <input type="number" id={s.id} class="pb__num" min="0" max="80" value={s.def} data-monthly-unit={s.unit} aria-label={s.label} />
+                  <button type="button" class="pb__step" data-step="1" aria-label={`More ${s.noun}`}>+</button>
+                </div>
+              </div>
+              {s.note && <p class="pb__note">{s.note}</p>}
+            </div>
+          ))}
+        </div>
+        <p class="pb__hint">Content and backlinks work together: fresh, authoritative signals in your client's space.</p>
       </fieldset>
 
       <fieldset class="pb__group">
@@ -254,6 +274,7 @@ const lineItems = [
       }
       const numLabels: Record<string, string> = {
         "pb-hours": "SEO initiatives (hours/mo)",
+        "pb-locations": "Location work (locations)",
         "pb-content": "Authority content/mo",
         "pb-links": "Backlinks/mo",
       };
