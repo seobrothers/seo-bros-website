@@ -66,6 +66,12 @@ export const EXTRA_LOCATION = {
   note: "Each additional geographic target we concentrate map-ranking work on.",
 };
 
+export const GBP_POSTING = {
+  label: "GBP posting",
+  price: 100,
+  note: "Google Business Profile posting across the whole campaign, any number of locations. Highly recommended for local SEO.",
+};
+
 export const HOSTING = {
   label: "Managed hosting",
   price: 25,

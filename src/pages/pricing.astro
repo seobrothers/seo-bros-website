@@ -12,6 +12,7 @@ import {
   BACKLINK,
   EXTRA_BLOG,
   EXTRA_HOUR,
+  GBP_POSTING,
   HOSTING,
   MAINTENANCE,
   WEB_BUILDS,
@@ -26,9 +27,10 @@ const rateCard = [
   { name: REPORTING.label, value: usd(REPORTING.price), suffix: "/ mo", note: REPORTING.note, tag: "In every campaign" },
   { name: HEALTH.label, value: usd(HEALTH.price), suffix: "/ mo", note: HEALTH.note, tag: "In every campaign" },
   { name: STRATEGY.label, value: usd(STRATEGY.pricePerReview), suffix: "per review", note: `Cadence sets the monthly cost: semi-annual ${usd(strategyMonthly(2))}/mo, quarterly ${usd(strategyMonthly(4))}/mo, monthly ${usd(strategyMonthly(12))}/mo.` },
-  { name: "SEO Time", value: usd(EXTRA_HOUR.price), suffix: "/ hour, monthly", note: "Specialist time on the priority work. Local business? Budget about 2 hours per location each month." },
-  { name: "Content", value: usd(EXTRA_BLOG.price), suffix: "each, monthly", note: EXTRA_BLOG.note },
+  { name: "SEO initiatives", value: usd(EXTRA_HOUR.price), suffix: "/ hour, monthly", note: "Time on the next most important thing for the site: geo pages, service-page support, on-page optimization. Local business? Budget one to two hours per location each month." },
+  { name: "Authority content", value: usd(EXTRA_BLOG.price), suffix: "each, monthly", note: "Built for freshness and topical authority. Usually one, sometimes two a month depending on site size." },
   { name: BACKLINK.label, value: usd(BACKLINK.price), suffix: "each, monthly", note: BACKLINK.note },
+  { name: GBP_POSTING.label, value: usd(GBP_POSTING.price), suffix: "/ mo", note: GBP_POSTING.note, tag: "Recommended for local" },
   { name: HOSTING.label, value: "from " + usd(HOSTING.price), suffix: "/ mo", note: HOSTING.note },
   { name: MAINTENANCE.label, value: "from " + usd(MAINTENANCE.price), suffix: "/ mo", note: MAINTENANCE.note },
 ];
@@ -64,11 +66,11 @@ const comparison: ComparisonRow[] = [
     values: ["Semi-annually", "Quarterly", "Monthly"],
   },
   {
-    label: "SEO Time per month",
+    label: "SEO initiatives per month",
     values: ["1.5 hours", "3.5 hours", "5.5 hours"],
   },
   {
-    label: "New content per month",
+    label: "Authority content per month",
     values: ["0", "1", "2"],
   },
 ];
@@ -104,12 +106,12 @@ const definitions: Definition[] = [
     body: "The search intents we're actively working to rank for this cycle, set at each strategic review. Each intent maps to whichever page is best positioned to win it (sometimes the page you'd expect, sometimes a different one we surface during planning). Intents can be organic ('invisalign halifax') or map-based ('dentist in halifax'). Strategic review cadence determines re-setting: semi-annually on Tiny, quarterly on Typical, monthly on Turbo.",
   },
   {
-    term: "SEO Time",
-    body: "Flexible specialist time set aside each month and directed at the work that moves the active Priority Intents forward: on-page improvements, schema rollouts, content tune-ups, optimizations to whichever pages best serve each intent, and ongoing technical fixes. Tiny gets 1.5 hours, Typical 3.5, Turbo 5.5.",
+    term: "SEO initiatives",
+    body: "Specialist time set aside each month and directed at the next most important thing for the site: geo and location pages, service-page support, on-page optimization, schema, and technical fixes. It is a time allocation, not loose 'flex' hours. Tiny gets 1.5 hours, Typical 3.5, Turbo 5.5, and you can add more at $60 per hour.",
   },
   {
-    term: "Content",
-    body: "A new blog post or geo / location page written, optimized, and published. Available à la carte from $120 per piece for any tier.",
+    term: "Authority content",
+    body: "A blog or authority piece written, optimized, and published to keep the site fresh and build topical authority in the space. You usually only need one, sometimes two a month depending on the size of the site. $120 per piece. (Geo and location pages fall under SEO initiatives, not content.)",
   },
 ];
 
@@ -419,15 +421,15 @@ const faqSchema = {
         </div>
         <ul class="cadence__examples">
           <li>
-            <span class="cadence__example-label">Blog every other month</span>
+            <span class="cadence__example-label">Authority content every other month</span>
             <span class="cadence__example-price">From $60 / mo</span>
           </li>
           <li>
-            <span class="cadence__example-label">Extra Local Maps focus location</span>
-            <span class="cadence__example-price">From $60 / mo each</span>
+            <span class="cadence__example-label">GBP posting, any number of locations</span>
+            <span class="cadence__example-price">$100 / mo</span>
           </li>
           <li>
-            <span class="cadence__example-label">Custom backlink or SEO Time hours</span>
+            <span class="cadence__example-label">Custom backlink or initiative hours</span>
             <span class="cadence__example-price">Scoped during discovery</span>
           </li>
         </ul>
@@ -440,9 +442,9 @@ const faqSchema = {
           <h3 class="addons__title">The full rate card</h3>
           <p class="addons__subtitle">
             The building blocks behind the packages. Every campaign includes
-            reporting and a health score; strategy, SEO Time, content, and links
-            scale to the plan. Build any mix you want. These are wholesale prices
-            you pay us and mark up to your client.
+            reporting and a health score; strategy, SEO initiatives, authority
+            content, and links scale to the plan. Build any mix you want. These
+            are wholesale prices you pay us and mark up to your client.
           </p>
         </header>
 

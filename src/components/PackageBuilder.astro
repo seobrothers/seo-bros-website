@@ -14,6 +14,7 @@ import {
   EXTRA_HOUR,
   EXTRA_BLOG,
   BACKLINK,
+  GBP_POSTING,
   HOSTING,
   MAINTENANCE,
   WEB_BUILDS,
@@ -21,8 +22,8 @@ import {
 } from "../data/pricing";
 
 const lineItems = [
-  { id: "pb-hours", label: "SEO Time", unit: EXTRA_HOUR.price, suffix: "per hour", noun: "hours", def: 3, note: "Local business? Budget about 2 hours per location each month so every market gets attention." },
-  { id: "pb-content", label: "Content", unit: EXTRA_BLOG.price, suffix: "each", noun: "pieces", def: 1 },
+  { id: "pb-hours", label: "SEO initiatives", unit: EXTRA_HOUR.price, suffix: "per hour", noun: "hours", def: 3, note: "Time on the next most important thing for the site: geo pages, service-page support, on-page optimization. Local business? Budget one to two hours per location each month." },
+  { id: "pb-content", label: "Authority content", unit: EXTRA_BLOG.price, suffix: "each", noun: "pieces", def: 1, note: "Built for freshness and topical authority. Usually one, sometimes two a month depending on site size." },
   { id: "pb-links", label: "Backlinks", unit: BACKLINK.price, suffix: "each", noun: "links", def: 2 },
 ];
 ---
@@ -120,6 +121,11 @@ const lineItems = [
         <legend class="pb__legend">Recurring add-ons</legend>
         <div class="pb__toggles">
           <label class="pb__toggle">
+            <input type="checkbox" id="pb-gbp" data-monthly={GBP_POSTING.price} />
+            <span class="pb__toggle-name">{GBP_POSTING.label} <span class="pb__toggle-rec">Recommended</span></span>
+            <span class="pb__toggle-price">+{usd(GBP_POSTING.price)}/mo</span>
+          </label>
+          <label class="pb__toggle">
             <input type="checkbox" id="pb-hosting" data-monthly={HOSTING.price} />
             <span class="pb__toggle-name">{HOSTING.label}</span>
             <span class="pb__toggle-price">+{usd(HOSTING.price)}/mo</span>
@@ -130,6 +136,7 @@ const lineItems = [
             <span class="pb__toggle-price">+{usd(MAINTENANCE.price)}/mo</span>
           </label>
         </div>
+        <p class="pb__hint">GBP posting is highly recommended for local SEO. One flat price, any number of locations.</p>
       </fieldset>
 
       <fieldset class="pb__group">
@@ -246,8 +253,8 @@ const lineItems = [
         if (label) lines.push(`Strategy reviews: ${label}`);
       }
       const numLabels: Record<string, string> = {
-        "pb-hours": "SEO Time (hours/mo)",
-        "pb-content": "Content pieces/mo",
+        "pb-hours": "SEO initiatives (hours/mo)",
+        "pb-content": "Authority content/mo",
         "pb-links": "Backlinks/mo",
       };
       Object.keys(numLabels).forEach((id) => {
@@ -259,6 +266,7 @@ const lineItems = [
         const wl = web.closest(".pb__opt")?.querySelector(".pb__opt-name")?.textContent?.trim();
         if (wl) lines.push(`Website: ${wl}`);
       }
+      if (($("pb-gbp") as HTMLInputElement | null)?.checked) lines.push("GBP posting: yes");
       if (($("pb-hosting") as HTMLInputElement | null)?.checked) lines.push("Managed hosting: yes");
       if (($("pb-maint") as HTMLInputElement | null)?.checked) lines.push("Website maintenance: yes");
 
@@ -407,6 +415,11 @@ const lineItems = [
   .pb__toggle:has(input:checked) { border-color: var(--teal); background: rgba(40, 165, 177, 0.06); }
   .pb__toggle input { width: 18px; height: 18px; accent-color: var(--teal); flex-shrink: 0; }
   .pb__toggle-name { font-weight: 600; font-size: 14px; color: var(--text-primary); flex-grow: 1; }
+  .pb__toggle-rec {
+    display: inline-block; margin-left: 6px; font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.04em; text-transform: uppercase; color: var(--green);
+    background: rgba(68,185,123,0.14); padding: 2px 7px; border-radius: var(--radius-full); vertical-align: middle;
+  }
   .pb__toggle-price { font-size: 13px; color: var(--text-muted); }
 
   .pb__range { width: 100%; accent-color: var(--teal); }
