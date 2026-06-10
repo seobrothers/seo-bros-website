@@ -1,72 +1,97 @@
 ---
-// Build Your Package — interactive white-label cost calculator. An agency picks
-// an SEO tier, extra Maps locations, a website build, hosting, and maintenance,
-// then a markup slider shows their cost vs a suggested client resale price.
-// All prices come from src/data/pricing.ts (single source of truth). Pure
-// vanilla JS: each input carries data-monthly / data-onetime, the script sums
-// the selected ones and applies the markup. No framework.
+// Build Your Package — à-la-carte white-label cost calculator. No preset tier:
+// every line is a variable the agency dials up, down, or to zero. A flat managed
+// base (reporting + health score) is always included; strategy is a cadence;
+// SEO Time, content, and backlinks are steppers. A markup/resale-multiple slider
+// shows wholesale cost vs suggested client resale. All prices come from
+// src/data/pricing.ts. Pure vanilla JS: data-base on the root + data-monthly /
+// data-monthly-unit / data-onetime on inputs; the script sums them.
 import {
-  SEO_TIERS,
-  EXTRA_LOCATION,
-  EXTRA_BLOG,
+  MANAGED_INCLUDED,
+  MANAGED_BASE_TOTAL,
+  STRATEGY,
+  strategyMonthly,
   EXTRA_HOUR,
+  EXTRA_BLOG,
+  BACKLINK,
   HOSTING,
   MAINTENANCE,
   WEB_BUILDS,
   usd,
 } from "../data/pricing";
+
+const lineItems = [
+  { id: "pb-hours", label: "SEO Time", unit: EXTRA_HOUR.price, suffix: "per hour", noun: "hours", def: 3, note: "Local business? Budget about 2 hours per location each month so every market gets attention." },
+  { id: "pb-content", label: "Content", unit: EXTRA_BLOG.price, suffix: "each", noun: "pieces", def: 1 },
+  { id: "pb-links", label: "Backlinks", unit: BACKLINK.price, suffix: "each", noun: "links", def: 2 },
+];
 ---
 
-<div class="pb" id="package-builder">
+<div class="pb" id="package-builder" data-base={MANAGED_BASE_TOTAL}>
   <div class="pb__grid">
     <!-- ─────────── CONTROLS ─────────── -->
     <div class="pb__controls">
       <fieldset class="pb__group">
-        <legend class="pb__legend">White-label SEO</legend>
+        <legend class="pb__legend">Included with every managed campaign</legend>
+        {MANAGED_INCLUDED.map((item) => (
+          <div class="pb__base">
+            <div>
+              <span class="pb__base-name">{item.label}</span>
+              <span class="pb__base-note">{item.note}</span>
+            </div>
+            <span class="pb__base-price">{usd(item.price)}/mo</span>
+          </div>
+        ))}
+      </fieldset>
+
+      <fieldset class="pb__group">
+        <legend class="pb__legend">{STRATEGY.label}</legend>
         <div class="pb__options">
-          <label class="pb__opt">
-            <input type="radio" name="pb-seo" value="none" data-monthly="0" checked />
-            <span class="pb__opt-body"><span class="pb__opt-name">No SEO</span><span class="pb__opt-price">$0</span></span>
-          </label>
-          {SEO_TIERS.map((t) => (
+          {STRATEGY.cadences.map((c) => (
             <label class="pb__opt">
-              <input type="radio" name="pb-seo" value={t.id} data-monthly={t.price} />
+              <input
+                type="radio"
+                name="pb-strategy"
+                value={c.id}
+                data-monthly={strategyMonthly(c.perYear)}
+                checked={c.id === "quarterly"}
+              />
               <span class="pb__opt-body">
-                <span class="pb__opt-name">{t.name}</span>
-                <span class="pb__opt-price">{usd(t.price)}/mo</span>
+                <span class="pb__opt-name">{c.label}</span>
+                <span class="pb__opt-price">{usd(strategyMonthly(c.perYear))}/mo</span>
               </span>
             </label>
           ))}
         </div>
+        <p class="pb__hint">{STRATEGY.note} ({usd(STRATEGY.pricePerReview)} per review.)</p>
       </fieldset>
 
       <fieldset class="pb__group">
-        <legend class="pb__legend">Scale it up (monthly)</legend>
+        <legend class="pb__legend">Build the work</legend>
         <div class="pb__steppers">
-          {[
-            { id: "pb-locations", label: EXTRA_LOCATION.label, unit: EXTRA_LOCATION.price, suffix: "each" },
-            { id: "pb-blogs", label: EXTRA_BLOG.label, unit: EXTRA_BLOG.price, suffix: "each" },
-            { id: "pb-hours", label: EXTRA_HOUR.label, unit: EXTRA_HOUR.price, suffix: "per hour" },
-          ].map((s) => (
-            <div class="pb__stepper-row">
-              <div class="pb__stepper-meta">
-                <span class="pb__stepper-label">{s.label}</span>
-                <span class="pb__stepper-note">{usd(s.unit)}/mo {s.suffix}</span>
+          {lineItems.map((s) => (
+            <div class="pb__stepper-wrap">
+              <div class="pb__stepper-row">
+                <div class="pb__stepper-meta">
+                  <span class="pb__stepper-label">{s.label}</span>
+                  <span class="pb__stepper-note">{usd(s.unit)}/mo {s.suffix}</span>
+                </div>
+                <div class="pb__stepper">
+                  <button type="button" class="pb__step" data-step="-1" aria-label={`Fewer ${s.noun}`}>&minus;</button>
+                  <input
+                    type="number"
+                    id={s.id}
+                    class="pb__num"
+                    min="0"
+                    max="80"
+                    value={s.def}
+                    data-monthly-unit={s.unit}
+                    aria-label={s.label}
+                  />
+                  <button type="button" class="pb__step" data-step="1" aria-label={`More ${s.noun}`}>+</button>
+                </div>
               </div>
-              <div class="pb__stepper">
-                <button type="button" class="pb__step" data-step="-1" aria-label={`Fewer ${s.label}`}>&minus;</button>
-                <input
-                  type="number"
-                  id={s.id}
-                  class="pb__num"
-                  min="0"
-                  max="50"
-                  value="0"
-                  data-monthly-unit={s.unit}
-                  aria-label={s.label}
-                />
-                <button type="button" class="pb__step" data-step="1" aria-label={`More ${s.label}`}>+</button>
-              </div>
+              {s.note && <p class="pb__note">{s.note}</p>}
             </div>
           ))}
         </div>
@@ -145,7 +170,7 @@ import {
       </div>
 
       <a href="#discovery-form" id="pb-quote" class="btn btn-primary pb__cta">Request a quote on this scope</a>
-      <p class="pb__disclaimer">Wholesale prices you pay us. Final scope is confirmed on your discovery. Hosting and maintenance start at the rates shown.</p>
+      <p class="pb__disclaimer">Wholesale prices you pay us. Build it your way: every line adjusts, and you can take any to zero. Final scope is confirmed on your discovery.</p>
     </aside>
   </div>
 </div>
@@ -156,12 +181,12 @@ import {
     const $ = (id: string) => document.getElementById(id) as HTMLElement | null;
     const money = (n: number) => "$" + Math.round(n).toLocaleString("en-US");
     const markup = $("pb-markup") as HTMLInputElement | null;
+    const base = Number(root.dataset.base || 0);
 
     function recalc() {
-      let monthly = 0;
+      let monthly = base;
       let onetime = 0;
 
-      // Radios + checkboxes that carry data-monthly / data-onetime.
       root!
         .querySelectorAll<HTMLInputElement>("input[data-monthly]")
         .forEach((el) => {
@@ -174,17 +199,14 @@ import {
         .forEach((el) => {
           if (el.checked) onetime += Number(el.dataset.onetime || 0);
         });
-
-      // Number steppers (locations, blogs, hours): count x per-unit monthly price.
       root!
         .querySelectorAll<HTMLInputElement>(".pb__num")
         .forEach((el) => {
-          const n = Math.max(0, Math.min(50, Number(el.value) || 0));
+          const n = Math.max(0, Math.min(80, Number(el.value) || 0));
           monthly += n * Number(el.dataset.monthlyUnit || 0);
         });
 
       const mult = markup ? Number(markup.value) || 1 : 1;
-
       const setText = (id: string, html: string) => {
         const el = $(id);
         if (el) el.innerHTML = html;
@@ -198,7 +220,6 @@ import {
       setText("pb-margin", money(monthly * mult - monthly) + "/mo");
     }
 
-    // Stepper buttons: adjust the number input within the same stepper.
     root.querySelectorAll<HTMLButtonElement>(".pb__step").forEach((btn) => {
       btn.addEventListener("click", () => {
         const input = btn
@@ -206,7 +227,7 @@ import {
           ?.querySelector<HTMLInputElement>(".pb__num");
         if (!input) return;
         const cur = Number(input.value) || 0;
-        const next = Math.max(0, Math.min(50, cur + Number(btn.dataset.step || 0)));
+        const next = Math.max(0, Math.min(80, cur + Number(btn.dataset.step || 0)));
         input.value = String(next);
         recalc();
       });
@@ -215,41 +236,37 @@ import {
     root.addEventListener("input", recalc);
     root.addEventListener("change", recalc);
 
-    // "Request a quote on this scope" → drop a readable summary of the current
-    // selection into the discovery form's notes field, then the anchor scrolls
-    // up to it. No-op (just scrolls) if the form isn't on the page.
+    // "Request a quote on this scope" → write a readable summary of the build
+    // into the discovery form's notes, then the anchor scrolls up to it.
     function buildSummary(): string {
       const lines: string[] = [];
-      const checkedName = (group: string) => {
-        const el = root!.querySelector<HTMLInputElement>(`input[name="${group}"]:checked`);
-        if (!el || el.value === "none") return null;
-        return el.closest(".pb__opt")?.querySelector(".pb__opt-name")?.textContent?.trim() || null;
-      };
-      const seo = checkedName("pb-seo");
-      if (seo) lines.push(`SEO plan: ${seo}`);
-      const web = checkedName("pb-web");
-      if (web) lines.push(`Website: ${web}`);
-
+      const strat = root!.querySelector<HTMLInputElement>('input[name="pb-strategy"]:checked');
+      if (strat) {
+        const label = strat.closest(".pb__opt")?.querySelector(".pb__opt-name")?.textContent?.trim();
+        if (label) lines.push(`Strategy reviews: ${label}`);
+      }
       const numLabels: Record<string, string> = {
-        "pb-locations": "Extra Maps locations",
-        "pb-blogs": "Extra blogs / month",
-        "pb-hours": "Extra SEO hours / month",
+        "pb-hours": "SEO Time (hours/mo)",
+        "pb-content": "Content pieces/mo",
+        "pb-links": "Backlinks/mo",
       };
       Object.keys(numLabels).forEach((id) => {
         const n = Number(($(id) as HTMLInputElement | null)?.value || 0);
         if (n > 0) lines.push(`${numLabels[id]}: ${n}`);
       });
-
+      const web = root!.querySelector<HTMLInputElement>('input[name="pb-web"]:checked');
+      if (web && web.value !== "none") {
+        const wl = web.closest(".pb__opt")?.querySelector(".pb__opt-name")?.textContent?.trim();
+        if (wl) lines.push(`Website: ${wl}`);
+      }
       if (($("pb-hosting") as HTMLInputElement | null)?.checked) lines.push("Managed hosting: yes");
       if (($("pb-maint") as HTMLInputElement | null)?.checked) lines.push("Website maintenance: yes");
-
-      if (lines.length === 0) return "I'd like a quote (still deciding on scope).";
 
       const mult = markup ? Number(markup.value) || 3 : 3;
       const monthly = $("pb-cost-monthly")?.textContent?.trim() || "";
       const onetime = $("pb-cost-onetime")?.textContent?.trim() || "";
       return (
-        "Here's the package I built:\n" +
+        "Here's the package I built (reporting & health score base included):\n" +
         lines.map((l) => "- " + l).join("\n") +
         `\n- Resale multiple: ${mult.toFixed(1)}x` +
         `\n\nEstimated wholesale: ${monthly}` +
@@ -316,243 +333,104 @@ import {
     color: var(--teal-dark);
   }
 
+  /* Always-included base line */
+  .pb__base {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 18px;
+    border: 1.5px dashed var(--border-light);
+    border-radius: var(--radius-md);
+    background: var(--light);
+  }
+  .pb__base + .pb__base { margin-top: 10px; }
+  .pb__base-name { display: block; font-family: var(--font-display); font-weight: 600; font-size: 15px; color: var(--text-primary); }
+  .pb__base-note { display: block; font-size: 13px; line-height: 1.5; color: var(--text-muted); margin-top: 2px; }
+  .pb__base-price { flex-shrink: 0; font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--text-primary); }
+
   .pb__options {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 10px;
   }
-  .pb__opt {
-    cursor: pointer;
-  }
-  .pb__opt input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-  }
+  .pb__opt { cursor: pointer; }
+  .pb__opt input { position: absolute; opacity: 0; pointer-events: none; }
   .pb__opt-body {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
+    display: flex; flex-direction: column; gap: 3px;
     padding: 12px 14px;
-    border: 1.5px solid var(--border-light);
-    border-radius: var(--radius-md);
+    border: 1.5px solid var(--border-light); border-radius: var(--radius-md);
     transition: all var(--transition);
   }
-  .pb__opt:hover .pb__opt-body {
-    border-color: var(--teal-light);
-  }
+  .pb__opt:hover .pb__opt-body { border-color: var(--teal-light); }
   .pb__opt input:checked + .pb__opt-body {
-    border-color: var(--teal);
-    background: rgba(40, 165, 177, 0.06);
+    border-color: var(--teal); background: rgba(40, 165, 177, 0.06);
     box-shadow: 0 0 0 3px rgba(40, 165, 177, 0.12);
   }
-  .pb__opt input:focus-visible + .pb__opt-body {
-    outline: 2px solid var(--teal);
-    outline-offset: 2px;
-  }
-  .pb__opt-name {
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--text-primary);
-  }
-  .pb__opt-price {
-    font-size: 13px;
-    color: var(--text-muted);
-  }
+  .pb__opt input:focus-visible + .pb__opt-body { outline: 2px solid var(--teal); outline-offset: 2px; }
+  .pb__opt-name { font-weight: 600; font-size: 14px; color: var(--text-primary); }
+  .pb__opt-price { font-size: 13px; color: var(--text-muted); }
 
-  .pb__steppers {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-  .pb__stepper-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-  }
-  .pb__stepper-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .pb__stepper-label {
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--text-primary);
-  }
-  .pb__stepper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+  .pb__steppers { display: flex; flex-direction: column; gap: 16px; }
+  .pb__stepper-wrap { display: flex; flex-direction: column; gap: 6px; }
+  .pb__stepper-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .pb__stepper-meta { display: flex; flex-direction: column; gap: 2px; }
+  .pb__stepper-label { font-weight: 600; font-size: 14px; color: var(--text-primary); }
+  .pb__stepper { display: flex; align-items: center; gap: 10px; }
   .pb__step {
-    width: 38px;
-    height: 38px;
-    border: 1.5px solid var(--border-light);
-    border-radius: var(--radius-md);
-    background: var(--white);
-    font-size: 20px;
-    line-height: 1;
-    color: var(--text-primary);
-    cursor: pointer;
-    transition: all var(--transition);
+    width: 38px; height: 38px;
+    border: 1.5px solid var(--border-light); border-radius: var(--radius-md);
+    background: var(--white); font-size: 20px; line-height: 1; color: var(--text-primary);
+    cursor: pointer; transition: all var(--transition); flex-shrink: 0;
   }
-  .pb__step:hover {
-    border-color: var(--teal);
-    color: var(--teal-dark);
-  }
+  .pb__step:hover { border-color: var(--teal); color: var(--teal-dark); }
   .pb__num {
-    width: 64px;
-    height: 38px;
-    text-align: center;
-    border: 1.5px solid var(--border-light);
-    border-radius: var(--radius-md);
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text-primary);
-    -moz-appearance: textfield;
+    width: 60px; height: 38px; text-align: center;
+    border: 1.5px solid var(--border-light); border-radius: var(--radius-md);
+    font-size: 15px; font-weight: 600; color: var(--text-primary); -moz-appearance: textfield;
   }
-  .pb__num::-webkit-outer-spin-button,
-  .pb__num::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  .pb__stepper-note {
-    font-size: 13px;
-    color: var(--text-muted);
+  .pb__num::-webkit-outer-spin-button, .pb__num::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .pb__stepper-note { font-size: 13px; color: var(--text-muted); }
+  .pb__note {
+    font-size: 12.5px; line-height: 1.5; color: var(--teal-dark);
+    background: rgba(40,165,177,0.07); border-radius: var(--radius-sm);
+    padding: 8px 10px; margin: 0;
   }
 
-  .pb__toggles {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+  .pb__toggles { display: flex; flex-direction: column; gap: 10px; }
   .pb__toggle {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 14px;
-    border: 1.5px solid var(--border-light);
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    transition: all var(--transition);
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 14px; border: 1.5px solid var(--border-light); border-radius: var(--radius-md);
+    cursor: pointer; transition: all var(--transition);
   }
-  .pb__toggle:hover {
-    border-color: var(--teal-light);
-  }
-  .pb__toggle:has(input:checked) {
-    border-color: var(--teal);
-    background: rgba(40, 165, 177, 0.06);
-  }
-  .pb__toggle input {
-    width: 18px;
-    height: 18px;
-    accent-color: var(--teal);
-    flex-shrink: 0;
-  }
-  .pb__toggle-name {
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--text-primary);
-    flex-grow: 1;
-  }
-  .pb__toggle-price {
-    font-size: 13px;
-    color: var(--text-muted);
-  }
+  .pb__toggle:hover { border-color: var(--teal-light); }
+  .pb__toggle:has(input:checked) { border-color: var(--teal); background: rgba(40, 165, 177, 0.06); }
+  .pb__toggle input { width: 18px; height: 18px; accent-color: var(--teal); flex-shrink: 0; }
+  .pb__toggle-name { font-weight: 600; font-size: 14px; color: var(--text-primary); flex-grow: 1; }
+  .pb__toggle-price { font-size: 13px; color: var(--text-muted); }
 
-  .pb__range {
-    width: 100%;
-    accent-color: var(--teal);
-  }
-  .pb__hint {
-    font-size: 13px;
-    line-height: 1.5;
-    color: var(--text-muted);
-    margin-top: 8px;
-  }
+  .pb__range { width: 100%; accent-color: var(--teal); }
+  .pb__hint { font-size: 13px; line-height: 1.5; color: var(--text-muted); margin-top: 8px; }
 
   /* Summary panel */
-  .pb__summary {
-    background: var(--dark);
-    color: var(--text-on-dark);
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-  }
+  .pb__summary { background: var(--dark); color: var(--text-on-dark); padding: 32px; display: flex; flex-direction: column; }
   .pb__summary-title {
-    font-family: var(--font-display);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-on-dark-muted);
-    margin-bottom: 14px;
+    font-family: var(--font-display); font-size: 13px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-on-dark-muted); margin-bottom: 14px;
   }
-  .pb__summary-title--resell {
-    color: var(--teal-light);
-    margin-top: 4px;
-  }
-  .pb__line {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 10px;
-    font-size: 14px;
-    color: var(--text-on-dark-muted);
-  }
-  .pb__amt {
-    font-family: var(--font-display);
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--text-on-dark);
-  }
-  .pb__amt small {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-on-dark-muted);
-  }
-  .pb__amt--resell {
-    color: var(--teal-light);
-  }
-  .pb__divider {
-    height: 1px;
-    background: rgba(255, 255, 255, 0.12);
-    margin: 18px 0;
-  }
-  .pb__profit {
-    margin-top: 18px;
-    padding: 12px 14px;
-    background: rgba(68, 185, 123, 0.14);
-    border-radius: var(--radius-md);
-    font-size: 13px;
-    color: var(--text-on-dark-muted);
-  }
-  .pb__profit strong {
-    color: var(--green);
-    font-size: 15px;
-  }
-  .pb__cta {
-    width: 100%;
-    justify-content: center;
-    margin-top: 22px;
-  }
-  .pb__disclaimer {
-    font-size: 11.5px;
-    line-height: 1.5;
-    color: var(--text-on-dark-muted);
-    opacity: 0.8;
-    margin-top: 14px;
-  }
+  .pb__summary-title--resell { color: var(--teal-light); margin-top: 4px; }
+  .pb__line { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 10px; font-size: 14px; color: var(--text-on-dark-muted); }
+  .pb__amt { font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--text-on-dark); }
+  .pb__amt small { font-size: 13px; font-weight: 500; color: var(--text-on-dark-muted); }
+  .pb__amt--resell { color: var(--teal-light); }
+  .pb__divider { height: 1px; background: rgba(255, 255, 255, 0.12); margin: 18px 0; }
+  .pb__profit { margin-top: 18px; padding: 12px 14px; background: rgba(68, 185, 123, 0.14); border-radius: var(--radius-md); font-size: 13px; color: var(--text-on-dark-muted); }
+  .pb__profit strong { color: var(--green); font-size: 15px; }
+  .pb__cta { width: 100%; justify-content: center; margin-top: 22px; }
+  .pb__disclaimer { font-size: 11.5px; line-height: 1.5; color: var(--text-on-dark-muted); opacity: 0.8; margin-top: 14px; }
 
   @media (max-width: 860px) {
-    .pb__grid {
-      grid-template-columns: 1fr;
-    }
-    .pb__summary {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
+    .pb__grid { grid-template-columns: 1fr; }
+    .pb__summary { border-top: 1px solid rgba(255, 255, 255, 0.1); }
   }
 </style>

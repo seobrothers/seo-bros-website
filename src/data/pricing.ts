@@ -81,9 +81,9 @@ export const MAINTENANCE = {
 };
 
 export const EXTRA_BLOG = {
-  label: "Extra blog post",
-  price: 95,
-  note: "An additional optimized blog post per month, on top of the plan's content.",
+  label: "Content (blog post)",
+  price: 120,
+  note: "An optimized blog post or content piece each month.",
 };
 
 export const EXTRA_HOUR = {
@@ -91,6 +91,50 @@ export const EXTRA_HOUR = {
   price: 60,
   note: "More specialist hours per month aimed at the priority work that moves rankings.",
 };
+
+// Line items for the à-la-carte package builder (src/components/PackageBuilder.astro).
+// Rates: SEO Time $60/hr (EXTRA_HOUR), content $120 (EXTRA_BLOG), backlinks $60.
+//
+// Every managed campaign includes a fixed base: reporting + a health/crawl score.
+// These are required by default (only dropped if a partner negotiates, e.g. they
+// run their own reporting), so the builder shows them as included, not toggleable.
+export const REPORTING = {
+  label: "Reporting dashboard",
+  price: 50,
+  note: "Live, client-facing reporting under your brand.",
+};
+export const HEALTH = {
+  label: "Health & crawl score",
+  price: 150,
+  note: "Monthly site health check and crawl score, plus the fixes it surfaces.",
+};
+/** Always-included managed-campaign base. Sums to $200/mo. */
+export const MANAGED_INCLUDED = [REPORTING, HEALTH];
+export const MANAGED_BASE_TOTAL = MANAGED_INCLUDED.reduce((s, i) => s + i.price, 0);
+
+export const BACKLINK = {
+  label: "Backlinks",
+  price: 60,
+  note: "Editorial links built each month from our publishing network.",
+};
+
+// Strategy reviews are billed per review ($300), so the chosen cadence sets the
+// monthly cost: semi-annual = $50/mo, quarterly = $100/mo, monthly = $300/mo.
+export const STRATEGY = {
+  label: "Strategy reviews",
+  pricePerReview: 300,
+  note: "A working session to set priorities and review performance, billed per review.",
+  cadences: [
+    { id: "semi", label: "Semi-annual", perYear: 2 },
+    { id: "quarterly", label: "Quarterly", perYear: 4 },
+    { id: "monthly", label: "Monthly", perYear: 12 },
+  ],
+};
+
+/** Monthly cost of a strategy cadence (perYear reviews x $300 / 12). */
+export function strategyMonthly(perYear: number): number {
+  return Math.round((STRATEGY.pricePerReview * perYear) / 12);
+}
 
 export interface WebBuild {
   id: "build" | "build-redesign";
