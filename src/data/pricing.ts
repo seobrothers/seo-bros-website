@@ -107,7 +107,7 @@ export const EXTRA_HOUR = {
 export const REPORTING = {
   label: "Reporting dashboard",
   price: 50,
-  note: "Live, client-facing reporting under your brand.",
+  note: "Live reporting in our Portal: what's next, what we're working on, and a work log of everything done. Show your client under your brand, or keep it internal.",
 };
 export const HEALTH = {
   label: "Health & crawl score",
