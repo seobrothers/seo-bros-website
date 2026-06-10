@@ -50,19 +50,22 @@ const { variant = "audit" } = Astro.props;
       </div>
     ) : (
       <div class="cta-content" data-animate>
-        <h2 class="cta-heading">Test Us On Your Next Account.</h2>
+        <h2 class="cta-heading">Let's grow your agency's revenue.</h2>
         <p class="cta-text">
           We've been a white-label SEO and website partner to agencies since
-          2015. Get the partner package, then put us to work: pricing, sample
-          reports, a free discovery audit, and a walkthrough of how we deliver
-          under your brand.
+          2015. Book a growth call and we'll walk through how we deliver under
+          your brand, or unlock the partner package to explore pricing, sample
+          reports, and a free discovery on your own time.
         </p>
-        <div class="cta-actions">
-          <a href="/partner-package/" class="btn btn-primary btn-lg">
-            Test Us
+        <div class="cta-actions cta-actions--dual">
+          <a href="/book-a-growth-call/" class="btn btn-primary btn-lg">
+            Book a Growth Call
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
+          </a>
+          <a href="/partner-package/" class="btn btn-outline btn-lg">
+            Unlock the Partner Package
           </a>
         </div>
         <div class="cta-meta">
@@ -172,6 +175,14 @@ const { variant = "audit" } = Astro.props;
 
   .cta-actions {
     margin-bottom: 28px;
+  }
+
+  .cta-actions--dual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
   }
 
   .btn-lg {
