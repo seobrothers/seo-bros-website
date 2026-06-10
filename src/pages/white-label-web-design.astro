@@ -2,21 +2,22 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import { WEB_BUILDS, HOSTING, MAINTENANCE, usd } from "../data/pricing";
 
 const valueProps = [
   {
     icon: "rocket",
     accent: "teal",
-    title: "Built on Astro",
+    title: "Lightning fast on Astro",
     description:
-      "Modern websites built on the Astro framework. Fast by default, clean markup, no bloated page builder dragging down load times. The kind of site that scores well and reads well.",
+      "Built on the Astro framework and engineered for Core Web Vitals. Pages load near-instantly, with clean markup and no bloated page builder dragging things down. Speed is the experience your client's visitors feel, and it's a Google ranking factor working in their favor.",
   },
   {
     icon: "cloud",
     accent: "green",
-    title: "Deployed on Cloudflare",
+    title: "Secure on Cloudflare's edge",
     description:
-      "Hosted on Cloudflare's global edge: secure, fast everywhere, and cheap to run. No managed-WordPress hosting bills, no plugin update treadmill, no surprise downtime when a host has a bad day.",
+      "Hosted on Cloudflare's secure global edge: DDoS protection, automatic SSL, and the same network that serves a huge slice of the internet. Fast everywhere, locked down by default, and cheap to run. No plugin update treadmill, no surprise downtime when a host has a bad day.",
   },
   {
     icon: "edit",
@@ -31,6 +32,30 @@ const valueProps = [
     title: "Resold under your brand",
     description:
       "We stay invisible. The site ships under your agency's name, you set the retail price, and you own the client relationship start to finish. We never contact your client.",
+  },
+];
+
+const buildPrice = usd(WEB_BUILDS[0].price);
+const redesignPrice = usd(WEB_BUILDS[1].price);
+const hostingPrice = "from " + usd(HOSTING.price) + "/mo";
+const maintenancePrice = usd(MAINTENANCE.price) + "/mo";
+
+const ongoing = [
+  {
+    icon: "cloud",
+    accent: "green",
+    title: HOSTING.label,
+    price: hostingPrice,
+    description:
+      "Fast, secure hosting on Cloudflare's edge, handled for you. SSL, uptime, and platform updates covered so the site stays quick and protected without anyone babysitting it. Bill it monthly under your brand.",
+  },
+  {
+    icon: "edit",
+    accent: "teal",
+    title: MAINTENANCE.label,
+    price: "from " + maintenancePrice,
+    description:
+      "Ongoing content edits, fixes, and small changes so the site never goes stale. A recurring line your agency resells, with the work staying invisible behind your name.",
   },
 ];
 
@@ -88,6 +113,11 @@ const faqs = [
       "It can, and it routinely does when redirects and on-page SEO are handled carelessly. That's exactly what the $2,500 tier protects against. We're an SEO company first, so we map the redirects and preserve search signals through the migration. If you don't need that protection, the $1,500 build is for sites where rankings aren't on the line.",
   },
   {
+    question: "Do you build from scratch or from templates?",
+    answer:
+      "We build on proven, battle-tested templates. That's deliberate: it keeps the site fast, consistent, and quick to ship, and it means the Core Web Vitals and security work is already done instead of reinvented on every project. If your agency already has a design or a look the client expects, we can closely mirror it. You get fast turnaround and flexibility, not a blank-page project that drags for months.",
+  },
+  {
     question: "How fast is turnaround?",
     answer:
       "It depends on scope and how quickly content and feedback come back, but a typical site lands in a few weeks. We'll give you a real timeline at kickoff once we see the page count and requirements. We won't promise a number we can't hit.",
@@ -110,7 +140,7 @@ const faqSchema = {
 
 <Layout
   title="White Label Web Design & Development for Agencies | SEO Brothers"
-  description="White label web design and development for agencies. Fast Astro websites on Cloudflare, editable by your clients via Emdash, resold under your brand. $1,500 builds, $2,500 with redesign-SEO protection."
+  description="White label web design and development for agencies. Lightning-fast Astro websites on Cloudflare's secure edge, editable by your clients via Emdash, resold under your brand. Builds from $1,500, plus managed hosting and maintenance."
   schema={faqSchema}
 >
   <Nav />
@@ -136,9 +166,10 @@ const faqSchema = {
       </h1>
 
       <p class="wd-hero-subtitle" data-animate>
-        Resell fast, modern websites under your own brand. We build on Astro,
-        deploy on Cloudflare, and hand your clients an editor they can actually
-        use. You set the price. We stay invisible.
+        Resell lightning-fast websites under your own brand. We build on Astro
+        for Core Web Vitals, host on Cloudflare's secure global edge, and hand
+        your clients an editor they can actually use. Speed and security baked
+        in, which is also the SEO story. You set the price. We stay invisible.
       </p>
 
       <div class="wd-hero-actions" data-animate>
@@ -213,8 +244,8 @@ const faqSchema = {
         </h2>
         <p class="section-subtext" style="margin:0 auto;">
           White label website design that doesn't fall apart six months after
-          launch. Fast to load, easy to edit, cheap to run, and branded as
-          yours.
+          launch. Lightning fast to load, secure by default, easy to edit, and
+          branded as yours.
         </p>
       </div>
 
@@ -253,6 +284,44 @@ const faqSchema = {
             </div>
           ))
         }
+      </div>
+
+      <div class="wd-ongoing" data-animate>
+        <div class="wd-ongoing-header">
+          <span class="section-label">Recurring Revenue</span>
+          <h3 class="wd-ongoing-heading">Ongoing White-Label Offerings</h3>
+          <p class="wd-ongoing-subtext">
+            The build is one-time. Hosting and maintenance are monthly, so the
+            website keeps paying your agency long after launch. Both ship under
+            your brand and bill at your markup.
+          </p>
+        </div>
+        <div class="wd-ongoing-grid">
+          {
+            ongoing.map((item) => (
+              <div class="wd-ongoing-card">
+                <div class={`wd-value-icon wd-value-icon--${item.accent}`}>
+                  {item.icon === "cloud" && (
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                    </svg>
+                  )}
+                  {item.icon === "edit" && (
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                    </svg>
+                  )}
+                </div>
+                <div class="wd-ongoing-card-head">
+                  <h4 class="wd-value-title">{item.title}</h4>
+                  <span class="wd-ongoing-price">{item.price}</span>
+                </div>
+                <p class="wd-value-desc">{item.description}</p>
+              </div>
+            ))
+          }
+        </div>
       </div>
     </div>
   </section>
@@ -342,8 +411,9 @@ const faqSchema = {
         </h2>
         <p class="section-subtext" style="margin:0 auto;">
           These are the white-label prices your agency pays. You mark up to your
-          client and keep the difference. Both tiers include the Astro build,
-          Cloudflare deployment, and Emdash so your client can edit the site.
+          client and keep the difference. Both build tiers include the Astro
+          build, Cloudflare hosting, and Emdash, with hosting and maintenance
+          available as recurring monthly lines.
         </p>
       </div>
 
@@ -358,14 +428,14 @@ const faqSchema = {
             </p>
           </div>
           <div class="wd-pricing-price">
-            <span class="wd-pricing-amount">$1,500</span>
+            <span class="wd-pricing-amount">{buildPrice}</span>
             <span class="wd-pricing-period">per build</span>
           </div>
           <ul class="wd-pricing-features">
-            <li>Built on the Astro framework</li>
-            <li>Deployed on Cloudflare's global edge</li>
+            <li>Built on Astro for Core Web Vitals</li>
+            <li>Hosted on Cloudflare's secure global edge</li>
             <li>Emdash CMS so clients edit their own content</li>
-            <li>Fast, secure, cheap to run</li>
+            <li>Lightning fast, secure, cheap to run</li>
             <li>Shipped under your brand</li>
             <li>No setup fee</li>
           </ul>
@@ -383,7 +453,7 @@ const faqSchema = {
             </p>
           </div>
           <div class="wd-pricing-price">
-            <span class="wd-pricing-amount">$2,500</span>
+            <span class="wd-pricing-amount">{redesignPrice}</span>
             <span class="wd-pricing-period">per build</span>
           </div>
           <ul class="wd-pricing-features">
@@ -395,6 +465,36 @@ const faqSchema = {
             <li>Launch monitored so rankings hold</li>
           </ul>
           <a href="/partner-package/" class="btn btn-primary wd-pricing-btn">Test Us</a>
+        </div>
+      </div>
+
+      <div class="wd-pricing-recurring" data-animate>
+        <h3 class="wd-pricing-recurring-title">Add recurring, monthly</h3>
+        <p class="wd-pricing-recurring-sub">
+          The build is one-time. These keep the site fast, secure, and current,
+          and keep billing your agency every month.
+        </p>
+        <div class="wd-pricing-rows">
+          <div class="wd-pricing-row">
+            <div class="wd-pricing-row-head">
+              <h4 class="wd-pricing-row-name">{HOSTING.label}</h4>
+              <span class="wd-pricing-row-price">{hostingPrice}</span>
+            </div>
+            <p class="wd-pricing-row-desc">
+              Fast, secure hosting on Cloudflare's edge. SSL, uptime, and
+              platform updates handled so the site stays quick and protected.
+            </p>
+          </div>
+          <div class="wd-pricing-row">
+            <div class="wd-pricing-row-head">
+              <h4 class="wd-pricing-row-name">{MAINTENANCE.label}</h4>
+              <span class="wd-pricing-row-price">from {maintenancePrice}</span>
+            </div>
+            <p class="wd-pricing-row-desc">
+              Ongoing content edits, fixes, and small changes so the site never
+              goes stale. Resold under your brand at your markup.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -785,6 +885,80 @@ const faqSchema = {
     }
   }
 
+  /* ===== ONGOING OFFERINGS ===== */
+  .wd-ongoing {
+    margin-top: 64px;
+    padding-top: 56px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .wd-ongoing-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 36px;
+  }
+
+  .wd-ongoing-header .section-label {
+    display: block;
+  }
+
+  .wd-ongoing-heading {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin: 8px 0 12px;
+  }
+
+  .wd-ongoing-subtext {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+
+  .wd-ongoing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .wd-ongoing-card {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .wd-ongoing-card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .wd-ongoing-card-head .wd-value-title {
+    margin-bottom: 0;
+  }
+
+  .wd-ongoing-price {
+    flex-shrink: 0;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--teal);
+  }
+
+  @media (max-width: 560px) {
+    .wd-ongoing-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   /* ===== PROCESS ===== */
   .wd-process {
     padding: 110px 0;
@@ -1097,6 +1271,82 @@ const faqSchema = {
 
   .wd-pricing-btn {
     width: 100%;
+  }
+
+  .wd-pricing-recurring {
+    max-width: 860px;
+    margin: 48px auto 0;
+    padding-top: 40px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .wd-pricing-recurring-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .wd-pricing-recurring-sub {
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto 28px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  .wd-pricing-rows {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .wd-pricing-row {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 22px 24px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .wd-pricing-row-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .wd-pricing-row-name {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .wd-pricing-row-price {
+    flex-shrink: 0;
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--teal);
+  }
+
+  .wd-pricing-row-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 760px) {
+    .wd-pricing-rows {
+      grid-template-columns: 1fr;
+    }
   }
 
   .wd-pricing-footnote {

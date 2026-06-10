@@ -3,55 +3,16 @@ import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import CtaBanner from "../components/CtaBanner.astro";
+import {
+  SEO_TIERS,
+  EXTRA_LOCATION,
+  HOSTING,
+  MAINTENANCE,
+  WEB_BUILDS,
+  usd,
+} from "../data/pricing";
 
-interface Tier {
-  name: string;
-  price: string;
-  blurb: string;
-  highlights: string[];
-  featured?: boolean;
-  accent: "teal" | "purple" | "green";
-}
-
-const tiers: Tier[] = [
-  {
-    name: "Tiny",
-    price: "$360",
-    blurb:
-      "Base-level managed campaign. Right for ultra-low-competition industries or sparsely-populated locations where steady fundamentals win.",
-    highlights: [
-      "Semi-annual strategy review",
-      "1 backlink + 1.5 hours of SEO Time each month",
-      "Best for low-competition local",
-    ],
-    accent: "teal",
-  },
-  {
-    name: "Typical",
-    price: "$680",
-    blurb:
-      "Our most-quoted package. Full-stack local SEO with content, links, Maps, and SEO Time directed at the Priority Intents that move the campaign.",
-    highlights: [
-      "Quarterly strategy + monthly content",
-      "2 backlinks + 3.5 hours of SEO Time each month",
-      "Best for most local businesses",
-    ],
-    featured: true,
-    accent: "purple",
-  },
-  {
-    name: "Turbo",
-    price: "$1,210",
-    blurb:
-      "When the market is tougher or speed matters more. Monthly strategy reviews, more SEO Time, more links, more content.",
-    highlights: [
-      "Monthly strategy reviews",
-      "4 backlinks + 5.5 hours of SEO Time each month",
-      "Best for competitive markets",
-    ],
-    accent: "green",
-  },
-];
+const tiers = SEO_TIERS;
 
 interface ComparisonRow {
   label: string;
@@ -195,8 +156,8 @@ const faqSchema = {
 ---
 
 <Layout
-  title="White Label SEO Pricing and Packages | SEO Brothers"
-  description="Transparent, customizable white-label SEO pricing for agency partners. Three example packages plus full custom builds, with no annual contracts."
+  title="White-Label SEO Packages and Pricing | SEO Brothers"
+  description="Wholesale white-label SEO pricing for agency partners. Three SEO packages plus website builds and recurring add-ons. These are the partner rates you pay; you mark them up to your client. No annual contracts."
   schema={faqSchema}
 >
   <Nav />
@@ -213,19 +174,20 @@ const faqSchema = {
     <div class="container pricing-hero__inner">
       <span class="pricing-hero__label" data-animate>
         <span class="pricing-hero__label-dot"></span>
-        White-Label SEO Pricing
+        White-Label SEO Packages
       </span>
 
       <h1 class="pricing-hero__title" data-animate>
-        Pricing built around<br />
-        <span class="pricing-hero__title-gradient">your agency, not ours.</span>
+        White-label SEO packages<br />
+        <span class="pricing-hero__title-gradient">priced for partners.</span>
       </h1>
 
       <p class="pricing-hero__subtitle" data-animate>
-        Our pricing is completely customizable and often unique to each
-        partnership. The packages below are real, frequently-quoted starting
-        points. Your account manager can tune any of them to fit your
-        clients' competition, geography, and goals.
+        This is our complete white-label SEO pricing rate card. Every number
+        below is the wholesale price you pay as a partner agency. You mark it
+        up and bill your own client. The three packages are real,
+        frequently-quoted starting points, and your account manager can tune
+        any of them to fit your clients' competition, geography, and goals.
       </p>
 
       <div class="pricing-hero__meta" data-animate>
@@ -303,8 +265,8 @@ const faqSchema = {
               </header>
 
               <div class="tier__price">
-                <span class="tier__price-value">{tier.price}</span>
-                <span class="tier__price-suffix">/ month</span>
+                <span class="tier__price-value">{usd(tier.price)}</span>
+                <span class="tier__price-suffix">/ mo</span>
               </div>
 
               <ul class="tier__highlights">
@@ -378,7 +340,7 @@ const faqSchema = {
                     ]}
                   >
                     <span class="comparison__th-name">{tier.name}</span>
-                    <span class="comparison__th-price">{tier.price}/mo</span>
+                    <span class="comparison__th-price">{usd(tier.price)}/mo</span>
                   </th>
                 ))}
               </tr>
@@ -451,6 +413,81 @@ const faqSchema = {
           </li>
         </ul>
       </aside>
+
+      <!-- ─── Websites & add-ons ─── -->
+      <div class="addons" data-animate>
+        <header class="addons__head">
+          <span class="section-label">Websites &amp; add-ons</span>
+          <h3 class="addons__title">The rest of the rate card</h3>
+          <p class="addons__subtitle">
+            Wholesale prices for website builds and the recurring extras that
+            sit alongside a campaign. Same deal as the SEO packages: these are
+            what you pay us, and you mark them up to your client.
+          </p>
+        </header>
+
+        <div class="addons__grid" data-stagger>
+          <a
+            class="addon"
+            href="/white-label-web-design/"
+            data-animate
+          >
+            <span class="addon__name">{WEB_BUILDS[0].name}</span>
+            <span class="addon__price">
+              <span class="addon__price-value">{usd(WEB_BUILDS[0].price)}</span>
+              <span class="addon__price-suffix">one-time</span>
+            </span>
+            <span class="addon__note">{WEB_BUILDS[0].blurb}</span>
+          </a>
+
+          <a
+            class="addon addon--featured"
+            href="/white-label-web-design/"
+            data-animate
+          >
+            <span class="addon__badge">Most popular</span>
+            <span class="addon__name">{WEB_BUILDS[1].name}</span>
+            <span class="addon__price">
+              <span class="addon__price-value">{usd(WEB_BUILDS[1].price)}</span>
+              <span class="addon__price-suffix">one-time</span>
+            </span>
+            <span class="addon__note">{WEB_BUILDS[1].blurb}</span>
+          </a>
+
+          <div class="addon" data-animate>
+            <span class="addon__name">{HOSTING.label}</span>
+            <span class="addon__price">
+              <span class="addon__price-value">from {usd(HOSTING.price)}</span>
+              <span class="addon__price-suffix">/ mo</span>
+            </span>
+            <span class="addon__note">{HOSTING.note}</span>
+          </div>
+
+          <div class="addon" data-animate>
+            <span class="addon__name">{MAINTENANCE.label}</span>
+            <span class="addon__price">
+              <span class="addon__price-value">from {usd(MAINTENANCE.price)}</span>
+              <span class="addon__price-suffix">/ mo</span>
+            </span>
+            <span class="addon__note">{MAINTENANCE.note}</span>
+          </div>
+
+          <div class="addon" data-animate>
+            <span class="addon__name">{EXTRA_LOCATION.label}</span>
+            <span class="addon__price">
+              <span class="addon__price-value">+{usd(EXTRA_LOCATION.price)}</span>
+              <span class="addon__price-suffix">/ mo each</span>
+            </span>
+            <span class="addon__note">{EXTRA_LOCATION.note}</span>
+          </div>
+        </div>
+
+        <p class="addons__footnote">
+          Want it all in one number? <a href="/partner-package/">Build your own
+          package</a> and we will scope a single monthly quote across SEO, the
+          website, and the add-ons.
+        </p>
+      </div>
 
       <!-- ─── Definitions ─── -->
       <div class="definitions" data-animate>
@@ -1143,6 +1180,147 @@ const faqSchema = {
   }
 
   /* ═══════════════════════════════════════════════════════════════════
+     WEBSITES & ADD-ONS
+     ═══════════════════════════════════════════════════════════════════ */
+  .addons {
+    margin-top: 96px;
+  }
+
+  .addons__head {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .addons__head .section-label {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .addons__title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 12px 0 16px;
+  }
+
+  .addons__subtitle {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0 auto;
+    max-width: 560px;
+  }
+
+  .addons__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .addon {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 28px 28px 30px;
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition);
+    text-decoration: none;
+  }
+
+  a.addon:hover {
+    border-color: rgba(40, 165, 177, 0.35);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .addon--featured {
+    border-color: rgba(124, 89, 184, 0.4);
+    box-shadow: var(--shadow-md);
+  }
+
+  .addon__badge {
+    position: absolute;
+    top: -11px;
+    left: 28px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 11px;
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, var(--teal) 0%, var(--purple) 100%);
+    background: linear-gradient(135deg in oklch, var(--teal) 0%, var(--purple) 100%);
+    color: var(--white);
+  }
+
+  .addon__name {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+
+  .addon--featured .addon__name {
+    color: var(--purple);
+  }
+
+  .addon__price {
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+  }
+
+  .addon__price-value {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3vw, 32px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+
+  .addon__price-suffix {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+
+  .addon__note {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  .addons__footnote {
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 40px auto 0;
+    max-width: 560px;
+  }
+
+  .addons__footnote a {
+    color: var(--teal);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(40, 165, 177, 0.35);
+  }
+
+  .addons__footnote a:hover {
+    border-bottom-color: var(--teal);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
      DEFINITIONS
      ═══════════════════════════════════════════════════════════════════ */
   .definitions {
@@ -1334,6 +1512,10 @@ const faqSchema = {
     .definitions__list {
       grid-template-columns: 1fr;
     }
+
+    .addons__grid {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   @media (max-width: 768px) {
@@ -1375,6 +1557,15 @@ const faqSchema = {
 
     .definitions__item {
       padding: 22px 24px;
+    }
+
+    .addons {
+      margin-top: 64px;
+    }
+
+    .addons__grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
     }
 
     .faq__question {
