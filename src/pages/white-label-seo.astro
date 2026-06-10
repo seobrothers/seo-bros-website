@@ -94,6 +94,33 @@ const components = [
   },
 ];
 
+// Representative action items that SEO Time and local work get spent on. Not a
+// fixed checklist: each cycle we name the next outcome we're chasing, then work
+// whatever ladders up to it. We benchmark against the top competitors across the
+// board, so most of these are informed by what's winning in the market.
+const localActions = [
+  { title: "GBP review & optimization", body: "Audit the Google Business Profile against the top competitors and improve categories, attributes, content, and completeness to strengthen local visibility." },
+  { title: "GBP landing page optimization", body: "Review and optimize the landing pages tied to the profile for local relevance and conversion." },
+  { title: "Citation audit & fixes", body: "Find and correct name, address, and phone (NAP) inconsistencies across directories that drag on local rankings." },
+  { title: "New citation creation", body: "Build new listings across authoritative directories. Less critical for a while, now resurgent because of how AI weighs references to a business." },
+  { title: "Citation gap review & creation", body: "Compare the citation footprint against competitors and close the high-value directory gaps." },
+];
+
+const onpageActions = [
+  { title: "Content publishing & optimization", body: "Publish new content (blog, service, geo) with proper headers, metadata, and internal links." },
+  { title: "Blog post optimization", body: "Improve existing posts for keyword alignment, readability, and SEO performance." },
+  { title: "Metadata quick wins", body: "Update title tags and meta descriptions on pages with fast click-through gains." },
+  { title: "Priority-intent internal linking", body: "Audit and build internal links to and from priority-intent pages to build topical authority and distribute page equity." },
+  { title: "Orphaned page fixes", body: "Find pages with no internal links pointing to them and resolve it for crawlability and equity flow." },
+  { title: "Canonical tag review & fixes", body: "Resolve duplicate-content issues so search engines index the right page versions." },
+  { title: "Search Console review", body: "Address crawl errors, indexing issues, and performance gaps that hold visibility back." },
+  { title: "Priority-intent page optimization", body: "Sharpen keyword targeting, relevance, and performance on the pages that matter most." },
+  { title: "Secondary-intent optimization", body: "Optimize pages targeting secondary keyword intent to capture additional demand." },
+  { title: "Page speed optimization", body: "Benchmark Core Web Vitals and load performance and close the gaps that cost rankings." },
+  { title: "Internal linking structure", body: "Strengthen the site's overall internal link structure so authority flows where it should." },
+  { title: "Schema & structured data", body: "Implement structured data to improve search-engine understanding and rich-result eligibility." },
+];
+
 const faqGroups = [
   {
     heading: "About White Label SEO",
@@ -927,6 +954,57 @@ const faqSchema = {
             </div>
           ))
         }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACTION ITEMS (what the work looks like) ===== -->
+  <section class="wl-actions" id="seo-work">
+    <div class="container">
+      <div class="wl-actions-header" data-animate>
+        <span class="section-label">What the work looks like</span>
+        <h2 class="section-heading">SEO Time, in plain terms</h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          Each cycle we name the next outcome we're chasing, then work the action
+          items that ladder up to it. SEO Time and local work get spent here. This
+          is a representative list, not a fixed menu, and it grows as search does.
+        </p>
+      </div>
+
+      <div class="wl-actions-grid">
+        <div class="wl-actions-col" data-animate>
+          <h3 class="wl-actions-col-title">Local SEO may include</h3>
+          <ul class="wl-actions-list">
+            {localActions.map((a) => (
+              <li class="wl-action">
+                <span class="wl-action-check" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                </span>
+                <span>
+                  <span class="wl-action-title">{a.title}</span>
+                  <span class="wl-action-body">{a.body}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="wl-actions-col" data-animate>
+          <h3 class="wl-actions-col-title">On-page &amp; technical may include</h3>
+          <ul class="wl-actions-list">
+            {onpageActions.map((a) => (
+              <li class="wl-action">
+                <span class="wl-action-check" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                </span>
+                <span>
+                  <span class="wl-action-title">{a.title}</span>
+                  <span class="wl-action-body">{a.body}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -3749,5 +3827,29 @@ const faqSchema = {
 
   @media (max-width: 768px) {
     .wl-specialties { padding: 72px 0; }
+  }
+</style>
+
+<style>
+  /* ===== ACTION ITEMS ===== */
+  .wl-actions { padding: 96px 0; background: var(--white); border-top: 1px solid var(--border-light); }
+  .wl-actions-header { max-width: 680px; margin: 0 auto 48px; text-align: center; }
+  .wl-actions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 1040px; margin: 0 auto; align-items: start; }
+  .wl-actions-col-title {
+    font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text-primary);
+    margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border-light);
+  }
+  .wl-actions-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 18px; }
+  .wl-action { display: flex; gap: 12px; align-items: flex-start; }
+  .wl-action-check {
+    flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+    background: rgba(40,165,177,0.12); color: var(--teal-dark);
+    display: flex; align-items: center; justify-content: center; margin-top: 2px;
+  }
+  .wl-action-title { display: block; font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--text-primary); }
+  .wl-action-body { display: block; font-size: 14px; line-height: 1.55; color: var(--text-secondary); margin-top: 3px; }
+  @media (max-width: 860px) {
+    .wl-actions { padding: 72px 0; }
+    .wl-actions-grid { grid-template-columns: 1fr; gap: 36px; }
   }
 </style>
