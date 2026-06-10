@@ -5,44 +5,24 @@ import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
 import NewsletterSignup from "../../components/NewsletterSignup.astro";
+import { INDUSTRIES } from "../../data/industries";
 
 const allGuides = (await getCollection("guides"))
   .filter((g) => !import.meta.env.PROD || !g.data.draft)
   .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
 
+interface CardItem {
+  title: string;
+  href: string;
+  meta: string;
+}
+
 interface CategorySpec {
-  slug: "seo" | "agency" | "cities";
   label: string;
   blurb: string;
   accent: "teal" | "purple" | "green";
-}
-
-const categories: CategorySpec[] = [
-  {
-    slug: "seo",
-    label: "SEO Guides",
-    blurb:
-      "Plain-English guides for business owners and marketers. Local, technical, content, AI search, and link building.",
-    accent: "teal",
-  },
-  {
-    slug: "agency",
-    label: "Agency Guides",
-    blurb:
-      "Operating playbooks for agencies that resell SEO. Selling it, delivering it white-label, reporting, and retention.",
-    accent: "green",
-  },
-  {
-    slug: "cities",
-    label: "Local Market Research",
-    blurb:
-      "We rank local businesses across the US and Canada. These are research deep-dives on a few markets we know especially well, examples of how we read a market, not the limit of where we work.",
-    accent: "purple",
-  },
-];
-
-function postsFor(slug: CategorySpec["slug"], n: number) {
-  return allGuides.filter((g) => g.data.category === slug).slice(0, n);
+  hubHref: string;
+  items: CardItem[];
 }
 
 function fmtDate(d: Date) {
@@ -52,6 +32,55 @@ function fmtDate(d: Date) {
     year: "numeric",
   });
 }
+
+function guidesFor(slug: string, n: number): CardItem[] {
+  return allGuides
+    .filter((g) => g.data.category === slug)
+    .slice(0, n)
+    .map((g) => ({
+      title: g.data.title,
+      href: `/guides/${g.id}/`,
+      meta: `${g.data.author} · ${fmtDate(g.data.publishDate)}`,
+    }));
+}
+
+// Industry cards pull from the INDUSTRIES map (clean /industries/{slug}/ URLs),
+// limited to verticals whose guide actually exists and isn't a prod draft.
+const liveIndustries = INDUSTRIES.filter((i) =>
+  allGuides.some((g) => g.id === i.guideId),
+);
+const industryItems: CardItem[] = liveIndustries.slice(0, 3).map((i) => ({
+  title: `${i.name} SEO`,
+  href: `/industries/${i.slug}/`,
+  meta: i.group,
+}));
+
+const categories: CategorySpec[] = [
+  {
+    label: "SEO Guides",
+    blurb:
+      "Practical SEO guides covering local, technical, content, AI search, and link building. Useful whether you're sharpening your own playbook or briefing a client.",
+    accent: "teal",
+    hubHref: "/guides/seo/",
+    items: guidesFor("seo", 3),
+  },
+  {
+    label: "Industries",
+    blurb:
+      "How we help agencies dominate specific verticals, from home services to health and professional practices. The playbook behind each campaign you resell.",
+    accent: "purple",
+    hubHref: "/industries/",
+    items: industryItems,
+  },
+  {
+    label: "Agency Guides",
+    blurb:
+      "Operating playbooks for agencies that resell SEO. Selling it, delivering it white-label, reporting, and retention.",
+    accent: "green",
+    hubHref: "/guides/agency/",
+    items: guidesFor("agency", 3),
+  },
+];
 ---
 
 <Layout
@@ -79,10 +108,9 @@ function fmtDate(d: Date) {
         <span class="guides-hero__title-gradient">guides by the brothers.</span>
       </h1>
       <p class="guides-hero__subtitle" data-animate>
-        A growing library of practical SEO resources. How-to guides and research
-        for business owners, plus operating playbooks for the agencies we partner
-        with. Looking for your industry? See
-        <a href="/industries/" class="guides-hero__inline-link">Industries We Serve</a>.
+        A growing library of practical SEO resources: how-to guides, the
+        industry playbooks behind our campaigns, and operating playbooks for the
+        agencies we partner with.
       </p>
     </div>
   </section>
@@ -93,7 +121,6 @@ function fmtDate(d: Date) {
       <div class="cats__grid" data-stagger>
         {
           categories.map((cat) => {
-            const posts = postsFor(cat.slug, 3);
             return (
               <article
                 class:list={["cat", `cat--${cat.accent}`]}
@@ -105,25 +132,20 @@ function fmtDate(d: Date) {
                 </header>
 
                 <ul class="cat__posts">
-                  {posts.map((post) => (
+                  {cat.items.map((item) => (
                     <li class="cat__post">
-                      <a
-                        href={`/guides/${post.id}/`}
-                        class="cat__post-link"
-                      >
-                        <h3 class="cat__post-title">{post.data.title}</h3>
-                        <p class="cat__post-meta">
-                          {post.data.author} · {fmtDate(post.data.publishDate)}
-                        </p>
+                      <a href={item.href} class="cat__post-link">
+                        <h3 class="cat__post-title">{item.title}</h3>
+                        <p class="cat__post-meta">{item.meta}</p>
                       </a>
                     </li>
                   ))}
-                  {posts.length === 0 && (
+                  {cat.items.length === 0 && (
                     <li class="cat__empty">More guides coming soon.</li>
                   )}
                 </ul>
 
-                <a href={`/guides/${cat.slug}/`} class="cat__cta">
+                <a href={cat.hubHref} class="cat__cta">
                   Explore all {cat.label}
                   <svg
                     width="14"
