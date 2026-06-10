@@ -67,13 +67,14 @@ const reviewCallUrl = "https://calendly.com/mike-2473/15-minute-meeting-quick-ch
       <div class="disco__cta" id="disco-cta" hidden>
         <h2 class="disco__cta-title">Want our team to go deeper?</h2>
         <p class="disco__cta-text">
-          Book a 15-minute call and we'll do a full human audit and walk you
-          through exactly what we'd do, no pressure.
+          Grab a 15-minute slot below and we'll do a full human audit and walk
+          you through exactly what we'd do, no pressure.
         </p>
-        <a href={reviewCallUrl} class="btn btn-primary disco__cta-btn" target="_blank" rel="noopener noreferrer">
-          Book your review call
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+        <iframe
+          class="disco__calendly"
+          src={`${reviewCallUrl}?hide_gdpr_banner=1`}
+          title="Book a 15-minute review call with SEO Brothers"
+          loading="lazy"></iframe>
         <div class="disco__cta-secondary">
           <a href="/case-studies/">See results we've gotten</a>
           <span aria-hidden="true">·</span>
@@ -314,11 +315,13 @@ const reviewCallUrl = "https://calendly.com/mike-2473/15-minute-meeting-quick-ch
   }
   .disco__cta-title { font-family: var(--font-display); font-size: clamp(24px, 3.4vw, 30px); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 12px; }
   .disco__cta-text { font-size: 16px; line-height: 1.7; color: var(--text-secondary); max-width: 480px; margin: 0 auto 24px; }
+  .disco__calendly { width: 100%; min-height: 700px; border: 0; border-radius: var(--radius-md); display: block; background: var(--white); }
   .disco__cta-secondary { margin-top: 20px; font-size: 14px; color: var(--text-muted); display: flex; gap: 10px; justify-content: center; }
   .disco__cta-secondary a { color: var(--teal-dark); text-decoration: underline; text-underline-offset: 3px; }
 
   @media (max-width: 700px) {
     .disco { padding: 130px 0 80px; }
     .disco__cta { padding: 32px 24px; }
+    .disco__calendly { min-height: 980px; }
   }
 </style>

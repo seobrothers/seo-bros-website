@@ -127,7 +127,7 @@ const faqSchema = {
     <div class="wd-hero-content container">
       <div class="wd-hero-badge" data-animate>
         <span class="wd-hero-badge-dot"></span>
-        Ready to sell now
+        Built on Astro + Cloudflare
       </div>
 
       <h1 class="wd-hero-title" data-animate>
@@ -309,7 +309,9 @@ const faqSchema = {
             shifts, and search engines lose track of what ranked where. If
             nobody maps the old URLs to the new ones and sets the redirects, the
             site relaunches and traffic falls off a cliff. We see it constantly:
-            a clean new design that quietly erased a year of organic growth.
+            a clean new design that quietly erased a year of organic growth. Our
+            <a href="/guides/website-redesign-seo/" class="wd-redesign-inline-link">website redesign SEO guide</a>
+            breaks down exactly how that happens and how we prevent it.
           </p>
           <p class="wd-redesign-text">
             We're an SEO company first. So the $2,500 tier bakes that protection
@@ -938,6 +940,17 @@ const faqSchema = {
     line-height: 1.75;
     color: var(--text-on-dark-muted);
     margin-bottom: 18px;
+  }
+
+  .wd-redesign-inline-link {
+    color: var(--teal-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color var(--transition);
+  }
+
+  .wd-redesign-inline-link:hover {
+    color: var(--white);
   }
 
   .wd-redesign-link {
