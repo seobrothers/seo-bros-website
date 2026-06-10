@@ -24,7 +24,7 @@ import {
 
 // On-site optimization + per-location local work.
 const workItems = [
-  { id: "pb-hours", label: "SEO initiatives", unit: EXTRA_HOUR.price, suffix: "per hour", noun: "hours", def: 3, note: "Time on the next most important thing for the site: geo and service pages, on-page optimization, page speed, and technical improvements." },
+  { id: "pb-hours", label: "SEO Time", unit: EXTRA_HOUR.price, suffix: "per hour", noun: "hours", def: 3, note: "Time on the next most important thing for the site: geo and service pages, on-page optimization, page speed, and technical improvements." },
   { id: "pb-locations", label: EXTRA_LOCATION.label, unit: EXTRA_LOCATION.price, suffix: "each", noun: "locations", def: 0, note: EXTRA_LOCATION.note },
 ];
 // The authority-and-freshness levers: content + links.
@@ -273,7 +273,7 @@ const authorityItems = [
         if (label) lines.push(`Strategy reviews: ${label}`);
       }
       const numLabels: Record<string, string> = {
-        "pb-hours": "SEO initiatives (hours/mo)",
+        "pb-hours": "SEO Time (hours/mo)",
         "pb-locations": "Location work (locations)",
         "pb-content": "Authority content/mo",
         "pb-links": "Backlinks/mo",

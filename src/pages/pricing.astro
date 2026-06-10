@@ -28,7 +28,7 @@ const rateCard = [
   { name: REPORTING.label, value: usd(REPORTING.price), suffix: "/ mo", note: REPORTING.note, tag: "In every campaign" },
   { name: HEALTH.label, value: usd(HEALTH.price), suffix: "/ mo", note: HEALTH.note, tag: "In every campaign" },
   { name: STRATEGY.label, value: usd(STRATEGY.pricePerReview), suffix: "per review", note: `Cadence sets the monthly cost: semi-annual ${usd(strategyMonthly(2))}/mo, quarterly ${usd(strategyMonthly(4))}/mo, monthly ${usd(strategyMonthly(12))}/mo.` },
-  { name: "SEO initiatives", value: usd(EXTRA_HOUR.price), suffix: "/ hour, monthly", note: "Time on the next most important thing for the site: geo and service pages, on-page optimization, page speed, and technical improvements." },
+  { name: "SEO Time", value: usd(EXTRA_HOUR.price), suffix: "/ hour, monthly", note: "Time on the next most important thing for the site: geo and service pages, on-page optimization, page speed, and technical improvements." },
   { name: EXTRA_LOCATION.label, value: "+" + usd(EXTRA_LOCATION.price), suffix: "/ mo each", note: EXTRA_LOCATION.note },
   { name: "Authority content", value: usd(EXTRA_BLOG.price), suffix: "each, monthly", note: "Built for freshness and topical authority. Usually one, sometimes two a month depending on site size." },
   { name: BACKLINK.label, value: usd(BACKLINK.price), suffix: "each, monthly", note: BACKLINK.note },
@@ -68,7 +68,7 @@ const comparison: ComparisonRow[] = [
     values: ["Semi-annually", "Quarterly", "Monthly"],
   },
   {
-    label: "SEO initiatives per month",
+    label: "SEO Time per month",
     values: ["1.5 hours", "3.5 hours", "5.5 hours"],
   },
   {
@@ -108,12 +108,12 @@ const definitions: Definition[] = [
     body: "The search intents we're actively working to rank for this cycle, set at each strategic review. Each intent maps to whichever page is best positioned to win it (sometimes the page you'd expect, sometimes a different one we surface during planning). Intents can be organic ('invisalign halifax') or map-based ('dentist in halifax'). Strategic review cadence determines re-setting: semi-annually on Tiny, quarterly on Typical, monthly on Turbo.",
   },
   {
-    term: "SEO initiatives",
-    body: "Specialist time set aside each month and directed at the next most important thing for the site: geo and location pages, service-page support, on-page optimization, page speed, and technical improvements. It is a time allocation, not loose 'flex' hours. Catching and fixing crawl errors is the health score's job; initiatives are the proactive improvement work. Tiny gets 1.5 hours, Typical 3.5, Turbo 5.5, and you can add more at $60 per hour.",
+    term: "SEO Time",
+    body: "Specialist time set aside each month and directed at the next most important thing for the site: geo and location pages, service-page support, on-page optimization, page speed, and technical improvements. It is a time allocation, not loose 'flex' hours. Catching and fixing crawl errors is the health score's job; SEO Time is the proactive improvement work. Tiny gets 1.5 hours, Typical 3.5, Turbo 5.5, and you can add more at $60 per hour.",
   },
   {
     term: "Authority content",
-    body: "A blog or authority piece written, optimized, and published to keep the site fresh and build topical authority in the space. You usually only need one, sometimes two a month depending on the size of the site. $120 per piece. (Geo and location pages fall under SEO initiatives, not content.)",
+    body: "A blog or authority piece written, optimized, and published to keep the site fresh and build topical authority in the space. You usually only need one, sometimes two a month depending on the size of the site. $120 per piece. (Geo and location pages fall under SEO Time, not content.)",
   },
 ];
 
@@ -431,7 +431,7 @@ const faqSchema = {
             <span class="cadence__example-price">$100 / mo</span>
           </li>
           <li>
-            <span class="cadence__example-label">Custom backlink or initiative hours</span>
+            <span class="cadence__example-label">Custom backlink or SEO Time hours</span>
             <span class="cadence__example-price">Scoped during discovery</span>
           </li>
         </ul>
@@ -444,7 +444,7 @@ const faqSchema = {
           <h3 class="addons__title">The full rate card</h3>
           <p class="addons__subtitle">
             The building blocks behind the packages. Every campaign includes
-            reporting and a health score; strategy, SEO initiatives, authority
+            reporting and a health score; strategy, SEO Time, authority
             content, and links scale to the plan. Build any mix you want. These
             are wholesale prices you pay us and mark up to your client.
           </p>
