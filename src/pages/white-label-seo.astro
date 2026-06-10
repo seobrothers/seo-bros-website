@@ -411,6 +411,38 @@ const faqSchema = {
     </div>
   </section>
 
+  <!-- ===== SPECIALTIES (hub -> spokes) ===== -->
+  <section class="wl-specialties">
+    <div class="container">
+      <div class="wl-specialties-header" data-animate>
+        <span class="section-label">Specialties</span>
+        <h2 class="section-heading">White label SEO, by focus area</h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          Local is our core, but partners resell us across the board. Each of
+          these is delivered under your brand.
+        </p>
+      </div>
+      <div class="wl-specialties-grid" data-stagger>
+        {[
+          { href: "/white-label-seo/local/", name: "Local SEO", desc: "Map pack, Google Business Profile, and local content for service-area clients." },
+          { href: "/white-label-seo/link-building/", name: "Link Building", desc: "Editorial links and our Publishing House, built safely under your brand." },
+          { href: "/white-label-seo/ecommerce/", name: "Ecommerce SEO", desc: "Category, product, and faceted-nav SEO for online stores." },
+          { href: "/white-label-seo/enterprise/", name: "Enterprise SEO", desc: "Large, complex portfolios and the reporting that satisfies stakeholders." },
+          { href: "/white-label-seo/ai-seo/", name: "AI SEO", desc: "Getting your clients cited in AI Overviews, ChatGPT, and Perplexity." },
+        ].map((s) => (
+          <a href={s.href} class="wl-specialty" data-animate>
+            <h3 class="wl-specialty-name">{s.name}</h3>
+            <p class="wl-specialty-desc">{s.desc}</p>
+            <span class="wl-specialty-cta">
+              Explore
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- ===== ROLES (RESELLER VS PROVIDER) ===== -->
   <section class="wl-roles">
     <div class="container">
@@ -3742,5 +3774,37 @@ const faqSchema = {
       flex-direction: column;
       gap: 12px;
     }
+  }
+</style>
+
+<style>
+  /* ===== SPECIALTIES (hub -> spokes) ===== */
+  .wl-specialties { padding: 96px 0; background: var(--light); }
+  .wl-specialties-header { max-width: 680px; margin: 0 auto 44px; text-align: center; }
+  .wl-specialties-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px; max-width: 1040px; margin: 0 auto;
+  }
+  .wl-specialty {
+    display: flex; flex-direction: column;
+    padding: 28px; border-radius: var(--radius-lg);
+    background: var(--white); border: 1px solid var(--border-light);
+    transition: all var(--transition);
+  }
+  .wl-specialty:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--purple); }
+  .wl-specialty-name {
+    font-family: var(--font-display); font-size: 19px; font-weight: 700;
+    letter-spacing: -0.01em; color: var(--text-primary); margin-bottom: 8px;
+  }
+  .wl-specialty-desc { font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 18px; flex-grow: 1; }
+  .wl-specialty-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 600; color: var(--purple-dark);
+    transition: gap var(--transition); margin-top: auto;
+  }
+  .wl-specialty:hover .wl-specialty-cta { gap: 12px; }
+
+  @media (max-width: 768px) {
+    .wl-specialties { padding: 72px 0; }
   }
 </style>
