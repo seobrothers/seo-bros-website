@@ -41,8 +41,6 @@ const STATIC_PAGES = [
   "/",
   "/about/",
   "/acquires-smart-web-solutions/",
-  "/ai-seo/",
-  "/ai-seo/local/",
   "/careers/",
   "/case-studies/",
   "/guides/",
@@ -58,6 +56,7 @@ const STATIC_PAGES = [
   "/tools/free-seo-audit/",
   "/tools/seo-forecasting-tool/",
   "/white-label-seo/",
+  "/white-label-web-design/",
 ];
 
 const EXCLUDED_PATHS = new Set<string>([]);

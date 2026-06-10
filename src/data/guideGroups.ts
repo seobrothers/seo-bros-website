@@ -44,7 +44,7 @@ export const GUIDE_GROUPS: Record<string, GuideGroup[]> = {
       title: "AI Search",
       blurb:
         "How you show up as more people start their search with AI Overviews, ChatGPT, and Perplexity. The fundamentals still apply; how you get cited is shifting.",
-      ids: ["google-search-generative-experience", "serp-features-evolution", "ai-data-center-batteries"],
+      ids: ["ai-seo", "google-search-generative-experience", "serp-features-evolution", "ai-data-center-batteries"],
     },
     {
       title: "Link Building",

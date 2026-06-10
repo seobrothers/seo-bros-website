@@ -126,6 +126,10 @@
 # Free-audit guide merged into the /tools/free-seo-audit/ tool page
 /guides/free-website-seo-audit/                             /tools/free-seo-audit/                            301
 
+# AI SEO service pages reworked into a single SEO guide
+/ai-seo/                                                    /guides/ai-seo/                                   301
+/ai-seo/local/                                              /guides/ai-seo/                                   301
+
 # ============================================================================
 # Hard drops — content not migrated, redirect to closest hub
 # ============================================================================
