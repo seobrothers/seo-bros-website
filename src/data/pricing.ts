@@ -112,7 +112,7 @@ export const REPORTING = {
 export const HEALTH = {
   label: "Health & crawl score",
   price: 50,
-  note: "Monthly site health check and crawl score, plus the fixes it surfaces.",
+  note: "Monthly health and crawl-score check that catches and fixes errors. Proactive technical work like page speed lives in SEO initiatives.",
 };
 /** Always-included managed-campaign base. Sums to $100/mo. */
 export const MANAGED_INCLUDED = [REPORTING, HEALTH];

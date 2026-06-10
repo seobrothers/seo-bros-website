@@ -28,7 +28,7 @@ const rateCard = [
   { name: REPORTING.label, value: usd(REPORTING.price), suffix: "/ mo", note: REPORTING.note, tag: "In every campaign" },
   { name: HEALTH.label, value: usd(HEALTH.price), suffix: "/ mo", note: HEALTH.note, tag: "In every campaign" },
   { name: STRATEGY.label, value: usd(STRATEGY.pricePerReview), suffix: "per review", note: `Cadence sets the monthly cost: semi-annual ${usd(strategyMonthly(2))}/mo, quarterly ${usd(strategyMonthly(4))}/mo, monthly ${usd(strategyMonthly(12))}/mo.` },
-  { name: "SEO initiatives", value: usd(EXTRA_HOUR.price), suffix: "/ hour, monthly", note: "Time on the next most important thing for the site: geo pages, service-page support, on-page optimization." },
+  { name: "SEO initiatives", value: usd(EXTRA_HOUR.price), suffix: "/ hour, monthly", note: "Time on the next most important thing for the site: geo and service pages, on-page optimization, page speed, and technical improvements." },
   { name: EXTRA_LOCATION.label, value: "+" + usd(EXTRA_LOCATION.price), suffix: "/ mo each", note: EXTRA_LOCATION.note },
   { name: "Authority content", value: usd(EXTRA_BLOG.price), suffix: "each, monthly", note: "Built for freshness and topical authority. Usually one, sometimes two a month depending on site size." },
   { name: BACKLINK.label, value: usd(BACKLINK.price), suffix: "each, monthly", note: BACKLINK.note },
@@ -109,7 +109,7 @@ const definitions: Definition[] = [
   },
   {
     term: "SEO initiatives",
-    body: "Specialist time set aside each month and directed at the next most important thing for the site: geo and location pages, service-page support, on-page optimization, schema, and technical fixes. It is a time allocation, not loose 'flex' hours. Tiny gets 1.5 hours, Typical 3.5, Turbo 5.5, and you can add more at $60 per hour.",
+    body: "Specialist time set aside each month and directed at the next most important thing for the site: geo and location pages, service-page support, on-page optimization, page speed, and technical improvements. It is a time allocation, not loose 'flex' hours. Catching and fixing crawl errors is the health score's job; initiatives are the proactive improvement work. Tiny gets 1.5 hours, Typical 3.5, Turbo 5.5, and you can add more at $60 per hour.",
   },
   {
     term: "Authority content",
