@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import GrowthCallEmbed from "../components/GrowthCallEmbed.astro";
 import { WEB_BUILDS, HOSTING, MAINTENANCE, usd } from "../data/pricing";
 
 const valueProps = [
@@ -556,58 +557,10 @@ const faqSchema = {
   </section>
 
   <!-- ===== BOTTOM CTA ===== -->
-  <section class="wd-bottom-cta">
-    <div class="wd-bottom-cta-bg">
-      <div class="wd-bottom-cta-orb wd-bottom-cta-orb--1"></div>
-      <div class="wd-bottom-cta-orb wd-bottom-cta-orb--2"></div>
-      <div class="wd-bottom-cta-orb wd-bottom-cta-orb--3"></div>
-    </div>
-
-    <div class="container">
-      <div class="wd-bottom-cta-content" data-animate>
-        <h2 class="wd-bottom-cta-heading">
-          Add Websites to Your Service<br />
-          <span class="wd-bottom-cta-gradient">Lineup Without Hiring</span>
-        </h2>
-        <p class="wd-bottom-cta-text">
-          Resell white label websites under your brand, built on Astro,
-          deployed on Cloudflare, editable by your clients. Start with a free
-          discovery for your agency.
-        </p>
-        <div class="wd-bottom-cta-actions">
-          <a href="/book-a-growth-call/" class="btn btn-primary wd-btn-lg">
-            Book a Growth Call
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          </a>
-          <a href="/partner-package/" class="btn btn-outline wd-btn-lg">
-            Unlock the Partner Package
-          </a>
-        </div>
-        <div class="wd-bottom-cta-meta">
-          <span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            No setup fee
-          </span>
-          <span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            Shipped under your brand
-          </span>
-          <span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            Free discovery
-          </span>
-        </div>
-      </div>
-    </div>
-  </section>
+  <GrowthCallEmbed
+    heading="Add websites to your lineup without hiring."
+    sub="Book a growth call and we'll walk through building and reselling fast white-label sites under your brand."
+  />
 
   <Footer />
 </Layout>

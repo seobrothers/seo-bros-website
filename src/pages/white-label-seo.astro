@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import GrowthCallEmbed from "../components/GrowthCallEmbed.astro";
 
 const processSteps = [
   {
@@ -1695,86 +1696,10 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- ===== BOTTOM CTA ===== -->
-  <section class="wl-bottom-cta" id="wl-cta">
-    <div class="wl-bottom-cta-bg">
-      <div class="wl-bottom-cta-orb wl-bottom-cta-orb--1"></div>
-      <div class="wl-bottom-cta-orb wl-bottom-cta-orb--2"></div>
-      <div class="wl-bottom-cta-orb wl-bottom-cta-orb--3"></div>
-    </div>
-
-    <div class="container">
-      <div class="wl-bottom-cta-content" data-animate>
-        <h2 class="wl-bottom-cta-heading">
-          Ready to Start Your<br />
-          <span class="wl-bottom-cta-gradient"
-            >White Label SEO Partnership?</span
-          >
-        </h2>
-        <p class="wl-bottom-cta-text">
-          Schedule a service walkthrough today. We'll show you the process,
-          introduce you to the team, and answer every question you have.
-        </p>
-        <div class="wl-bottom-cta-actions">
-          <a href="/book-a-growth-call/" class="btn btn-primary wl-btn-lg">
-            Book a Growth Call
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path
-                d="M3 8h10M9 4l4 4-4 4"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"></path>
-            </svg>
-          </a>
-          <a href="/partner-package/" class="btn btn-outline wl-btn-lg">
-            Unlock the Partner Package
-          </a>
-        </div>
-        <div class="wl-bottom-cta-meta">
-          <span>
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            No upfront cost
-          </span>
-          <span>
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            Cancel anytime
-          </span>
-          <span>
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            Free discovery audit
-          </span>
-        </div>
-      </div>
-    </div>
-  </section>
+  <GrowthCallEmbed
+    heading="Ready to start your white-label SEO partnership?"
+    sub="Book a growth call and we'll show you the process, introduce the team, and answer every question you have."
+  />
 
   <Footer />
 </Layout>
