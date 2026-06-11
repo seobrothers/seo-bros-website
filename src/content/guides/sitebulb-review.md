@@ -76,4 +76,4 @@ It's the default crawler for client audits, especially those that get delivered 
 
 For partner agencies, we white-label the audit output by branding the slide deck and PDF deliverables. The Sitebulb data feeds that, but the deliverable goes out under the agency's brand.
 
-If you're trying to figure out which crawler to standardize on for your agency, [get in touch](/sign-up/) and we'll walk through how each fits different workflow shapes.
+If you're trying to figure out which crawler to standardize on for your agency, [get in touch](/partner-package/) and we'll walk through how each fits different workflow shapes.

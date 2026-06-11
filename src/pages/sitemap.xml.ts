@@ -40,8 +40,7 @@ const STATIC_PAGES = [
   "/",
   "/about/",
   "/acquires-smart-web-solutions/",
-  "/ai-seo/",
-  "/ai-seo/local/",
+  "/book-a-growth-call/",
   "/careers/",
   "/case-studies/",
   "/guides/",
@@ -49,26 +48,38 @@ const STATIC_PAGES = [
   "/guides/cities/",
   "/guides/industry/",
   "/guides/seo/",
+  "/partner-package/",
+  "/podcast/",
   "/pricing/",
   "/privacy/",
-  "/sign-up/",
   "/terms/",
+  "/tools/",
+  "/tools/free-seo-audit/",
+  "/tools/seo-forecasting-tool/",
   "/white-label-seo/",
+  "/white-label-seo/local/",
+  "/white-label-seo/link-building/",
+  "/white-label-seo/enterprise/",
+  "/white-label-seo/ai-seo/",
+  "/white-label-seo/ecommerce/",
+  "/white-label-web-design/",
 ];
 
-const EXCLUDED_PATHS = new Set<string>([
-  "/seo-for-plumbers/",
-]);
+const EXCLUDED_PATHS = new Set<string>([]);
 
 const RESERVED_GUIDE_SLUGS = new Set(["seo", "industry", "agency", "cities"]);
 
 export const GET: APIRoute = async () => {
-  const guides = (await getCollection("guides"))
+  const allGuides = await getCollection("guides");
+
+  // All guides (including industry-category) are served at /guides/{id}/.
+  const guides = allGuides
     .filter((g) => !RESERVED_GUIDE_SLUGS.has(g.id))
     .filter((g) => !import.meta.env.PROD || !g.data.draft)
     .map((g) => `/guides/${g.id}/`);
 
   const caseStudies = (await getCollection("caseStudies"))
+    .filter((c) => !import.meta.env.PROD || !c.data.draft)
     .map((c) => `/case-studies/${c.id}/`);
 
   // Author pages are gated by `published` in src/data/authors.ts.

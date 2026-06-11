@@ -8,7 +8,7 @@ summary: "Franchise SEO has to solve two problems at once: a corporate brand cam
 featured: false
 ---
 
-Franchise SEO is two campaigns running on top of each other. There's the corporate brand campaign, where the franchisor builds domain authority, owns the head terms, and keeps the brand consistent across every market. And there's the local campaign, where each franchisee has to win their specific city's local pack against independent competitors. The two campaigns share infrastructure, but they have different goals and different owners.
+Franchise SEO is two campaigns running on top of each other. There's the corporate brand campaign, where the franchisor builds domain authority, owns the head terms, and keeps the brand consistent across every market. And there's the local campaign, where each franchisee has to win their specific city's local pack against independent competitors. The two campaigns share infrastructure, but they have different goals and different owners. If you're an agency running multi-location or franchise clients, this is the work we handle under your brand: the architecture and per-location execution that doesn't scale on its own.
 
 Most franchise systems don't manage that split well. The corporate site treats local SEO as an afterthought. Franchisees, frustrated, hire local agencies who set up satellite sites that compete with the corporate domain for the same keywords. Or franchisees do nothing, the corporate location pages are templated boilerplate, and the brand's local-pack visibility quietly erodes to whichever independent operator down the street is doing the work.
 
@@ -129,4 +129,4 @@ A franchise SEO program that holds together has the same shape: a single-domain 
 
 Once the architecture is right and the ownership model is clear, network-wide performance compounds month over month.
 
-If you're running a franchise system and the local-pack visibility doesn't match the size of the network, [get in touch](/sign-up/) and we'll work through where the architecture or ownership model is leaking ranking signal.
+If you've got a franchise or multi-location client whose local-pack visibility doesn't match the size of the network, [run a free discovery with us](/partner-package/) and we'll work through where the architecture or ownership model is leaking ranking signal, then deliver the fix under your brand.

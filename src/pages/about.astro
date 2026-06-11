@@ -129,7 +129,7 @@ const teamMembers: TeamMember[] = [
         {brothers.map((b) => (
           <div class="brothers__card" data-animate>
             <div class="brothers__photo-wrap">
-              <img src={b.photo} alt={b.name} class="brothers__photo" loading="lazy" width="300" height="300" />
+              <img src={b.photo} alt={`${b.name}, ${b.role} at SEO Brothers`} class="brothers__photo" loading="lazy" width="300" height="300" />
               <div class="brothers__photo-ring"></div>
             </div>
             <h3 class="brothers__name">{b.name}</h3>
@@ -189,7 +189,7 @@ const teamMembers: TeamMember[] = [
         {teamMembers.map((m) => (
           <div class="team__member" data-animate>
             <div class="team__avatar">
-              <img src={m.photo} alt={m.name} class="team__avatar-img" loading="lazy" width="300" height="300" />
+              <img src={m.photo} alt={`${m.name}, ${m.role} at SEO Brothers`} class="team__avatar-img" loading="lazy" width="300" height="300" />
             </div>
             <h3 class="team__name">{m.name}</h3>
             <p class="team__role">{m.role}</p>

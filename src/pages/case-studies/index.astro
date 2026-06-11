@@ -8,6 +8,7 @@ import CtaBanner from "../../components/CtaBanner.astro";
 // Partner stories are soft-hidden from the listing until we have refreshed,
 // in-date partner case studies. Detail pages still resolve at their direct URL.
 const studies = (await getCollection("caseStudies"))
+  .filter((s) => !import.meta.env.PROD || !s.data.draft)
   .filter((s) => s.data.type !== "partner")
   .sort(
     (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
@@ -169,6 +170,34 @@ const verticals = Array.from(
     </div>
   </section>
 
+  <section class="cs-intro">
+    <div class="container cs-intro__inner">
+      <h2 class="cs-intro__title">How we approach a campaign</h2>
+      <p>
+        Every campaign above started the same way: a free audit, real keyword
+        research in the client's market, and a plan built around the searches
+        that actually bring in customers. We don't run the same checklist on
+        every site. We find the gap that's holding a business back, whether
+        that's the map pack, technical issues, thin content, or a weak link
+        profile, and we point the work at it.
+      </p>
+      <p>
+        From there it's a repeatable loop: set the priority intents, do the
+        work, measure against plan, and adjust. Reporting is plain and honest,
+        so these numbers are the same kind we put in front of clients every
+        month: rankings, traffic, and the calls and leads that follow. Many
+        names are anonymized at the partner's request. The results are not.
+      </p>
+      <p>
+        Most of these wins are in local and service businesses, the same
+        <a href="/guides/industry/">industries we serve</a> day to day. If you want to
+        see what this could look like for your business,
+        <a href="/tools/free-seo-audit/">request a free audit</a> and we'll show you where
+        the opportunity is.
+      </p>
+    </div>
+  </section>
+
   <CtaBanner />
   <Footer />
 </Layout>
@@ -312,6 +341,42 @@ const verticals = Array.from(
   /* ═══════════════════════════════════════════════════════════════════
      FILTERS
      ═══════════════════════════════════════════════════════════════════ */
+  .cs-intro {
+    padding: 64px 0 96px;
+    background: var(--white);
+    border-top: 1px solid var(--border-light);
+  }
+
+  .cs-intro__inner {
+    max-width: 760px;
+  }
+
+  .cs-intro__title {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+  }
+
+  .cs-intro__inner p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+  }
+
+  .cs-intro__inner a {
+    color: var(--teal-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .cs-intro__inner a:hover {
+    color: var(--teal);
+  }
+
   .cs-filters {
     position: sticky;
     top: 0;

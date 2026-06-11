@@ -9,11 +9,11 @@ featured: false
 draft: false
 ---
 
-Medspa is one of the most saturated local categories in search. In any major metro, the local pack for "Botox near me" is a fight between physician-led aesthetics practices, dermatology offices running an aesthetics arm, day spas that added a nurse injector, and chains like Ideal Image. Layer on the aggregator real estate that RealSelf, Groupon, and Yelp occupy on the first page, and the organic ceiling for any single practice is lower than it looks.
+Medspa is one of the most saturated local categories in search, which makes it a hard vertical to win for an agency client and a profitable one once you do. In any major metro, the local pack for "Botox near me" is a fight between physician-led aesthetics practices, dermatology offices running an aesthetics arm, day spas that added a nurse injector, and chains like Ideal Image. Layer on the aggregator real estate that RealSelf, Groupon, and Yelp occupy on the first page, and the organic ceiling for any single practice is lower than it looks.
 
 The good news: most medspa websites are weak. They lean on stock photography, recycle manufacturer copy from Allergan and Galderma, and treat their service pages as brochure ware. A practice that takes the work seriously can outrank far more established competitors inside 12 months.
 
-This guide is the framework we use with medspa clients, with the specifics that change when you're optimizing around aesthetic injectables, laser, body contouring, and the medical-aesthetic crossover that defines a real medspa versus a beauty bar.
+This is the framework we run for agencies whose clients sit in this vertical, delivered white-label, with the specifics that change when you're optimizing around aesthetic injectables, laser, body contouring, and the medical-aesthetic crossover that defines a real medspa versus a beauty bar.
 
 ## Why medspa SEO has its own rules
 
@@ -122,6 +122,16 @@ Google rewards the first group, and patients increasingly do too. The signals th
 
 This positioning compounds with the E-E-A-T signals Google looks for in YMYL verticals. The on-page work is in [our on-page SEO guide](/guides/on-page-seo/).
 
+## Hair restoration for practices that offer it
+
+A growing number of aesthetic practices add hair restoration, whether that's PRP and exosome treatments for thinning or surgical FUE and FUT through an on-staff or partner surgeon. The SEO works like the rest of the medspa, with a few specifics worth knowing.
+
+Patients shop the technique before they shop the practice. "FUE hair transplant," "FUT hair transplant," and "PRP for hair loss" are largely separate keyword universes with different intent, so they earn separate pages rather than one catch-all "hair restoration" page. Cost-anchored queries ("hair transplant cost," "cost per graft," "PRP for hair cost") drive heavy volume, and practices that publish realistic ranges beat the ones that hide pricing.
+
+Two things close the patient. First, before-and-after galleries, organized by pattern and shown at real timelines: results compound over a year, so "12 months post-op" beats a generic "after." Second, provider credentials: a real bio for the surgeon or injector, ISHRS membership where applicable, and procedure counts. This is YMYL content, so the credential and evidence signals that matter elsewhere in the medspa matter even more here.
+
+For a local or regional practice, the growth channel is the same local SEO covered above: a fully optimized Google Business Profile, detailed per-technique treatment pages, and real local reviews. We don't chase the international medical-tourism angle, because for a practice serving its own market that's a distraction from the patients actually nearby.
+
 ## Common mistakes
 
 The patterns we see most often when auditing medspa sites:
@@ -167,4 +177,4 @@ A medspa SEO program that works has the same shape every time: a clean treatment
 
 The timeline is six to twelve months for visible compounding, faster if the local pack work is the starting point and the existing content is genuinely thin (which it usually is).
 
-If you're running a medspa or aesthetic practice and the local pack isn't showing your name where it should, [get in touch](/sign-up/) and we'll diagnose where the leverage actually is.
+If you've got a medspa or aesthetic client whose name isn't showing in the local pack where it should, [run a free discovery with us](/partner-package/) and we'll diagnose where the leverage actually is, then build it out under your brand.

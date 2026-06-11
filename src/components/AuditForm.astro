@@ -1,0 +1,765 @@
+---
+// Reusable free-audit lead form. Collects name / email / website and POSTs
+// JSON to /api/audit (ActiveCampaign list 24 + Slack). Renders as a white card
+// that works on both dark heroes and light sections.
+//
+// Multiple instances per page are supported — the client script binds every
+// .audit-form on the page independently. Pass `source` so the Slack message
+// says which page the lead came from.
+interface Props {
+  heading?: string;
+  sub?: string;
+  buttonLabel?: string;
+  /** Identifies the originating page in the Slack notification. */
+  source?: string;
+  /** Reassurance line under the button. */
+  disclaimer?: string;
+}
+
+const {
+  heading = "Get Your Free SEO Audit",
+  sub = "Enter your details for an instant look at where you stand, with a real audit from our team on request.",
+  buttonLabel = "Get My Free Audit",
+  source = Astro.url.pathname,
+  disclaimer = "Free, no commitment. Instant results, plus a human audit when you want one.",
+} = Astro.props;
+
+import { TURNSTILE_SITE_KEY } from "../lib/turnstile";
+
+// Unique per-instance suffix so field ids and label associations stay valid
+// when more than one AuditForm renders on the same page (e.g. an industry
+// page's hero form plus the closing CtaBanner form).
+const uid = Math.random().toString(36).slice(2, 9);
+---
+
+<div class="audit-form-card">
+  <h2 class="audit-form__heading">{heading}</h2>
+  <p class="audit-form__sub">{sub}</p>
+
+  <form class="audit-form" novalidate data-source={source}>
+    {/*
+      Honeypot. Hidden from humans but present in the HTML bots scrape. The
+      /api/audit endpoint silently drops any submission where phoneNumber is
+      filled. Mirrors the pattern in sign-up.astro. Do not add a real phone
+      field with this name.
+    */}
+    <div class="audit-form__hp" aria-hidden="true">
+      <label for={`af-phone-${uid}`}>Phone number</label>
+      <input type="text" id={`af-phone-${uid}`} name="phoneNumber" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <div class="audit-form__field">
+      <label for={`af-name-${uid}`}>Your Name</label>
+      <input
+        type="text"
+        id={`af-name-${uid}`}
+        name="name"
+        placeholder="John Smith"
+        required
+        autocomplete="name"
+      />
+    </div>
+
+    <div class="audit-form__field">
+      <label for={`af-email-${uid}`}>Email</label>
+      <input
+        type="email"
+        id={`af-email-${uid}`}
+        name="email"
+        placeholder="john@email.com"
+        required
+        autocomplete="email"
+      />
+    </div>
+
+    <div class="audit-form__field">
+      <label for={`af-url-${uid}`}>Website</label>
+      <input
+        type="text"
+        id={`af-url-${uid}`}
+        name="url"
+        placeholder="yourbusiness.com"
+        required
+        inputmode="url"
+        autocomplete="url"
+      />
+    </div>
+
+    {/* Add-on audit types. Site & SEO health always runs; these reveal extra
+        fields and switch on the matching snapshot modules. */}
+    <div class="audit-form__addons">
+      <span class="audit-form__addons-label">Add to your free audit:</span>
+      <label class="audit-form__toggle">
+        <input type="checkbox" name="local" value="on" data-reveal="local" />
+        <span>Local audit <em>(Google Business Profile + map pack)</em></span>
+      </label>
+      <label class="audit-form__toggle">
+        <input type="checkbox" name="ai" value="on" data-reveal="ai" />
+        <span>AI citation audit <em>(how AI search sees you)</em></span>
+      </label>
+    </div>
+
+    <div class="audit-form__reveal" data-group="local" hidden>
+      {/*
+        GBP picker. The user types their business name; we query /api/places
+        and they pick their actual Google listing, which captures the place_id
+        in the hidden field below. The snapshot then pulls authoritative GBP
+        data by id instead of guessing from a text search.
+
+        The canonical submitted values are the hidden placeId + the business
+        and city inputs inside data-gbp-manual. In picker mode those inputs are
+        hidden and filled programmatically on selection; "Enter manually"
+        reveals them for typing (and is the automatic fallback when the Places
+        lookup is unavailable, e.g. no API key in local dev).
+      */}
+      <input type="hidden" name="placeId" data-gbp-placeid />
+
+      <div class="audit-form__gbp" data-gbp-picker>
+        <div class="audit-form__field">
+          <label for={`af-gbp-${uid}`}>Find your business on Google</label>
+          <div class="audit-form__gbp-combo">
+            <input
+              type="text"
+              id={`af-gbp-${uid}`}
+              class="audit-form__gbp-search"
+              data-gbp-search
+              placeholder="Start typing your business name…"
+              autocomplete="off"
+              role="combobox"
+              aria-expanded="false"
+              aria-autocomplete="list"
+              aria-controls={`af-gbp-list-${uid}`}
+            />
+            <ul
+              class="audit-form__gbp-results"
+              id={`af-gbp-list-${uid}`}
+              data-gbp-results
+              role="listbox"
+              hidden
+            ></ul>
+          </div>
+        </div>
+
+        <div class="audit-form__gbp-selected" data-gbp-selected hidden>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <span data-gbp-selected-text></span>
+          <button type="button" class="audit-form__gbp-clear" data-gbp-clear>Change</button>
+        </div>
+
+        <button type="button" class="audit-form__gbp-manual-toggle" data-gbp-manual-toggle>
+          Can't find it? Enter manually
+        </button>
+      </div>
+
+      <div class="audit-form__manual" data-gbp-manual hidden>
+        <div class="audit-form__field-row">
+          <div class="audit-form__field">
+            <label for={`af-biz-${uid}`}>Business name</label>
+            <input type="text" id={`af-biz-${uid}`} name="business" placeholder="Smith Plumbing" autocomplete="organization" />
+          </div>
+          <div class="audit-form__field">
+            <label for={`af-city-${uid}`}>City</label>
+            <input type="text" id={`af-city-${uid}`} name="city" placeholder="Halifax, NS" autocomplete="address-level2" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="audit-form__reveal" data-group="ai" hidden>
+      <div class="audit-form__field">
+        <label for={`af-service-${uid}`}>Main service</label>
+        <input type="text" id={`af-service-${uid}`} name="service" placeholder="e.g. emergency plumbing" />
+      </div>
+    </div>
+
+    {TURNSTILE_SITE_KEY && (
+      <div
+        class="cf-turnstile audit-form__turnstile"
+        data-sitekey={TURNSTILE_SITE_KEY}
+        data-size="flexible"
+      />
+    )}
+
+    <button type="submit" class="btn btn-primary audit-form__submit">
+      <span class="audit-form__submit-label">{buttonLabel}</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path
+          d="M3 8h10M9 4l4 4-4 4"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+    </button>
+
+    <p class="audit-form__disclaimer">{disclaimer}</p>
+    <p class="audit-form__error" role="alert" hidden></p>
+  </form>
+</div>
+
+{TURNSTILE_SITE_KEY && (
+  <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+)}
+
+<script>
+  import { prefillForm, saveLead } from "../lib/leadMemory";
+
+  document.querySelectorAll<HTMLFormElement>(".audit-form").forEach((form) => {
+    const errorEl = form.querySelector<HTMLElement>(".audit-form__error");
+    const submitBtn = form.querySelector<HTMLButtonElement>(".audit-form__submit");
+    const label = form.querySelector<HTMLElement>(".audit-form__submit-label");
+    const originalLabel = label?.textContent ?? "Get My Free Audit";
+
+    // Pre-fill from a previous form submit so repeat visitors don't re-type.
+    prefillForm(form);
+
+    // Audit-type toggles reveal their extra fields.
+    form.querySelectorAll<HTMLInputElement>("[data-reveal]").forEach((cb) => {
+      const group = form.querySelector<HTMLElement>(`[data-group="${cb.dataset.reveal}"]`);
+      const sync = () => {
+        if (group) group.hidden = !cb.checked;
+      };
+      cb.addEventListener("change", sync);
+      sync();
+    });
+
+    // GBP picker: type a business name, query /api/places, pick the real Google
+    // listing to capture its place_id. Degrades to the manual business/city
+    // fields when the lookup is unavailable or the user can't find themselves.
+    setupGbpPicker(form);
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      if (errorEl) errorEl.hidden = true;
+      if (submitBtn) submitBtn.disabled = true;
+      if (label) label.textContent = "Sending...";
+
+      const data = Object.fromEntries(new FormData(form).entries());
+      data.source = form.dataset.source ?? location.pathname;
+
+      try {
+        // Trailing slash required: astro.config sets trailingSlash: 'always'.
+        const res = await fetch("/api/audit/", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        const body = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
+
+        if (res.ok && body.ok) {
+          saveLead({ name: String(data.name ?? ""), email: String(data.email ?? "") });
+          // Hand the audit params to the crunching/results page (which runs the
+          // snapshot). It also fires the free_audit_form_submission GA4 event and
+          // is the Ads conversion URL.
+          const types = ["seo"];
+          if (data.local === "on") types.push("local");
+          if (data.ai === "on") types.push("ai");
+          const qp = new URLSearchParams({ url: String(data.url ?? ""), types: types.join(",") });
+          if (data.business) qp.set("business", String(data.business));
+          if (data.city) qp.set("city", String(data.city));
+          if (data.service) qp.set("service", String(data.service));
+          if (data.placeId) qp.set("placeId", String(data.placeId));
+          window.location.assign(`/audit-requested/?${qp.toString()}`);
+          return;
+        }
+        throw new Error(body.error ?? "Something went wrong. Please try again.");
+      } catch (err) {
+        if (errorEl) {
+          errorEl.textContent =
+            err instanceof Error ? err.message : "Something went wrong. Please try again.";
+          errorEl.hidden = false;
+        }
+        if (submitBtn) submitBtn.disabled = false;
+        if (label) label.textContent = originalLabel;
+      }
+    });
+  });
+
+  interface PlaceResult {
+    placeId: string;
+    name: string;
+    address: string;
+  }
+
+  function setupGbpPicker(form: HTMLFormElement) {
+    const picker = form.querySelector<HTMLElement>("[data-gbp-picker]");
+    const manual = form.querySelector<HTMLElement>("[data-gbp-manual]");
+    const placeIdInput = form.querySelector<HTMLInputElement>("[data-gbp-placeid]");
+    const search = form.querySelector<HTMLInputElement>("[data-gbp-search]");
+    const resultsEl = form.querySelector<HTMLUListElement>("[data-gbp-results]");
+    const selected = form.querySelector<HTMLElement>("[data-gbp-selected]");
+    const selectedText = form.querySelector<HTMLElement>("[data-gbp-selected-text]");
+    const clearBtn = form.querySelector<HTMLButtonElement>("[data-gbp-clear]");
+    const manualToggle = form.querySelector<HTMLButtonElement>("[data-gbp-manual-toggle]");
+    const bizInput = form.querySelector<HTMLInputElement>('input[name="business"]');
+    const cityInput = form.querySelector<HTMLInputElement>('input[name="city"]');
+    if (!picker || !manual || !placeIdInput || !search || !resultsEl) return;
+
+    let debounce: ReturnType<typeof setTimeout> | undefined;
+    let activeIndex = -1;
+    let current: PlaceResult[] = [];
+
+    function showManual(on: boolean) {
+      manual!.hidden = !on;
+      picker!.hidden = on;
+    }
+
+    function clearResults() {
+      resultsEl!.innerHTML = "";
+      resultsEl!.hidden = true;
+      search!.setAttribute("aria-expanded", "false");
+      activeIndex = -1;
+      current = [];
+    }
+
+    function select(r: PlaceResult) {
+      placeIdInput!.value = r.placeId;
+      if (bizInput) bizInput.value = r.name;
+      if (cityInput) cityInput.value = r.address || "";
+      if (selectedText) selectedText.textContent = r.address ? `${r.name}, ${r.address}` : r.name;
+      if (selected) selected.hidden = false;
+      search!.value = "";
+      search!.hidden = true;
+      clearResults();
+    }
+
+    function clearSelection() {
+      placeIdInput!.value = "";
+      if (bizInput) bizInput.value = "";
+      if (cityInput) cityInput.value = "";
+      if (selected) selected.hidden = true;
+      search!.hidden = false;
+    }
+
+    function renderResults(results: PlaceResult[]) {
+      resultsEl!.innerHTML = "";
+      if (!results.length) {
+        clearResults();
+        return;
+      }
+      current = results;
+      activeIndex = -1;
+      results.forEach((r, i) => {
+        const li = document.createElement("li");
+        li.className = "audit-form__gbp-result";
+        li.setAttribute("role", "option");
+        li.dataset.index = String(i);
+        const name = document.createElement("span");
+        name.className = "audit-form__gbp-result-name";
+        name.textContent = r.name;
+        const addr = document.createElement("span");
+        addr.className = "audit-form__gbp-result-addr";
+        addr.textContent = r.address || "";
+        li.append(name, addr);
+        // mousedown (not click) so it fires before the input's blur clears the list.
+        li.addEventListener("mousedown", (e) => {
+          e.preventDefault();
+          select(r);
+        });
+        resultsEl!.appendChild(li);
+      });
+      resultsEl!.hidden = false;
+      search!.setAttribute("aria-expanded", "true");
+    }
+
+    async function query(q: string) {
+      try {
+        const res = await fetch(`/api/places/?q=${encodeURIComponent(q)}`);
+        const body = (await res.json().catch(() => ({}))) as {
+          ok?: boolean;
+          error?: string;
+          results?: PlaceResult[];
+        };
+        // No Places backend (e.g. local dev without a key) → switch to manual.
+        if (body.ok === false && body.error === "unavailable") {
+          showManual(true);
+          if (manualToggle) manualToggle.hidden = true;
+          return;
+        }
+        renderResults(Array.isArray(body.results) ? body.results : []);
+      } catch {
+        /* transient network error — let the user keep typing or go manual */
+      }
+    }
+
+    search.addEventListener("input", () => {
+      const q = search.value.trim();
+      clearTimeout(debounce);
+      if (q.length < 3) {
+        clearResults();
+        return;
+      }
+      debounce = setTimeout(() => query(q), 250);
+    });
+
+    search.addEventListener("keydown", (e) => {
+      if (resultsEl.hidden) return;
+      const items = Array.from(resultsEl.children);
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        activeIndex = Math.min(activeIndex + 1, items.length - 1);
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        activeIndex = Math.max(activeIndex - 1, 0);
+      } else if (e.key === "Enter") {
+        if (activeIndex >= 0 && current[activeIndex]) {
+          e.preventDefault();
+          select(current[activeIndex]);
+        }
+        return;
+      } else if (e.key === "Escape") {
+        clearResults();
+        return;
+      } else {
+        return;
+      }
+      items.forEach((el, i) => el.classList.toggle("is-active", i === activeIndex));
+    });
+
+    // Delay so a result's mousedown can register before the list is torn down.
+    search.addEventListener("blur", () => setTimeout(clearResults, 120));
+
+    clearBtn?.addEventListener("click", clearSelection);
+    manualToggle?.addEventListener("click", () => {
+      showManual(true);
+      clearSelection();
+    });
+  }
+</script>
+
+<style>
+  .audit-form-card {
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: var(--radius-xl);
+    padding: 36px;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .audit-form__heading {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .audit-form__sub {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+
+  /* Audit-type toggles + revealed fields */
+  .audit-form__field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .audit-form__addons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 14px;
+    background: var(--light);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+  }
+
+  .audit-form__addons-label {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .audit-form__toggle {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 14px;
+    color: var(--text-primary);
+    cursor: pointer;
+    line-height: 1.4;
+  }
+
+  .audit-form__toggle input {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: var(--teal);
+    cursor: pointer;
+  }
+
+  .audit-form__toggle em {
+    color: var(--text-muted);
+    font-style: normal;
+    font-size: 13px;
+  }
+
+  .audit-form__reveal[hidden] {
+    display: none;
+  }
+
+  /* GBP picker */
+  .audit-form__gbp[hidden],
+  .audit-form__manual[hidden],
+  .audit-form__gbp-selected[hidden],
+  .audit-form__gbp-results[hidden] {
+    display: none;
+  }
+
+  .audit-form__gbp-combo {
+    position: relative;
+  }
+
+  .audit-form__gbp-search {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.5;
+    padding: 10px 14px;
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    background: var(--white);
+    transition: border-color var(--transition);
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .audit-form__gbp-search:focus {
+    border-color: var(--teal);
+  }
+
+  .audit-form__gbp-search::placeholder {
+    color: var(--text-muted);
+  }
+
+  .audit-form__gbp-search[hidden] {
+    display: none;
+  }
+
+  .audit-form__gbp-results {
+    position: absolute;
+    z-index: 5;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 4px;
+    list-style: none;
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    max-height: 260px;
+    overflow-y: auto;
+  }
+
+  /* NOTE: the result rows (.audit-form__gbp-result*) are created by client JS,
+     so they don't get Astro's scoped-style hash. Their styles live in the
+     is:global block at the end of this file. */
+
+  .audit-form__gbp-selected {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: var(--text-primary);
+    background: rgba(40, 165, 177, 0.08);
+    border: 1px solid rgba(40, 165, 177, 0.25);
+    border-radius: var(--radius-md);
+  }
+
+  .audit-form__gbp-selected svg {
+    color: var(--green);
+    flex-shrink: 0;
+  }
+
+  .audit-form__gbp-selected span[data-gbp-selected-text] {
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .audit-form__gbp-clear {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--teal-dark);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .audit-form__gbp-manual-toggle {
+    margin-top: 10px;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 13px;
+    color: var(--text-muted);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .audit-form__gbp-manual-toggle:hover {
+    color: var(--text-secondary);
+  }
+
+  .audit-form__turnstile {
+    margin: 2px 0;
+  }
+
+  .audit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Honeypot: kept in the DOM (and the HTML bots scrape) but off-screen. */
+  .audit-form__hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .audit-form__field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .audit-form__field label {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+  }
+
+  .audit-form__field input {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.5;
+    padding: 10px 14px;
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    background: var(--white);
+    transition: border-color var(--transition);
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .audit-form__field input:focus {
+    border-color: var(--teal);
+  }
+
+  .audit-form__field input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .audit-form__submit {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 24px;
+    font-size: 16px;
+    margin-top: 4px;
+    cursor: pointer;
+    border: none;
+    justify-content: center;
+  }
+
+  .audit-form__submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .audit-form__disclaimer {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: -4px;
+  }
+
+  .audit-form__error {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #c0392b;
+    background: rgba(220, 50, 50, 0.06);
+    border: 1px solid rgba(220, 50, 50, 0.18);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .audit-form-card {
+      padding: 28px 24px;
+    }
+  }
+</style>
+
+{/* Global because the GBP picker result rows are built by client JS and so
+    don't receive Astro's scoped-style hash. Selectors are audit-form__gbp-
+    prefixed, so this is safe to ship globally. */}
+<style is:global>
+  .audit-form__gbp-result {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.12s ease;
+  }
+
+  .audit-form__gbp-result + .audit-form__gbp-result {
+    border-top: 1px solid var(--border-light);
+  }
+
+  .audit-form__gbp-result:hover,
+  .audit-form__gbp-result.is-active {
+    background: rgba(40, 165, 177, 0.08);
+    border-top-color: transparent;
+  }
+  /* Hide the divider above a row when the row before it is highlighted. */
+  .audit-form__gbp-result:hover + .audit-form__gbp-result,
+  .audit-form__gbp-result.is-active + .audit-form__gbp-result {
+    border-top-color: transparent;
+  }
+
+  .audit-form__gbp-result-name {
+    font-family: var(--font-display);
+    font-size: 14.5px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--text-primary);
+  }
+
+  .audit-form__gbp-result-addr {
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: var(--text-muted);
+  }
+</style>

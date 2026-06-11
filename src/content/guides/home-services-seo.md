@@ -8,9 +8,9 @@ summary: A hub guide for home services SEO. What makes the category different fr
 featured: true
 ---
 
-Home services is one of the largest categories of local-search business in North America. Plumbers, HVAC contractors, electricians, carpet cleaners, tree services, landscapers, painters, roofers, pest control. The category shares a common shape: service-area businesses that travel to the customer, deeply local-search-driven demand, urgency-of-need queries, and review-driven decision making.
+Home services is one of the largest categories of local-search business in North America, and one of the most common verticals agencies end up selling into. Plumbers, HVAC contractors, electricians, carpet cleaners, tree services, landscapers, painters, roofers, pest control. The category shares a common shape: service-area businesses that travel to the customer, deeply local-search-driven demand, urgency-of-need queries, and review-driven decision making. We deliver the SEO behind that work for agencies, under their brand.
 
-This is the hub guide for the category. The general framework here applies to any home services business. Below the framework you'll find links down to vertical-specific guides covering the tactics that change for individual trades.
+This is the hub guide for the category. The general framework here applies to any home services client. Below the framework you'll find links down to vertical-specific guides covering the tactics that change for individual trades.
 
 ## What makes home services different
 
@@ -115,7 +115,7 @@ Ranking gets the phone to ring. Conversion architecture determines whether the c
 
 Home services covers a wide range of trades, each with category-specific tactics. The dedicated playbook below covers the vertical where the strategy diverges most meaningfully from the general framework above.
 
-- [SEO for Plumbers](/guides/seo-for-plumbers/)
+- [SEO for Plumbers](/guides/industry/plumbing/)
 
 Other home services categories — HVAC, carpet cleaning, tree service, roofing, electrical, painting, landscaping, pest control — follow the same framework with vertical-specific keyword and content adjustments. Dedicated guides for these are in the works.
 
@@ -143,4 +143,4 @@ The framework above is our default for home services campaigns. Vertical-specifi
 
 For partner agencies serving home services clients, we operate the SEO layer end-to-end while the agency manages the contractor relationship.
 
-If you run a home services business or work with one, [get in touch](/sign-up/) and we'll walk through how the framework applies to your specific situation.
+If you've got a home services client stuck below the local pack, run a [free discovery](/partner-package/) and we'll show you exactly what's holding the rankings back, then deliver the fix under your brand.

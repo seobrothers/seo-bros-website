@@ -200,4 +200,4 @@ On-page is the foundation for everything else. We start every campaign with a fu
 
 For partner agencies, we deliver the optimization sheet as a complete artifact. The agency or their developers can implement directly, or we can handle deployment depending on the engagement.
 
-If your site is underperforming and you're not sure whether the issue is on-page, technical, or off-page, [get in touch](/sign-up/) and we'll diagnose where the leverage is.
+If your site is underperforming and you're not sure whether the issue is on-page, technical, or off-page, [get in touch](/tools/free-seo-audit/) and we'll diagnose where the leverage is.

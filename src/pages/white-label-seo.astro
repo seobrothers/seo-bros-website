@@ -2,37 +2,44 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import GrowthCallEmbed from "../components/GrowthCallEmbed.astro";
 
 const processSteps = [
   {
     number: "01",
-    title: "World-Class Free Discovery",
+    title: "Intake",
     description:
-      "We offer free audits that others charge thousands for. We identify opportunities, assess competition, and support your sales efforts before you commit to anything. No other white-label provider offers this.",
+      "We collect everything we can: access, site history, the client's goals and context, what's been tried before, and what has or hasn't worked.",
   },
   {
     number: "02",
-    title: "Strategic Onboarding",
+    title: "Reconcile with discovery",
     description:
-      "Every campaign starts with a strategic onboard that lays the foundation: priorities, quick wins, and a clear roadmap. Your account manager walks you through every detail.",
+      "We line intake up against what the free discovery uncovered. Has anything changed? Where is the real opportunity, and what is the primary intent this campaign is chasing?",
   },
   {
     number: "03",
-    title: "Execute & Optimize",
+    title: "Plan & kickoff",
     description:
-      "On-page optimizations, content marketing, technical improvements, link acquisition, and more, all driven by the strategic plan for each campaign.",
+      "We map a detailed plan around that intent: the initiatives we'll run and the order we'll run them in. Then a kickoff call to get context and feedback before any work starts.",
   },
   {
     number: "04",
-    title: "Review & Pivot",
+    title: "Work the initiatives",
     description:
-      "Reviews happen on whatever cadence each campaign needs. We compare performance to plan, look at what competitors have shifted, and adjust priorities so we're always pointed at the gap that's actually limiting growth.",
+      "We work through the initiatives, the mini-projects that move the primary intent. A brand-new site and a ten-year-old site with real authority get very different first moves.",
   },
   {
     number: "05",
-    title: "Reports & Dashboards",
+    title: "Review & adjust",
     description:
-      "White-label branded reports and real-time data dashboards you can reference any time. Always know what's happening across every campaign.",
+      "Most campaigns run a quarterly review plus a monthly check that the initiatives are moving as planned. If something isn't working, we adjust course and map a new plan of attack.",
+  },
+  {
+    number: "06",
+    title: "Iterate",
+    description:
+      "Then we keep going. More SEO Time means more initiatives, completed faster, all tracked in the plan so you always know what's next and what's done.",
   },
 ];
 
@@ -51,15 +58,15 @@ const components = [
   },
   {
     icon: "onpage",
-    title: "On-Page Optimization",
+    title: "SEO Time",
     description:
-      "Page-specific meta data, headers, body copy, and content optimized for target keywords and user intent to improve relevance and search visibility.",
+      "Specialist time on the next most important thing for the site: geo and service pages, on-page work, page speed, and technical improvements. The proactive work, not just fixing crawl errors.",
   },
   {
     icon: "technical",
-    title: "Technical SEO & Crawl Fixes",
+    title: "Health & Crawl Score",
     description:
-      "Page speed, structured data and schema, broken links, canonical tags, and the other technical SEO elements reviewed and improved continuously.",
+      "A monthly health and crawl-score check that catches and fixes errors: broken links, canonical and indexation issues, and crawl blockers. Proactive technical work like page speed is part of SEO Time.",
   },
   {
     icon: "links",
@@ -75,9 +82,9 @@ const components = [
   },
   {
     icon: "content",
-    title: "Strategic Content Marketing",
+    title: "Authority Content",
     description:
-      "Improvements to existing pages, new content creation, and blog support to build topical authority and rank for adjacent intents.",
+      "Blog and authority content that keeps the site fresh and builds topical authority in the space. Usually one, sometimes two pieces a month depending on the size of the site.",
   },
   {
     icon: "ai",
@@ -91,6 +98,33 @@ const components = [
     description:
       "Real-time campaign data dashboards and formatted monthly reports delivered to your inbox on the first of every month.",
   },
+];
+
+// Representative action items that SEO Time and local work get spent on. Not a
+// fixed checklist: each cycle we name the next outcome we're chasing, then work
+// whatever ladders up to it. We benchmark against the top competitors across the
+// board, so most of these are informed by what's winning in the market.
+const localActions = [
+  { title: "GBP review & optimization", body: "Audit the Google Business Profile against the top competitors and improve categories, attributes, content, and completeness to strengthen local visibility." },
+  { title: "GBP landing page optimization", body: "Review and optimize the landing pages tied to the profile for local relevance and conversion." },
+  { title: "Citation audit & fixes", body: "Find and correct name, address, and phone (NAP) inconsistencies across directories that drag on local rankings." },
+  { title: "New citation creation", body: "Build new listings across authoritative directories. Less critical for a while, now resurgent because of how AI weighs references to a business." },
+  { title: "Citation gap review & creation", body: "Compare the citation footprint against competitors and close the high-value directory gaps." },
+];
+
+const onpageActions = [
+  { title: "Content publishing & optimization", body: "Publish new content (blog, service, geo) with proper headers, metadata, and internal links." },
+  { title: "Blog post optimization", body: "Improve existing posts for keyword alignment, readability, and SEO performance." },
+  { title: "Metadata quick wins", body: "Update title tags and meta descriptions on pages with fast click-through gains." },
+  { title: "Priority-intent internal linking", body: "Audit and build internal links to and from priority-intent pages to build topical authority and distribute page equity." },
+  { title: "Orphaned page fixes", body: "Find pages with no internal links pointing to them and resolve it for crawlability and equity flow." },
+  { title: "Canonical tag review & fixes", body: "Resolve duplicate-content issues so search engines index the right page versions." },
+  { title: "Search Console review", body: "Address crawl errors, indexing issues, and performance gaps that hold visibility back." },
+  { title: "Priority-intent page optimization", body: "Sharpen keyword targeting, relevance, and performance on the pages that matter most." },
+  { title: "Secondary-intent optimization", body: "Optimize pages targeting secondary keyword intent to capture additional demand." },
+  { title: "Page speed optimization", body: "Benchmark Core Web Vitals and load performance and close the gaps that cost rankings." },
+  { title: "Internal linking structure", body: "Strengthen the site's overall internal link structure so authority flows where it should." },
+  { title: "Schema & structured data", body: "Implement structured data to improve search-engine understanding and rich-result eligibility." },
 ];
 
 const faqGroups = [
@@ -207,12 +241,21 @@ const faqSchema = {
     })),
   ),
 };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", Astro.site).href },
+    { "@type": "ListItem", position: 2, name: "White-Label SEO", item: new URL("/white-label-seo/", Astro.site).href },
+  ],
+};
 ---
 
 <Layout
   title="White Label SEO Services for Agencies | SEO Brothers"
   description="White label SEO services for growth-focused agencies. Deliver SEO under your brand with dedicated account managers, free discovery audits, and 50%+ margins."
-  schema={faqSchema}
+  schema={[breadcrumbSchema, faqSchema]}
 >
   <Nav />
 
@@ -232,7 +275,7 @@ const faqSchema = {
       </div>
 
       <h1 class="wl-hero-title" data-animate>
-        White Label SEO Services<br />
+        <span class="wl-hero-title-line">White Label SEO Services</span><br />
         <span class="wl-hero-title-gradient">Without the Headaches</span>
       </h1>
 
@@ -243,8 +286,8 @@ const faqSchema = {
       </p>
 
       <div class="wl-hero-actions" data-animate>
-        <a href="/sign-up/" class="btn btn-primary wl-btn-lg">
-          Book a Demo
+        <a href="/partner-package/" class="btn btn-primary wl-btn-lg">
+          Get Access
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path
               d="M3 8h10M9 4l4 4-4 4"
@@ -411,6 +454,38 @@ const faqSchema = {
     </div>
   </section>
 
+  <!-- ===== SPECIALTIES (hub -> spokes) ===== -->
+  <section class="wl-specialties">
+    <div class="container">
+      <div class="wl-specialties-header" data-animate>
+        <span class="section-label">Specialties</span>
+        <h2 class="section-heading">White label SEO, by focus area</h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          Local is our core, but partners resell us across the board. Each of
+          these is delivered under your brand.
+        </p>
+      </div>
+      <div class="wl-specialties-grid" data-stagger>
+        {[
+          { href: "/white-label-seo/local/", name: "Local SEO", desc: "Map pack, Google Business Profile, and local content for service-area clients." },
+          { href: "/white-label-seo/link-building/", name: "Link Building", desc: "Editorial links and our Publishing House, built safely under your brand." },
+          { href: "/white-label-seo/ecommerce/", name: "Ecommerce SEO", desc: "Category, product, and faceted-nav SEO for online stores." },
+          { href: "/white-label-seo/enterprise/", name: "Enterprise SEO", desc: "Large, complex portfolios and the reporting that satisfies stakeholders." },
+          { href: "/white-label-seo/ai-seo/", name: "AI SEO", desc: "Getting your clients cited in AI Overviews, ChatGPT, and Perplexity." },
+        ].map((s) => (
+          <a href={s.href} class="wl-specialty" data-animate>
+            <h3 class="wl-specialty-name">{s.name}</h3>
+            <p class="wl-specialty-desc">{s.desc}</p>
+            <span class="wl-specialty-cta">
+              Explore
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- ===== ROLES (RESELLER VS PROVIDER) ===== -->
   <section class="wl-roles">
     <div class="container">
@@ -565,8 +640,8 @@ const faqSchema = {
           Every prospective partner gets a free discovery audit. No
           commitment, no credit card. Mike walks you through it.
         </p>
-        <a href="/sign-up/" class="btn btn-primary wl-mid-cta-btn">
-          Book a Demo
+        <a href="/partner-package/" class="btn btn-primary wl-mid-cta-btn">
+          Get Access
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path
               d="M3 8h10M9 4l4 4-4 4"
@@ -584,14 +659,16 @@ const faqSchema = {
   <section class="wl-process">
     <div class="container">
       <div class="wl-process-header" data-animate>
-        <span class="section-label">Proven Campaign Process</span>
+        <span class="section-label">Campaign Onboarding</span>
         <h2 class="section-heading">
-          SEO Brothers' White Label<br />
-          Campaign Success Formula
+          How a campaign<br />
+          comes together
         </h2>
         <p class="section-subtext" style="margin:0 auto;">
-          We follow a proven process to ensure you can bring to market a highly
-          profitable SEO solution while providing the best value to your clients.
+          Every campaign is built around one primary intent, the outcome we're
+          chasing. Initiatives are the mini-projects that move it, each made up of
+          the task list that completes it. Here's how onboarding and the ongoing
+          cadence actually work.
         </p>
       </div>
 
@@ -613,8 +690,8 @@ const faqSchema = {
       </div>
 
       <div class="wl-process-cta" data-animate>
-        <a href="/sign-up/" class="btn btn-primary">
-          Book a Demo
+        <a href="/partner-package/" class="btn btn-primary">
+          Get Access
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path
               d="M3 8h10M9 4l4 4-4 4"
@@ -898,6 +975,57 @@ const faqSchema = {
     </div>
   </section>
 
+  <!-- ===== ACTION ITEMS (what the work looks like) ===== -->
+  <section class="wl-actions" id="seo-work">
+    <div class="container">
+      <div class="wl-actions-header" data-animate>
+        <span class="section-label">What the work looks like</span>
+        <h2 class="section-heading">SEO Time, in plain terms</h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          Each cycle we name the next outcome we're chasing, then work the action
+          items that ladder up to it. SEO Time and local work get spent here. This
+          is a representative list, not a fixed menu, and it grows as search does.
+        </p>
+      </div>
+
+      <div class="wl-actions-grid">
+        <div class="wl-actions-col" data-animate>
+          <h3 class="wl-actions-col-title">Local SEO may include</h3>
+          <ul class="wl-actions-list">
+            {localActions.map((a) => (
+              <li class="wl-action">
+                <span class="wl-action-check" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                </span>
+                <span>
+                  <span class="wl-action-title">{a.title}</span>
+                  <span class="wl-action-body">{a.body}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="wl-actions-col" data-animate>
+          <h3 class="wl-actions-col-title">On-page &amp; technical may include</h3>
+          <ul class="wl-actions-list">
+            {onpageActions.map((a) => (
+              <li class="wl-action">
+                <span class="wl-action-check" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                </span>
+                <span>
+                  <span class="wl-action-title">{a.title}</span>
+                  <span class="wl-action-body">{a.body}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== PARTNER PORTAL ===== -->
   <section class="wl-portal">
     <div class="wl-portal-bg">
@@ -915,12 +1043,27 @@ const faqSchema = {
         </h2>
         <p class="section-subtext section-subtext--light">
           Our self-serve partner portal takes the hassle out of ordering
-          campaigns, getting support, and having visibility on existing
-          campaigns.
+          campaigns, getting support, and seeing exactly what's next and what's
+          already done on every campaign.
         </p>
       </div>
 
       <div class="wl-portal-grid" data-stagger>
+        <div class="wl-portal-feature" data-animate>
+          <div class="wl-portal-feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 11l3 3L22 4" />
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+            </svg>
+          </div>
+          <h3 class="wl-portal-feature-title">See What's Next &amp; What's Done</h3>
+          <p class="wl-portal-feature-desc">
+            The Portal shows what we're working on next, what we're doing to
+            get there, and a work log of everything completed. Show it to your
+            client under your brand, or keep it internal. Your call.
+          </p>
+        </div>
+
         <div class="wl-portal-feature" data-animate>
           <div class="wl-portal-feature-icon">
             <svg
@@ -1039,7 +1182,7 @@ const faqSchema = {
             strategic managed campaigns are what we specialize in: the full
             package your clients need to drive massive organic value.
           </p>
-          <a href="/sign-up/" class="btn btn-primary wl-product-btn">Book a Demo</a>
+          <a href="/partner-package/" class="btn btn-primary wl-product-btn">Get Access</a>
         </div>
 
         <div class="wl-product-card" data-animate>
@@ -1050,7 +1193,7 @@ const faqSchema = {
             results without the ongoing commitment. Redesign consultations
             available too.
           </p>
-          <a href="/sign-up/" class="btn btn-outline--dark wl-product-btn">Book a Demo</a>
+          <a href="/partner-package/" class="btn btn-outline--dark wl-product-btn">Get Access</a>
         </div>
 
         <div class="wl-product-card" data-animate>
@@ -1060,7 +1203,7 @@ const faqSchema = {
             Our link building plans let you focus purely on authority building
             when that's the biggest need for a campaign.
           </p>
-          <a href="/sign-up/" class="btn btn-outline--dark wl-product-btn">Book a Demo</a>
+          <a href="/partner-package/" class="btn btn-outline--dark wl-product-btn">Get Access</a>
         </div>
 
         <div class="wl-product-card" data-animate>
@@ -1070,7 +1213,7 @@ const faqSchema = {
             ongoing content marketing plan, or end-to-end creation. Our managed
             content plans put that into action.
           </p>
-          <a href="/sign-up/" class="btn btn-outline--dark wl-product-btn">Book a Demo</a>
+          <a href="/partner-package/" class="btn btn-outline--dark wl-product-btn">Get Access</a>
         </div>
       </div>
     </div>
@@ -1148,7 +1291,7 @@ const faqSchema = {
             <li>1 backlink per month</li>
             <li>1.5 hours of SEO Time per month</li>
           </ul>
-          <a href="/sign-up/" class="btn btn-outline--dark wl-pricing-btn">Book a Demo</a>
+          <a href="/partner-package/" class="btn btn-outline--dark wl-pricing-btn">Get Access</a>
         </div>
 
         <div class="wl-pricing-card wl-pricing-card--featured" data-animate>
@@ -1157,12 +1300,12 @@ const faqSchema = {
             <h3 class="wl-pricing-tier">Typical</h3>
             <p class="wl-pricing-tier-desc">
               Our most-quoted package. Full-stack local SEO with content,
-              links, Maps, and SEO Time directed at the Priority Intents that
-              move the campaign.
+              links, Maps, and SEO Time directed at the Priority Intents
+              that move the campaign.
             </p>
           </div>
           <div class="wl-pricing-price">
-            <span class="wl-pricing-amount">$680</span>
+            <span class="wl-pricing-amount">$620</span>
             <span class="wl-pricing-period">per month</span>
           </div>
           <ul class="wl-pricing-features">
@@ -1172,10 +1315,10 @@ const faqSchema = {
             <li>Live reporting dashboard</li>
             <li>1 Local Maps focus location</li>
             <li>2 backlinks per month</li>
-            <li>3.5 hours of SEO Time per month</li>
-            <li>1 new content piece per month</li>
+            <li>3 hours of SEO Time per month</li>
+            <li>1 authority content piece per month</li>
           </ul>
-          <a href="/sign-up/" class="btn btn-primary wl-pricing-btn">Book a Demo</a>
+          <a href="/partner-package/" class="btn btn-primary wl-pricing-btn">Get Access</a>
         </div>
 
         <div class="wl-pricing-card" data-animate>
@@ -1196,9 +1339,9 @@ const faqSchema = {
             <li>Everything in Typical</li>
             <li>4 backlinks per month</li>
             <li>5.5 hours of SEO Time per month</li>
-            <li>2 new content pieces per month</li>
+            <li>2 authority content pieces per month</li>
           </ul>
-          <a href="/sign-up/" class="btn btn-outline--dark wl-pricing-btn">Book a Demo</a>
+          <a href="/partner-package/" class="btn btn-outline--dark wl-pricing-btn">Get Access</a>
         </div>
       </div>
 
@@ -1347,7 +1490,7 @@ const faqSchema = {
           <h3 class="wl-choose-title">Ask for sample deliverables</h3>
           <p class="wl-choose-desc">
             What do reports look like? What do dashboards look like? What's
-            actually being optimized inside their SEO Time bucket each
+            actually being worked on inside their SEO Time each
             month? Examples are easier to evaluate than promises. Providers
             that won't share sample work usually have a reason.
           </p>
@@ -1443,6 +1586,70 @@ const faqSchema = {
             belong to your agency without question. Get that in writing
             before the campaign starts, not after a client tries to leave.
           </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WEBSITE BUNDLE ===== -->
+  <section class="wl-bundle">
+    <div class="container">
+      <div class="wl-bundle-card" data-animate>
+        <div class="wl-bundle-text">
+          <span class="section-label">Add the Website</span>
+          <h2 class="section-heading">
+            Bundle a <span class="wl-bundle-gradient">Lightning-Fast Site</span><br />
+            With the SEO
+          </h2>
+          <p class="wl-bundle-lead">
+            SEO works better on a site that's built right. A slow or sloppy
+            site caps what any campaign can do, because Core Web Vitals and a
+            clean structure are part of how Google ranks and how visitors
+            convert. You can spend on links and content all day, but if the
+            page is fighting you, the ceiling stays low.
+          </p>
+          <p class="wl-bundle-lead">
+            So we build and host the site and run the SEO, all under your
+            brand. One partner for the whole stack instead of stitching a
+            developer and an SEO team together and hoping they talk to each
+            other.
+          </p>
+
+          <ul class="wl-bundle-list">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              Built on Astro and hosted on Cloudflare, so pages load fast and
+              Core Web Vitals start in the green instead of needing rescue.
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              Fresh build or a redesign of the existing site, with rankings
+              protected through the migration so the SEO work doesn't reset.
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              One brand, one invoice, one team handling the site and the
+              search performance together.
+            </li>
+          </ul>
+
+          <a href="/white-label-web-design/" class="btn btn-primary wl-bundle-btn">
+            See white-label web design
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M3 8h10M9 4l4 4-4 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+          </a>
         </div>
       </div>
     </div>
@@ -1599,83 +1806,10 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- ===== BOTTOM CTA ===== -->
-  <section class="wl-bottom-cta" id="wl-cta">
-    <div class="wl-bottom-cta-bg">
-      <div class="wl-bottom-cta-orb wl-bottom-cta-orb--1"></div>
-      <div class="wl-bottom-cta-orb wl-bottom-cta-orb--2"></div>
-      <div class="wl-bottom-cta-orb wl-bottom-cta-orb--3"></div>
-    </div>
-
-    <div class="container">
-      <div class="wl-bottom-cta-content" data-animate>
-        <h2 class="wl-bottom-cta-heading">
-          Ready to Start Your<br />
-          <span class="wl-bottom-cta-gradient"
-            >White Label SEO Partnership?</span
-          >
-        </h2>
-        <p class="wl-bottom-cta-text">
-          Schedule a service walkthrough today. We'll show you the process,
-          introduce you to the team, and answer every question you have.
-        </p>
-        <div class="wl-bottom-cta-actions">
-          <a href="/sign-up/" class="btn btn-primary wl-btn-lg">
-            Book a Demo
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path
-                d="M3 8h10M9 4l4 4-4 4"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"></path>
-            </svg>
-          </a>
-        </div>
-        <div class="wl-bottom-cta-meta">
-          <span>
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            No upfront cost
-          </span>
-          <span>
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            Cancel anytime
-          </span>
-          <span>
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            Free discovery audit
-          </span>
-        </div>
-      </div>
-    </div>
-  </section>
+  <GrowthCallEmbed
+    heading="Ready to start your white-label SEO partnership?"
+    sub="Book a growth call and we'll show you the process, introduce the team, and answer every question you have."
+  />
 
   <Footer />
 </Layout>
@@ -1786,12 +1920,17 @@ const faqSchema = {
 
   .wl-hero-title {
     font-family: var(--font-display);
-    font-size: clamp(40px, 7vw, 72px);
+    font-size: clamp(36px, 6vw, 64px);
     font-weight: 700;
     line-height: 1.08;
     letter-spacing: -0.03em;
     color: var(--text-on-dark);
     margin-bottom: 24px;
+  }
+
+  /* Keep "White Label SEO Services" on one line; let it wrap on small screens. */
+  .wl-hero-title-line {
+    white-space: nowrap;
   }
 
   .wl-hero-title-gradient {
@@ -1849,6 +1988,9 @@ const faqSchema = {
     .wl-hero {
       padding: 120px 0 80px;
       min-height: auto;
+    }
+    .wl-hero-title-line {
+      white-space: normal;
     }
   }
 
@@ -3482,6 +3624,79 @@ const faqSchema = {
     }
   }
 
+  /* ===== WEBSITE BUNDLE ===== */
+  .wl-bundle {
+    padding: 120px 0;
+    background: var(--white);
+  }
+
+  .wl-bundle-card {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 48px;
+    background: linear-gradient(
+      135deg,
+      rgba(140, 99, 170, 0.05),
+      rgba(140, 99, 170, 0.02)
+    );
+    border: 1px solid rgba(140, 99, 170, 0.18);
+    border-radius: var(--radius-xl);
+  }
+
+  .wl-bundle-gradient {
+    background: linear-gradient(135deg, var(--purple) 0%, var(--purple-light) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .wl-bundle-lead {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+  }
+
+  .wl-bundle-list {
+    list-style: none;
+    margin: 28px 0 32px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .wl-bundle-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  .wl-bundle-list li svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--purple);
+  }
+
+  .wl-bundle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  @media (max-width: 600px) {
+    .wl-bundle {
+      padding: 80px 0;
+    }
+
+    .wl-bundle-card {
+      padding: 32px 24px;
+    }
+  }
+
   /* ===== BOTTOM CTA ===== */
   .wl-bottom-cta {
     padding: 120px 0;
@@ -3597,5 +3812,61 @@ const faqSchema = {
       flex-direction: column;
       gap: 12px;
     }
+  }
+</style>
+
+<style>
+  /* ===== SPECIALTIES (hub -> spokes) ===== */
+  .wl-specialties { padding: 96px 0; background: var(--light); }
+  .wl-specialties-header { max-width: 680px; margin: 0 auto 44px; text-align: center; }
+  .wl-specialties-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px; max-width: 1040px; margin: 0 auto;
+  }
+  .wl-specialty {
+    display: flex; flex-direction: column;
+    padding: 28px; border-radius: var(--radius-lg);
+    background: var(--white); border: 1px solid var(--border-light);
+    transition: all var(--transition);
+  }
+  .wl-specialty:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--purple); }
+  .wl-specialty-name {
+    font-family: var(--font-display); font-size: 19px; font-weight: 700;
+    letter-spacing: -0.01em; color: var(--text-primary); margin-bottom: 8px;
+  }
+  .wl-specialty-desc { font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 18px; flex-grow: 1; }
+  .wl-specialty-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 600; color: var(--purple-dark);
+    transition: gap var(--transition); margin-top: auto;
+  }
+  .wl-specialty:hover .wl-specialty-cta { gap: 12px; }
+
+  @media (max-width: 768px) {
+    .wl-specialties { padding: 72px 0; }
+  }
+</style>
+
+<style>
+  /* ===== ACTION ITEMS ===== */
+  .wl-actions { padding: 96px 0; background: var(--white); border-top: 1px solid var(--border-light); }
+  .wl-actions-header { max-width: 680px; margin: 0 auto 48px; text-align: center; }
+  .wl-actions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 1040px; margin: 0 auto; align-items: start; }
+  .wl-actions-col-title {
+    font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text-primary);
+    margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border-light);
+  }
+  .wl-actions-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 18px; }
+  .wl-action { display: flex; gap: 12px; align-items: flex-start; }
+  .wl-action-check {
+    flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+    background: rgba(40,165,177,0.12); color: var(--teal-dark);
+    display: flex; align-items: center; justify-content: center; margin-top: 2px;
+  }
+  .wl-action-title { display: block; font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--text-primary); }
+  .wl-action-body { display: block; font-size: 14px; line-height: 1.55; color: var(--text-secondary); margin-top: 3px; }
+  @media (max-width: 860px) {
+    .wl-actions { padding: 72px 0; }
+    .wl-actions-grid { grid-template-columns: 1fr; gap: 36px; }
   }
 </style>

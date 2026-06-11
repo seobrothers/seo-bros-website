@@ -162,4 +162,4 @@ Read those. Learn from them. Make yours similar, [but 10x better](https://moz.co
 
 Most of our content work for partner agencies starts with the themes-then-validation framework above. The blog content we produce is built to support service-page rankings through internal linking, not to exist as a standalone traffic generator. Annual content audits are part of the standard engagement, with pruning and consolidation alongside the production of new content.
 
-If you're producing blog content but it isn't producing rankings or leads, [get in touch](/sign-up/) and we'll diagnose where the strategy is breaking down.
+If you're producing blog content but it isn't producing rankings or leads, [get in touch](/tools/free-seo-audit/) and we'll diagnose where the strategy is breaking down.

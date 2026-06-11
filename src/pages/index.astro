@@ -7,18 +7,21 @@ import AboutBrand from "../components/AboutBrand.astro";
 import Services from "../components/Services.astro";
 import Process from "../components/Process.astro";
 import WhyUs from "../components/WhyUs.astro";
+import DasherFeature from "../components/DasherFeature.astro";
 import Testimonials from "../components/Testimonials.astro";
+import AgencyBand from "../components/AgencyBand.astro";
 import CtaBanner from "../components/CtaBanner.astro";
 import Footer from "../components/Footer.astro";
 
 const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "https://seobrothers.com/#organization",
   name: "SEO Brothers",
   url: "https://seobrothers.com",
   logo: "https://seobrothers.com/images/logo.png",
   description:
-    "White label SEO company for growth-focused agencies. Managed campaigns, link building, content marketing, and more, all under your brand.",
+    "White-label SEO and website company for agencies. Expert campaigns and fast Astro sites delivered under your brand. Halifax-founded in 2015, 30+ team, 100+ agency partners.",
   foundingDate: "2015",
   founders: [
     { "@type": "Person", name: "Devon Bate" },
@@ -36,12 +39,21 @@ const orgSchema = {
     "https://www.facebook.com/theseobrothers/",
   ],
 };
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://seobrothers.com/#website",
+  url: "https://seobrothers.com",
+  name: "SEO Brothers",
+  publisher: { "@id": "https://seobrothers.com/#organization" },
+};
 ---
 
 <Layout
-  title="SEO Brothers | White Label SEO Company for Agencies"
-  description="SEO Brothers is a white label SEO company for growth-focused agencies. Halifax-founded, 100+ partners, 5,000+ campaigns delivered under your brand."
-  schema={orgSchema}
+  title="SEO Brothers | White-Label SEO & Websites for Agencies"
+  description="SEO Brothers is a white-label SEO and website partner for agencies. Expert SEO campaigns and fast Astro sites delivered under your brand. Halifax-founded, 10+ years, 5,000+ campaigns."
+  schema={[orgSchema, websiteSchema]}
 >
   <Nav />
   <Hero />
@@ -50,7 +62,9 @@ const orgSchema = {
   <Services />
   <Process />
   <WhyUs />
+  <DasherFeature />
   <Testimonials />
-  <CtaBanner />
+  <AgencyBand />
+  <CtaBanner variant="partner" />
   <Footer />
 </Layout>

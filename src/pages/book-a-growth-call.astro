@@ -1,0 +1,99 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+// Direct, no-gate booking page. The lower-friction counterpart to the
+// /partner-package/ opt-in: an agency books a call with Mike straight away.
+// ⚙️ CONFIG — Devon: Mike's "growth call" Calendly. Reusing the good-fit demo
+// link for now; if Mike spins up a dedicated "Growth Call" event type, swap it.
+const calendlyUrl = "https://calendly.com/mike-2473/mike-s-good-fit-demo";
+
+const expect = [
+  "How we'd run SEO and websites under your brand, start to finish.",
+  "A look at a real client situation if you've got one to talk through.",
+  "Straight answers on pricing, scope, and how the partnership works.",
+];
+---
+
+<Layout
+  title="Book a Growth Call | White Label SEO for Agencies | SEO Brothers"
+  description="Book a no-pressure growth call with SEO Brothers. We'll walk through how we deliver white-label SEO and websites under your agency's brand. No slide-deck pitch."
+>
+  <Nav variant="light" hideCta={true} />
+
+  <section class="gc">
+    <div class="gc__bg">
+      <div class="gc__orb gc__orb--1"></div>
+      <div class="gc__orb gc__orb--2"></div>
+    </div>
+
+    <div class="container gc__inner">
+      <div class="gc__copy">
+        <span class="section-label">For Agencies &amp; Resellers</span>
+        <h1 class="gc__title">Book a growth call</h1>
+        <p class="gc__lede">
+          A real conversation about how we'd grow your agency's SEO and website
+          revenue under your own brand. No slide-deck pitch, no pressure. Grab a
+          time that works and we'll take it from there.
+        </p>
+        <ul class="gc__expect">
+          {expect.map((e) => (
+            <li>
+              <span class="gc__check" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+              </span>
+              {e}
+            </li>
+          ))}
+        </ul>
+        <p class="gc__alt">
+          Prefer to look around first? <a href="/partner-package/">Unlock the partner package</a> to explore pricing, case studies, and a free discovery on your own time.
+        </p>
+      </div>
+
+      <div class="gc__cal">
+        <iframe
+          class="gc__calendly"
+          src={`${calendlyUrl}?hide_gdpr_banner=1`}
+          title="Book a growth call with SEO Brothers"
+          loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .gc { position: relative; padding: 150px 0 110px; background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%); overflow: hidden; }
+  .gc__bg { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .gc__orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.22; }
+  .gc__orb--1 { width: 460px; height: 460px; top: -120px; left: -140px; background: var(--teal); }
+  .gc__orb--2 { width: 420px; height: 420px; bottom: -160px; right: -120px; background: var(--purple); }
+  .gc__inner {
+    position: relative; z-index: 1; max-width: 1080px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: start;
+  }
+  .gc__copy { padding-top: 8px; }
+  .gc__copy .section-label { display: inline-block; }
+  .gc__title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin: 10px 0 16px; }
+  .gc__lede { font-size: 18px; line-height: 1.7; color: var(--text-secondary); margin-bottom: 28px; }
+  .gc__expect { list-style: none; margin: 0 0 28px; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  .gc__expect li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.55; color: var(--text-primary); }
+  .gc__check { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: rgba(68,185,123,0.14); color: var(--green); display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+  .gc__alt { font-size: 14px; line-height: 1.6; color: var(--text-muted); }
+  .gc__alt a { color: var(--teal-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+  .gc__cal {
+    background: var(--white); border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl); padding: 12px; box-shadow: var(--shadow-md);
+  }
+  .gc__calendly { width: 100%; min-height: 720px; border: 0; border-radius: var(--radius-md); display: block; }
+
+  @media (max-width: 900px) {
+    .gc { padding: 120px 0 80px; }
+    .gc__inner { grid-template-columns: 1fr; gap: 32px; }
+    .gc__calendly { min-height: 1000px; }
+  }
+</style>

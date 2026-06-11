@@ -4,7 +4,7 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import { authorByName } from "../data/authors";
 
-const launchDate = "August 1, 2026";
+const launchDate = "July 28, 2026";
 
 const hosts = [
   {
@@ -32,11 +32,22 @@ const platforms = [
   "Overcast",
   "Pocket Casts",
 ];
+
+const segments = [
+  {
+    name: "Crawl Space",
+    text: "Our recurring teardown. We climb into the crawl space of a real site or campaign and poke at the unglamorous mechanics most people never look at: the redirects, the architecture, the technical debt, the small fixes that move rankings more than the flashy stuff.",
+  },
+  {
+    name: "Tool Shed",
+    text: "What's in the shed this week. We pull out the AI tools and automations agencies can actually use to cut the busywork and speed up delivery, then call what's worth adding to your stack and what's just hype.",
+  },
+];
 ---
 
 <Layout
   title="Brothers in Search | The SEO Brothers Podcast"
-  description="Brothers in Search is the upcoming weekly podcast from Adam and Devon Bate of SEO Brothers. A look at the work behind the rankings, launching August 1, 2026."
+  description="Brothers in Search is the upcoming podcast from Adam and Devon Bate of SEO Brothers. A look at the work behind the rankings, new episodes every Tuesday starting July 28, 2026."
 >
   <Nav />
 
@@ -63,7 +74,7 @@ const platforms = [
       </p>
 
       <div class="pod-hero__meta" data-animate>
-        <span class="pod-hero__chip">New episodes weekly</span>
+        <span class="pod-hero__chip">New episodes every Tuesday</span>
         <span class="pod-hero__chip pod-hero__chip--accent">
           Launching {launchDate}
         </span>
@@ -129,17 +140,20 @@ const platforms = [
   <!-- ═══════════════════════════════════════════ SEGMENT TEASER ═════════════════════════════════ -->
   <section class="pod-segment">
     <div class="container">
-      <div class="pod-segment__card" data-animate>
-        <span class="pod-segment__kicker">Recurring segment</span>
-        <h2 class="pod-segment__title">Crawl Space</h2>
-        <p class="pod-segment__text">
-          Our recurring teardown segment. We climb into the crawl space of a
-          real site or campaign and poke at the unglamorous mechanics most
-          people never look at: the redirects, the architecture, the technical
-          debt, the small fixes that move rankings more than the flashy stuff.
-        </p>
-        <p class="pod-segment__hint">More segments to come as we build the show.</p>
+      <div class="pod-segment__header" data-animate>
+        <span class="section-label">Recurring segments</span>
+        <h2 class="section-heading">The bits you'll look forward to</h2>
       </div>
+      <div class="pod-segment__grid" data-stagger>
+        {segments.map((s) => (
+          <div class="pod-segment__card" data-animate>
+            <span class="pod-segment__kicker">Recurring segment</span>
+            <h3 class="pod-segment__title">{s.name}</h3>
+            <p class="pod-segment__text">{s.text}</p>
+          </div>
+        ))}
+      </div>
+      <p class="pod-segment__hint">More segments to come as we build the show.</p>
     </div>
   </section>
 
@@ -422,11 +436,22 @@ const platforms = [
     background: var(--light);
   }
 
+  .pod-segment__header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .pod-segment__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 940px;
+    margin: 0 auto;
+  }
+
   .pod-segment__card {
     position: relative;
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 56px;
+    padding: 44px 40px;
     border-radius: var(--radius-xl);
     background: var(--dark);
     overflow: hidden;
@@ -445,26 +470,26 @@ const platforms = [
 
   .pod-segment__title {
     font-family: var(--font-display);
-    font-size: clamp(30px, 5vw, 44px);
+    font-size: clamp(26px, 3.2vw, 34px);
     font-weight: 700;
     letter-spacing: -0.02em;
     color: var(--text-on-dark);
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
 
   .pod-segment__text {
-    font-size: 16.5px;
+    font-size: 16px;
     line-height: 1.75;
     color: var(--text-on-dark-muted);
-    max-width: 620px;
-    margin: 0 auto;
+    margin: 0;
   }
 
   .pod-segment__hint {
     font-size: 14px;
     font-style: italic;
     color: var(--text-muted);
-    margin: 24px 0 0;
+    text-align: center;
+    margin: 32px 0 0;
   }
 
   /* ═══════════════════════════════════════════════════════════════════
@@ -529,6 +554,11 @@ const platforms = [
 
     .pod-segment {
       padding: 0 0 80px;
+    }
+
+    .pod-segment__grid {
+      grid-template-columns: 1fr;
+      max-width: 420px;
     }
 
     .pod-segment__card {

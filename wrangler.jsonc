@@ -13,4 +13,39 @@
 	"observability": {
     "enabled": true
   }
+
+  // ── Workbench team-tools service binding ──────────────────────────────────
+  // Lets /api/snapshot call team-tools' TeamToolsRpc (pagespeedRunTest,
+  // googlePlacesDetails, etc.) Worker-to-Worker — team-tools owns the API keys
+  // and the call bypasses its public IP allowlist. The snapshot code already
+  // prefers env.TEAM_TOOLS and falls back to direct Google APIs when it's absent,
+  // so this is safe to leave off until ready.
+  //
+  // ⚠️ REQUIRES this Worker to deploy in the SAME Cloudflare account as
+  // team-tools (account b79126b288e28cb17013c4dafd967c37). If seobrothers.com
+  // is in a different account, the deploy fails with "service team-tools not
+  // found" — confirm the account with Adam/Colin first, then uncomment:
+  //
+  // "services": [
+  //   { "binding": "TEAM_TOOLS", "service": "team-tools", "entrypoint": "TeamToolsRpc" }
+  // ]
+
+  // ── Analytics Engine (queryable abuse/usage metrics) ─────────────────────
+  // The lead/snapshot endpoints already log structured lines to Workers Logs
+  // (observability above). For queryable-by-IP/domain abuse dashboards, enable
+  // Analytics Engine (requires the Workers Paid plan) and uncomment:
+  //
+  // "analytics_engine_datasets": [
+  //   { "binding": "AE", "dataset": "seobrothers_events" }
+  // ]
+
+  // ── KV for IP rate limiting ───────────────────────────────────────────────
+  // /api/snapshot caps fresh runs per IP (8/hr); /api/audit + /api/partner-lead
+  // cap submits (20/hr). The code no-ops until this binding exists, so it's safe
+  // to leave off. To enable: create the namespace and paste its id below:
+  //   npx wrangler kv namespace create RATE_LIMIT
+  //
+  // "kv_namespaces": [
+  //   { "binding": "RATE_LIMIT", "id": "<namespace_id>" }
+  // ]
 }

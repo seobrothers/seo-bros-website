@@ -9,9 +9,9 @@ featured: false
 draft: false
 ---
 
-Carpet cleaning is a textbook local-service-business SEO category. The buying decision is almost always made within a tight geographic radius, the conversion happens by phone or quick form fill, and the average customer doesn't comparison-shop the way they do for higher-consideration purchases. If a prospect can find you, see decent reviews, and reach you fast, you usually get the job.
+Carpet cleaning is a textbook local-service-business SEO category, and an easy one for an agency to win for a client once you know where the leverage sits. The buying decision is almost always made within a tight geographic radius, the conversion happens by phone or quick form fill, and the average customer doesn't comparison-shop the way they do for higher-consideration purchases. If the client can be found, shows decent reviews, and is easy to reach, they usually get the job.
 
-That doesn't make the category easy. The local-pack competition is heavy in any decent-sized metro, the seasonal demand swings are real, and most carpet cleaning websites are templated, slow, and content-thin. This guide is the framework we use to win in this vertical, with the tactics that separate residential from commercial work and the seasonal patterns most operators ignore.
+That doesn't make the category easy. The local-pack competition is heavy in any decent-sized metro, the seasonal demand swings are real, and most carpet cleaning websites are templated, slow, and content-thin. This guide is the framework we use when we deliver this vertical under an agency's brand, with the tactics that separate residential from commercial work and the seasonal patterns most operators ignore.
 
 ## What makes carpet cleaning SEO specific
 
@@ -163,6 +163,6 @@ For carpet cleaning, yes. This is the most local-SEO-dependent vertical we work 
 
 Carpet cleaning is a vertical where most of the leverage is in the foundation: GBP, reviews, location pages, on-page basics. We start with an audit to identify the local-pack ceiling the current setup is hitting, fix the structural issues, build the location and service-page architecture, and run review and citation work in parallel. Content layered on top compounds over months.
 
-For multi-location operators or franchise groups, the work scales meaningfully across territories. For single-location operators, the goal is local-pack dominance in the served city. Carpet cleaning is part of the broader [home services SEO](/guides/home-services-seo/) cluster, and the cross-link between this guide and adjacent trades reinforces topical relevance.
+For multi-location operators or franchise groups, the work scales meaningfully across territories. For single-location operators, the goal is local-pack dominance in the served city. Carpet cleaning is part of the broader [home services SEO](/guides/franchise-seo/) cluster, and the cross-link between this guide and adjacent trades reinforces topical relevance.
 
-If you're running a carpet cleaning business and the call volume isn't matching what your equipment and team could handle, [get in touch](/sign-up/) and we'll figure out where the rankings are stuck.
+If you've got a carpet cleaning client whose call volume isn't matching what their equipment and team could handle, [run a free discovery with us](/partner-package/) and we'll figure out where the rankings are stuck, then deliver the fix under your brand.

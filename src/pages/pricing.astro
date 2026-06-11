@@ -3,54 +3,38 @@ import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import CtaBanner from "../components/CtaBanner.astro";
+import {
+  SEO_TIERS,
+  REPORTING,
+  HEALTH,
+  STRATEGY,
+  strategyMonthly,
+  BACKLINK,
+  EXTRA_BLOG,
+  EXTRA_HOUR,
+  EXTRA_LOCATION,
+  GBP_POSTING,
+  HOSTING,
+  MAINTENANCE,
+  WEB_BUILDS,
+  usd,
+} from "../data/pricing";
 
-interface Tier {
-  name: string;
-  price: string;
-  blurb: string;
-  highlights: string[];
-  featured?: boolean;
-  accent: "teal" | "purple" | "green";
-}
+const tiers = SEO_TIERS;
 
-const tiers: Tier[] = [
-  {
-    name: "Tiny",
-    price: "$360",
-    blurb:
-      "Base-level managed campaign. Right for ultra-low-competition industries or sparsely-populated locations where steady fundamentals win.",
-    highlights: [
-      "Semi-annual strategy review",
-      "1 backlink + 1.5 hours of SEO Time each month",
-      "Best for low-competition local",
-    ],
-    accent: "teal",
-  },
-  {
-    name: "Typical",
-    price: "$680",
-    blurb:
-      "Our most-quoted package. Full-stack local SEO with content, links, Maps, and SEO Time directed at the Priority Intents that move the campaign.",
-    highlights: [
-      "Quarterly strategy + monthly content",
-      "2 backlinks + 3.5 hours of SEO Time each month",
-      "Best for most local businesses",
-    ],
-    featured: true,
-    accent: "purple",
-  },
-  {
-    name: "Turbo",
-    price: "$1,210",
-    blurb:
-      "When the market is tougher or speed matters more. Monthly strategy reviews, more SEO Time, more links, more content.",
-    highlights: [
-      "Monthly strategy reviews",
-      "4 backlinks + 5.5 hours of SEO Time each month",
-      "Best for competitive markets",
-    ],
-    accent: "green",
-  },
+// À-la-carte rate card (the building blocks behind the packages, matching the
+// package builder on /partner-welcome/). Website builds render separately below.
+const rateCard = [
+  { name: REPORTING.label, value: usd(REPORTING.price), suffix: "/ mo", note: REPORTING.note, tag: "In every campaign" },
+  { name: HEALTH.label, value: usd(HEALTH.price), suffix: "/ mo", note: HEALTH.note, tag: "In every campaign" },
+  { name: STRATEGY.label, value: usd(STRATEGY.pricePerReview), suffix: "per review", note: `Cadence sets the monthly cost: semi-annual ${usd(strategyMonthly(2))}/mo, quarterly ${usd(strategyMonthly(4))}/mo, monthly ${usd(strategyMonthly(12))}/mo.` },
+  { name: "SEO Time", value: usd(EXTRA_HOUR.price), suffix: "/ hour, monthly", note: "Time on the next most important thing for the site: geo and service pages, on-page optimization, page speed, and technical improvements." },
+  { name: EXTRA_LOCATION.label, value: usd(EXTRA_LOCATION.price), suffix: "/ mo each", note: EXTRA_LOCATION.note },
+  { name: "Authority content", value: usd(EXTRA_BLOG.price), suffix: "each, monthly", note: "Built for freshness and topical authority. Usually one, sometimes two a month depending on site size." },
+  { name: BACKLINK.label, value: usd(BACKLINK.price), suffix: "each, monthly", note: BACKLINK.note },
+  { name: GBP_POSTING.label, value: usd(GBP_POSTING.price), suffix: "/ mo", note: GBP_POSTING.note, tag: "Recommended for local" },
+  { name: HOSTING.label, value: "from " + usd(HOSTING.price), suffix: "/ mo", note: HOSTING.note },
+  { name: MAINTENANCE.label, value: "from " + usd(MAINTENANCE.price), suffix: "/ mo", note: MAINTENANCE.note },
 ];
 
 interface ComparisonRow {
@@ -85,10 +69,10 @@ const comparison: ComparisonRow[] = [
   },
   {
     label: "SEO Time per month",
-    values: ["1.5 hours", "3.5 hours", "5.5 hours"],
+    values: ["1.5 hours", "3 hours", "5.5 hours"],
   },
   {
-    label: "New content per month",
+    label: "Authority content per month",
     values: ["0", "1", "2"],
   },
 ];
@@ -125,11 +109,11 @@ const definitions: Definition[] = [
   },
   {
     term: "SEO Time",
-    body: "Flexible specialist time set aside each month and directed at the work that moves the active Priority Intents forward: on-page improvements, schema rollouts, content tune-ups, optimizations to whichever pages best serve each intent, and ongoing technical fixes. Tiny gets 1.5 hours, Typical 3.5, Turbo 5.5.",
+    body: "Specialist time set aside each month and directed at the next most important thing for the site: geo and location pages, service-page support, on-page optimization, page speed, and technical improvements. It is a time allocation, not loose 'flex' hours. Catching and fixing crawl errors is the health score's job; SEO Time is the proactive improvement work. Tiny gets 1.5 hours, Typical 3, Turbo 5.5, and you can add more at $60 per hour.",
   },
   {
-    term: "Content",
-    body: "A new blog post or geo / location page written, optimized, and published. Available à la carte from $120 per piece for any tier.",
+    term: "Authority content",
+    body: "A blog or authority piece written, optimized, and published to keep the site fresh and build topical authority in the space. You usually only need one, sometimes two a month depending on the size of the site. $120 per piece. (Geo and location pages fall under SEO Time, not content.)",
   },
 ];
 
@@ -192,12 +176,21 @@ const faqSchema = {
     },
   })),
 };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", Astro.site).href },
+    { "@type": "ListItem", position: 2, name: "Pricing", item: new URL("/pricing/", Astro.site).href },
+  ],
+};
 ---
 
 <Layout
-  title="White Label SEO Pricing and Packages | SEO Brothers"
-  description="Transparent, customizable white-label SEO pricing for agency partners. Three example packages plus full custom builds, with no annual contracts."
-  schema={faqSchema}
+  title="White-Label SEO Packages and Pricing | SEO Brothers"
+  description="Wholesale white-label SEO pricing for agency partners. Three SEO packages plus website builds and recurring add-ons. These are the partner rates you pay; you mark them up to your client. No annual contracts."
+  schema={[breadcrumbSchema, faqSchema]}
 >
   <Nav />
 
@@ -213,19 +206,20 @@ const faqSchema = {
     <div class="container pricing-hero__inner">
       <span class="pricing-hero__label" data-animate>
         <span class="pricing-hero__label-dot"></span>
-        White-Label SEO Pricing
+        White-Label SEO Packages
       </span>
 
       <h1 class="pricing-hero__title" data-animate>
-        Pricing built around<br />
-        <span class="pricing-hero__title-gradient">your agency, not ours.</span>
+        White-label SEO packages<br />
+        <span class="pricing-hero__title-gradient">priced for partners.</span>
       </h1>
 
       <p class="pricing-hero__subtitle" data-animate>
-        Our pricing is completely customizable and often unique to each
-        partnership. The packages below are real, frequently-quoted starting
-        points. Your account manager can tune any of them to fit your
-        clients' competition, geography, and goals.
+        This is our complete white-label SEO pricing rate card. Every number
+        below is the wholesale price you pay as a partner agency. You mark it
+        up and bill your own client. The three packages are real,
+        frequently-quoted starting points, and your account manager can tune
+        any of them to fit your clients' competition, geography, and goals.
       </p>
 
       <div class="pricing-hero__meta" data-animate>
@@ -303,8 +297,8 @@ const faqSchema = {
               </header>
 
               <div class="tier__price">
-                <span class="tier__price-value">{tier.price}</span>
-                <span class="tier__price-suffix">/ month</span>
+                <span class="tier__price-value">{usd(tier.price)}</span>
+                <span class="tier__price-suffix">/ mo</span>
               </div>
 
               <ul class="tier__highlights">
@@ -329,13 +323,13 @@ const faqSchema = {
               </ul>
 
               <a
-                href="/sign-up/"
+                href="/partner-package/"
                 class:list={[
                   "tier__cta",
                   tier.featured ? "btn btn-primary" : "btn btn-outline--dark",
                 ]}
               >
-                Book a Demo
+                Get Access
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                   <path
                     d="M3 8h10M9 4l4 4-4 4"
@@ -378,7 +372,7 @@ const faqSchema = {
                     ]}
                   >
                     <span class="comparison__th-name">{tier.name}</span>
-                    <span class="comparison__th-price">{tier.price}/mo</span>
+                    <span class="comparison__th-price">{usd(tier.price)}/mo</span>
                   </th>
                 ))}
               </tr>
@@ -423,6 +417,13 @@ const faqSchema = {
         </div>
       </div>
 
+      <p class="compare-note" data-animate>
+        This isn't a menu of different work per plan. Every campaign can include
+        any of it; the package size sets how much SEO Time we have, not which
+        work we do, and we focus the budget on the next most valuable thing.
+        <a href="/white-label-seo/#seo-work">See everything SEO Time covers</a>.
+      </p>
+
       <!-- ─── Cadence flexibility callout ─── -->
       <aside class="cadence" data-animate>
         <div class="cadence__copy">
@@ -438,12 +439,12 @@ const faqSchema = {
         </div>
         <ul class="cadence__examples">
           <li>
-            <span class="cadence__example-label">Blog every other month</span>
+            <span class="cadence__example-label">Authority content every other month</span>
             <span class="cadence__example-price">From $60 / mo</span>
           </li>
           <li>
-            <span class="cadence__example-label">Extra Local Maps focus location</span>
-            <span class="cadence__example-price">From $60 / mo each</span>
+            <span class="cadence__example-label">GBP posting, any number of locations</span>
+            <span class="cadence__example-price">$50 / mo</span>
           </li>
           <li>
             <span class="cadence__example-label">Custom backlink or SEO Time hours</span>
@@ -451,6 +452,67 @@ const faqSchema = {
           </li>
         </ul>
       </aside>
+
+      <!-- ─── Websites & add-ons ─── -->
+      <div class="addons" data-animate>
+        <header class="addons__head">
+          <span class="section-label">À la carte</span>
+          <h3 class="addons__title">The full rate card</h3>
+          <p class="addons__subtitle">
+            The building blocks behind the packages. Every campaign includes
+            reporting and a health score; strategy, SEO Time, authority
+            content, and links scale to the plan. Build any mix you want. These
+            are wholesale prices you pay us and mark up to your client.
+          </p>
+        </header>
+
+        <div class="addons__grid" data-stagger>
+          <a
+            class="addon"
+            href="/white-label-web-design/"
+            data-animate
+          >
+            <span class="addon__name">{WEB_BUILDS[0].name}</span>
+            <span class="addon__price">
+              <span class="addon__price-value">{usd(WEB_BUILDS[0].price)}</span>
+              <span class="addon__price-suffix">one-time</span>
+            </span>
+            <span class="addon__note">{WEB_BUILDS[0].blurb}</span>
+          </a>
+
+          <a
+            class="addon addon--featured"
+            href="/white-label-web-design/"
+            data-animate
+          >
+            <span class="addon__badge">Most popular</span>
+            <span class="addon__name">{WEB_BUILDS[1].name}</span>
+            <span class="addon__price">
+              <span class="addon__price-value">{usd(WEB_BUILDS[1].price)}</span>
+              <span class="addon__price-suffix">one-time</span>
+            </span>
+            <span class="addon__note">{WEB_BUILDS[1].blurb}</span>
+          </a>
+
+          {rateCard.map((item) => (
+            <div class="addon" data-animate>
+              {item.tag && <span class="addon__badge">{item.tag}</span>}
+              <span class="addon__name">{item.name}</span>
+              <span class="addon__price">
+                <span class="addon__price-value">{item.value}</span>
+                <span class="addon__price-suffix">{item.suffix}</span>
+              </span>
+              <span class="addon__note">{item.note}</span>
+            </div>
+          ))}
+        </div>
+
+        <p class="addons__footnote">
+          Want it all in one number? <a href="/partner-package/">Build your own
+          package</a> and we will scope a single monthly quote across SEO, the
+          website, and the add-ons.
+        </p>
+      </div>
 
       <!-- ─── Definitions ─── -->
       <div class="definitions" data-animate>
@@ -509,7 +571,7 @@ const faqSchema = {
     </div>
   </section>
 
-  <CtaBanner />
+  <CtaBanner variant="partner" />
   <Footer />
 </Layout>
 
@@ -1143,6 +1205,147 @@ const faqSchema = {
   }
 
   /* ═══════════════════════════════════════════════════════════════════
+     WEBSITES & ADD-ONS
+     ═══════════════════════════════════════════════════════════════════ */
+  .addons {
+    margin-top: 96px;
+  }
+
+  .addons__head {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .addons__head .section-label {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .addons__title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 12px 0 16px;
+  }
+
+  .addons__subtitle {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0 auto;
+    max-width: 560px;
+  }
+
+  .addons__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .addon {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 28px 28px 30px;
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition);
+    text-decoration: none;
+  }
+
+  a.addon:hover {
+    border-color: rgba(40, 165, 177, 0.35);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .addon--featured {
+    border-color: rgba(124, 89, 184, 0.4);
+    box-shadow: var(--shadow-md);
+  }
+
+  .addon__badge {
+    position: absolute;
+    top: -11px;
+    left: 28px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 11px;
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, var(--teal) 0%, var(--purple) 100%);
+    background: linear-gradient(135deg in oklch, var(--teal) 0%, var(--purple) 100%);
+    color: var(--white);
+  }
+
+  .addon__name {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+
+  .addon--featured .addon__name {
+    color: var(--purple);
+  }
+
+  .addon__price {
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+  }
+
+  .addon__price-value {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3vw, 32px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+
+  .addon__price-suffix {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+
+  .addon__note {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  .addons__footnote {
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 40px auto 0;
+    max-width: 560px;
+  }
+
+  .addons__footnote a {
+    color: var(--teal);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(40, 165, 177, 0.35);
+  }
+
+  .addons__footnote a:hover {
+    border-bottom-color: var(--teal);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
      DEFINITIONS
      ═══════════════════════════════════════════════════════════════════ */
   .definitions {
@@ -1334,6 +1537,10 @@ const faqSchema = {
     .definitions__list {
       grid-template-columns: 1fr;
     }
+
+    .addons__grid {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   @media (max-width: 768px) {
@@ -1377,6 +1584,15 @@ const faqSchema = {
       padding: 22px 24px;
     }
 
+    .addons {
+      margin-top: 64px;
+    }
+
+    .addons__grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+    }
+
     .faq__question {
       padding: 18px 20px;
       font-size: 16px;
@@ -1385,5 +1601,22 @@ const faqSchema = {
     .faq__answer {
       padding: 0 20px 20px;
     }
+  }
+</style>
+
+<style>
+  .compare-note {
+    max-width: 760px;
+    margin: 28px auto 0;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+  .compare-note a {
+    color: var(--teal-dark);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 </style>

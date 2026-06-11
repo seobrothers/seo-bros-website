@@ -1,0 +1,261 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+
+// /tools/ hub. Two parts:
+//   1. Our own free tools (the ones we build and host). Free SEO audit and the
+//      SEO forecasting tool to start; this list grows over time.
+//   2. A curated, categorized directory of the third-party SEO tools worth
+//      knowing, with the ones our own team uses marked. Links are nofollow.
+//
+// To add one of our tools: add to OUR_TOOLS and create its page under /tools/.
+// To add a directory entry: add to the relevant group in DIRECTORY.
+
+const ourTools = [
+  {
+    name: "Free SEO Audit",
+    href: "/tools/free-seo-audit/",
+    desc: "An instant audit of your site's SEO health, your Google Business Profile, and how AI search sees you, plus a human audit on request.",
+    cta: "Run a free audit",
+  },
+  {
+    name: "SEO Forecasting Tool",
+    href: "/tools/seo-forecasting-tool/",
+    desc: "Estimate the traffic, leads, and revenue a keyword could bring if you ranked for it, with a realistic first-year ramp. No signup.",
+    cta: "Open the forecaster",
+  },
+];
+
+// Curated directory. `weUse` marks tools our own team works with day to day.
+const directory: Array<{
+  group: string;
+  tools: Array<{ name: string; href: string; desc: string; weUse?: boolean }>;
+}> = [
+  {
+    group: "All-in-one SEO platforms",
+    tools: [
+      { name: "Ahrefs", href: "https://ahrefs.com/", desc: "Backlink and keyword data, site audits, and rank tracking in one platform.", weUse: true },
+      { name: "Semrush", href: "https://www.semrush.com/", desc: "Broad SEO, PPC, and competitive research suite with strong keyword tools." },
+      { name: "Moz Pro", href: "https://moz.com/products/pro", desc: "Keyword research, link analysis, and rank tracking with a gentle learning curve." },
+    ],
+  },
+  {
+    group: "Keyword research",
+    tools: [
+      { name: "Google Keyword Planner", href: "https://ads.google.com/home/tools/keyword-planner/", desc: "Search volume and keyword ideas straight from Google, free with an Ads account.", weUse: true },
+      { name: "AnswerThePublic", href: "https://answerthepublic.com/", desc: "Surfaces the questions people search around a topic, great for content ideas." },
+      { name: "Keywords Everywhere", href: "https://keywordseverywhere.com/", desc: "A browser add-on that shows volume and related terms as you search." },
+    ],
+  },
+  {
+    group: "Technical SEO and crawling",
+    tools: [
+      { name: "Google Search Console", href: "https://search.google.com/search-console/about", desc: "Google's own view of how your site is indexed and which queries you rank for. Free and essential.", weUse: true },
+      { name: "Screaming Frog", href: "https://www.screamingfrog.co.uk/seo-spider/", desc: "Desktop crawler that finds broken links, redirects, and on-page issues at scale.", weUse: true },
+      { name: "PageSpeed Insights", href: "https://pagespeed.web.dev/", desc: "Google's performance and Core Web Vitals report, the same data our audit uses.", weUse: true },
+    ],
+  },
+  {
+    group: "Local SEO",
+    tools: [
+      { name: "Google Business Profile", href: "https://www.google.com/business/", desc: "Your listing on Google Maps and the local pack. The foundation of local SEO.", weUse: true },
+      { name: "BrightLocal", href: "https://www.brightlocal.com/", desc: "Local rank tracking, citation building, and review management for multi-location work.", weUse: true },
+      { name: "Whitespark", href: "https://whitespark.ca/", desc: "Citation finding and local rank tracking, strong for map-pack visibility." },
+    ],
+  },
+  {
+    group: "Reporting and analytics",
+    tools: [
+      { name: "Google Analytics 4", href: "https://marketingplatform.google.com/about/analytics/", desc: "Free traffic and conversion analytics, the source of truth for what SEO actually drives.", weUse: true },
+      { name: "AgencyAnalytics", href: "https://agencyanalytics.com/", desc: "Client-friendly SEO dashboards that pull rankings, traffic, and campaign data together.", weUse: true },
+      { name: "Data Studio", href: "https://datastudio.google.com/", desc: "Google's free, flexible dashboard builder (formerly Looker Studio), built on your Search Console and Analytics data.", weUse: true },
+    ],
+  },
+];
+
+const collectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "SEO Tools",
+  description:
+    "Free SEO tools from SEO Brothers plus a curated directory of the best third-party SEO software.",
+  url: "https://seobrothers.com/tools/",
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", Astro.site).href },
+    { "@type": "ListItem", position: 2, name: "Tools", item: new URL("/tools/", Astro.site).href },
+  ],
+};
+---
+
+<Layout
+  title="SEO Tools | Free Tools & Curated Directory | SEO Brothers"
+  description="Free SEO tools from SEO Brothers, including a free SEO audit and an SEO forecasting tool, plus a curated directory of the best SEO software for keywords, local, and reporting."
+  schema={[breadcrumbSchema, collectionSchema]}
+>
+  <Nav variant="light" />
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="th-hero">
+    <div class="container th-hero__inner">
+      <span class="th-hero__label">
+        <span class="th-hero__label-dot"></span>
+        SEO Tools
+      </span>
+      <h1 class="th-hero__title">
+        SEO tools, <span class="th-hero__title-gradient">free to use.</span>
+      </h1>
+      <p class="th-hero__subtitle">
+        The free tools we build for local businesses, plus a curated directory of
+        the SEO software worth knowing. We're adding more of our own over time.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ OUR TOOLS ═══════════════ -->
+  <section class="th-ours">
+    <div class="container">
+      <h2 class="th-ours__title">Our free tools</h2>
+      <div class="th-ours__grid">
+        {ourTools.map((t) => (
+          <a href={t.href} class="th-tool">
+            <span class="th-tool__badge">Free tool</span>
+            <h3 class="th-tool__name">{t.name}</h3>
+            <p class="th-tool__desc">{t.desc}</p>
+            <span class="th-tool__cta">
+              {t.cta}
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ DIRECTORY ═══════════════ -->
+  <section class="th-dir">
+    <div class="container">
+      <header class="th-dir__head">
+        <h2 class="th-dir__title">The SEO tools we recommend</h2>
+        <p class="th-dir__lede">
+          A short, opinionated directory of the software that actually earns its
+          place. The ones our own team uses are marked.
+        </p>
+      </header>
+
+      {directory.map((g) => (
+        <div class="th-dir__group">
+          <h3 class="th-dir__group-title">{g.group}</h3>
+          <div class="th-dir__grid">
+            {g.tools.map((tool) => (
+              <a href={tool.href} class="th-dir__card" target="_blank" rel="nofollow noopener">
+                <div class="th-dir__card-head">
+                  <span class="th-dir__card-name">{tool.name}</span>
+                  {tool.weUse && <span class="th-dir__card-tag">We use it</span>}
+                </div>
+                <p class="th-dir__card-desc">{tool.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <p class="th-dir__note">
+        Links to third-party tools are for reference and aren't paid placements.
+        Not sure which you actually need? <a href="/tools/free-seo-audit/">Start with a free audit</a> and we'll tell you.
+      </p>
+    </div>
+  </section>
+
+  <CtaBanner />
+  <Footer />
+</Layout>
+
+<style>
+  /* HERO */
+  .th-hero { padding: 150px 0 56px; background: linear-gradient(180deg, var(--light) 0%, var(--white) 100%); }
+  .th-hero__inner { max-width: 720px; }
+  .th-hero__label {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--teal-dark); margin-bottom: 18px;
+  }
+  .th-hero__label-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; box-shadow: 0 0 0 4px rgba(68,185,123,0.18); }
+  .th-hero__title { font-family: var(--font-display); font-size: clamp(36px, 5.4vw, 56px); font-weight: 700; line-height: 1.06; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: 18px; }
+  .th-hero__title-gradient {
+    background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .th-hero__subtitle { font-size: clamp(16px, 1.8vw, 19px); line-height: 1.7; color: var(--text-secondary); }
+
+  /* OUR TOOLS */
+  .th-ours { padding: 24px 0 64px; background: var(--white); }
+  .th-ours__title { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text-primary); margin-bottom: 24px; }
+  .th-ours__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .th-tool {
+    display: flex; flex-direction: column; padding: 30px;
+    border-radius: var(--radius-lg);
+    background: var(--dark); color: var(--text-on-dark);
+    border: 1px solid transparent; transition: all var(--transition);
+    position: relative; overflow: hidden;
+  }
+  .th-tool::before {
+    content: ""; position: absolute; width: 240px; height: 240px; border-radius: 50%;
+    background: var(--teal); filter: blur(90px); opacity: 0.22; top: -80px; right: -60px;
+    transition: opacity var(--transition);
+  }
+  .th-tool:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+  .th-tool:hover::before { opacity: 0.34; }
+  .th-tool > * { position: relative; z-index: 1; }
+  .th-tool__badge {
+    align-self: flex-start; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--teal-light); background: rgba(40,165,177,0.18); padding: 4px 10px; border-radius: var(--radius-full); margin-bottom: 16px;
+  }
+  .th-tool__name { font-family: var(--font-display); font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 10px; }
+  .th-tool__desc { font-size: 15px; line-height: 1.6; color: var(--text-on-dark-muted); margin-bottom: 20px; flex-grow: 1; }
+  .th-tool__cta { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: var(--teal-light); transition: gap var(--transition); margin-top: auto; }
+  .th-tool:hover .th-tool__cta { gap: 12px; }
+
+  /* DIRECTORY */
+  .th-dir { padding: 64px 0 96px; background: var(--light); }
+  .th-dir__head { max-width: 680px; margin-bottom: 40px; }
+  .th-dir__title { font-family: var(--font-display); font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 12px; }
+  .th-dir__lede { font-size: 16px; line-height: 1.7; color: var(--text-secondary); }
+  .th-dir__group { margin-bottom: 44px; }
+  .th-dir__group:last-of-type { margin-bottom: 0; }
+  .th-dir__group-title {
+    font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text-primary);
+    margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--border-light);
+  }
+  .th-dir__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .th-dir__card {
+    display: flex; flex-direction: column; padding: 22px;
+    background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius-md);
+    transition: all var(--transition);
+  }
+  .th-dir__card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: transparent; }
+  .th-dir__card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .th-dir__card-name { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--text-primary); }
+  .th-dir__card-tag {
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--green); background: rgba(68,185,123,0.12); padding: 3px 8px; border-radius: var(--radius-full);
+  }
+  .th-dir__card-desc { font-size: 13.5px; line-height: 1.55; color: var(--text-secondary); }
+  .th-dir__note { margin-top: 40px; font-size: 14px; line-height: 1.6; color: var(--text-muted); }
+  .th-dir__note a { color: var(--teal-dark); text-decoration: underline; text-underline-offset: 3px; }
+
+  @media (max-width: 900px) {
+    .th-dir__grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .th-hero { padding: 130px 0 44px; }
+    .th-ours__grid { grid-template-columns: 1fr; }
+    .th-dir__grid { grid-template-columns: 1fr; }
+  }
+</style>

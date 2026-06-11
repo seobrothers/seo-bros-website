@@ -67,4 +67,4 @@ We pay attention to this because what gets answered, where, and at what cost is 
 
 We're a technology-first SEO company offering [white label seo](/white-label-seo/) to agencies and growth-focused operators. That means we read the energy and infrastructure stories alongside the search algorithm stories, because the two are converging faster than most operators in our industry have noticed.
 
-If you're trying to make sense of how AI search is going to reshape your traffic, your acquisition costs, or your content strategy, [book a demo](/sign-up/) and we'll walk you through what we're seeing.
+If you're trying to make sense of how AI search is going to reshape your traffic, your acquisition costs, or your content strategy, [get a free audit](/tools/free-seo-audit/) and we'll walk you through what we're seeing.

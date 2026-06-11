@@ -1,22 +1,271 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
-import GuideList from "../../components/GuideList.astro";
+import { INDUSTRIES, INDUSTRY_GROUPS } from "../../data/industries";
+
+const guides = await getCollection("guides");
+const summaryById = new Map(guides.map((g) => [g.id, g.data.summary]));
+
+// Only show verticals whose guide exists and isn't a prod draft.
+const live = INDUSTRIES.filter((i) => {
+  const g = guides.find((x) => x.id === i.guideId);
+  return g && (!import.meta.env.PROD || !g.data.draft);
+});
+
+const grouped = INDUSTRY_GROUPS.map((group) => ({
+  group,
+  items: live.filter((i) => i.group === group),
+})).filter((g) => g.items.length > 0);
+
+const faqs = [
+  {
+    question: "Which industries can we resell you into?",
+    answer:
+      "We run campaigns across local and service verticals, with the deepest playbooks in home services like HVAC, plumbing, tree service, and auto repair, plus health and wellness practices and select professional services. If your client gets found through local search, we can deliver it under your brand.",
+  },
+  {
+    question: "What if our client's industry isn't listed?",
+    answer:
+      "These are the verticals we've built the most repeatable results in, so we document them. If a client sits outside the list but serves a local market, the same fundamentals apply. Run a free discovery through us and we'll tell you honestly whether it's a fit before you pitch.",
+  },
+  {
+    question: "What makes industry-specific SEO different?",
+    answer:
+      "Search behavior, competition, and what converts vary by vertical. A plumber wins on emergency intent and map-pack visibility; a med spa competes against aggregators and wins on trust and treatment content. We tune the strategy to how each client's customers actually search, so your pitch lands and the campaign performs.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", Astro.site).href },
+    { "@type": "ListItem", position: 2, name: "Guides", item: new URL("/guides/", Astro.site).href },
+    { "@type": "ListItem", position: 3, name: "Industry Guides", item: new URL("/guides/industry/", Astro.site).href },
+  ],
+};
 ---
 
 <Layout
-  title="Industry SEO Guides | SEO Brothers"
-  description="Vertical-specific SEO playbooks built from real campaigns — from plumbing and tree service to legal and beyond."
+  title="Industries We Serve | White-Label SEO by Industry | SEO Brothers"
+  description="White-label SEO built for your clients' industries. Home services, health and wellness, and professional practices. See how we help agencies dominate each vertical, delivered under your brand."
+  schema={[breadcrumbSchema, faqSchema]}
 >
   <Nav />
-  <GuideList
-    category="industry"
-    label="Industry Guides"
-    blurb="Vertical-specific SEO playbooks built from real campaigns. Plumbing, legal, plastic surgery, financial services — the verticals where local search is the difference between a quiet phone and a full calendar."
-    accent="purple"
-  />
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="ih-hero">
+    <div class="ih-hero__bg">
+      <div class="ih-hero__orb ih-hero__orb--1"></div>
+      <div class="ih-hero__orb ih-hero__orb--2"></div>
+      <div class="ih-hero__grid"></div>
+    </div>
+    <div class="container ih-hero__inner">
+      <span class="ih-hero__label" data-animate>
+        <span class="ih-hero__label-dot"></span>
+        Industries We Love Serving
+      </span>
+      <h1 class="ih-hero__title" data-animate>
+        White-label SEO, built for<br />
+        <span class="ih-hero__title-gradient">your clients' industries.</span>
+      </h1>
+      <p class="ih-hero__subtitle" data-animate>
+        Every industry searches differently. We've built repeatable SEO
+        playbooks for the local and service verticals agencies resell us into
+        most, so the strategy fits how each client's customers actually search,
+        and you can pitch with confidence.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ GROUPED INDUSTRIES ═══════════════ -->
+  <section class="ih-groups">
+    <div class="container">
+      {grouped.map((g) => (
+        <div class="ih-group">
+          <h2 class="ih-group__title">{g.group}</h2>
+          <div class="ih-group__grid" data-stagger>
+            {g.items.map((item) => (
+              <a href={`/guides/${item.guideId}/`} class="ih-card" data-animate>
+                <div class="ih-card__head">
+                  <h3 class="ih-card__name">{item.name}</h3>
+                  {item.featured && <span class="ih-card__badge">Focus</span>}
+                </div>
+                <p class="ih-card__desc">{summaryById.get(item.guideId)}</p>
+                <span class="ih-card__cta">
+                  See {item.name} SEO
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ═══════════════ INTRO (below the cards: reference first) ═══════════════ -->
+  <section class="ih-intro">
+    <div class="container ih-intro__inner">
+      <h2 class="ih-intro__title">Why we work in verticals</h2>
+      <p>
+        Search intent is not the same from one industry to the next. When a pipe
+        bursts, someone types two words into their phone and calls whoever shows
+        up first. When someone is researching a med spa or a lawyer, they read
+        for weeks before they ever reach out. A roofing company lives and dies in
+        the map pack. A financial advisor competes on trust signals and content
+        depth. Treating all of that as generic "local SEO" leaves results on the
+        table, and leaves your agency explaining flat reports.
+      </p>
+      <p>
+        That is why we work in verticals. We know which keywords carry real
+        commercial intent in a given industry, which competitors and aggregators
+        own the first page, and what actually turns a search into a phone call or
+        a booked job. Every campaign still starts the same way, with a free
+        discovery and real keyword research in your client's market, but the
+        priorities we chase are shaped by how their customers search. You resell
+        all of it under your own brand.
+      </p>
+      <p>
+        Those are the industries where we've built the deepest playbooks. If a
+        client's vertical isn't listed but they serve a local market, the
+        fundamentals still apply. The fastest way to find out where a prospect
+        stands is to
+        <a href="/partner-package/">run a free discovery</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FAQ ═══════════════ -->
+  <section class="ih-faq">
+    <div class="container ih-faq__inner">
+      <h2 class="ih-faq__title">Common questions</h2>
+      {faqs.map((faq, i) => (
+        <details class="ih-faq__item" open={i === 0}>
+          <summary class="ih-faq__q">
+            <span>{faq.question}</span>
+            <svg class="ih-faq__chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+          </summary>
+          <div class="ih-faq__a"><p>{faq.answer}</p></div>
+        </details>
+      ))}
+    </div>
+  </section>
+
   <CtaBanner />
   <Footer />
 </Layout>
+
+<style>
+  /* HERO */
+  .ih-hero { position: relative; background: var(--dark); overflow: hidden; padding: 180px 0 84px; }
+  .ih-hero__bg { position: absolute; inset: 0; overflow: hidden; }
+  .ih-hero__orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.22; }
+  .ih-hero__orb--1 { width: 520px; height: 520px; background: var(--teal); top: -10%; right: -8%; }
+  .ih-hero__orb--2 { width: 460px; height: 460px; background: var(--purple); bottom: -25%; left: -8%; }
+  .ih-hero__grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at 50% 30%, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 30%, black 30%, transparent 75%);
+  }
+  .ih-hero__inner { position: relative; z-index: 1; max-width: 860px; }
+  .ih-hero__label {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--teal-light); margin-bottom: 28px;
+  }
+  .ih-hero__label-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; box-shadow: 0 0 0 4px rgba(68,185,123,0.18); }
+  .ih-hero__title {
+    font-family: var(--font-display); font-size: clamp(40px, 6.5vw, 64px);
+    font-weight: 700; line-height: 1.06; letter-spacing: -0.03em;
+    color: var(--text-on-dark); margin-bottom: 24px;
+  }
+  .ih-hero__title-gradient {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .ih-hero__subtitle { font-size: clamp(16px, 1.8vw, 19px); line-height: 1.7; color: var(--text-on-dark-muted); max-width: 640px; }
+
+  /* INTRO */
+  .ih-intro { padding: 64px 0 96px; background: var(--white); border-top: 1px solid var(--border-light); }
+  .ih-intro__inner { max-width: 760px; }
+  .ih-intro__title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 28px); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 16px; }
+  .ih-intro__inner p { font-size: 17px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px; }
+  .ih-intro__inner a { color: var(--teal-dark); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* GROUPS */
+  .ih-groups { padding: 56px 0 96px; background: var(--white); }
+  .ih-group { margin-bottom: 56px; }
+  .ih-group:last-child { margin-bottom: 0; }
+  .ih-group__title {
+    font-family: var(--font-display); font-size: 22px; font-weight: 700;
+    letter-spacing: -0.01em; color: var(--text-primary); margin-bottom: 24px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--border-light);
+  }
+  .ih-group__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+  .ih-card {
+    display: flex; flex-direction: column;
+    padding: 28px; border-radius: var(--radius-lg);
+    background: var(--light); border: 1px solid var(--border-light);
+    transition: all var(--transition);
+  }
+  .ih-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: transparent; }
+  .ih-card__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+  .ih-card__name { font-family: var(--font-display); font-size: 19px; font-weight: 700; letter-spacing: -0.01em; color: var(--text-primary); }
+  .ih-card__badge {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--teal-dark); background: rgba(40,165,177,0.1); padding: 3px 9px; border-radius: var(--radius-full); flex-shrink: 0;
+  }
+  .ih-card__desc {
+    font-size: 14px; line-height: 1.6; color: var(--text-secondary);
+    margin-bottom: 18px; flex-grow: 1;
+    display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .ih-card__cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 600; color: var(--teal); transition: gap var(--transition); margin-top: auto;
+  }
+  .ih-card:hover .ih-card__cta { gap: 12px; }
+
+  /* FAQ */
+  .ih-faq { padding: 0 0 110px; background: var(--white); }
+  .ih-faq__inner { max-width: 760px; }
+  .ih-faq__title { font-family: var(--font-display); font-size: 26px; font-weight: 700; letter-spacing: -0.01em; color: var(--text-primary); margin-bottom: 16px; }
+  .ih-faq__item { border-bottom: 1px solid var(--border-light); }
+  .ih-faq__item:first-of-type { border-top: 1px solid var(--border-light); }
+  .ih-faq__q {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 22px 0; cursor: pointer; list-style: none;
+    font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--text-primary);
+  }
+  .ih-faq__q::-webkit-details-marker { display: none; }
+  .ih-faq__chev { flex-shrink: 0; color: var(--text-muted); transition: transform var(--transition); }
+  .ih-faq__item[open] .ih-faq__chev { transform: rotate(180deg); }
+  .ih-faq__a { padding-bottom: 22px; }
+  .ih-faq__a p { font-size: 15px; line-height: 1.7; color: var(--text-secondary); }
+
+  @media (max-width: 900px) { .ih-group__grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 768px) {
+    .ih-hero { padding: 140px 0 60px; }
+    .ih-intro { padding: 48px 0 72px; }
+    .ih-group__grid { grid-template-columns: 1fr; }
+  }
+</style>

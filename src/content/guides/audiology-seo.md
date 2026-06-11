@@ -9,9 +9,9 @@ featured: false
 draft: false
 ---
 
-Audiology is a quietly competitive SEO category. The patient base skews older, the search behavior is different from younger demographics, the average ticket value (especially for premium hearing aid fittings) is high, and the regulatory landscape changed materially when over-the-counter hearing aids became legal in the US in October 2022. That reshaped the category's keyword universe and gave consumers a non-clinical alternative that audiology practices now have to position against.
+Audiology is a quietly competitive SEO category, and a strong one for an agency to win on a client's behalf. The patient base skews older, the search behavior is different from younger demographics, the average ticket value (especially for premium hearing aid fittings) is high, and the regulatory landscape changed materially when over-the-counter hearing aids became legal in the US in October 2022. That reshaped the category's keyword universe and gave consumers a non-clinical alternative that audiology practices now have to position against.
 
-This guide is the playbook we use for audiology and hearing-clinic clients. The fundamentals overlap with other healthcare SEO work, but the demographic patterns, the product categories, and the YMYL trust signals that matter to Google deserve specific treatment.
+This is the playbook we run for agencies with audiology and hearing-clinic clients, delivered white-label. The fundamentals overlap with other healthcare SEO work, but the demographic patterns, the product categories, and the YMYL trust signals that matter to Google deserve specific treatment.
 
 ## Why audiology SEO is its own thing
 
@@ -145,4 +145,4 @@ Audiology is a category where the foundation work pays back fast. We typically s
 
 For practices working with marketing agencies, we operate the SEO layer end-to-end while the agency handles practice management software and patient communications. Clean handoff, transparent reporting.
 
-If your hearing clinic isn't appearing in the local pack as often as it should, or if the website traffic isn't converting into fittings, [get in touch](/sign-up/) and we'll diagnose what's actually holding the rankings back.
+If your hearing-clinic client isn't appearing in the local pack as often as it should, or the website traffic isn't converting into fittings, [run a free discovery with us](/partner-package/) and we'll diagnose what's actually holding the rankings back, then deliver the fix under your brand.

@@ -8,7 +8,7 @@ summary: Cannabis businesses cannot run paid ads on Google or Meta in most marke
 featured: false
 ---
 
-Cannabis is one of the few categories where SEO is not just a smart channel choice, it's effectively the only scalable digital one. Google Ads policy still restricts most cannabis-related advertising, Meta does the same, and payment processors continue to make e-commerce checkout flows brittle. Combine that with state-by-state and province-by-province regulatory variation, age-gate requirements, and a YMYL category posture from Google, and the result is a vertical where organic visibility carries disproportionate weight.
+Cannabis is one of the few categories where SEO is not just a smart channel choice, it's effectively the only scalable digital one. Google Ads policy still restricts most cannabis-related advertising, Meta does the same, and payment processors continue to make e-commerce checkout flows brittle. Combine that with state-by-state and province-by-province regulatory variation, age-gate requirements, and a YMYL category posture from Google, and the result is a vertical where organic visibility carries disproportionate weight. For an agency, that is a rare position: a client whose growth depends almost entirely on the channel you control. We run the cannabis SEO layer under your brand so you can take on dispensaries and CBD brands without untangling the regulatory complexity in-house.
 
 This guide is the playbook we use for dispensary clients, CBD brands, and ancillary-service operators (delivery platforms, software, packaging, B2B equipment). The fundamentals overlap, but the keyword universe and the conversion path differ enough to address each separately.
 
@@ -93,4 +93,4 @@ Cannabis is one of the verticals where the foundation matters disproportionately
 
 For partner agencies serving cannabis clients, we operate the SEO layer end-to-end. The category's regulatory complexity means most generalist agencies under-serve it; specialized work pays back faster.
 
-If you're operating a dispensary, CBD brand, or cannabis service business and trying to figure out where the leverage actually is, [get in touch](/sign-up/) and we'll diagnose what's holding the rankings back.
+If you've got a dispensary, CBD brand, or cannabis-service client and you're trying to figure out where the leverage actually is, [run a free discovery with us](/partner-package/) and we'll diagnose what's holding the rankings back, then deliver the fix under your brand.

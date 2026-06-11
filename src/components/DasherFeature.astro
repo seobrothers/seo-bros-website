@@ -1,0 +1,179 @@
+---
+// Homepage reporting feature. Current reality: we report in AgencyAnalytics and
+// fine-tune a dashboard + reporting template with each partner. Dasher
+// (usedasher.com) is our own reporting software, still in development (live for
+// dental now, expanding). Reinforces the data-driven / attributed-ROI position
+// without overstating Dasher's availability.
+const points = [
+  {
+    title: "White-labeled for your clients",
+    body: "Reports go out under your brand, so your clients see your agency, not ours.",
+  },
+  {
+    title: "Tuned to you in AgencyAnalytics",
+    body: "We build the dashboard and reporting template around the metrics you and your clients actually care about.",
+  },
+  {
+    title: "Dasher, our own software, in development",
+    body: "We're building Dasher to tie rankings to leads and revenue. It's live for dental now and expanding to more industries.",
+  },
+];
+---
+
+<section class="dasher">
+  <div class="container">
+    <div class="dasher__card" data-animate>
+      <div class="dasher__copy">
+        <span class="dasher__label">
+          <span class="dasher__label-dot"></span>
+          Reporting, built around you
+        </span>
+        <h2 class="dasher__title">White-label reporting that proves the return, not just the rankings</h2>
+        <p class="dasher__text">
+          Most SEO reports stop at traffic and keywords. We report in
+          AgencyAnalytics and fine-tune a dashboard and reporting template with
+          each partner, so the results that prove the work, leads and revenue,
+          sit front and center and go out under your brand. We're also building
+          our own software, Dasher, to connect rankings to revenue even tighter:
+          it's live for dental now and expanding.
+        </p>
+        <a href="https://usedasher.com/" class="btn btn-primary dasher__cta" target="_blank" rel="noopener noreferrer">
+          See Dasher
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+      </div>
+
+      <ul class="dasher__points">
+        {points.map((p) => (
+          <li class="dasher__point">
+            <span class="dasher__point-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+            </span>
+            <div>
+              <span class="dasher__point-title">{p.title}</span>
+              <span class="dasher__point-body">{p.body}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .dasher {
+    padding: 100px 0;
+    background: var(--white);
+  }
+
+  .dasher__card {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 56px;
+    align-items: center;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 56px;
+    border-radius: var(--radius-xl);
+    background:
+      linear-gradient(var(--light), var(--light)) padding-box,
+      linear-gradient(135deg in oklch, var(--teal), var(--teal-light)) border-box;
+    border: 1px solid transparent;
+  }
+
+  .dasher__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+    margin-bottom: 18px;
+  }
+
+  .dasher__label-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(68, 185, 123, 0.18);
+  }
+
+  .dasher__title {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3.4vw, 36px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+  }
+
+  .dasher__text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+  }
+
+  .dasher__points {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .dasher__point {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .dasher__point-icon {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(68, 185, 123, 0.12);
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .dasher__point-title {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.35;
+  }
+
+  .dasher__point-body {
+    display: block;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-top: 3px;
+  }
+
+  @media (max-width: 860px) {
+    .dasher {
+      padding: 72px 0;
+    }
+
+    .dasher__card {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      padding: 36px 28px;
+    }
+  }
+</style>

@@ -160,4 +160,4 @@ Our default playbook now treats SERP feature visibility as a first-class campaig
 
 For partner agencies, the implication for client reporting is that we report on share of voice across SERP features, not just keyword rank position. The richer reporting is more useful for clients and reflects how the SERP actually works in 2026.
 
-If you're looking at flat or declining traffic from organic search and trying to figure out whether SERP layout changes are a factor, [get in touch](/sign-up/) and we'll diagnose where the visibility is actually going.
+If you're looking at flat or declining traffic from organic search and trying to figure out whether SERP layout changes are a factor, [get in touch](/tools/free-seo-audit/) and we'll diagnose where the visibility is actually going.

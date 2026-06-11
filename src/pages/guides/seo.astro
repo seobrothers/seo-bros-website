@@ -4,18 +4,20 @@ import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
 import GuideList from "../../components/GuideList.astro";
+import { GUIDE_GROUPS } from "../../data/guideGroups";
 ---
 
 <Layout
-  title="SEO Guides | SEO Brothers"
-  description="Tactical SEO guides written for agency owners and the strategists who deliver for them. Keyword research, Core Web Vitals, content strategy, and more."
+  title="SEO Guides | The SEO Learning Hub | SEO Brothers"
+  description="Plain-English SEO guides for business owners and marketers. Local SEO, technical SEO, content, AI search, and link building, explained by a team that does this every day."
 >
   <Nav />
   <GuideList
     category="seo"
     label="SEO Guides"
-    blurb="Tactical resources written for agency owners and the strategists who deliver for them. Keyword research, Core Web Vitals, content strategy, and more."
+    blurb="A plain-English library for business owners and marketers who want to understand what actually moves rankings, organized by topic. No jargon for its own sake, no theory we don't use on real campaigns."
     accent="teal"
+    groups={GUIDE_GROUPS.seo}
   />
   <CtaBanner />
   <Footer />

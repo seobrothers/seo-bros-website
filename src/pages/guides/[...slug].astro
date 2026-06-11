@@ -5,6 +5,8 @@ import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
+import AuthorCard from "../../components/AuthorCard.astro";
+import NewsletterSignup from "../../components/NewsletterSignup.astro";
 import { authorByName } from "../../data/authors";
 
 export async function getStaticPaths() {
@@ -90,6 +92,67 @@ const breadcrumbSchema = {
     { "@type": "ListItem", position: 4, name: d.title, item: guideUrl },
   ],
 };
+
+// Build FAQPage schema from the guide's "Common questions" section. Guides
+// write it as a `## ...questions...` heading; each question is either a
+// `**Question?**` whole-line bold or a `### Question?` h3, followed by answer
+// paragraph(s). Guides without that section emit no FAQ schema. Markdown
+// links/emphasis are stripped to plain text.
+function cleanText(s: string): string {
+  return s
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1") // [text](url) -> text
+    .replace(/\*\*?/g, "") // bold/italic markers
+    .replace(/`/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function extractFaqs(markdown: string) {
+  const lines = markdown.split("\n");
+  const start = lines.findIndex(
+    (l) => /^##\s+/.test(l) && /(frequently asked|common questions|faq)/i.test(l),
+  );
+  if (start === -1) return [] as { question: string; answer: string }[];
+
+  const faqs: { question: string; answer: string }[] = [];
+  let question: string | null = null;
+  let answer: string[] = [];
+  const flush = () => {
+    if (question && answer.length) {
+      faqs.push({ question, answer: cleanText(answer.join(" ")) });
+    }
+    answer = [];
+  };
+
+  for (let i = start + 1; i < lines.length; i++) {
+    const line = lines[i];
+    if (/^##\s+/.test(line)) break; // next h2 section ends the FAQ (### passes)
+    // A question is a whole-line bold (**Q?**) or an h3 (### Q?).
+    const q = line.match(/^\*\*(.+?)\*\*\s*$/) ?? line.match(/^###\s+(.+?)\s*$/);
+    if (q) {
+      flush();
+      question = cleanText(q[1]);
+    } else if (question && line.trim()) {
+      answer.push(line.trim());
+    }
+  }
+  flush();
+  return faqs;
+}
+
+const faqs = extractFaqs(guide.body);
+const faqSchema =
+  faqs.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      }
+    : null;
 ---
 
 <Layout
@@ -97,7 +160,7 @@ const breadcrumbSchema = {
   description={d.summary}
   ogType="article"
   ogImage={d.coverImage}
-  schema={[articleSchema, breadcrumbSchema]}
+  schema={[articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : [])]}
 >
   <Nav />
 
@@ -129,6 +192,16 @@ const breadcrumbSchema = {
         <h1 class="guide-hero__title" data-animate>{d.title}</h1>
 
         <div class="guide-hero__meta" data-animate>
+          {authorEntity?.published && (
+            <img
+              class="guide-hero__avatar"
+              src={authorEntity.photo}
+              alt={`${d.author}, ${authorEntity.role} at SEO Brothers`}
+              width="36"
+              height="36"
+              loading="lazy"
+            />
+          )}
           {authorHref ? (
             <a class="guide-hero__author" href={authorHref}>{d.author}</a>
           ) : (
@@ -193,30 +266,53 @@ const breadcrumbSchema = {
 
           <Content />
 
-          {
-            d.showAuditCta && (
-              <aside class="guide-audit-cta">
-                <h3>Get your free SEO audit</h3>
-                <p>
-                  Book a demo and your first audit is on us. Real audit by
-                  our team, walked through on a call. No automated score,
-                  no commitment to anything else.
-                </p>
-                <a href="/sign-up/" class="btn btn-primary">
-                  Get my free audit
-                </a>
-              </aside>
-            )
-          }
+          {authorEntity?.published && <AuthorCard author={authorEntity} variant="full" />}
         </div>
       </div>
     </section>
 
+    <NewsletterSignup />
     <CtaBanner />
   </article>
 
+  <!-- Slim inline audit CTA, cloned into the article body between sections so
+       the offer shows up as the reader moves through the guide. -->
+  <template id="inline-cta-tpl">
+    <aside class="guide-inline-cta">
+      <p class="guide-inline-cta__text">
+        <strong>Curious where a client's site really stands?</strong>
+        Get a free audit, an instant snapshot plus a real review from our team.
+      </p>
+      <a href="/tools/free-seo-audit/" class="guide-inline-cta__btn">Get your free audit</a>
+    </aside>
+  </template>
+
   <Footer />
 </Layout>
+
+<script>
+  // Insert the slim CTA between sections. Spacing scales with heading count so
+  // shorter guides get one and longer guides get two. We skip the final
+  // heading so a CTA never lands right before the author card.
+  const prose = document.querySelector(".guide-body__prose");
+  const tpl = document.getElementById("inline-cta-tpl");
+  if (prose && tpl instanceof HTMLTemplateElement) {
+    const heads = Array.from(prose.querySelectorAll("h2")).slice(0, -1);
+    let positions: number[] = [];
+    if (heads.length >= 6) {
+      positions = [Math.floor(heads.length / 3), Math.floor((2 * heads.length) / 3)];
+    } else if (heads.length >= 3) {
+      positions = [Math.floor(heads.length / 2)];
+    }
+    // Insert back-to-front so earlier indices stay valid.
+    positions
+      .sort((a, b) => b - a)
+      .forEach((i) => {
+        const node = tpl.content.firstElementChild?.cloneNode(true);
+        if (node) heads[i].before(node);
+      });
+  }
+</script>
 
 <style>
   /* ═══════════════════════════════════════════════════════════════════
@@ -300,6 +396,14 @@ const breadcrumbSchema = {
     flex-wrap: wrap;
     font-size: 14px;
     color: var(--text-on-dark-muted);
+  }
+
+  .guide-hero__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.15);
   }
 
   .guide-hero__author {
@@ -546,42 +650,57 @@ const breadcrumbSchema = {
     }
   }
 
-  /* Audit CTA */
-  .guide-audit-cta {
-    margin-top: 56px;
-    padding: 36px;
-    border-radius: var(--radius-lg);
-    background: linear-gradient(
-      135deg,
-      rgba(40, 165, 177, 0.08) 0%,
-      rgba(140, 99, 170, 0.08) 100%
-    );
-    border: 1px solid rgba(140, 99, 170, 0.2);
+  /* Slim inline CTA, injected mid-article by the script below. Cloned at
+     runtime into .guide-body__prose, so the rules are scoped under that
+     container: it reaches the cloned nodes and outweighs the prose p/a rules. */
+  .guide-body__prose :global(.guide-inline-cta) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px 28px;
+    flex-wrap: wrap;
+    margin: 48px 0;
+    padding: 18px 24px;
+    border-radius: var(--radius-md);
+    background: var(--light);
+    border: 1px solid var(--border-light);
+    border-left: 3px solid var(--teal);
   }
 
-  .guide-audit-cta h3 {
-    font-family: var(--font-display);
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 10px;
-  }
-
-  .guide-audit-cta p {
-    font-size: 15px;
-    line-height: 1.65;
+  .guide-body__prose :global(.guide-inline-cta__text) {
+    flex: 1 1 320px;
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.5;
     color: var(--text-secondary);
-    margin-bottom: 20px;
   }
 
-  .guide-audit-cta .btn-primary {
+  .guide-body__prose :global(.guide-inline-cta__text strong) {
+    display: block;
+    margin-bottom: 2px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .guide-body__prose :global(.guide-inline-cta__btn) {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    padding: 11px 20px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    text-decoration: none;
     background: var(--dark);
     color: var(--white);
     box-shadow: 0 4px 12px rgba(10, 15, 26, 0.18);
+    transition: all var(--transition);
   }
 
-  .guide-audit-cta .btn-primary:hover {
+  .guide-body__prose :global(.guide-inline-cta__btn:hover) {
     background: var(--text-primary);
+    color: var(--white);
     box-shadow: 0 6px 18px rgba(10, 15, 26, 0.25);
     transform: translateY(-1px);
   }
@@ -626,10 +745,6 @@ const breadcrumbSchema = {
 
     .guide-summary {
       font-size: 18px;
-    }
-
-    .guide-audit-cta {
-      padding: 28px;
     }
   }
 </style>

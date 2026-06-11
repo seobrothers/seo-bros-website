@@ -8,7 +8,7 @@ summary: Tree service is a seasonal, hyper-local business where SEO can be the d
 draft: false
 ---
 
-Tree service is one of those verticals where local intent dominates and competition is intense, especially in mid-sized markets. The right SEO strategy can fill a crew's calendar months in advance. The wrong one (or none at all) leaves the phone quiet during peak season and crews scrambling for work in slower months.
+Tree service is one of those verticals where local intent dominates and competition is intense, especially in mid-sized markets. The right SEO strategy can fill a crew's calendar months in advance. The wrong one (or none at all) leaves the phone quiet during peak season and crews scrambling for work in slower months. If you're an agency with a tree service or arborist client, this is the part we run for you, under your brand.
 
 This guide covers the framework we use on tree service SEO campaigns: keyword strategy, site architecture, Google Business Profile, content cadence aligned with the seasonal arc, and the emergency-storm content angle that captures urgent demand other arborists miss.
 
@@ -303,6 +303,6 @@ Yes, but you give up a meaningful revenue stream. Storm response is the most lev
 
 Our default tree service playbook follows the framework above. Foundation work first (architecture, on-page, GBP), reviews and citations in parallel, content built out across the seasonal arc, link building layered on top.
 
-For partner agencies serving tree service clients, we operate the SEO layer end-to-end while the agency manages the contractor relationship. Tree service is also part of the broader [home services SEO](/guides/home-services-seo/) hub, with cross-linking between this guide and adjacent trades.
+For partner agencies serving tree service clients, we operate the SEO layer end-to-end while the agency manages the contractor relationship. Tree service is also part of the broader [home services SEO](/guides/franchise-seo/) hub, with cross-linking between this guide and adjacent trades.
 
-If you have an arborist client and want a tailored take on the campaign, [get in touch](/sign-up/) and we'll walk through the approach.
+If you have an arborist client and want a tailored take on the campaign, run a [free discovery](/partner-package/) and we'll show you exactly what's holding the rankings back, then deliver the fix under your brand.

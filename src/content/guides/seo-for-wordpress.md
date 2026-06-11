@@ -117,4 +117,4 @@ WordPress is the platform we work with most often, both for our own sites and fo
 
 For partner agencies whose clients run on WordPress, we operate the SEO layer end-to-end while the agency handles the broader website relationship. WordPress-specific work (plugin selection, theme customization, hosting recommendations) is part of the engagement where it makes sense.
 
-If you're running a WordPress site and not sure whether the plugin stack or hosting setup is helping or hurting, [get in touch](/sign-up/) and we'll walk through the configuration with you.
+If you're running a WordPress site and not sure whether the plugin stack or hosting setup is helping or hurting, [get in touch](/tools/free-seo-audit/) and we'll walk through the configuration with you.

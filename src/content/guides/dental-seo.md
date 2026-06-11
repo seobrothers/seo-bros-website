@@ -9,9 +9,9 @@ featured: false
 draft: false
 ---
 
-General and family dental SEO is one of the more straightforward healthcare verticals, but most practice sites do it badly. The keyword universe is wide, the local pack is critical, and the conversion path is short: most searches turn into a phone call or an online appointment booking within the same session. The practices that get this right outgrow their markets quickly.
+General and family dental SEO is one of the more straightforward healthcare verticals, but most practice sites do it badly, which is the opening an agency can use to win and keep a dental client. The keyword universe is wide, the local pack is critical, and the conversion path is short: most searches turn into a phone call or an online appointment booking within the same session. The practices that get this right outgrow their markets quickly, and SEO Brothers delivers that work under your brand.
 
-This guide is specifically for general, family, and cosmetic dental practices. We cover orthodontics in a [separate guide](/guides/orthodontist-seo/) because the search behavior, audience, and conversion model are different enough to warrant their own breakdown.
+This guide is specifically for general, family, and cosmetic dental practices. We cover orthodontics in a [separate guide](/guides/industry/orthodontics/) because the search behavior, audience, and conversion model are different enough to warrant their own breakdown.
 
 ## What makes dental search behavior different
 
@@ -212,4 +212,4 @@ Reviews and local link building run continuously. Reviews specifically get moved
 
 The biggest unlocks we usually find on a new dental client: an emergency funnel that didn't exist before, real per-insurance pages that capture queries the practice was invisible for, and honest cost content that brings in qualified searchers instead of price-shoppers calling for quotes.
 
-If you run a dental practice and you're losing patients to a competitor who outranks you, or you've never built out emergency or insurance content, [get in touch](/sign-up/) and we'll walk through what's actually holding the visibility back.
+If you've got a dental client losing patients to a competitor who outranks them, or who has never built out emergency or insurance content, [run a free discovery with us](/partner-package/) and we'll walk through what's actually holding the visibility back, then deliver the fix under your brand.

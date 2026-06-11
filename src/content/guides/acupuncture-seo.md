@@ -9,11 +9,11 @@ featured: false
 draft: false
 ---
 
-Most acupuncture patients don't search for acupuncture. They search for back pain. Or fertility help. Or anxiety relief. Or migraine relief. The acupuncture practice that ranks for those condition queries, with content that explains how the modality fits the problem, captures a category of patient that the practice down the street, ranking only for "acupuncture [city]," never sees.
+Most acupuncture patients don't search for acupuncture. They search for back pain. Or fertility help. Or anxiety relief. Or migraine relief. The acupuncture practice that ranks for those condition queries, with content that explains how the modality fits the problem, captures a category of patient that the practice down the street, ranking only for "acupuncture [city]," never sees. If you're an agency with an acupuncture client, that gap is exactly where you win the account.
 
 That condition-first reality shapes the entire SEO playbook for acupuncture. Combine it with YMYL classification (Google treats anything health-adjacent as Your Money or Your Life), insurance complexity that varies by state and plan, and a Traditional Chinese Medicine positioning question that every practice has to answer, and the work has its own shape.
 
-This guide is the framework we use with acupuncture clients. The fundamentals overlap with other healthcare SEO, but the keyword strategy, the content architecture, and the trust signals deserve specific treatment.
+This is the framework we run for agencies whose clients sit in this vertical, delivered white-label. The fundamentals overlap with other healthcare SEO, but the keyword strategy, the content architecture, and the trust signals deserve specific treatment.
 
 ## Why acupuncture SEO is its own thing
 
@@ -156,4 +156,4 @@ Acupuncture is a vertical where condition-content depth is usually the biggest o
 
 For practices working with broader marketing agencies, we operate the SEO layer end-to-end. The condition-content depth is where most of the unrealized traffic lives, and it takes patient, methodical work to build.
 
-If you're running an acupuncture practice and most of your patients still come through word of mouth rather than search, [get in touch](/sign-up/) and we'll diagnose what the search side could actually look like.
+If you've got an acupuncture client whose patients still come mostly through word of mouth rather than search, [run a free discovery with us](/partner-package/) and we'll diagnose what the search side could actually look like, then build it out under your brand.

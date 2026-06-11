@@ -1,0 +1,1564 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import GrowthCallEmbed from "../components/GrowthCallEmbed.astro";
+import { WEB_BUILDS, HOSTING, MAINTENANCE, usd } from "../data/pricing";
+
+const valueProps = [
+  {
+    icon: "rocket",
+    accent: "teal",
+    title: "Lightning fast on Astro",
+    description:
+      "Built on the Astro framework and engineered for Core Web Vitals. Pages load near-instantly, with clean markup and no bloated page builder dragging things down. Speed is the experience your client's visitors feel, and it's a Google ranking factor working in their favor.",
+  },
+  {
+    icon: "cloud",
+    accent: "green",
+    title: "Secure on Cloudflare's edge",
+    description:
+      "Hosted on Cloudflare's secure global edge: DDoS protection, automatic SSL, and the same network that serves a huge slice of the internet. Fast everywhere, locked down by default, and cheap to run. No plugin update treadmill, no surprise downtime when a host has a bad day.",
+  },
+  {
+    icon: "edit",
+    accent: "teal",
+    title: "Clients edit it themselves",
+    description:
+      "We layer on Emdash, an open-source, Astro-first CMS from Cloudflare. Your client updates copy, swaps images, and publishes pages without touching code or waiting on a developer.",
+  },
+  {
+    icon: "brand",
+    accent: "green",
+    title: "Resold under your brand",
+    description:
+      "We stay invisible. The site ships under your agency's name, you set the retail price, and you own the client relationship start to finish. We never contact your client.",
+  },
+];
+
+const buildPrice = usd(WEB_BUILDS[0].price);
+const redesignPrice = usd(WEB_BUILDS[1].price);
+const hostingPrice = "from " + usd(HOSTING.price) + "/mo";
+const maintenancePrice = usd(MAINTENANCE.price) + "/mo";
+
+const ongoing = [
+  {
+    icon: "cloud",
+    accent: "green",
+    title: HOSTING.label,
+    price: hostingPrice,
+    description:
+      "Fast, secure hosting on Cloudflare's edge, handled for you. SSL, uptime, and platform updates covered so the site stays quick and protected without anyone babysitting it. Bill it monthly under your brand.",
+  },
+  {
+    icon: "edit",
+    accent: "teal",
+    title: MAINTENANCE.label,
+    price: "from " + maintenancePrice,
+    description:
+      "Ongoing content edits, fixes, and small changes so the site never goes stale. A recurring line your agency resells, with the work staying invisible behind your name.",
+  },
+];
+
+const steps = [
+  {
+    number: "01",
+    title: "Kickoff",
+    description:
+      "You hand us scope, content, and brand direction. We confirm sitemap, page count, and whether the build needs the redesign-SEO tier. No drawn-out discovery cycle.",
+  },
+  {
+    number: "02",
+    title: "Build",
+    description:
+      "We build the site on Astro and wire up Emdash so the editable regions match how your client actually works. You review on a staging URL, we revise.",
+  },
+  {
+    number: "03",
+    title: "SEO protection (if it's a redesign)",
+    description:
+      "On the $2,500 tier we map every old URL to its new home, set the redirects, and preserve on-page signals so search visibility carries over instead of cratering on launch day.",
+  },
+  {
+    number: "04",
+    title: "Launch",
+    description:
+      "We deploy to Cloudflare's edge and hand over a clean, fast, secure site plus Emdash access. Your client edits content from day one. You bill them at your price.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Is it really white-label?",
+    answer:
+      "Yes. We work behind the scenes and the site ships under your brand. We don't put our name in the footer, we don't email your client, and we don't show up on their invoice. The relationship is yours.",
+  },
+  {
+    question: "Can our client edit the site themselves?",
+    answer:
+      "Yes, that's the point of Emdash. We set up the editable regions during the build, and your client updates copy, images, and pages through a clean editor. No code, no developer, no ticket queue for a typo fix.",
+  },
+  {
+    question: "What is Emdash?",
+    answer:
+      "Emdash is an open-source, Astro-first CMS from Cloudflare (emdashcms.dev). It plugs into an Astro site and gives non-technical people a way to edit content without touching the codebase. We use it so your clients aren't dependent on a developer for routine updates.",
+  },
+  {
+    question: "Why not just build on WordPress?",
+    answer:
+      "WordPress sites get slow, get hacked, and carry a maintenance tail: plugin updates, security patches, hosting bills. An Astro site on Cloudflare is faster, more secure, and cheaper to run, and Emdash still gives your client the easy editing experience they expect.",
+  },
+  {
+    question: "Will a redesign hurt our client's rankings?",
+    answer:
+      "It can, and it routinely does when redirects and on-page SEO are handled carelessly. That's exactly what the $2,500 tier protects against. We're an SEO company first, so we map the redirects and preserve search signals through the migration. If you don't need that protection, the $1,500 build is for sites where rankings aren't on the line.",
+  },
+  {
+    question: "Do you build from scratch or from templates?",
+    answer:
+      "We build on proven, battle-tested templates. That's deliberate: it keeps the site fast, consistent, and quick to ship, and it means the Core Web Vitals and security work is already done instead of reinvented on every project. If your agency already has a design or a look the client expects, we can closely mirror it. You get fast turnaround and flexibility, not a blank-page project that drags for months.",
+  },
+  {
+    question: "How fast is turnaround?",
+    answer:
+      "It depends on scope and how quickly content and feedback come back, but a typical site lands in a few weeks. We'll give you a real timeline at kickoff once we see the page count and requirements. We won't promise a number we can't hit.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", Astro.site).href },
+    { "@type": "ListItem", position: 2, name: "White-Label Web Design", item: new URL("/white-label-web-design/", Astro.site).href },
+  ],
+};
+---
+
+<Layout
+  title="White Label Web Design & Development for Agencies | SEO Brothers"
+  description="White label web design and development for agencies. Lightning-fast Astro websites on Cloudflare's secure edge, editable by your clients via Emdash, resold under your brand. Builds from $1,500, plus managed hosting and maintenance."
+  schema={[breadcrumbSchema, faqSchema]}
+>
+  <Nav />
+
+  <!-- ===== HERO ===== -->
+  <section class="wd-hero">
+    <div class="wd-hero-bg">
+      <div class="wd-hero-orb wd-hero-orb--teal"></div>
+      <div class="wd-hero-orb wd-hero-orb--green"></div>
+      <div class="wd-hero-orb wd-hero-orb--teal2"></div>
+      <div class="wd-hero-grid"></div>
+    </div>
+
+    <div class="wd-hero-content container">
+      <div class="wd-hero-badge" data-animate>
+        <span class="wd-hero-badge-dot"></span>
+        Built on Astro + Cloudflare
+      </div>
+
+      <h1 class="wd-hero-title" data-animate>
+        <span class="wd-hero-title-line">White Label Web Design</span><br />
+        <span class="wd-hero-title-gradient">& Development for Agencies</span>
+      </h1>
+
+      <p class="wd-hero-subtitle" data-animate>
+        Resell lightning-fast websites under your own brand. We build on Astro
+        for Core Web Vitals, host on Cloudflare's secure global edge, and hand
+        your clients an editor they can actually use. Speed and security baked
+        in, which is also the SEO story. You set the price. We stay invisible.
+      </p>
+
+      <div class="wd-hero-actions" data-animate>
+        <a href="/partner-package/" class="btn btn-primary wd-btn-lg">
+          Test Us
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path
+              d="M3 8h10M9 4l4 4-4 4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </a>
+        <a href="#wd-pricing" class="btn btn-outline wd-btn-lg">See pricing</a>
+      </div>
+
+      <div class="wd-hero-pills" data-animate>
+        <span class="wd-hero-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Built on Astro
+        </span>
+        <span class="wd-hero-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Deployed on Cloudflare
+        </span>
+        <span class="wd-hero-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Editable by your clients
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INTRO ===== -->
+  <section class="wd-intro">
+    <div class="container">
+      <div class="wd-intro-content" data-animate>
+        <span class="section-label">For Agencies & Resellers</span>
+        <h2 class="section-heading">White Label Web Development You Can Sell Today</h2>
+        <p class="wd-intro-text">
+          Your clients keep asking for websites. Building a development team to
+          deliver them is expensive and slow, and outsourcing to a freelancer
+          you found last week is a gamble. White label web design solves that:
+          we build the site, you resell it under your brand, and your client
+          never knows we exist.
+        </p>
+        <p class="wd-intro-text">
+          We build white label websites on Astro and deploy them on Cloudflare,
+          then layer on the Emdash CMS so your clients can edit their own
+          content. The result is a fast, modern, secure site with none of the
+          maintenance baggage that comes with a typical page-builder build. It's
+          ready to sell now, with two clear price points and no setup fee.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VALUE PROPS ===== -->
+  <section class="wd-value">
+    <div class="container">
+      <div class="wd-value-header" data-animate>
+        <span class="section-label">Why It's Different</span>
+        <h2 class="section-heading">
+          What You're Reselling
+        </h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          White label website design that doesn't fall apart six months after
+          launch. Lightning fast to load, secure by default, easy to edit, and
+          branded as yours.
+        </p>
+      </div>
+
+      <div class="wd-value-grid" data-stagger>
+        {
+          valueProps.map((prop) => (
+            <div class="wd-value-card" data-animate>
+              <div class={`wd-value-icon wd-value-icon--${prop.accent}`}>
+                {prop.icon === "rocket" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+                    <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+                    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+                    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+                  </svg>
+                )}
+                {prop.icon === "cloud" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                  </svg>
+                )}
+                {prop.icon === "edit" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                  </svg>
+                )}
+                {prop.icon === "brand" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                )}
+              </div>
+              <h3 class="wd-value-title">{prop.title}</h3>
+              <p class="wd-value-desc">{prop.description}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="wd-ongoing" data-animate>
+        <div class="wd-ongoing-header">
+          <span class="section-label">Recurring Revenue</span>
+          <h3 class="wd-ongoing-heading">Ongoing White-Label Offerings</h3>
+          <p class="wd-ongoing-subtext">
+            The build is one-time. Hosting and maintenance are monthly, so the
+            website keeps paying your agency long after launch. Both ship under
+            your brand and bill at your markup.
+          </p>
+        </div>
+        <div class="wd-ongoing-grid">
+          {
+            ongoing.map((item) => (
+              <div class="wd-ongoing-card">
+                <div class={`wd-value-icon wd-value-icon--${item.accent}`}>
+                  {item.icon === "cloud" && (
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                    </svg>
+                  )}
+                  {item.icon === "edit" && (
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                    </svg>
+                  )}
+                </div>
+                <div class="wd-ongoing-card-head">
+                  <h4 class="wd-value-title">{item.title}</h4>
+                  <span class="wd-ongoing-price">{item.price}</span>
+                </div>
+                <p class="wd-value-desc">{item.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="wd-process">
+    <div class="container">
+      <div class="wd-process-header" data-animate>
+        <span class="section-label">How It Works</span>
+        <h2 class="section-heading">
+          Kickoff to Launch
+        </h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          A tight process built for agencies that need to move. You bring the
+          client and the brief, we build and launch.
+        </p>
+      </div>
+
+      <div class="wd-process-timeline">
+        <div class="wd-process-line"></div>
+        {
+          steps.map((step) => (
+            <div class="wd-process-step" data-animate>
+              <div class="wd-process-marker">
+                <span class="wd-process-number">{step.number}</span>
+              </div>
+              <div class="wd-process-step-body">
+                <h3 class="wd-process-step-title">{step.title}</h3>
+                <p class="wd-process-step-desc">{step.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REDESIGN-SEO ANGLE ===== -->
+  <section class="wd-redesign">
+    <div class="wd-redesign-bg">
+      <div class="wd-redesign-orb wd-redesign-orb--1"></div>
+      <div class="wd-redesign-orb wd-redesign-orb--2"></div>
+    </div>
+    <div class="container">
+      <div class="wd-redesign-inner" data-animate>
+        <div class="wd-redesign-copy">
+          <span class="section-label section-label--light">The Part Most Builds Get Wrong</span>
+          <h2 class="section-heading section-heading--light">
+            Redesigns Tank Rankings.<br />
+            Ours Don't Have To.
+          </h2>
+          <p class="wd-redesign-text">
+            When a site gets rebuilt, the URLs change, the on-page structure
+            shifts, and search engines lose track of what ranked where. If
+            nobody maps the old URLs to the new ones and sets the redirects, the
+            site relaunches and traffic falls off a cliff. We see it constantly:
+            a clean new design that quietly erased a year of organic growth. Our
+            <a href="/guides/website-redesign-seo/" class="wd-redesign-inline-link">website redesign SEO guide</a>
+            breaks down exactly how that happens and how we prevent it.
+          </p>
+          <p class="wd-redesign-text">
+            We're an SEO company first. So the $2,500 tier bakes that protection
+            in. We map every old URL to its new home, set the redirects,
+            preserve the on-page signals that earned the rankings, and watch the
+            launch so visibility carries over instead of cratering. If your
+            client has organic traffic worth protecting, this is the tier to
+            sell them.
+          </p>
+          <a href="/white-label-seo/" class="wd-redesign-link">
+            See our white-label SEO
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRICING ===== -->
+  <section class="wd-pricing" id="wd-pricing">
+    <div class="container">
+      <div class="wd-pricing-header" data-animate>
+        <span class="section-label">Wholesale Partner Pricing</span>
+        <h2 class="section-heading">
+          Two Tiers, No Setup Fee
+        </h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          These are the white-label prices your agency pays. You mark up to your
+          client and keep the difference. Both build tiers include the Astro
+          build, Cloudflare hosting, and Emdash, with hosting and maintenance
+          available as recurring monthly lines.
+        </p>
+      </div>
+
+      <div class="wd-pricing-grid" data-stagger>
+        <div class="wd-pricing-card" data-animate>
+          <div class="wd-pricing-card-header">
+            <h3 class="wd-pricing-tier">Website Build</h3>
+            <p class="wd-pricing-tier-desc">
+              A fast, modern site built on Astro, deployed on Cloudflare, with
+              Emdash so your client can edit it. For new sites and rebuilds
+              where rankings aren't on the line.
+            </p>
+          </div>
+          <div class="wd-pricing-price">
+            <span class="wd-pricing-amount">{buildPrice}</span>
+            <span class="wd-pricing-period">per build</span>
+          </div>
+          <ul class="wd-pricing-features">
+            <li>Built on Astro for Core Web Vitals</li>
+            <li>Hosted on Cloudflare's secure global edge</li>
+            <li>Emdash CMS so clients edit their own content</li>
+            <li>Lightning fast, secure, cheap to run</li>
+            <li>Shipped under your brand</li>
+            <li>No setup fee</li>
+          </ul>
+          <a href="/partner-package/" class="btn btn-outline--dark wd-pricing-btn">Test Us</a>
+        </div>
+
+        <div class="wd-pricing-card wd-pricing-card--featured" data-animate>
+          <span class="wd-pricing-badge">Protects Rankings</span>
+          <div class="wd-pricing-card-header">
+            <h3 class="wd-pricing-tier">Build + Redesign SEO</h3>
+            <p class="wd-pricing-tier-desc">
+              Everything in the build, plus full redesign-SEO support. We handle
+              the redirects and protect search visibility through the migration
+              so traffic doesn't drop on relaunch.
+            </p>
+          </div>
+          <div class="wd-pricing-price">
+            <span class="wd-pricing-amount">{redesignPrice}</span>
+            <span class="wd-pricing-period">per build</span>
+          </div>
+          <ul class="wd-pricing-features">
+            <li>Everything in the Website Build</li>
+            <li>Full URL mapping, old to new</li>
+            <li>All redirects handled for you</li>
+            <li>On-page SEO signals preserved</li>
+            <li>Visibility protected through migration</li>
+            <li>Launch monitored so rankings hold</li>
+          </ul>
+          <a href="/partner-package/" class="btn btn-primary wd-pricing-btn">Test Us</a>
+        </div>
+      </div>
+
+      <div class="wd-pricing-recurring" data-animate>
+        <h3 class="wd-pricing-recurring-title">Add recurring, monthly</h3>
+        <p class="wd-pricing-recurring-sub">
+          The build is one-time. These keep the site fast, secure, and current,
+          and keep billing your agency every month.
+        </p>
+        <div class="wd-pricing-rows">
+          <div class="wd-pricing-row">
+            <div class="wd-pricing-row-head">
+              <h4 class="wd-pricing-row-name">{HOSTING.label}</h4>
+              <span class="wd-pricing-row-price">{hostingPrice}</span>
+            </div>
+            <p class="wd-pricing-row-desc">
+              Fast, secure hosting on Cloudflare's edge. SSL, uptime, and
+              platform updates handled so the site stays quick and protected.
+            </p>
+          </div>
+          <div class="wd-pricing-row">
+            <div class="wd-pricing-row-head">
+              <h4 class="wd-pricing-row-name">{MAINTENANCE.label}</h4>
+              <span class="wd-pricing-row-price">from {maintenancePrice}</span>
+            </div>
+            <p class="wd-pricing-row-desc">
+              Ongoing content edits, fixes, and small changes so the site never
+              goes stale. Resold under your brand at your markup.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <p class="wd-pricing-footnote" data-animate>
+        Pair an ongoing campaign with the build and your client keeps climbing
+        after launch. See <a href="/white-label-seo/">our white-label SEO</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== MID CTA ===== -->
+  <section class="wd-mid-cta">
+    <div class="container">
+      <div class="wd-mid-cta-card" data-animate>
+        <h2 class="wd-mid-cta-title">Want to see the quality first?</h2>
+        <p class="wd-mid-cta-text">
+          Get a free discovery for your agency. No commitment, no credit card.
+          We'll walk you through how the white-label build works and what your
+          clients receive.
+        </p>
+        <a href="/partner-package/" class="btn btn-primary wd-mid-cta-btn">
+          Get a Free Discovery
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="wd-faq">
+    <div class="container">
+      <div class="wd-faq-header" data-animate>
+        <span class="section-label">Common Questions</span>
+        <h2 class="section-heading">
+          White Label Web Design FAQ
+        </h2>
+      </div>
+
+      <div class="wd-faq-list" data-animate>
+        {
+          faqs.map((faq, i) => (
+            <details class="wd-faq-item" open={i === 0}>
+              <summary class="wd-faq-question">
+                <span>{faq.question}</span>
+                <svg class="wd-faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </summary>
+              <div class="wd-faq-answer">
+                <p set:html={faq.answer} />
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOTTOM CTA ===== -->
+  <GrowthCallEmbed
+    heading="Add websites to your lineup without hiring."
+    sub="Book a growth call and we'll walk through building and reselling fast white-label sites under your brand."
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ===== HERO ===== */
+  .wd-hero {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    background: var(--dark);
+    overflow: hidden;
+    padding: 140px 0 100px;
+  }
+
+  .wd-hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .wd-hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.35;
+  }
+
+  .wd-hero-orb--teal {
+    width: 600px;
+    height: 600px;
+    background: var(--teal);
+    top: -15%;
+    left: -5%;
+  }
+
+  .wd-hero-orb--green {
+    width: 500px;
+    height: 500px;
+    background: var(--green);
+    top: -5%;
+    right: -10%;
+  }
+
+  .wd-hero-orb--teal2 {
+    width: 400px;
+    height: 400px;
+    background: var(--teal-light);
+    bottom: -15%;
+    left: 35%;
+    opacity: 0.25;
+  }
+
+  .wd-hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(
+      ellipse at 50% 50%,
+      black 20%,
+      transparent 70%
+    );
+  }
+
+  .wd-hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .wd-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-full);
+    padding: 8px 16px;
+    margin-bottom: 32px;
+    backdrop-filter: blur(8px);
+  }
+
+  .wd-hero-badge-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+  }
+
+  .wd-hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--text-on-dark);
+    margin-bottom: 24px;
+  }
+
+  .wd-hero-title-line {
+    white-space: nowrap;
+  }
+
+  .wd-hero-title-gradient {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .wd-hero-subtitle {
+    font-size: clamp(16px, 2vw, 19px);
+    line-height: 1.7;
+    color: var(--text-on-dark-muted);
+    margin-bottom: 36px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .wd-hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+
+  .wd-btn-lg {
+    padding: 16px 32px;
+    font-size: 16px;
+  }
+
+  .wd-hero-pills {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .wd-hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-on-dark-muted);
+  }
+
+  .wd-hero-pill svg {
+    color: var(--green);
+  }
+
+  @media (max-width: 768px) {
+    .wd-hero {
+      padding: 120px 0 80px;
+      min-height: auto;
+    }
+    .wd-hero-title-line {
+      white-space: normal;
+    }
+  }
+
+  /* ===== INTRO ===== */
+  .wd-intro {
+    padding: 110px 0 90px;
+    background: var(--white);
+  }
+
+  .wd-intro-content {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .wd-intro-text {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+    text-align: left;
+  }
+
+  /* ===== VALUE PROPS ===== */
+  .wd-value {
+    padding: 100px 0;
+    background: var(--light);
+  }
+
+  .wd-value-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 56px;
+  }
+
+  .wd-value-header .section-label,
+  .wd-value-header .section-heading {
+    display: block;
+  }
+
+  .wd-value-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .wd-value-card {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+
+  .wd-value-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .wd-value-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .wd-value-icon--teal {
+    background: rgba(40, 165, 177, 0.12);
+    color: var(--teal);
+  }
+
+  .wd-value-icon--green {
+    background: rgba(68, 185, 123, 0.12);
+    color: var(--green);
+  }
+
+  .wd-value-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .wd-value-desc {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 1080px) {
+    .wd-value-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .wd-value-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===== ONGOING OFFERINGS ===== */
+  .wd-ongoing {
+    margin-top: 64px;
+    padding-top: 56px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .wd-ongoing-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 36px;
+  }
+
+  .wd-ongoing-header .section-label {
+    display: block;
+  }
+
+  .wd-ongoing-heading {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin: 8px 0 12px;
+  }
+
+  .wd-ongoing-subtext {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+
+  .wd-ongoing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .wd-ongoing-card {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .wd-ongoing-card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .wd-ongoing-card-head .wd-value-title {
+    margin-bottom: 0;
+  }
+
+  .wd-ongoing-price {
+    flex-shrink: 0;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--teal);
+  }
+
+  @media (max-width: 560px) {
+    .wd-ongoing-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===== PROCESS ===== */
+  .wd-process {
+    padding: 110px 0;
+    background: var(--white);
+  }
+
+  .wd-process-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 64px;
+  }
+
+  .wd-process-header .section-label,
+  .wd-process-header .section-heading {
+    display: block;
+  }
+
+  .wd-process-timeline {
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .wd-process-line {
+    position: absolute;
+    left: 27px;
+    top: 28px;
+    bottom: 28px;
+    width: 2px;
+    background: linear-gradient(
+      180deg,
+      var(--teal) 0%,
+      var(--green) 100%
+    );
+    opacity: 0.25;
+  }
+
+  .wd-process-step {
+    position: relative;
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+    padding-bottom: 36px;
+  }
+
+  .wd-process-step:last-child {
+    padding-bottom: 0;
+  }
+
+  .wd-process-marker {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wd-process-number {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--teal);
+  }
+
+  .wd-process-step-body {
+    padding-top: 6px;
+  }
+
+  .wd-process-step-title {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .wd-process-step-desc {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 560px) {
+    .wd-process-step {
+      gap: 18px;
+    }
+    .wd-process-line {
+      left: 23px;
+    }
+    .wd-process-marker {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  /* ===== REDESIGN-SEO ANGLE ===== */
+  .wd-redesign {
+    position: relative;
+    padding: 110px 0;
+    background: var(--dark);
+    overflow: hidden;
+  }
+
+  .wd-redesign-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .wd-redesign-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(140px);
+    opacity: 0.25;
+  }
+
+  .wd-redesign-orb--1 {
+    width: 460px;
+    height: 460px;
+    background: var(--teal);
+    top: -20%;
+    right: -8%;
+  }
+
+  .wd-redesign-orb--2 {
+    width: 380px;
+    height: 380px;
+    background: var(--green);
+    bottom: -25%;
+    left: -8%;
+  }
+
+  .wd-redesign-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .wd-redesign-copy .section-label,
+  .wd-redesign-copy .section-heading {
+    display: block;
+  }
+
+  .wd-redesign-text {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--text-on-dark-muted);
+    margin-bottom: 18px;
+  }
+
+  .wd-redesign-inline-link {
+    color: var(--teal-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color var(--transition);
+  }
+
+  .wd-redesign-inline-link:hover {
+    color: var(--white);
+  }
+
+  .wd-redesign-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--teal-light);
+    transition: gap var(--transition);
+  }
+
+  .wd-redesign-link:hover {
+    gap: 12px;
+  }
+
+  /* ===== PRICING ===== */
+  .wd-pricing {
+    padding: 110px 0;
+    background: var(--light);
+  }
+
+  .wd-pricing-header {
+    text-align: center;
+    max-width: 660px;
+    margin: 0 auto 56px;
+  }
+
+  .wd-pricing-header .section-label,
+  .wd-pricing-header .section-heading {
+    display: block;
+  }
+
+  .wd-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .wd-pricing-card {
+    position: relative;
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 36px 32px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wd-pricing-card--featured {
+    border-color: var(--teal);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .wd-pricing-badge {
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--teal);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+  }
+
+  .wd-pricing-tier {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .wd-pricing-tier-desc {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+
+  .wd-pricing-price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .wd-pricing-amount {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  .wd-pricing-period {
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .wd-pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-grow: 1;
+  }
+
+  .wd-pricing-features li {
+    position: relative;
+    padding-left: 28px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+
+  .wd-pricing-features li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 3px;
+    width: 16px;
+    height: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2328a5b1' stroke-width='2.5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .wd-pricing-btn {
+    width: 100%;
+  }
+
+  .wd-pricing-recurring {
+    max-width: 860px;
+    margin: 48px auto 0;
+    padding-top: 40px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .wd-pricing-recurring-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .wd-pricing-recurring-sub {
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto 28px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  .wd-pricing-rows {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .wd-pricing-row {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 22px 24px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .wd-pricing-row-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .wd-pricing-row-name {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .wd-pricing-row-price {
+    flex-shrink: 0;
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--teal);
+  }
+
+  .wd-pricing-row-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 760px) {
+    .wd-pricing-rows {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .wd-pricing-footnote {
+    text-align: center;
+    margin: 40px auto 0;
+    max-width: 560px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  .wd-pricing-footnote a {
+    color: var(--teal);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  @media (max-width: 760px) {
+    .wd-pricing-grid {
+      grid-template-columns: 1fr;
+      max-width: 440px;
+    }
+  }
+
+  /* ===== MID CTA ===== */
+  .wd-mid-cta {
+    padding: 0 0 110px;
+    background: var(--light);
+  }
+
+  .wd-mid-cta-card {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    background: linear-gradient(135deg, var(--dark-800) 0%, var(--dark) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-xl);
+    padding: 56px 40px;
+  }
+
+  .wd-mid-cta-title {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 3.5vw, 32px);
+    font-weight: 700;
+    color: var(--text-on-dark);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+
+  .wd-mid-cta-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-on-dark-muted);
+    max-width: 480px;
+    margin: 0 auto 28px;
+  }
+
+  /* ===== FAQ ===== */
+  .wd-faq {
+    padding: 110px 0;
+    background: var(--white);
+  }
+
+  .wd-faq-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .wd-faq-header .section-label,
+  .wd-faq-header .section-heading {
+    display: block;
+  }
+
+  .wd-faq-list {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .wd-faq-item {
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .wd-faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    cursor: pointer;
+    padding: 24px 0;
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-primary);
+    list-style: none;
+  }
+
+  .wd-faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .wd-faq-chevron {
+    flex-shrink: 0;
+    color: var(--text-muted);
+    transition: transform var(--transition);
+  }
+
+  .wd-faq-item[open] .wd-faq-chevron {
+    transform: rotate(180deg);
+    color: var(--teal);
+  }
+
+  .wd-faq-answer {
+    padding: 0 0 24px;
+  }
+
+  .wd-faq-answer p {
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 660px;
+  }
+
+  .wd-faq-answer a {
+    color: var(--teal);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ===== BOTTOM CTA ===== */
+  .wd-bottom-cta {
+    position: relative;
+    padding: 120px 0;
+    background: var(--dark);
+    overflow: hidden;
+  }
+
+  .wd-bottom-cta-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .wd-bottom-cta-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(140px);
+    opacity: 0.28;
+  }
+
+  .wd-bottom-cta-orb--1 {
+    width: 480px;
+    height: 480px;
+    background: var(--teal);
+    top: -20%;
+    left: -8%;
+  }
+
+  .wd-bottom-cta-orb--2 {
+    width: 420px;
+    height: 420px;
+    background: var(--green);
+    bottom: -25%;
+    right: -8%;
+  }
+
+  .wd-bottom-cta-orb--3 {
+    width: 320px;
+    height: 320px;
+    background: var(--teal-light);
+    top: 30%;
+    left: 45%;
+    opacity: 0.18;
+  }
+
+  .wd-bottom-cta-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .wd-bottom-cta-heading {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 4.5vw, 46px);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: var(--text-on-dark);
+    margin-bottom: 20px;
+    text-wrap: balance;
+  }
+
+  .wd-bottom-cta-gradient {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .wd-bottom-cta-text {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-on-dark-muted);
+    margin-bottom: 32px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .wd-bottom-cta-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .wd-bottom-cta-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .wd-bottom-cta-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--text-on-dark-muted);
+  }
+
+  .wd-bottom-cta-meta svg {
+    color: var(--green);
+  }
+
+  @media (max-width: 600px) {
+    .wd-bottom-cta {
+      padding: 80px 0;
+    }
+    .wd-bottom-cta-meta {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+</style>

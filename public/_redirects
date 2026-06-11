@@ -156,7 +156,7 @@
 # healthcare has no matching guide, so it points at the industry hub.
 # ============================================================================
 /resource/category/seo/                                     /guides/seo/                                      301
-/resource/free-website-seo-audit/                           /guides/free-website-seo-audit/                   301
+/resource/free-website-seo-audit/                           /tools/free-seo-audit/                            301
 /resource/how-to-sell-seo-services-to-clients/              /guides/how-to-sell-seo-services/                 301
 /resource/how-to-structure-a-website-structure-local-business/  /guides/local-seo/                            301
 /resource/keyword-mapping/                                  /guides/keyword-mapping/                          301
@@ -190,11 +190,23 @@
 /locations                                                  /guides/cities/                                   301
 
 # ============================================================================
-# CTA shortcuts — booking/demo flows through /sign-up/.
+# CTA shortcuts — agency booking/demo flows through the partner package
+# (the free-discovery gate) under the white-label positioning.
 # ============================================================================
-/strategy-call/                                             /sign-up/                                         301
-/demo                                                       /sign-up/                                         301
-/demo/                                                      /sign-up/                                         301
+/strategy-call/                                             /partner-package/                                 301
+/demo                                                       /partner-package/                                 301
+/demo/                                                      /partner-package/                                 301
+
+# ============================================================================
+# Pages reworked on the new site (were live, now moved):
+#   - /ai-seo/ marketing pages folded into a single SEO guide
+#   - free-website-seo-audit guide merged into the /tools/ audit tool
+#   - /seo-for-plumbers/ standalone lander now lives as a guide
+# ============================================================================
+/ai-seo/                                                    /guides/ai-seo/                                   301
+/ai-seo/local/                                              /guides/ai-seo/                                   301
+/guides/free-website-seo-audit/                             /tools/free-seo-audit/                            301
+/seo-for-plumbers/                                          /guides/seo-for-plumbers/                         301
 
 # ============================================================================
 # PODCAST — catch-all for any remaining legacy episode URLs (and their feeds).

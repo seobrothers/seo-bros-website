@@ -9,9 +9,9 @@ featured: false
 draft: false
 ---
 
-Funeral home SEO sits in an unusual category. The audience is in pain, the search behavior splits cleanly between immediate need and forward planning, and the tone of the content matters more than in almost any other vertical. A site that ranks well but reads like a sales pitch will lose the family that lands on it.
+Funeral home SEO sits in an unusual category. The audience is in pain, the search behavior splits cleanly between immediate need and forward planning, and the tone of the content matters more than in almost any other vertical. A site that ranks well but reads like a sales pitch will lose the family that lands on it. For an agency, that sensitivity is what makes the work defensible: it is hard to do well, which is why we run the funeral-services SEO layer under your brand so you can take on these accounts without learning the category's tone the hard way.
 
-This guide covers what we've learned across the funeral-services accounts we've worked on. The framework is the same as any local services SEO program, but the content rules and the trust signals require more care than most contractors give them.
+This guide covers what we've learned across the funeral-services accounts we've worked on. The framework is the same as any local services SEO program, but the content rules and the trust signals require more care than most agencies give them.
 
 ## What makes funeral home search behavior different
 
@@ -147,4 +147,4 @@ We start with the trust layer. Real photos, real staff bios, real licensure, rea
 
 Local optimization runs in parallel: GBP, citations, location pages with real per-location content, and reviews managed gently over time. Link building stays relationship-focused, with hospice, religious, and veterans-organization outreach producing better results than generic guest-post campaigns.
 
-If you run a funeral home or cremation service and your site is invisible to families in your area, or if you're losing pre-need volume to a competitor with a stronger content presence, [get in touch](/sign-up/) and we'll walk through what's actually holding the visibility back.
+If you've got a funeral home or cremation-service client whose site is invisible to families in their area, or who's losing pre-need volume to a competitor with a stronger content presence, [run a free discovery with us](/partner-package/) and we'll walk through what's actually holding the visibility back, then deliver the fix under your brand.
