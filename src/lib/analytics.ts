@@ -5,7 +5,8 @@ export type AnalyticsEvent =
   | "audit_form_submission"
   | "free_audit_form_submission"
   | "partner_optin"
-  | "portal_signups";
+  | "portal_signups"
+  | "calendar_event_scheduled";
 
 export type EventProperties = Record<string, string | number | boolean | undefined>;
 
@@ -35,5 +36,23 @@ export function initOutboundTracking(): void {
     } else if (href.startsWith("mailto:")) {
       track("email_click", { link_url: href });
     }
+  });
+}
+
+// Calendly inline iframes (Mike's "Book a walkthrough" / growth-call embeds)
+// post a "calendly.event_scheduled" message to the parent window when a booking
+// completes. Fire our analytics event off that, anywhere a Calendly embed lives.
+export function initCalendlyTracking(): void {
+  if (typeof window === "undefined") return;
+  window.addEventListener("message", (e) => {
+    if (e.origin !== "https://calendly.com") return;
+    const data = e.data as
+      | { event?: string; payload?: { event?: { uri?: string }; invitee?: { uri?: string } } }
+      | null;
+    if (!data || data.event !== "calendly.event_scheduled") return;
+    track("calendar_event_scheduled", {
+      event_uri: data.payload?.event?.uri,
+      invitee_uri: data.payload?.invitee?.uri,
+    });
   });
 }

@@ -108,8 +108,9 @@ const socialImageUrl = new URL(ogImage ?? "/images/logo.png", Astro.site).href;
     <ConsentBanner />
 
     <script>
-      import { initOutboundTracking } from "../lib/analytics";
+      import { initOutboundTracking, initCalendlyTracking } from "../lib/analytics";
       initOutboundTracking();
+      initCalendlyTracking();
     </script>
   </body>
 </html>
