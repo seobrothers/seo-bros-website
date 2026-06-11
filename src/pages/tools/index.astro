@@ -83,12 +83,21 @@ const collectionSchema = {
     "Free SEO tools from SEO Brothers plus a curated directory of the best third-party SEO software.",
   url: "https://seobrothers.com/tools/",
 };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", Astro.site).href },
+    { "@type": "ListItem", position: 2, name: "Tools", item: new URL("/tools/", Astro.site).href },
+  ],
+};
 ---
 
 <Layout
   title="SEO Tools | Free Tools & Curated Directory | SEO Brothers"
   description="Free SEO tools from SEO Brothers, including a free SEO audit and an SEO forecasting tool, plus a curated directory of the best SEO software for keywords, local, and reporting."
-  schema={collectionSchema}
+  schema={[breadcrumbSchema, collectionSchema]}
 >
   <Nav variant="light" />
 

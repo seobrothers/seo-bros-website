@@ -137,12 +137,21 @@ const faqSchema = {
     },
   })),
 };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", Astro.site).href },
+    { "@type": "ListItem", position: 2, name: "White-Label Web Design", item: new URL("/white-label-web-design/", Astro.site).href },
+  ],
+};
 ---
 
 <Layout
   title="White Label Web Design & Development for Agencies | SEO Brothers"
   description="White label web design and development for agencies. Lightning-fast Astro websites on Cloudflare's secure edge, editable by your clients via Emdash, resold under your brand. Builds from $1,500, plus managed hosting and maintenance."
-  schema={faqSchema}
+  schema={[breadcrumbSchema, faqSchema]}
 >
   <Nav />
 

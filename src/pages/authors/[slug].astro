@@ -53,12 +53,21 @@ const personSchema = {
   worksFor: { "@type": "Organization", name: "SEO Brothers" },
   ...(author.sameAs.length ? { sameAs: author.sameAs } : {}),
 };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", Astro.site).href },
+    { "@type": "ListItem", position: 2, name: author.name, item: authorUrl },
+  ],
+};
 ---
 
 <Layout
   title={`${author.name} | SEO Brothers`}
   description={author.bio[0]}
-  schema={personSchema}
+  schema={[breadcrumbSchema, personSchema]}
   noindex={!author.published}
 >
   <Nav variant="light" />
