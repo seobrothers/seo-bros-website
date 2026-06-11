@@ -40,7 +40,7 @@ export const authors: Author[] = [
     role: "Founder & CEO",
     jobTitle: "Founder & CEO",
     bio: [
-      "Devon Bate is the co-founder and CEO of SEO Brothers, which he and his brother Adam built from nothing starting in 2015. Adam drove the SEO strategy and the sales and marketing; Devon, who graduated top of his finance class at Dalhousie, ran partner communication and the business administration side, finance, hiring, and the like, and did some of the hands-on work in the early days. Today it's a team of thirty plus, headquartered in Halifax.",
+      "Devon Bate is the co-founder and CEO of SEO Brothers, where he runs Partner Experience and Growth: the agency partners the team works with, and the systems that keep their campaigns measurable and improving. He and his brother Adam started the company in 2015; today it's a team of thirty plus, headquartered in Halifax.",
       "His lens has always been data first: measure what actually drives revenue, the leads and booked jobs, not vanity rankings. That's what he brings to the company's approach, and it's why the current chapter leans so hard on the software and reporting that make results faster and more transparent for the businesses it serves.",
       "He writes here about local SEO, multi-location search, and where search is heading, and co-hosts the Brothers in Search podcast with Adam.",
     ],

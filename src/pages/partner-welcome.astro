@@ -6,59 +6,57 @@ import PackageBuilder from "../components/PackageBuilder.astro";
 
 // The unlocked partner page (destination of the /partner-package/ opt-in). What
 // the gate promised: request a world-class free discovery (for you or a client),
-// book a walkthrough with Mike, watch how it works, grab case studies + reports,
-// and build a custom package with real numbers. noindex: post-opt-in, not for
+// book a walkthrough with Mike, watch how it works, grab case studies, and
+// build a custom package with real numbers. noindex: post-opt-in, not for
 // search. Reachable directly (the gate is soft lead-capture, not hard security).
 //
 // ⚙️ CONFIG — Devon:
-//   videos[].url: drop the share URLs in. No url => "coming soon" placeholder.
-//   downloads[].url: link a hosted PDF/report. No url => "coming soon" note.
+//   videos[].youtubeId: the id after youtu.be/ (e.g. uW8D5hd2RfE). Empty => "coming soon".
+//   resources[].url: link a Drive folder / hosted PDF. No url => shows the note instead.
 const calendlyUrl = "https://calendly.com/mike-2473/mike-s-good-fit-demo";
+const caseStudiesUrl =
+  "https://drive.google.com/drive/folders/144Ylpeq8K6DPmxVAMyr7VyyK4BrgKgXr?usp=sharing";
 
 interface Video {
   title: string;
   description: string;
-  url?: string;
+  youtubeId?: string;
 }
 const videos: Video[] = [
   {
-    title: "World Class Free Discovery",
+    title: "Overview of the Partner Portal",
     description:
-      "How our free discovery audits and findings show up for you and your client inside the Portal.",
-    url: "https://youtu.be/b-z9A3s7T3I",
+      "A tour of the Portal: discovery, live campaigns, action items, and the white-label controls your clients never see our name on.",
+    youtubeId: "uW8D5hd2RfE",
   },
   {
-    title: "Campaigns in Portal",
+    title: "Our World-Class Free Discovery",
     description:
-      "Managing live campaigns, priorities, and progress, all under your brand.",
-  },
-  {
-    title: "Action items & White Label Features",
-    description:
-      "Action items, reporting, and the white-label controls your clients never see our name on.",
+      "How our free discovery works and how the findings show up for you and your client.",
+    youtubeId: "IgPFh7wyvzk",
   },
 ];
 
-interface Download {
+interface Resource {
   title: string;
   description: string;
   url?: string;
+  cta?: string;
+  note?: string;
 }
-const downloads: Download[] = [
+const resources: Resource[] = [
   {
-    title: "Sample white-label report",
+    title: "Case studies",
     description:
-      "The exact branded reporting your clients receive, with our name nowhere on it.",
+      "Real client results, from launch to local-pack dominance to multi-location scale. Downloadable PDFs to put in front of a prospect.",
+    url: caseStudiesUrl,
+    cta: "Open the case studies",
   },
   {
-    title: "Case study: local services",
+    title: "Reporting, designed around you",
     description:
-      "A home-services client from launch to local-pack dominance, with the numbers.",
-  },
-  {
-    title: "Case study: multi-location",
-    description:
-      "How we scale rankings across territories for a multi-location brand.",
+      "No canned sample. We design a white-label reporting template in AgencyAnalytics that fits how you and your clients want to see results, with our name nowhere on it.",
+    note: "Built with you on your discovery.",
   },
 ];
 ---
@@ -146,12 +144,15 @@ const downloads: Download[] = [
       <div class="pw__videos">
         {videos.map((v) => (
           <article class="pw__video">
-            {v.url ? (
-              <a class="pw__video-thumb pw__video-thumb--ready" href={v.url} target="_blank" rel="noopener noreferrer" aria-label={`Watch: ${v.title}`}>
-                <span class="pw__video-play" aria-hidden="true">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                </span>
-              </a>
+            {v.youtubeId ? (
+              <div class="pw__video-frame">
+                <iframe
+                  src={`https://www.youtube.com/embed/${v.youtubeId}`}
+                  title={v.title}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+              </div>
             ) : (
               <div class="pw__video-thumb">
                 <span class="pw__video-play" aria-hidden="true">
@@ -166,14 +167,15 @@ const downloads: Download[] = [
         ))}
       </div>
 
-      <!-- ─── Case studies + reports to download ─── -->
-      <h2 class="pw__section-title">Case studies &amp; reports</h2>
+      <!-- ─── Case studies + reporting ─── -->
+      <h2 class="pw__section-title">Case studies &amp; reporting</h2>
       <p class="pw__section-sub">
-        Proof to put in front of a prospect, plus the branded reporting they'd
-        receive. See more in our <a href="/case-studies/">case studies</a>.
+        Proof to put in front of a prospect, plus reporting designed around how
+        you and your clients want to see results. See more on our
+        <a href="/case-studies/">case studies</a> page.
       </p>
       <div class="pw__downloads">
-        {downloads.map((d) => (
+        {resources.map((d) => (
           <article class="pw__download">
             <span class="pw__download-icon" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
@@ -182,11 +184,11 @@ const downloads: Download[] = [
             <p class="pw__download-desc">{d.description}</p>
             {d.url ? (
               <a class="pw__download-link" href={d.url} target="_blank" rel="noopener noreferrer">
-                Download
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                {d.cta ?? "Open"}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
               </a>
             ) : (
-              <span class="pw__download-note">Coming soon, ask Mike for a copy.</span>
+              d.note && <span class="pw__download-note">{d.note}</span>
             )}
           </article>
         ))}
@@ -319,7 +321,12 @@ const downloads: Download[] = [
   .pw__section-sub a { color: var(--teal-dark); text-decoration: underline; text-underline-offset: 3px; }
 
   /* Videos */
-  .pw__videos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-bottom: 56px; }
+  .pw__videos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 56px; }
+  .pw__video-frame {
+    aspect-ratio: 16 / 9; border-radius: var(--radius-md); overflow: hidden;
+    margin-bottom: 14px; border: 1px solid var(--border-light); background: var(--dark);
+  }
+  .pw__video-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
   .pw__video-thumb {
     position: relative; display: flex; align-items: center; justify-content: center;
     aspect-ratio: 16 / 9; border-radius: var(--radius-md); margin-bottom: 14px; overflow: hidden;
@@ -347,7 +354,7 @@ const downloads: Download[] = [
   .pw__video-desc { font-size: 14px; line-height: 1.6; color: var(--text-secondary); }
 
   /* Downloads */
-  .pw__downloads { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 60px; }
+  .pw__downloads { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 60px; }
   .pw__download {
     display: flex; flex-direction: column;
     background: var(--white); border: 1px solid var(--border-light);
