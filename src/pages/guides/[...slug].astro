@@ -205,21 +205,17 @@ const breadcrumbSchema = {
 
           <Content />
 
-          {
-            d.showAuditCta && (
-              <aside class="guide-audit-cta">
-                <h3>Get your free SEO audit</h3>
-                <p>
-                  An instant snapshot now, plus a real audit from our team, not
-                  just an automated score. We'll show you where you stand and
-                  what's worth doing. Free, no commitment to anything else.
-                </p>
-                <a href="/tools/free-seo-audit/" class="btn btn-primary">
-                  Get my free audit
-                </a>
-              </aside>
-            )
-          }
+          <aside class="guide-audit-cta">
+            <h3>Get your free audit</h3>
+            <p>
+              An instant snapshot now, plus a real audit from our team, not just
+              an automated score. Run it on any site, yours or a prospect's, and
+              we'll show you where it stands and what's worth doing.
+            </p>
+            <a href="/tools/free-seo-audit/" class="btn btn-primary">
+              Get your free audit
+            </a>
+          </aside>
 
           {authorEntity?.published && <AuthorCard author={authorEntity} variant="full" />}
         </div>
