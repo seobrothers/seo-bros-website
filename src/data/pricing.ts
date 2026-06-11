@@ -33,12 +33,12 @@ export const SEO_TIERS: SeoTier[] = [
   {
     id: "typical",
     name: "Typical",
-    price: 680,
+    price: 620,
     blurb:
       "Our most-quoted package. Full-stack local SEO with content, links, Maps, and SEO Time directed at the Priority Intents that move the campaign.",
     highlights: [
       "Quarterly strategy + monthly content",
-      "2 backlinks + 3.5 hours of SEO Time each month",
+      "2 backlinks + 3 hours of SEO Time each month",
       "Best for most local businesses",
     ],
     featured: true,
@@ -68,7 +68,7 @@ export const EXTRA_LOCATION = {
 
 export const GBP_POSTING = {
   label: "GBP posting",
-  price: 100,
+  price: 50,
   note: "Google Business Profile posting across the whole campaign, any number of locations. Highly recommended for local SEO.",
 };
 

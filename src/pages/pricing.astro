@@ -69,7 +69,7 @@ const comparison: ComparisonRow[] = [
   },
   {
     label: "SEO Time per month",
-    values: ["1.5 hours", "3.5 hours", "5.5 hours"],
+    values: ["1.5 hours", "3 hours", "5.5 hours"],
   },
   {
     label: "Authority content per month",
@@ -109,7 +109,7 @@ const definitions: Definition[] = [
   },
   {
     term: "SEO Time",
-    body: "Specialist time set aside each month and directed at the next most important thing for the site: geo and location pages, service-page support, on-page optimization, page speed, and technical improvements. It is a time allocation, not loose 'flex' hours. Catching and fixing crawl errors is the health score's job; SEO Time is the proactive improvement work. Tiny gets 1.5 hours, Typical 3.5, Turbo 5.5, and you can add more at $60 per hour.",
+    body: "Specialist time set aside each month and directed at the next most important thing for the site: geo and location pages, service-page support, on-page optimization, page speed, and technical improvements. It is a time allocation, not loose 'flex' hours. Catching and fixing crawl errors is the health score's job; SEO Time is the proactive improvement work. Tiny gets 1.5 hours, Typical 3, Turbo 5.5, and you can add more at $60 per hour.",
   },
   {
     term: "Authority content",
@@ -176,12 +176,21 @@ const faqSchema = {
     },
   })),
 };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", Astro.site).href },
+    { "@type": "ListItem", position: 2, name: "Pricing", item: new URL("/pricing/", Astro.site).href },
+  ],
+};
 ---
 
 <Layout
   title="White-Label SEO Packages and Pricing | SEO Brothers"
   description="Wholesale white-label SEO pricing for agency partners. Three SEO packages plus website builds and recurring add-ons. These are the partner rates you pay; you mark them up to your client. No annual contracts."
-  schema={faqSchema}
+  schema={[breadcrumbSchema, faqSchema]}
 >
   <Nav />
 
@@ -435,7 +444,7 @@ const faqSchema = {
           </li>
           <li>
             <span class="cadence__example-label">GBP posting, any number of locations</span>
-            <span class="cadence__example-price">$100 / mo</span>
+            <span class="cadence__example-price">$50 / mo</span>
           </li>
           <li>
             <span class="cadence__example-label">Custom backlink or SEO Time hours</span>

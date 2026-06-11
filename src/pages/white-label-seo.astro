@@ -241,12 +241,21 @@ const faqSchema = {
     })),
   ),
 };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", Astro.site).href },
+    { "@type": "ListItem", position: 2, name: "White-Label SEO", item: new URL("/white-label-seo/", Astro.site).href },
+  ],
+};
 ---
 
 <Layout
   title="White Label SEO Services for Agencies | SEO Brothers"
   description="White label SEO services for growth-focused agencies. Deliver SEO under your brand with dedicated account managers, free discovery audits, and 50%+ margins."
-  schema={faqSchema}
+  schema={[breadcrumbSchema, faqSchema]}
 >
   <Nav />
 
@@ -1296,7 +1305,7 @@ const faqSchema = {
             </p>
           </div>
           <div class="wl-pricing-price">
-            <span class="wl-pricing-amount">$680</span>
+            <span class="wl-pricing-amount">$620</span>
             <span class="wl-pricing-period">per month</span>
           </div>
           <ul class="wl-pricing-features">
@@ -1306,7 +1315,7 @@ const faqSchema = {
             <li>Live reporting dashboard</li>
             <li>1 Local Maps focus location</li>
             <li>2 backlinks per month</li>
-            <li>3.5 hours of SEO Time per month</li>
+            <li>3 hours of SEO Time per month</li>
             <li>1 authority content piece per month</li>
           </ul>
           <a href="/partner-package/" class="btn btn-primary wl-pricing-btn">Get Access</a>
