@@ -29,7 +29,7 @@ const rateCard = [
   { name: HEALTH.label, value: usd(HEALTH.price), suffix: "/ mo", note: HEALTH.note, tag: "In every campaign" },
   { name: STRATEGY.label, value: usd(STRATEGY.pricePerReview), suffix: "per review", note: `Cadence sets the monthly cost: semi-annual ${usd(strategyMonthly(2))}/mo, quarterly ${usd(strategyMonthly(4))}/mo, monthly ${usd(strategyMonthly(12))}/mo.` },
   { name: "SEO Time", value: usd(EXTRA_HOUR.price), suffix: "/ hour, monthly", note: "Time on the next most important thing for the site: geo and service pages, on-page optimization, page speed, and technical improvements." },
-  { name: EXTRA_LOCATION.label, value: "+" + usd(EXTRA_LOCATION.price), suffix: "/ mo each", note: EXTRA_LOCATION.note },
+  { name: EXTRA_LOCATION.label, value: usd(EXTRA_LOCATION.price), suffix: "/ mo each", note: EXTRA_LOCATION.note },
   { name: "Authority content", value: usd(EXTRA_BLOG.price), suffix: "each, monthly", note: "Built for freshness and topical authority. Usually one, sometimes two a month depending on site size." },
   { name: BACKLINK.label, value: usd(BACKLINK.price), suffix: "each, monthly", note: BACKLINK.note },
   { name: GBP_POSTING.label, value: usd(GBP_POSTING.price), suffix: "/ mo", note: GBP_POSTING.note, tag: "Recommended for local" },
