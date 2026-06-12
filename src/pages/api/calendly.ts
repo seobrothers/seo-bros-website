@@ -7,9 +7,10 @@ import { clientIp, logEvent, type AnalyticsEngine } from "../../lib/eventlog";
 // Runs on-demand inside the Cloudflare Worker (prerender = false).
 //
 // ── SETUP (one-time, Devon) ───────────────────────────────────────────────
-//  1. Slack: create an Incoming Webhook pointing at #sales-notifications and
-//     set it as the Cloudflare secret SLACK_SALES_WEBHOOK_URL. (Without it we
-//     fall back to the partner/audit webhook so nothing is silently lost.)
+//  1. Slack: nothing to do. We reuse the existing SLACK_PARTNER_WEBHOOK_URL
+//     (the same #sales-notifications channel the ActiveCampaign lead pings go
+//     to). Set SLACK_SALES_WEBHOOK_URL only if you ever want calendar alerts in
+//     a different channel; otherwise the partner webhook is used.
 //  2. Calendly: create a Personal Access Token, then create a webhook
 //     subscription so events reach this endpoint:
 //        curl -X POST https://api.calendly.com/webhook_subscriptions \
