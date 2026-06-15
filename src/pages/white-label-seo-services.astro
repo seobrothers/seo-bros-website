@@ -39,6 +39,15 @@ const deliverables = [
     linkLabel: "Our local SEO framework",
   },
   {
+    icon: "ai",
+    accent: "teal",
+    title: "AI search (GEO & AEO)",
+    description:
+      "Yes, we run AI SEO. We earn citations in AI Overviews, ChatGPT, and Perplexity as a layer on the organic foundation, measured by leads, not vanity scores.",
+    href: "/white-label-ai-seo/",
+    linkLabel: "White-label AI SEO",
+  },
+  {
     icon: "activity",
     accent: "teal",
     title: "Technical SEO & audits",
@@ -133,6 +142,11 @@ const faqs = [
     question: "Do you work with ecommerce and enterprise clients?",
     answer:
       "Yes. Ecommerce and enterprise or multi-location clients are some of the highest-value accounts an agency can carry, and we handle both, including franchise and multi-location architecture across many sites.",
+  },
+  {
+    question: "Do you handle AI SEO and generative search (GEO/AEO)?",
+    answer:
+      "Yes. We run AI search as a layer on a real organic foundation, earning citations in AI Overviews, ChatGPT, and Perplexity through the same authority, structure, and entity work that earns rankings, and we measure it by leads from AI sources rather than a vanity visibility score. It ships white-label like everything else. See our white-label AI SEO page for the full picture.",
   },
   {
     question: "How are you different from a fulfilment shop like The HOTH or E2M?",
@@ -274,6 +288,9 @@ const breadcrumbSchema = {
                 )}
                 {item.icon === "map" && (
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                )}
+                {item.icon === "ai" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.14 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z" /><path d="M20 3v4" /><path d="M22 5h-4" /><path d="M4 17v2" /><path d="M5 18H3" /></svg>
                 )}
                 {item.icon === "activity" && (
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg>

@@ -57,6 +57,7 @@ const STATIC_PAGES = [
   "/tools/free-seo-audit/",
   "/tools/seo-forecasting-tool/",
   "/white-label-seo-services/",
+  "/white-label-ai-seo/",
   "/white-label-link-building/",
   "/white-label-local-seo/",
   "/white-label-web-design/",
