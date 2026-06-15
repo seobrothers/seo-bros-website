@@ -74,6 +74,6 @@ That is the wrong shape. The shape that wins the next three years of search is a
 
 ## How we approach this at SEO Brothers
 
-We are a technology-first SEO company offering [white label seo](/white-label-seo/) to agencies and growth-focused operators. That means we are paying close attention to where the SERP is going, not just where it has been. Multimedia is the most underweighted area we see in client content calendars, and the operators who fix it now are the ones who will have a substantial real-estate advantage by 2024.
+We are a technology-first SEO company offering [white label seo](/white-label-seo-services/) to agencies and growth-focused operators. That means we are paying close attention to where the SERP is going, not just where it has been. Multimedia is the most underweighted area we see in client content calendars, and the operators who fix it now are the ones who will have a substantial real-estate advantage by 2024.
 
 If you want help mapping out a multimedia workflow for your traffic, [get a free audit](/tools/free-seo-audit/) and we will walk you through what we are seeing.

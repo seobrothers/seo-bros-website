@@ -275,16 +275,28 @@ const faqSchema =
     <CtaBanner />
   </article>
 
-  <!-- Slim inline audit CTA, cloned into the article body between sections so
-       the offer shows up as the reader moves through the guide. -->
+  <!-- Slim inline CTA, cloned into the article body between sections so the
+       offer shows up as the reader moves through the guide. Agency guides speak
+       to reseller partners, so they invite a partnership conversation rather
+       than a client audit; everything else keeps the free-audit offer. -->
   <template id="inline-cta-tpl">
-    <aside class="guide-inline-cta">
-      <p class="guide-inline-cta__text">
-        <strong>Curious where a client's site really stands?</strong>
-        Get a free audit, an instant snapshot plus a real review from our team.
-      </p>
-      <a href="/tools/free-seo-audit/" class="guide-inline-cta__btn">Get your free audit</a>
-    </aside>
+    {d.category === "agency" ? (
+      <aside class="guide-inline-cta">
+        <p class="guide-inline-cta__text">
+          <strong>Curious what it's like to partner with us?</strong>
+          See how the white-label partnership works day to day, the portal, the support, the margins.
+        </p>
+        <a href="/partner-package/" class="guide-inline-cta__btn">See how we partner</a>
+      </aside>
+    ) : (
+      <aside class="guide-inline-cta">
+        <p class="guide-inline-cta__text">
+          <strong>Curious where a client's site really stands?</strong>
+          Get a free audit, an instant snapshot plus a real review from our team.
+        </p>
+        <a href="/tools/free-seo-audit/" class="guide-inline-cta__btn">Get your free audit</a>
+      </aside>
+    )}
   </template>
 
   <Footer />
