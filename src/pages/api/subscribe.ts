@@ -67,29 +67,32 @@ export const POST: APIRoute = async ({ request, locals }) => {
   const env = readEnv(locals);
   const base = env.ACTIVECAMPAIGN_API_URL;
   const token = env.ACTIVECAMPAIGN_API_KEY;
-  if (!base || !token) {
-    console.error("ActiveCampaign credentials are not configured");
-    return json({ ok: false, error: "Something went wrong. Please try again." }, 502);
-  }
 
   const [firstName, ...rest] = name.split(/\s+/);
-  const ac = { base, token };
-  try {
-    const contactId = await syncContact(ac, { email, firstName: firstName ?? "", lastName: rest.join(" ") });
-    for (const t of topics) {
-      const { list, tag } = TOPICS[t];
-      if (list > 0) {
-        try {
-          await addToList(ac, contactId, list);
-        } catch (err) {
-          console.error(`AC subscribe list ${list} failed`, err);
+
+  // Subscribe is best-effort: a missing-creds or AC outage must not error
+  // lead-side. Unlike the lead forms there's no Slack fallback here, so the
+  // attempt is still recorded via the analytics event below.
+  if (base && token) {
+    const ac = { base, token };
+    try {
+      const contactId = await syncContact(ac, { email, firstName: firstName ?? "", lastName: rest.join(" ") });
+      for (const t of topics) {
+        const { list, tag } = TOPICS[t];
+        if (list > 0) {
+          try {
+            await addToList(ac, contactId, list);
+          } catch (err) {
+            console.error(`AC subscribe list ${list} failed`, err);
+          }
         }
+        await applyTag(ac, contactId, tag);
       }
-      await applyTag(ac, contactId, tag);
+    } catch (err) {
+      console.error("ActiveCampaign subscribe failed (non-fatal)", err);
     }
-  } catch (err) {
-    console.error("ActiveCampaign subscribe failed", err);
-    return json({ ok: false, error: "Something went wrong. Please try again." }, 502);
+  } else {
+    console.error("ActiveCampaign credentials are not configured (subscribe skipped)");
   }
 
   const ae = (locals as { runtime?: { env?: { AE?: AnalyticsEngine } } }).runtime?.env?.AE;

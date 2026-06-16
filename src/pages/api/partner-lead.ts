@@ -156,11 +156,13 @@ export const POST: APIRoute = async ({ request, locals }) => {
     return json({ ok: false, error: "Verification failed. Please try again." }, 403);
   }
 
+  // CRM sync is best-effort: a failure here (missing creds, AC outage) must not
+  // fail the opt-in for the agency. The lead is still captured via Slack +
+  // analytics below, so we log and carry on rather than returning a 502.
   try {
     await syncToActiveCampaign(env, { firstName, lastName, email, newsletter });
   } catch (err) {
-    console.error("ActiveCampaign sync failed", err);
-    return json({ ok: false, error: "Something went wrong. Please try again." }, 502);
+    console.error("ActiveCampaign sync failed (non-fatal)", err);
   }
 
   await notifySlack(env, { name, email, agency });
