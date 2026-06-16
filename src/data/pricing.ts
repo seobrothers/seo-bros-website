@@ -47,11 +47,11 @@ export const SEO_TIERS: SeoTier[] = [
   {
     id: "turbo",
     name: "Turbo",
-    price: 1210,
+    price: 1010,
     blurb:
-      "When the market is tougher or speed matters more. Monthly strategy reviews, more SEO Time, more links, more content.",
+      "When the market is tougher or speed matters more. Quarterly strategy reviews with more SEO Time, more links, and more content each month.",
     highlights: [
-      "Monthly strategy reviews",
+      "Quarterly strategy reviews",
       "4 backlinks + 5.5 hours of SEO Time each month",
       "Best for competitive markets",
     ],
