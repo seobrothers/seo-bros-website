@@ -4,7 +4,7 @@ category: cities
 publishDate: 2025-02-13
 author: "Adam Bate"
 updatedDate: 2026-04-30
-summary: We're a Nova Scotia company with most of our Canadian team based around the HRM. A guide to local search behavior in our home market, the variations people actually use, and why "Halifax" can mean three different things to three different searchers.
+summary: We're a Nova Scotia company with most of our Canadian team based around the HRM. A guide to local search behavior in our home market, the variations people actually use, why "Halifax" can mean three different things to three different searchers, and how to vet an SEO company that can actually serve it.
 coverImage: /images/cities/halifax-seo.jpg
 coverImageAlt: Halifax, Nova Scotia cityscape
 showAuditCta: true
@@ -90,6 +90,34 @@ Practical implications for businesses serving this market.
 **Watch for the South Shore split.** Businesses that genuinely serve down to Bridgewater or Lunenburg should have South Shore-specific content, not just a Halifax page. The communities south of HRM have their own local-search behavior.
 
 For the broader local SEO framework that applies to any market, see our [local SEO guide](/guides/local-seo/).
+
+## How to choose an SEO company in Halifax
+
+People ask me who they should hire for SEO in Halifax, and I get the question. The field here is a mix: a few solid local shops, some generalist marketing agencies that dabble in search, and the occasional out-of-town outfit that has never set foot on the peninsula but will happily bill you for "Halifax SEO."
+
+I'm not going to hand you a ranked list and call it gospel. But I will tell you how I'd actually vet a shop, and give you an honest, scored read on the field. One thing up front: I'm not going to ding anyone for not ranking number one for "Halifax SEO" themselves. Plenty of good shops, us included, don't chase it. What you actually want to know is whether other businesses trust them, whether there's real authority and results behind the pitch, and whether they'll tell you straight what you're paying for.
+
+Here's what I check, and what each company is scored on out of 20:
+
+- **Clutch and third-party ratings.** Clutch is the closest thing the agency world has to a verified report card: real, vetted client reviews. A strong Clutch profile is the best outside signal there is.
+- **Client reviews.** Google review count and rating. Volume matters as much as the star average.
+- **Authority.** Their backlink profile and Domain Rating (we read these in Ahrefs). Real off-site strength behind the words.
+- **Track record and results.** Years in the market and named case studies you can actually check.
+- **Transparency.** Published pricing or process, a named team, a real way to reach a human.
+
+_The table below is an illustrative mockup. Company names and scores are placeholders to show the format, not real ratings._
+
+| Company | Clutch | Reviews | Authority | Track | Transparency | Score | Grade |
+|---|--:|--:|--:|--:|--:|--:|:--|
+| Harbour Search Co. | 18 | 19 | 16 | 17 | 18 | 88 | A- |
+| Citadel Digital | 17 | 17 | 16 | 16 | 18 | 84 | B+ |
+| Bluenose SEO | 15 | 18 | 14 | 16 | 17 | 80 | B |
+| Maritime Rank | 13 | 15 | 13 | 15 | 16 | 72 | C+ |
+| Anchor Media Group | 12 | 14 | 12 | 14 | 14 | 66 | C |
+
+The shops at the top aren't there because they shout the loudest. They're there because the outside signals line up: strong Clutch and Google reviews, real links, and pricing you don't have to email three times to get. The mid-tier shops are perfectly capable, they're just lighter on authority or quieter about their results. Nobody paid to be on this list, and nobody paid to rank higher on it.
+
+If you run a business in Halifax, run those five checks on anyone you talk to. And if you run an agency here and would rather have the SEO behind your brand handled by a team that lives in this market, that's our actual job, white-label and under your name: [partner with us](/partner-package/).
 
 ## How we approach Halifax SEO at SEO Brothers
 
