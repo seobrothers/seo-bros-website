@@ -47,11 +47,11 @@ export const SEO_TIERS: SeoTier[] = [
   {
     id: "turbo",
     name: "Turbo",
-    price: 1210,
+    price: 1010,
     blurb:
-      "When the market is tougher or speed matters more. Monthly strategy reviews, more SEO Time, more links, more content.",
+      "When the market is tougher or speed matters more. Quarterly strategy reviews with more SEO Time, more links, and more content each month.",
     highlights: [
-      "Monthly strategy reviews",
+      "Quarterly strategy reviews",
       "4 backlinks + 5.5 hours of SEO Time each month",
       "Best for competitive markets",
     ],
@@ -157,7 +157,7 @@ export const WEB_BUILDS: WebBuild[] = [
     name: "Website build",
     price: 1500,
     blurb:
-      "A fast, modern site built on Astro and deployed on Cloudflare, with Emdash so your client can edit content themselves. No setup fee.",
+      "A fast, modern site built on Astro and deployed on Cloudflare, and easy for your client to edit themselves. No setup fee.",
   },
   {
     id: "build-redesign",

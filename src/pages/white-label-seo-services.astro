@@ -1,0 +1,746 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import GrowthCallEmbed from "../components/GrowthCallEmbed.astro";
+import { SEO_TIERS, usd } from "../data/pricing";
+
+const deliverables = [
+  {
+    icon: "target",
+    accent: "teal",
+    title: "Campaign strategy",
+    description:
+      "We build the strategy with you, keyed to the client's market and the intents that actually move leads. You stay in the conversation; we do the thinking and the work.",
+  },
+  {
+    icon: "edit",
+    accent: "green",
+    title: "Content & on-page",
+    description:
+      "Recurring content and on-page work that targets the terms worth winning, written to rank and to read like the client's own brand.",
+  },
+  {
+    icon: "link",
+    accent: "teal",
+    title: "Link building",
+    description:
+      "Links built to move rankings, not to pad a report, and never resold PBNs.",
+    href: "/guides/link-building/",
+    linkLabel: "How we build links",
+  },
+  {
+    icon: "map",
+    accent: "green",
+    title: "Local & Google Business Profile",
+    description:
+      "Map pack, GBP, citations, and service-area pages. Local is what we do best, including multi-location and franchise at scale.",
+    href: "/guides/local-seo/",
+    linkLabel: "Our local SEO framework",
+  },
+  {
+    icon: "ai",
+    accent: "teal",
+    title: "AI search (GEO & AEO)",
+    description:
+      "Yes, we run AI SEO. We earn citations in AI Overviews, ChatGPT, and Perplexity as a layer on the organic foundation, measured by leads, not vanity scores.",
+    href: "/white-label-ai-seo/",
+    linkLabel: "White-label AI SEO",
+  },
+  {
+    icon: "activity",
+    accent: "teal",
+    title: "Technical SEO & audits",
+    description:
+      "Crawl health, Core Web Vitals, schema, and the fixes that let the rest of the work pay off, on whatever platform the client is on.",
+  },
+  {
+    icon: "chart",
+    accent: "green",
+    title: "Reporting under your brand",
+    description:
+      "A live portal on your own domain showing the work, the rankings, and the leads. Your client sees your brand, never ours.",
+  },
+];
+
+const differentiators = [
+  {
+    title: "We stay invisible",
+    description:
+      "We don't put our name or face on your client calls, because the moment we do, your client is one search away from learning you subcontract. We back your sales from behind and let you stay the only name in the room.",
+  },
+  {
+    title: "Any budget, proven both ways",
+    description:
+      "We have onboarded around 100 clients in a single month for one partner and grown it to roughly 400 active campaigns, and we also run $5K and $10K monthly campaigns, including for publicly traded companies. Small or large, we are fluent at both ends.",
+  },
+  {
+    title: "A service built for your niche",
+    description:
+      "Our bread and butter is sitting with a partner and building them their own productized service: the offer, the deliverables, the pricing, shaped to how you actually sell. We review your whole portfolio, not one campaign in isolation.",
+  },
+  {
+    title: "Transparent and collaborative",
+    description:
+      "Our partner portal runs on your own domain via CNAME. Real-time updates, feedback, and approvals, plus the ability to send work to your client for sign-off under your brand. Collaboration, not a monthly PDF.",
+  },
+];
+
+const steps = [
+  {
+    phase: "Set up once",
+    number: "01",
+    title: "Discovery & fit",
+    description:
+      "We learn your agency: your niche, how you sell, and the margin you need. This is about your business, not a single client, and there is no drawn-out sales cycle.",
+  },
+  {
+    phase: "Set up once",
+    number: "02",
+    title: "We build your productized service",
+    description:
+      "Up front, we shape one offer around how you sell: the deliverables, reporting, and pricing you put your name on and resell. Built for your agency, not rebuilt for every client.",
+  },
+  {
+    phase: "Set up once",
+    number: "03",
+    title: "Launch your portal",
+    description:
+      "We stand up your branded portal on your own domain and onboard your team, so every campaign from here runs through one collaborative, white-label workspace.",
+  },
+  {
+    phase: "Then, every client",
+    number: "04",
+    title: "Bring clients, we run the campaigns",
+    description:
+      "For each client you sign, we run strategy, content, links, local, and technical work under your brand. You and your client review and approve in the portal. Repeat as you grow.",
+  },
+];
+
+const faqs = [
+  {
+    question: "What is included in your white label SEO services?",
+    answer:
+      "Full-stack SEO delivered under your brand: campaign strategy, content and on-page, link building, local and Google Business Profile, technical SEO and audits, and white-label reporting. You can resell all of it or just the pieces you need.",
+  },
+  {
+    question: "Is it really white-label? Will my client know?",
+    answer:
+      "It is genuinely invisible. We don't put our name in reports, we don't email or call your client, and we stay off your sales calls on purpose. The portal, the deliverables, and the reporting all carry your brand. The relationship and the pricing are yours.",
+  },
+  {
+    question: "How is outsourced SEO priced?",
+    answer:
+      "Wholesale, so you build in real margin. Campaigns run on three packages, Tiny, Typical, and Turbo, with add-ons for extra locations, content, and links. You pay the partner rate and mark it up to your client. The full rate card is on our pricing page.",
+  },
+  {
+    question: "What size clients can you handle?",
+    answer:
+      "Any size. We have run high-volume programs at hundreds of active campaigns and we also run $5K and $10K monthly campaigns for larger and enterprise clients, including publicly traded companies. We scale the work to the budget either way.",
+  },
+  {
+    question: "Do you work with ecommerce and enterprise clients?",
+    answer:
+      "Yes. Ecommerce and enterprise or multi-location clients are some of the highest-value accounts an agency can carry, and we handle both, including franchise and multi-location architecture across many sites.",
+  },
+  {
+    question: "Do you handle AI SEO and generative search (GEO/AEO)?",
+    answer:
+      "Yes. We run AI search as a layer on a real organic foundation, earning citations in AI Overviews, ChatGPT, and Perplexity through the same authority, structure, and entity work that earns rankings, and we measure it by leads from AI sources rather than a vanity visibility score. It ships white-label like everything else. See our white-label AI SEO page for the full picture.",
+  },
+  {
+    question: "How are you different from a fulfilment shop like The HOTH or E2M?",
+    answer:
+      "Fulfilment shops execute the tasks you order and leave the strategy and selling to you. We run the strategy and execution and build you a productized service around how you sell. Our white label SEO guide breaks down the difference in full.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", Astro.site).href },
+    { "@type": "ListItem", position: 2, name: "White Label SEO Services", item: new URL("/white-label-seo-services/", Astro.site).href },
+  ],
+};
+---
+
+<Layout
+  title="White Label SEO Services | Outsourced SEO for Agencies | SEO Brothers"
+  description="White label SEO services and outsourced SEO for agencies. We run strategy, content, links, local, and technical SEO under your brand, build you a productized service, and report through a portal on your own domain. Wholesale pricing, free discovery."
+  schema={[breadcrumbSchema, faqSchema]}
+>
+  <Nav />
+
+  <!-- ===== HERO ===== -->
+  <section class="wls-hero">
+    <div class="wls-hero-bg">
+      <div class="wls-hero-orb wls-hero-orb--teal"></div>
+      <div class="wls-hero-orb wls-hero-orb--green"></div>
+      <div class="wls-hero-orb wls-hero-orb--teal2"></div>
+      <div class="wls-hero-grid"></div>
+    </div>
+
+    <div class="wls-hero-content container">
+      <div class="wls-hero-badge" data-animate>
+        <span class="wls-hero-badge-dot"></span>
+        White-label & outsourced SEO for agencies
+      </div>
+
+      <h1 class="wls-hero-title" data-animate>
+        <span class="wls-hero-title-line">White Label SEO Services</span><br />
+        <span class="wls-hero-title-gradient">Outsourced, Under Your Brand</span>
+      </h1>
+
+      <p class="wls-hero-subtitle" data-animate>
+        Outsource your clients' SEO to a team that stays invisible. We run the
+        strategy and the work under your brand, build you a productized service
+        around how you sell, and report through a portal on your own domain. You
+        own the client and set the price. We never show up.
+      </p>
+
+      <div class="wls-hero-actions" data-animate>
+        <a href="/partner-package/" class="btn btn-primary wls-btn-lg">
+          Test Us
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+        <a href="/pricing/" class="btn btn-outline wls-btn-lg">See pricing</a>
+      </div>
+
+      <div class="wls-hero-pills" data-animate>
+        <span class="wls-hero-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Under your brand
+        </span>
+        <span class="wls-hero-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Any budget
+        </span>
+        <span class="wls-hero-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Free discovery
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INTRO ===== -->
+  <section class="wls-intro">
+    <div class="container">
+      <div class="wls-intro-content" data-animate>
+        <span class="section-label">Outsourced SEO for Agencies</span>
+        <h2 class="section-heading">White Label SEO Services You Can Sell Today</h2>
+        <p class="wls-intro-text">
+          Your clients want SEO, and building an in-house team to deliver it is
+          slow and expensive. Outsourcing it to whoever you found last week is a
+          gamble. White label SEO solves that: we do the work, you resell it
+          under your brand, and your client never knows we exist.
+        </p>
+        <p class="wls-intro-text">
+          We are not a fulfilment desk that runs your brief and disappears. We
+          build the strategy with you, shape a productized service around how
+          your agency actually sells, and run the campaigns under your name. You
+          keep the relationship, the pricing, and the margin. If you want to
+          understand the models first, start with our
+          <a href="/guides/white-label-seo/">white label SEO guide</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHAT YOU GET ===== -->
+  <section class="wls-value" id="seo-work">
+    <div class="container">
+      <div class="wls-value-header" data-animate>
+        <span class="section-label">What You're Reselling</span>
+        <h2 class="section-heading">Full-Stack SEO, Delivered as Your Team</h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          Every part of an SEO campaign, run under your brand. Resell the whole
+          stack or just the pieces you need.
+        </p>
+      </div>
+
+      <div class="wls-value-grid" data-stagger>
+        {
+          deliverables.map((item) => (
+            <div class="wls-value-card" data-animate>
+              <div class={`wls-value-icon wls-value-icon--${item.accent}`}>
+                {item.icon === "target" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg>
+                )}
+                {item.icon === "edit" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" /><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
+                )}
+                {item.icon === "link" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg>
+                )}
+                {item.icon === "map" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                )}
+                {item.icon === "ai" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.14 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z" /><path d="M20 3v4" /><path d="M22 5h-4" /><path d="M4 17v2" /><path d="M5 18H3" /></svg>
+                )}
+                {item.icon === "activity" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg>
+                )}
+                {item.icon === "chart" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18" /><rect x="7" y="10" width="3" height="7" /><rect x="12" y="6" width="3" height="11" /><rect x="17" y="13" width="3" height="4" /></svg>
+                )}
+              </div>
+              <h3 class="wls-value-title">{item.title}</h3>
+              <p class="wls-value-desc">{item.description}</p>
+              {item.href && (
+                <a class="wls-value-link" href={item.href}>
+                  {item.linkLabel}
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </a>
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY PARTNER WITH US ===== -->
+  <section class="wls-why">
+    <div class="wls-why-bg">
+      <div class="wls-why-orb wls-why-orb--1"></div>
+      <div class="wls-why-orb wls-why-orb--2"></div>
+    </div>
+    <div class="container">
+      <div class="wls-why-header" data-animate>
+        <span class="section-label section-label--light">Why Partner With Us</span>
+        <h2 class="section-heading section-heading--light">More Than Fulfilment</h2>
+        <p class="wls-why-subtext">
+          Plenty of providers will run your tasks. A few will even join your
+          sales calls. Here is what actually separates a partner from a
+          fulfilment desk.
+        </p>
+      </div>
+
+      <div class="wls-why-grid" data-stagger>
+        {
+          differentiators.map((d) => (
+            <div class="wls-why-card" data-animate>
+              <h3 class="wls-why-card-title">{d.title}</h3>
+              <p class="wls-why-card-desc">{d.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="wls-process">
+    <div class="container">
+      <div class="wls-process-header" data-animate>
+        <span class="section-label">How It Works</span>
+        <h2 class="section-heading">How the Partnership Works</h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          We set the partnership up once, then it is plug-and-play for every
+          client you bring. You own the relationship; we run the work behind it.
+        </p>
+      </div>
+
+      <div class="wls-process-timeline">
+        <div class="wls-process-line"></div>
+        {
+          steps.map((step, i) => (
+            <Fragment>
+              {step.phase !== steps[i - 1]?.phase && (
+                <p class="wls-process-phase">{step.phase}</p>
+              )}
+              <div class="wls-process-step" data-animate>
+                <div class="wls-process-marker"><span class="wls-process-number">{step.number}</span></div>
+                <div class="wls-process-step-body">
+                  <h3 class="wls-process-step-title">{step.title}</h3>
+                  <p class="wls-process-step-desc">{step.description}</p>
+                </div>
+              </div>
+            </Fragment>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ECOMMERCE / ENTERPRISE ===== -->
+  <section class="wls-scale">
+    <div class="container">
+      <div class="wls-scale-header" data-animate>
+        <span class="section-label">High-Value Clients</span>
+        <h2 class="section-heading">Ecommerce and Enterprise, Handled</h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          The biggest accounts your agency can carry are also the hardest to
+          deliver. We run both, so you can sell them with confidence.
+        </p>
+      </div>
+      <div class="wls-scale-grid" data-stagger>
+        <div class="wls-scale-card" data-animate>
+          <h3 class="wls-scale-title">Ecommerce SEO</h3>
+          <p class="wls-scale-desc">
+            Category and product-level SEO for online stores, with the technical
+            and content depth ecommerce demands. Built to scale across large
+            catalogs without losing the rankings that drive revenue.
+          </p>
+        </div>
+        <div class="wls-scale-card" data-animate>
+          <h3 class="wls-scale-title">Enterprise & multi-location</h3>
+          <p class="wls-scale-desc">
+            Enterprise organic and multi-location or franchise programs across
+            many sites and markets, including publicly traded clients. See our
+            <a href="/guides/franchise-seo/">franchise and multi-location guide</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRICING TEASER ===== -->
+  <section class="wls-pricing">
+    <div class="container">
+      <div class="wls-pricing-header" data-animate>
+        <span class="section-label">Wholesale Partner Pricing</span>
+        <h2 class="section-heading">Priced for Partners, Marked Up by You</h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          Three managed-campaign packages. These are the partner rates you pay
+          and resell at your own price. Add extra locations, content, and links
+          as you need them.
+        </p>
+      </div>
+
+      <div class="wls-pricing-grid" data-stagger>
+        {
+          SEO_TIERS.map((tier) => (
+            <div class={`wls-pricing-card${tier.featured ? " wls-pricing-card--featured" : ""}`} data-animate>
+              {tier.featured && <span class="wls-pricing-badge">Most quoted</span>}
+              <h3 class="wls-pricing-tier">{tier.name}</h3>
+              <div class="wls-pricing-price">
+                <span class="wls-pricing-amount">{usd(tier.price)}</span>
+                <span class="wls-pricing-period">/mo wholesale</span>
+              </div>
+              <p class="wls-pricing-blurb">{tier.blurb}</p>
+              <ul class="wls-pricing-features">
+                {tier.highlights.map((h) => <li>{h}</li>)}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="wls-pricing-footnote" data-animate>
+        This is a summary. The complete rate card, add-ons, and website builds
+        live on the <a href="/pricing/">pricing page</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== WEBSITE BUNDLE ===== -->
+  <section class="wls-bundle">
+    <div class="container">
+      <div class="wls-bundle-card" data-animate>
+        <div class="wls-bundle-copy">
+          <span class="section-label">Bundle It</span>
+          <h2 class="wls-bundle-title">Need websites too?</h2>
+          <p class="wls-bundle-text">
+            Pair SEO with fast, white-label websites built on Astro and
+            Cloudflare, editable by your clients and resold under your brand. A
+            new site plus an ongoing campaign is a clean, recurring package.
+          </p>
+          <a href="/white-label-web-design/" class="wls-bundle-link">
+            See white-label web design
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="wls-testimonials">
+    <div class="container">
+      <div class="wls-testimonials-header" data-animate>
+        <span class="section-label">Partner Feedback</span>
+        <h2 class="section-heading">What Our Partners Say</h2>
+      </div>
+
+      <div class="wls-testimonials-grid" data-stagger>
+        <blockquote class="wls-testimonial" data-animate>
+          <p class="wls-testimonial-text">
+            Honestly, working with the SEO Brothers has been incredible. The
+            process is great and I always know what I'm getting on every single
+            project.
+          </p>
+          <div class="wls-testimonial-author">
+            <div class="wls-testimonial-avatar">RG</div>
+            <div>
+              <div class="wls-testimonial-name">Rob Gillan</div>
+              <div class="wls-testimonial-role">Owner, RedEarMedia.ca</div>
+            </div>
+          </div>
+        </blockquote>
+
+        <blockquote class="wls-testimonial" data-animate>
+          <p class="wls-testimonial-text">
+            They've been really great at working with us to develop a process
+            that really is seamless and works well for us, and helping us
+            understand how we can bring the most benefit to our clients.
+          </p>
+          <div class="wls-testimonial-author">
+            <div class="wls-testimonial-avatar wls-testimonial-avatar--purple">JF</div>
+            <div>
+              <div class="wls-testimonial-name">Joy Fraser</div>
+              <div class="wls-testimonial-role">Creative Director, Roddis Communications</div>
+            </div>
+          </div>
+        </blockquote>
+
+        <blockquote class="wls-testimonial" data-animate>
+          <p class="wls-testimonial-text">
+            You and your company were hands down the best partners we ever worked
+            with, and I appreciate all the support over the many years together.
+          </p>
+          <div class="wls-testimonial-author">
+            <div class="wls-testimonial-avatar wls-testimonial-avatar--green">JH</div>
+            <div>
+              <div class="wls-testimonial-name">Jeff Horst, CFE</div>
+              <div class="wls-testimonial-role">Former CEO, RocketBarn</div>
+            </div>
+          </div>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="wls-faq">
+    <div class="container">
+      <div class="wls-faq-header" data-animate>
+        <span class="section-label">Common Questions</span>
+        <h2 class="section-heading">White Label SEO Services FAQ</h2>
+      </div>
+
+      <div class="wls-faq-list" data-animate>
+        {
+          faqs.map((faq, i) => (
+            <details class="wls-faq-item" open={i === 0}>
+              <summary class="wls-faq-question">
+                <span>{faq.question}</span>
+                <svg class="wls-faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+              </summary>
+              <div class="wls-faq-answer"><p>{faq.answer}</p></div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <GrowthCallEmbed
+    heading="Add SEO to your lineup without hiring."
+    sub="Book a growth call and we'll walk through the work, the portal, and the margins, and show you how the white-label partnership runs."
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ===== HERO ===== */
+  .wls-hero {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    background: var(--dark);
+    overflow: hidden;
+    padding: 140px 0 100px;
+  }
+  .wls-hero-bg { position: absolute; inset: 0; overflow: hidden; }
+  .wls-hero-orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.35; }
+  .wls-hero-orb--teal { width: 600px; height: 600px; background: var(--teal); top: -15%; left: -5%; }
+  .wls-hero-orb--green { width: 500px; height: 500px; background: var(--green); top: -5%; right: -10%; }
+  .wls-hero-orb--teal2 { width: 400px; height: 400px; background: var(--teal-light); bottom: -15%; left: 35%; opacity: 0.25; }
+  .wls-hero-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 70%);
+  }
+  .wls-hero-content { position: relative; z-index: 1; text-align: center; max-width: 820px; margin: 0 auto; }
+  .wls-hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-full); padding: 8px 16px; margin-bottom: 32px; backdrop-filter: blur(8px);
+  }
+  .wls-hero-badge-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+  .wls-hero-title {
+    font-family: var(--font-display); font-size: clamp(36px, 6vw, 64px); font-weight: 700;
+    line-height: 1.08; letter-spacing: -0.03em; color: var(--text-on-dark); margin-bottom: 24px;
+  }
+  .wls-hero-title-line { white-space: nowrap; }
+  .wls-hero-title-gradient {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .wls-hero-subtitle {
+    font-size: clamp(16px, 2vw, 19px); line-height: 1.7; color: var(--text-on-dark-muted);
+    margin: 0 auto 36px; max-width: 620px;
+  }
+  .wls-hero-actions { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
+  .wls-btn-lg { padding: 16px 32px; font-size: 16px; }
+  .wls-hero-pills { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+  .wls-hero-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-on-dark-muted); }
+  .wls-hero-pill svg { color: var(--green); }
+  @media (max-width: 768px) {
+    .wls-hero { padding: 120px 0 80px; min-height: auto; }
+    .wls-hero-title-line { white-space: normal; }
+  }
+
+  /* ===== INTRO ===== */
+  .wls-intro { padding: 110px 0 90px; background: var(--white); }
+  .wls-intro-content { max-width: 760px; margin: 0 auto; text-align: center; }
+  .wls-intro-text { font-size: 17px; line-height: 1.75; color: var(--text-secondary); margin-bottom: 18px; text-align: left; }
+  .wls-intro-text a { color: var(--teal-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+  /* ===== VALUE / WHAT YOU GET ===== */
+  .wls-value { padding: 100px 0; background: var(--light); }
+  .wls-value-header { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+  .wls-value-header .section-label, .wls-value-header .section-heading { display: block; }
+  .wls-value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .wls-value-card {
+    background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius-lg);
+    padding: 32px 28px; box-shadow: var(--shadow-sm); transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .wls-value-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .wls-value-icon { width: 48px; height: 48px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+  .wls-value-icon--teal { background: rgba(40,165,177,0.12); color: var(--teal); }
+  .wls-value-icon--green { background: rgba(68,185,123,0.12); color: var(--green); }
+  .wls-value-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--text-primary); margin-bottom: 10px; letter-spacing: -0.01em; }
+  .wls-value-desc { font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); }
+  .wls-value-desc a { color: var(--teal-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+  .wls-value-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 14px; font-weight: 600; color: var(--teal-dark); transition: gap var(--transition); }
+  .wls-value-link:hover { gap: 10px; }
+  @media (max-width: 900px) { .wls-value-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .wls-value-grid { grid-template-columns: 1fr; } }
+
+  /* ===== WHY PARTNER (dark) ===== */
+  .wls-why { position: relative; padding: 110px 0; background: var(--dark); overflow: hidden; }
+  .wls-why-bg { position: absolute; inset: 0; }
+  .wls-why-orb { position: absolute; border-radius: 50%; filter: blur(140px); opacity: 0.25; }
+  .wls-why-orb--1 { width: 460px; height: 460px; background: var(--teal); top: -20%; right: -8%; }
+  .wls-why-orb--2 { width: 380px; height: 380px; background: var(--green); bottom: -25%; left: -8%; }
+  .wls-why-header { position: relative; z-index: 1; text-align: center; max-width: 660px; margin: 0 auto 56px; }
+  .wls-why-header .section-label, .wls-why-header .section-heading { display: block; }
+  .wls-why-subtext { font-size: 16px; line-height: 1.7; color: var(--text-on-dark-muted); margin: 0 auto; max-width: 540px; }
+  .wls-why-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
+  .wls-why-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-lg); padding: 32px 28px; }
+  .wls-why-card-title { font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--text-on-dark); margin-bottom: 10px; letter-spacing: -0.01em; }
+  .wls-why-card-desc { font-size: 15px; line-height: 1.7; color: var(--text-on-dark-muted); }
+  @media (max-width: 720px) { .wls-why-grid { grid-template-columns: 1fr; } }
+
+  /* ===== PROCESS ===== */
+  .wls-process { padding: 110px 0; background: var(--white); }
+  .wls-process-header { text-align: center; max-width: 640px; margin: 0 auto 64px; }
+  .wls-process-header .section-label, .wls-process-header .section-heading { display: block; }
+  .wls-process-timeline { position: relative; max-width: 720px; margin: 0 auto; }
+  .wls-process-line { position: absolute; left: 27px; top: 28px; bottom: 28px; width: 2px; background: linear-gradient(180deg, var(--teal) 0%, var(--green) 100%); opacity: 0.25; }
+  .wls-process-phase { position: relative; z-index: 1; margin: 0 0 20px 84px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-dark); }
+  .wls-process-phase ~ .wls-process-phase, .wls-process-step + .wls-process-phase { margin-top: 12px; }
+  .wls-process-step { position: relative; display: flex; gap: 28px; align-items: flex-start; padding-bottom: 36px; }
+  .wls-process-step:last-child { padding-bottom: 0; }
+  .wls-process-marker { position: relative; z-index: 1; flex-shrink: 0; width: 56px; height: 56px; border-radius: 50%; background: var(--white); border: 2px solid var(--teal); display: flex; align-items: center; justify-content: center; }
+  .wls-process-number { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--teal); }
+  .wls-process-step-body { padding-top: 6px; }
+  .wls-process-step-title { font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; letter-spacing: -0.01em; }
+  .wls-process-step-desc { font-size: 15.5px; line-height: 1.65; color: var(--text-secondary); }
+  @media (max-width: 560px) { .wls-process-step { gap: 18px; } .wls-process-line { left: 23px; } .wls-process-marker { width: 48px; height: 48px; } }
+
+  /* ===== ECOMMERCE / ENTERPRISE ===== */
+  .wls-scale { padding: 100px 0; background: var(--light); }
+  .wls-scale-header { text-align: center; max-width: 640px; margin: 0 auto 48px; }
+  .wls-scale-header .section-label, .wls-scale-header .section-heading { display: block; }
+  .wls-scale-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 860px; margin: 0 auto; }
+  .wls-scale-card { background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 32px 30px; box-shadow: var(--shadow-sm); }
+  .wls-scale-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; letter-spacing: -0.01em; }
+  .wls-scale-desc { font-size: 15px; line-height: 1.7; color: var(--text-secondary); }
+  .wls-scale-desc a { color: var(--teal-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+  @media (max-width: 720px) { .wls-scale-grid { grid-template-columns: 1fr; } }
+
+  /* ===== PRICING TEASER ===== */
+  .wls-pricing { padding: 110px 0; background: var(--white); }
+  .wls-pricing-header { text-align: center; max-width: 660px; margin: 0 auto 56px; }
+  .wls-pricing-header .section-label, .wls-pricing-header .section-heading { display: block; }
+  .wls-pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 980px; margin: 0 auto; }
+  .wls-pricing-card { position: relative; background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 36px 30px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; }
+  .wls-pricing-card--featured { border-color: var(--teal); box-shadow: var(--shadow-lg); }
+  .wls-pricing-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--teal); color: var(--white); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; padding: 5px 14px; border-radius: var(--radius-full); white-space: nowrap; }
+  .wls-pricing-tier { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; letter-spacing: -0.01em; }
+  .wls-pricing-price { display: flex; align-items: baseline; gap: 8px; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--border-light); }
+  .wls-pricing-amount { font-family: var(--font-display); font-size: 38px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.02em; }
+  .wls-pricing-period { font-size: 14px; color: var(--text-muted); }
+  .wls-pricing-blurb { font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 20px; }
+  .wls-pricing-features { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; flex-grow: 1; }
+  .wls-pricing-features li { position: relative; padding-left: 28px; font-size: 14.5px; line-height: 1.5; color: var(--text-secondary); }
+  .wls-pricing-features li::before {
+    content: ""; position: absolute; left: 0; top: 2px; width: 16px; height: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2328a5b1' stroke-width='2.5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-size: contain;
+  }
+  .wls-pricing-footnote { text-align: center; margin: 40px auto 0; max-width: 560px; font-size: 15px; line-height: 1.6; color: var(--text-secondary); }
+  .wls-pricing-footnote a { color: var(--teal); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+  @media (max-width: 820px) { .wls-pricing-grid { grid-template-columns: 1fr; max-width: 440px; } }
+
+  /* ===== WEBSITE BUNDLE ===== */
+  .wls-bundle { padding: 0 0 110px; background: var(--white); }
+  .wls-bundle-card { max-width: 900px; margin: 0 auto; background: var(--light); border: 1px solid var(--border-light); border-radius: var(--radius-xl); padding: 48px 44px; }
+  .wls-bundle-copy { max-width: 640px; }
+  .wls-bundle-copy .section-label { display: block; }
+  .wls-bundle-title { font-family: var(--font-display); font-size: clamp(24px, 3.5vw, 30px); font-weight: 700; color: var(--text-primary); margin: 6px 0 14px; letter-spacing: -0.01em; }
+  .wls-bundle-text { font-size: 16px; line-height: 1.7; color: var(--text-secondary); margin-bottom: 20px; }
+  .wls-bundle-link { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--teal-dark); transition: gap var(--transition); }
+  .wls-bundle-link:hover { gap: 12px; }
+
+  /* ===== TESTIMONIALS ===== */
+  .wls-testimonials { padding: 100px 0; background: var(--light); }
+  .wls-testimonials-header { text-align: center; margin-bottom: 48px; }
+  .wls-testimonials-header .section-label, .wls-testimonials-header .section-heading { display: block; }
+  .wls-testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .wls-testimonial { margin: 0; background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 32px 28px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; }
+  .wls-testimonial-text { font-size: 15.5px; line-height: 1.7; color: var(--text-primary); margin-bottom: 24px; flex-grow: 1; }
+  .wls-testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .wls-testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--teal); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; flex-shrink: 0; }
+  .wls-testimonial-avatar--purple { background: var(--purple, #7c5cff); }
+  .wls-testimonial-avatar--green { background: var(--green); }
+  .wls-testimonial-name { font-weight: 600; color: var(--text-primary); font-size: 15px; }
+  .wls-testimonial-role { font-size: 13px; color: var(--text-muted); }
+  @media (max-width: 900px) { .wls-testimonials-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } }
+
+  /* ===== FAQ ===== */
+  .wls-faq { padding: 110px 0; background: var(--white); }
+  .wls-faq-header { text-align: center; margin-bottom: 48px; }
+  .wls-faq-header .section-label, .wls-faq-header .section-heading { display: block; }
+  .wls-faq-list { max-width: 760px; margin: 0 auto; }
+  .wls-faq-item { border-bottom: 1px solid var(--border-light); }
+  .wls-faq-question { display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; padding: 24px 0; font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--text-primary); list-style: none; }
+  .wls-faq-question::-webkit-details-marker { display: none; }
+  .wls-faq-chevron { flex-shrink: 0; color: var(--text-muted); transition: transform var(--transition); }
+  .wls-faq-item[open] .wls-faq-chevron { transform: rotate(180deg); color: var(--teal); }
+  .wls-faq-answer { padding: 0 0 24px; }
+  .wls-faq-answer p { font-size: 15.5px; line-height: 1.7; color: var(--text-secondary); max-width: 680px; }
+</style>

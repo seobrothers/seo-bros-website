@@ -1,7 +1,8 @@
 ---
-// Shared layout for the white-label SEO spoke pages (the hub-and-spoke under
-// /white-label-seo/: local, link-building, enterprise, ai-seo, ecommerce).
-// Keeps every spoke visually consistent and on-message: dark hero, intro,
+// Shared layout for the white-label service sub-pages (e.g.
+// /white-label-link-building/, /white-label-local-seo/) that sit under the
+// /white-label-seo-services/ hub. Keeps each one visually consistent and
+// on-message: dark hero, intro,
 // "what's included" grid, an internal-link cluster (the spoke-to-hub and
 // spoke-to-guides linking that builds topical authority), FAQ + schema, CTA.
 // Content comes in as props so each spoke is just data.
@@ -73,7 +74,7 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", Astro.site).href },
-    { "@type": "ListItem", position: 2, name: "White-Label SEO", item: new URL("/white-label-seo/", Astro.site).href },
+    { "@type": "ListItem", position: 2, name: "White Label SEO Services", item: new URL("/white-label-seo-services/", Astro.site).href },
     { "@type": "ListItem", position: 3, name: eyebrow, item: new URL(Astro.url.pathname, Astro.site).href },
   ],
 };
@@ -90,9 +91,9 @@ const breadcrumbSchema = {
       <div class="sp-hero__grid"></div>
     </div>
     <div class="container sp-hero__inner">
-      <a href="/white-label-seo/" class="sp-hero__back">
+      <a href="/white-label-seo-services/" class="sp-hero__back">
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 8H3M7 12L3 8l4-4" /></svg>
-        White Label SEO
+        White Label SEO Services
       </a>
       <span class="sp-hero__label" data-animate>
         <span class="sp-hero__label-dot"></span>
