@@ -157,7 +157,7 @@ export const WEB_BUILDS: WebBuild[] = [
     name: "Website build",
     price: 1500,
     blurb:
-      "A fast, modern site built on Astro and deployed on Cloudflare, with Emdash so your client can edit content themselves. No setup fee.",
+      "A fast, modern site built on Astro and deployed on Cloudflare, and easy for your client to edit themselves. No setup fee.",
   },
   {
     id: "build-redesign",

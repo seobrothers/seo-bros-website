@@ -25,7 +25,48 @@ The agency keeps the margin between what it pays the provider and what it charge
 
 Think of it as a spectrum, sorted by how much of the work and thinking you keep versus hand over.
 
-![The white label SEO spectrum: fulfilment desk, managed campaigns, and strategic partner, arranged by how much of the work you keep versus hand over.](/images/guides/white-label-seo/tier-spectrum.svg)
+<div style="margin: 28px 0 40px;">
+  <p style="margin: 0 0 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #44b97b;">The white label spectrum</p>
+  <p style="margin: 0 0 18px; font-size: 14px; color: var(--text-muted);">Sorted by how much of the work you keep versus hand over.</p>
+  <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+    <div style="flex: 1 1 220px; background: #fff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden;">
+      <div style="background: #94a3b8; color: #fff; padding: 12px 16px; font-weight: 700; font-size: 15px;">Fulfilment desk</div>
+      <div style="padding: 16px 16px 18px;">
+        <p style="margin: 0 0 14px; font-size: 14px; line-height: 1.55; color: var(--text-secondary);">You bring strategy and sales. They execute the tasks you order, à la carte or by the hour.</p>
+        <p style="margin: 0 0 6px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: #94a3b8;">WHO DOES THE WORK</p>
+        <div style="display: flex; height: 10px; border-radius: 5px; overflow: hidden; margin-bottom: 5px;"><span style="width: 68%; background: #64748b;"></span><span style="width: 32%; background: #cbd5e1;"></span></div>
+        <div style="display: flex; justify-content: space-between; font-size: 10px; color: #94a3b8; margin-bottom: 14px;"><span>You</span><span>Partner</span></div>
+        <p style="margin: 0 0 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: #94a3b8;">BEST FOR</p>
+        <p style="margin: 0; font-size: 14px; font-weight: 600; color: #334155;">You have strategy, want cheap hands.</p>
+        <p style="margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--border-light); font-size: 12px; color: var(--text-muted);">The HOTH · SEOReseller · E2M</p>
+      </div>
+    </div>
+    <div style="flex: 1 1 220px; background: #fff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden;">
+      <div style="background: #33c4d1; color: #fff; padding: 12px 16px; font-weight: 700; font-size: 15px;">Managed campaigns</div>
+      <div style="padding: 16px 16px 18px;">
+        <p style="margin: 0 0 14px; font-size: 14px; line-height: 1.55; color: var(--text-secondary);">They run per-client strategy and execution, invisibly. You still sell it and train your team.</p>
+        <p style="margin: 0 0 6px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: #94a3b8;">WHO DOES THE WORK</p>
+        <div style="display: flex; height: 10px; border-radius: 5px; overflow: hidden; margin-bottom: 5px;"><span style="width: 45%; background: #64748b;"></span><span style="width: 55%; background: #33c4d1;"></span></div>
+        <div style="display: flex; justify-content: space-between; font-size: 10px; color: #94a3b8; margin-bottom: 14px;"><span>You</span><span>Partner</span></div>
+        <p style="margin: 0 0 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: #94a3b8;">BEST FOR</p>
+        <p style="margin: 0; font-size: 14px; font-weight: 600; color: #334155;">You want delivery off your plate.</p>
+        <p style="margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--border-light); font-size: 12px; color: var(--text-muted);">Semify</p>
+      </div>
+    </div>
+    <div style="flex: 1 1 220px; background: #fff; border: 1.5px solid #28a5b1; border-radius: var(--radius-lg); overflow: hidden;">
+      <div style="background: #28a5b1; color: #fff; padding: 12px 16px; font-weight: 700; font-size: 15px;">Strategic partner</div>
+      <div style="padding: 16px 16px 18px;">
+        <p style="margin: 0 0 14px; font-size: 14px; line-height: 1.55; color: var(--text-secondary);">They run strategy and execution and back your sales. You own the client and the pricing.</p>
+        <p style="margin: 0 0 6px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: #94a3b8;">WHO DOES THE WORK</p>
+        <div style="display: flex; height: 10px; border-radius: 5px; overflow: hidden; margin-bottom: 5px;"><span style="width: 30%; background: #64748b;"></span><span style="width: 70%; background: #28a5b1;"></span></div>
+        <div style="display: flex; justify-content: space-between; font-size: 10px; color: #94a3b8; margin-bottom: 14px;"><span>You</span><span>Partner</span></div>
+        <p style="margin: 0 0 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: #94a3b8;">BEST FOR</p>
+        <p style="margin: 0; font-size: 14px; font-weight: 600; color: #334155;">You want to grow the SEO line.</p>
+        <p style="margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--border-light); font-size: 12px; color: var(--text-muted);">Boostability · That! Company · <strong style="color: #1c7d87;">SEO Brothers</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
 
 ### Fulfilment desk
 
@@ -112,7 +153,28 @@ Once you are choosing a strategic partner, the obvious-looking features stop bei
 
 **How collaboration actually happens.** A reporting dashboard is table stakes. The question is whether you can work inside the tool or just look at it. Our partner portal is built around collaboration rather than reporting alone: real-time updates and notifications on the work, the ability to leave feedback and approvals, and the ability to send content and deliverables to your own client for sign-off under your own domain, using a CNAME pointed at our portal. The client approves work in what looks like your software. That is a different thing from a monthly PDF with your logo on it. (We also build reporting software, but be skeptical of any provider, us included, who leads with the tool instead of the work.)
 
-![How the partner portal works: SEO Brothers does the work and stays invisible, the work flows through a portal on your own domain via CNAME, and your client reviews and approves it under your brand.](/images/guides/white-label-seo/partner-portal-flow.svg)
+<div style="margin: 28px 0 40px;">
+  <p style="margin: 0 0 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #44b97b;">Collaboration under your own domain</p>
+  <p style="margin: 0 0 18px; font-size: 14px; color: var(--text-muted);">How the partnership stays invisible to the people you serve.</p>
+  <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+    <div style="flex: 1 1 200px; background: #fff; border: 1px dashed #cbd5e1; border-radius: var(--radius-lg); padding: 18px;">
+      <p style="margin: 0 0 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: #94a3b8;">1 · STAYS INVISIBLE</p>
+      <p style="margin: 0 0 6px; font-size: 16px; font-weight: 700; color: #334155;">SEO Brothers</p>
+      <p style="margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--text-secondary);">We do the strategy, content, links, and reporting in the background.</p>
+    </div>
+    <div style="flex: 1 1 200px; background: #fff; border: 1.5px solid #28a5b1; border-radius: var(--radius-lg); padding: 18px;">
+      <p style="margin: 0 0 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: #1c7d87;">2 · YOUR PORTAL</p>
+      <p style="margin: 0 0 4px; font-size: 14px; font-weight: 700; color: #28a5b1; font-family: ui-monospace, Menlo, monospace;">portal.youragency.com</p>
+      <p style="margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--text-secondary);">A branded workspace on your own domain (CNAME): updates, feedback, and approvals.</p>
+    </div>
+    <div style="flex: 1 1 200px; background: #fff; border: 1px solid #cbd5e1; border-radius: var(--radius-lg); padding: 18px;">
+      <p style="margin: 0 0 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: #94a3b8;">3 · YOUR CLIENT</p>
+      <p style="margin: 0 0 6px; font-size: 16px; font-weight: 700; color: #334155;">Reviews & approves</p>
+      <p style="margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--text-secondary);">Your client signs off on the work under your brand, never ours.</p>
+    </div>
+  </div>
+  <p style="margin: 14px 0 0; padding: 14px 18px; background: #f0fdf6; border: 1px solid #44b97b; border-radius: var(--radius-md); font-size: 14px; font-weight: 600; color: #256b45;">Our name appears nowhere your client can ever see.</p>
+</div>
 
 **Whether they handle your whole range.** Cheap partner tiers tend to be cheap because they run one playbook at volume. We handle any budget on purpose. For one veterinary group we onboarded around 100 clients in a single month and grew the relationship to roughly 400 active campaigns at a three-hundred-dollar-a-month price point, and at the other end we run many five-thousand-dollar-a-month campaigns and some at ten thousand, including for publicly traded companies. If your book has a four-figure local client and a five-figure national one, you want a partner fluent at both ends, not one optimized for a single point on the curve.
 
