@@ -1,0 +1,128 @@
+---
+// Renders the "best SEO companies in [city]" scorecard at the foot of a city
+// guide, driven by src/data/cityScorecards.ts. Concept/mockup: entries are
+// illustrative placeholders until real Clutch/Ahrefs/GBP data is pulled.
+import { CITY_SCORECARDS, SCORECARD_SIGNALS } from "../data/cityScorecards";
+
+const { city } = Astro.props as { city: string };
+const data = CITY_SCORECARDS[city];
+
+function gradeColor(g: string) {
+  return g.startsWith("A") ? "#44b97b" : g.startsWith("B") ? "#28a5b1" : "#d08700";
+}
+---
+
+{data && (
+  <section class="cs">
+    <h2 class="cs-h2">How to choose an SEO company in {data.city}</h2>
+
+    <p class="cs-lead">
+      People ask us who they should hire for SEO in {data.city}, and it's a fair
+      question. The field is a mix of strong local specialists, generalist
+      marketing shops that dabble in search, and the occasional out-of-town
+      outfit that has never worked the market.
+    </p>
+    <p class="cs-lead">
+      We're a white-label team that works behind agencies, so we don't compete
+      for {data.city} clients ourselves. That lets us grade the field on signals
+      you can actually verify. We won't ding anyone for not ranking number one
+      for "{data.city} SEO" themselves either, plenty of good shops (us included)
+      don't chase it. What matters is whether other businesses trust them,
+      whether there's real authority behind the pitch, and whether they'll tell
+      you straight what you're paying for. Each company is scored out of 20 on
+      five signals.
+    </p>
+
+    <div class="cs-signals">
+      {SCORECARD_SIGNALS.map((s, i) => (
+        <div class="cs-signal">
+          <span class="cs-signal-num">{i + 1}</span>
+          <div>
+            <h3 class="cs-signal-label">{s.label}</h3>
+            <p class="cs-signal-blurb">{s.blurb}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="cs-note">
+      Scored from public signals as of June 2026: Clutch, Google reviews, Ahrefs
+      Domain Rating, and each firm's own site. See the five signals above.
+    </p>
+
+    <div class="cs-board">
+      {data.agencies.map((a) => (
+        <article class="cs-card">
+          <div class="cs-grade" style={`background:${gradeColor(a.grade)}`}>{a.grade}</div>
+          <div class="cs-main">
+            <h4 class="cs-name">{a.name}</h4>
+            <div class="cs-chips">
+              {SCORECARD_SIGNALS.map((s, j) => (
+                <span class="cs-chip">{s.key} <strong>{a.scores[j]}</strong></span>
+              ))}
+            </div>
+            <p class="cs-verdict">{a.verdict}</p>
+          </div>
+          <div class="cs-score"><span class="cs-score-num">{a.score}</span><span class="cs-score-max">/100</span></div>
+        </article>
+      ))}
+    </div>
+
+    <p class="cs-lead">
+      The shops at the top aren't there because they shout the loudest. The
+      outside signals line up: strong Clutch and Google reviews, real links, and
+      pricing you don't have to chase. Nobody paid to be on this list, and nobody
+      paid to rank higher on it.
+    </p>
+
+    <div class="cs-cta">
+      <div class="cs-cta-card">
+        <h3 class="cs-cta-title">Choosing an SEO company?</h3>
+        <p class="cs-cta-text">Run those five checks on anyone you talk to, in {data.city} or anywhere. Clutch, reviews, real links, verifiable results, and straight answers on pricing tell you more than a sales call will.</p>
+        <a class="cs-cta-link" href="/guides/local-seo/">Read the local SEO framework →</a>
+      </div>
+      <div class="cs-cta-card cs-cta-card--dark">
+        <h3 class="cs-cta-title">Run an agency in {data.city}?</h3>
+        <p class="cs-cta-text">Have the SEO behind your brand handled by a team that lives in this work, white-label and under your name. That's our actual job.</p>
+        <a class="cs-cta-btn" href="/partner-package/">Partner with us</a>
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .cs { margin: 56px 0 8px; }
+  .cs-h2 { font-family: var(--font-display); font-size: 28px; font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; color: var(--text-primary); margin: 0 0 16px; scroll-margin-top: 80px; }
+  .cs-lead { font-size: 17px; line-height: 1.8; color: var(--text-secondary); margin: 0 0 20px; }
+  .cs-note { font-size: 14px; font-style: italic; color: var(--text-muted); margin: 0 0 18px; }
+
+  .cs-signals { display: flex; flex-wrap: wrap; gap: 14px; margin: 24px 0 28px; }
+  .cs-signal { flex: 1 1 250px; display: flex; gap: 12px; align-items: flex-start; background: var(--light); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 18px 20px; }
+  .cs-signal-num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--white); border: 1.5px solid var(--teal); color: var(--teal); font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+  .cs-signal-label { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--text-primary); margin: 2px 0 6px; }
+  .cs-signal-blurb { font-size: 13.5px; line-height: 1.55; color: var(--text-secondary); margin: 0; }
+
+  .cs-board { margin: 0 0 24px; }
+  .cs-card { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; background: var(--white); border: 1px solid var(--border-light); border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; box-shadow: var(--shadow-sm); }
+  .cs-grade { flex-shrink: 0; width: 52px; height: 52px; border-radius: 12px; color: #fff; font-family: var(--font-display); font-size: 20px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .cs-main { flex: 1 1 280px; min-width: 0; }
+  .cs-name { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text-primary); margin: 0 0 10px; }
+  .cs-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .cs-chip { font-size: 12px; background: var(--light); border: 1px solid var(--border-light); border-radius: 999px; padding: 4px 11px; color: var(--text-secondary); }
+  .cs-chip strong { color: var(--teal-dark); }
+  .cs-verdict { font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin: 0; }
+  .cs-score { flex-shrink: 0; text-align: right; margin-left: auto; }
+  .cs-score-num { font-family: var(--font-display); font-size: 30px; font-weight: 700; color: var(--text-primary); }
+  .cs-score-max { font-size: 13px; color: var(--text-muted); }
+
+  .cs-cta { display: flex; flex-wrap: wrap; gap: 16px; margin: 28px 0 8px; }
+  .cs-cta-card { flex: 1 1 280px; background: var(--light); border: 1px solid var(--border-light); border-radius: 16px; padding: 28px 26px; }
+  .cs-cta-card--dark { background: linear-gradient(135deg, #131a2b 0%, var(--dark) 100%); border-color: rgba(255,255,255,0.06); }
+  .cs-cta-title { font-family: var(--font-display); font-size: 19px; font-weight: 700; color: var(--text-primary); margin: 0 0 10px; }
+  .cs-cta-card--dark .cs-cta-title { color: var(--text-on-dark); }
+  .cs-cta-text { font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 18px; }
+  .cs-cta-card--dark .cs-cta-text { color: var(--text-on-dark-muted); }
+  .cs-cta-link { font-family: var(--font-display); font-weight: 600; font-size: 15px; color: var(--teal-dark); text-decoration: none; }
+  .cs-cta-btn { display: inline-flex; align-items: center; padding: 12px 24px; border-radius: 10px; background: var(--teal); color: #fff; font-weight: 600; font-size: 15px; text-decoration: none; }
+  .cs-cta-btn:hover { background: var(--teal-light); }
+</style>

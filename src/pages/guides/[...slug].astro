@@ -7,7 +7,10 @@ import Footer from "../../components/Footer.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
 import AuthorCard from "../../components/AuthorCard.astro";
 import NewsletterSignup from "../../components/NewsletterSignup.astro";
+import CityScorecard from "../../components/CityScorecard.astro";
+import StickyCta from "../../components/StickyCta.astro";
 import { authorByName } from "../../data/authors";
+import { CITY_SCORECARDS } from "../../data/cityScorecards";
 
 export async function getStaticPaths() {
   const reservedSlugs = new Set(["seo", "industry", "agency", "cities"]);
@@ -266,6 +269,8 @@ const faqSchema =
 
           <Content />
 
+          {d.category === "cities" && CITY_SCORECARDS[guide.id] && <CityScorecard city={guide.id} />}
+
           {authorEntity?.published && <AuthorCard author={authorEntity} variant="full" />}
         </div>
       </div>
@@ -298,6 +303,10 @@ const faqSchema =
       </aside>
     )}
   </template>
+
+  {(d.category === "industry" || d.category === "cities") && (
+    <StickyCta label="Get a Free SEO Audit" href="/tools/free-seo-audit/" />
+  )}
 
   <Footer />
 </Layout>

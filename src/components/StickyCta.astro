@@ -1,0 +1,74 @@
+---
+// Mobile-only sticky CTA bar. Hidden on load, slides up once the visitor has
+// scrolled past the first viewport, then stays one tap away for the rest of the
+// page. Used to keep a primary action reachable on long pages where the hero
+// button scrolls out of reach (a common problem on phones).
+//   label — button text, e.g. "Get Our Partner Package"
+//   href  — destination, e.g. "/partner-package/"
+interface Props {
+  label: string;
+  href: string;
+}
+const { label, href } = Astro.props as Props;
+---
+
+<div class="sticky-cta" data-sticky-cta aria-hidden="true">
+  <a href={href} class="btn btn-primary sticky-cta__btn">
+    {label}
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  </a>
+</div>
+
+<style>
+  .sticky-cta {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: rgba(10, 15, 26, 0.92);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    transform: translateY(120%);
+    transition: transform 0.3s ease;
+    display: none;
+  }
+  .sticky-cta.is-visible {
+    transform: translateY(0);
+  }
+  .sticky-cta__btn {
+    width: 100%;
+    padding: 15px 24px;
+    font-size: 16px;
+  }
+  @media (max-width: 768px) {
+    .sticky-cta {
+      display: block;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sticky-cta {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // Reveal once the visitor scrolls past ~60% of the first screen. Scroll
+  // distance (not an element observer) keeps this portable across page layouts.
+  const bars = document.querySelectorAll<HTMLElement>("[data-sticky-cta]");
+  if (bars.length) {
+    const update = () => {
+      const show = window.scrollY > window.innerHeight * 0.6;
+      bars.forEach((bar) => {
+        bar.classList.toggle("is-visible", show);
+        bar.setAttribute("aria-hidden", show ? "false" : "true");
+      });
+    };
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+  }
+</script>

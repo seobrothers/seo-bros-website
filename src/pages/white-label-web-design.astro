@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import GrowthCallEmbed from "../components/GrowthCallEmbed.astro";
+import StickyCta from "../components/StickyCta.astro";
 import { WEB_BUILDS, HOSTING, MAINTENANCE, usd } from "../data/pricing";
 
 const valueProps = [
@@ -179,7 +180,7 @@ const breadcrumbSchema = {
 
       <div class="wd-hero-actions" data-animate>
         <a href="/partner-package/" class="btn btn-primary wd-btn-lg">
-          Test Us
+          Get Our Partner Package
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path
               d="M3 8h10M9 4l4 4-4 4"
@@ -444,7 +445,7 @@ const breadcrumbSchema = {
             <li>Shipped under your brand</li>
             <li>No setup fee</li>
           </ul>
-          <a href="/partner-package/" class="btn btn-outline--dark wd-pricing-btn">Test Us</a>
+          <a href="/partner-package/" class="btn btn-outline--dark wd-pricing-btn">Get Our Partner Package</a>
         </div>
 
         <div class="wd-pricing-card wd-pricing-card--featured" data-animate>
@@ -469,7 +470,7 @@ const breadcrumbSchema = {
             <li>Visibility protected through migration</li>
             <li>Launch monitored so rankings hold</li>
           </ul>
-          <a href="/partner-package/" class="btn btn-primary wd-pricing-btn">Test Us</a>
+          <a href="/partner-package/" class="btn btn-primary wd-pricing-btn">Get Our Partner Package</a>
         </div>
       </div>
 
@@ -565,6 +566,8 @@ const breadcrumbSchema = {
     heading="Add websites to your lineup without hiring."
     sub="Book a growth call and we'll walk through building and reselling fast white-label sites under your brand."
   />
+
+  <StickyCta label="Get Our Partner Package" href="/partner-package/" />
 
   <Footer />
 </Layout>

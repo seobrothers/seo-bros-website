@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import GrowthCallEmbed from "../components/GrowthCallEmbed.astro";
+import StickyCta from "../components/StickyCta.astro";
 import { SEO_TIERS, usd } from "../data/pricing";
 
 const deliverables = [
@@ -211,7 +212,7 @@ const breadcrumbSchema = {
 
       <div class="wls-hero-actions" data-animate>
         <a href="/partner-package/" class="btn btn-primary wls-btn-lg">
-          Test Us
+          Get Our Partner Package
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
@@ -340,6 +341,30 @@ const breadcrumbSchema = {
             </div>
           ))
         }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MID-PAGE CTA BAND ===== -->
+  <section class="wls-cta">
+    <div class="container">
+      <div class="wls-cta-band" data-animate>
+        <div class="wls-cta-copy">
+          <h2 class="wls-cta-title">Ready to put SEO under your brand?</h2>
+          <p class="wls-cta-text">
+            Start with a free discovery. We'll look at your portfolio, shape a
+            productized service around how you sell, and show you the margins.
+          </p>
+        </div>
+        <div class="wls-cta-actions">
+          <a href="/partner-package/" class="btn btn-primary wls-btn-lg">
+            Get Our Partner Package
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+          <a href="/pricing/" class="btn btn-outline--dark wls-btn-lg">See pricing</a>
+        </div>
       </div>
     </div>
   </section>
@@ -555,6 +580,8 @@ const breadcrumbSchema = {
     sub="Book a growth call and we'll walk through the work, the portal, and the margins, and show you how the white-label partnership runs."
   />
 
+  <StickyCta label="Get Our Partner Package" href="/partner-package/" />
+
   <Footer />
 </Layout>
 
@@ -743,4 +770,22 @@ const breadcrumbSchema = {
   .wls-faq-item[open] .wls-faq-chevron { transform: rotate(180deg); color: var(--teal); }
   .wls-faq-answer { padding: 0 0 24px; }
   .wls-faq-answer p { font-size: 15.5px; line-height: 1.7; color: var(--text-secondary); max-width: 680px; }
+
+  /* ===== MID-PAGE CTA BAND ===== */
+  .wls-cta { padding: 0 0 110px; background: var(--white); }
+  .wls-cta-band {
+    max-width: 980px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;
+    background: linear-gradient(120deg, rgba(40,165,177,0.08) 0%, rgba(68,185,123,0.08) 100%);
+    border: 1px solid var(--border-light); border-radius: var(--radius-xl); padding: 40px 44px;
+  }
+  .wls-cta-copy { flex: 1 1 360px; }
+  .wls-cta-title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 28px); font-weight: 700; color: var(--text-primary); margin-bottom: 8px; letter-spacing: -0.01em; }
+  .wls-cta-text { font-size: 15.5px; line-height: 1.65; color: var(--text-secondary); margin: 0; max-width: 520px; }
+  .wls-cta-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; flex-shrink: 0; }
+  @media (max-width: 640px) {
+    .wls-cta-band { padding: 32px 28px; }
+    .wls-cta-actions { width: 100%; }
+    .wls-cta-actions .btn { flex: 1 1 auto; justify-content: center; }
+  }
 </style>
