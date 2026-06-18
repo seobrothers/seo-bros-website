@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { syncContact, addToList, applyTag } from "../../lib/activecampaign";
+import { syncContact, addToList, applyTag, applyAccount } from "../../lib/activecampaign";
 import { clientIp, logEvent, type AnalyticsEngine } from "../../lib/eventlog";
 import { verifyTurnstile } from "../../lib/turnstile";
 import { rateLimit, type RateLimitKV } from "../../lib/ratelimit";
@@ -52,7 +52,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 async function syncToActiveCampaign(
   env: Env,
-  { firstName, lastName, email, newsletter }: { firstName: string; lastName: string; email: string; newsletter: boolean }
+  { firstName, lastName, email, agency, newsletter }: { firstName: string; lastName: string; email: string; agency: string; newsletter: boolean }
 ): Promise<void> {
   const base = env.ACTIVECAMPAIGN_API_URL;
   const token = env.ACTIVECAMPAIGN_API_KEY;
@@ -70,6 +70,13 @@ async function syncToActiveCampaign(
     console.error("AC partner list add failed", err);
   }
   await applyTag(ac, contactId, AC_PARTNER_TAG);
+
+  // If they named their agency, group the contact under a CRM Account so
+  // multiple people from the same agency roll up together. Best-effort and
+  // only when provided (the field is optional).
+  if (agency) {
+    await applyAccount(ac, contactId, agency);
+  }
 
   // Optional "Bros Knows" newsletter opt-in: list + tag.
   if (newsletter) {
@@ -160,7 +167,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
   // fail the opt-in for the agency. The lead is still captured via Slack +
   // analytics below, so we log and carry on rather than returning a 502.
   try {
-    await syncToActiveCampaign(env, { firstName, lastName, email, newsletter });
+    await syncToActiveCampaign(env, { firstName, lastName, email, agency, newsletter });
   } catch (err) {
     console.error("ActiveCampaign sync failed (non-fatal)", err);
   }

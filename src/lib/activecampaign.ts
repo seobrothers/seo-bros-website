@@ -96,3 +96,69 @@ export async function applyTag(ac: AC, contactId: string, tagName: string): Prom
   const tagId = await ensureTag(ac, tagName);
   if (tagId) await tagContact(ac, contactId, tagId);
 }
+
+/**
+ * Resolve an Account (CRM company record) id by name, creating it if it
+ * doesn't exist yet. AC has no account "sync"/upsert endpoint, so this is a
+ * manual search-then-create to avoid duplicate "Acme SEO" accounts when a
+ * second contact from the same agency signs up.
+ * Best-effort: returns null on any failure so it never blocks a lead.
+ */
+export async function ensureAccount(ac: AC, name: string): Promise<string | null> {
+  try {
+    const search = await fetch(
+      `${ac.base}/api/3/accounts?search=${encodeURIComponent(name)}`,
+      { headers: headers(ac) }
+    );
+    if (search.ok) {
+      const body = (await search.json()) as { accounts?: Array<{ id: string; name: string }> };
+      // search is a fuzzy contains-match; require an exact (case-insensitive)
+      // name so "Acme" doesn't attach to "Acme Digital".
+      const exact = body.accounts?.find(
+        (a) => a.name.trim().toLowerCase() === name.trim().toLowerCase()
+      );
+      if (exact) return exact.id;
+    }
+    const create = await fetch(`${ac.base}/api/3/accounts`, {
+      method: "POST",
+      headers: headers(ac),
+      body: JSON.stringify({ account: { name } }),
+    });
+    if (!create.ok) {
+      console.error(`AC account create failed: ${create.status} ${await create.text()}`);
+      return null;
+    }
+    const body = (await create.json()) as { account?: { id?: string } };
+    return body.account?.id ?? null;
+  } catch (err) {
+    console.error("AC ensureAccount failed", err);
+    return null;
+  }
+}
+
+/**
+ * Link a contact to an account. Best-effort: logs and swallows failures,
+ * including the 422 AC returns when the contact is already linked.
+ */
+export async function linkContactToAccount(
+  ac: AC,
+  contactId: string,
+  accountId: string
+): Promise<void> {
+  try {
+    const res = await fetch(`${ac.base}/api/3/accountContacts`, {
+      method: "POST",
+      headers: headers(ac),
+      body: JSON.stringify({ accountContact: { contact: contactId, account: accountId } }),
+    });
+    if (!res.ok) console.error(`AC accountContacts add failed: ${res.status} ${await res.text()}`);
+  } catch (err) {
+    console.error("AC linkContactToAccount failed", err);
+  }
+}
+
+/** Convenience: ensure an account exists by name and link the contact to it. */
+export async function applyAccount(ac: AC, contactId: string, agencyName: string): Promise<void> {
+  const accountId = await ensureAccount(ac, agencyName);
+  if (accountId) await linkContactToAccount(ac, contactId, accountId);
+}
