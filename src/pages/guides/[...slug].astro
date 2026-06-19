@@ -466,6 +466,7 @@ const faqSchema =
   .guide-toc {
     position: sticky;
     top: 32px;
+    min-width: 0;
   }
 
   .guide-toc__label {
@@ -518,6 +519,13 @@ const faqSchema =
     line-height: 1.8;
     color: var(--text-secondary);
     max-width: 760px;
+    /* Grid items default to min-width:auto, which refuses to shrink below the
+       widest content (e.g. a nowrap data table or a long URL). That blows the
+       column past the viewport on mobile and defeats the table's own
+       overflow-x scroll. min-width:0 lets the 1fr track shrink to the
+       viewport; overflow-wrap breaks any stray long tokens. */
+    min-width: 0;
+    overflow-wrap: break-word;
   }
 
   .guide-cover {
