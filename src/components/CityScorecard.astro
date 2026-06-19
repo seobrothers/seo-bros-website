@@ -2,10 +2,11 @@
 // Renders the "best SEO companies in [city]" scorecard at the foot of a city
 // guide, driven by src/data/cityScorecards.ts. Concept/mockup: entries are
 // illustrative placeholders until real Clutch/Ahrefs/GBP data is pulled.
-import { CITY_SCORECARDS, SCORECARD_SIGNALS } from "../data/cityScorecards";
+import { CITY_SCORECARDS, SCORECARD_SIGNALS, rankedAgencies } from "../data/cityScorecards";
 
 const { city } = Astro.props as { city: string };
 const data = CITY_SCORECARDS[city];
+const agencies = data ? rankedAgencies(data) : [];
 
 function gradeColor(g: string) {
   return g.startsWith("A") ? "#44b97b" : g.startsWith("B") ? "#28a5b1" : "#d08700";
@@ -51,7 +52,7 @@ function gradeColor(g: string) {
     </p>
 
     <div class="cs-board">
-      {data.agencies.map((a) => (
+      {agencies.map((a) => (
         <article class="cs-card">
           <div class="cs-grade" style={`background:${gradeColor(a.grade)}`}>{a.grade}</div>
           <div class="cs-main">
