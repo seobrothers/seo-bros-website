@@ -43,7 +43,7 @@ A few patterns specific to this market.
 
 ## What the volume actually looks like
 
-Real Keyword Planner data, Canada targeting, May 2026. We're using "dentist [area]" as the sample query because dentists exist anywhere there's population, which makes the cross-area variation a read on search behaviour rather than something specific to the industry. We don't specialize in dental SEO. The same shape holds for plumber and roofer at different absolute numbers.
+Real Keyword Planner data, Canada targeting, May 2026. We're using "dentist [area]" as the sample query because dentists exist anywhere there's population, which makes the cross-area variation a read on search behavior rather than something specific to the industry. We don't specialize in dental SEO. The same shape holds for plumber and roofer at different absolute numbers.
 
 ![Choropleth map of Region of Waterloo municipalities tinted by Google search volume for "dentist [area]". Kitchener dominates, Waterloo substantial, Cambridge unexpectedly small at this query, the four rural townships sit in light gray with named-place markers for Ayr in North Dumfries and Elmira in Woolwich.](/images/cities/kitchener-waterloo-search-heatmap.svg)
 

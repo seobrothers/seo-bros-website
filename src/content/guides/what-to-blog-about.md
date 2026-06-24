@@ -69,7 +69,7 @@ The point of this stage isn't to commit to topics yet. It's to identify the site
 
 Now we go a layer deeper. We're going to find sites that produce a lot of content, find ideas to write about that have supporting keyword volume, and figure out the type of content that ranks for those terms.
 
-[Ahrefs](https://ahrefs.com/dashboard) is one of my favourite SEO tools and the easiest path here. SEMrush and Moz also work; pick whichever you actually use.
+[Ahrefs](https://ahrefs.com/dashboard) is one of my favorite SEO tools and the easiest path here. SEMrush and Moz also work; pick whichever you actually use.
 
 The two-step move:
 

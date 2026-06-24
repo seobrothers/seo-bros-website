@@ -4,7 +4,7 @@ category: seo
 publishDate: 2026-04-30
 updatedDate: 2026-05-06
 author: "Adam Bate"
-summary: A practical look at white hat SEO. The legitimate version of the strategy, the honest limits of "white hat only" promises, and the relationship between white hat, grey hat, and the realities of competing in modern search.
+summary: A practical look at white hat SEO. The legitimate version of the strategy, the honest limits of "white hat only" promises, and the relationship between white hat, gray hat, and the realities of competing in modern search.
 featured: false
 ---
 
@@ -46,23 +46,23 @@ The principle: do the work that creates genuine value, and the visibility follow
 
 The marketing version of white hat SEO claims it can achieve any ranking goal in any market with enough patience. The honest version recognizes the limits.
 
-**Competitive verticals push the math.** In personal injury law, plastic surgery, financial services, and other categories where the competition has unlimited budgets and aggressive tactics, pure white hat at small or medium scale often can't catch up. The well-funded competitor with grey-hat link building outpaces the smaller competitor running clean campaigns.
+**Competitive verticals push the math.** In personal injury law, plastic surgery, financial services, and other categories where the competition has unlimited budgets and aggressive tactics, pure white hat at small or medium scale often can't catch up. The well-funded competitor with gray-hat link building outpaces the smaller competitor running clean campaigns.
 
-**Time horizons can be punishing.** White hat campaigns measured in 12 to 24 month timelines are common. Businesses without that runway often can't wait, which pushes them toward faster tactics (grey hat) or paid alternatives (PPC).
+**Time horizons can be punishing.** White hat campaigns measured in 12 to 24 month timelines are common. Businesses without that runway often can't wait, which pushes them toward faster tactics (gray hat) or paid alternatives (PPC).
 
 **Pure earned-media link building is genuinely hard.** Producing the kind of original research, distinctive content, or thought leadership that earns editorial coverage at scale requires real investment in content production, real relationships with journalists, and real expertise to communicate. Most agencies don't have the in-house capability and most clients don't have the budget to fund it externally.
 
-**The line between white hat and grey hat is fuzzier than the marketing suggests.** Reaching out to a partner about an existing resource page (white hat) and offering to write a guest post (grey hat) sit uncomfortably close to each other. Most working SEOs spend their day on tactics that fall somewhere along this spectrum.
+**The line between white hat and gray hat is fuzzier than the marketing suggests.** Reaching out to a partner about an existing resource page (white hat) and offering to write a guest post (gray hat) sit uncomfortably close to each other. Most working SEOs spend their day on tactics that fall somewhere along this spectrum.
 
 ## What "white hat" usually means in practice
 
 When an SEO provider markets themselves as white hat, the honest interpretation is usually one of:
 
 - **Genuinely white hat at small scale.** Local businesses or small sites where the competition isn't intense and earned-media tactics actually scale.
-- **Mostly white hat with a thin layer of grey-hat tactics that don't get advertised.** The most common version. Outreach for guest posts, link exchanges with partners, slightly aggressive optimization of internal pages. Defended publicly as white hat because nothing is overtly malicious.
+- **Mostly white hat with a thin layer of gray-hat tactics that don't get advertised.** The most common version. Outreach for guest posts, link exchanges with partners, slightly aggressive optimization of internal pages. Defended publicly as white hat because nothing is overtly malicious.
 - **Marketing positioning that doesn't match operational reality.** White hat as a sales claim, with whatever produces results executed quietly. Common in mid-size SEO agencies.
 
-For broader context on this dynamic, see our [link building guide](/guides/link-building/), which covers the white-hat / grey-hat / black-hat spectrum explicitly.
+For broader context on this dynamic, see our [link building guide](/guides/link-building/), which covers the white-hat / gray-hat / black-hat spectrum explicitly.
 
 ## Black hat for context
 
@@ -91,7 +91,7 @@ Real white hat SEO is more expensive than most clients expect. The cost componen
 - **Earned media outreach.** Pitching journalists, building relationships, producing the kind of original work worth covering. This is PR work, and PR is expensive.
 - **Patience.** White hat SEO operates on slower timelines than other channels, which means budget commitment over multi-quarter or multi-year horizons. Cash-flow-sensitive businesses often can't make the commitment.
 
-The pricing disconnect we see most often: a small business expects national-level results on a $500 to $1,000 monthly budget. The math doesn't work at that level for any approach, and white hat is the most expensive approach. The provider either has to accept the budget and use cheaper tactics (grey hat), or pass on the engagement.
+The pricing disconnect we see most often: a small business expects national-level results on a $500 to $1,000 monthly budget. The math doesn't work at that level for any approach, and white hat is the most expensive approach. The provider either has to accept the budget and use cheaper tactics (gray hat), or pass on the engagement.
 
 ## When white hat is the right choice
 
@@ -104,7 +104,7 @@ A few situations where strict white hat genuinely is the best approach:
 
 ## How we approach white hat SEO at SEO Brothers
 
-Our default approach is layered. The foundation is white hat: on-page optimization, technical SEO, content quality, earned link sources where possible. On top of that, we add grey-hat tactics where the client's risk tolerance and competitive situation justify them, with full transparency about what's being done.
+Our default approach is layered. The foundation is white hat: on-page optimization, technical SEO, content quality, earned link sources where possible. On top of that, we add gray-hat tactics where the client's risk tolerance and competitive situation justify them, with full transparency about what's being done.
 
 We don't market ourselves as white hat only. The claim isn't accurate for the work most clients need, and we'd rather have the honest conversation about risk and trade-offs than overpromise on a label.
 

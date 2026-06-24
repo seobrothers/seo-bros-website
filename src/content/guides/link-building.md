@@ -14,7 +14,7 @@ It either tells you everything is white-hat and "earned organically," which is r
 
 This guide is the honest version. It covers the full menu of link-building tactics I've used and worked with over a decade-plus in the industry, the risk profile of each, what to do with your existing link profile before you start outreach, and the budget-and-expectations conversation most SEO providers avoid having with clients.
 
-We'll cover everything from the cheapest local-business directory tactic up through grey-hat strategies, including a frank section on PBNs. If your stance is "white-hat only, no exceptions," some of this will be useful and some won't. Read it anyway. The risk framing applies regardless of which tactics you decide to use.
+We'll cover everything from the cheapest local-business directory tactic up through gray-hat strategies, including a frank section on PBNs. If your stance is "white-hat only, no exceptions," some of this will be useful and some won't. Read it anyway. The risk framing applies regardless of which tactics you decide to use.
 
 ## Why links still matter
 
@@ -33,7 +33,7 @@ What's different now:
 
 The fundamentals are the same. The bar for what counts as a "good" link has just gotten higher.
 
-## White hat, grey hat, black hat: what these actually mean
+## White hat, gray hat, black hat: what these actually mean
 
 Most of the SEO industry is dishonest about this, and it's worth being clear.
 
@@ -41,7 +41,7 @@ Most of the SEO industry is dishonest about this, and it's worth being clear.
 
 Short-term payoff. Fast manual penalty. Used in high-margin verticals where operators don't care if a site dies in 90 days.
 
-**Grey hat link building** is anything that violates Google's webmaster guidelines but isn't actively malicious.
+**Gray hat link building** is anything that violates Google's webmaster guidelines but isn't actively malicious.
 
 Here's the part nobody says out loud: nearly all manual link building falls into this category. Guest posting for SEO purposes, paid placements, link exchanges, PBNs, even most digital PR. Google's official position is that links should be "earned, not built." In practice, a network of editorial links never just appears.
 
@@ -51,7 +51,7 @@ Now I want to drive a point home.
 
 If a provider is promising you 20 white-hat links a month for a fixed price, they're lying. If you can predict the volume, you're not earning it. The link-building dialect is built on a polite fiction that everyone in the industry agrees to maintain in front of clients.
 
-The honest version: most effective link building is grey hat, white-hat doesn't always mean safe, and grey-hat tactics can be extremely safe when executed carefully. The risk isn't determined by the label. It's determined by how the work is done.
+The honest version: most effective link building is gray hat, white-hat doesn't always mean safe, and gray-hat tactics can be extremely safe when executed carefully. The risk isn't determined by the label. It's determined by how the work is done.
 
 What clients deserve, regardless: transparency about what's actually being done on their site, and a real conversation about risk tolerance.
 
@@ -61,7 +61,7 @@ Before any outreach, audit. There are four elements worth understanding about yo
 
 **1. Referring domains, not total links.** A hundred websites linking to you once each is far more valuable than one website linking to you a hundred times. Total backlinks is a vanity number. Referring domains is the metric that maps to ranking power.
 
-Tools: Ahrefs, Majestic, SEMrush. Majestic has been my personal favourite for link auditing for over a decade, but pick whichever one you actually use.
+Tools: Ahrefs, Majestic, SEMrush. Majestic has been my personal favorite for link auditing for over a decade, but pick whichever one you actually use.
 
 **2. Do-follow versus no-follow ratio.** Do-follow links pass authority. No-follow links don't, but they signal a natural profile. A site with 100% do-follow links from places that should typically be no-follow is suspicious. A reasonable profile has both, weighted toward do-follow from editorial contexts and no-follow from places like sponsorships, comments, and disclosed paid placements.
 
@@ -169,11 +169,11 @@ The full breakdown of how the tactic has evolved and what it takes to do it well
 The four-factor framework. Every link-building strategy has to align with all four, and most client conversations break down because the alignment isn't honest.
 
 - **Budget.** A $300/month link-building budget pays for citations and a few directory submissions. It does not pay for digital PR campaigns, podcast production, or anything that competes seriously in a competitive niche.
-- **Timeline.** Most link building takes 3 to 6 months to show ranking impact. Anyone promising results in 30 days is either using grey-hat tactics they're not telling you about or overpromising.
+- **Timeline.** Most link building takes 3 to 6 months to show ranking impact. Anyone promising results in 30 days is either using gray-hat tactics they're not telling you about or overpromising.
 - **Expectations.** "Move to page 1 for [head term]" requires a tactical mix and budget that maps to that outcome. "Improve domain authority and grow long-tail traffic" is a much smaller commitment.
-- **Risk tolerance.** The conservative end is white-hat only with full transparency. The aggressive end is grey-hat tactics with informed consent. Where a client lands on this spectrum should drive everything else.
+- **Risk tolerance.** The conservative end is white-hat only with full transparency. The aggressive end is gray-hat tactics with informed consent. Where a client lands on this spectrum should drive everything else.
 
-The unfortunate disconnect, the one I see constantly: small businesses expect Fortune 500 outcomes on $500 budgets, get matched to providers who quietly use the cheapest grey-hat tactics, and either get short-term wins followed by penalties or no movement at all. Both scenarios damage the industry.
+The unfortunate disconnect, the one I see constantly: small businesses expect Fortune 500 outcomes on $500 budgets, get matched to providers who quietly use the cheapest gray-hat tactics, and either get short-term wins followed by penalties or no movement at all. Both scenarios damage the industry.
 
 If a provider's pricing seems too low for the promised result, the gap is being filled with risk the client doesn't know about.
 
@@ -185,7 +185,7 @@ If you're new to link building or running it in-house for the first time, the or
 2. **Recover what you've already lost.** Broken backlink reclamation usually surfaces enough fast wins to justify the audit cost.
 3. **Cover the cheap, safe layer.** Local and industry directories, chamber listings, partner and supplier links, citation cleanup. Often the first 20 to 30 links on a site come from this layer for free.
 4. **Pick one active strategy.** Guest posting, digital PR, podcasting, or competitive replication. Don't try to run all four. Master one, then add a second after 6 months.
-5. **Decide your risk position.** If grey-hat is on the table, structure it carefully. If not, make peace with longer timelines.
+5. **Decide your risk position.** If gray-hat is on the table, structure it carefully. If not, make peace with longer timelines.
 
 Most agencies and clients try to skip steps 1 and 2 and start with active outreach. The audit and reclamation work is unglamorous and usually produces 80% of the early wins.
 

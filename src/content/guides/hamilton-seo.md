@@ -43,7 +43,7 @@ The Hamilton search landscape splits across multiple geographic frames.
 
 ## What the volume actually looks like
 
-Real Keyword Planner data, Canada targeting, May 2026. We're using "dentist [area]" as the sample query because dentists exist anywhere there's population, which makes the cross-area variation a read on search behaviour rather than something specific to the industry. We don't specialize in dental SEO. The same shape holds for plumber and roofer at different absolute numbers.
+Real Keyword Planner data, Canada targeting, May 2026. We're using "dentist [area]" as the sample query because dentists exist anywhere there's population, which makes the cross-area variation a read on search behavior rather than something specific to the industry. We don't specialize in dental SEO. The same shape holds for plumber and roofer at different absolute numbers.
 
 ![Choropleth map of Hamilton's former municipalities tinted by Google search volume for "dentist [area]". Hamilton dominates, Dundas and Stoney Creek carry meaningful volume, Ancaster less so, Flamborough and Glanbrook show no commercial volume. Hamilton Mountain marked as a sub-region within Hamilton.](/images/cities/hamilton-search-heatmap.svg)
 

@@ -3,13 +3,13 @@ title: "White Label SEO: The Three Kinds, and How to Pick One"
 category: agency
 publishDate: 2026-06-15
 author: "Devon Bate"
-summary: "White label SEO is not one thing. There are three models behind the term, from raw fulfilment to a real strategic partner, and they suit very different agencies. Here is how each one works, what it costs, where it breaks, and how to choose the one that fits how you sell."
+summary: "White label SEO is not one thing. There are three models behind the term, from raw fulfillment to a real strategic partner, and they suit very different agencies. Here is how each one works, what it costs, where it breaks, and how to choose the one that fits how you sell."
 draft: false
 ---
 
 Most guides on white label SEO explain the term as if it describes a single service. It doesn't. The phrase covers at least three different business models, and the gap between them is the difference between buying a blog post off a menu and handing a whole client relationship to a team that helps you sell, deliver, and report.
 
-That distinction matters because agencies pick the wrong model constantly. They buy cheap fulfilment when they needed a strategist, or they pay partner rates for hands they could have ordered à la carte. The model has to match how your agency actually operates, what you sell, and how much of the SEO work you want to keep in your own head.
+That distinction matters because agencies pick the wrong model constantly. They buy cheap fulfillment when they needed a strategist, or they pay partner rates for hands they could have ordered à la carte. The model has to match how your agency actually operates, what you sell, and how much of the SEO work you want to keep in your own head.
 
 This guide lays out the three models, what each one costs, where each one breaks down, and a way to decide which fits. We sell the partner version of this, so read the close knowing that. Everything before it is written to help you choose well even if the answer is one of our competitors.
 
@@ -30,7 +30,7 @@ Think of it as a spectrum, sorted by how much of the work and thinking you keep 
   <p style="margin: 0 0 18px; font-size: 14px; color: var(--text-muted);">Sorted by how much of the work you keep versus hand over.</p>
   <div style="display: flex; flex-wrap: wrap; gap: 16px;">
     <div style="flex: 1 1 220px; background: #fff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden;">
-      <div style="background: #94a3b8; color: #fff; padding: 12px 16px; font-weight: 700; font-size: 15px;">Fulfilment desk</div>
+      <div style="background: #94a3b8; color: #fff; padding: 12px 16px; font-weight: 700; font-size: 15px;">Fulfillment desk</div>
       <div style="padding: 16px 16px 18px;">
         <p style="margin: 0 0 14px; font-size: 14px; line-height: 1.55; color: var(--text-secondary);">You bring strategy and sales. They execute the tasks you order, à la carte or by the hour.</p>
         <p style="margin: 0 0 6px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: #94a3b8;">WHO DOES THE WORK</p>
@@ -68,13 +68,13 @@ Think of it as a spectrum, sorted by how much of the work and thinking you keep 
   </div>
 </div>
 
-### Fulfilment desk
+### Fulfillment desk
 
 You bring the strategy and the sales. The provider executes specific tasks you order. This is the rawest form of white label, and the most common.
 
 It comes in two flavours. The **à la carte** version sells deliverables off a menu: a 1,000-word blog post, a batch of links, a press release, a citation cleanup. The HOTH and SEOReseller both work this way, with public per-unit pricing. The **hourly or dedicated-team** version sells you a block of hours or a person you direct, like E2M. Either way, the provider is hands, not a brain. You decide what gets done; they do it.
 
-Who it is for: agencies that already have an SEO strategist, or a founder who knows the work, and just need execution capacity without hiring. If you can write the brief, a fulfilment desk is the cheapest way to get it built.
+Who it is for: agencies that already have an SEO strategist, or a founder who knows the work, and just need execution capacity without hiring. If you can write the brief, a fulfillment desk is the cheapest way to get it built.
 
 Where it works: cost and scale. You pay only for what you order, you can turn volume up and down, and the unit economics are easy to mark up.
 
@@ -106,7 +106,7 @@ Where it hurts: it costs more, and it only pays off if you actually lean on the 
 
 ## Comparing the three
 
-| | Fulfilment desk | Managed campaigns | Strategic partner |
+| | Fulfillment desk | Managed campaigns | Strategic partner |
 |---|---|---|---|
 | Examples | The HOTH, SEOReseller, E2M | Semify | Boostability, That! Company, SEO Brothers |
 | Who owns strategy | You | The provider | The provider, with you |
@@ -119,7 +119,7 @@ Where it hurts: it costs more, and it only pays off if you actually lean on the 
   <p style="margin: 0 0 22px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);">The providers, by model</p>
   <div style="display: flex; flex-wrap: wrap; gap: 32px;">
     <div style="flex: 1 1 210px;">
-      <p style="margin: 0 0 14px; font-size: 12px; font-weight: 700; color: #64748b;">Fulfilment desk</p>
+      <p style="margin: 0 0 14px; font-size: 12px; font-weight: 700; color: #64748b;">Fulfillment desk</p>
       <div style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
         <img src="/images/guides/white-label-seo/logos/hoth.png" alt="The HOTH" style="height: 26px; width: auto; max-width: 120px; margin: 0; border-radius: 0;" />
         <img src="/images/guides/white-label-seo/logos/seoreseller.svg" alt="SEOReseller" style="height: 24px; width: auto; max-width: 130px; margin: 0; border-radius: 0;" />
@@ -186,14 +186,14 @@ The terms get used loosely, so it is worth being precise. The **reseller** is yo
 
 What you own as the reseller: the client relationship, the strategy conversations the client actually hears, the pricing, and the brand. What the provider owns: the execution, and depending on the model, the strategy behind the execution.
 
-Most confusion comes from the word "reseller" implying you do nothing but pass an invoice along. In the fulfilment model that is roughly true. In the partner model it is not; you are still the one selling, holding the relationship, and deciding what the client is worth. The provider makes you more capable, but the client is yours.
+Most confusion comes from the word "reseller" implying you do nothing but pass an invoice along. In the fulfillment model that is roughly true. In the partner model it is not; you are still the one selling, holding the relationship, and deciding what the client is worth. The provider makes you more capable, but the client is yours.
 
 ## What can be white-labelled
 
 Nearly every component of SEO can be delivered white label. The ones worth understanding before you buy:
 
 - **Keyword research and mapping.** The foundation. If this is wrong, everything downstream is wasted. We cover the method in [keyword research](/guides/keyword-research/) and [keyword mapping](/guides/keyword-mapping/).
-- **Content.** The largest recurring line in most campaigns. Quality varies wildly between providers, which is where fulfilment desks most often disappoint.
+- **Content.** The largest recurring line in most campaigns. Quality varies wildly between providers, which is where fulfillment desks most often disappoint.
 - **Link building.** The component with the most risk attached, because cheap links can actively hurt a client. Read [link building](/guides/link-building/) before you buy any.
 - **Local SEO.** Google Business Profile, citations, and the map pack, which behave differently from national organic. Our full framework is in the [local SEO guide](/guides/local-seo/).
 - **Technical SEO and audits.** One-time and ongoing. How we run them for partners is covered in [white-label SEO audits](/guides/white-label-seo-audits/).
@@ -206,13 +206,13 @@ You do not have to buy all of it from one provider, and you do not have to buy a
 
 Work through these in order. The answers point to a model.
 
-**Do you have SEO strategy in house?** If yes, and you just need capacity, a fulfilment desk is the cheapest right answer. Paying for managed or partner strategy you already have is waste. If no, rule out fulfilment, because a fulfilment desk will execute your bad brief flawlessly.
+**Do you have SEO strategy in house?** If yes, and you just need capacity, a fulfillment desk is the cheapest right answer. Paying for managed or partner strategy you already have is waste. If no, rule out fulfillment, because a fulfillment desk will execute your bad brief flawlessly.
 
 **Do you want to sell more SEO, or just deliver what you already sell?** If you mostly need delivery handled, managed campaigns fit. If growing the SEO line is a real goal, a partner who helps you sell will pay for itself faster than the margin difference suggests.
 
 **What does your client book look like?** A book of small, similar local clients is well served by a volume-oriented provider. A mixed book with high-value clients needs a partner fluent across budgets, because the cheap-and-cheerful shops tend to be built for one end of the range.
 
-**What is your honest margin target?** Fulfilment gives the fattest paper margin but the most hidden labour, since the strategy and QA cost is yours and invisible. Partner models cost more up front but absorb labour you would otherwise eat. Calculate margin after your own time, not before.
+**What is your honest margin target?** Fulfillment gives the fattest paper margin but the most hidden labor, since the strategy and QA cost is yours and invisible. Partner models cost more up front but absorb labor you would otherwise eat. Calculate margin after your own time, not before.
 
 A few questions to ask any provider before signing, regardless of model: Who owns the end client if we part ways? Is there a contract or lock-in? How do you build links, specifically? Can I see exactly what work was done, not just a results summary? Vague answers to any of those are the answer.
 
@@ -226,7 +226,7 @@ The model is not free of failure modes, and the honest ones rarely make it into 
 
 **Communication lag.** When the provider sits between you and the work, every client question becomes a relay. Slow relays make you look slow, and slow is how you lose clients.
 
-**The resold-link risk.** Some fulfilment shops resell low-quality private blog network links. We don't run general PBNs and we don't resell them, because the footprint risk grows faster than the upside. If a provider is cagey about how links are built, assume the worst and ask harder.
+**The resold-link risk.** Some fulfillment shops resell low-quality private blog network links. We don't run general PBNs and we don't resell them, because the footprint risk grows faster than the upside. If a provider is cagey about how links are built, assume the worst and ask harder.
 
 **The reveal.** The deepest risk is the client discovering there is a provider behind you, usually through a leaked report or a botched handoff. A good white label arrangement is invisible by design. A cheap one leaks.
 
@@ -234,15 +234,15 @@ The model is not free of failure modes, and the honest ones rarely make it into 
 
 Prices move, so treat these as ranges that show the shape of each model, not a quote.
 
-**Fulfilment, à la carte.** Priced per deliverable. Public examples run from roughly fifty dollars for a blog post to a few hundred for a link or press release. You assemble and mark up. Per-client productized SEO from à-la-carte providers tends to start a few hundred dollars a month.
+**Fulfillment, à la carte.** Priced per deliverable. Public examples run from roughly fifty dollars for a blog post to a few hundred for a link or press release. You assemble and mark up. Per-client productized SEO from à-la-carte providers tends to start a few hundred dollars a month.
 
-**Fulfilment, hourly or dedicated-team.** Priced by hours or a monthly bucket, often starting in the high hundreds per month and rising with the hours committed.
+**Fulfillment, hourly or dedicated-team.** Priced by hours or a monthly bucket, often starting in the high hundreds per month and rising with the hours committed.
 
 **Managed campaigns.** Monthly per client, frequently quote-based, with public starting points in the few-hundred-dollars-a-month range and climbing with scope.
 
 **Strategic partner.** Usually priced per campaign, much like the managed model, and sometimes with a partner-level arrangement on top. Public retail tiers among partner providers range from a few hundred to a couple of thousand a month per client, with custom and enterprise work well above that. You can see our partner rate card on the [pricing page](/pricing/), which lists the wholesale numbers you mark up.
 
-The cheapest model on paper is rarely the cheapest in practice once you price your own time. Run the math after your labour, not before.
+The cheapest model on paper is rarely the cheapest in practice once you price your own time. Run the math after your labor, not before.
 
 ## Frequently asked questions
 
@@ -252,9 +252,9 @@ The cheapest model on paper is rarely the cheapest in practice once you price yo
 
 **Will my client find out?** Not if the arrangement is built to be invisible: reports under your brand, communication routed through you, no provider branding anywhere the client can see. Leaks come from cheap setups and sloppy handoffs, which is one more reason the model you choose matters.
 
-**How much margin can I keep?** It depends on the model and your pricing, but agencies commonly mark white label work up substantially. The real number is what is left after your own labour, which is why fulfilment's fat paper margin and a partner's thinner-looking margin can end up closer than they appear.
+**How much margin can I keep?** It depends on the model and your pricing, but agencies commonly mark white label work up substantially. The real number is what is left after your own labor, which is why fulfillment's fat paper margin and a partner's thinner-looking margin can end up closer than they appear.
 
-**Do white label providers use PBNs?** Some fulfilment shops resell private blog network links without saying so. Always ask exactly how links are built. We don't run or resell general PBNs.
+**Do white label providers use PBNs?** Some fulfillment shops resell private blog network links without saying so. Always ask exactly how links are built. We don't run or resell general PBNs.
 
 ## How we approach this at SEO Brothers
 

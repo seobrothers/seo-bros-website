@@ -30,3 +30,4 @@ shared/
 # AC->Bento migration tooling: contains subscriber PII in verification.csv and
 # operational scripts that read .env.local. Keep local; never publish.
 migration/
+.claude/settings.local.json

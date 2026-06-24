@@ -40,7 +40,7 @@ export const SCORECARD_SIGNALS = [
 
 // Relative weight of each signal, aligned with SCORECARD_SIGNALS. Must sum to 1.
 // Equal weights (0.2 each) reproduce the original "sum the five /20 scores"
-// behaviour exactly. Clutch is down-weighted to 0.05; the freed weight is split
+// behavior exactly. Clutch is down-weighted to 0.05; the freed weight is split
 // evenly across the other four (0.2375 each).
 export const SIGNAL_WEIGHTS: [number, number, number, number, number] =
   [0.05, 0.2375, 0.2375, 0.2375, 0.2375];

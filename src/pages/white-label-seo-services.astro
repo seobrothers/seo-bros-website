@@ -64,6 +64,51 @@ const deliverables = [
   },
 ];
 
+const salesEnablement = [
+  {
+    icon: "deck",
+    accent: "teal",
+    title: "Branded collateral & pitch decks",
+    description:
+      "One-pagers, pitch decks, and proposals in your branding and your voice, ready to drop into your next sales call. You walk in looking like you've sold SEO for years.",
+  },
+  {
+    icon: "box",
+    accent: "green",
+    title: "An offer built around how you sell",
+    description:
+      "We sit with you and shape the offer, deliverables, and positioning to your market. Bundle SEO into a retainer, sell it on its own, or attach it to a website build. Want a productized service you can repeat, or fully custom proposals per client? We work either way.",
+  },
+  {
+    icon: "tag",
+    accent: "teal",
+    title: "Pricing built to scale",
+    description:
+      "We help you structure pricing that protects your margin across every client, from a single local campaign to a multi-location program. You set the price. We make sure the model holds as you grow.",
+  },
+  {
+    icon: "compass",
+    accent: "green",
+    title: "Positioning support",
+    description:
+      "Never sold SEO before? We help you frame it: where it fits in your lineup, what to promise, and how to talk about results without overpromising.",
+  },
+  {
+    icon: "users",
+    accent: "teal",
+    title: "We train your team to sell it",
+    description:
+      "We onboard your sales and account managers on the product itself, so they can pitch it with confidence and handle the first round of questions without reaching for us.",
+  },
+  {
+    icon: "present",
+    accent: "green",
+    title: "SEO training, straight from our managers",
+    description:
+      "When your team needs to go deeper, our SEO managers host training webinars and meet with your account managers directly to explain how SEO actually works, so they can field technical client questions like the experts you're presenting them as.",
+  },
+];
+
 const differentiators = [
   {
     title: "We stay invisible",
@@ -76,45 +121,131 @@ const differentiators = [
       "We have onboarded around 100 clients in a single month for one partner and grown it to roughly 400 active campaigns, and we also run $5K and $10K monthly campaigns, including for publicly traded companies. Small or large, we are fluent at both ends.",
   },
   {
-    title: "A service built for your niche",
+    title: "We make you the expert, not the middleman",
     description:
-      "Our bread and butter is sitting with a partner and building them their own productized service: the offer, the deliverables, the pricing, shaped to how you actually sell. We review your whole portfolio, not one campaign in isolation.",
+      "Most providers hand you deliverables and leave the selling to you. We build your offer, your collateral, and your team's confidence, so SEO becomes something your agency owns, not something you quietly outsource.",
   },
   {
-    title: "Transparent and collaborative",
+    title: "A named team, not a ticket queue",
     description:
-      "Our partner portal runs on your own domain via CNAME. Real-time updates, feedback, and approvals, plus the ability to send work to your client for sign-off under your brand. Collaboration, not a monthly PDF.",
+      "You get SEO managers who learn your accounts and treat the results like their own, not a rotating desk that closes tickets. For everything your client can see, they are your in-house SEO team.",
+  },
+];
+
+const icpProfiles = [
+  {
+    title: "PPC & paid media agencies",
+    description:
+      "You already run monthly calls and report on performance, so adding SEO is natural. You just don't want to staff the discipline. We slot in behind your existing client rhythm.",
+  },
+  {
+    title: "Web & development studios",
+    description:
+      "You build the sites and clients expect them to rank. Instead of guessing at SEO or turning the work away, you resell ours as the natural next step after launch.",
+  },
+  {
+    title: "Branding & creative shops",
+    description:
+      "You're brilliant at one-time projects but less sure about the ongoing monthly report conversation. That is exactly where we lean in hardest, so recurring revenue stops feeling foreign.",
+  },
+];
+
+const icpFit = [
+  "Your clients keep asking for SEO and you'd rather sell it than send them elsewhere",
+  "You already know how to win clients and manage an ongoing relationship",
+  "You don't want to hire, train, and manage an in-house SEO team",
+  "You want recurring revenue without becoming the SEO expert yourself",
+  "You've never sold SEO and want a partner to start, or you've sold it for years and need to scale",
+  "You'd rather sell outcomes than manage specialists",
+];
+
+const partnershipNeeds = [
+  {
+    title: "Clear priorities",
+    description:
+      "Tell us what matters most for the business and what each client actually expects. The sharper the priorities, the sharper the strategy.",
+  },
+  {
+    title: "Aligned promises",
+    description:
+      "We need to know what you've promised clients and how it's packaged and priced at retail, especially when we didn't write the proposal, so delivery matches the sale.",
+  },
+  {
+    title: "One team",
+    description:
+      "Treat us like part of your agency and we'll do the same. The partners who win biggest loop us in early; they don't hand off a brief and vanish.",
+  },
+];
+
+const painPoints = [
+  {
+    moment: "On the call, scrambling",
+    quote: "“So... what have you actually done this month?”",
+    chip: "Workbench",
+    title: "Every touchpoint, logged",
+    description:
+      "Workbench, our proprietary project management software, records every touchpoint on the campaign, down to the smallest detail. You walk into the call knowing exactly what's been done, and you choose what the client sees and what stays behind the curtain.",
+  },
+  {
+    moment: "Caught flat-footed by a decline",
+    quote: "“Rankings dipped. What are we going to do about it?”",
+    chip: "Roadmap & initiatives",
+    title: "An answer that's already written down",
+    description:
+      "The roadmap lays out the concrete work ahead: content, links, topics, anchor text, even scheduled GBP posts. The initiatives go further, naming the objective, how it ladders to the campaign's goals, and the pieces we believe will get there. The 'what are you going to do about it' answer is ready before they ask.",
+  },
+  {
+    moment: "Blindsided by something you should've caught",
+    quote: "“How did you not notice my site was down?”",
+    chip: "Performance Pulse",
+    title: "We catch it before the client does",
+    description:
+      "Performance Pulse watches each campaign automatically: uptime, IP changes, page-speed shifts, unexpected content edits, and priority keywords moving in or out of the top three and page one, plus traffic and conversion drops that also surface broken tracking. You pick what you're alerted on; a few alerts, like a site going down, are mandatory. We get pinged and so do you, so you bring it to the client instead of the other way around.",
   },
 ];
 
 const steps = [
   {
-    phase: "Set up once",
+    phase: "Partner onboarding · set up once",
     number: "01",
     title: "Discovery & fit",
     description:
       "We learn your agency: your niche, how you sell, and the margin you need. This is about your business, not a single client, and there is no drawn-out sales cycle.",
   },
   {
-    phase: "Set up once",
+    phase: "Partner onboarding · set up once",
     number: "02",
-    title: "We build your productized service",
+    title: "We build your service and sales kit",
     description:
-      "Up front, we shape one offer around how you sell: the deliverables, reporting, and pricing you put your name on and resell. Built for your agency, not rebuilt for every client.",
+      "We shape the offer, pricing, and positioning around how you sell, then hand you the branded collateral and pitch decks to take to market. Most partners want a productized service they can repeat; if you'd rather we build full custom proposals per client, we do that too.",
   },
   {
-    phase: "Set up once",
+    phase: "Partner onboarding · set up once",
     number: "03",
-    title: "Launch your portal",
+    title: "We enable your team",
     description:
-      "We stand up your branded portal on your own domain and onboard your team, so every campaign from here runs through one collaborative, white-label workspace.",
+      "We onboard your sales and account managers on the product, run an SEO training session so they can speak to the work, and stand up your branded portal on your own domain.",
   },
   {
-    phase: "Then, every client",
+    phase: "Every campaign · ongoing",
     number: "04",
-    title: "Bring clients, we run the campaigns",
+    title: "Campaign onboarding & initiatives",
     description:
-      "For each client you sign, we run strategy, content, links, local, and technical work under your brand. You and your client review and approve in the portal. Repeat as you grow.",
+      "For each client you sign, we set the goals and define the initiatives: the strategic direction for the campaign, aligned to the client's market and what actually moves leads, not a loose list of tasks.",
+  },
+  {
+    phase: "Every campaign · ongoing",
+    number: "05",
+    title: "We run the work under your brand",
+    description:
+      "Strategy, content, links, local, and technical SEO, delivered as your team. You and your client review and approve in the portal as work ships.",
+  },
+  {
+    phase: "Every campaign · ongoing",
+    number: "06",
+    title: "Hypothesis, test, iterate",
+    description:
+      "Every initiative is a hypothesis. We measure it against leads and adjust: double down on what's working, change what isn't. The campaign keeps moving in the right direction instead of drifting.",
   },
 ];
 
@@ -150,9 +281,24 @@ const faqs = [
       "Yes. We run AI search as a layer on a real organic foundation, earning citations in AI Overviews, ChatGPT, and Perplexity through the same authority, structure, and entity work that earns rankings, and we measure it by leads from AI sources rather than a vanity visibility score. It ships white-label like everything else. See our white-label AI SEO page for the full picture.",
   },
   {
-    question: "How are you different from a fulfilment shop like The HOTH or E2M?",
+    question: "How are you different from a fulfillment shop like The HOTH or E2M?",
     answer:
-      "Fulfilment shops execute the tasks you order and leave the strategy and selling to you. We run the strategy and execution and build you a productized service around how you sell. Our white label SEO guide breaks down the difference in full.",
+      "Fulfillment shops execute the tasks you order and leave the strategy and selling to you. We run the strategy and execution and build you a productized service around how you sell. Our white label SEO guide breaks down the difference in full.",
+  },
+  {
+    question: "Do you help us sell SEO, not just deliver it?",
+    answer:
+      "Yes, and it is a core part of the partnership. We build your sales collateral and pitch decks, shape a productized offer and pricing around how you sell, and train your sales and account team on the product. If your team wants to go deeper, our SEO managers run training webinars so they can confidently answer technical questions. You sell it as your own; we make sure you can. Plenty of our partners had never sold SEO before us.",
+  },
+  {
+    question: "Do we have to hand you the whole campaign, or can we just buy pieces?",
+    answer:
+      "Either works. Most partners run managed, where we own the strategy and deliver the full campaign as your team. Managed campaigns start with discovery because we're responsible for the result, unless we've already built you a ready-to-sell package. If you already run your own SEO strategy, go self-serve and pull only the pieces you need: white-label reporting, research, links, content, or our posting software. You set the dial.",
+  },
+  {
+    question: "How do we and our clients stay in the loop on the work?",
+    answer:
+      "Every campaign runs through your branded portal. A live work log shows what has been done, the roadmap shows what is coming next, and each campaign is built around clear initiatives tied to the client's goals rather than a loose task list. Our Performance Pulse system also monitors each site automatically and alerts both you and us to issues like downtime or ranking drops, so you are never the last to know. You and your client review and approve as work ships, under your brand.",
   },
 ];
 
@@ -178,7 +324,7 @@ const breadcrumbSchema = {
 
 <Layout
   title="White Label SEO Services | Outsourced SEO for Agencies | SEO Brothers"
-  description="White label SEO services and outsourced SEO for agencies. We run strategy, content, links, local, and technical SEO under your brand, build you a productized service, and report through a portal on your own domain. Wholesale pricing, free discovery."
+  description="White label SEO services and outsourced SEO for agencies. We run strategy, content, links, local, and technical SEO under your brand, build you a productized service, give you the collateral and training to sell it, and report through a portal on your own domain. Wholesale pricing, free discovery."
   schema={[breadcrumbSchema, faqSchema]}
 >
   <Nav />
@@ -199,15 +345,15 @@ const breadcrumbSchema = {
       </div>
 
       <h1 class="wls-hero-title" data-animate>
-        <span class="wls-hero-title-line">White Label SEO Services</span><br />
-        <span class="wls-hero-title-gradient">Outsourced, Under Your Brand</span>
+        <span class="wls-hero-title-line">Stop Dreading the Client Call.</span><br />
+        <span class="wls-hero-title-gradient">White-Label SEO, Run Under Your Brand</span>
       </h1>
 
       <p class="wls-hero-subtitle" data-animate>
-        Outsource your clients' SEO to a team that stays invisible. We run the
-        strategy and the work under your brand, build you a productized service
-        around how you sell, and report through a portal on your own domain. You
-        own the client and set the price. We never show up.
+        You sell it and own the client. We run the strategy and the work under
+        your brand, build you a productized service to sell, and keep you ahead
+        of every client conversation with live tracking and proactive alerts. We
+        never show up. You just look brilliant.
       </p>
 
       <div class="wls-hero-actions" data-animate>
@@ -250,13 +396,105 @@ const breadcrumbSchema = {
           under your brand, and your client never knows we exist.
         </p>
         <p class="wls-intro-text">
-          We are not a fulfilment desk that runs your brief and disappears. We
+          We are not a fulfillment desk that runs your brief and disappears. We
           build the strategy with you, shape a productized service around how
           your agency actually sells, and run the campaigns under your name. You
           keep the relationship, the pricing, and the margin. If you want to
           understand the models first, start with our
           <a href="/guides/white-label-seo/">white label SEO guide</a>.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHO THIS IS FOR (ICP) ===== -->
+  <section class="wls-icp">
+    <div class="container">
+      <div class="wls-icp-header" data-animate>
+        <span class="section-label">Who This Is For</span>
+        <h2 class="section-heading">Built for Agencies Whose Clients Keep Asking for SEO</h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          You already know how to win clients and run the relationship. You just
+          don't want to build and babysit an SEO team to keep them. Whether
+          you've never sold SEO or you've sold it for years and need to scale,
+          we plug in at your level.
+        </p>
+      </div>
+
+      <div class="wls-icp-grid" data-stagger>
+        {
+          icpProfiles.map((p) => (
+            <div class="wls-icp-card" data-animate>
+              <h3 class="wls-icp-card-title">{p.title}</h3>
+              <p class="wls-icp-card-desc">{p.description}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="wls-icp-fit" data-animate>
+        <p class="wls-icp-fit-label">You're our kind of partner if:</p>
+        <ul class="wls-icp-fit-list">
+          {icpFit.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PAIN POINTS / NEVER BLINDSIDED ===== -->
+  <section class="wls-pain">
+    <div class="container">
+      <div class="wls-pain-header" data-animate>
+        <span class="section-label">Never Get Blindsided</span>
+        <h2 class="section-heading">Walk Into Every Client Call Knowing More Than They Do</h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          The worst moments in this business all happen on a client call you
+          weren't ready for. We built proprietary software so they stop happening
+          to you.
+        </p>
+      </div>
+
+      <div class="wls-pain-list" data-stagger>
+        {
+          painPoints.map((p) => (
+            <div class="wls-pain-row" data-animate>
+              <div class="wls-pain-problem">
+                <span class="wls-pain-moment">{p.moment}</span>
+                <p class="wls-pain-quote">{p.quote}</p>
+              </div>
+              <div class="wls-pain-fix">
+                <span class="wls-pain-chip">{p.chip}</span>
+                <h3 class="wls-pain-fix-title">{p.title}</h3>
+                <p class="wls-pain-fix-desc">{p.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA (after pain points) ===== -->
+  <section class="wls-cta wls-cta--mid">
+    <div class="container">
+      <div class="wls-cta-band" data-animate>
+        <div class="wls-cta-copy">
+          <h2 class="wls-cta-title">Never be the last to know again</h2>
+          <p class="wls-cta-text">
+            That's what the software is for. Book a free discovery and we'll show
+            you the work log, the roadmap, and Performance Pulse in action, all
+            under your brand.
+          </p>
+        </div>
+        <div class="wls-cta-actions">
+          <a href="/partner-package/" class="btn btn-primary wls-btn-lg">
+            Get Our Partner Package
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+          <a href="/pricing/" class="btn btn-outline--dark wls-btn-lg">See pricing</a>
+        </div>
       </div>
     </div>
   </section>
@@ -315,6 +553,123 @@ const breadcrumbSchema = {
     </div>
   </section>
 
+  <!-- ===== WE HELP YOU SELL IT ===== -->
+  <section class="wls-sell" id="sales-support">
+    <div class="container">
+      <div class="wls-value-header" data-animate>
+        <span class="section-label">Sales Enablement</span>
+        <h2 class="section-heading">We Don't Just Deliver SEO. We Help You Sell It.</h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          Most providers stop at the work. We set up your whole sales side too,
+          from the collateral and pricing to training your team, so SEO becomes
+          something your agency owns and sells with confidence.
+        </p>
+      </div>
+
+      <div class="wls-value-grid" data-stagger>
+        {
+          salesEnablement.map((item) => (
+            <div class="wls-value-card" data-animate>
+              <div class={`wls-value-icon wls-value-icon--${item.accent}`}>
+                {item.icon === "deck" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="14" rx="2" /><path d="M8 21h8M12 17v4" /></svg>
+                )}
+                {item.icon === "box" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><path d="M3.27 6.96 12 12.01l8.73-5.05M12 22.08V12" /></svg>
+                )}
+                {item.icon === "tag" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 13.42 20.6a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" /><circle cx="7" cy="7" r="1.5" /></svg>
+                )}
+                {item.icon === "compass" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" /></svg>
+                )}
+                {item.icon === "users" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                )}
+                {item.icon === "present" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h20M3 3v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3" /><path d="m8 21 4-4 4 4M12 13v4" /></svg>
+                )}
+              </div>
+              <h3 class="wls-value-title">{item.title}</h3>
+              <p class="wls-value-desc">{item.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ENGAGEMENT MODELS ===== -->
+  <section class="wls-models" id="how-you-work">
+    <div class="container">
+      <div class="wls-value-header" data-animate>
+        <span class="section-label">How You Work With Us</span>
+        <h2 class="section-heading">Managed or Self-Serve, You Set the Dial</h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          The real question is who owns the strategic direction. Hand it to us,
+          or keep it and pull only the pieces you need. Either way, everything
+          ships under your brand.
+        </p>
+      </div>
+
+      <div class="wls-models-grid" data-stagger>
+        <div class="wls-model-card wls-model-card--managed" data-animate>
+          <span class="wls-model-tag">Most partners</span>
+          <h3 class="wls-model-title">Managed</h3>
+          <p class="wls-model-lede">We own the strategy and the outcome.</p>
+          <p class="wls-model-desc">
+            We run discovery, build the plan, and deliver the full campaign as
+            your team. Because we're on the hook for the result, every managed
+            campaign starts with discovery, unless we've already built you a
+            ready-to-sell package.
+          </p>
+
+          <div class="wls-dial">
+            <div class="wls-dial-track">
+              <span class="wls-dial-dot wls-dial-dot--start"></span>
+              <span class="wls-dial-dot wls-dial-dot--end"></span>
+            </div>
+            <div class="wls-dial-ends">
+              <span>Lean on us fully</span>
+              <span>Just keep us on delivery</span>
+            </div>
+          </div>
+
+          <ul class="wls-model-list">
+            <li><strong>New to SEO?</strong> Take the discovery, proposals, collateral, pricing, and team training. We become your SEO department.</li>
+            <li><strong>Done this before?</strong> Bring your own sales process and we focus on running great campaigns and strategic value.</li>
+          </ul>
+        </div>
+
+        <div class="wls-model-card" data-animate>
+          <h3 class="wls-model-title">Self-Serve</h3>
+          <p class="wls-model-lede">You own the strategy. We supply the firepower.</p>
+          <p class="wls-model-desc">
+            You direct the campaign; we provide the pieces you'd rather not build
+            in-house. No discovery required, because the strategic direction is
+            yours to set.
+          </p>
+          <ul class="wls-model-list">
+            <li>White-label reporting on your own domain</li>
+            <li>Keyword and competitive research</li>
+            <li>Link building and digital PR</li>
+            <li>Content and on-page production</li>
+            <li>Our posting and publishing software</li>
+          </ul>
+          <p class="wls-model-foot">
+            Best for agencies with their own SEO know-how that need overflow,
+            capacity, or a specific piece of the stack.
+          </p>
+        </div>
+      </div>
+
+      <p class="wls-models-note" data-animate>
+        Not sure which fits? Most partners start managed and pull levers back as
+        their own team gets comfortable. You're never locked in.
+      </p>
+    </div>
+  </section>
+
   <!-- ===== WHY PARTNER WITH US ===== -->
   <section class="wls-why">
     <div class="wls-why-bg">
@@ -324,11 +679,11 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="wls-why-header" data-animate>
         <span class="section-label section-label--light">Why Partner With Us</span>
-        <h2 class="section-heading section-heading--light">More Than Fulfilment</h2>
+        <h2 class="section-heading section-heading--light">More Than Fulfillment</h2>
         <p class="wls-why-subtext">
           Plenty of providers will run your tasks. A few will even join your
           sales calls. Here is what actually separates a partner from a
-          fulfilment desk.
+          fulfillment desk.
         </p>
       </div>
 
@@ -352,8 +707,8 @@ const breadcrumbSchema = {
         <div class="wls-cta-copy">
           <h2 class="wls-cta-title">Ready to put SEO under your brand?</h2>
           <p class="wls-cta-text">
-            Start with a free discovery. We'll look at your portfolio, shape a
-            productized service around how you sell, and show you the margins.
+            Start with a free discovery. We'll look at your portfolio, shape the
+            right offer around how you sell, and show you the margins.
           </p>
         </div>
         <div class="wls-cta-actions">
@@ -373,11 +728,13 @@ const breadcrumbSchema = {
   <section class="wls-process">
     <div class="container">
       <div class="wls-process-header" data-animate>
-        <span class="section-label">How It Works</span>
-        <h2 class="section-heading">How the Partnership Works</h2>
+        <span class="section-label">What to Expect</span>
+        <h2 class="section-heading">How the Partnership Actually Runs</h2>
         <p class="section-subtext" style="margin:0 auto;">
-          We set the partnership up once, then it is plug-and-play for every
-          client you bring. You own the relationship; we run the work behind it.
+          Once you're set up as a managed partner, every campaign follows the
+          same rhythm: clear goals, defined initiatives, and a
+          hypothesis-test-iterate loop you and your client can watch in real
+          time.
         </p>
       </div>
 
@@ -399,6 +756,45 @@ const breadcrumbSchema = {
             </Fragment>
           ))
         }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHAT WE NEED FROM YOU ===== -->
+  <section class="wls-align">
+    <div class="container">
+      <div class="wls-align-header" data-animate>
+        <span class="section-label">What We Need From You</span>
+        <h2 class="section-heading">A Real Partnership Goes Both Ways</h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          We carry the SEO. To do it well, there are a few things we need from
+          you so the work matches what your client was sold.
+        </p>
+      </div>
+
+      <div class="wls-align-grid" data-stagger>
+        {
+          partnershipNeeds.map((n) => (
+            <div class="wls-align-card" data-animate>
+              <h3 class="wls-align-card-title">{n.title}</h3>
+              <p class="wls-align-card-desc">{n.description}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="wls-volatility" data-animate>
+        <h3 class="wls-volatility-title">SEO is a hypothesis, not a guarantee</h3>
+        <p class="wls-volatility-text">
+          Search isn't a straight line up, and anyone who promises one is
+          selling you something. What ranked last year may not rank next year. So
+          we work
+          like investors: we form a hypothesis, test it, measure it against
+          leads, and when something doesn't land we change it and push past it.
+          That means some volatility along the way. What you won't get is
+          complacency. We'd rather move you in the right direction with the odd
+          dip than sit still and watch rankings quietly rot.
+        </p>
       </div>
     </div>
   </section>
@@ -666,6 +1062,83 @@ const breadcrumbSchema = {
   @media (max-width: 900px) { .wls-value-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 560px) { .wls-value-grid { grid-template-columns: 1fr; } }
 
+  /* ===== PAIN POINTS / NEVER BLINDSIDED ===== */
+  .wls-pain { padding: 100px 0; background: var(--light); }
+  .wls-pain-header { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+  .wls-pain-header .section-label, .wls-pain-header .section-heading { display: block; }
+  .wls-pain-list { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+  .wls-pain-row { display: grid; grid-template-columns: 0.82fr 1.18fr; background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
+  .wls-pain-problem { padding: 34px 32px; background: var(--dark); display: flex; flex-direction: column; justify-content: center; }
+  .wls-pain-moment { font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #e8806b; margin-bottom: 12px; }
+  .wls-pain-quote { font-family: var(--font-display); font-size: clamp(18px, 2.2vw, 21px); line-height: 1.4; font-weight: 600; color: var(--text-on-dark); margin: 0; }
+  .wls-pain-fix { padding: 34px 32px; }
+  .wls-pain-chip { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.03em; color: var(--teal-dark); background: rgba(40,165,177,0.12); border-radius: var(--radius-full); padding: 5px 13px; margin-bottom: 14px; }
+  .wls-pain-fix-title { font-family: var(--font-display); font-size: 19px; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; letter-spacing: -0.01em; }
+  .wls-pain-fix-desc { font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); margin: 0; }
+  @media (max-width: 720px) { .wls-pain-row { grid-template-columns: 1fr; } }
+
+  /* ===== WHO THIS IS FOR (ICP) ===== */
+  .wls-icp { padding: 90px 0; background: var(--white); }
+  .wls-icp-header { text-align: center; max-width: 680px; margin: 0 auto 48px; }
+  .wls-icp-header .section-label, .wls-icp-header .section-heading { display: block; }
+  .wls-icp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
+  .wls-icp-card { background: var(--light); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 28px 26px; }
+  .wls-icp-card-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--text-primary); margin-bottom: 10px; letter-spacing: -0.01em; }
+  .wls-icp-card-desc { font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); }
+  .wls-icp-fit { max-width: 820px; margin: 0 auto; background: linear-gradient(120deg, rgba(40,165,177,0.07) 0%, rgba(68,185,123,0.07) 100%); border: 1px solid var(--border-light); border-radius: var(--radius-xl); padding: 32px 36px; }
+  .wls-icp-fit-label { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; }
+  .wls-icp-fit-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 28px; }
+  .wls-icp-fit-list li { position: relative; padding-left: 28px; font-size: 15px; line-height: 1.5; color: var(--text-secondary); }
+  .wls-icp-fit-list li::before {
+    content: ""; position: absolute; left: 0; top: 2px; width: 16px; height: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2328a5b1' stroke-width='2.5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-size: contain;
+  }
+  @media (max-width: 860px) { .wls-icp-grid { grid-template-columns: 1fr; } .wls-icp-fit-list { grid-template-columns: 1fr; } }
+
+  /* ===== WE HELP YOU SELL IT ===== */
+  .wls-sell { padding: 100px 0; background: var(--white); }
+
+  /* ===== ENGAGEMENT MODELS ===== */
+  .wls-models { padding: 100px 0; background: var(--light); }
+  .wls-models-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 920px; margin: 0 auto; align-items: start; }
+  .wls-model-card { position: relative; background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 36px 32px; box-shadow: var(--shadow-sm); }
+  .wls-model-card--managed { border-color: var(--teal); box-shadow: var(--shadow-lg); }
+  .wls-model-tag { position: absolute; top: -13px; left: 32px; background: var(--teal); color: var(--white); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; padding: 5px 14px; border-radius: var(--radius-full); }
+  .wls-model-title { font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; letter-spacing: -0.01em; }
+  .wls-model-lede { font-size: 16px; font-weight: 600; color: var(--teal-dark); margin-bottom: 14px; }
+  .wls-model-desc { font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 22px; }
+  .wls-dial { margin-bottom: 22px; }
+  .wls-dial-track { position: relative; height: 6px; border-radius: var(--radius-full); background: linear-gradient(90deg, var(--teal) 0%, var(--green) 100%); margin-bottom: 10px; }
+  .wls-dial-dot { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 14px; height: 14px; border-radius: 50%; background: var(--white); border: 2px solid var(--teal); }
+  .wls-dial-dot--start { left: 0; }
+  .wls-dial-dot--end { left: 100%; border-color: var(--green); }
+  .wls-dial-ends { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--text-muted); }
+  .wls-model-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+  .wls-model-list li { position: relative; padding-left: 28px; font-size: 14.5px; line-height: 1.55; color: var(--text-secondary); }
+  .wls-model-list li::before {
+    content: ""; position: absolute; left: 0; top: 2px; width: 16px; height: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2328a5b1' stroke-width='2.5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-size: contain;
+  }
+  .wls-model-list li strong { color: var(--text-primary); font-weight: 600; }
+  .wls-model-foot { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--border-light); font-size: 13.5px; line-height: 1.6; color: var(--text-muted); }
+  .wls-models-note { text-align: center; max-width: 560px; margin: 36px auto 0; font-size: 15px; line-height: 1.6; color: var(--text-secondary); }
+  @media (max-width: 760px) { .wls-models-grid { grid-template-columns: 1fr; max-width: 460px; } }
+
+  /* ===== WHAT WE NEED FROM YOU ===== */
+  .wls-align { padding: 100px 0; background: var(--white); }
+  .wls-align-header { text-align: center; max-width: 640px; margin: 0 auto 48px; }
+  .wls-align-header .section-label, .wls-align-header .section-heading { display: block; }
+  .wls-align-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
+  .wls-align-card { background: var(--light); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 28px 26px; }
+  .wls-align-card-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--text-primary); margin-bottom: 10px; letter-spacing: -0.01em; }
+  .wls-align-card-desc { font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); }
+  .wls-volatility { max-width: 840px; margin: 0 auto; background: var(--dark); border-radius: var(--radius-xl); padding: 44px 48px; }
+  .wls-volatility-title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 28px); font-weight: 700; color: var(--text-on-dark); margin-bottom: 14px; letter-spacing: -0.01em; }
+  .wls-volatility-text { font-size: 16px; line-height: 1.75; color: var(--text-on-dark-muted); margin: 0; }
+  @media (max-width: 860px) { .wls-align-grid { grid-template-columns: 1fr; } .wls-volatility { padding: 32px 28px; } }
+
   /* ===== WHY PARTNER (dark) ===== */
   .wls-why { position: relative; padding: 110px 0; background: var(--dark); overflow: hidden; }
   .wls-why-bg { position: absolute; inset: 0; }
@@ -772,7 +1245,8 @@ const breadcrumbSchema = {
   .wls-faq-answer p { font-size: 15.5px; line-height: 1.7; color: var(--text-secondary); max-width: 680px; }
 
   /* ===== MID-PAGE CTA BAND ===== */
-  .wls-cta { padding: 0 0 110px; background: var(--white); }
+  .wls-cta { padding: 100px 0 0; background: var(--white); }
+  .wls-cta.wls-cta--mid { padding: 0; background: var(--light); }
   .wls-cta-band {
     max-width: 980px; margin: 0 auto;
     display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;

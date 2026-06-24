@@ -62,7 +62,7 @@ If you already have the presence, that changes. Established brands and corporate
 
 AI engines don't reward tricks. They cite sources they trust, the same way a human editor would, because you read as a reputable business with authoritative content. That's the same authority that earned organic rankings in the first place. Being an authority was always step one, and AI search just gives that work a new surface to pay off on.
 
-It's an E-E-A-T story, built over time through real depth, not a schema tag bolted on at the end. It's also why it's usually a mistake to cancel a content program because the blog traffic dried up. The traffic was never the only point. The topical depth a blog builds, and the authority it signals, are a big part of why an AI engine decides your site is worth citing at all. Cancelling it to save on traffic that's already gone usually costs you the citations you actually want.
+It's an E-E-A-T story, built over time through real depth, not a schema tag bolted on at the end. It's also why it's usually a mistake to cancel a content program because the blog traffic dried up. The traffic was never the only point. The topical depth a blog builds, and the authority it signals, are a big part of why an AI engine decides your site is worth citing at all. Canceling it to save on traffic that's already gone usually costs you the citations you actually want.
 
 ### Follow the leads, not the buzz
 
@@ -112,7 +112,7 @@ You need the foundation, at least. The pages, the technical health, and the auth
 
 ### Should I cancel my blog if it isn't getting much traffic anymore?
 
-Usually no, and it's a common question now. Blogs drive less direct traffic than they used to, which is real. But the topical depth a blog builds and the authority it signals are a big part of why an AI engine decides your site is worth citing in the first place. Cancelling it to save on traffic that's already gone tends to cost you the citations you actually want.
+Usually no, and it's a common question now. Blogs drive less direct traffic than they used to, which is real. But the topical depth a blog builds and the authority it signals are a big part of why an AI engine decides your site is worth citing in the first place. Canceling it to save on traffic that's already gone tends to cost you the citations you actually want.
 
 ### Won't getting cited everywhere just cannibalize my own traffic?
 

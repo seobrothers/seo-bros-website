@@ -74,7 +74,7 @@ For a business with a service area covering multiple of these municipalities, ea
 
 ## What the volume actually looks like
 
-Real Keyword Planner data, Canada targeting, May 2026. We're using "dentist [area]" as the sample query because dentists exist anywhere there's population, which makes the cross-area variation a read on search behaviour rather than something specific to the industry. We don't specialize in dental SEO. The same shape holds for plumber and roofer at different absolute numbers.
+Real Keyword Planner data, Canada targeting, May 2026. We're using "dentist [area]" as the sample query because dentists exist anywhere there's population, which makes the cross-area variation a read on search behavior rather than something specific to the industry. We don't specialize in dental SEO. The same shape holds for plumber and roofer at different absolute numbers.
 
 ![Choropleth map of Metro Vancouver municipalities tinted by Google search volume for "dentist [area]". Vancouver dominates but Surrey, Langley, and New Westminster each pull 2,400/mo, Burnaby 1,600, North Van and Coquitlam 1,300 each, with substantial volume continuing across Maple Ridge, Pitt Meadows, Richmond, and the Tri-Cities.](/images/cities/vancouver-search-heatmap.svg)
 

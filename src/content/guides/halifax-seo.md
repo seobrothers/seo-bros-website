@@ -44,7 +44,7 @@ For service businesses, mapping content against this full set, not just "Halifax
 
 ## What the volume actually looks like
 
-Real Keyword Planner data, Canada targeting, May 2026. We're using "dentist [area]" as the sample query because dentists exist anywhere there's population, which makes the cross-area variation a read on search behaviour rather than something specific to the industry. We don't specialize in dental SEO. The same shape holds for plumber and roofer at different absolute numbers.
+Real Keyword Planner data, Canada targeting, May 2026. We're using "dentist [area]" as the sample query because dentists exist anywhere there's population, which makes the cross-area variation a read on search behavior rather than something specific to the industry. We don't specialize in dental SEO. The same shape holds for plumber and roofer at different absolute numbers.
 
 ![Choropleth map of HRM community plan areas tinted by Google search volume for "dentist [area]". Halifax peninsula and core dominate, Bedford and Dartmouth show meaningful volume, smaller communities trail off, the rural HRM polygons sit in light gray with no commercial volume.](/images/cities/halifax-search-heatmap.svg)
 
