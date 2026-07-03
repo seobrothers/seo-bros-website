@@ -60,3 +60,7 @@ When we work with a business in a two-state metro like Kansas City, the keyword 
 It's the same playbook we run across our [home services SEO](/guides/franchise-seo/) work, the [roofing](/guides/industry/roofing/) and [HVAC](/guides/industry/hvac/) programs in particular, where ranking comes down to a maintained profile, real local content, and call tracking that shows which pages book jobs.
 
 If you run a business anywhere in the Kansas City metro, [get in touch](/tools/free-seo-audit/) and we'll walk through what works in your specific area.
+
+## White-label SEO for agencies serving Kansas City
+
+If you're an agency with a client anywhere in the Kansas City metro, we run this same playbook under your brand. You keep the client, the pricing, and the margin, while we handle the research, the Missouri-side core plus the Johnson County pages for Overland Park and Olathe, and the reporting behind the scenes. That's our [white-label SEO](/guides/white-label-seo/) model, and the [services we deliver for agencies](/white-label-seo-services/) cover the full program, not just links.

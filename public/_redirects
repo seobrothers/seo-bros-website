@@ -111,10 +111,9 @@
 /guides/dental-seo-for-dentists/                            /guides/dental-seo/                               301
 /guides/seo-for-auto-repair-shops/                          /guides/auto-repair-seo/                          301
 /guides/maximizing-seo-for-your-medspa/                     /guides/medspa-seo/                               301
-# Hair transplant guide was retired (rolled into medspa). Both the old WP URL
-# and the retired guide slug now point at the medspa guide so neither 404s.
-/guides/seo-hair-transplant-clinics/                        /guides/medspa-seo/                               301
-/guides/hair-transplant-seo/                                /guides/medspa-seo/                               301
+# Hair transplant guide is live again at /guides/hair-transplant-seo/. The old WP
+# URL points to the revived guide so its link equity lands on the right page.
+/guides/seo-hair-transplant-clinics/                        /guides/hair-transplant-seo/                               301
 /guides/how-to-sell-seo-services-to-clients/                /guides/how-to-sell-seo-services/                 301
 
 # ============================================================================

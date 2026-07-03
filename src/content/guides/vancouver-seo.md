@@ -134,3 +134,7 @@ Vancouver campaigns get built municipality by municipality. Real Burnaby content
 The biggest unlocks we usually find: the dedicated Surrey or Burnaby page that captures the volume Vancouver alone can't, and the honest decision about whether the business genuinely serves that municipality before building content for it.
 
 If you're a business or agency anywhere in Metro Vancouver, [get in touch](/tools/free-seo-audit/) and we'll walk through what works in your specific market.
+
+## White-label SEO for agencies serving Vancouver
+
+If you're an agency with a client anywhere in Metro Vancouver, we run this same playbook under your brand. You keep the client, the pricing, and the margin, while we handle the research, the separate municipality pages for Surrey, Burnaby, and Richmond, and the reporting behind the scenes. That's our [white-label SEO](/guides/white-label-seo/) model, and the [services we deliver for agencies](/white-label-seo-services/) cover the full program, not just links.

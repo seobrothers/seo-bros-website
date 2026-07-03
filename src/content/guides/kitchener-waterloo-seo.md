@@ -112,3 +112,7 @@ KW campaigns get built city by city, not as one combined Tri-Cities mush. Real K
 We use the abbreviated forms (KW, K-W) where they read naturally, even though Keyword Planner won't credit the volume. Search Console will. The bigger unlock we usually find here is the Waterloo-only opportunity that the standard Kitchener-Waterloo combined page misses entirely.
 
 If you're a business or agency anywhere in KW or the Tri-Cities region, [get in touch](/tools/free-seo-audit/) and we'll walk through what works in your specific market.
+
+## White-label SEO for agencies serving Kitchener-Waterloo
+
+If you're an agency with a client in KW or the wider Waterloo Region, we run this same playbook under your brand. You keep the client, the pricing, and the margin, while we handle the research, the separate Kitchener and Waterloo pages plus a deliberate call on Cambridge, and the reporting behind the scenes. That's our [white-label SEO](/guides/white-label-seo/) model, and the [services we deliver for agencies](/white-label-seo-services/) cover the full program, not just links.

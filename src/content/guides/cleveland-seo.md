@@ -61,3 +61,7 @@ When we work with a business across Northeast Ohio, the keyword strategy maps to
 It's the same playbook we run across our [home services SEO](/guides/franchise-seo/) work, the [roofing](/guides/industry/roofing/) and [HVAC](/guides/industry/hvac/) programs in particular, where ranking comes down to a maintained profile, real local content, and call tracking that shows which pages book jobs.
 
 If you run a business anywhere in the Cleveland, Akron, or Canton market, [get in touch](/tools/free-seo-audit/) and we'll walk through what works in your specific area.
+
+## White-label SEO for agencies serving Cleveland
+
+If you're an agency with a client anywhere in Northeast Ohio, we run this same playbook under your brand. You keep the client, the pricing, and the margin, while we handle the research, the separate Cleveland, Akron, and Canton pages, and the reporting behind the scenes. That's our [white-label SEO](/guides/white-label-seo/) model, and the [services we deliver for agencies](/white-label-seo-services/) cover the full program, not just links.

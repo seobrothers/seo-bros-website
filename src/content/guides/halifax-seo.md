@@ -98,3 +98,7 @@ Halifax is home base. SEO Brothers is registered as a Nova Scotia company, our o
 When we work with a Halifax business, the keyword strategy maps to the actual search behavior, not just the Halifax head term. Real Dartmouth content, real Bedford content, real coverage of the smaller communities the business serves. Service-area pages get built for the regions the business actually reaches, not a single generic catch-all.
 
 If you're a Halifax-area business or agency, [get in touch](/tools/free-seo-audit/) and we'll walk through what works in your specific market.
+
+## White-label SEO for agencies serving Halifax
+
+If you're an agency with a client in Halifax or across the HRM, we run this same playbook under your brand. You keep the client, the pricing, and the margin, while we handle the research, the Halifax peninsula, Dartmouth, and Bedford pages, and the reporting behind the scenes. That's our [white-label SEO](/guides/white-label-seo/) model, and the [services we deliver for agencies](/white-label-seo-services/) cover the full program, not just links.

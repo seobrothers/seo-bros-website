@@ -98,3 +98,7 @@ Hamilton campaigns get built around the real geographic structure of the amalgam
 The biggest unlocks we usually find: pages for the former municipalities that capture the volume the parent Hamilton page misses, and an honest decision about Burlington that either commits to dedicated content or stays out of it.
 
 If you're a business or agency in Hamilton, Stoney Creek, Dundas, or Ancaster, [get in touch](/tools/free-seo-audit/) and we'll walk through what works in your specific market.
+
+## White-label SEO for agencies serving Hamilton
+
+If you're an agency with a client in Hamilton or the former communities that amalgamated into it, we run this same playbook under your brand. You keep the client, the pricing, and the margin, while we handle the research, the Hamilton, Stoney Creek, Dundas, and Ancaster pages, and the reporting behind the scenes. That's our [white-label SEO](/guides/white-label-seo/) model, and the [services we deliver for agencies](/white-label-seo-services/) cover the full program, not just links.
