@@ -83,7 +83,7 @@ For the broader local SEO framework that applies to any market, see our [local S
 
 When we work with a business in a market like Grand Rapids, the keyword strategy maps to the actual search behavior, not the surface-level suburb list. That means winning the metro term and the local pack first, building a real Holland page when the business serves the lakeshore, and resisting the templated suburb pages that chase volume the data says isn't there.
 
-We run the same playbook across our [home services SEO](/guides/franchise-seo/) work, the [HVAC](/guides/industry/hvac/) and [roofing](/guides/industry/roofing/) programs in particular, where the difference between ranking and not ranking in a metro like this usually comes down to a maintained profile, genuine local content for the markets that carry volume, and call tracking that shows which pages actually book jobs.
+We run the same playbook across our [home services SEO](/guides/franchise-seo/) work, the [HVAC](/guides/hvac-seo/) and [roofing](/guides/roofing-seo/) programs in particular, where the difference between ranking and not ranking in a metro like this usually comes down to a maintained profile, genuine local content for the markets that carry volume, and call tracking that shows which pages actually book jobs.
 
 If you run a business in the Grand Rapids or West Michigan market, [get in touch](/tools/free-seo-audit/) and we'll walk through what works in your specific area.
 

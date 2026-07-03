@@ -57,7 +57,7 @@ For the broader local SEO framework, see our [local SEO guide](/guides/local-seo
 
 When we work with a business in a market like Indianapolis, the keyword strategy maps to actual search behavior, which here means winning the metro term and the local pack first, then building genuinely local pages for the Hamilton County suburbs that actually carry standalone search.
 
-It's the same playbook we run across our [home services SEO](/guides/franchise-seo/) work, the [HVAC](/guides/industry/hvac/) and [roofing](/guides/industry/roofing/) programs in particular, where ranking comes down to a maintained profile, real local content, and call tracking that shows which pages book jobs.
+It's the same playbook we run across our [home services SEO](/guides/franchise-seo/) work, the [HVAC](/guides/hvac-seo/) and [roofing](/guides/roofing-seo/) programs in particular, where ranking comes down to a maintained profile, real local content, and call tracking that shows which pages book jobs.
 
 If you run a business in the Indianapolis or Central Indiana market, [get in touch](/tools/free-seo-audit/) and we'll walk through what works in your specific area.
 

@@ -10,7 +10,7 @@ draft: false
 
 Roofing search splits into two very different searchers who rarely overlap. One has water coming through a ceiling during a storm and needs a tarp on the roof today. The other has been told by an insurer or a neighbor that a fifteen-year-old roof is on borrowed time, and spends two months comparing materials, costs, and contractors before anyone climbs a ladder. A roofing SEO program has to win both: the emergency that converts in minutes and the replacement that converts in weeks. This is the breakdown we use when we run that program white-label for agencies whose clients are roofers.
 
-This guide is part of our broader [home services SEO](/guides/franchise-seo/) coverage. The local-search framework that applies to [HVAC contractors](/guides/industry/hvac/) and plumbers applies to roofers too, but the storm cycle, the size of the average ticket, and the role of insurance change the playbook enough to warrant its own breakdown.
+This guide is part of our broader [home services SEO](/guides/franchise-seo/) coverage. The local-search framework that applies to [HVAC contractors](/guides/hvac-seo/) and plumbers applies to roofers too, but the storm cycle, the size of the average ticket, and the role of insurance change the playbook enough to warrant its own breakdown.
 
 ## What makes roofing search behavior different
 

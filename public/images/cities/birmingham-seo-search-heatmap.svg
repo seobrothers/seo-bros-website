@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 692" role="img" width="100%" height="auto">
+  <rect x="0" y="0" width="1240" height="692" rx="20" fill="#ffffff" stroke="#e7eef2" stroke-width="1.5"/>
+  <text x="64" y="58" font-size="34" font-weight="700" fill="#0f172a" font-family="Georgia, serif">Where Birmingham HVAC searches actually live</text>
+  <text x="64" y="92" font-size="19" fill="#64748b" font-family="-apple-system, Helvetica, Arial, sans-serif">Avg monthly Google searches for &quot;hvac [area]&quot; · US · Ahrefs, July 2026</text>
+  <line x1="64" y1="110" x2="1176" y2="110" stroke="#eef2f6" stroke-width="1.5"/>
+  
+      <g>
+        <rect x="64" y="132" width="752" height="58" rx="10"
+          fill="#1e8892" stroke="#dbe5ea" stroke-width="0"/>
+        <text x="82" y="167" font-size="22" font-weight="700"
+          fill="#ffffff" font-family="Georgia, serif">Birmingham</text>
+        <text x="844" y="167" font-size="19"
+          fill="#64748b" font-family="-apple-system, Helvetica, Arial, sans-serif">150/mo · 100%</text>
+      </g>
+      <g>
+        <rect x="64" y="204" width="350.93333333333334" height="58" rx="10"
+          fill="#5bbcc7" stroke="#dbe5ea" stroke-width="0"/>
+        <text x="82" y="239" font-size="22" font-weight="700"
+          fill="#0f172a" font-family="Georgia, serif">Hoover</text>
+        <text x="844" y="239" font-size="19"
+          fill="#64748b" font-family="-apple-system, Helvetica, Arial, sans-serif">70/mo · 47%</text>
+      </g>
+      <g>
+        <rect x="64" y="276" width="250.66666666666666" height="58" rx="10"
+          fill="#5bbcc7" stroke="#dbe5ea" stroke-width="0"/>
+        <text x="82" y="311" font-size="22" font-weight="700"
+          fill="#0f172a" font-family="Georgia, serif">Trussville</text>
+        <text x="844" y="311" font-size="19"
+          fill="#64748b" font-family="-apple-system, Helvetica, Arial, sans-serif">50/mo · 33%</text>
+      </g>
+      <g>
+        <rect x="64" y="348" width="200.53333333333333" height="58" rx="10"
+          fill="#9ed5dc" stroke="#dbe5ea" stroke-width="0"/>
+        <text x="82" y="383" font-size="22" font-weight="700"
+          fill="#0f172a" font-family="Georgia, serif">Bessemer</text>
+        <text x="844" y="383" font-size="19"
+          fill="#64748b" font-family="-apple-system, Helvetica, Arial, sans-serif">40/mo · 27%</text>
+      </g>
+      <g>
+        <rect x="64" y="420" width="200.53333333333333" height="58" rx="10"
+          fill="#9ed5dc" stroke="#dbe5ea" stroke-width="0"/>
+        <text x="82" y="455" font-size="22" font-weight="700"
+          fill="#0f172a" font-family="Georgia, serif">Pelham</text>
+        <text x="844" y="455" font-size="19"
+          fill="#64748b" font-family="-apple-system, Helvetica, Arial, sans-serif">40/mo · 27%</text>
+      </g>
+      <g>
+        <rect x="64" y="492" width="150.4" height="58" rx="10"
+          fill="#9ed5dc" stroke="#dbe5ea" stroke-width="0"/>
+        <text x="82" y="527" font-size="22" font-weight="700"
+          fill="#0f172a" font-family="Georgia, serif">Vestavia Hills</text>
+        <text x="844" y="527" font-size="19"
+          fill="#64748b" font-family="-apple-system, Helvetica, Arial, sans-serif">30/mo · 20%</text>
+      </g>
+      <g>
+        <rect x="64" y="564" width="50.13333333333333" height="58" rx="10"
+          fill="#cfeaee" stroke="#dbe5ea" stroke-width="0"/>
+        <text x="82" y="599" font-size="22" font-weight="700"
+          fill="#0f172a" font-family="Georgia, serif">Mountain Brook</text>
+        <text x="844" y="599" font-size="19"
+          fill="#64748b" font-family="-apple-system, Helvetica, Arial, sans-serif">10/mo · 7%</text>
+      </g>
+</svg>

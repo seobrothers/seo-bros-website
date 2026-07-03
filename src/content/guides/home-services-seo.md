@@ -192,7 +192,7 @@ The blog earns its keep here as an authority signal. Cost and symptom content is
 
 Home services covers a wide range of trades, each with category-specific tactics. The dedicated playbook below covers the vertical where the strategy diverges most meaningfully from the general framework above.
 
-- [SEO for Plumbers](/guides/industry/plumbing/)
+- [SEO for Plumbers](/guides/seo-for-plumbers/)
 
 Other home services categories (HVAC, carpet cleaning, tree service, roofing, electrical, painting, landscaping, pest control) follow the same framework with vertical-specific keyword and content adjustments. Dedicated guides for these are in the works.
 

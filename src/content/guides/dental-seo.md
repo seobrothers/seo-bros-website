@@ -11,7 +11,7 @@ draft: false
 
 General and family dental SEO is one of the more straightforward healthcare verticals, but most practice sites do it badly, which is the opening an agency can use to win and keep a dental client. The keyword universe is wide, the local pack is critical, and the conversion path is short: most searches turn into a phone call or an online appointment booking within the same session. The practices that get this right outgrow their markets quickly, and SEO Brothers delivers that work under your brand.
 
-This guide is specifically for general, family, and cosmetic dental practices. We cover orthodontics in a [separate guide](/guides/industry/orthodontics/) because the search behavior, audience, and conversion model are different enough to warrant their own breakdown.
+This guide is specifically for general, family, and cosmetic dental practices. We cover orthodontics in a [separate guide](/guides/orthodontist-seo/) because the search behavior, audience, and conversion model are different enough to warrant their own breakdown.
 
 ## What makes dental search behavior different
 
