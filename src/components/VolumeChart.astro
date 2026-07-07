@@ -1,0 +1,165 @@
+---
+// Search-volume bar table used by city guides (via MDX). One element serves
+// as both the chart and the accessible data table: real text, real <table>
+// semantics, bars as a magnitude read. Replaces the old per-city static SVGs.
+interface Row {
+  label: string;
+  volume: number;
+}
+
+interface Props {
+  title: string;
+  source: string;
+  rows: Row[];
+}
+
+const { title, source, rows } = Astro.props;
+const max = Math.max(...rows.map((r) => r.volume));
+---
+
+<figure class="vol">
+  <figcaption class="vol__head">
+    <span class="vol__title">{title}</span>
+    <span class="vol__source">{source}</span>
+  </figcaption>
+  <table class="vol__table">
+    <thead class="vol__sr">
+      <tr>
+        <th scope="col">Query</th>
+        <th scope="col">Avg monthly searches</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map((r) => (
+          <tr>
+            <th scope="row" class="vol__label">
+              {r.label}
+            </th>
+            <td class="vol__track" aria-hidden="true">
+              <span
+                class="vol__bar"
+                style={`width:${((r.volume / max) * 100).toFixed(1)}%`}
+              />
+            </td>
+            <td class="vol__value">{r.volume.toLocaleString("en-US")}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</figure>
+
+<style>
+  .vol {
+    margin: 32px 0;
+    padding: 24px 28px 20px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl, 16px);
+    background: var(--white);
+  }
+
+  .vol__head {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .vol__title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+  }
+
+  .vol__source {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* The guide template ships global .guide-body__prose table styles (borders,
+     uppercase th, hover rows, mobile display:block). Neutralize them here so
+     the component owns its own look. */
+  .vol__table {
+    display: table;
+    width: 100%;
+    margin: 10px 0 0;
+    border-collapse: collapse;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    white-space: normal;
+  }
+
+  .vol__table tbody tr:hover {
+    background: transparent;
+  }
+
+  .vol__label {
+    width: 1%;
+    padding: 5px 14px 5px 0;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--font-body);
+    letter-spacing: normal;
+    text-transform: none;
+    text-align: left;
+    white-space: nowrap;
+    color: var(--text-primary);
+    border: none;
+  }
+
+  .vol__track {
+    width: 100%;
+    padding: 5px 0;
+    vertical-align: middle;
+    border: none;
+  }
+
+  .vol__bar {
+    display: block;
+    height: 14px;
+    min-width: 3px;
+    background: var(--teal);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .vol__value {
+    width: 1%;
+    padding: 5px 0 5px 14px;
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    color: var(--text-secondary);
+    border: none;
+  }
+
+  .vol__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 560px) {
+    .vol {
+      padding: 18px 18px 14px;
+    }
+
+    .vol__label {
+      font-size: 13px;
+      padding-right: 10px;
+    }
+
+    .vol__value {
+      font-size: 13px;
+      padding-left: 10px;
+    }
+  }
+</style>
