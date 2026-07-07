@@ -1,6 +1,7 @@
 import type { APIRoute } from "astro";
 import { clientIp } from "../../lib/eventlog";
 import { rateLimit, type RateLimitKV } from "../../lib/ratelimit";
+import { cfEnv } from "../../lib/cf-env";
 
 // Google Business Profile picker endpoint.
 //
@@ -32,11 +33,11 @@ interface Env {
   GOOGLE_PLACES_API_KEY?: string;
 }
 
-function readEnv(locals: App.Locals): Env {
-  const e = (locals as { runtime?: { env?: Env } }).runtime?.env;
+function readEnv(): Env {
+  const e = cfEnv<Env>();
   return {
     GOOGLE_PLACES_API_KEY:
-      e?.GOOGLE_PLACES_API_KEY ?? import.meta.env.GOOGLE_PLACES_API_KEY,
+      e.GOOGLE_PLACES_API_KEY ?? import.meta.env.GOOGLE_PLACES_API_KEY,
   };
 }
 
@@ -57,17 +58,17 @@ async function fetchWithTimeout(url: string, ms: number, init?: RequestInit): Pr
   }
 }
 
-export const GET: APIRoute = async ({ request, locals }) => {
+export const GET: APIRoute = async ({ request }) => {
   const q = (new URL(request.url).searchParams.get("q") ?? "").trim();
   // Below the minimum we return an empty list rather than an error, so the
   // client can call freely as the user types without handling 400s.
   if (q.length < MIN_QUERY) return json({ ok: true, results: [] });
 
-  const runtimeEnv = (locals as { runtime?: { env?: { RATE_LIMIT?: RateLimitKV } } }).runtime?.env;
-  const rl = await rateLimit(runtimeEnv?.RATE_LIMIT, `places:${clientIp(request)}`, LOOKUP_LIMIT, LOOKUP_WINDOW_SECONDS);
+  const runtimeEnv = cfEnv<{ RATE_LIMIT?: RateLimitKV }>();
+  const rl = await rateLimit(runtimeEnv.RATE_LIMIT, `places:${clientIp(request)}`, LOOKUP_LIMIT, LOOKUP_WINDOW_SECONDS);
   if (!rl.allowed) return json({ ok: false, error: "Too many lookups." }, 429);
 
-  const env = readEnv(locals);
+  const env = readEnv();
   if (!env.GOOGLE_PLACES_API_KEY) {
     // No key (e.g. local dev without secrets). Tell the client so it can fall
     // back to the manual business-name + city fields instead of spinning.

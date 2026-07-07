@@ -1,15 +1,14 @@
 {
-	"main": "dist/_worker.js/index.js",
+	// NOTE (@astrojs/cloudflare v14): do NOT set "main" or "assets" here.
+	// The adapter builds through the Cloudflare Vite plugin and injects the
+	// worker entrypoint + assets binding itself; the final resolved config is
+	// written to dist/<name>/wrangler.json at build time.
 	"name": "seobrothers",
   "compatibility_date": "2026-03-01",
   "compatibility_flags": [
     "nodejs_compat",
     "global_fetch_strictly_public"
   ],
-	"assets": {
-		"binding": "ASSETS",
-		"directory": "./dist"
-	},
 	"observability": {
     "enabled": true
   }

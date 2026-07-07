@@ -8,6 +8,7 @@ import {
 } from "../../lib/snapshot";
 import { clientIp, logEvent, type AnalyticsEngine } from "../../lib/eventlog";
 import { rateLimit, type RateLimitKV } from "../../lib/ratelimit";
+import { cfEnv } from "../../lib/cf-env";
 
 // Expensive compute (PageSpeed + Places + LLM) per fresh URL, so cap fresh runs
 // per IP. Cache hits don't count.
@@ -24,10 +25,10 @@ const SNAPSHOT_WINDOW_SECONDS = 3600;
 // namespace) is a documented fast-follow if abuse shows up.
 export const prerender = false;
 
-function readEnv(locals: App.Locals): SnapshotEnv {
-  const e = (locals as { runtime?: { env?: SnapshotEnv } }).runtime?.env;
+function readEnv(): SnapshotEnv {
+  const e = cfEnv<SnapshotEnv>();
   const ime = import.meta.env as unknown as Record<string, string | undefined>;
-  const pick = (k: keyof SnapshotEnv) => (e?.[k] as string | undefined) ?? ime[k as string];
+  const pick = (k: keyof SnapshotEnv) => (e[k] as string | undefined) ?? ime[k as string];
   return {
     GOOGLE_PAGE_SPEED_INSIGHTS_API: pick("GOOGLE_PAGE_SPEED_INSIGHTS_API"),
     GOOGLE_PLACES_API_KEY: pick("GOOGLE_PLACES_API_KEY"),
@@ -37,7 +38,7 @@ function readEnv(locals: App.Locals): SnapshotEnv {
     OPENAI_MODEL: pick("OPENAI_MODEL"),
     // Service binding (only present on the Cloudflare runtime env, never in
     // import.meta.env). Undefined locally → snapshot falls back to direct APIs.
-    TEAM_TOOLS: e?.TEAM_TOOLS,
+    TEAM_TOOLS: e.TEAM_TOOLS,
   };
 }
 
@@ -60,7 +61,7 @@ function normalizeUrl(raw: string): string | null {
   }
 }
 
-export const GET: APIRoute = async ({ request, locals }) => {
+export const GET: APIRoute = async ({ request }) => {
   const params = new URL(request.url).searchParams;
   const url = normalizeUrl(params.get("url") ?? "");
   if (!url) return json({ ok: false, error: "A valid website URL is required." }, 400);
@@ -85,9 +86,8 @@ export const GET: APIRoute = async ({ request, locals }) => {
   } catch {
     /* validated above */
   }
-  const runtimeEnv = (locals as { runtime?: { env?: { AE?: AnalyticsEngine; RATE_LIMIT?: RateLimitKV } } })
-    .runtime?.env;
-  const ae = runtimeEnv?.AE;
+  const runtimeEnv = cfEnv<{ AE?: AnalyticsEngine; RATE_LIMIT?: RateLimitKV }>();
+  const ae = runtimeEnv.AE;
   const logCtx = { AE: ae };
 
   // Serve a cached result for the same query if we have one. Typed structurally
@@ -106,7 +106,7 @@ export const GET: APIRoute = async ({ request, locals }) => {
   }
 
   // Cache miss → this will do the expensive work. Rate-limit fresh runs per IP.
-  const rl = await rateLimit(runtimeEnv?.RATE_LIMIT, `snapshot:${ip}`, SNAPSHOT_LIMIT, SNAPSHOT_WINDOW_SECONDS);
+  const rl = await rateLimit(runtimeEnv.RATE_LIMIT, `snapshot:${ip}`, SNAPSHOT_LIMIT, SNAPSHOT_WINDOW_SECONDS);
   if (!rl.allowed) {
     logEvent(logCtx, "snapshot_ratelimited", { ip, domain });
     return new Response(
@@ -115,7 +115,7 @@ export const GET: APIRoute = async ({ request, locals }) => {
     );
   }
 
-  const env = readEnv(locals);
+  const env = readEnv();
 
   // Run the data modules in parallel; the LLM synthesis runs after.
   const [seo, local] = await Promise.all([
