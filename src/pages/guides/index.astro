@@ -22,6 +22,7 @@ interface CategorySpec {
   blurb: string;
   accent: "teal" | "purple" | "green";
   hubHref: string;
+  cta: string;
   items: CardItem[];
 }
 
@@ -62,6 +63,7 @@ const categories: CategorySpec[] = [
       "Practical SEO guides covering local, technical, content, AI search, and link building. Useful whether you're sharpening your own playbook or briefing a client.",
     accent: "teal",
     hubHref: "/guides/seo/",
+    cta: "Explore all SEO guides",
     items: guidesFor("seo", 3),
   },
   {
@@ -70,6 +72,7 @@ const categories: CategorySpec[] = [
       "How we help agencies dominate specific verticals, from home services to health and professional practices. The playbook behind each campaign you resell.",
     accent: "purple",
     hubHref: "/guides/industry/",
+    cta: "Explore all industries",
     items: industryItems,
   },
   {
@@ -78,7 +81,17 @@ const categories: CategorySpec[] = [
       "Operating playbooks for agencies that resell SEO. Selling it, delivering it white-label, reporting, and retention.",
     accent: "green",
     hubHref: "/guides/agency/",
+    cta: "Explore all agency guides",
     items: guidesFor("agency", 3),
+  },
+  {
+    label: "Local Market Research",
+    blurb:
+      "How local search actually behaves in specific metros. Real volume data, the suburbs that carry their own search, and how we read a market before a campaign starts.",
+    accent: "teal",
+    hubHref: "/guides/cities/",
+    cta: "Explore all markets",
+    items: guidesFor("cities", 3),
   },
 ];
 ---
@@ -146,7 +159,7 @@ const categories: CategorySpec[] = [
                 </ul>
 
                 <a href={cat.hubHref} class="cat__cta">
-                  Explore all {cat.label}
+                  {cat.cta}
                   <svg
                     width="14"
                     height="14"
@@ -306,7 +319,7 @@ const categories: CategorySpec[] = [
 
   .cats__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 28px;
   }
 

@@ -13,5 +13,8 @@ export default defineConfig({
   build: {
     format: 'directory',
   },
-  adapter: cloudflare(),
+  // "compile" optimizes images at build time (Cloudflare can't run sharp at
+  // runtime). Only applies to images rendered via astro:assets / <Image>;
+  // raw <img> tags pointing at public/ are served as-is.
+  adapter: cloudflare({ imageService: 'compile' }),
 });

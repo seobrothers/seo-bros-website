@@ -31,3 +31,6 @@ shared/
 # operational scripts that read .env.local. Keep local; never publish.
 migration/
 .claude/settings.local.json
+
+# session working files (one-off scripts, drafts)
+scratchpad/

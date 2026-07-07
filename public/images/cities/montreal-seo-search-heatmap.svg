@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 548" role="img" width="100%" height="auto">
+  <rect x="0" y="0" width="1240" height="548" rx="20" fill="#ffffff" stroke="#e7eef2" stroke-width="1.5"/>
+  <text x="64" y="58" font-size="34" font-weight="700" fill="#0f172a" font-family="Georgia, serif">Where Montreal HVAC searches actually live</text>
+  <text x="64" y="92" font-size="19" fill="#64748b" font-family="-apple-system, Helvetica, Arial, sans-serif">Avg monthly Google searches for &quot;hvac [area]&quot; · Canada · Ahrefs, July 2026</text>
+  <line x1="64" y1="110" x2="1176" y2="110" stroke="#eef2f6" stroke-width="1.5"/>
+  
+      <g>
+        <rect x="64" y="132" width="752" height="58" rx="10"
+          fill="#1e8892" stroke="#dbe5ea" stroke-width="0"/>
+        <text x="82" y="167" font-size="22" font-weight="700"
+          fill="#ffffff" font-family="Georgia, serif">Montreal</text>
+        <text x="844" y="167" font-size="19"
+          fill="#64748b" font-family="-apple-system, Helvetica, Arial, sans-serif">350/mo · 100%</text>
+      </g>
+      <g>
+        <rect x="64" y="204" width="128.9142857142857" height="58" rx="10"
+          fill="#9ed5dc" stroke="#dbe5ea" stroke-width="0"/>
+        <text x="82" y="239" font-size="22" font-weight="700"
+          fill="#0f172a" font-family="Georgia, serif">Laval</text>
+        <text x="844" y="239" font-size="19"
+          fill="#64748b" font-family="-apple-system, Helvetica, Arial, sans-serif">60/mo · 17%</text>
+      </g>
+      <g>
+        <rect x="64" y="276" width="64.45714285714286" height="58" rx="10"
+          fill="#cfeaee" stroke="#dbe5ea" stroke-width="0"/>
+        <text x="82" y="311" font-size="22" font-weight="700"
+          fill="#0f172a" font-family="Georgia, serif">West Island</text>
+        <text x="844" y="311" font-size="19"
+          fill="#64748b" font-family="-apple-system, Helvetica, Arial, sans-serif">30/mo · 9%</text>
+      </g>
+      <g>
+        <rect x="64" y="348" width="42.97142857142857" height="58" rx="10"
+          fill="#cfeaee" stroke="#dbe5ea" stroke-width="0"/>
+        <text x="82" y="383" font-size="22" font-weight="700"
+          fill="#0f172a" font-family="Georgia, serif">Longueuil</text>
+        <text x="844" y="383" font-size="19"
+          fill="#64748b" font-family="-apple-system, Helvetica, Arial, sans-serif">20/mo · 6%</text>
+      </g>
+      <g>
+        <rect x="64" y="420" width="21.485714285714284" height="58" rx="10"
+          fill="#cfeaee" stroke="#dbe5ea" stroke-width="0"/>
+        <text x="82" y="455" font-size="22" font-weight="700"
+          fill="#0f172a" font-family="Georgia, serif">Brossard</text>
+        <text x="844" y="455" font-size="19"
+          fill="#64748b" font-family="-apple-system, Helvetica, Arial, sans-serif">10/mo · 3%</text>
+      </g>
+</svg>
