@@ -8,6 +8,7 @@ import CtaBanner from "../../components/CtaBanner.astro";
 import AuthorCard from "../../components/AuthorCard.astro";
 import NewsletterSignup from "../../components/NewsletterSignup.astro";
 import CityScorecard from "../../components/CityScorecard.astro";
+import NearbyCities from "../../components/NearbyCities.astro";
 import StickyCta from "../../components/StickyCta.astro";
 import { authorByName } from "../../data/authors";
 import { CITY_SCORECARDS } from "../../data/cityScorecards";
@@ -270,6 +271,8 @@ const faqSchema =
           <Content />
 
           {d.category === "cities" && CITY_SCORECARDS[guide.id] && <CityScorecard city={guide.id} />}
+
+          {d.category === "cities" && <NearbyCities city={guide.id} />}
 
           {authorEntity?.published && <AuthorCard author={authorEntity} variant="full" />}
         </div>

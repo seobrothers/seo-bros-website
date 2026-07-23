@@ -1,0 +1,80 @@
+---
+// Regional cross-links between city guides, driven by src/data/cityRegions.ts.
+// Rendered on city guides only; renders nothing if the city has no region
+// entry or no siblings, so a brand-new guide can ship before its region is
+// mapped without breaking the build.
+import { regionForCity } from "../data/cityRegions";
+
+interface Props {
+  city: string;
+}
+
+const { city } = Astro.props;
+const region = regionForCity(city);
+const siblings = region ? region.cities.filter((c) => c.id !== city) : [];
+---
+
+{
+  region && siblings.length > 0 && (
+    <nav class="nearby" aria-label={`More city guides in ${region.name}`}>
+      <p class="nearby__lead">
+        <strong>More markets we have mapped in {region.name}:</strong> the same
+        read on local search behavior, with real volume data for each city.
+      </p>
+      <ul class="nearby__list">
+        {siblings.map((c) => (
+          <li>
+            <a class="nearby__link" href={`/guides/${c.id}/`}>
+              {c.label} SEO
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
+
+<style>
+  .nearby {
+    margin: 40px 0 8px;
+    padding: 24px 28px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl, 16px);
+    background: var(--white);
+  }
+
+  .nearby__lead {
+    margin: 0 0 14px;
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .nearby__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .nearby__link {
+    display: inline-block;
+    padding: 7px 14px;
+    border: 1px solid var(--border-light);
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--teal, #28a5b1);
+    background: transparent;
+    transition:
+      border-color 0.15s ease,
+      background-color 0.15s ease;
+  }
+
+  .nearby__link:hover {
+    border-color: var(--teal, #28a5b1);
+    background: color-mix(in srgb, var(--teal, #28a5b1) 6%, transparent);
+  }
+</style>

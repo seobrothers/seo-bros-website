@@ -5,6 +5,7 @@ import Footer from "../../components/Footer.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
 import GuideList from "../../components/GuideList.astro";
 import StickyCta from "../../components/StickyCta.astro";
+import { CITY_GUIDE_GROUPS } from "../../data/cityRegions";
 ---
 
 <Layout
@@ -17,6 +18,7 @@ import StickyCta from "../../components/StickyCta.astro";
     label="Local Market Research"
     blurb="We rank local businesses across the US and Canada, and anywhere local search matters. These are research deep-dives on more than fifty metros, examples of how we read a market before we touch a campaign, not the limit of where we work."
     accent="neutral"
+    groups={CITY_GUIDE_GROUPS}
   >
     <h2>How we read a local market</h2>
     <p>
