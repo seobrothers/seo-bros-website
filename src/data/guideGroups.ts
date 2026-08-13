@@ -64,7 +64,7 @@ export const GUIDE_GROUPS: Record<string, GuideGroup[]> = {
       title: "Delivering Under Your Brand",
       blurb:
         "White-label work that holds up in front of your client, so the deliverables carry your name and never ours.",
-      ids: ["white-label-seo-audits", "white-label-seo-reporting"],
+      ids: ["white-label-seo", "white-label-seo-audits", "white-label-seo-reporting"],
     },
   ],
 };

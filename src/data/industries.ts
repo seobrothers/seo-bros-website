@@ -40,6 +40,7 @@ export const INDUSTRIES: IndustryMeta[] = [
   { guideId: "plastic-surgery-seo", slug: "plastic-surgery", name: "Plastic Surgery", group: "Health & Wellness" },
   { guideId: "acupuncture-seo", slug: "acupuncture", name: "Acupuncture", group: "Health & Wellness" },
   { guideId: "audiology-seo", slug: "audiology", name: "Audiology", group: "Health & Wellness" },
+  { guideId: "hair-transplant-seo", slug: "hair-transplant", name: "Hair Transplant", group: "Health & Wellness" },
 
   // Professional & Specialty.
   { guideId: "legal-services-seo", slug: "legal", name: "Legal", group: "Professional & Specialty" },
