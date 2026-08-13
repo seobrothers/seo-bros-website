@@ -224,7 +224,7 @@ A few patterns we see repeatedly.
 
 Plumbing campaigns get our standard local-services framework with vertical-specific weighting. Foundation work first (architecture, on-page, GBP), citations and reviews in parallel, content built across the topic landscape, link building layered on top.
 
-Plumbing is part of the broader [home services SEO hub](/guides/franchise-seo/), which links to adjacent trades (HVAC, carpet cleaning, tree service) and provides the umbrella framework for service-area home services businesses.
+Plumbing is part of the broader [home services SEO hub](/guides/home-services-seo/), which links to adjacent trades (HVAC, carpet cleaning, tree service) and provides the umbrella framework for service-area home services businesses.
 
 For partner agencies serving plumbing clients, we operate the SEO layer end-to-end while the agency manages the contractor relationship.
 
