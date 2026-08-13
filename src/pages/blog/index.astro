@@ -1,0 +1,233 @@
+---
+// Blog hub: a flat, dated list. Blog posts are first-person pieces (data
+// write-ups, building in public, observations from client work), distinct
+// from the evergreen guides. While no post is published, the page renders a
+// noindexed placeholder and stays out of the sitemap (see sitemap.xml.ts).
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+import NewsletterSignup from "../../components/NewsletterSignup.astro";
+
+const posts = (await getCollection("blog"))
+  .filter((p) => !import.meta.env.PROD || !p.data.draft)
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+
+function fmtDate(d: Date) {
+  return d.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+---
+
+<Layout
+  title="Blog | Notes From the Work | SEO Brothers"
+  description="Data write-ups, experiments on our own site, and observations from running SEO campaigns for agencies. The notebook behind the guides."
+  noindex={posts.length === 0}
+>
+  <Nav />
+
+  <section class="blog-hero">
+    <div class="blog-hero__bg">
+      <div class="blog-hero__orb"></div>
+      <div class="blog-hero__grid"></div>
+    </div>
+    <div class="container blog-hero__inner">
+      <h1 class="blog-hero__title" data-animate>Notes from the work</h1>
+      <p class="blog-hero__subtitle" data-animate>
+        Experiments we run on our own site, numbers from real campaigns, and
+        what we're building along the way. The guides are the playbook; this is
+        the lab notebook.
+      </p>
+    </div>
+  </section>
+
+  <section class="blog-list-section">
+    <div class="container">
+      {posts.length === 0 ? (
+        <p class="blog-empty">First post coming soon.</p>
+      ) : (
+        <ul class="blog-list" data-stagger>
+          {posts.map((post) => (
+            <li class="blog-card">
+              <a href={`/blog/${post.id}/`} class="blog-card__link">
+                <div class="blog-card__meta">
+                  <span class="blog-card__author">{post.data.author}</span>
+                  <span class="blog-card__dot">·</span>
+                  <time datetime={post.data.publishDate.toISOString()}>
+                    {fmtDate(post.data.publishDate)}
+                  </time>
+                </div>
+                <h2 class="blog-card__title">{post.data.title}</h2>
+                <p class="blog-card__summary">{post.data.summary}</p>
+                <span class="blog-card__more">Read the post</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+
+  <NewsletterSignup />
+  <CtaBanner variant="partner" />
+  <Footer />
+</Layout>
+
+<style>
+  .blog-hero {
+    position: relative;
+    background: var(--dark);
+    overflow: hidden;
+    padding: 150px 0 90px;
+  }
+
+  .blog-hero__bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .blog-hero__orb {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: var(--teal);
+    filter: blur(140px);
+    opacity: 0.15;
+    top: -20%;
+    right: -10%;
+  }
+
+  .blog-hero__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at 50% 30%, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(
+      ellipse at 50% 30%,
+      black 30%,
+      transparent 75%
+    );
+  }
+
+  .blog-hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+  }
+
+  .blog-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5.5vw, 56px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-on-dark);
+    margin-bottom: 20px;
+  }
+
+  .blog-hero__subtitle {
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--text-on-dark-muted);
+  }
+
+  .blog-list-section {
+    padding: 80px 0 100px;
+    background: var(--white);
+  }
+
+  .blog-empty {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 40px 0;
+  }
+
+  .blog-list {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 780px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .blog-card {
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition);
+  }
+
+  .blog-card:hover {
+    border-color: var(--teal);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .blog-card__link {
+    display: block;
+    padding: 28px 32px;
+  }
+
+  .blog-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .blog-card__author {
+    font-weight: 600;
+    color: var(--teal-dark);
+  }
+
+  .blog-card__dot {
+    opacity: 0.5;
+  }
+
+  .blog-card__title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+  }
+
+  .blog-card__summary {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+  }
+
+  .blog-card__more {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--teal-dark);
+  }
+
+  @media (max-width: 768px) {
+    .blog-hero {
+      padding: 130px 0 70px;
+    }
+
+    .blog-card__link {
+      padding: 22px 24px;
+    }
+  }
+</style>

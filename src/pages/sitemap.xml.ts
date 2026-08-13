@@ -16,6 +16,11 @@
 //   It will be auto-discovered. All case studies (campaign and partner)
 //   are included.
 //
+//   Adding a blog post: drop a .md file in src/content/blog/. Auto-discovered;
+//   draft: true keeps it out. The /blog/ hub itself only joins the sitemap
+//   once at least one published post exists, so an empty hub never gets
+//   crawled.
+//
 //   Adding a new top-level page (e.g. /partners/): add the absolute path
 //   to STATIC_PAGES below. Include trailing slash to match the site's
 //   trailingSlash: 'always' config.
@@ -83,7 +88,13 @@ export const GET: APIRoute = async () => {
   // Author pages are gated by `published` in src/data/authors.ts.
   const authorPages = publishedAuthors().map((a) => `/authors/${a.slug}/`);
 
-  const paths = [...STATIC_PAGES, ...guides, ...caseStudies, ...authorPages]
+  const blogPosts = (await getCollection("blog"))
+    .filter((p) => !import.meta.env.PROD || !p.data.draft)
+    .map((p) => `/blog/${p.id}/`);
+  // Hub joins only once it has something published on it.
+  const blogPages = blogPosts.length ? ["/blog/", ...blogPosts] : [];
+
+  const paths = [...STATIC_PAGES, ...guides, ...caseStudies, ...authorPages, ...blogPages]
     .filter((p) => !EXCLUDED_PATHS.has(p))
     .sort();
 

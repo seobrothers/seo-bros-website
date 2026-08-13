@@ -80,4 +80,22 @@ const guides = defineCollection({
   }),
 });
 
-export const collections = { caseStudies, guides };
+// Blog posts: dated, first-person pieces (data write-ups, building in public,
+// observations from client work) served at /blog/{id}/. Distinct from guides,
+// which are evergreen how-tos. Devon's voice is the default byline.
+const blog = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blog" }),
+  schema: z.object({
+    title: z.string(),
+    publishDate: z.date(),
+    updatedDate: z.date().optional(),
+    summary: z.string(),
+    author: z.string().default("Devon Bate"),
+    coverImage: z.string().optional(),
+    coverImageAlt: z.string().optional(),
+    draft: z.boolean().default(false),
+    showToc: z.boolean().default(true),
+  }),
+});
+
+export const collections = { caseStudies, guides, blog };
