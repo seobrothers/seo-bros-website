@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<style>body{margin:0}</style>
+<title>Executive Clean — SEO Expansion Game Plan</title>
+
+<style>
+  :root {
+    --ground: #F6F7F9;
+    --panel: #FFFFFF;
+    --ink: #171C23;
+    --ink-soft: #5A646F;
+    --ink-faint: #8A939E;
+    --rule: #E1E5EA;
+    --rule-strong: #C9D0D8;
+    --accent: #14606B;
+    --accent-soft: #E4F0F1;
+    --bad: #9E3A2B;
+    --bad-soft: #F8E9E6;
+    --good: #2C6349;
+    --good-soft: #E6F0EB;
+    --shadow: 0 1px 2px rgba(20,28,38,.05), 0 8px 24px -16px rgba(20,28,38,.18);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #0F1319;
+      --panel: #161C24;
+      --ink: #E8EBEF;
+      --ink-soft: #9AA5B1;
+      --ink-faint: #6C7784;
+      --rule: #262E38;
+      --rule-strong: #38424E;
+      --accent: #5FBDC9;
+      --accent-soft: #14262A;
+      --bad: #E2897A;
+      --bad-soft: #2A1A17;
+      --good: #7FBE9F;
+      --good-soft: #14231C;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #0F1319;
+    --panel: #161C24;
+    --ink: #E8EBEF;
+    --ink-soft: #9AA5B1;
+    --ink-faint: #6C7784;
+    --rule: #262E38;
+    --rule-strong: #38424E;
+    --accent: #5FBDC9;
+    --accent-soft: #14262A;
+    --bad: #E2897A;
+    --bad-soft: #2A1A17;
+    --good: #7FBE9F;
+    --good-soft: #14231C;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+  }
+
+  :root[data-theme="light"] {
+    --ground: #F6F7F9;
+    --panel: #FFFFFF;
+    --ink: #171C23;
+    --ink-soft: #5A646F;
+    --ink-faint: #8A939E;
+    --rule: #E1E5EA;
+    --rule-strong: #C9D0D8;
+    --accent: #14606B;
+    --accent-soft: #E4F0F1;
+    --bad: #9E3A2B;
+    --bad-soft: #F8E9E6;
+    --good: #2C6349;
+    --good-soft: #E6F0EB;
+    --shadow: 0 1px 2px rgba(20,28,38,.05), 0 8px 24px -16px rgba(20,28,38,.18);
+  }
+
+  .page {
+    --sans: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+    --serif: Georgia, "Times New Roman", serif;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    padding: clamp(1.5rem, 4vw, 4rem) clamp(1rem, 4vw, 2rem) 5rem;
+  }
+
+  .wrap {
+    max-width: 60rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3.25rem;
+  }
+
+  .eyebrow {
+    font-size: .6875rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--ink-faint);
+  }
+
+  .masthead { display: flex; flex-direction: column; gap: .75rem; }
+  .masthead h1 {
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 4.4vw, 2.75rem);
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: -.01em;
+    text-wrap: balance;
+    margin: 0;
+  }
+  .masthead .sub {
+    color: var(--ink-soft);
+    font-size: .9375rem;
+    max-width: 48ch;
+  }
+  .rule-accent { height: 3px; width: 3.5rem; background: var(--accent); border-radius: 2px; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .stat { background: var(--panel); padding: 1.25rem 1.375rem; display: flex; flex-direction: column; gap: .3rem; }
+  .stat .val {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.05;
+  }
+  .stat .lbl { font-size: .8125rem; color: var(--ink); font-weight: 600; }
+  .stat .vs { font-size: .78125rem; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+  .stat.good .val { color: var(--good); }
+
+  .sec { display: flex; flex-direction: column; gap: .875rem; }
+  .sec-head { display: flex; align-items: baseline; gap: .75rem; }
+  .num {
+    font-size: .75rem;
+    font-weight: 700;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    border: 1px solid var(--rule-strong);
+    border-radius: 4px;
+    padding: .1rem .4rem;
+    flex: none;
+  }
+  .sec h2 {
+    font-size: 1.1875rem;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .claim {
+    font-family: var(--serif);
+    font-size: 1.0625rem;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0;
+    max-width: 62ch;
+  }
+  .note { font-size: .84375rem; color: var(--ink-soft); margin: 0; max-width: 66ch; }
+
+  .tw { overflow-x: auto; border: 1px solid var(--rule); border-radius: 10px; background: var(--panel); box-shadow: var(--shadow); }
+  table { border-collapse: collapse; width: 100%; font-size: .875rem; min-width: 30rem; }
+  th, td { padding: .6875rem .9375rem; text-align: left; border-bottom: 1px solid var(--rule); }
+  thead th {
+    font-size: .6875rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  tbody tr:last-child td { border-bottom: 0; }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.name { font-weight: 600; }
+  tr.pick td { background: var(--good-soft); }
+  tr.pick td.name { color: var(--good); font-weight: 700; }
+  tr.tot td { border-top: 1px solid var(--rule-strong); font-weight: 700; }
+  .dim { color: var(--ink-faint); font-weight: 400; }
+
+  .tag {
+    display: inline-block;
+    font-size: .6875rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    padding: .1rem .4rem;
+    border-radius: 3px;
+    background: var(--good-soft);
+    color: var(--good);
+    margin-left: .4rem;
+  }
+
+  .asks { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1rem; }
+  .ask {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 1rem 1.125rem;
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+  }
+  .ask .who { font-size: .6875rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--accent); }
+  .ask .what { font-weight: 600; font-size: .9375rem; }
+  .ask .why { font-size: .84375rem; color: var(--ink-soft); }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+  }
+  footer p { margin: 0; font-size: .8125rem; color: var(--ink-faint); max-width: 74ch; }
+</style>
+
+
+<div class="page">
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="rule-accent"></div>
+    <div class="eyebrow">Executive Clean &middot; Bi-weekly review &middot; 26 August 2026</div>
+    <h1>Three sites, one goal: be the answer when someone asks who the best cleaner is</h1>
+    <p class="sub">The game plan for the reallocated SEO budget, built from your 2026 lead records, live keyword data, and live search evidence pulled this morning.</p>
+  </header>
+
+  <section class="stats">
+    <div class="stat good">
+      <div class="val">14,000</div>
+      <div class="lbl">Searches a month for "medical office cleaning"</div>
+      <div class="vs">ranking difficulty 1 out of 100</div>
+    </div>
+    <div class="stat good">
+      <div class="val">63%</div>
+      <div class="lbl">Of your medical leads want recurring service</div>
+      <div class="vs">35 of 56 this year, best of any segment</div>
+    </div>
+    <div class="stat">
+      <div class="val">0</div>
+      <div class="lbl">Page-one "best cleaner" lists featuring Executive Clean</div>
+      <div class="vs">in this morning's spot checks; closing that gap is step one</div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><span class="num">1</span><h2>The play</h2></div>
+    <p class="claim">When someone asks Google or ChatGPT "who is the best commercial cleaner near me," the answer never comes from a cleaning company's own website. It comes from third-party lists, review sites, and industry guides. Right now, none of those pages are yours. This plan builds them.</p>
+    <div class="tw">
+      <table>
+        <thead>
+          <tr><th>The search, run live this morning</th><th>Who owns the answer today</th><th class="n">Executive Clean</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">best commercial cleaning companies in Miami</td><td>HomeGuide's "10 Best" list, ThreeBestRated, a competitor's own best-of guide (Summit Facility Solutions), a site on the exact-match domain, a PR-placed "research report"</td><td class="n">Not on page one</td></tr>
+          <tr><td class="name">best medical office cleaning companies</td><td>Franchise sales pages and one thin blog list. No credible guide owns this yet.</td><td class="n">Not on page one</td></tr>
+          <tr><td class="name">top janitorial companies</td><td>Clutch rankings, Zippia, Yahoo-syndicated listicles</td><td class="n">Not on page one</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Two rules make our version work: every site covers multiple real companies with a published methodology, and Executive Clean is only featured in categories where it genuinely belongs. That independence is not window dressing, it is the reason the sites get trusted and cited at all.</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><span class="num">2</span><h2>The three properties</h2></div>
+    <div class="tw">
+      <table>
+        <thead>
+          <tr><th>Property</th><th>What it is</th><th class="n">Status at launch</th></tr>
+        </thead>
+        <tbody>
+          <tr class="pick"><td class="name">Metro "best of" review site</td><td>Ranks the best cleaning companies in one test metro: office and commercial first, plus residential so it reads as a genuine city guide. Executive Clean wins the commercial categories it deserves to win.</td><td class="n">In the current budget</td></tr>
+          <tr class="pick"><td class="name">Medical facility cleaning guide</td><td>National authority site on cleaning for medical, dental, and healthcare facilities: standards, compliance, costs, how to choose a provider. Your dream recurring clients, and the numbers below say the door is wide open.</td><td class="n">Fed at +$1,500 a month</td></tr>
+          <tr><td class="name">The office manager's guide</td><td>Reviews and rankings of the vendors every office manager hires: shredding, coffee service, water delivery, plants, snacks, and cleaning. One audience, many categories, and Executive Clean is featured only in the cleaning one. The rest of the site is what makes it real.</td><td class="n">Fed at +$2,500 a month</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="claim">All three domains get bought and built in September. The budget decides how many get actively fed each month; the parked site costs nothing to hold and is ready when we want it.</p>
+    <p class="note">Fresh domains, bought new. If we find a genuinely applicable aged domain along the way we can fold it in as an accelerator, but nothing in this plan depends on finding one. Each site stands alone: its own look, own methodology, own editorial voice.</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><span class="num">3</span><h2>Where to test first</h2></div>
+    <div class="tw">
+      <table>
+        <thead>
+          <tr><th>Metro</th><th class="n">2026 leads</th><th class="n">Recurring</th><th class="n">Searches / mo</th><th class="n">Difficulty</th></tr>
+        </thead>
+        <tbody>
+          <tr class="pick"><td class="name">Miami<span class="tag">Test market</span></td><td class="n">9</td><td class="n">6</td><td class="n">760</td><td class="n">0&ndash;9</td></tr>
+          <tr><td class="name">Orlando</td><td class="n">7</td><td class="n">5</td><td class="n">850</td><td class="n">1&ndash;27</td></tr>
+          <tr><td class="name">Houston</td><td class="n">8</td><td class="n">5</td><td class="n">650</td><td class="n">13&ndash;28</td></tr>
+          <tr><td class="name">Charlotte</td><td class="n">6</td><td class="n">4</td><td class="n">460</td><td class="n">0&ndash;40</td></tr>
+          <tr><td class="name">San Diego</td><td class="n">6</td><td class="n">3</td><td class="n">1,700</td><td class="n">21&ndash;52</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="claim">Miami is the pick: it is already your biggest lead metro, two thirds of those leads wanted recurring service, and every keyword we would target is rated easy to rank for. Orlando is the natural second market if the test works, which would make Florida a two-city cluster.</p>
+    <p class="note">Searches per month sums the metro's office, commercial, and house cleaning terms only; each market adds a long tail of "best," "near me," and industry-specific variants (nationally, "best commercial cleaning companies" alone is another 500 a month). Florida, Texas, and California are effectively tied as your biggest lead states this year at 66&ndash;67 leads each, with California highest on recurring intent at 64%. San Diego has by far the most search volume, led by 900 a month for office cleaning, but the toughest competition, so it is a better third market than a first one.</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><span class="num">4</span><h2>The medical prize</h2></div>
+    <div class="tw">
+      <table>
+        <thead>
+          <tr><th>Keyword</th><th class="n">Searches per month</th><th class="n">Difficulty (0&ndash;100)</th></tr>
+        </thead>
+        <tbody>
+          <tr class="pick"><td class="name">medical office cleaning</td><td class="n">14,000</td><td class="n">1</td></tr>
+          <tr><td class="name">healthcare cleaning services</td><td class="n">4,800</td><td class="n">6</td></tr>
+          <tr><td class="name">medical office cleaning services</td><td class="n">2,200</td><td class="n">2</td></tr>
+          <tr><td class="name">hospital cleaning services</td><td class="n">2,100</td><td class="n">1</td></tr>
+          <tr><td class="name">dental office cleaning</td><td class="n">1,400</td><td class="n">0</td></tr>
+          <tr><td class="name">dental office cleaning services</td><td class="n">1,200</td><td class="n">0</td></tr>
+          <tr><td class="name">medical cleaning companies</td><td class="n">400</td><td class="n">2</td></tr>
+          <tr><td class="name">medical office cleaning services near me</td><td class="n">250</td><td class="n">2</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="claim">Over 26,000 searches a month across the medical cleaning cluster, and none of it is rated harder than 6 out of 100 to rank for. Your own data says these are the clients to chase: medical leads want recurring service more than any other segment you get.</p>
+    <p class="note">The guide site also gets regional best-of pages: "best medical office cleaning companies in Florida," in Texas, in each test metro. Recorded volume on those is tiny (around 30 a month per city, difficulty 0), but they are precisely the pages AI assistants cite when someone asks for a recommendation, and today those pages barely exist: our search this morning found the national medical query answered by franchise sales pages and one thin blog list. Executive Clean tops the regional lists where it genuinely operates. Office jobs stay the volume priority and the metro site carries that; the medical site is the margin play, and the metro site's medical category cites the guide's standards content.</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><span class="num">5</span><h2>The office manager's guide</h2></div>
+    <div class="tw">
+      <table>
+        <thead>
+          <tr><th>Category page</th><th class="n">"Best of" searches / mo</th><th class="n">Diff</th><th class="n">Category searches / mo</th><th class="n">Diff</th></tr>
+        </thead>
+        <tbody>
+          <tr class="pick"><td class="name">Office cleaning</td><td class="n">250</td><td class="n">6</td><td class="n">8,200</td><td class="n">37</td></tr>
+          <tr><td class="name">Janitorial</td><td class="n">250</td><td class="n">26</td><td class="n">16,000</td><td class="n">39</td></tr>
+          <tr><td class="name">Paper &amp; document shredding</td><td class="n">20</td><td class="n">0</td><td class="n">5,600</td><td class="n">0</td></tr>
+          <tr><td class="name">Office coffee service</td><td class="n">50</td><td class="n">1</td><td class="n">2,000</td><td class="n">1</td></tr>
+          <tr><td class="name">Office water delivery</td><td class="n">&mdash;</td><td class="n">&mdash;</td><td class="n">500</td><td class="n">6</td></tr>
+          <tr><td class="name">Vending machines</td><td class="n">80</td><td class="n">37</td><td class="n">300</td><td class="n">24</td></tr>
+          <tr><td class="name">Office plants &amp; snacks</td><td class="n">&mdash;</td><td class="n">&mdash;</td><td class="n">400</td><td class="n">1&ndash;2</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="claim">Each category gets a "best of" ranking page. The "best of" terms measure small but sit almost uncontested, and they are the pages AI assistants cite. The category head terms carry the real volume, over 30,000 searches a month, and today they are held by the vendors themselves: Shred-it and The UPS Store own the shredding results, for example.</p>
+    <p class="note">One directory already breaks into those vendor-held results: Shred Nations ranks for city-level shredding searches, which is the existence proof that a guide site can take head terms in these categories. The person searching any of this is the same person who hires a commercial cleaner, which is exactly who we want reading a site where Executive Clean tops the cleaning category. This replaces the residential idea from the 12 August discussion: a home site never fit a commercial cleaning company, but the office manager's world does. Long term the non-cleaning categories can carry sponsor and referral revenue, which would make the property self-funding.</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><span class="num">6</span><h2>What the budget buys</h2></div>
+    <div class="tw">
+      <table>
+        <thead>
+          <tr><th>Tier</th><th class="n">Added monthly</th><th>What gets fed</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">In the current budget</td><td class="n">$0</td><td>The Miami best-of site: launched with 12+ researched company profiles and category lists, then fed monthly. Office jobs are the priority and this is the property that carries them.</td></tr>
+          <tr><td class="name">Add the medical guide</td><td class="n">+$1,500</td><td>The medical facility cleaning guide launches with its cornerstone guides, then 2&ndash;3 new pieces a month, plus citation placements for both fed sites.</td></tr>
+          <tr class="pick"><td class="name">All three fed<span class="tag">Recommended</span></td><td class="n">+$2,500</td><td>The office manager's guide becomes an actively fed third property instead of sitting parked, at 2&ndash;3 pieces a month across its vendor categories.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="claim">Every tier buys and builds all three domains up front; the one-time cost of three fresh domains and hosting is under $100 on the stack we already run your site on. The monthly spend is almost entirely content and research, which is what makes these sites real.</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><span class="num">7</span><h2>The first 90 days</h2></div>
+    <div class="asks">
+      <div class="ask">
+        <div class="who">This week, costs nothing</div>
+        <div class="what">Confirm where Executive Clean is listed and close the gaps</div>
+        <div class="why">Audit the sources that answer these searches today: HomeGuide, ThreeBestRated, Clutch, Yelp, Angi, Thumbtack, BBB. Where a profile exists, build it out; where one is missing or thin, claim and complete it. This morning's spot checks say there are gaps worth closing before a single site is built.</div>
+      </div>
+      <div class="ask">
+        <div class="who">September, weeks 1&ndash;2</div>
+        <div class="what">Buy the three domains and build all three shells</div>
+        <div class="why">Same build stack as executive-clean.com, so this is fast and cheap. Each site gets its methodology page from day one, because that page is what reviewers, journalists, and AI tools check first.</div>
+      </div>
+      <div class="ask">
+        <div class="who">September, weeks 2&ndash;4</div>
+        <div class="what">Launch content: Miami profiles and the medical cornerstones</div>
+        <div class="why">Miami: researched profiles of real cleaning companies, commercial and residential, plus the first category lists with office cleaning up front. Medical: the pillar guide on medical office cleaning plus dental, cost, and compliance guides.</div>
+      </div>
+      <div class="ask">
+        <div class="who">October</div>
+        <div class="what">Keep the cadence, start the citations</div>
+        <div class="why">Monthly content continues on both fed sites. The one-off citation placements agreed on 12 August start pointing at these properties as well as executive-clean.com, which shortens the time to trust for fresh domains.</div>
+      </div>
+      <div class="ask">
+        <div class="who">Late November</div>
+        <div class="what">90-day checkpoint: clone it or concentrate</div>
+        <div class="why">If Miami is indexing, ranking, and sending leads, we clone the model to Orlando. If one property is clearly outrunning the other, the budget concentrates there. Nothing runs on autopilot past this date.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><span class="num">8</span><h2>How we will know it is working</h2></div>
+    <p class="claim">You will see it in the same lead sheet you already use. Any lead that clicks through from these sites arrives tagged with the referring site automatically, the same way organic and PPC leads are tagged today.</p>
+    <p class="note">Alongside that: rank tracking on every target keyword above, indexing and impression data from Search Console, and a monthly spot check of what ChatGPT, Claude, and Perplexity answer when asked for the best commercial cleaner in the test market. Expectations set honestly: fresh domains typically take three to six months to earn search trust, which is why the 90-day checkpoint measures indexing, rankings, and first citations rather than lead volume.</p>
+  </section>
+
+  <footer>
+    <p><strong>How the numbers were built.</strong> Lead figures are from your lead system, January 1 to August 26, 2026: 666 leads after removing spam and duplicates. "Wanting recurring" counts leads marked qualified-recurring plus leads that requested a recurring cleaning cadence on the form. Search volumes and ranking difficulty are US figures from Ahrefs, pulled August 26, 2026. The "who answers these searches today" evidence is from live Google results for "best commercial cleaning companies in Miami," "best medical office cleaning companies," and "top janitorial companies," run the same morning.</p>
+    <p><strong>Worth knowing.</strong> Metro lead counts use the form city where given, otherwise the visitor's network location, so treat them as close rather than exact. The medical segment combines the Healthcare, Dental Office, Doctor Office, Medical Office, and Veterinary categories. Low difficulty scores mean weak competition today, not guaranteed rankings.</p>
+  </footer>
+
+</div>
+</div>
+
+</html>
