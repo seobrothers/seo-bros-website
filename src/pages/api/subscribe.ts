@@ -2,6 +2,7 @@ import type { APIRoute } from "astro";
 import { syncContact, addToList, applyTag } from "../../lib/activecampaign";
 import { clientIp, logEvent, type AnalyticsEngine } from "../../lib/eventlog";
 import { rateLimit, type RateLimitKV } from "../../lib/ratelimit";
+import { cfEnv } from "../../lib/cf-env";
 
 // Guides/newsletter subscribe. Email + chosen topics. Each topic maps to an AC
 // list + tag; the visitor self-segments. Local Market Research is intentionally
@@ -21,11 +22,11 @@ interface Env {
   ACTIVECAMPAIGN_API_KEY?: string;
 }
 
-function readEnv(locals: App.Locals): Env {
-  const e = (locals as { runtime?: { env?: Env } }).runtime?.env;
+function readEnv(): Env {
+  const e = cfEnv<Env>();
   return {
-    ACTIVECAMPAIGN_API_URL: e?.ACTIVECAMPAIGN_API_URL ?? import.meta.env.ACTIVECAMPAIGN_API_URL,
-    ACTIVECAMPAIGN_API_KEY: e?.ACTIVECAMPAIGN_API_KEY ?? import.meta.env.ACTIVECAMPAIGN_API_KEY,
+    ACTIVECAMPAIGN_API_URL: e.ACTIVECAMPAIGN_API_URL ?? import.meta.env.ACTIVECAMPAIGN_API_URL,
+    ACTIVECAMPAIGN_API_KEY: e.ACTIVECAMPAIGN_API_KEY ?? import.meta.env.ACTIVECAMPAIGN_API_KEY,
   };
 }
 
@@ -35,7 +36,7 @@ function json(body: unknown, status = 200): Response {
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export const POST: APIRoute = async ({ request, locals }) => {
+export const POST: APIRoute = async ({ request }) => {
   let payload: Record<string, unknown>;
   try {
     const ct = request.headers.get("content-type") ?? "";
@@ -50,7 +51,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     return json({ ok: true });
   }
 
-  const kv = (locals as { runtime?: { env?: { RATE_LIMIT?: RateLimitKV } } }).runtime?.env?.RATE_LIMIT;
+  const kv = cfEnv<{ RATE_LIMIT?: RateLimitKV }>().RATE_LIMIT;
   const ip = clientIp(request);
   const rl = await rateLimit(kv, `subscribe:${ip}`, 20, 3600);
   if (!rl.allowed) return json({ ok: false, error: "Too many requests. Please try again later." }, 429);
@@ -64,7 +65,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
   if (!EMAIL_RE.test(email)) return json({ ok: false, error: "Please enter a valid email." }, 400);
   if (topics.length === 0) return json({ ok: false, error: "Pick at least one topic to subscribe to." }, 400);
 
-  const env = readEnv(locals);
+  const env = readEnv();
   const base = env.ACTIVECAMPAIGN_API_URL;
   const token = env.ACTIVECAMPAIGN_API_KEY;
 
@@ -95,7 +96,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     console.error("ActiveCampaign credentials are not configured (subscribe skipped)");
   }
 
-  const ae = (locals as { runtime?: { env?: { AE?: AnalyticsEngine } } }).runtime?.env?.AE;
+  const ae = cfEnv<{ AE?: AnalyticsEngine }>().AE;
   logEvent({ AE: ae }, "subscribe", { ip, detail: topics.join("|") });
 
   return json({ ok: true });
