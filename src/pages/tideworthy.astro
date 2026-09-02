@@ -1,0 +1,833 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { SEO_TIERS, usd } from "../data/pricing";
+
+// The Tideworthy marketing site, brought onto seobrothers.com. tideworthy.com
+// redirects here (Devon, 2026-08-28), so this page is now the only public
+// explanation of the platform. That matters for two reasons:
+//   1. Pricing lives ONLY in src/data/pricing.ts now. The old tideworthy.com
+//      pricing page advertised $99 / $199 per client, which no longer exists
+//      publicly. Do not reintroduce those numbers.
+//   2. The old site offered a 14-day free trial. Our offer is a free account
+//      with no card and no trial clock (see /sign-up/). Do not write "trial".
+//
+// Content adapted from the live tideworthy.com home, /platform, and /about
+// pages. The /results page 404s, so there is no case-study section here yet.
+
+const selfServe = SEO_TIERS.find((t) => t.id === "self-serve")!;
+const managed = SEO_TIERS.find((t) => t.id === "managed")!;
+
+// The three-step onboarding from the tideworthy.com home page.
+const steps = [
+  {
+    n: "1",
+    title: "Connect a client",
+    body: "Hook up the site, Search Console, Analytics, and the Business Profile. It takes about ten minutes and the agents start learning the account immediately.",
+  },
+  {
+    n: "2",
+    title: "Set the budget and the rules",
+    body: "A monthly deliverables budget per client, and an approval line you draw yourself. Nothing client-facing ships without you saying so.",
+  },
+  {
+    n: "3",
+    title: "Approve, and it goes out as you",
+    body: "The agents work daily. What lands in front of your client carries your logo, on your domain, in a portal that is yours.",
+  },
+];
+
+// Capability blocks, adapted from tideworthy.com/platform.
+const capabilities = [
+  {
+    title: "The work actually gets done",
+    body: "Every client carries a running list of real deliverables: content written, technical fixes shipped, internal links built, pages reviewed. The agents propose the monthly plan and then have to earn it. The full history stays on the account.",
+  },
+  {
+    title: "You approve everything that matters",
+    body: "One queue holds everything waiting on your decision, across your whole book. Plans, website edits, and keyword sets get requested by name. Research and monitoring keep running without asking.",
+  },
+  {
+    title: "Scope and budget, up front",
+    body: "Each campaign shows what happens this month and what it costs, as line items, before it runs. A prepaid deliverables budget you control. No surprise invoices, and no cut of what you bill your client.",
+  },
+  {
+    title: "Monitoring you switch on",
+    body: "A set of scheduled checks per client that you toggle: site crawl, technical SEO, page speed, Business Profile, brand search. You hear about a problem before your client does.",
+  },
+  {
+    title: "Rankings your client can check",
+    body: "Location-specific keyword tracking, updated daily, mapped to whichever page is actually positioned to win the term.",
+  },
+  {
+    title: "Reports that wear your logo",
+    body: "Reporting goes out under your brand, from your domain. Our name is nowhere your client will ever look.",
+  },
+];
+
+const roadmap = [
+  {
+    status: "Live",
+    name: "SEO",
+    body: "Research, content, technical fixes, links, monitoring, and reporting.",
+    state: "live",
+  },
+  {
+    status: "Beta",
+    name: "Websites",
+    body: "Hosted, editable by conversation, and versioned so nothing is lost.",
+    state: "beta",
+  },
+  {
+    status: "Coming",
+    name: "PPC",
+    body: "Search and local campaigns, managed the same way.",
+    state: "soon",
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Tideworthy",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  description:
+    "AI agents that do white-label SEO delivery work for agencies: content, local SEO, technical fixes, monitoring, and reporting, under the agency's own brand.",
+  publisher: {
+    "@type": "Organization",
+    name: "SEO Brothers, Inc.",
+    url: "https://seobrothers.com/",
+  },
+  offers: {
+    "@type": "Offer",
+    price: selfServe.price,
+    priceCurrency: "USD",
+    url: "https://seobrothers.com/pricing/",
+  },
+};
+---
+
+<Layout
+  title="Tideworthy | AI Agents That Do the Delivery Work | SEO Brothers"
+  description="Tideworthy is the platform behind SEO Brothers: AI agents that do the daily SEO delivery work for every client, under your agency's brand. You set the budget and draw the approval line."
+  schema={schema}
+>
+  <Nav />
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="tw-hero">
+    <div class="tw-hero__bg">
+      <div class="tw-hero__orb tw-hero__orb--1"></div>
+      <div class="tw-hero__orb tw-hero__orb--2"></div>
+      <div class="tw-hero__grid"></div>
+    </div>
+    <div class="container tw-hero__inner">
+      <span class="tw-hero__label" data-animate>
+        <span class="tw-hero__label-dot"></span>
+        The Platform Behind Our Work
+      </span>
+      <h1 class="tw-hero__title" data-animate>
+        One engine.
+        <span class="tw-hero__title-gradient">Your name on all of it.</span>
+      </h1>
+      <p class="tw-hero__sub" data-animate>
+        Tideworthy is the software we built to run campaigns, and it is what
+        your clients' work runs in. Agents learn your agency and every client's
+        business, then do the daily delivery: content, local SEO, technical
+        fixes, monitoring, reporting. You set the budget, draw the approval
+        line, and put your logo on top.
+      </p>
+      <div class="tw-hero__actions" data-animate>
+        <a href="/sign-up/" class="btn btn-primary btn-lg">
+          Start for Free
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+        <a href="/book-a-growth-call/" class="btn btn-outline btn-lg">
+          Book a demo
+        </a>
+      </div>
+      <p class="tw-hero__note" data-animate>
+        No card required. Your clients did not hire a dashboard. They hired you.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ HOW IT WORKS ═══════════════ -->
+  <section class="tw-steps">
+    <div class="container">
+      <div class="tw-sec-head" data-animate>
+        <span class="section-label">How It Works</span>
+        <h2 class="tw-sec-title">Ten minutes to connect. Then it runs.</h2>
+      </div>
+      <div class="tw-steps__grid" data-stagger>
+        {
+          steps.map((s) => (
+            <div class="tw-step" data-animate>
+              <span class="tw-step__n">{s.n}</span>
+              <h3 class="tw-step__title">{s.title}</h3>
+              <p class="tw-step__body">{s.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CAPABILITIES ═══════════════ -->
+  <section class="tw-caps">
+    <div class="container">
+      <div class="tw-sec-head" data-animate>
+        <span class="section-label">What It Does</span>
+        <h2 class="tw-sec-title">Delivery, not another dashboard.</h2>
+        <p class="tw-sec-sub">
+          Plenty of software will show your client a chart. This does the work
+          that goes in the chart, and it does it every day.
+        </p>
+      </div>
+      <div class="tw-caps__grid" data-stagger>
+        {
+          capabilities.map((c) => (
+            <article class="tw-cap" data-animate>
+              <h3 class="tw-cap__title">{c.title}</h3>
+              <p class="tw-cap__body">{c.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CENTAUR THESIS ═══════════════ -->
+  <section class="tw-thesis">
+    <div class="container tw-thesis__inner">
+      <div class="tw-thesis__copy" data-animate>
+        <span class="section-label">Why We Built It</span>
+        <h2 class="tw-thesis__title">
+          The agency was never just the deliverables.
+        </h2>
+        <p>
+          It is the person who answers the phone when a client is panicking, who
+          knows the business, who takes the win or the loss personally. That
+          part does not automate, and it is the part worth protecting.
+        </p>
+        <p>
+          We watched AI platforms start selling agency work directly, at scale,
+          to the clients agencies had spent years earning. We could have built
+          another one of those. We built the opposite: your input, your context,
+          your relationships, your name, our agents underneath. Human judgment
+          paired with machine throughput beats either one alone.
+        </p>
+        <p class="tw-thesis__name">
+          The name comes from the Plimsoll line, the waterline mark on a ship's
+          hull that says how much it can carry and still come home. Tideworthy
+          means an agency can survive what is coming.
+        </p>
+      </div>
+      <aside class="tw-thesis__card" data-animate>
+        <h3 class="tw-thesis__card-title">Built by the people using it</h3>
+        <p>
+          Adam and Devon Bate started SEO Brothers in 2015 and have run
+          white-label campaigns for agency partners ever since. Tideworthy came
+          out of that work, because we needed it. Our own team runs your
+          campaigns in this platform every day.
+        </p>
+        <a href="/about/" class="tw-thesis__link">
+          Meet the team
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ROADMAP ═══════════════ -->
+  <section class="tw-road">
+    <div class="container">
+      <div class="tw-sec-head" data-animate>
+        <span class="section-label">What's Ready</span>
+        <h2 class="tw-sec-title">SEO today. Websites next. PPC after that.</h2>
+        <p class="tw-sec-sub">
+          We would rather tell you what is still in beta than let you find out
+          on a client's account.
+        </p>
+      </div>
+      <div class="tw-road__grid" data-stagger>
+        {
+          roadmap.map((r) => (
+            <div class:list={["tw-road__item", `tw-road__item--${r.state}`]} data-animate>
+              <span class="tw-road__status">{r.status}</span>
+              <h3 class="tw-road__name">{r.name}</h3>
+              <p class="tw-road__body">{r.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ HOW TO GET IT ═══════════════ -->
+  <section class="tw-get">
+    <div class="container tw-get__inner">
+      <div class="tw-sec-head tw-sec-head--center" data-animate>
+        <span class="section-label">Getting In</span>
+        <h2 class="tw-sec-title">Two ways to run a campaign here.</h2>
+      </div>
+      <div class="tw-get__grid">
+        <div class="tw-get__card" data-animate>
+          <span class="tw-get__who">{selfServe.who}</span>
+          <h3 class="tw-get__name">{selfServe.name}</h3>
+          <p class="tw-get__price">
+            <span class="tw-get__price-value">{usd(selfServe.price)}</span>
+            <span class="tw-get__price-suffix">/ mo per campaign</span>
+          </p>
+          <p class="tw-get__body">
+            The platform and the agents are yours to drive. You set the
+            direction and own the hours. We are on support when you need us.
+          </p>
+        </div>
+        <div class="tw-get__card tw-get__card--featured" data-animate>
+          <span class="tw-get__who">{managed.who}</span>
+          <h3 class="tw-get__name">{managed.name}</h3>
+          <p class="tw-get__price">
+            <span class="tw-get__price-value">{usd(managed.price)}</span>
+            <span class="tw-get__price-suffix">/ mo per campaign</span>
+          </p>
+          <p class="tw-get__body">
+            Where most partners land. Our strategists run the campaign in the
+            platform under your brand, so you sell the outcome and never touch
+            the work.
+          </p>
+        </div>
+      </div>
+      <p class="tw-get__foot" data-animate>
+        Both start with a free account, no card. Bigger or messier work gets
+        scoped on a call. <a href="/pricing/">See the full pricing breakdown</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CLOSE ═══════════════ -->
+  <section class="tw-close">
+    <div class="container tw-close__inner" data-animate>
+      <h2 class="tw-close__title">
+        Keep your clients, your margin, and your name.
+      </h2>
+      <p class="tw-close__body">
+        Create a free account and connect one client. Run a discovery, look at
+        what the agents propose, and decide from there. There is no card and no
+        clock running.
+      </p>
+      <div class="tw-close__actions">
+        <a href="/sign-up/" class="btn btn-primary btn-lg">
+          Start for Free
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+        <a href="/book-a-growth-call/" class="btn btn-outline btn-lg">
+          Talk to a human
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ═══════════ SHARED SECTION HEADS ═══════════ */
+  .tw-sec-head {
+    max-width: 660px;
+    margin-bottom: 48px;
+  }
+  .tw-sec-head--center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  .tw-sec-head .section-label {
+    display: inline-block;
+  }
+  .tw-sec-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.8vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--text-primary);
+    margin: 12px 0 0;
+  }
+  .tw-sec-sub {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin: 14px 0 0;
+  }
+
+  /* ═══════════ HERO ═══════════ */
+  .tw-hero {
+    position: relative;
+    padding: 170px 0 120px;
+    background: var(--dark);
+    overflow: hidden;
+  }
+  .tw-hero__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .tw-hero__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(130px);
+    opacity: 0.3;
+  }
+  .tw-hero__orb--1 {
+    width: 560px;
+    height: 560px;
+    top: -180px;
+    left: -140px;
+    background: var(--teal);
+  }
+  .tw-hero__orb--2 {
+    width: 480px;
+    height: 480px;
+    bottom: -200px;
+    right: -120px;
+    background: var(--teal-dark);
+  }
+  .tw-hero__grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse at 50% 40%, black 20%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 40%, black 20%, transparent 75%);
+  }
+  .tw-hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    text-align: center;
+  }
+  .tw-hero__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-full);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-on-dark-muted);
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .tw-hero__label-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--teal-light);
+  }
+  .tw-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(38px, 6vw, 66px);
+    font-weight: 700;
+    line-height: 1.03;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    margin: 22px 0 20px;
+  }
+  /* Two shades of one hue, per the site's gradient convention. */
+  .tw-hero__title-gradient {
+    display: block;
+    background: linear-gradient(100deg, var(--teal) 0%, var(--teal-light) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .tw-hero__sub {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-on-dark-muted);
+    max-width: 680px;
+    margin: 0 auto 32px;
+  }
+  .tw-hero__actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .tw-hero__note {
+    margin: 20px 0 0;
+    font-size: 14px;
+    color: var(--text-on-dark-muted);
+    opacity: 0.75;
+  }
+
+  /* ═══════════ STEPS ═══════════ */
+  .tw-steps {
+    padding: 100px 0;
+    background: var(--white);
+  }
+  .tw-steps__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .tw-step {
+    padding: 30px 26px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    background: var(--light);
+  }
+  .tw-step__n {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(40, 165, 177, 0.13);
+    color: var(--teal-dark);
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .tw-step__title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin: 0 0 10px;
+  }
+  .tw-step__body {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  /* ═══════════ CAPABILITIES ═══════════ */
+  .tw-caps {
+    padding: 100px 0;
+    background: var(--light);
+    border-top: 1px solid var(--border-light);
+  }
+  .tw-caps__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .tw-cap {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 28px 26px;
+    border-top: 3px solid var(--teal);
+  }
+  .tw-cap__title {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin: 0 0 10px;
+    line-height: 1.25;
+  }
+  .tw-cap__body {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  /* ═══════════ THESIS ═══════════ */
+  .tw-thesis {
+    padding: 100px 0;
+    background: var(--white);
+  }
+  .tw-thesis__inner {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .tw-thesis__copy .section-label {
+    display: inline-block;
+  }
+  .tw-thesis__title {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3.4vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.18;
+    color: var(--text-primary);
+    margin: 12px 0 18px;
+  }
+  .tw-thesis__copy p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin: 0 0 16px;
+  }
+  .tw-thesis__name {
+    padding-left: 18px;
+    border-left: 3px solid var(--teal);
+    font-style: italic;
+  }
+  .tw-thesis__card {
+    background: var(--dark);
+    border-radius: var(--radius-lg);
+    padding: 32px 30px;
+    position: sticky;
+    top: 96px;
+  }
+  .tw-thesis__card-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white);
+    margin: 0 0 14px;
+  }
+  .tw-thesis__card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-on-dark-muted);
+    margin: 0 0 20px;
+  }
+  .tw-thesis__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--teal-light);
+    text-decoration: none;
+  }
+  .tw-thesis__link:hover {
+    text-decoration: underline;
+  }
+
+  /* ═══════════ ROADMAP ═══════════ */
+  .tw-road {
+    padding: 100px 0;
+    background: var(--light);
+    border-top: 1px solid var(--border-light);
+  }
+  .tw-road__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .tw-road__item {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 28px 26px;
+  }
+  .tw-road__status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .tw-road__item--live .tw-road__status {
+    background: rgba(68, 185, 123, 0.14);
+    color: var(--green-dark);
+  }
+  .tw-road__item--beta .tw-road__status {
+    background: rgba(40, 165, 177, 0.14);
+    color: var(--teal-dark);
+  }
+  .tw-road__item--soon .tw-road__status {
+    background: rgba(15, 23, 42, 0.07);
+    color: var(--text-secondary);
+  }
+  .tw-road__name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin: 0 0 8px;
+  }
+  .tw-road__body {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  /* ═══════════ GET IT ═══════════ */
+  .tw-get {
+    padding: 100px 0;
+    background: var(--white);
+  }
+  .tw-get__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 840px;
+    margin: 0 auto;
+  }
+  .tw-get__card {
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 30px 28px;
+    background: var(--light);
+  }
+  .tw-get__card--featured {
+    background: var(--dark);
+    border-color: transparent;
+  }
+  .tw-get__who {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--teal-dark);
+    margin-bottom: 6px;
+  }
+  .tw-get__card--featured .tw-get__who {
+    color: var(--teal-light);
+  }
+  .tw-get__name {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin: 0 0 12px;
+  }
+  .tw-get__card--featured .tw-get__name {
+    color: var(--white);
+  }
+  .tw-get__price {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin: 0 0 14px;
+  }
+  .tw-get__price-value {
+    font-family: var(--font-display);
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+  .tw-get__card--featured .tw-get__price-value {
+    color: var(--green-light);
+  }
+  .tw-get__price-suffix {
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  .tw-get__body {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+  .tw-get__card--featured .tw-get__body {
+    color: var(--text-on-dark-muted);
+  }
+  .tw-get__foot {
+    margin: 32px auto 0;
+    max-width: 620px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+  .tw-get__foot a {
+    color: var(--teal-dark);
+    font-weight: 600;
+  }
+
+  /* ═══════════ CLOSE ═══════════ */
+  .tw-close {
+    padding: 110px 0;
+    background: var(--dark);
+  }
+  .tw-close__inner {
+    max-width: 720px;
+    text-align: center;
+  }
+  .tw-close__title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.8vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--white);
+    margin: 0 0 16px;
+  }
+  .tw-close__body {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-on-dark-muted);
+    margin: 0 0 30px;
+  }
+  .tw-close__actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ═══════════ RESPONSIVE ═══════════ */
+  @media (max-width: 1024px) {
+    .tw-caps__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .tw-thesis__inner {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .tw-thesis__card {
+      position: static;
+    }
+  }
+
+  @media (max-width: 860px) {
+    .tw-hero {
+      padding: 130px 0 84px;
+    }
+    .tw-steps,
+    .tw-caps,
+    .tw-thesis,
+    .tw-road,
+    .tw-get {
+      padding: 68px 0;
+    }
+    .tw-close {
+      padding: 72px 0;
+    }
+    .tw-sec-head {
+      margin-bottom: 32px;
+    }
+    .tw-steps__grid,
+    .tw-caps__grid,
+    .tw-road__grid,
+    .tw-get__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

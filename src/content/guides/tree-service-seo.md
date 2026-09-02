@@ -305,4 +305,4 @@ Our default tree service playbook follows the framework above. Foundation work f
 
 For partner agencies serving tree service clients, we operate the SEO layer end-to-end while the agency manages the contractor relationship. Tree service is also part of the broader [home services SEO](/guides/home-services-seo/) hub, with cross-linking between this guide and adjacent trades.
 
-If you have an arborist client and want a tailored take on the campaign, run a [free discovery](/partner-package/) and we'll show you exactly what's holding the rankings back, then deliver the fix under your brand.
+If you have an arborist client and want a tailored take on the campaign, run a [free discovery](/book-a-growth-call/) and we'll show you exactly what's holding the rankings back, then deliver the fix under your brand.

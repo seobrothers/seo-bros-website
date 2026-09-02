@@ -213,4 +213,4 @@ Plastic surgery campaigns get the standard framework with category-specific weig
 
 For partner agencies serving plastic surgery practices, we run the SEO and on-site conversion layers while the agency manages the practice relationship.
 
-If you've got a plastic surgery client and you're trying to figure out where the funnel is leaking, [run a free discovery with us](/partner-package/) and we'll diagnose it, then deliver the fix under your brand.
+If you've got a plastic surgery client and you're trying to figure out where the funnel is leaking, [run a free discovery with us](/book-a-growth-call/) and we'll diagnose it, then deliver the fix under your brand.

@@ -205,4 +205,4 @@ GBP gets fully built out and maintained. Reviews collection moves to a structure
 
 The biggest unlocks we usually find: real per-service pages instead of one generic services page, symptom and cost content that captures queries the shop was invisible for, and a fleet section that turns existing fleet relationships into a real lead source.
 
-If you've got an auto repair client stuck below the local pack, [run a free discovery with us](/partner-package/) and we'll show you exactly what's holding the rankings back, then deliver the fix under your brand.
+If you've got an auto repair client stuck below the local pack, [run a free discovery with us](/book-a-growth-call/) and we'll show you exactly what's holding the rankings back, then deliver the fix under your brand.

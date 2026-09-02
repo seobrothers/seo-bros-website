@@ -59,4 +59,4 @@ Our next checkpoint is mid-September. If the deepened pages start registering an
 
 ## How this shows up in client work
 
-This experiment is the same playbook we run inside client campaigns: publish deliberately, measure in Search Console rather than by feel, let the losers teach you something, and never scale a template that has not proven itself. If you run an agency and want this level of honesty about what is and is not working on your clients' sites, [see what it is like to partner with us](/partner-package/). We will show you the real numbers there too.
+This experiment is the same playbook we run inside client campaigns: publish deliberately, measure in Search Console rather than by feel, let the losers teach you something, and never scale a template that has not proven itself. If you run an agency and want this level of honesty about what is and is not working on your clients' sites, [see what it is like to partner with us](/book-a-growth-call/). We will show you the real numbers there too.

@@ -3,8 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 
-// Direct, no-gate booking page. The lower-friction counterpart to the
-// /partner-package/ opt-in: an agency books a call with Mike straight away.
+// Direct booking page for agencies that want a human. The counterpart to
+// /sign-up/, which creates a free account with no call in the way.
 // ⚙️ CONFIG — Devon: Mike's "growth call" Calendly. Reusing the good-fit demo
 // link for now; if Mike spins up a dedicated "Growth Call" event type, swap it.
 const calendlyUrl = "https://calendly.com/mike-2473/mike-s-good-fit-demo";
@@ -48,7 +48,7 @@ const expect = [
           ))}
         </ul>
         <p class="gc__alt">
-          Prefer to look around first? <a href="/partner-package/">Unlock the partner package</a> to explore pricing, case studies, and a free discovery on your own time.
+          Prefer to look around first? <a href="/sign-up/">Start a free account</a> and explore the platform, the reporting, and a free discovery on your own time. No card required.
         </p>
       </div>
 

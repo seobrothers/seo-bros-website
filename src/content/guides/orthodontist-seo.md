@@ -176,4 +176,4 @@ GBP and reviews run in parallel: profile fully built out, photos refreshed quart
 
 The biggest unlocks we usually find on a new orthodontic client: real per-treatment hub pages instead of one thin services page, honest cost content that captures the enormous Invisalign-cost search volume, and a review collection process that turns existing patient satisfaction into actual public reviews.
 
-If you've got an orthodontic client losing consultations to a competitor who's outranking them in the local pack, [run a free discovery with us](/partner-package/) and we'll walk through what's actually holding the rankings back, then deliver the fix under your brand.
+If you've got an orthodontic client losing consultations to a competitor who's outranking them in the local pack, [run a free discovery with us](/book-a-growth-call/) and we'll walk through what's actually holding the rankings back, then deliver the fix under your brand.

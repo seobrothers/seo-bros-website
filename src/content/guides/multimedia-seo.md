@@ -164,4 +164,4 @@ We are a technology-first SEO company offering [white-label SEO](/white-label-se
 
 The way we run it white-label is a workflow, not a menu of separate line items: one researched topic, a blog post plus a long-form video, short cuts and audiograms pulled off the back of it, structured data on everything, and transcripts doing double duty as long-tail text and AI-extractable source material.
 
-If you have a client whose content calendar stops at blog posts, run a [free discovery](/partner-package/) and we will map the multimedia workflow that fits their audience, then deliver it under your brand.
+If you have a client whose content calendar stops at blog posts, run a [free discovery](/book-a-growth-call/) and we will map the multimedia workflow that fits their audience, then deliver it under your brand.

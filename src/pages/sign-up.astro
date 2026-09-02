@@ -2,40 +2,87 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import { SEO_TIERS, usd } from "../data/pricing";
 
-const portalUrl = "https://portal.seobrothers.com/onboard";
+// The front door for agencies. Ungated: everything an agency needs to decide
+// is on the page, and the form at the top creates a real Tideworthy account
+// with no card. The old /partner-package/ gate and /partner-welcome/ unlock
+// page are retired (renamed to _partner-package.astro / _partner-welcome.astro
+// so Astro stops routing them) and 301 to here from public/_redirects.
+//
+// ⚙️ CONFIG — Adam: sign-up endpoint. Placeholder until the app side is built.
+// Pointed at my.seobrothers.com to match the Sign In / Partner Login links in
+// Nav.astro and Footer.astro (Devon, 2026-08-28: my. for now, may change again).
+// It must accept a plain POST of the fields below and reject any submission
+// where `phoneNumber` is non-empty (honeypot). When the real endpoint lands,
+// this one line is the only change needed here.
+const signupUrl = "https://my.seobrothers.com/signup";
 
-const accessItems = [
+const selfServe = SEO_TIERS.find((t) => t.id === "self-serve")!;
+const managed = SEO_TIERS.find((t) => t.id === "managed")!;
+
+// Day-one contents of a free account. Everything here is true before any money
+// changes hands, which is what makes the "no card" promise hold up. Be strict
+// about this list. Keyword research and rank tracking arrive as part of the
+// discovery, not as standing free tools, and white-label client reporting only
+// begins when a campaign does. Do not promise either one here.
+const dayOne = [
   {
-    title: "A walkthrough with Mike",
-    body: "He'll show you how we work, answer questions, and align on what your agency actually needs. Plain conversation, no slide deck pitch.",
+    title: "Your workspace",
+    body: "Set up your client roster, their sites, and their locations. Get the lay of the land across your whole book before you commit a dollar to any of it.",
   },
   {
-    title: "Your first discovery audit, free",
-    body: "Submit a site during the demo to see how we work in real life. Discoveries stay free for every campaign once you're a partner; this first one is your no-strings test drive.",
+    title: "One free discovery",
+    body: "Point us at your own site or a prospect's. Keyword research, a rank-tracking baseline, and the technical read, all in one place. The audit other shops charge thousands for, so you can walk into the pitch already knowing what to fix.",
   },
   {
-    title: "A free Portal account",
-    body: "We'll set one up so you can follow along, message the team, and submit your discovery. Yours to keep whether you become a partner or not.",
+    title: "A line to our team",
+    body: "Message the strategists directly from inside the workspace. A team of twenty plus, run by the two brothers who have been the SEO partner behind other agencies' work since 2015.",
+  },
+];
+
+// The honest version of what free means. This section exists so nobody feels
+// baited later; if it stops being accurate, fix it here first.
+const freeForever = [
+  "Your account and your workspace",
+  "Adding clients, sites, and locations",
+  "Your first discovery audit, including the keyword research and the rank-tracking baseline that come with it",
+];
+
+const costsMoney = [
+  `Self-Serve at ${usd(selfServe.price)}/mo once you want the campaign agents working a live client`,
+  `Managed from ${usd(managed.price)}/mo when you want our team running it under your brand`,
+  "White-label client reporting, which starts when the campaign does",
+  "Links, authority content, and specialist hours beyond what your plan includes",
+  "Website builds and hosting, quoted separately",
+];
+
+const steps = [
+  {
+    n: "1",
+    title: "Create the account",
+    body: "Five fields, no card, no call required. You are inside the workspace in under a minute.",
   },
   {
-    title: "A look at the team behind it",
-    body: "An Account Manager for sales support, positioning, and team training. An SEO Manager for campaign strategy, onboarding, and quarterly planning.",
+    n: "2",
+    title: "Run your free discovery",
+    body: "Add a site and request the audit. You will see exactly how we diagnose a campaign and what we would do first, on a real site you care about.",
   },
   {
-    title: "How the white-label side works",
-    body: "Dashboards, reports, and client-facing materials under your branding. We'll show you what your clients see.",
+    n: "3",
+    title: "Decide how it gets run",
+    body: "Keep it on Self-Serve and drive it yourself, or hand the campaign to us and sell the outcome. You can switch a client from one to the other whenever you want.",
   },
 ];
 ---
 
 <Layout
-  title="Book a Demo with SEO Brothers | White Label SEO Partner"
-  description="Book a quick demo with SEO Brothers. See how we work, get your first discovery audit free, and meet the team behind the partnership. No commitment."
-  noindex={true}
+  title="Sign Up Free | White Label SEO Platform for Agencies | SEO Brothers"
+  description="Create a free SEO Brothers account. Full access to the Tideworthy platform, white-label reporting, and your first discovery audit free. No card required."
 >
   <Nav variant="light" hideCta={true} />
 
+  <!-- ═══════════════ HERO + FORM ═══════════════ -->
   <section class="signup">
     <div class="signup__bg">
       <div class="signup__orb signup__orb--1"></div>
@@ -46,34 +93,22 @@ const accessItems = [
     <div class="container signup__inner">
       <div class="signup__layout">
         <div class="signup__pitch" data-animate>
-          <span class="section-label">Book a Demo</span>
-          <h1 class="signup__title">See how we work, no commitment</h1>
+          <span class="section-label">Free Account</span>
+          <h1 class="signup__title">
+            Start running campaigns
+            <span class="signup__title-gradient">before you spend a dollar.</span>
+          </h1>
           <p class="signup__lede">
-            Share a few quick details and Mike will set up a walkthrough.
-            We'll show you how we work, get your first discovery audit
-            moving, and answer anything you want to ask. No pressure to sign
-            anything before you're ready.
+            Create an account, add a client, and run a free discovery. You
+            see exactly how we diagnose a campaign and what we would do first,
+            on a real site you care about, before there is any money or any
+            agreement on the table.
           </p>
 
-          <div class="signup__mike">
-            <img
-              src="/images/team/mike-eaton.png"
-              alt="Mike Eaton, Account Executive at SEO Brothers"
-              class="signup__mike-photo"
-              loading="lazy"
-              width="64"
-              height="64"
-            />
-            <div>
-              <p class="signup__mike-name">Mike Eaton</p>
-              <p class="signup__mike-role">Account Executive, SEO Brothers</p>
-            </div>
-          </div>
-
-          <h2 class="signup__list-title">What you'll get</h2>
+          <h2 class="signup__list-title">What is in the account on day one</h2>
           <ul class="signup__list">
             {
-              accessItems.map((item) => (
+              dayOne.map((item) => (
                 <li class="signup__list-item">
                   <span class="signup__list-icon" aria-hidden="true">
                     <svg
@@ -99,38 +134,35 @@ const accessItems = [
           </ul>
 
           <p class="signup__note">
-            Discoveries are always free for partners. Your first one runs
-            during the demo. If we're a fit and you want to move forward,
-            a simple partnership agreement comes before any campaigns
-            activate. If we're not a fit, you keep the account and the audit
-            either way.
+            No card, no trial clock, no sales call in the way. A plan starts
+            when you decide a client is ready for one, and a partnership
+            agreement comes before we run anything under your brand. If we are
+            not a fit you keep the account and the audit anyway.
           </p>
-
-          <p class="signup__signoff">— The Brothers</p>
         </div>
 
         <aside class="signup__form-wrap" data-animate>
           <div class="signup__form-head">
-            <h2 class="signup__form-title">Book a Demo</h2>
+            <h2 class="signup__form-title">Create your account</h2>
             <p class="signup__form-sub">
-              Tell us a bit about you and your agency. Mike will reach out to
-              set up the walkthrough.
+              Free, and no card required. Tell us who you are and where your
+              agency lives.
             </p>
           </div>
 
           <form
             method="POST"
-            action={portalUrl}
+            action={signupUrl}
             class="signup__form"
             novalidate
           >
             {/*
               Honeypot. Hidden from humans (off-screen, not focusable, not
               announced to screen readers) but visible in the raw HTML, so
-              automated spam bots tend to fill it in. The Portal rejects any
-              submission where `phoneNumber` is non-empty. Real users never
-              see or touch this field. Do not add a real phone field with
-              this name.
+              automated spam bots tend to fill it in. The sign-up endpoint
+              rejects any submission where `phoneNumber` is non-empty. Real
+              users never see or touch this field. Do not add a real phone
+              field with this name.
             */}
             <div class="signup__hp" aria-hidden="true">
               <label for="phoneNumber">Phone number</label>
@@ -176,7 +208,7 @@ const accessItems = [
 
             <div class="signup__field">
               <label for="email" class="signup__label">
-                Email address
+                Work email
               </label>
               <input
                 type="email"
@@ -220,7 +252,7 @@ const accessItems = [
             </div>
 
             <button type="submit" class="btn btn-primary signup__submit">
-              Book a Demo
+              Create your account
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path
                   d="M3 8h10M9 4l4 4-4 4"
@@ -231,11 +263,120 @@ const accessItems = [
               </svg>
             </button>
 
-            <div class="signup__alt" aria-hidden="true">
-              {/* Reserved space for a future "Prefer to chat first?" link. Leave empty until we want to test it. */}
+            <p class="signup__reassure">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="11" width="18" height="11" rx="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+              No card required. Cancel or walk away at any point.
+            </p>
+
+            <div class="signup__alt">
+              Would rather we just ran it for you?
+              <a href="/book-a-growth-call/">Book a growth call</a> instead.
             </div>
           </form>
         </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ WHAT HAPPENS NEXT ═══════════════ -->
+  <section class="su-steps">
+    <div class="container su-steps__inner">
+      <div class="su-steps__head" data-animate>
+        <span class="section-label">After you sign up</span>
+        <h2 class="su-steps__heading">Three steps, and none of them are a sales call.</h2>
+      </div>
+      <div class="su-steps__grid">
+        {
+          steps.map((s) => (
+            <div class="su-step" data-animate>
+              <span class="su-step__n">{s.n}</span>
+              <h3 class="su-step__title">{s.title}</h3>
+              <p class="su-step__body">{s.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FREE VS PAID ═══════════════ -->
+  <section class="su-honest">
+    <div class="container su-honest__inner">
+      <div class="su-honest__head" data-animate>
+        <span class="section-label">No Surprises</span>
+        <h2 class="su-honest__heading">What is free, and what is not.</h2>
+        <p class="su-honest__sub">
+          "Free account" gets used loosely in this industry. Here is exactly
+          where the line sits for us, so nothing surprises you in week three.
+        </p>
+      </div>
+
+      <div class="su-honest__cols">
+        <div class="su-panel su-panel--free" data-animate>
+          <h3 class="su-panel__title">Free, with no card on file</h3>
+          <ul class="su-panel__list">
+            {
+              freeForever.map((f) => (
+                <li>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  <span>{f}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="su-panel su-panel--paid" data-animate>
+          <h3 class="su-panel__title">Where a plan starts</h3>
+          <ul class="su-panel__list">
+            {
+              costsMoney.map((c) => (
+                <li>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14" />
+                  </svg>
+                  <span>{c}</span>
+                </li>
+              ))
+            }
+          </ul>
+          <a href="/pricing/" class="su-panel__link">
+            See the full pricing breakdown
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ MANAGED PATH ═══════════════ -->
+  <section class="su-managed">
+    <div class="container su-managed__inner" data-animate>
+      <h2 class="su-managed__heading">Do not want to touch the work at all?</h2>
+      <p class="su-managed__body">
+        Most partners land on Managed, where our team runs the campaign inside
+        the platform under your brand and you sell the outcome. That path still
+        starts with a free account if you want to look around first, but it goes
+        faster with a conversation. Twenty minutes, no slide deck, and we will
+        tell you straight if we are not the right partner for your book.
+      </p>
+      <div class="su-managed__actions">
+        <a href="/book-a-growth-call/" class="btn btn-primary btn-lg">
+          Book a growth call
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+        <a href="/white-label-seo-services/" class="btn btn-outline btn-lg">
+          How the partnership works
+        </a>
       </div>
     </div>
   </section>
@@ -255,10 +396,13 @@ const accessItems = [
       form.reportValidity();
       return;
     }
+    // Event name kept as `portal_signups` on purpose: the GA4 conversion is
+    // already configured against it. Renaming it here would silently break
+    // the existing goal. Rename in both places or not at all.
     track("portal_signups");
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.textContent = "Sending...";
+      submitBtn.textContent = "Creating your account...";
     }
   });
 </script>
@@ -298,7 +442,7 @@ const accessItems = [
     height: 420px;
     bottom: -160px;
     right: -120px;
-    background: var(--green);
+    background: var(--teal-light);
   }
 
   .signup__grid-bg {
@@ -348,46 +492,21 @@ const accessItems = [
     margin: 12px 0 18px;
   }
 
+  /* Two shades of one hue, per the site's gradient convention. */
+  .signup__title-gradient {
+    background: linear-gradient(100deg, var(--teal) 0%, var(--teal-light) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
   .signup__lede {
     font-size: 17px;
     line-height: 1.6;
     color: var(--text-secondary);
     margin-bottom: 28px;
     max-width: 520px;
-  }
-
-  .signup__mike {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 0;
-    margin-bottom: 24px;
-    border-top: 1px solid var(--border-light);
-    border-bottom: 1px solid var(--border-light);
-  }
-
-  .signup__mike-photo {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
-  }
-
-  .signup__mike-name {
-    font-family: var(--font-display);
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin: 0;
-    line-height: 1.3;
-  }
-
-  .signup__mike-role {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin: 2px 0 0;
-    line-height: 1.3;
   }
 
   .signup__list-title {
@@ -418,8 +537,8 @@ const accessItems = [
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    background: rgba(68, 185, 123, 0.12);
-    color: var(--green);
+    background: rgba(40, 165, 177, 0.12);
+    color: var(--teal);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -446,18 +565,10 @@ const accessItems = [
   .signup__note {
     font-size: 14px;
     line-height: 1.6;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     padding: 14px 16px;
     background: rgba(15, 23, 42, 0.03);
     border-radius: var(--radius-md);
-    margin-bottom: 20px;
-  }
-
-  .signup__signoff {
-    font-family: var(--font-display);
-    font-style: italic;
-    color: var(--text-primary);
-    font-weight: 500;
     margin: 0;
   }
 
@@ -545,7 +656,7 @@ const accessItems = [
   .signup__input:focus {
     outline: none;
     border-color: var(--teal);
-    box-shadow: 0 0 0 3px rgba(45, 175, 175, 0.15);
+    box-shadow: 0 0 0 3px rgba(40, 165, 177, 0.15);
   }
 
   .signup__input:invalid:not(:placeholder-shown) {
@@ -563,15 +674,255 @@ const accessItems = [
     cursor: not-allowed;
   }
 
-  .signup__alt {
-    min-height: 0;
-  }
-
-  .signup__alt:not(:empty) {
-    margin-top: 12px;
-    text-align: center;
+  .signup__reassure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 0;
     font-size: 13px;
     color: var(--text-muted);
+  }
+
+  .signup__reassure svg {
+    flex-shrink: 0;
+    color: var(--green);
+  }
+
+  .signup__alt {
+    padding-top: 14px;
+    border-top: 1px solid var(--border-light);
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
+
+  .signup__alt a {
+    color: var(--teal-dark);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .signup__alt a:hover {
+    text-decoration: underline;
+  }
+
+  /* ─── Steps ─── */
+  .su-steps {
+    padding: 96px 0;
+    background: var(--light);
+    border-top: 1px solid var(--border-light);
+  }
+
+  .su-steps__head {
+    max-width: 620px;
+    margin-bottom: 44px;
+  }
+
+  .su-steps__head .section-label {
+    display: inline-block;
+  }
+
+  .su-steps__heading {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.6vw, 38px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--text-primary);
+    margin: 12px 0 0;
+  }
+
+  .su-steps__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .su-step {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+  }
+
+  .su-step__n {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(40, 165, 177, 0.12);
+    color: var(--teal-dark);
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .su-step__title {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .su-step__body {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  /* ─── Free vs paid ─── */
+  .su-honest {
+    padding: 96px 0;
+    background: var(--white);
+  }
+
+  .su-honest__head {
+    max-width: 640px;
+    margin-bottom: 44px;
+  }
+
+  .su-honest__head .section-label {
+    display: inline-block;
+  }
+
+  .su-honest__heading {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.6vw, 38px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--text-primary);
+    margin: 12px 0 14px;
+  }
+
+  .su-honest__sub {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .su-honest__cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .su-panel {
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 30px 28px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .su-panel--free {
+    background: rgba(40, 165, 177, 0.05);
+    border-color: rgba(40, 165, 177, 0.28);
+  }
+
+  .su-panel--paid {
+    background: var(--light);
+  }
+
+  .su-panel__title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin: 0 0 18px;
+  }
+
+  .su-panel__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+  }
+
+  .su-panel__list li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  .su-panel__list svg {
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .su-panel--free .su-panel__list svg {
+    color: var(--teal);
+  }
+
+  .su-panel--paid .su-panel__list svg {
+    color: var(--text-muted);
+  }
+
+  .su-panel__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 22px;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--teal-dark);
+    text-decoration: none;
+  }
+
+  .su-panel__link:hover {
+    text-decoration: underline;
+  }
+
+  /* ─── Managed path ─── */
+  .su-managed {
+    padding: 96px 0;
+    background: var(--dark);
+  }
+
+  .su-managed__inner {
+    max-width: 760px;
+    text-align: center;
+  }
+
+  .su-managed__heading {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.6vw, 38px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--text-on-dark);
+    margin: 0 0 16px;
+  }
+
+  .su-managed__body {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-on-dark-muted);
+    margin: 0 0 30px;
+  }
+
+  .su-managed__actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   @media (max-width: 960px) {
@@ -591,6 +942,17 @@ const accessItems = [
 
     .signup__title {
       font-size: clamp(32px, 7vw, 44px);
+    }
+
+    .su-steps,
+    .su-honest,
+    .su-managed {
+      padding: 68px 0;
+    }
+
+    .su-steps__grid,
+    .su-honest__cols {
+      grid-template-columns: 1fr;
     }
   }
 

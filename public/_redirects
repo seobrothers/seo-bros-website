@@ -232,3 +232,14 @@
 /feed/podcast/the-niched-agency/                            /podcast/                                         301
 /guides/:slug/feed/                                         /guides/                                          301
 /feed/*                                                     /                                                 301
+
+# ============================================================================
+# RETIRED PARTNER GATE — /partner-package/ was the name+email wall and
+# /partner-welcome/ the unlocked page behind it. Both are replaced by the
+# ungated /sign-up/, which creates a real free account in the app. The .astro
+# files still exist as _partner-package.astro / _partner-welcome.astro (the
+# underscore stops Astro routing them), so these 301s catch inbound links from
+# old emails, proposals, and anything already indexed.
+# ============================================================================
+/partner-package/                                           /sign-up/                                         301
+/partner-welcome/                                           /sign-up/                                         301

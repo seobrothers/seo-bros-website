@@ -243,4 +243,4 @@ Our default audit deliverable is a recorded walkthrough plus a branded PDF and a
 
 For partner agencies, we white-label the audit so it goes out under their brand. We build the audit, they deliver it. The recording is recorded by them or by us under their brand depending on the engagement.
 
-If you're trying to figure out whether to run audits in-house or partner on them, [get in touch](/partner-package/) and we'll walk through your model.
+If you're trying to figure out whether to run audits in-house or partner on them, [get in touch](/book-a-growth-call/) and we'll walk through your model.

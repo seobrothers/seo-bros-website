@@ -228,4 +228,4 @@ Plumbing is part of the broader [home services SEO hub](/guides/home-services-se
 
 For partner agencies serving plumbing clients, we operate the SEO layer end-to-end while the agency manages the contractor relationship.
 
-If you have a plumbing client and want a tailored take on the campaign, run a [free discovery](/partner-package/) and we'll show you exactly what's holding the rankings back, then deliver the fix under your brand.
+If you have a plumbing client and want a tailored take on the campaign, run a [free discovery](/book-a-growth-call/) and we'll show you exactly what's holding the rankings back, then deliver the fix under your brand.

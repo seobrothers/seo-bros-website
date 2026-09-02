@@ -246,4 +246,4 @@ The framework above is our default for home services campaigns. Vertical-specifi
 
 For partner agencies serving home services clients, we operate the SEO layer end-to-end while the agency manages the contractor relationship.
 
-If you've got a home services client stuck below the local pack, run a [free discovery](/partner-package/) and we'll show you exactly what's holding the rankings back, then deliver the fix under your brand.
+If you've got a home services client stuck below the local pack, run a [free discovery](/book-a-growth-call/) and we'll show you exactly what's holding the rankings back, then deliver the fix under your brand.

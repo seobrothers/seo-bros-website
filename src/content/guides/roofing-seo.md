@@ -182,4 +182,4 @@ The approach that consistently moves roofing campaigns is splitting the work int
 
 The biggest unlocks we usually find on a new roofing client: legitimate cost and material content where there was none, honest insurance and claims pages that build trust, real suburb pages instead of templated ones, storm-response content ready before the weather, call tracking that exposes which pages actually book inspections, and a GBP that is maintained instead of set up once and forgotten.
 
-If you've got a roofing client stuck below the local pack or watching storm leads go to a competitor with a faster site, run a [free discovery](/partner-package/) and we will show you exactly what is holding the rankings back, then deliver the fix under your brand.
+If you've got a roofing client stuck below the local pack or watching storm leads go to a competitor with a faster site, run a [free discovery](/book-a-growth-call/) and we will show you exactly what is holding the rankings back, then deliver the fix under your brand.

@@ -6,55 +6,73 @@
 // here so the numbers never drift apart. Update a price once, here.
 
 export interface SeoTier {
-  id: "tiny" | "typical" | "turbo";
+  id: "self-serve" | "managed" | "custom";
   name: string;
   /** Monthly wholesale price in USD. */
   price: number;
+  /** Render as a floor ("from $1,000+") instead of a fixed monthly rate. */
+  from?: boolean;
+  /** One-line answer to "who does the work". Sits directly under the name. */
+  who: string;
   blurb: string;
   highlights: string[];
+  /**
+   * Where this tier's button goes. Self-Serve and Managed both enter through
+   * the free account at /sign-up/: the partner signs up, runs a discovery, and
+   * decides from inside whether to drive it or hand it to us. Only Custom needs
+   * a human up front, because it has to be scoped before there is a price.
+   */
+  cta: { label: string; href: string };
   featured?: boolean;
   accent: "teal" | "purple" | "green";
 }
 
 export const SEO_TIERS: SeoTier[] = [
   {
-    id: "tiny",
-    name: "Tiny",
-    price: 360,
+    id: "self-serve",
+    name: "Self-Serve",
+    price: 174,
+    who: "You run it.",
     blurb:
-      "Base-level managed campaign. Right for ultra-low-competition industries or sparsely-populated locations where steady fundamentals win.",
+      "Full access to Tideworthy with the campaign agents doing the heavy lifting. You set the direction and own the hours. We are on support when you need us.",
     highlights: [
-      "Semi-annual strategy review",
-      "1 backlink + 1.5 hours of SEO Time each month",
-      "Best for low-competition local",
+      "Tideworthy platform + campaign agents",
+      "Support included, you own the hours",
+      "Best for partners with in-house capacity",
     ],
+    cta: { label: "Start for free", href: "/sign-up/" },
     accent: "teal",
   },
   {
-    id: "typical",
-    name: "Typical",
-    price: 620,
+    id: "managed",
+    name: "Managed",
+    price: 600,
+    who: "We run it, under your brand.",
     blurb:
-      "Our most-quoted package. Full-stack local SEO with content, links, Maps, and SEO Time directed at the Priority Intents that move the campaign.",
+      "Our most-quoted package and where most partners land. Our team runs the campaign inside Tideworthy under your brand, so you sell the outcome and never touch the work.",
     highlights: [
       "Quarterly strategy + monthly content",
       "2 backlinks + 3 hours of SEO Time each month",
-      "Best for most local businesses",
+      "True white label, our name nowhere",
     ],
+    cta: { label: "Start for free", href: "/sign-up/" },
     featured: true,
     accent: "purple",
   },
   {
-    id: "turbo",
-    name: "Turbo",
-    price: 1010,
+    id: "custom",
+    name: "Custom",
+    price: 1000,
+    from: true,
+    who: "We scope it.",
     blurb:
-      "When the market is tougher or speed matters more. Quarterly strategy reviews with more SEO Time, more links, and more content each month.",
+      "For the messy and the complex: migrations, multi-location rollouts, franchise systems, and competitive markets where the card prices will not move the needle.",
     highlights: [
-      "Quarterly strategy reviews",
-      "4 backlinks + 5.5 hours of SEO Time each month",
-      "Best for competitive markets",
+      "Scoped in your free discovery",
+      "Multi-location, franchise, and migration work",
+      "Volume and low-competition rates quoted here too",
     ],
+    cta: { label: "Book a growth call", href: "/book-a-growth-call/" },
     accent: "green",
   },
 ];

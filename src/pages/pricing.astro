@@ -23,7 +23,8 @@ import {
 const tiers = SEO_TIERS;
 
 // À-la-carte rate card (the building blocks behind the packages, matching the
-// package builder on /partner-welcome/). Website builds render separately below.
+// package builder, retired with /partner-welcome/). Website builds render
+// separately below.
 const rateCard = [
   { name: REPORTING.label, value: usd(REPORTING.price), suffix: "/ mo", note: REPORTING.note, tag: "In every campaign" },
   { name: HEALTH.label, value: usd(HEALTH.price), suffix: "/ mo", note: HEALTH.note, tag: "In every campaign" },
@@ -42,10 +43,15 @@ interface ComparisonRow {
   values: (string | true)[];
 }
 
+// Column order matches SEO_TIERS: Self-Serve, Managed, Custom.
+// On Self-Serve the partner runs the campaign themselves, so cadence and
+// volume rows read "Set by you" rather than a number we commit to. Rows that
+// carry a real per-unit cost to us (links, content, our specialist time) are
+// marked "Add-on" and still need Devon's call on what self-serve includes.
 const comparison: ComparisonRow[] = [
   {
     label: "Strategic review",
-    values: ["Semi-annual", "Quarterly", "Quarterly"],
+    values: ["Set by you", "Quarterly", "Quarterly"],
   },
   {
     label: "Technical crawl review + fixes",
@@ -57,23 +63,23 @@ const comparison: ComparisonRow[] = [
   },
   {
     label: "Local Maps focus location",
-    values: ["1", "1", "1"],
+    values: ["Set by you", "1", "1"],
   },
   {
     label: "Backlinks per month",
-    values: ["1", "2", "4"],
+    values: ["Add-on", "2", "4+"],
   },
   {
     label: "Priority Intents set",
-    values: ["Semi-annually", "Quarterly", "Quarterly"],
+    values: ["Set by you", "Quarterly", "Quarterly"],
   },
   {
     label: "SEO Time per month",
-    values: ["1.5 hours", "3 hours", "5.5 hours"],
+    values: ["Your team", "3 hours", "5.5 hours+"],
   },
   {
     label: "Authority content per month",
-    values: ["0", "1", "2"],
+    values: ["Add-on", "1", "2+"],
   },
 ];
 
@@ -85,7 +91,7 @@ interface Definition {
 const definitions: Definition[] = [
   {
     term: "Strategic review",
-    body: "A scheduled session with your dedicated strategist to evaluate campaign performance, adjust priorities, and align on what is next. Tiny gets two per year, Typical and Turbo four.",
+    body: "A scheduled session with your dedicated strategist to evaluate campaign performance, adjust priorities, and align on what is next. Self-Serve partners run their own; Managed and Custom get four a year.",
   },
   {
     term: "Technical crawl review + fixes",
@@ -105,11 +111,11 @@ const definitions: Definition[] = [
   },
   {
     term: "Priority Intents",
-    body: "The search intents we're actively working to rank for this cycle, set at each strategic review. Each intent maps to whichever page is best positioned to win it (sometimes the page you'd expect, sometimes a different one we surface during planning). Intents can be organic ('invisalign halifax') or map-based ('dentist in halifax'). Strategic review cadence determines re-setting: semi-annually on Tiny, quarterly on Typical and Turbo.",
+    body: "The search intents we're actively working to rank for this cycle, set at each strategic review. Each intent maps to whichever page is best positioned to win it (sometimes the page you'd expect, sometimes a different one we surface during planning). Intents can be organic ('invisalign halifax') or map-based ('dentist in halifax'). Strategic review cadence determines re-setting: whenever you choose on Self-Serve, quarterly on Managed and Custom.",
   },
   {
     term: "SEO Time",
-    body: "Specialist time set aside each month and directed at the next most important thing for the site: geo and location pages, service-page support, on-page optimization, page speed, and technical improvements. It is a time allocation, not loose 'flex' hours. Catching and fixing crawl errors is the health score's job; SEO Time is the proactive improvement work. Tiny gets 1.5 hours, Typical 3, Turbo 5.5, and you can add more at $60 per hour.",
+    body: "Specialist time set aside each month and directed at the next most important thing for the site: geo and location pages, service-page support, on-page optimization, page speed, and technical improvements. It is a time allocation, not loose 'flex' hours. Catching and fixing crawl errors is the health score's job; SEO Time is the proactive improvement work. Managed includes 3 hours and Custom is scoped higher. On Self-Serve the hours are your team's, and you can buy ours at $60 per hour.",
   },
   {
     term: "Authority content",
@@ -258,7 +264,9 @@ const breadcrumbSchema = {
           business websites. The packages below are real starting points, not
           a fixed menu. Every campaign includes a free discovery, so the
           actual quote reflects budget, current performance, competition, and
-          expectations.
+          expectations. Every tier runs in <a href="/tideworthy/">Tideworthy</a>,
+          the platform we built: AI agents do the daily delivery work, you draw
+          the approval line, and everything your client sees carries your brand.
         </p>
       </div>
 
@@ -293,11 +301,12 @@ const breadcrumbSchema = {
               )}
               <header class="tier__head">
                 <h3 class="tier__name">{tier.name}</h3>
+                <p class="tier__who">{tier.who}</p>
                 <p class="tier__blurb">{tier.blurb}</p>
               </header>
 
               <div class="tier__price">
-                <span class="tier__price-value">{usd(tier.price)}</span>
+                <span class="tier__price-value">{usd(tier.price)}{tier.from && "+"}</span>
                 <span class="tier__price-suffix">/ mo</span>
               </div>
 
@@ -323,13 +332,13 @@ const breadcrumbSchema = {
               </ul>
 
               <a
-                href="/partner-package/"
+                href={tier.cta.href}
                 class:list={[
                   "tier__cta",
                   tier.featured ? "btn btn-primary" : "btn btn-outline--dark",
                 ]}
               >
-                Get Access
+                {tier.cta.label}
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                   <path
                     d="M3 8h10M9 4l4 4-4 4"
@@ -372,7 +381,9 @@ const breadcrumbSchema = {
                     ]}
                   >
                     <span class="comparison__th-name">{tier.name}</span>
-                    <span class="comparison__th-price">{usd(tier.price)}/mo</span>
+                    <span class="comparison__th-price">
+                      {usd(tier.price)}{tier.from && "+"}/mo
+                    </span>
                   </th>
                 ))}
               </tr>
@@ -508,8 +519,8 @@ const breadcrumbSchema = {
         </div>
 
         <p class="addons__footnote">
-          Want it all in one number? <a href="/partner-package/">Build your own
-          package</a> and we will scope a single monthly quote across SEO, the
+          Want it all in one number? <a href="/book-a-growth-call/">Book a growth
+          call</a> and we will scope a single monthly quote across SEO, the
           website, and the add-ons.
         </p>
       </div>
@@ -1045,6 +1056,24 @@ const breadcrumbSchema = {
     letter-spacing: 0.18em;
     text-transform: uppercase;
     padding: 24px 20px 20px;
+  }
+
+  .tiers__intro .section-subtext a {
+    color: var(--teal-dark);
+    font-weight: 600;
+  }
+
+  .tier__who {
+    margin: 0 0 10px;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--teal);
+  }
+
+  .tier--featured .tier__who {
+    color: var(--teal-light);
   }
 
   .comparison__th--teal .comparison__th-name { color: var(--teal); }

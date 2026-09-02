@@ -260,4 +260,4 @@ The cheapest model on paper is rarely the cheapest in practice once you price yo
 
 We run the strategic-partner model, and we are clear about what that means. Plenty of providers will fulfil tasks, and a few will even put their own people on your sales calls. We don't, because the white label only works when you are the only name your client ever sees. We back your sales from behind, build you a productized service around how you actually sell, handle any budget from a four-figure local client to a five-figure national one, and give you and your client a collaborative portal under your own domain rather than a monthly PDF.
 
-If that is the model you want, here is [how we work with agency partners](/white-label-seo-services/) and [what it is like to partner with us](/partner-package/).
+If that is the model you want, here is [how we work with agency partners](/white-label-seo-services/) and [what it is like to partner with us](/book-a-growth-call/).

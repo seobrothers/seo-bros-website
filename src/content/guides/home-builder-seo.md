@@ -149,4 +149,4 @@ Home builders are one of the categories where the work is patient and the payoff
 
 For builders working with brand-and-design agencies, we operate the SEO layer end-to-end. Most builder marketing focuses on the visual experience at the expense of the search architecture. Both can coexist, but it takes deliberate work to make them.
 
-If you've got a builder client watching competitors fill model homes faster, or whose custom inquiries are skewing toward unqualified shoppers, [run a free discovery with us](/partner-package/) and we'll diagnose what the search work could actually deliver, then run it under your brand.
+If you've got a builder client watching competitors fill model homes faster, or whose custom inquiries are skewing toward unqualified shoppers, [run a free discovery with us](/book-a-growth-call/) and we'll diagnose what the search work could actually deliver, then run it under your brand.

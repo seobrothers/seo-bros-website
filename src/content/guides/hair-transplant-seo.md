@@ -210,4 +210,4 @@ We treat hair transplant clinics as a content-and-credibility program first, loc
 
 The biggest unlocks we usually find on a new hair transplant client: a single blended "hair transplant" page that should be three, cost pages that do not exist, a gallery that is thin or stock, and surgeon credentials buried where neither patients nor Google can see them.
 
-We run this white-label for agencies with clinic clients, and direct for clinics that come to us. If you have a hair transplant client whose consultations are not matching the search volume in their market, run a [free discovery](/partner-package/) and we will show you exactly where the leverage is, then deliver the fix under your brand.
+We run this white-label for agencies with clinic clients, and direct for clinics that come to us. If you have a hair transplant client whose consultations are not matching the search volume in their market, run a [free discovery](/book-a-growth-call/) and we will show you exactly where the leverage is, then deliver the fix under your brand.

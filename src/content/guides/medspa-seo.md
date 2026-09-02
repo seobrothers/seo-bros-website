@@ -177,4 +177,4 @@ A medspa SEO program that works has the same shape every time: a clean treatment
 
 The timeline is six to twelve months for visible compounding, faster if the local pack work is the starting point and the existing content is genuinely thin (which it usually is).
 
-If you've got a medspa or aesthetic client whose name isn't showing in the local pack where it should, [run a free discovery with us](/partner-package/) and we'll diagnose where the leverage actually is, then build it out under your brand.
+If you've got a medspa or aesthetic client whose name isn't showing in the local pack where it should, [run a free discovery with us](/book-a-growth-call/) and we'll diagnose where the leverage actually is, then build it out under your brand.
