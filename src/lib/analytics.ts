@@ -39,7 +39,7 @@ export function initOutboundTracking(): void {
   });
 }
 
-// Calendly inline iframes (Mike's "Book a walkthrough" / growth-call embeds)
+// Calendly inline iframes (the "Book a walkthrough" / growth-call embeds)
 // post a "calendly.event_scheduled" message to the parent window when a booking
 // completes. Fire our analytics event off that, anywhere a Calendly embed lives.
 export function initCalendlyTracking(): void {
