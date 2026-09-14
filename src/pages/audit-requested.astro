@@ -11,7 +11,7 @@ import Footer from "../components/Footer.astro";
 // Direct visits (no ?url=) just see the confirmation. noindex either way.
 //
 // ⚙️ CONFIG — Devon: the Calendly link for the human discovery review call.
-const reviewCallUrl = "https://calendly.com/devon-bate/discovery-review";
+const reviewCallUrl = "https://calendly.com/d/d2kj-dd8-pc6/discovery-walkthrough";
 ---
 
 <Layout
@@ -67,13 +67,13 @@ const reviewCallUrl = "https://calendly.com/devon-bate/discovery-review";
       <div class="disco__cta" id="disco-cta" hidden>
         <h2 class="disco__cta-title">Want our team to go deeper?</h2>
         <p class="disco__cta-text">
-          Grab a 15-minute slot below and we'll do a full human audit and walk
+          Grab a slot below (we block 30 minutes, most calls wrap in 15) and we'll do a full human audit and walk
           you through exactly what we'd do, no pressure.
         </p>
         <iframe
           class="disco__calendly"
           src={`${reviewCallUrl}?hide_gdpr_banner=1`}
-          title="Book a 15-minute review call with SEO Brothers"
+          title="Book a discovery walkthrough call with SEO Brothers"
           loading="lazy"></iframe>
         <div class="disco__cta-secondary">
           <a href="/case-studies/">See results we've gotten</a>
