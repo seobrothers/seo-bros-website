@@ -97,6 +97,18 @@ export const TIER_IDENTITY: Record<string, TierIdentity> = {
   },
 };
 
+/** The default package's monthly count per deliverable family. */
+function packageCounts(pricing: PlatformPricing, plan: PlatformPlan): Record<string, number> {
+  const familyOf = new Map(pricing.deliverables.map((d) => [d.slug, d.family]));
+  const counts: Record<string, number> = {};
+  for (const d of plan.defaultPackage?.deliverables ?? []) {
+    const family = familyOf.get(d.slug);
+    if (!family) continue;
+    counts[family] = (counts[family] ?? 0) + d.quantity;
+  }
+  return counts;
+}
+
 export interface MarketingTier {
   key: string;
   name: string;
@@ -108,10 +120,12 @@ export interface MarketingTier {
   featured?: boolean;
   accent: "teal" | "purple" | "green";
   maximums: Record<string, number>;
+  /** What the plan's default package delivers each month, by family. */
+  counts: Record<string, number>;
   processes: { key: string; name: string; cadence: string | null }[];
 }
 
-/** The plans as the pricing page shows them: marketing names, counts at the plan maximums. */
+/** The plans as the pricing page shows them: marketing names, the default package's counts. */
 export function marketingTiers(pricing: PlatformPricing): MarketingTier[] {
   return pricing.plans.map((plan) => {
     const id = TIER_IDENTITY[plan.key] ?? {
@@ -121,10 +135,11 @@ export function marketingTiers(pricing: PlatformPricing): MarketingTier[] {
       bestFor: "",
     };
     const m = plan.maximums;
+    const c = packageCounts(pricing, plan);
     const specialist = plan.defaultPackage?.processes.find((p) => p.key === "ongoing-specialist-work-execution");
     const highlights = [
-      `Up to ${m.guest_post_link} backlinks and ${m.content} content pieces a month`,
-      `Up to ${m.gbp_post} Business Profile posts and ${m.citation} citations`,
+      `${c.guest_post_link ?? 0} backlinks and ${c.content ?? 0} content pieces a month`,
+      `${c.gbp_post ?? 0} Business Profile posts and ${c.citation ?? 0} citations`,
       specialist?.cadence ? `Specialist work ${specialist.cadence.toLowerCase()}` : null,
       id.bestFor || null,
     ].filter((h): h is string => Boolean(h));
@@ -138,6 +153,7 @@ export function marketingTiers(pricing: PlatformPricing): MarketingTier[] {
       featured: id.featured,
       accent: id.accent,
       maximums: m,
+      counts: c,
       processes: plan.defaultPackage?.processes ?? [],
     };
   });
@@ -149,7 +165,7 @@ export interface ComparisonRow {
   group?: string;
 }
 
-/** The comparison table: process cadences, the monthly maximums, what every campaign includes. */
+/** The comparison table: process cadences, the monthly counts, what every campaign includes. */
 export function comparisonRows(pricing: PlatformPricing, tiers: MarketingTier[]): ComparisonRow[] {
   const rows: ComparisonRow[] = [];
   // Process cadence per tier, in the platform's card order. A tier that does
@@ -173,9 +189,9 @@ export function comparisonRows(pricing: PlatformPricing, tiers: MarketingTier[])
   );
   for (const family of families) {
     rows.push({
-      group: "Every month, up to",
+      group: "Every month",
       label: familyLabel[family.key] ?? family.label,
-      values: tiers.map((t) => String(t.maximums[family.key] ?? 0)),
+      values: tiers.map((t) => String(t.counts[family.key] ?? 0)),
     });
   }
   rows.push({ group: "In every campaign", label: "Live reporting dashboard + AI visibility tracking", values: tiers.map(() => true) });
