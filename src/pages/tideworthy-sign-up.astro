@@ -1,0 +1,369 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import TideworthySignupForm from "../components/TideworthySignupForm.astro";
+import { loadPlatformPricing, marketingTiers } from "../data/platform-pricing";
+import { usd } from "../data/pricing";
+
+// The one conversion page on the site. Every Start Free Trial button lands
+// here: the form, the reasons to start, and nothing to scroll past. The
+// platform story lives on /tideworthy/; the numbers live on /pricing/.
+// /sign-up/, /partner-package/ and /partner-welcome/ 301 here.
+
+const { data: platform } = await loadPlatformPricing();
+const tiers = marketingTiers(platform);
+const tiny = tiers[0];
+const implementation = tiny?.implementation ?? 75;
+
+const dayOne = [
+  {
+    title: "Your workspace, under your brand",
+    body: "Add your clients, their sites and their locations. See the whole book in one place before a dollar moves.",
+  },
+  {
+    title: "A free discovery on any site",
+    body: "Point us at a prospect or your own site. Keyword research, a rank-tracking baseline and the technical read, in the same report your client would see.",
+  },
+  {
+    title: "A line to the team",
+    body: "Message the strategists from inside the workspace. Twenty-plus people, run by the two brothers who have been the SEO partner behind other agencies since 2015.",
+  },
+];
+
+const steps = [
+  {
+    n: "1",
+    title: "Create the account",
+    body: "Six fields and a password. You are inside the workspace in under a minute, with a code in your inbox to confirm the email.",
+  },
+  {
+    n: "2",
+    title: "Run a free discovery",
+    body: "Add a site and request the audit. You see exactly how we diagnose a campaign and what we would do first.",
+  },
+  {
+    n: "3",
+    title: "Start a client when you are ready",
+    body: `Pick a plan and activate. The 14-day trial starts then, on ${tiny?.name ?? "Tiny"}, and you can hand implementation to us for ${usd(implementation)} a month any time.`,
+  },
+];
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", Astro.site).href },
+    { "@type": "ListItem", position: 2, name: "Tideworthy", item: new URL("/tideworthy/", Astro.site).href },
+    { "@type": "ListItem", position: 3, name: "Start Free Trial", item: new URL("/tideworthy-sign-up/", Astro.site).href },
+  ],
+};
+---
+
+<Layout
+  title="Start Your Free Trial | Tideworthy by SEO Brothers"
+  description="Create your free Tideworthy account: your white-label workspace, a free discovery on any site, and a line to our team. 14 days free when you start your first client. No card required."
+  schema={[breadcrumbSchema]}
+>
+  <Nav />
+
+  <section class="tsu">
+    <div class="tsu__bg" aria-hidden="true">
+      <div class="tsu__orb tsu__orb--1"></div>
+      <div class="tsu__orb tsu__orb--2"></div>
+    </div>
+    <div class="container tsu__inner">
+      <div class="tsu__copy" data-animate>
+        <span class="tsu__label">
+          <span class="tsu__label-dot"></span>
+          Free Trial
+        </span>
+        <h1 class="tsu__title">
+          Your agency's SEO engine,
+          <span class="tsu__title-gradient">with your name on it.</span>
+        </h1>
+        <p class="tsu__lede">
+          Tideworthy runs the daily delivery for every client you bring: content,
+          local SEO, technical fixes, links, monitoring and reporting, under your
+          brand. Create the account now. Pay nothing until you start a client.
+        </p>
+        <ul class="tsu__list">
+          {
+            dayOne.map((item) => (
+              <li class="tsu__item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <div>
+                  <strong>{item.title}</strong>
+                  <p>{item.body}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="tsu__more">
+          Want the full story first? <a href="/tideworthy/">Read about the platform</a> or
+          <a href="/pricing/">see the plans</a>.
+        </p>
+      </div>
+      <div class="tsu__form" data-animate>
+        <TideworthySignupForm heading="Start your free trial" />
+      </div>
+    </div>
+  </section>
+
+  <section class="tsu-steps">
+    <div class="container">
+      <div class="tsu-steps__head" data-animate>
+        <span class="section-label">What Happens Next</span>
+        <h2 class="tsu-steps__heading">Three steps, and none of them are a sales call.</h2>
+      </div>
+      <div class="tsu-steps__grid" data-stagger>
+        {
+          steps.map((s) => (
+            <div class="tsu-step" data-animate>
+              <span class="tsu-step__n">{s.n}</span>
+              <h3 class="tsu-step__title">{s.title}</h3>
+              <p class="tsu-step__body">{s.body}</p>
+            </div>
+          ))
+        }
+      </div>
+      <p class="tsu-steps__foot" data-animate>
+        Plans start at {usd(tiny?.price ?? 174)} a month per client, wholesale. You set your own price to your client.
+        Prefer to talk it through? <a href="/book-a-growth-call/">Book a call</a>.
+      </p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .tsu {
+    position: relative;
+    padding: 150px 0 90px;
+    background: var(--dark);
+    overflow: hidden;
+  }
+  .tsu__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .tsu__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+  }
+  .tsu__orb--1 {
+    width: 520px;
+    height: 520px;
+    left: -160px;
+    top: -120px;
+    background: var(--teal);
+  }
+  .tsu__orb--2 {
+    width: 420px;
+    height: 420px;
+    right: -120px;
+    bottom: -160px;
+    background: var(--purple);
+  }
+  .tsu__inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(360px, 460px);
+    gap: 56px;
+    align-items: start;
+  }
+  .tsu__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+  }
+  .tsu__label-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--teal-light);
+    box-shadow: 0 0 0 4px rgba(51, 196, 209, 0.2);
+  }
+  .tsu__title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 4.6vw, 56px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    margin: 20px 0 18px;
+  }
+  .tsu__title-gradient {
+    display: block;
+    background: linear-gradient(100deg, var(--teal) 0%, var(--teal-light) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .tsu__lede {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--text-on-dark-muted);
+    margin: 0 0 28px;
+    max-width: 540px;
+  }
+  .tsu__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .tsu__item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .tsu__item svg {
+    flex: none;
+    margin-top: 3px;
+    color: var(--green-light);
+  }
+  .tsu__item strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-on-dark);
+    margin-bottom: 4px;
+  }
+  .tsu__item p {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text-on-dark-muted);
+  }
+  .tsu__more {
+    margin: 30px 0 0;
+    font-size: 14px;
+    color: var(--text-on-dark-muted);
+  }
+  .tsu__more a {
+    color: var(--teal-light);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(51, 196, 209, 0.4);
+  }
+  .tsu__form {
+    position: sticky;
+    top: 110px;
+  }
+
+  .tsu-steps {
+    padding: 96px 0;
+    background: var(--white);
+  }
+  .tsu-steps__head {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 48px;
+  }
+  .tsu-steps__head .section-label {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .tsu-steps__heading {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 38px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 12px 0 0;
+  }
+  .tsu-steps__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+  .tsu-step {
+    padding: 30px 28px;
+    background: var(--light);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+  }
+  .tsu-step__n {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .tsu-step__title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin: 0 0 8px;
+  }
+  .tsu-step__body {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+  .tsu-steps__foot {
+    text-align: center;
+    margin: 40px auto 0;
+    max-width: 620px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  .tsu-steps__foot a {
+    color: var(--teal);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(40, 165, 177, 0.35);
+  }
+
+  @media (max-width: 1024px) {
+    .tsu__inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .tsu__form {
+      position: static;
+      max-width: 520px;
+    }
+    .tsu-steps__grid {
+      grid-template-columns: 1fr;
+      max-width: 520px;
+    }
+  }
+  @media (max-width: 768px) {
+    .tsu {
+      padding: 120px 0 64px;
+    }
+    .tsu-steps {
+      padding: 64px 0;
+    }
+  }
+</style>
