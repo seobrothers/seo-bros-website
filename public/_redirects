@@ -238,9 +238,7 @@
 # ============================================================================
 /tideworthy-sign-up/                                        /sign-up/                                         301
 /tideworthy-sign-up                                         /sign-up/                                         301
-# ----------------------------------------------------------------------------
-# ============================================================================
-/partner-package/                                           /sign-up/                              301
-/partner-package                                            /sign-up/                              301
-/partner-welcome/                                           /sign-up/                              301
-/partner-welcome                                            /sign-up/                              301
+/partner-package/                                           /sign-up/                                         301
+/partner-package                                            /sign-up/                                         301
+/partner-welcome/                                           /sign-up/                                         301
+/partner-welcome                                            /sign-up/                                         301
