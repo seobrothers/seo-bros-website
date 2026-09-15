@@ -22,6 +22,8 @@ export interface PlatformPlan {
   name: string;
   priceCents: number;
   implementationCents: number;
+  /** Tracked keywords per campaign on this plan (older feeds: absent, use the account-wide number). */
+  trackedKeywords?: number;
   maximums: Record<string, number>;
   defaultPackage: {
     name: string;
@@ -120,6 +122,7 @@ export interface MarketingTier {
   featured?: boolean;
   accent: "teal" | "purple" | "green";
   maximums: Record<string, number>;
+  trackedKeywords: number;
   /** What the plan's default package delivers each month, by family. */
   counts: Record<string, number>;
   processes: { key: string; name: string; cadence: string | null }[];
@@ -153,6 +156,7 @@ export function marketingTiers(pricing: PlatformPricing): MarketingTier[] {
       featured: id.featured,
       accent: id.accent,
       maximums: m,
+      trackedKeywords: plan.trackedKeywords ?? pricing.trackedKeywords,
       counts: c,
       processes: plan.defaultPackage?.processes ?? [],
     };
@@ -199,7 +203,7 @@ export function comparisonRows(pricing: PlatformPricing, tiers: MarketingTier[])
   rows.push({
     group: "In every campaign",
     label: "Tracked keywords",
-    values: tiers.map(() => String(pricing.trackedKeywords)),
+    values: tiers.map((t) => String(t.trackedKeywords)),
   });
   rows.push({
     group: "In every campaign",

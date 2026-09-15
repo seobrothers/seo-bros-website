@@ -78,7 +78,7 @@ const definitions: Definition[] = [
   },
   {
     term: "Tracked keywords",
-    body: `Up to ${platform.trackedKeywords} keywords tracked per campaign on every plan, with rankings in the dashboard.`,
+    body: `Keywords tracked per campaign with rankings in the dashboard: ${tiers.map((t) => `${t.trackedKeywords} on ${t.name}`).join(", ")}.`,
   },
   {
     term: "Website changes implemented for you",
@@ -252,7 +252,7 @@ const breadcrumbSchema = {
             <button type="button" class="currency-toggle__btn is-active" data-currency="USD" aria-pressed="true">USD</button>
             <button type="button" class="currency-toggle__btn" data-currency="CAD" aria-pressed="false">CAD</button>
           </div>
-          <button type="button" class="impl-toggle" id="impl-toggle" role="switch" aria-checked="false">
+          <button type="button" class="impl-toggle" id="impl-toggle" role="switch" aria-checked="true">
             <span class="impl-toggle__track" aria-hidden="true"><span class="impl-toggle__thumb"></span></span>
             <span class="impl-toggle__label">
               Website changes implemented for you
@@ -286,7 +286,7 @@ const breadcrumbSchema = {
               </header>
 
               <div class="tier__price">
-                <span class="tier__price-value" data-usd={tier.price} data-impl={tier.implementation}>{usd(tier.price)}</span>
+                <span class="tier__price-value" data-usd={tier.price} data-impl={tier.implementation}>{usd(tier.price + tier.implementation)}</span>
                 <span class="tier__price-suffix">/ mo</span>
               </div>
 
@@ -366,7 +366,7 @@ const breadcrumbSchema = {
                     ]}
                   >
                     <span class="comparison__th-name">{tier.name}</span>
-                    <span class="comparison__th-price"><span data-usd={tier.price} data-impl={tier.implementation}>{usd(tier.price)}</span>/mo</span>
+                    <span class="comparison__th-price"><span data-usd={tier.price} data-impl={tier.implementation}>{usd(tier.price + tier.implementation)}</span>/mo</span>
                   </th>
                 ))}
               </tr>
@@ -407,7 +407,7 @@ const breadcrumbSchema = {
                           <polyline points="20 6 9 17 4 12" />
                         </svg>
                       ) : (
-                        <span class="comparison__value" data-impl-row={row.label === "Website changes implemented for you" ? "" : undefined}>{v}</span>
+                        <span class="comparison__value" data-impl-row={row.label === "Website changes implemented for you" ? "" : undefined}>{row.label === "Website changes implemented for you" ? "Included" : v}</span>
                       )}
                     </td>
                   ))}
@@ -549,7 +549,7 @@ const breadcrumbSchema = {
     const implRowCells = document.querySelectorAll("[data-impl-row]");
     const fmt = (n) => Math.round(n).toLocaleString("en-US");
     let currency = "USD";
-    let implementation = false;
+    let implementation = true;
     function render() {
       prices.forEach((el) => {
         const impl = el.hasAttribute("data-impl") && implementation ? Number(el.getAttribute("data-impl")) : 0;
@@ -587,9 +587,9 @@ const breadcrumbSchema = {
     });
     try {
       if (localStorage.getItem("pricing-currency") === "CAD") currency = "CAD";
-      if (localStorage.getItem("pricing-implementation") === "1") implementation = true;
+      if (localStorage.getItem("pricing-implementation") === "0") implementation = false;
     } catch {}
-    if (currency !== "USD" || implementation) render();
+    render();
   </script>
 
   <!-- ═══════════════ FAQ ═══════════════ -->
