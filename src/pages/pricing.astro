@@ -247,11 +247,25 @@ const breadcrumbSchema = {
       </div>
 
       <div class="currency-toggle-wrap" data-animate>
-        <div class="currency-toggle" role="group" aria-label="Currency">
-          <button type="button" class="currency-toggle__btn is-active" data-currency="USD" aria-pressed="true">USD</button>
-          <button type="button" class="currency-toggle__btn" data-currency="CAD" aria-pressed="false">CAD</button>
+        <div class="plan-controls">
+          <div class="currency-toggle" role="group" aria-label="Currency">
+            <button type="button" class="currency-toggle__btn is-active" data-currency="USD" aria-pressed="true">USD</button>
+            <button type="button" class="currency-toggle__btn" data-currency="CAD" aria-pressed="false">CAD</button>
+          </div>
+          <label class="impl-toggle" for="impl-toggle">
+            <input type="checkbox" id="impl-toggle" class="impl-toggle__input" />
+            <span class="impl-toggle__track" aria-hidden="true"><span class="impl-toggle__thumb"></span></span>
+            <span class="impl-toggle__label">
+              Website changes implemented for you
+              <span class="impl-toggle__price">+<span data-usd={implementationAddOn}>{usd(implementationAddOn)}</span>/mo</span>
+            </span>
+          </label>
         </div>
-        <p class="currency-toggle__note">CAD billed at a fixed {CAD_RATE}× of the USD price.</p>
+        <p class="currency-toggle__note">
+          CAD billed at a fixed {CAD_RATE}× of the USD price. Implementation adds
+          {usd(implementationAddOn)} a month to any plan. Add-ons below are priced per unit
+          and do not change with either switch.
+        </p>
       </div>
 
       <div class="tiers__grid" data-stagger>
@@ -274,7 +288,7 @@ const breadcrumbSchema = {
               </header>
 
               <div class="tier__price">
-                <span class="tier__price-value" data-usd={tier.price}>{usd(tier.price)}</span>
+                <span class="tier__price-value" data-usd={tier.price} data-impl={tier.implementation}>{usd(tier.price)}</span>
                 <span class="tier__price-suffix">/ mo</span>
               </div>
 
@@ -354,7 +368,7 @@ const breadcrumbSchema = {
                     ]}
                   >
                     <span class="comparison__th-name">{tier.name}</span>
-                    <span class="comparison__th-price"><span data-usd={tier.price}>{usd(tier.price)}</span>/mo</span>
+                    <span class="comparison__th-price"><span data-usd={tier.price} data-impl={tier.implementation}>{usd(tier.price)}</span>/mo</span>
                   </th>
                 ))}
               </tr>
@@ -395,7 +409,7 @@ const breadcrumbSchema = {
                           <polyline points="20 6 9 17 4 12" />
                         </svg>
                       ) : (
-                        <span class="comparison__value">{v}</span>
+                        <span class="comparison__value" data-impl-row={row.label === "Website changes implemented for you" ? "" : undefined}>{v}</span>
                       )}
                     </td>
                   ))}
@@ -528,27 +542,57 @@ const breadcrumbSchema = {
   </section>
 
   <script define:vars={{ cadRate: CAD_RATE }}>
-    // USD / CAD toggle: every price marked data-usd re-renders at the fixed
-    // CAD multiple. The choice sticks per visitor.
-    const buttons = document.querySelectorAll(".currency-toggle__btn");
+    // USD / CAD and the implementation switch drive the same price elements:
+    // every [data-usd] re-renders at the chosen currency, and plan prices
+    // ([data-impl]) add the implementation amount when the switch is on. Both
+    // choices stick per visitor.
+    const currencyButtons = document.querySelectorAll(".currency-toggle__btn");
+    const implInput = document.getElementById("impl-toggle");
     const prices = document.querySelectorAll("[data-usd]");
+    const implRowCells = document.querySelectorAll("[data-impl-row]");
     const fmt = (n) => Math.round(n).toLocaleString("en-US");
-    function apply(currency) {
+    let currency = "USD";
+    let implementation = false;
+    function render() {
       prices.forEach((el) => {
-        const usd = Number(el.getAttribute("data-usd"));
+        const impl = el.hasAttribute("data-impl") && implementation ? Number(el.getAttribute("data-impl")) : 0;
+        const usd = Number(el.getAttribute("data-usd")) + impl;
         el.textContent = currency === "CAD" ? `CA$${fmt(usd * cadRate)}` : `$${fmt(usd)}`;
       });
-      buttons.forEach((b) => {
+      implRowCells.forEach((el) => {
+        if (implementation) {
+          el.textContent = "Included";
+        } else {
+          const add = Number(document.getElementById("impl-toggle")?.closest(".plan-controls")?.querySelector("[data-usd]")?.getAttribute("data-usd") ?? 0);
+          el.textContent = currency === "CAD" ? `+CA$${fmt(add * cadRate)}/mo` : `+$${fmt(add)}/mo`;
+        }
+      });
+      currencyButtons.forEach((b) => {
         const on = b.getAttribute("data-currency") === currency;
         b.classList.toggle("is-active", on);
         b.setAttribute("aria-pressed", String(on));
       });
-      try { localStorage.setItem("pricing-currency", currency); } catch {}
+      if (implInput) implInput.checked = implementation;
+      try {
+        localStorage.setItem("pricing-currency", currency);
+        localStorage.setItem("pricing-implementation", implementation ? "1" : "0");
+      } catch {}
     }
-    buttons.forEach((b) => b.addEventListener("click", () => apply(b.getAttribute("data-currency"))));
-    let saved = null;
-    try { saved = localStorage.getItem("pricing-currency"); } catch {}
-    if (saved === "CAD") apply("CAD");
+    currencyButtons.forEach((b) =>
+      b.addEventListener("click", () => {
+        currency = b.getAttribute("data-currency");
+        render();
+      })
+    );
+    implInput?.addEventListener("change", () => {
+      implementation = implInput.checked;
+      render();
+    });
+    try {
+      if (localStorage.getItem("pricing-currency") === "CAD") currency = "CAD";
+      if (localStorage.getItem("pricing-implementation") === "1") implementation = true;
+    } catch {}
+    if (currency !== "USD" || implementation) render();
   </script>
 
   <!-- ═══════════════ FAQ ═══════════════ -->
@@ -956,8 +1000,78 @@ const breadcrumbSchema = {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.6rem;
     margin: 0 0 1.75rem;
+  }
+
+  .plan-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem 1.5rem;
+  }
+
+  .impl-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.35rem 0.9rem 0.35rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.06);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text, #0f172a);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .impl-toggle__input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+  }
+
+  .impl-toggle__track {
+    position: relative;
+    width: 34px;
+    height: 20px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.2);
+    transition: background 0.15s ease;
+    flex: none;
+  }
+
+  .impl-toggle__thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.25);
+    transition: transform 0.15s ease;
+  }
+
+  .impl-toggle__input:checked + .impl-toggle__track {
+    background: var(--teal, #0d9488);
+  }
+
+  .impl-toggle__input:checked + .impl-toggle__track .impl-toggle__thumb {
+    transform: translateX(14px);
+  }
+
+  .impl-toggle__input:focus-visible + .impl-toggle__track {
+    outline: 2px solid var(--teal, #0d9488);
+    outline-offset: 2px;
+  }
+
+  .impl-toggle__price {
+    font-weight: 500;
+    color: var(--text-muted, #6b7280);
   }
 
   .currency-toggle {
