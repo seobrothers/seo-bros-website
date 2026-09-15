@@ -3,6 +3,7 @@ import { syncContact, addToList, applyTag } from "../../lib/activecampaign";
 import { clientIp, logEvent, type AnalyticsEngine } from "../../lib/eventlog";
 import { verifyTurnstile } from "../../lib/turnstile";
 import { rateLimit, type RateLimitKV } from "../../lib/ratelimit";
+import { cfEnv } from "../../lib/cf-env";
 
 // Free-discovery request endpoint. Used on the unlocked partner page: an agency
 // (already opted in via /api/partner-lead) asks us to run a world-class free
@@ -24,14 +25,14 @@ interface Env {
   TURNSTILE_SECRET_KEY?: string;
 }
 
-function readEnv(locals: App.Locals): Env {
-  const e = (locals as { runtime?: { env?: Env } }).runtime?.env;
+function readEnv(): Env {
+  const e = cfEnv<Env>();
   return {
-    ACTIVECAMPAIGN_API_URL: e?.ACTIVECAMPAIGN_API_URL ?? import.meta.env.ACTIVECAMPAIGN_API_URL,
-    ACTIVECAMPAIGN_API_KEY: e?.ACTIVECAMPAIGN_API_KEY ?? import.meta.env.ACTIVECAMPAIGN_API_KEY,
-    SLACK_PARTNER_WEBHOOK_URL: e?.SLACK_PARTNER_WEBHOOK_URL ?? import.meta.env.SLACK_PARTNER_WEBHOOK_URL,
-    SLACK_AUDIT_WEBHOOK_URL: e?.SLACK_AUDIT_WEBHOOK_URL ?? import.meta.env.SLACK_AUDIT_WEBHOOK_URL,
-    TURNSTILE_SECRET_KEY: e?.TURNSTILE_SECRET_KEY ?? import.meta.env.TURNSTILE_SECRET_KEY,
+    ACTIVECAMPAIGN_API_URL: e.ACTIVECAMPAIGN_API_URL ?? import.meta.env.ACTIVECAMPAIGN_API_URL,
+    ACTIVECAMPAIGN_API_KEY: e.ACTIVECAMPAIGN_API_KEY ?? import.meta.env.ACTIVECAMPAIGN_API_KEY,
+    SLACK_PARTNER_WEBHOOK_URL: e.SLACK_PARTNER_WEBHOOK_URL ?? import.meta.env.SLACK_PARTNER_WEBHOOK_URL,
+    SLACK_AUDIT_WEBHOOK_URL: e.SLACK_AUDIT_WEBHOOK_URL ?? import.meta.env.SLACK_AUDIT_WEBHOOK_URL,
+    TURNSTILE_SECRET_KEY: e.TURNSTILE_SECRET_KEY ?? import.meta.env.TURNSTILE_SECRET_KEY,
   };
 }
 
@@ -88,7 +89,7 @@ async function notifySlack(
   }
 }
 
-export const POST: APIRoute = async ({ request, locals }) => {
+export const POST: APIRoute = async ({ request }) => {
   let payload: Record<string, unknown>;
   try {
     const ct = request.headers.get("content-type") ?? "";
@@ -105,7 +106,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
   }
 
   // IP rate limit (no-op until the RATE_LIMIT KV binding is wired).
-  const kv = (locals as { runtime?: { env?: { RATE_LIMIT?: RateLimitKV } } }).runtime?.env?.RATE_LIMIT;
+  const kv = cfEnv<{ RATE_LIMIT?: RateLimitKV }>().RATE_LIMIT;
   const rl = await rateLimit(kv, `discovery:${clientIp(request)}`, 20, 3600);
   if (!rl.allowed) {
     return json({ ok: false, error: "Too many requests. Please try again later." }, 429);
@@ -123,7 +124,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
   }
   if (!/^https?:\/\//i.test(url)) url = `https://${url}`;
 
-  const env = readEnv(locals);
+  const env = readEnv();
 
   // Bot check (Turnstile). No-op until TURNSTILE_SECRET_KEY is configured.
   const turnstileOk = await verifyTurnstile(
@@ -146,7 +147,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
 
   await notifySlack(env, { email, url, notes });
 
-  const ae = (locals as { runtime?: { env?: { AE?: AnalyticsEngine } } }).runtime?.env?.AE;
+  const ae = cfEnv<{ AE?: AnalyticsEngine }>().AE;
   logEvent({ AE: ae }, "discovery_request", {
     ip: clientIp(request),
     domain: url,

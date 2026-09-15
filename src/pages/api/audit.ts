@@ -3,6 +3,7 @@ import { syncContact, addToList, applyTag } from "../../lib/activecampaign";
 import { clientIp, logEvent, type AnalyticsEngine } from "../../lib/eventlog";
 import { verifyTurnstile } from "../../lib/turnstile";
 import { rateLimit, type RateLimitKV } from "../../lib/ratelimit";
+import { cfEnv } from "../../lib/cf-env";
 
 // Free-audit lead endpoint.
 //
@@ -12,8 +13,9 @@ import { rateLimit, type RateLimitKV } from "../../lib/ratelimit";
 // carries the URL because the manual audit starts from there.
 //
 // Runs on-demand inside the Cloudflare Worker (prerender = false). Cloudflare
-// secrets are read from `locals.runtime.env`; `import.meta.env` is the
-// local-dev fallback (Astro loads .env.local server-side).
+// secrets are read from the `cloudflare:workers` env (see src/lib/cf-env.ts);
+// `import.meta.env` is the local-dev fallback (Astro loads .env.local
+// server-side).
 export const prerender = false;
 
 const AC_LIST_ID = 24;
@@ -29,17 +31,17 @@ interface Env {
   TURNSTILE_SECRET_KEY?: string;
 }
 
-function readEnv(locals: App.Locals): Env {
-  const runtimeEnv = (locals as { runtime?: { env?: Env } }).runtime?.env;
+function readEnv(): Env {
+  const runtimeEnv = cfEnv<Env>();
   return {
     ACTIVECAMPAIGN_API_URL:
-      runtimeEnv?.ACTIVECAMPAIGN_API_URL ?? import.meta.env.ACTIVECAMPAIGN_API_URL,
+      runtimeEnv.ACTIVECAMPAIGN_API_URL ?? import.meta.env.ACTIVECAMPAIGN_API_URL,
     ACTIVECAMPAIGN_API_KEY:
-      runtimeEnv?.ACTIVECAMPAIGN_API_KEY ?? import.meta.env.ACTIVECAMPAIGN_API_KEY,
+      runtimeEnv.ACTIVECAMPAIGN_API_KEY ?? import.meta.env.ACTIVECAMPAIGN_API_KEY,
     SLACK_AUDIT_WEBHOOK_URL:
-      runtimeEnv?.SLACK_AUDIT_WEBHOOK_URL ?? import.meta.env.SLACK_AUDIT_WEBHOOK_URL,
+      runtimeEnv.SLACK_AUDIT_WEBHOOK_URL ?? import.meta.env.SLACK_AUDIT_WEBHOOK_URL,
     TURNSTILE_SECRET_KEY:
-      runtimeEnv?.TURNSTILE_SECRET_KEY ?? import.meta.env.TURNSTILE_SECRET_KEY,
+      runtimeEnv.TURNSTILE_SECRET_KEY ?? import.meta.env.TURNSTILE_SECRET_KEY,
   };
 }
 
@@ -137,7 +139,7 @@ async function notifySlack(
   }
 }
 
-export const POST: APIRoute = async ({ request, locals }) => {
+export const POST: APIRoute = async ({ request }) => {
   let payload: Record<string, unknown>;
   try {
     const ct = request.headers.get("content-type") ?? "";
@@ -156,7 +158,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
   }
 
   // IP rate limit (no-op until the RATE_LIMIT KV binding is wired).
-  const kv = (locals as { runtime?: { env?: { RATE_LIMIT?: RateLimitKV } } }).runtime?.env?.RATE_LIMIT;
+  const kv = cfEnv<{ RATE_LIMIT?: RateLimitKV }>().RATE_LIMIT;
   const rl = await rateLimit(kv, `audit:${clientIp(request)}`, 20, 3600);
   if (!rl.allowed) {
     return json({ ok: false, error: "Too many requests. Please try again later." }, 429);
@@ -191,7 +193,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     .filter(Boolean)
     .join(", ");
 
-  const env = readEnv(locals);
+  const env = readEnv();
 
   // Bot check (Turnstile). No-op until TURNSTILE_SECRET_KEY is configured.
   const turnstileOk = await verifyTurnstile(
@@ -215,7 +217,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
   // Slack is the durable lead capture for the team to action the audit.
   await notifySlack(env, { name, email, url, source, audits, business, city, service, placeId });
 
-  const ae = (locals as { runtime?: { env?: { AE?: AnalyticsEngine } } }).runtime?.env?.AE;
+  const ae = cfEnv<{ AE?: AnalyticsEngine }>().AE;
   logEvent({ AE: ae }, "audit_lead", {
     ip: clientIp(request),
     domain: (() => {
