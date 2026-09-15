@@ -178,7 +178,7 @@ export function comparisonRows(pricing: PlatformPricing, tiers: MarketingTier[])
       values: tiers.map((t) => String(t.maximums[family.key] ?? 0)),
     });
   }
-  rows.push({ group: "In every campaign", label: "Live reporting dashboard", values: tiers.map(() => true) });
+  rows.push({ group: "In every campaign", label: "Live reporting dashboard + AI visibility tracking", values: tiers.map(() => true) });
   rows.push({ group: "In every campaign", label: "Technical crawl review + fixes", values: tiers.map(() => true) });
   rows.push({
     group: "In every campaign",
