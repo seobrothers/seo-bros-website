@@ -110,26 +110,6 @@ const pillars = [
   },
 ];
 
-// The story in the thesis card: how a white-label SEO shop ended up building
-// its own platform.
-const timeline = [
-  {
-    year: "2015",
-    title: "Adam and Devon start SEO Brothers",
-    body: "White-label campaigns for agency partners from day one, and the SEO partner behind other agencies' work ever since.",
-  },
-  {
-    year: "2024",
-    title: "Colin joins, and the build begins",
-    body: "Our oldest brother, twenty years a software engineer in FinTech, comes on board. We start building one connected system to run every campaign.",
-  },
-  {
-    year: "Today",
-    title: "Tested and improved on real campaigns",
-    body: "Our own team runs your campaigns in the platform every day. Every run is measured, and what works becomes the next version.",
-  },
-];
-
 const schema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -312,19 +292,17 @@ const schema = {
       </div>
       <aside class="tw-thesis__card" data-animate>
         <h3 class="tw-thesis__card-title">Built by the people using it</h3>
-        <ol class="tw-timeline">
-          {
-            timeline.map((t) => (
-              <li class="tw-timeline__item">
-                <span class="tw-timeline__year">{t.year}</span>
-                <div>
-                  <strong class="tw-timeline__title">{t.title}</strong>
-                  <p class="tw-timeline__body">{t.body}</p>
-                </div>
-              </li>
-            ))
-          }
-        </ol>
+        <p>
+          SEO Brothers has been the white-label SEO partner behind other
+          agencies since 2015. Two years ago we brought on our oldest brother,
+          Colin, twenty years a software engineer in FinTech, and set out to
+          build one connected system to run every campaign we deliver.
+        </p>
+        <p>
+          Tideworthy is that system. Our own team runs your campaigns in it
+          every day, and we are constantly testing, running and improving it,
+          because the results it produces are what we sell.
+        </p>
         <a href="/about/" class="tw-thesis__link">
           Meet the team
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -753,53 +731,6 @@ const schema = {
     padding: 32px 30px;
     display: flex;
     flex-direction: column;
-  }
-  .tw-timeline {
-    list-style: none;
-    margin: 6px 0 22px;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-    flex: 1;
-  }
-  .tw-timeline__item {
-    display: grid;
-    grid-template-columns: 58px 1fr;
-    gap: 14px;
-    position: relative;
-  }
-  .tw-timeline__item:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    left: 24px;
-    top: 26px;
-    bottom: -22px;
-    width: 1px;
-    background: rgba(255, 255, 255, 0.12);
-  }
-  .tw-timeline__year {
-    font-family: var(--font-display);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    color: var(--teal-light);
-    padding-top: 2px;
-  }
-  .tw-timeline__title {
-    display: block;
-    font-family: var(--font-display);
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 4px;
-    line-height: 1.3;
-  }
-  .tw-timeline__body {
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--text-on-dark-muted);
   }
   .tw-thesis__link {
     margin-top: auto;
