@@ -252,14 +252,13 @@ const breadcrumbSchema = {
             <button type="button" class="currency-toggle__btn is-active" data-currency="USD" aria-pressed="true">USD</button>
             <button type="button" class="currency-toggle__btn" data-currency="CAD" aria-pressed="false">CAD</button>
           </div>
-          <label class="impl-toggle" for="impl-toggle">
-            <input type="checkbox" id="impl-toggle" class="impl-toggle__input" />
+          <button type="button" class="impl-toggle" id="impl-toggle" role="switch" aria-checked="false">
             <span class="impl-toggle__track" aria-hidden="true"><span class="impl-toggle__thumb"></span></span>
             <span class="impl-toggle__label">
               Website changes implemented for you
               <span class="impl-toggle__price">+<span data-usd={implementationAddOn}>{usd(implementationAddOn)}</span>/mo</span>
             </span>
-          </label>
+          </button>
         </div>
         <p class="currency-toggle__note">
           CAD billed at a fixed {CAD_RATE}× of the USD price. Implementation adds
@@ -547,7 +546,7 @@ const breadcrumbSchema = {
     // ([data-impl]) add the implementation amount when the switch is on. Both
     // choices stick per visitor.
     const currencyButtons = document.querySelectorAll(".currency-toggle__btn");
-    const implInput = document.getElementById("impl-toggle");
+    const implSwitch = document.getElementById("impl-toggle");
     const prices = document.querySelectorAll("[data-usd]");
     const implRowCells = document.querySelectorAll("[data-impl-row]");
     const fmt = (n) => Math.round(n).toLocaleString("en-US");
@@ -572,7 +571,7 @@ const breadcrumbSchema = {
         b.classList.toggle("is-active", on);
         b.setAttribute("aria-pressed", String(on));
       });
-      if (implInput) implInput.checked = implementation;
+      implSwitch?.setAttribute("aria-checked", String(implementation));
       try {
         localStorage.setItem("pricing-currency", currency);
         localStorage.setItem("pricing-implementation", implementation ? "1" : "0");
@@ -584,8 +583,8 @@ const breadcrumbSchema = {
         render();
       })
     );
-    implInput?.addEventListener("change", () => {
-      implementation = implInput.checked;
+    implSwitch?.addEventListener("click", () => {
+      implementation = !implementation;
       render();
     });
     try {
@@ -1013,25 +1012,26 @@ const breadcrumbSchema = {
   }
 
   .impl-toggle {
+    appearance: none;
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
     padding: 0.35rem 0.9rem 0.35rem 0.5rem;
+    border: 0;
     border-radius: 999px;
     background: rgba(15, 23, 42, 0.06);
+    font: inherit;
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--text, #0f172a);
     cursor: pointer;
     user-select: none;
+    text-align: left;
   }
 
-  .impl-toggle__input {
-    position: absolute;
-    opacity: 0;
-    width: 1px;
-    height: 1px;
-    pointer-events: none;
+  .impl-toggle:focus-visible {
+    outline: 2px solid var(--teal, #0d9488);
+    outline-offset: 2px;
   }
 
   .impl-toggle__track {
@@ -1056,17 +1056,12 @@ const breadcrumbSchema = {
     transition: transform 0.15s ease;
   }
 
-  .impl-toggle__input:checked + .impl-toggle__track {
+  .impl-toggle[aria-checked="true"] .impl-toggle__track {
     background: var(--teal, #0d9488);
   }
 
-  .impl-toggle__input:checked + .impl-toggle__track .impl-toggle__thumb {
+  .impl-toggle[aria-checked="true"] .impl-toggle__thumb {
     transform: translateX(14px);
-  }
-
-  .impl-toggle__input:focus-visible + .impl-toggle__track {
-    outline: 2px solid var(--teal, #0d9488);
-    outline-offset: 2px;
   }
 
   .impl-toggle__price {
