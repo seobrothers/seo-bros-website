@@ -99,9 +99,9 @@ const pillars = [
     body: "Research, drafting, technical checks, monitoring and reporting run on agents and live data, every day, for every client. That is why a full local campaign starts where it does, and why it scales without the price scaling with it.",
   },
   {
-    eyebrow: "Every output reviewed",
-    title: "A strategist checks the work before it ships",
-    body: "Nothing an agent produces reaches your client unreviewed. Our team reads the content, checks the changes and approves the plan, then it goes out under your brand.",
+    eyebrow: "Humans in the loop",
+    title: "QA runs across everything the agents produce",
+    body: "Every output goes through our QA checks and a strategist's eyes: most before it ships, some right after, and the bar rises every month because our own campaigns run on the same system.",
   },
   {
     eyebrow: "Humans on the campaign",
@@ -154,7 +154,7 @@ const schema = {
 
 <Layout
   title="Tideworthy | AI Agents That Do the Delivery Work | SEO Brothers"
-  description="Tideworthy is the platform behind SEO Brothers: AI agents do the daily SEO delivery work for every client, our strategists review every output, and it all ships under your agency's brand. You pick the plan and draw the approval line."
+  description="Tideworthy is the platform behind SEO Brothers: AI agents do the daily SEO delivery work for every client, our team QA checks the work, and it all ships under your agency's brand. You pick the plan and draw the approval line."
   schema={schema}
 >
   <Nav />
@@ -187,9 +187,8 @@ const schema = {
           Tideworthy is the software we built to run campaigns, and it is what
           your clients' work runs in. AI agents learn your agency and every
           client's business, then do the daily delivery: content, local SEO,
-          technical fixes, monitoring, reporting. Our strategists review every
-          output. You pick the plan, draw the approval line, and put your logo
-          on top.
+          technical fixes, monitoring, reporting. Our team QA checks the work.
+          You pick the plan, draw the approval line, and put your logo on top.
         </p>
         <p class="tw-hero__sub tw-hero__sub--aside" data-animate>
           Not sure which plan? Run a free discovery on any client and we will
@@ -237,30 +236,6 @@ const schema = {
     </div>
   </section>
 
-  <!-- ═══════════════ CAPABILITIES ═══════════════ -->
-  <section class="tw-caps">
-    <div class="container">
-      <div class="tw-sec-head" data-animate>
-        <span class="section-label">What It Does</span>
-        <h2 class="tw-sec-title">Delivery, not another dashboard.</h2>
-        <p class="tw-sec-sub">
-          Plenty of software will show your client a chart. This does the work
-          that goes in the chart, and it does it every day.
-        </p>
-      </div>
-      <div class="tw-caps__grid" data-stagger>
-        {
-          capabilities.map((c) => (
-            <article class="tw-cap" data-animate>
-              <h3 class="tw-cap__title">{c.title}</h3>
-              <p class="tw-cap__body">{c.body}</p>
-            </article>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
   <!-- ═══════════════ AI THROUGHPUT, HUMAN JUDGMENT ═══════════════ -->
   <section class="tw-human">
     <div class="container">
@@ -280,6 +255,30 @@ const schema = {
               <span class="tw-pillar__eyebrow">{p.eyebrow}</span>
               <h3 class="tw-pillar__title">{p.title}</h3>
               <p class="tw-pillar__body">{p.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CAPABILITIES ═══════════════ -->
+  <section class="tw-caps">
+    <div class="container">
+      <div class="tw-sec-head" data-animate>
+        <span class="section-label">What It Does</span>
+        <h2 class="tw-sec-title">Delivery, not another dashboard.</h2>
+        <p class="tw-sec-sub">
+          Plenty of software will show your client a chart. This does the work
+          that goes in the chart, and it does it every day.
+        </p>
+      </div>
+      <div class="tw-caps__grid" data-stagger>
+        {
+          capabilities.map((c) => (
+            <article class="tw-cap" data-animate>
+              <h3 class="tw-cap__title">{c.title}</h3>
+              <p class="tw-cap__body">{c.body}</p>
             </article>
           ))
         }
