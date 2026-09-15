@@ -197,9 +197,9 @@
 # CTA shortcuts — agency booking/demo flows through the partner package
 # (the free-discovery gate) under the white-label positioning.
 # ============================================================================
-/strategy-call/                                             /tideworthy-sign-up/                                 301
-/demo                                                       /tideworthy-sign-up/                                 301
-/demo/                                                      /tideworthy-sign-up/                                 301
+/strategy-call/                                             /sign-up/                                 301
+/demo                                                       /sign-up/                                 301
+/demo/                                                      /sign-up/                                 301
 
 # ============================================================================
 # Pages reworked on the new site (were live, now moved):
@@ -234,11 +234,13 @@
 /feed/*                                                     /                                                 301
 
 # ============================================================================
-# SIGNUP — the free-trial door is /tideworthy-sign-up/ (2026-09-15)
+# SIGNUP — the free-trial door is /sign-up/ (2026-09-15)
 # ============================================================================
-/sign-up/                                                   /tideworthy-sign-up/                              301
-/sign-up                                                    /tideworthy-sign-up/                              301
-/partner-package/                                           /tideworthy-sign-up/                              301
-/partner-package                                            /tideworthy-sign-up/                              301
-/partner-welcome/                                           /tideworthy-sign-up/                              301
-/partner-welcome                                            /tideworthy-sign-up/                              301
+/tideworthy-sign-up/                                        /sign-up/                                         301
+/tideworthy-sign-up                                         /sign-up/                                         301
+# ----------------------------------------------------------------------------
+# ============================================================================
+/partner-package/                                           /sign-up/                              301
+/partner-package                                            /sign-up/                              301
+/partner-welcome/                                           /sign-up/                              301
+/partner-welcome                                            /sign-up/                              301

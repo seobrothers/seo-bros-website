@@ -54,7 +54,7 @@ const STATIC_PAGES = [
   "/guides/industry/",
   "/guides/seo/",
   "/tideworthy/",
-  "/tideworthy-sign-up/",
+  "/sign-up/",
   "/podcast/",
   "/pricing/",
   "/privacy/",

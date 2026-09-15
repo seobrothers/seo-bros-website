@@ -9,7 +9,7 @@ import { usd } from "../data/pricing";
 // The Tideworthy marketing site, brought onto seobrothers.com. tideworthy.com
 // redirects here, so this page is the public explanation of the platform:
 // what it is, how it runs, what is ready, and the three plans. The form in
-// the hero is the same one as /tideworthy-sign-up/, which every Start Free
+// the hero is the same one as /sign-up/, which every Start Free
 // Trial button on the site points at. Prices and plan shapes come from the
 // platform's public price list (src/data/platform-pricing.ts); nothing on
 // this page carries its own number.
@@ -31,8 +31,8 @@ const steps = [
   },
   {
     n: "2",
-    title: "Set the budget and the rules",
-    body: "A monthly deliverables budget per client, and an approval line you draw yourself. Nothing client-facing ships without you saying so.",
+    title: "Pick the plan and the rules",
+    body: "One plan per client sets what a month delivers, and an approval line you draw yourself. Nothing client-facing ships without you saying so.",
   },
   {
     n: "3",
@@ -52,8 +52,8 @@ const capabilities = [
     body: "One queue holds everything waiting on your decision, across your whole book. Plans, website edits, and keyword sets get requested by name. Research and monitoring keep running without asking.",
   },
   {
-    title: "Scope and budget, up front",
-    body: "Each campaign shows what happens this month and what it costs, as line items, before it runs. A prepaid deliverables budget you control. No surprise invoices, and no cut of what you bill your client.",
+    title: "Scope and price, up front",
+    body: "Each campaign shows what happens this month and what it costs before it runs: one plan price per client, the deliverables it carries, the cadence it runs at. No surprise invoices, and no cut of what you bill your client.",
   },
   {
     title: "Monitoring you switch on",
@@ -87,6 +87,26 @@ const roadmap = [
     name: "PPC",
     body: "Search and local campaigns, managed the same way.",
     state: "soon",
+  },
+];
+
+// The difference we sell: AI throughput at the lowest cost, humans still
+// running every campaign behind it.
+const pillars = [
+  {
+    eyebrow: "Lowest cost",
+    title: "AI and data do the heavy lifting",
+    body: "Research, drafting, technical checks, monitoring and reporting run on agents and live data, every day, for every client. That is why a full local campaign starts where it does, and why it scales without the price scaling with it.",
+  },
+  {
+    eyebrow: "Every output reviewed",
+    title: "A strategist checks the work before it ships",
+    body: "Nothing an agent produces reaches your client unreviewed. Our team reads the content, checks the changes and approves the plan, then it goes out under your brand.",
+  },
+  {
+    eyebrow: "Humans on the campaign",
+    title: "People behind the delivery, with you",
+    body: "Strategists plan the month, run the reviews and answer your questions. When a client needs an explanation, you have a team behind you who knows the account, not a support queue.",
   },
 ];
 
@@ -145,13 +165,14 @@ const schema = {
         </h1>
         <p class="tw-hero__sub" data-animate>
           Tideworthy is the software we built to run campaigns, and it is what
-          your clients' work runs in. Agents learn your agency and every client's
-          business, then do the daily delivery: content, local SEO, technical
-          fixes, monitoring, reporting. You set the budget, draw the approval
-          line, and put your logo on top.
+          your clients' work runs in. AI agents learn your agency and every
+          client's business, then do the daily delivery: content, local SEO,
+          technical fixes, monitoring, reporting. Our strategists review every
+          output. You pick the plan, draw the approval line, and put your logo
+          on top.
         </p>
         <div class="tw-hero__actions" data-animate>
-          <a href="/tideworthy-sign-up/" class="btn btn-primary btn-lg">
+          <a href="/sign-up/" class="btn btn-primary btn-lg">
             Start Free Trial
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -216,25 +237,52 @@ const schema = {
     </div>
   </section>
 
-  <!-- ═══════════════ CENTAUR THESIS ═══════════════ -->
+  <!-- ═══════════════ AI THROUGHPUT, HUMAN JUDGMENT ═══════════════ -->
+  <section class="tw-human">
+    <div class="container">
+      <div class="tw-sec-head tw-sec-head--center" data-animate>
+        <span class="section-label">How We Are Different</span>
+        <h2 class="tw-sec-title">AI does the volume. Humans run the campaign.</h2>
+        <p class="tw-sec-sub">
+          We lean on AI tooling and data harder than anyone, which is how the
+          plans cost what they cost. Behind every campaign is still a team of
+          people who review the work and stand behind it with you.
+        </p>
+      </div>
+      <div class="tw-human__grid" data-stagger>
+        {
+          pillars.map((p) => (
+            <article class="tw-pillar" data-animate>
+              <span class="tw-pillar__eyebrow">{p.eyebrow}</span>
+              <h3 class="tw-pillar__title">{p.title}</h3>
+              <p class="tw-pillar__body">{p.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ THESIS ═══════════════ -->
   <section class="tw-thesis">
     <div class="container tw-thesis__inner">
       <div class="tw-thesis__copy" data-animate>
         <span class="section-label">Why We Built It</span>
         <h2 class="tw-thesis__title">
-          The agency was never just the deliverables.
+          Your clients did not hire a dashboard. They hired <em>you</em>.
         </h2>
         <p>
-          It is the person who answers the phone when a client is panicking, who
-          knows the business, who takes the win or the loss personally. That
-          part does not automate, and it is the part worth protecting.
+          That is your moat, and the AI-first shops cannot copy it. What they
+          can do is out-produce you at a tenth of the price. So we built the
+          missing half: an engine that produces like they do, wearing your
+          logo, with our strategists checking the work. You stay the agency.
+          The work keeps up.
         </p>
         <p>
-          We watched AI platforms start selling agency work directly, at scale,
-          to the clients agencies had spent years earning. We could have built
-          another one of those. We built the opposite: your input, your context,
-          your relationships, your name, our agents underneath. Human judgment
-          paired with machine throughput beats either one alone.
+          The agency was never just the deliverables. It is the person who
+          answers the phone when a client is panicking, who knows the business,
+          who takes the win or the loss personally. That part does not
+          automate, and it is the part worth protecting.
         </p>
         <p class="tw-thesis__name">
           The name comes from the Plimsoll line, the waterline mark on a ship's
@@ -334,7 +382,7 @@ const schema = {
         you do, and there is no card to enter.
       </p>
       <div class="tw-close__actions">
-        <a href="/tideworthy-sign-up/" class="btn btn-primary btn-lg">
+        <a href="/sign-up/" class="btn btn-primary btn-lg">
           Start Free Trial
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -436,10 +484,11 @@ const schema = {
   /* Platform logo lockup. Mirrors the brand mark on tideworthy.com: a
      circle with a tide line through it, wordmark in the display face. */
   .tw-hero__brand {
-    display: inline-flex;
+    display: flex;
+    width: fit-content;
     align-items: center;
     gap: 10px;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     color: var(--white);
     text-decoration: none;
     font-family: var(--font-display);
@@ -594,9 +643,53 @@ const schema = {
   }
 
   /* ═══════════ THESIS ═══════════ */
-  .tw-thesis {
+  .tw-human {
     padding: 100px 0;
     background: var(--white);
+    border-top: 1px solid var(--border-light);
+  }
+  .tw-human__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-top: 48px;
+  }
+  .tw-pillar {
+    background: var(--dark);
+    border-radius: var(--radius-lg);
+    padding: 30px 28px;
+  }
+  .tw-pillar__eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 14px;
+  }
+  .tw-pillar__title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    color: var(--white);
+    margin: 0 0 12px;
+  }
+  .tw-pillar__body {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-on-dark-muted);
+  }
+  .tw-thesis {
+    padding: 100px 0;
+    background: var(--light);
+  }
+  .tw-thesis__title em {
+    font-style: italic;
+    color: var(--teal);
   }
   .tw-thesis__inner {
     display: grid;
@@ -883,6 +976,12 @@ const schema = {
     .tw-caps__grid {
       grid-template-columns: repeat(2, 1fr);
     }
+    .tw-human__grid {
+      grid-template-columns: 1fr;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
     .tw-thesis__inner {
       grid-template-columns: 1fr;
       gap: 36px;
@@ -898,6 +997,7 @@ const schema = {
     }
     .tw-steps,
     .tw-caps,
+    .tw-human,
     .tw-thesis,
     .tw-road,
     .tw-get {

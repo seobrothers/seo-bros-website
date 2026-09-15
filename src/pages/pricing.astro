@@ -28,7 +28,7 @@ const tiers = marketingTiers(platform);
 const implementationAddOn = tiers[0]?.implementation ?? 0;
 
 // À-la-carte rate card (the building blocks behind the packages, matching the
-// package builder on /tideworthy-sign-up/). Website builds render separately below.
+// package builder on /sign-up/). Website builds render separately below.
 const rateCard = [
   { name: REPORTING.label, value: usd(REPORTING.price), suffix: "/ mo", note: REPORTING.note, tag: "In every campaign" },
   { name: HEALTH.label, value: usd(HEALTH.price), suffix: "/ mo", note: HEALTH.note, tag: "In every campaign" },
@@ -312,7 +312,7 @@ const breadcrumbSchema = {
               </ul>
 
               <a
-                href="/tideworthy-sign-up/"
+                href="/sign-up/"
                 class:list={[
                   "tier__cta",
                   tier.featured ? "btn btn-primary" : "btn btn-outline--dark",
@@ -515,7 +515,7 @@ const breadcrumbSchema = {
         </div>
 
         <p class="addons__footnote">
-          Every plan is scoped to the client during a free discovery. <a href="/tideworthy-sign-up/">Start
+          Every plan is scoped to the client during a free discovery. <a href="/sign-up/">Start
           your free trial</a> and run one on any site.
         </p>
       </div>

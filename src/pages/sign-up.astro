@@ -9,7 +9,7 @@ import { usd } from "../data/pricing";
 // The one conversion page on the site. Every Start Free Trial button lands
 // here: the form, the reasons to start, and nothing to scroll past. The
 // platform story lives on /tideworthy/; the numbers live on /pricing/.
-// /sign-up/, /partner-package/ and /partner-welcome/ 301 here.
+// /partner-package/, /partner-welcome/ and /tideworthy-sign-up/ 301 here.
 
 const { data: platform } = await loadPlatformPricing();
 const tiers = marketingTiers(platform);
@@ -55,7 +55,7 @@ const breadcrumbSchema = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", Astro.site).href },
     { "@type": "ListItem", position: 2, name: "Tideworthy", item: new URL("/tideworthy/", Astro.site).href },
-    { "@type": "ListItem", position: 3, name: "Start Free Trial", item: new URL("/tideworthy-sign-up/", Astro.site).href },
+    { "@type": "ListItem", position: 3, name: "Start Free Trial", item: new URL("/sign-up/", Astro.site).href },
   ],
 };
 ---
