@@ -17,6 +17,7 @@ import {
   HOSTING,
   MAINTENANCE,
   WEB_BUILDS,
+  CAD_RATE,
   usd,
 } from "../data/pricing";
 
@@ -32,7 +33,7 @@ const rateCard = [
   { name: REPORTING.label, value: usd(REPORTING.price), suffix: "/ mo", note: REPORTING.note, tag: "In every campaign" },
   { name: HEALTH.label, value: usd(HEALTH.price), suffix: "/ mo", note: HEALTH.note, tag: "In every campaign" },
   { name: STRATEGY.label, value: usd(STRATEGY.pricePerReview), suffix: "per review", note: `Cadence sets the monthly cost: semi-annual ${usd(strategyMonthly(2))}/mo, quarterly ${usd(strategyMonthly(4))}/mo, monthly ${usd(strategyMonthly(12))}/mo.` },
-  { name: "SEO Time", value: usd(EXTRA_HOUR.price), suffix: "/ hour, monthly", note: "Time on the next most important thing for the site: geo and service pages, on-page optimization, page speed, and technical improvements." },
+  { name: EXTRA_HOUR.label, value: usd(EXTRA_HOUR.price), suffix: "/ hour", note: EXTRA_HOUR.note },
   { name: EXTRA_LOCATION.label, value: usd(EXTRA_LOCATION.price), suffix: "/ mo each", note: EXTRA_LOCATION.note },
   { name: "Content pieces", value: usd(EXTRA_BLOG.price), suffix: "each, monthly", note: "Blog posts, geo pages and service pages, written, optimized and published. The plan sets how many a campaign can carry each month." },
   { name: BACKLINK.label, value: usd(BACKLINK.price), suffix: "each, monthly", note: BACKLINK.note },
@@ -245,6 +246,14 @@ const breadcrumbSchema = {
         </div>
       </div>
 
+      <div class="currency-toggle-wrap" data-animate>
+        <div class="currency-toggle" role="group" aria-label="Currency">
+          <button type="button" class="currency-toggle__btn is-active" data-currency="USD" aria-pressed="true">USD</button>
+          <button type="button" class="currency-toggle__btn" data-currency="CAD" aria-pressed="false">CAD</button>
+        </div>
+        <p class="currency-toggle__note">CAD billed at a fixed {CAD_RATE}× of the USD price.</p>
+      </div>
+
       <div class="tiers__grid" data-stagger>
         {
           tiers.map((tier) => (
@@ -265,7 +274,7 @@ const breadcrumbSchema = {
               </header>
 
               <div class="tier__price">
-                <span class="tier__price-value">{usd(tier.price)}</span>
+                <span class="tier__price-value" data-usd={tier.price}>{usd(tier.price)}</span>
                 <span class="tier__price-suffix">/ mo</span>
               </div>
 
@@ -345,7 +354,7 @@ const breadcrumbSchema = {
                     ]}
                   >
                     <span class="comparison__th-name">{tier.name}</span>
-                    <span class="comparison__th-price">{usd(tier.price)}/mo</span>
+                    <span class="comparison__th-price"><span data-usd={tier.price}>{usd(tier.price)}</span>/mo</span>
                   </th>
                 ))}
               </tr>
@@ -416,8 +425,10 @@ const breadcrumbSchema = {
           </h3>
           <p class="cadence__lede">
             Any deliverable can run on a different schedule and stay priced
-            monthly. Your account manager scopes the proposal that fits each
-            client's competition, geography, and goals.
+            monthly, and sometimes a campaign needs a one-off add-on beside
+            the plan: a batch of location pages, a migration, a build-out.
+            Your account manager scopes the proposal that fits each client's
+            competition, geography, and goals.
           </p>
         </div>
         <ul class="cadence__examples">
@@ -432,6 +443,10 @@ const breadcrumbSchema = {
           <li>
             <span class="cadence__example-label">Website changes implemented for you</span>
             <span class="cadence__example-price">+${implementationAddOn} / mo</span>
+          </li>
+          <li>
+            <span class="cadence__example-label">20 location pages, Content Bundle</span>
+            <span class="cadence__example-price">$150 one-time</span>
           </li>
         </ul>
       </aside>
@@ -515,6 +530,30 @@ const breadcrumbSchema = {
       </div>
     </div>
   </section>
+
+  <script define:vars={{ cadRate: CAD_RATE }}>
+    // USD / CAD toggle: every price marked data-usd re-renders at the fixed
+    // CAD multiple. The choice sticks per visitor.
+    const buttons = document.querySelectorAll(".currency-toggle__btn");
+    const prices = document.querySelectorAll("[data-usd]");
+    const fmt = (n) => Math.round(n).toLocaleString("en-US");
+    function apply(currency) {
+      prices.forEach((el) => {
+        const usd = Number(el.getAttribute("data-usd"));
+        el.textContent = currency === "CAD" ? `CA$${fmt(usd * cadRate)}` : `$${fmt(usd)}`;
+      });
+      buttons.forEach((b) => {
+        const on = b.getAttribute("data-currency") === currency;
+        b.classList.toggle("is-active", on);
+        b.setAttribute("aria-pressed", String(on));
+      });
+      try { localStorage.setItem("pricing-currency", currency); } catch {}
+    }
+    buttons.forEach((b) => b.addEventListener("click", () => apply(b.getAttribute("data-currency"))));
+    let saved = null;
+    try { saved = localStorage.getItem("pricing-currency"); } catch {}
+    if (saved === "CAD") apply("CAD");
+  </script>
 
   <!-- ═══════════════ FAQ ═══════════════ -->
   <section class="faq">
@@ -917,6 +956,48 @@ const breadcrumbSchema = {
   /* ═══════════════════════════════════════════════════════════════════
      WHOLESALE BANNER
      ═══════════════════════════════════════════════════════════════════ */
+  .currency-toggle-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0 0 1.75rem;
+  }
+
+  .currency-toggle {
+    display: inline-flex;
+    padding: 0.25rem;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.06);
+  }
+
+  .currency-toggle__btn {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    padding: 0.4rem 1.1rem;
+    border-radius: 999px;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text-muted, #6b7280);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .currency-toggle__btn.is-active {
+    background: #fff;
+    color: var(--text, #0f172a);
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+  }
+
+  .currency-toggle__note {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--text-muted, #6b7280);
+  }
+
   .wholesale-banner-wrap {
     text-align: center;
     margin-bottom: 48px;

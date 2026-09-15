@@ -63,7 +63,7 @@ export const SEO_TIERS: SeoTier[] = [
 export const EXTRA_LOCATION = {
   label: "Location work",
   price: 50,
-  note: "Per location, about an hour a month each: GBP updates, citation building, and local landing-page reviews.",
+  note: "Per additional location each month: GBP updates, citation building, and local landing-page reviews.",
 };
 
 export const GBP_POSTING = {
@@ -93,13 +93,13 @@ export const EXTRA_BLOG = {
 };
 
 export const EXTRA_HOUR = {
-  label: "Extra SEO Time",
-  price: 60,
-  note: "More specialist hours per month aimed at the priority work that moves rankings.",
+  label: "Human SEO Time",
+  price: 75,
+  note: "Specialist time for ad-hoc scope and projects outside the campaign: a migration, a one-off audit, a build-out the plan does not cover. Billed per hour.",
 };
 
 // Line items for the à-la-carte package builder (src/components/PackageBuilder.astro).
-// Rates: SEO Time $60/hr (EXTRA_HOUR), content $29 (EXTRA_BLOG), backlinks $50.
+// Rates: Human SEO Time $75/hr (EXTRA_HOUR), content $29 (EXTRA_BLOG), backlinks $50.
 //
 // Every managed campaign includes a fixed base: reporting + a health/crawl score.
 // These are required by default (only dropped if a partner negotiates, e.g. they
@@ -127,9 +127,9 @@ export const BACKLINK = {
 // Strategy reviews are billed per review ($300), so the chosen cadence sets the
 // monthly cost: semi-annual = $50/mo, quarterly = $100/mo, monthly = $300/mo.
 export const STRATEGY = {
-  label: "Strategy reviews",
+  label: "Human Strategy Reviews",
   pricePerReview: 300,
-  note: "A working session to set priorities and review performance, billed per review.",
+  note: "A working session with a strategist to set priorities and review performance, billed per review.",
   cadences: [
     { id: "semi", label: "Semi-annual", perYear: 2 },
     { id: "quarterly", label: "Quarterly", perYear: 4 },
@@ -155,14 +155,14 @@ export const WEB_BUILDS: WebBuild[] = [
   {
     id: "build",
     name: "Website build",
-    price: 1500,
+    price: 99,
     blurb:
       "A fast, modern site built on Astro and deployed on Cloudflare, and easy for your client to edit themselves. No setup fee.",
   },
   {
     id: "build-redesign",
     name: "Website + redesign-SEO",
-    price: 2500,
+    price: 999,
     blurb:
       "Everything in the build, plus full redesign-SEO protection: we map every old URL, set the redirects, and preserve the rankings through launch.",
     featured: true,
@@ -170,6 +170,9 @@ export const WEB_BUILDS: WebBuild[] = [
 ];
 
 export const CURRENCY = "$";
+
+/** CAD shown at a fixed multiple of the USD list price (the pricing page toggle). */
+export const CAD_RATE = 1.4;
 
 /** Format a whole-dollar USD amount, e.g. 1210 -> "$1,210". */
 export function usd(n: number): string {
