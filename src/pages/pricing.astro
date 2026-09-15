@@ -3,8 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import CtaBanner from "../components/CtaBanner.astro";
+import { comparisonRows, loadPlatformPricing, marketingTiers } from "../data/platform-pricing";
 import {
-  SEO_TIERS,
   REPORTING,
   HEALTH,
   STRATEGY,
@@ -20,7 +20,11 @@ import {
   usd,
 } from "../data/pricing";
 
-const tiers = SEO_TIERS;
+// Plans, maximums, process cards and the implementation add-on come from
+// the platform's public price list, so this page and the app agree.
+const { data: platform, source: pricingSource } = await loadPlatformPricing();
+const tiers = marketingTiers(platform);
+const implementationAddOn = tiers[0]?.implementation ?? 0;
 
 // À-la-carte rate card (the building blocks behind the packages, matching the
 // package builder on /partner-welcome/). Website builds render separately below.
@@ -37,45 +41,8 @@ const rateCard = [
   { name: MAINTENANCE.label, value: "from " + usd(MAINTENANCE.price), suffix: "/ mo", note: MAINTENANCE.note },
 ];
 
-interface ComparisonRow {
-  label: string;
-  values: (string | true)[];
-}
-
-const comparison: ComparisonRow[] = [
-  {
-    label: "Strategic review",
-    values: ["Semi-annual", "Quarterly", "Quarterly"],
-  },
-  {
-    label: "Technical crawl review + fixes",
-    values: [true, true, true],
-  },
-  {
-    label: "Live reporting dashboard",
-    values: [true, true, true],
-  },
-  {
-    label: "Local Maps focus location",
-    values: ["1", "1", "1"],
-  },
-  {
-    label: "Backlinks per month",
-    values: ["1", "2", "4"],
-  },
-  {
-    label: "Priority Intents set",
-    values: ["Semi-annually", "Quarterly", "Quarterly"],
-  },
-  {
-    label: "SEO Time per month",
-    values: ["1.5 hours", "3 hours", "5.5 hours"],
-  },
-  {
-    label: "Authority content per month",
-    values: ["0", "1", "2"],
-  },
-];
+const comparison = comparisonRows(platform, tiers);
+const comparisonGroups = [...new Set(comparison.map((r) => r.group ?? ""))];
 
 interface Definition {
   term: string;
@@ -83,37 +50,26 @@ interface Definition {
 }
 
 const definitions: Definition[] = [
-  {
-    term: "Strategic review",
-    body: "A scheduled session with your dedicated strategist to evaluate campaign performance, adjust priorities, and align on what is next. Tiny gets two per year, Typical and Turbo four.",
-  },
+  ...platform.processCards.map((c) => ({ term: c.name, body: c.description })),
   {
     term: "Technical crawl review + fixes",
-    body: "Each month we run a full technical audit, by default through AgencyAnalytics. When AA is not a fit (like a franchisee on a subfolder, since AA only crawls full domains), we use our own crawling and scoring system. The commitment is a 95%+ score with zero critical errors.",
+    body: "Each month we run a full technical audit and fix what it finds. The commitment is a 95%+ health score with zero critical errors.",
   },
   {
     term: "Live reporting dashboard",
-    body: "A real-time dashboard (currently powered by AgencyAnalytics) showing rankings, traffic, conversions, and the work we are doing. You and your client can log in any time.",
-  },
-  {
-    term: "Local Maps focus location",
-    body: "One geographic target where we concentrate the work that drives map ranking: citation building, on-page optimizations to the GBP-linked landing page, and ongoing GBP profile updates (photos, service area, full services list build-out, and similar). Typically one of these per month. Additional locations available as an add-on starting at $60 each. (GBP posting is handled separately by our in-house posting tool and is not part of this line item.)",
+    body: "A real-time view of rankings, traffic, conversions and the work being done, shown under your brand. You and your client can log in any time.",
   },
   {
     term: "Backlinks",
-    body: "Editorial links built to your site each month from various publishing sources.",
+    body: "Editorial links built to the site each month from our publishing network, DA20+ as standard.",
   },
   {
-    term: "Priority Intents",
-    body: "The search intents we're actively working to rank for this cycle, set at each strategic review. Each intent maps to whichever page is best positioned to win it (sometimes the page you'd expect, sometimes a different one we surface during planning). Intents can be organic ('invisalign halifax') or map-based ('dentist in halifax'). Strategic review cadence determines re-setting: semi-annually on Tiny, quarterly on Typical and Turbo.",
+    term: "Content pieces",
+    body: "Written, optimized and published on the client's site: blog posts, geo pages and service pages. The strategist spends the month's pieces where the campaign needs them.",
   },
   {
-    term: "SEO Time",
-    body: "Specialist time set aside each month and directed at the next most important thing for the site: geo and location pages, service-page support, on-page optimization, page speed, and technical improvements. It is a time allocation, not loose 'flex' hours. Catching and fixing crawl errors is the health score's job; SEO Time is the proactive improvement work. Tiny gets 1.5 hours, Typical 3, Turbo 5.5, and you can add more at $60 per hour.",
-  },
-  {
-    term: "Authority content",
-    body: "A blog or authority piece written, optimized, and published to keep the site fresh and build topical authority in the space. You usually only need one, sometimes two a month depending on the size of the site. $120 per piece. (Geo and location pages fall under SEO Time, not content.)",
+    term: "Website changes implemented for you",
+    body: `Our team applies the on-page and technical changes we recommend. Off, your team implements them from our briefs. Adds $${implementationAddOn} a month on any plan.`,
   },
 ];
 
@@ -251,14 +207,14 @@ const breadcrumbSchema = {
       <div class="tiers__intro" data-animate>
         <span class="section-label">Wholesale Partner Rates</span>
         <h2 class="section-heading">
-          Standard pricing for local businesses
+          Three plans for local service businesses
         </h2>
         <p class="section-subtext">
-          Wholesale pricing for SEO campaigns run on local or multi-location
-          business websites. The packages below are real starting points, not
-          a fixed menu. Every campaign includes a free discovery, so the
-          actual quote reflects budget, current performance, competition, and
-          expectations.
+          Wholesale pricing for campaigns run on local and multi-location
+          service business websites. Each plan is a monthly price, a set of
+          maximums, and the cadence the work runs at. Every campaign includes
+          a free discovery, so the package we propose is scoped to the client's
+          market, performance and goals, inside the plan that fits.
         </p>
       </div>
 
@@ -345,13 +301,18 @@ const breadcrumbSchema = {
         }
       </div>
 
+      {pricingSource === "fallback" && (
+        <p class="compare-note" data-animate>Prices shown from the last snapshot of the platform price list.</p>
+      )}
+
       <!-- ─── Comparison table ─── -->
       <div class="comparison" data-animate>
         <header class="comparison__head">
           <h3 class="comparison__title">What's included at each tier</h3>
           <p class="comparison__subtitle">
-            Counts and cadences below are starting points. Anything can scale
-            up, scale down, or run on a different schedule.
+            Counts are the monthly maximums each plan runs to. Every campaign
+            is scoped inside them during discovery; needing more of any one
+            line is the step to the next plan.
           </p>
         </header>
 
@@ -378,7 +339,14 @@ const breadcrumbSchema = {
               </tr>
             </thead>
             <tbody>
-              {comparison.map((row) => (
+              {comparisonGroups.map((group) => (
+                <>
+                  {group && (
+                    <tr class="comparison__group">
+                      <th scope="colgroup" colspan={tiers.length + 1} class="comparison__group-label">{group}</th>
+                    </tr>
+                  )}
+                  {comparison.filter((r) => (r.group ?? "") === group).map((row) => (
                 <tr class="comparison__row">
                   <th scope="row" class="comparison__row-label">
                     {row.label}
@@ -411,6 +379,8 @@ const breadcrumbSchema = {
                     </td>
                   ))}
                 </tr>
+                  ))}
+                </>
               ))}
             </tbody>
           </table>
@@ -418,10 +388,11 @@ const breadcrumbSchema = {
       </div>
 
       <p class="compare-note" data-animate>
-        This isn't a menu of different work per plan. Every campaign can include
-        any of it; the package size sets how much SEO Time we have, not which
-        work we do, and we focus the budget on the next most valuable thing.
-        <a href="/white-label-seo-services/#seo-work">See everything SEO Time covers</a>.
+        Every plan runs the same process. The plan sets how much of each
+        deliverable a campaign can carry in a month and how often the
+        specialists work it, not which work we do. Your account manager scopes
+        each campaign inside its plan during discovery.
+        <a href="/white-label-seo-services/#seo-work">See everything a campaign covers</a>.
       </p>
 
       <!-- ─── Cadence flexibility callout ─── -->
@@ -447,8 +418,8 @@ const breadcrumbSchema = {
             <span class="cadence__example-price">$50 / mo</span>
           </li>
           <li>
-            <span class="cadence__example-label">Custom backlink or SEO Time hours</span>
-            <span class="cadence__example-price">Scoped during discovery</span>
+            <span class="cadence__example-label">Website changes implemented for you</span>
+            <span class="cadence__example-price">+${implementationAddOn} / mo</span>
           </li>
         </ul>
       </aside>
@@ -1069,6 +1040,19 @@ const breadcrumbSchema = {
 
   .comparison__row:hover {
     background: rgba(40, 165, 177, 0.025);
+  }
+
+  .comparison__group-label {
+    padding: 0.55rem 1.25rem;
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted, #6b7280);
+    background: rgba(15, 23, 42, 0.03);
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
   }
 
   .comparison__row-label {
