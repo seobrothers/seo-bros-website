@@ -62,7 +62,7 @@ export const SEO_TIERS: SeoTier[] = [
 /** Monthly add-ons (recurring). */
 export const EXTRA_LOCATION = {
   label: "Location work",
-  price: 60,
+  price: 50,
   note: "Per location, about an hour a month each: GBP updates, citation building, and local landing-page reviews.",
 };
 
@@ -74,21 +74,21 @@ export const GBP_POSTING = {
 
 export const HOSTING = {
   label: "Managed hosting",
+  /** Billed per year. */
   price: 25,
-  from: true,
-  note: "Fast, secure hosting on Cloudflare's edge. Updates, SSL, and uptime handled.",
+  period: "year" as const,
+  note: "Fast, secure hosting on Cloudflare's edge for websites we build. Updates, SSL, and uptime handled.",
 };
 
 export const MAINTENANCE = {
   label: "Website maintenance",
-  price: 100,
-  from: true,
-  note: "Ongoing content edits, fixes, and small changes so the site never goes stale.",
+  price: 25,
+  note: "Ongoing content edits, fixes, and small changes on websites we build, so the site never goes stale.",
 };
 
 export const EXTRA_BLOG = {
   label: "Content (blog post)",
-  price: 120,
+  price: 29,
   note: "An optimized blog post or content piece each month.",
 };
 
@@ -99,28 +99,28 @@ export const EXTRA_HOUR = {
 };
 
 // Line items for the à-la-carte package builder (src/components/PackageBuilder.astro).
-// Rates: SEO Time $60/hr (EXTRA_HOUR), content $120 (EXTRA_BLOG), backlinks $60.
+// Rates: SEO Time $60/hr (EXTRA_HOUR), content $29 (EXTRA_BLOG), backlinks $50.
 //
 // Every managed campaign includes a fixed base: reporting + a health/crawl score.
 // These are required by default (only dropped if a partner negotiates, e.g. they
 // run their own reporting), so the builder shows them as included, not toggleable.
 export const REPORTING = {
   label: "Reporting dashboard",
-  price: 50,
+  price: 25,
   note: "Live reporting in our Portal: what's next, what we're working on, and a work log of everything done. Show your client under your brand, or keep it internal.",
 };
 export const HEALTH = {
   label: "Health & crawl score",
-  price: 50,
+  price: 25,
   note: "Monthly health and crawl-score check that catches and fixes errors. Proactive technical work like page speed lives in SEO initiatives.",
 };
-/** Always-included managed-campaign base. Sums to $100/mo. */
+/** Always-included managed-campaign base. Sums to $50/mo. */
 export const MANAGED_INCLUDED = [REPORTING, HEALTH];
 export const MANAGED_BASE_TOTAL = MANAGED_INCLUDED.reduce((s, i) => s + i.price, 0);
 
 export const BACKLINK = {
   label: "Backlinks",
-  price: 60,
+  price: 50,
   note: "Editorial links built each month from our publishing network.",
 };
 

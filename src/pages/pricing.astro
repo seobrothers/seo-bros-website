@@ -34,11 +34,11 @@ const rateCard = [
   { name: STRATEGY.label, value: usd(STRATEGY.pricePerReview), suffix: "per review", note: `Cadence sets the monthly cost: semi-annual ${usd(strategyMonthly(2))}/mo, quarterly ${usd(strategyMonthly(4))}/mo, monthly ${usd(strategyMonthly(12))}/mo.` },
   { name: "SEO Time", value: usd(EXTRA_HOUR.price), suffix: "/ hour, monthly", note: "Time on the next most important thing for the site: geo and service pages, on-page optimization, page speed, and technical improvements." },
   { name: EXTRA_LOCATION.label, value: usd(EXTRA_LOCATION.price), suffix: "/ mo each", note: EXTRA_LOCATION.note },
-  { name: "Authority content", value: usd(EXTRA_BLOG.price), suffix: "each, monthly", note: "Built for freshness and topical authority. Usually one, sometimes two a month depending on site size." },
+  { name: "Content pieces", value: usd(EXTRA_BLOG.price), suffix: "each, monthly", note: "Blog posts, geo pages and service pages, written, optimized and published. The plan sets how many a campaign can carry each month." },
   { name: BACKLINK.label, value: usd(BACKLINK.price), suffix: "each, monthly", note: BACKLINK.note },
   { name: GBP_POSTING.label, value: usd(GBP_POSTING.price), suffix: "/ mo", note: GBP_POSTING.note, tag: "Recommended for local" },
-  { name: HOSTING.label, value: "from " + usd(HOSTING.price), suffix: "/ mo", note: HOSTING.note },
-  { name: MAINTENANCE.label, value: "from " + usd(MAINTENANCE.price), suffix: "/ mo", note: MAINTENANCE.note },
+  { name: HOSTING.label, value: usd(HOSTING.price), suffix: "/ year", note: HOSTING.note },
+  { name: MAINTENANCE.label, value: usd(MAINTENANCE.price), suffix: "/ mo", note: MAINTENANCE.note },
 ];
 
 const comparison = comparisonRows(platform, tiers);
@@ -52,20 +52,32 @@ interface Definition {
 const definitions: Definition[] = [
   ...platform.processCards.map((c) => ({ term: c.name, body: c.description })),
   {
-    term: "Technical crawl review + fixes",
-    body: "Each month we run a full technical audit and fix what it finds. The commitment is a 95%+ health score with zero critical errors.",
+    term: "Content pieces",
+    body: "Written, optimized and published on the client's site: blog posts, geo pages and service pages. The plan sets the monthly maximum; the strategist spends the month's pieces where the campaign needs them.",
+  },
+  {
+    term: "Backlinks",
+    body: "Editorial links built to the site each month from our publishing network, DA20+ as standard. The plan sets the monthly maximum.",
+  },
+  {
+    term: "Business Profile posts",
+    body: "Posts published to the client's Google Business Profile to keep it active and fresh, up to the plan's monthly maximum.",
+  },
+  {
+    term: "Citations",
+    body: "Local directory listings built with consistent business details, up to the plan's monthly maximum.",
   },
   {
     term: "Live reporting dashboard",
     body: "A real-time view of rankings, traffic, conversions and the work being done, shown under your brand. You and your client can log in any time.",
   },
   {
-    term: "Backlinks",
-    body: "Editorial links built to the site each month from our publishing network, DA20+ as standard.",
+    term: "Technical crawl review + fixes",
+    body: "Each month we run a full technical audit and fix what it finds. The commitment is a 95%+ health score with zero critical errors.",
   },
   {
-    term: "Content pieces",
-    body: "Written, optimized and published on the client's site: blog posts, geo pages and service pages. The strategist spends the month's pieces where the campaign needs them.",
+    term: "Tracked keywords",
+    body: `Up to ${platform.trackedKeywords} keywords tracked per campaign on every plan, with rankings in the dashboard.`,
   },
   {
     term: "Website changes implemented for you",
@@ -410,8 +422,8 @@ const breadcrumbSchema = {
         </div>
         <ul class="cadence__examples">
           <li>
-            <span class="cadence__example-label">Authority content every other month</span>
-            <span class="cadence__example-price">From $60 / mo</span>
+            <span class="cadence__example-label">A content piece every other month</span>
+            <span class="cadence__example-price">From {usd(EXTRA_BLOG.price / 2)} / mo</span>
           </li>
           <li>
             <span class="cadence__example-label">GBP posting, any number of locations</span>
@@ -430,10 +442,11 @@ const breadcrumbSchema = {
           <span class="section-label">À la carte</span>
           <h3 class="addons__title">The full rate card</h3>
           <p class="addons__subtitle">
-            The building blocks behind the packages. Every campaign includes
-            reporting and a health score; strategy, SEO Time, authority
-            content, and links scale to the plan. Build any mix you want. These
-            are wholesale prices you pay us and mark up to your client.
+            The building blocks behind the plans. Every campaign includes
+            reporting and a health score; content, links, Business Profile
+            posts and citations scale to the plan's maximums. Build any mix
+            you want. These are wholesale prices you pay us and mark up to
+            your client.
           </p>
         </header>
 

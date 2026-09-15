@@ -147,9 +147,9 @@ const authorityItems = [
             <span class="pb__toggle-price">+{usd(GBP_POSTING.price)}/mo</span>
           </label>
           <label class="pb__toggle">
-            <input type="checkbox" id="pb-hosting" data-monthly={HOSTING.price} />
+            <input type="checkbox" id="pb-hosting" data-monthly={Math.round((HOSTING.price / 12) * 100) / 100} />
             <span class="pb__toggle-name">{HOSTING.label}</span>
-            <span class="pb__toggle-price">+{usd(HOSTING.price)}/mo</span>
+            <span class="pb__toggle-price">+{usd(HOSTING.price)}/year</span>
           </label>
           <label class="pb__toggle">
             <input type="checkbox" id="pb-maint" data-monthly={MAINTENANCE.price} />
