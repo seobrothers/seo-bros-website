@@ -24,7 +24,7 @@ import {
 
 // On-site optimization + per-location local work.
 const workItems = [
-  { id: "pb-hours", label: "SEO Time", unit: EXTRA_HOUR.price, suffix: "per hour", noun: "hours", def: 3, note: "Time on the next most important thing for the site: geo and service pages, on-page optimization, page speed, and technical improvements." },
+  { id: "pb-hours", label: "Human SEO Time", unit: EXTRA_HOUR.price, suffix: "per hour", noun: "hours", def: 3, note: "Specialist time for work outside the campaign plan, billed per hour." },
   { id: "pb-locations", label: EXTRA_LOCATION.label, unit: EXTRA_LOCATION.price, suffix: "each", noun: "locations", def: 0, note: EXTRA_LOCATION.note },
 ];
 // The authority-and-freshness levers: content + links.
@@ -93,7 +93,7 @@ const authorityItems = [
             </div>
           ))}
         </div>
-        <p class="pb__hint">SEO Time covers geo and service pages, on-page, page speed, and technical work. <a href="/white-label-seo-services/#seo-work" target="_blank" rel="noopener">See the full list</a>.</p>
+        <p class="pb__hint">Human SEO Time is for ad-hoc scope and projects outside the campaign: migrations, one-off audits, build-outs the plan does not cover. <a href="/white-label-seo-services/#seo-work" target="_blank" rel="noopener">See what a campaign already covers</a>.</p>
       </fieldset>
 
       <fieldset class="pb__group">
@@ -147,9 +147,9 @@ const authorityItems = [
             <span class="pb__toggle-price">+{usd(GBP_POSTING.price)}/mo</span>
           </label>
           <label class="pb__toggle">
-            <input type="checkbox" id="pb-hosting" data-monthly={HOSTING.price} />
+            <input type="checkbox" id="pb-hosting" data-monthly={Math.round((HOSTING.price / 12) * 100) / 100} />
             <span class="pb__toggle-name">{HOSTING.label}</span>
-            <span class="pb__toggle-price">+{usd(HOSTING.price)}/mo</span>
+            <span class="pb__toggle-price">+{usd(HOSTING.price)}/year</span>
           </label>
           <label class="pb__toggle">
             <input type="checkbox" id="pb-maint" data-monthly={MAINTENANCE.price} />
@@ -274,7 +274,7 @@ const authorityItems = [
         if (label) lines.push(`Strategy reviews: ${label}`);
       }
       const numLabels: Record<string, string> = {
-        "pb-hours": "SEO Time (hours/mo)",
+        "pb-hours": "Human SEO Time (hours/mo)",
         "pb-locations": "Location work (locations)",
         "pb-content": "Authority content/mo",
         "pb-links": "Backlinks/mo",

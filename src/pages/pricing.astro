@@ -3,8 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import CtaBanner from "../components/CtaBanner.astro";
+import { comparisonRows, loadPlatformPricing, marketingTiers } from "../data/platform-pricing";
 import {
-  SEO_TIERS,
   REPORTING,
   HEALTH,
   STRATEGY,
@@ -17,65 +17,33 @@ import {
   HOSTING,
   MAINTENANCE,
   WEB_BUILDS,
+  CAD_RATE,
   usd,
 } from "../data/pricing";
 
-const tiers = SEO_TIERS;
+// Plans, maximums, process cards and the implementation add-on come from
+// the platform's public price list, so this page and the app agree.
+const { data: platform, source: pricingSource } = await loadPlatformPricing();
+const tiers = marketingTiers(platform);
+const implementationAddOn = tiers[0]?.implementation ?? 0;
 
 // À-la-carte rate card (the building blocks behind the packages, matching the
-// package builder on /partner-welcome/). Website builds render separately below.
+// package builder on /sign-up/). Website builds render separately below.
 const rateCard = [
   { name: REPORTING.label, value: usd(REPORTING.price), suffix: "/ mo", note: REPORTING.note, tag: "In every campaign" },
   { name: HEALTH.label, value: usd(HEALTH.price), suffix: "/ mo", note: HEALTH.note, tag: "In every campaign" },
   { name: STRATEGY.label, value: usd(STRATEGY.pricePerReview), suffix: "per review", note: `Cadence sets the monthly cost: semi-annual ${usd(strategyMonthly(2))}/mo, quarterly ${usd(strategyMonthly(4))}/mo, monthly ${usd(strategyMonthly(12))}/mo.` },
-  { name: "SEO Time", value: usd(EXTRA_HOUR.price), suffix: "/ hour, monthly", note: "Time on the next most important thing for the site: geo and service pages, on-page optimization, page speed, and technical improvements." },
+  { name: EXTRA_HOUR.label, value: usd(EXTRA_HOUR.price), suffix: "/ hour", note: EXTRA_HOUR.note },
   { name: EXTRA_LOCATION.label, value: usd(EXTRA_LOCATION.price), suffix: "/ mo each", note: EXTRA_LOCATION.note },
-  { name: "Authority content", value: usd(EXTRA_BLOG.price), suffix: "each, monthly", note: "Built for freshness and topical authority. Usually one, sometimes two a month depending on site size." },
+  { name: "Content pieces", value: usd(EXTRA_BLOG.price), suffix: "each, monthly", note: "Blog posts, geo pages and service pages, written, optimized and published. The plan sets how many a campaign can carry each month." },
   { name: BACKLINK.label, value: usd(BACKLINK.price), suffix: "each, monthly", note: BACKLINK.note },
   { name: GBP_POSTING.label, value: usd(GBP_POSTING.price), suffix: "/ mo", note: GBP_POSTING.note, tag: "Recommended for local" },
-  { name: HOSTING.label, value: "from " + usd(HOSTING.price), suffix: "/ mo", note: HOSTING.note },
-  { name: MAINTENANCE.label, value: "from " + usd(MAINTENANCE.price), suffix: "/ mo", note: MAINTENANCE.note },
+  { name: HOSTING.label, value: usd(HOSTING.price), suffix: "/ year", note: HOSTING.note },
+  { name: MAINTENANCE.label, value: usd(MAINTENANCE.price), suffix: "/ mo", note: MAINTENANCE.note },
 ];
 
-interface ComparisonRow {
-  label: string;
-  values: (string | true)[];
-}
-
-const comparison: ComparisonRow[] = [
-  {
-    label: "Strategic review",
-    values: ["Semi-annual", "Quarterly", "Quarterly"],
-  },
-  {
-    label: "Technical crawl review + fixes",
-    values: [true, true, true],
-  },
-  {
-    label: "Live reporting dashboard",
-    values: [true, true, true],
-  },
-  {
-    label: "Local Maps focus location",
-    values: ["1", "1", "1"],
-  },
-  {
-    label: "Backlinks per month",
-    values: ["1", "2", "4"],
-  },
-  {
-    label: "Priority Intents set",
-    values: ["Semi-annually", "Quarterly", "Quarterly"],
-  },
-  {
-    label: "SEO Time per month",
-    values: ["1.5 hours", "3 hours", "5.5 hours"],
-  },
-  {
-    label: "Authority content per month",
-    values: ["0", "1", "2"],
-  },
-];
+const comparison = comparisonRows(platform, tiers);
+const comparisonGroups = [...new Set(comparison.map((r) => r.group ?? ""))];
 
 interface Definition {
   term: string;
@@ -83,37 +51,38 @@ interface Definition {
 }
 
 const definitions: Definition[] = [
+  ...platform.processCards.map((c) => ({ term: c.name, body: c.description })),
   {
-    term: "Strategic review",
-    body: "A scheduled session with your dedicated strategist to evaluate campaign performance, adjust priorities, and align on what is next. Tiny gets two per year, Typical and Turbo four.",
-  },
-  {
-    term: "Technical crawl review + fixes",
-    body: "Each month we run a full technical audit, by default through AgencyAnalytics. When AA is not a fit (like a franchisee on a subfolder, since AA only crawls full domains), we use our own crawling and scoring system. The commitment is a 95%+ score with zero critical errors.",
-  },
-  {
-    term: "Live reporting dashboard",
-    body: "A real-time dashboard (currently powered by AgencyAnalytics) showing rankings, traffic, conversions, and the work we are doing. You and your client can log in any time.",
-  },
-  {
-    term: "Local Maps focus location",
-    body: "One geographic target where we concentrate the work that drives map ranking: citation building, on-page optimizations to the GBP-linked landing page, and ongoing GBP profile updates (photos, service area, full services list build-out, and similar). Typically one of these per month. Additional locations available as an add-on starting at $60 each. (GBP posting is handled separately by our in-house posting tool and is not part of this line item.)",
+    term: "Content pieces",
+    body: "Written, optimized and published on the client's site: blog posts, geo pages and service pages. The plan sets how many a month; the strategist spends them where the campaign needs them.",
   },
   {
     term: "Backlinks",
-    body: "Editorial links built to your site each month from various publishing sources.",
+    body: "Editorial links built to the site each month from our publishing network, DA20+ as standard.",
   },
   {
-    term: "Priority Intents",
-    body: "The search intents we're actively working to rank for this cycle, set at each strategic review. Each intent maps to whichever page is best positioned to win it (sometimes the page you'd expect, sometimes a different one we surface during planning). Intents can be organic ('invisalign halifax') or map-based ('dentist in halifax'). Strategic review cadence determines re-setting: semi-annually on Tiny, quarterly on Typical and Turbo.",
+    term: "Business Profile posts",
+    body: "Posts published to the client's Google Business Profile each month to keep it active and fresh.",
   },
   {
-    term: "SEO Time",
-    body: "Specialist time set aside each month and directed at the next most important thing for the site: geo and location pages, service-page support, on-page optimization, page speed, and technical improvements. It is a time allocation, not loose 'flex' hours. Catching and fixing crawl errors is the health score's job; SEO Time is the proactive improvement work. Tiny gets 1.5 hours, Typical 3, Turbo 5.5, and you can add more at $60 per hour.",
+    term: "Citations",
+    body: "Local directory listings built each month with consistent business details.",
   },
   {
-    term: "Authority content",
-    body: "A blog or authority piece written, optimized, and published to keep the site fresh and build topical authority in the space. You usually only need one, sometimes two a month depending on the size of the site. $120 per piece. (Geo and location pages fall under SEO Time, not content.)",
+    term: "Live reporting dashboard + AI visibility tracking",
+    body: "A real-time view of rankings, traffic, conversions and the work being done, shown under your brand, plus AI visibility tracking: what ChatGPT, Claude, Gemini and Perplexity recommend for the client's market, sampled against competitors. You and your client can log in any time.",
+  },
+  {
+    term: "Technical crawl review + fixes",
+    body: "Each month we run a full technical audit and fix what it finds. The commitment is a 95%+ health score with zero critical errors.",
+  },
+  {
+    term: "Tracked keywords",
+    body: `Keywords tracked per campaign with rankings in the dashboard: ${tiers.map((t) => `${t.trackedKeywords} on ${t.name}`).join(", ")}.`,
+  },
+  {
+    term: "Website changes implemented for you",
+    body: `Our team applies the on-page and technical changes we recommend. Off, your team implements them from our briefs. Adds $${implementationAddOn} a month on any plan.`,
   },
 ];
 
@@ -251,14 +220,14 @@ const breadcrumbSchema = {
       <div class="tiers__intro" data-animate>
         <span class="section-label">Wholesale Partner Rates</span>
         <h2 class="section-heading">
-          Standard pricing for local businesses
+          Three Local SEO plans for service businesses
         </h2>
         <p class="section-subtext">
-          Wholesale pricing for SEO campaigns run on local or multi-location
-          business websites. The packages below are real starting points, not
-          a fixed menu. Every campaign includes a free discovery, so the
-          actual quote reflects budget, current performance, competition, and
-          expectations.
+          Wholesale pricing for campaigns run on local and multi-location
+          service business websites. Each plan is a monthly price, a set of
+          maximums, and the cadence the work runs at. Every campaign includes
+          a free discovery, so the package we propose is scoped to the client's
+          market, performance and goals, inside the plan that fits.
         </p>
       </div>
 
@@ -275,6 +244,26 @@ const breadcrumbSchema = {
             from a partner agency.
           </span>
         </div>
+      </div>
+
+      <div class="currency-toggle-wrap" data-animate>
+        <div class="plan-controls">
+          <div class="currency-toggle" role="group" aria-label="Currency">
+            <button type="button" class="currency-toggle__btn is-active" data-currency="USD" aria-pressed="true">USD</button>
+            <button type="button" class="currency-toggle__btn" data-currency="CAD" aria-pressed="false">CAD</button>
+          </div>
+          <button type="button" class="impl-toggle" id="impl-toggle" role="switch" aria-checked="true">
+            <span class="impl-toggle__track" aria-hidden="true"><span class="impl-toggle__thumb"></span></span>
+            <span class="impl-toggle__label">
+              Website changes implemented for you
+              <span class="impl-toggle__price">+<span data-usd={implementationAddOn}>{usd(implementationAddOn)}</span>/mo</span>
+            </span>
+          </button>
+        </div>
+        <p class="currency-toggle__note">
+          CAD billed at a fixed {CAD_RATE}× of the USD price. Implementation adds
+          {usd(implementationAddOn)} a month to any plan.
+        </p>
       </div>
 
       <div class="tiers__grid" data-stagger>
@@ -297,7 +286,7 @@ const breadcrumbSchema = {
               </header>
 
               <div class="tier__price">
-                <span class="tier__price-value">{usd(tier.price)}</span>
+                <span class="tier__price-value" data-usd={tier.price} data-impl={tier.implementation}>{usd(tier.price + tier.implementation)}</span>
                 <span class="tier__price-suffix">/ mo</span>
               </div>
 
@@ -323,13 +312,13 @@ const breadcrumbSchema = {
               </ul>
 
               <a
-                href="/partner-package/"
+                href="/sign-up/"
                 class:list={[
                   "tier__cta",
                   tier.featured ? "btn btn-primary" : "btn btn-outline--dark",
                 ]}
               >
-                Get Access
+                Start Free Trial
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                   <path
                     d="M3 8h10M9 4l4 4-4 4"
@@ -345,13 +334,18 @@ const breadcrumbSchema = {
         }
       </div>
 
+      {pricingSource === "fallback" && (
+        <p class="compare-note" data-animate>Prices shown from the last snapshot of the platform price list.</p>
+      )}
+
       <!-- ─── Comparison table ─── -->
       <div class="comparison" data-animate>
         <header class="comparison__head">
           <h3 class="comparison__title">What's included at each tier</h3>
           <p class="comparison__subtitle">
-            Counts and cadences below are starting points. Anything can scale
-            up, scale down, or run on a different schedule.
+            What each plan's campaign delivers in a month. Every campaign is
+            scoped during discovery and can flex inside its plan; needing more
+            than the plan allows is the step to the next one.
           </p>
         </header>
 
@@ -372,13 +366,20 @@ const breadcrumbSchema = {
                     ]}
                   >
                     <span class="comparison__th-name">{tier.name}</span>
-                    <span class="comparison__th-price">{usd(tier.price)}/mo</span>
+                    <span class="comparison__th-price"><span data-usd={tier.price} data-impl={tier.implementation}>{usd(tier.price + tier.implementation)}</span>/mo</span>
                   </th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {comparison.map((row) => (
+              {comparisonGroups.map((group) => (
+                <>
+                  {group && (
+                    <tr class="comparison__group">
+                      <th scope="colgroup" colspan={tiers.length + 1} class="comparison__group-label">{group}</th>
+                    </tr>
+                  )}
+                  {comparison.filter((r) => (r.group ?? "") === group).map((row) => (
                 <tr class="comparison__row">
                   <th scope="row" class="comparison__row-label">
                     {row.label}
@@ -406,11 +407,13 @@ const breadcrumbSchema = {
                           <polyline points="20 6 9 17 4 12" />
                         </svg>
                       ) : (
-                        <span class="comparison__value">{v}</span>
+                        <span class="comparison__value" data-impl-row={row.label === "Website changes implemented for you" ? "" : undefined}>{row.label === "Website changes implemented for you" ? "Included" : v}</span>
                       )}
                     </td>
                   ))}
                 </tr>
+                  ))}
+                </>
               ))}
             </tbody>
           </table>
@@ -418,10 +421,11 @@ const breadcrumbSchema = {
       </div>
 
       <p class="compare-note" data-animate>
-        This isn't a menu of different work per plan. Every campaign can include
-        any of it; the package size sets how much SEO Time we have, not which
-        work we do, and we focus the budget on the next most valuable thing.
-        <a href="/white-label-seo-services/#seo-work">See everything SEO Time covers</a>.
+        Every plan runs the same process. The plan sets how much of each
+        deliverable a campaign can carry in a month and how often the
+        specialists work it, not which work we do. Your account manager scopes
+        each campaign inside its plan during discovery.
+        <a href="/white-label-seo-services/#seo-work">See everything a campaign covers</a>.
       </p>
 
       <!-- ─── Cadence flexibility callout ─── -->
@@ -433,22 +437,24 @@ const breadcrumbSchema = {
           </h3>
           <p class="cadence__lede">
             Any deliverable can run on a different schedule and stay priced
-            monthly. Your account manager scopes the proposal that fits each
-            client's competition, geography, and goals.
+            monthly, and sometimes a campaign needs a one-off add-on beside
+            the plan: a batch of location pages, a migration, a build-out.
+            Your account manager scopes the proposal that fits each client's
+            competition, geography, and goals.
           </p>
         </div>
         <ul class="cadence__examples">
-          <li>
-            <span class="cadence__example-label">Authority content every other month</span>
-            <span class="cadence__example-price">From $60 / mo</span>
-          </li>
           <li>
             <span class="cadence__example-label">GBP posting, any number of locations</span>
             <span class="cadence__example-price">$50 / mo</span>
           </li>
           <li>
-            <span class="cadence__example-label">Custom backlink or SEO Time hours</span>
-            <span class="cadence__example-price">Scoped during discovery</span>
+            <span class="cadence__example-label">Website changes implemented for you</span>
+            <span class="cadence__example-price">+${implementationAddOn} / mo</span>
+          </li>
+          <li>
+            <span class="cadence__example-label">20 location pages, Content Bundle</span>
+            <span class="cadence__example-price">$150 one-time</span>
           </li>
         </ul>
       </aside>
@@ -459,10 +465,11 @@ const breadcrumbSchema = {
           <span class="section-label">À la carte</span>
           <h3 class="addons__title">The full rate card</h3>
           <p class="addons__subtitle">
-            The building blocks behind the packages. Every campaign includes
-            reporting and a health score; strategy, SEO Time, authority
-            content, and links scale to the plan. Build any mix you want. These
-            are wholesale prices you pay us and mark up to your client.
+            The building blocks behind the plans, as points of reference for
+            what goes into a campaign. Every campaign includes reporting and a
+            health score; content, links, Business Profile posts and citations
+            scale with the plan. These are wholesale prices you pay us and
+            mark up to your client.
           </p>
         </header>
 
@@ -508,9 +515,8 @@ const breadcrumbSchema = {
         </div>
 
         <p class="addons__footnote">
-          Want it all in one number? <a href="/partner-package/">Build your own
-          package</a> and we will scope a single monthly quote across SEO, the
-          website, and the add-ons.
+          Every plan is scoped to the client during a free discovery. <a href="/sign-up/">Start
+          your free trial</a> and run one on any site.
         </p>
       </div>
 
@@ -531,6 +537,60 @@ const breadcrumbSchema = {
       </div>
     </div>
   </section>
+
+  <script define:vars={{ cadRate: CAD_RATE }}>
+    // USD / CAD and the implementation switch drive the same price elements:
+    // every [data-usd] re-renders at the chosen currency, and plan prices
+    // ([data-impl]) add the implementation amount when the switch is on. Both
+    // choices stick per visitor.
+    const currencyButtons = document.querySelectorAll(".currency-toggle__btn");
+    const implSwitch = document.getElementById("impl-toggle");
+    const prices = document.querySelectorAll("[data-usd]");
+    const implRowCells = document.querySelectorAll("[data-impl-row]");
+    const fmt = (n) => Math.round(n).toLocaleString("en-US");
+    let currency = "USD";
+    let implementation = true;
+    function render() {
+      prices.forEach((el) => {
+        const impl = el.hasAttribute("data-impl") && implementation ? Number(el.getAttribute("data-impl")) : 0;
+        const usd = Number(el.getAttribute("data-usd")) + impl;
+        el.textContent = currency === "CAD" ? `CA$${fmt(usd * cadRate)}` : `$${fmt(usd)}`;
+      });
+      implRowCells.forEach((el) => {
+        if (implementation) {
+          el.textContent = "Included";
+        } else {
+          const add = Number(document.getElementById("impl-toggle")?.closest(".plan-controls")?.querySelector("[data-usd]")?.getAttribute("data-usd") ?? 0);
+          el.textContent = currency === "CAD" ? `+CA$${fmt(add * cadRate)}/mo` : `+$${fmt(add)}/mo`;
+        }
+      });
+      currencyButtons.forEach((b) => {
+        const on = b.getAttribute("data-currency") === currency;
+        b.classList.toggle("is-active", on);
+        b.setAttribute("aria-pressed", String(on));
+      });
+      implSwitch?.setAttribute("aria-checked", String(implementation));
+      try {
+        localStorage.setItem("pricing-currency", currency);
+        localStorage.setItem("pricing-implementation", implementation ? "1" : "0");
+      } catch {}
+    }
+    currencyButtons.forEach((b) =>
+      b.addEventListener("click", () => {
+        currency = b.getAttribute("data-currency");
+        render();
+      })
+    );
+    implSwitch?.addEventListener("click", () => {
+      implementation = !implementation;
+      render();
+    });
+    try {
+      if (localStorage.getItem("pricing-currency") === "CAD") currency = "CAD";
+      if (localStorage.getItem("pricing-implementation") === "0") implementation = false;
+    } catch {}
+    render();
+  </script>
 
   <!-- ═══════════════ FAQ ═══════════════ -->
   <section class="faq">
@@ -933,6 +993,114 @@ const breadcrumbSchema = {
   /* ═══════════════════════════════════════════════════════════════════
      WHOLESALE BANNER
      ═══════════════════════════════════════════════════════════════════ */
+  .currency-toggle-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0 0 1.75rem;
+  }
+
+  .plan-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem 1.5rem;
+  }
+
+  .impl-toggle {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.35rem 0.9rem 0.35rem 0.5rem;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.06);
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text, #0f172a);
+    cursor: pointer;
+    user-select: none;
+    text-align: left;
+  }
+
+  .impl-toggle:focus-visible {
+    outline: 2px solid var(--teal, #0d9488);
+    outline-offset: 2px;
+  }
+
+  .impl-toggle__track {
+    position: relative;
+    width: 34px;
+    height: 20px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.2);
+    transition: background 0.15s ease;
+    flex: none;
+  }
+
+  .impl-toggle__thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.25);
+    transition: transform 0.15s ease;
+  }
+
+  .impl-toggle[aria-checked="true"] .impl-toggle__track {
+    background: var(--teal, #0d9488);
+  }
+
+  .impl-toggle[aria-checked="true"] .impl-toggle__thumb {
+    transform: translateX(14px);
+  }
+
+  .impl-toggle__price {
+    font-weight: 500;
+    color: var(--text-muted, #6b7280);
+  }
+
+  .currency-toggle {
+    display: inline-flex;
+    padding: 0.25rem;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.06);
+  }
+
+  .currency-toggle__btn {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    padding: 0.4rem 1.1rem;
+    border-radius: 999px;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text-muted, #6b7280);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .currency-toggle__btn.is-active {
+    background: #fff;
+    color: var(--text, #0f172a);
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+  }
+
+  .currency-toggle__note {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--text-muted, #6b7280);
+  }
+
   .wholesale-banner-wrap {
     text-align: center;
     margin-bottom: 48px;
@@ -1069,6 +1237,19 @@ const breadcrumbSchema = {
 
   .comparison__row:hover {
     background: rgba(40, 165, 177, 0.025);
+  }
+
+  .comparison__group-label {
+    padding: 0.55rem 1.25rem;
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted, #6b7280);
+    background: rgba(15, 23, 42, 0.03);
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
   }
 
   .comparison__row-label {

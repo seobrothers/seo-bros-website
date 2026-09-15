@@ -1,0 +1,310 @@
+---
+// The Tideworthy free-trial signup form. Posts JSON to the platform's public
+// signup door and, on success, sends the browser to a one-time handoff on the
+// app host that lands the new owner signed in on Start Here.
+//
+//   POST {PUBLIC_PLATFORM_SIGNUP_URL}   default https://app.tideworthy.com/api/public/signup
+//   { ok: true, status: "signed_in", redirect }   navigate to redirect
+//   { ok: false, error, message }                 show message
+//
+// Password only: the account exists the moment they set one. The app is
+// view-only until the 6-digit code emailed at signup is entered. The 14-day
+// trial starts when they activate their first client, not here, so "free
+// trial" and "no card" are both literally true.
+//
+// Turnstile renders only when PUBLIC_TURNSTILE_SITE_KEY is set (production:
+// 0x4AAAAAAEw0j6IM81eV7sA7, which covers seobrothers.com and tideworthy.com).
+// Without a key the widget is skipped and the platform's local dev accepts the
+// submit; a deployed platform refuses a missing token, so set the key in prod.
+import { TURNSTILE_SITE_KEY } from "../lib/turnstile";
+
+interface Props {
+  /** Tighter spacing for the hero column on /tideworthy/. */
+  compact?: boolean;
+  heading?: string;
+  submitLabel?: string;
+  id?: string;
+}
+
+const {
+  compact = false,
+  heading = "Start your free trial",
+  submitLabel = "Start my free trial",
+  id = "tw-signup",
+} = Astro.props;
+
+const endpoint =
+  (import.meta.env.PUBLIC_PLATFORM_SIGNUP_URL as string | undefined) ||
+  "https://app.tideworthy.com/api/public/signup";
+---
+
+<form
+  id={id}
+  class:list={["tws", compact && "tws--compact"]}
+  data-endpoint={endpoint}
+  novalidate
+>
+  {heading && <h2 class="tws__title">{heading}</h2>}
+
+  <div class="tws__row">
+    <label class="tws__field">
+      <span class="tws__label">First name</span>
+      <input name="firstName" class="tws__input" autocomplete="given-name" required />
+    </label>
+    <label class="tws__field">
+      <span class="tws__label">Last name</span>
+      <input name="lastName" class="tws__input" autocomplete="family-name" />
+    </label>
+  </div>
+
+  <label class="tws__field">
+    <span class="tws__label">Agency name</span>
+    <input name="agencyName" class="tws__input" autocomplete="organization" required />
+  </label>
+
+  <label class="tws__field">
+    <span class="tws__label">Agency website</span>
+    <input
+      name="website"
+      class="tws__input"
+      type="text"
+      inputmode="url"
+      autocomplete="url"
+      placeholder="youragency.com"
+    />
+  </label>
+
+  <label class="tws__field">
+    <span class="tws__label">Work email</span>
+    <input name="email" class="tws__input" type="email" autocomplete="email" required />
+  </label>
+
+  <label class="tws__field">
+    <span class="tws__label">Choose a password</span>
+    <input
+      name="password"
+      class="tws__input"
+      type="password"
+      autocomplete="new-password"
+      minlength="8"
+      placeholder="At least 8 characters"
+      required
+    />
+  </label>
+
+  <label class="tws__check">
+    <input name="lists" type="checkbox" value="seo-updates" />
+    <span>Send me SEO Updates: search changes that affect your clients, with what we are doing about them.</span>
+  </label>
+
+  {TURNSTILE_SITE_KEY && <div class="cf-turnstile tws__turnstile" data-sitekey={TURNSTILE_SITE_KEY}></div>}
+
+  <p class="tws__error" role="alert" hidden></p>
+
+  <button type="submit" class="btn btn-primary tws__submit">
+    {submitLabel}
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  </button>
+  <p class="tws__fine">
+    14 days free, no card needed. We email you a 6-digit code to confirm your address.
+  </p>
+</form>
+
+{TURNSTILE_SITE_KEY && (
+  <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+)}
+
+<script>
+  import { track } from "../lib/analytics";
+
+  declare global {
+    interface Window {
+      turnstile?: { reset: () => void };
+    }
+  }
+
+  function utmFromUrl(): Record<string, string> {
+    const out: Record<string, string> = {};
+    new URLSearchParams(window.location.search).forEach((value, key) => {
+      if (key.startsWith("utm_") && value) out[key] = value;
+    });
+    return out;
+  }
+
+  document.querySelectorAll<HTMLFormElement>("form.tws").forEach((form) => {
+    const endpoint = form.dataset.endpoint ?? "";
+    const errorEl = form.querySelector<HTMLElement>(".tws__error")!;
+    const submitBtn = form.querySelector<HTMLButtonElement>(".tws__submit")!;
+    const showError = (message: string) => {
+      errorEl.textContent = message;
+      errorEl.hidden = false;
+    };
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      errorEl.hidden = true;
+
+      const data = new FormData(form);
+      const payload = {
+        firstName: String(data.get("firstName") ?? "").trim(),
+        lastName: String(data.get("lastName") ?? "").trim(),
+        agencyName: String(data.get("agencyName") ?? "").trim(),
+        website: String(data.get("website") ?? "").trim(),
+        email: String(data.get("email") ?? "").trim(),
+        password: String(data.get("password") ?? ""),
+        lists: data.getAll("lists").map(String),
+        turnstile: String(data.get("cf-turnstile-response") ?? ""),
+        utm: utmFromUrl(),
+      };
+
+      if (!payload.firstName || !payload.agencyName || !payload.email) {
+        showError("Fill in your name, agency, and email.");
+        return;
+      }
+      if (payload.password.length < 8) {
+        showError("Password must be at least 8 characters.");
+        return;
+      }
+
+      submitBtn.disabled = true;
+      const label = submitBtn.firstChild;
+      const original = label?.textContent ?? "";
+      if (label) label.textContent = "Creating your workspace… ";
+
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const body = (await res.json()) as { ok: boolean; message?: string; redirect?: string };
+        if (!body.ok) {
+          showError(body.message || "Something went wrong. Try again.");
+          submitBtn.disabled = false;
+          if (label) label.textContent = original;
+          window.turnstile?.reset();
+          return;
+        }
+        // Event name kept as `portal_signups`: the GA4 conversion is configured against it.
+        track("portal_signups");
+        if (body.redirect) window.location.href = body.redirect;
+      } catch {
+        showError("Something went wrong. Try again.");
+        submitBtn.disabled = false;
+        if (label) label.textContent = original;
+        window.turnstile?.reset();
+      }
+    });
+  });
+</script>
+
+<style>
+  .tws {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 32px;
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    text-align: left;
+  }
+  .tws--compact {
+    gap: 12px;
+    padding: 26px;
+  }
+  .tws__title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 0 0 4px;
+  }
+  .tws--compact .tws__title {
+    font-size: 20px;
+  }
+  .tws__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .tws__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .tws__label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+  .tws__input {
+    width: 100%;
+    padding: 11px 13px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    background: var(--light);
+    font: inherit;
+    font-size: 15px;
+    color: var(--text-primary);
+    transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  }
+  .tws--compact .tws__input {
+    padding: 9px 12px;
+    font-size: 14px;
+  }
+  .tws__input:focus {
+    outline: none;
+    background: var(--white);
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(40, 165, 177, 0.18);
+  }
+  .tws__check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+  .tws__check input {
+    margin-top: 3px;
+    accent-color: var(--teal);
+  }
+  .tws__turnstile {
+    min-height: 65px;
+  }
+  .tws__error {
+    margin: 0;
+    font-size: 14px;
+    color: #b91c1c;
+  }
+  .tws__submit {
+    width: 100%;
+    justify-content: center;
+    margin-top: 4px;
+  }
+  .tws__submit[disabled] {
+    opacity: 0.65;
+    cursor: default;
+  }
+  .tws__fine {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--text-muted);
+    text-align: center;
+  }
+  @media (max-width: 480px) {
+    .tws {
+      padding: 22px;
+    }
+    .tws__row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

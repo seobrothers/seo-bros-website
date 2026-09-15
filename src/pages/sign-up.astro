@@ -2,601 +2,368 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import TideworthySignupForm from "../components/TideworthySignupForm.astro";
+import { loadPlatformPricing, marketingTiers } from "../data/platform-pricing";
+import { usd } from "../data/pricing";
 
-const portalUrl = "https://portal.seobrothers.com/onboard";
+// The one conversion page on the site. Every Start Free Trial button lands
+// here: the form, the reasons to start, and nothing to scroll past. The
+// platform story lives on /tideworthy/; the numbers live on /pricing/.
+// /partner-package/, /partner-welcome/ and /tideworthy-sign-up/ 301 here.
 
-const accessItems = [
+const { data: platform } = await loadPlatformPricing();
+const tiers = marketingTiers(platform);
+const tiny = tiers[0];
+const implementation = tiny?.implementation ?? 75;
+
+const dayOne = [
   {
-    title: "A walkthrough with Mike",
-    body: "He'll show you how we work, answer questions, and align on what your agency actually needs. Plain conversation, no slide deck pitch.",
+    title: "A white-label portal, ready on day one",
+    body: "Your logo, your domain, your clients logging in to see their campaign, rankings and reports. It exists before you have paid for anything.",
   },
   {
-    title: "Your first discovery audit, free",
-    body: "Submit a site during the demo to see how we work in real life. Discoveries stay free for every campaign once you're a partner; this first one is your no-strings test drive.",
+    title: "A free discovery on any site",
+    body: "Point us at a prospect or your own site. Keyword research, a rank-tracking baseline and the technical read, in the same report your client would see.",
   },
   {
-    title: "A free Portal account",
-    body: "We'll set one up so you can follow along, message the team, and submit your discovery. Yours to keep whether you become a partner or not.",
-  },
-  {
-    title: "A look at the team behind it",
-    body: "An Account Manager for sales support, positioning, and team training. An SEO Manager for campaign strategy, onboarding, and quarterly planning.",
-  },
-  {
-    title: "How the white-label side works",
-    body: "Dashboards, reports, and client-facing materials under your branding. We'll show you what your clients see.",
+    title: "A line to the team",
+    body: "Message the strategists from inside the workspace. A real team, run by the four brothers behind SEO Brothers since 2015, QA checks the work and supports you on the delivery.",
   },
 ];
+
+const steps = [
+  {
+    n: "1",
+    title: "Create the account",
+    body: "Six fields and a password. You are inside the workspace in under a minute, with a code in your inbox to confirm the email.",
+  },
+  {
+    n: "2",
+    title: "Run a free discovery",
+    body: "Add a site and request the audit. You see exactly how we diagnose a campaign and what we would do first.",
+  },
+  {
+    n: "3",
+    title: "Start a client when you are ready",
+    body: `Pick a plan and activate. The 14-day trial starts then, on ${tiny?.name ?? "Tiny"}, and you can hand implementation to us for ${usd(implementation)} a month any time.`,
+  },
+];
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", Astro.site).href },
+    { "@type": "ListItem", position: 2, name: "Tideworthy", item: new URL("/tideworthy/", Astro.site).href },
+    { "@type": "ListItem", position: 3, name: "Start Free Trial", item: new URL("/sign-up/", Astro.site).href },
+  ],
+};
 ---
 
 <Layout
-  title="Book a Demo with SEO Brothers | White Label SEO Partner"
-  description="Book a quick demo with SEO Brothers. See how we work, get your first discovery audit free, and meet the team behind the partnership. No commitment."
-  noindex={true}
+  title="Start Your Free Trial | Tideworthy by SEO Brothers"
+  description="Create your free Tideworthy account: your white-label workspace, a free discovery on any site, and a line to our team. 14 days free when you start your first client. No card required."
+  schema={[breadcrumbSchema]}
 >
-  <Nav variant="light" hideCta={true} />
+  <Nav />
 
-  <section class="signup">
-    <div class="signup__bg">
-      <div class="signup__orb signup__orb--1"></div>
-      <div class="signup__orb signup__orb--2"></div>
-      <div class="signup__grid-bg"></div>
+  <section class="tsu">
+    <div class="tsu__bg" aria-hidden="true">
+      <div class="tsu__orb tsu__orb--1"></div>
+      <div class="tsu__orb tsu__orb--2"></div>
     </div>
-
-    <div class="container signup__inner">
-      <div class="signup__layout">
-        <div class="signup__pitch" data-animate>
-          <span class="section-label">Book a Demo</span>
-          <h1 class="signup__title">See how we work, no commitment</h1>
-          <p class="signup__lede">
-            Share a few quick details and Mike will set up a walkthrough.
-            We'll show you how we work, get your first discovery audit
-            moving, and answer anything you want to ask. No pressure to sign
-            anything before you're ready.
-          </p>
-
-          <div class="signup__mike">
-            <img
-              src="/images/team/mike-eaton.png"
-              alt="Mike Eaton, Account Executive at SEO Brothers"
-              class="signup__mike-photo"
-              loading="lazy"
-              width="64"
-              height="64"
-            />
-            <div>
-              <p class="signup__mike-name">Mike Eaton</p>
-              <p class="signup__mike-role">Account Executive, SEO Brothers</p>
-            </div>
-          </div>
-
-          <h2 class="signup__list-title">What you'll get</h2>
-          <ul class="signup__list">
-            {
-              accessItems.map((item) => (
-                <li class="signup__list-item">
-                  <span class="signup__list-icon" aria-hidden="true">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                  </span>
-                  <div>
-                    <span class="signup__list-title-row">{item.title}</span>
-                    <span class="signup__list-body">{item.body}</span>
-                  </div>
-                </li>
-              ))
-            }
-          </ul>
-
-          <p class="signup__note">
-            Discoveries are always free for partners. Your first one runs
-            during the demo. If we're a fit and you want to move forward,
-            a simple partnership agreement comes before any campaigns
-            activate. If we're not a fit, you keep the account and the audit
-            either way.
-          </p>
-
-          <p class="signup__signoff">— The Brothers</p>
-        </div>
-
-        <aside class="signup__form-wrap" data-animate>
-          <div class="signup__form-head">
-            <h2 class="signup__form-title">Book a Demo</h2>
-            <p class="signup__form-sub">
-              Tell us a bit about you and your agency. Mike will reach out to
-              set up the walkthrough.
-            </p>
-          </div>
-
-          <form
-            method="POST"
-            action={portalUrl}
-            class="signup__form"
-            novalidate
-          >
-            {/*
-              Honeypot. Hidden from humans (off-screen, not focusable, not
-              announced to screen readers) but visible in the raw HTML, so
-              automated spam bots tend to fill it in. The Portal rejects any
-              submission where `phoneNumber` is non-empty. Real users never
-              see or touch this field. Do not add a real phone field with
-              this name.
-            */}
-            <div class="signup__hp" aria-hidden="true">
-              <label for="phoneNumber">Phone number</label>
-              <input
-                type="text"
-                id="phoneNumber"
-                name="phoneNumber"
-                tabindex="-1"
-                autocomplete="off"
-              />
-            </div>
-
-            <div class="signup__field-row">
-              <div class="signup__field">
-                <label for="firstName" class="signup__label">
-                  First name
-                </label>
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  class="signup__input"
-                  placeholder="Jane"
-                  required
-                  autocomplete="given-name"
-                />
-              </div>
-              <div class="signup__field">
-                <label for="lastName" class="signup__label">
-                  Last name
-                </label>
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  class="signup__input"
-                  placeholder="Doe"
-                  required
-                  autocomplete="family-name"
-                />
-              </div>
-            </div>
-
-            <div class="signup__field">
-              <label for="email" class="signup__label">
-                Email address
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                class="signup__input"
-                placeholder="jane.doe@example.com"
-                required
-                autocomplete="email"
-              />
-            </div>
-
-            <div class="signup__field">
-              <label for="companyName" class="signup__label">
-                Agency name
-              </label>
-              <input
-                type="text"
-                id="companyName"
-                name="companyName"
-                class="signup__input"
-                placeholder="Example Solutions"
-                required
-                autocomplete="organization"
-              />
-            </div>
-
-            <div class="signup__field">
-              <label for="companySite" class="signup__label">
-                Agency website
-              </label>
-              <input
-                type="url"
-                id="companySite"
-                name="companySite"
-                class="signup__input"
-                placeholder="https://example.com"
-                required
-                autocomplete="url"
-              />
-            </div>
-
-            <button type="submit" class="btn btn-primary signup__submit">
-              Book a Demo
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path
-                  d="M3 8h10M9 4l4 4-4 4"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"></path>
-              </svg>
-            </button>
-
-            <div class="signup__alt" aria-hidden="true">
-              {/* Reserved space for a future "Prefer to chat first?" link. Leave empty until we want to test it. */}
-            </div>
-          </form>
-        </aside>
+    <div class="container tsu__inner">
+      <div class="tsu__copy" data-animate>
+        <span class="tsu__label">
+          <span class="tsu__label-dot"></span>
+          Free Trial
+        </span>
+        <h1 class="tsu__title">
+          Your agency's SEO engine,
+          <span class="tsu__title-gradient">with your name on it.</span>
+        </h1>
+        <p class="tsu__lede">
+          Tideworthy runs the daily delivery for every client you bring: content,
+          local SEO, technical fixes, links, monitoring and reporting, under your
+          brand. Create the account now. Pay nothing until you start a client.
+        </p>
+        <ul class="tsu__list">
+          {
+            dayOne.map((item) => (
+              <li class="tsu__item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <div>
+                  <strong>{item.title}</strong>
+                  <p>{item.body}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="tsu__more">
+          Want the full story first? <a href="/tideworthy/">Read about the platform</a> or
+          <a href="/pricing/">see the plans</a>.
+        </p>
       </div>
+      <div class="tsu__form" data-animate>
+        <TideworthySignupForm heading="Start your free trial" />
+      </div>
+    </div>
+  </section>
+
+  <section class="tsu-steps">
+    <div class="container">
+      <div class="tsu-steps__head" data-animate>
+        <span class="section-label">What Happens Next</span>
+        <h2 class="tsu-steps__heading">Three steps, and none of them are a sales call.</h2>
+      </div>
+      <div class="tsu-steps__grid" data-stagger>
+        {
+          steps.map((s) => (
+            <div class="tsu-step" data-animate>
+              <span class="tsu-step__n">{s.n}</span>
+              <h3 class="tsu-step__title">{s.title}</h3>
+              <p class="tsu-step__body">{s.body}</p>
+            </div>
+          ))
+        }
+      </div>
+      <p class="tsu-steps__foot" data-animate>
+        Plans start at {usd(tiny?.price ?? 174)} a month per client, wholesale. You set your own price to your client.
+        Prefer to talk it through? <a href="/book-a-growth-call/">Book a call</a>.
+      </p>
     </div>
   </section>
 
   <Footer />
 </Layout>
 
-<script>
-  import { track } from "../lib/analytics";
-
-  const form = document.querySelector<HTMLFormElement>(".signup__form");
-  const submitBtn = form?.querySelector<HTMLButtonElement>(".signup__submit");
-
-  form?.addEventListener("submit", (e) => {
-    if (!form.checkValidity()) {
-      e.preventDefault();
-      form.reportValidity();
-      return;
-    }
-    track("portal_signups");
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Sending...";
-    }
-  });
-</script>
-
 <style>
-  .signup {
+  .tsu {
     position: relative;
-    padding: 120px 0 80px;
-    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    padding: 150px 0 90px;
+    background: var(--dark);
     overflow: hidden;
   }
-
-  .signup__bg {
+  .tsu__bg {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    overflow: hidden;
   }
-
-  .signup__orb {
+  .tsu__orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.25;
+    filter: blur(80px);
+    opacity: 0.35;
   }
-
-  .signup__orb--1 {
-    width: 480px;
-    height: 480px;
-    top: -120px;
+  .tsu__orb--1 {
+    width: 520px;
+    height: 520px;
     left: -160px;
+    top: -120px;
     background: var(--teal);
   }
-
-  .signup__orb--2 {
+  .tsu__orb--2 {
     width: 420px;
     height: 420px;
-    bottom: -160px;
     right: -120px;
-    background: var(--green);
+    bottom: -160px;
+    background: var(--purple);
   }
-
-  .signup__grid-bg {
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(
-        rgba(15, 23, 42, 0.04) 1px,
-        transparent 1px
-      ),
-      linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
-    background-size: 56px 56px;
-    mask-image: radial-gradient(
-      ellipse at center,
-      black 30%,
-      transparent 80%
-    );
-    -webkit-mask-image: radial-gradient(
-      ellipse at center,
-      black 30%,
-      transparent 80%
-    );
-  }
-
-  .signup__inner {
+  .tsu__inner {
     position: relative;
     z-index: 1;
-  }
-
-  .signup__layout {
     display: grid;
-    grid-template-columns: 1fr 1.05fr;
-    gap: 64px;
+    grid-template-columns: minmax(0, 1.1fr) minmax(360px, 460px);
+    gap: 56px;
     align-items: start;
   }
-
-  .signup__pitch .section-label {
-    display: inline-block;
+  .tsu__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal-light);
   }
-
-  .signup__title {
+  .tsu__label-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--teal-light);
+    box-shadow: 0 0 0 4px rgba(51, 196, 209, 0.2);
+  }
+  .tsu__title {
     font-family: var(--font-display);
-    font-size: clamp(36px, 5.2vw, 56px);
+    font-size: clamp(36px, 4.6vw, 56px);
     font-weight: 700;
     line-height: 1.05;
-    letter-spacing: -0.02em;
-    color: var(--text-primary);
-    margin: 12px 0 18px;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    margin: 20px 0 18px;
   }
-
-  .signup__lede {
+  .tsu__title-gradient {
+    display: block;
+    background: linear-gradient(100deg, var(--teal) 0%, var(--teal-light) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .tsu__lede {
     font-size: 17px;
-    line-height: 1.6;
-    color: var(--text-secondary);
-    margin-bottom: 28px;
-    max-width: 520px;
-  }
-
-  .signup__mike {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 0;
-    margin-bottom: 24px;
-    border-top: 1px solid var(--border-light);
-    border-bottom: 1px solid var(--border-light);
-  }
-
-  .signup__mike-photo {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
-  }
-
-  .signup__mike-name {
-    font-family: var(--font-display);
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin: 0;
-    line-height: 1.3;
-  }
-
-  .signup__mike-role {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin: 2px 0 0;
-    line-height: 1.3;
-  }
-
-  .signup__list-title {
-    font-family: var(--font-display);
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin: 0 0 16px;
-  }
-
-  .signup__list {
-    list-style: none;
-    padding: 0;
+    line-height: 1.65;
+    color: var(--text-on-dark-muted);
     margin: 0 0 28px;
+    max-width: 540px;
+  }
+  .tsu__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 18px;
   }
-
-  .signup__list-item {
+  .tsu__item {
     display: flex;
-    gap: 12px;
+    gap: 14px;
     align-items: flex-start;
   }
-
-  .signup__list-icon {
-    flex-shrink: 0;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: rgba(68, 185, 123, 0.12);
-    color: var(--green);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2px;
+  .tsu__item svg {
+    flex: none;
+    margin-top: 3px;
+    color: var(--green-light);
   }
-
-  .signup__list-title-row {
+  .tsu__item strong {
     display: block;
     font-family: var(--font-display);
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
-    color: var(--text-primary);
-    line-height: 1.35;
+    color: var(--text-on-dark);
+    margin-bottom: 4px;
   }
-
-  .signup__list-body {
-    display: block;
-    font-size: 14px;
-    line-height: 1.55;
-    color: var(--text-secondary);
-    margin-top: 2px;
-  }
-
-  .signup__note {
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--text-muted);
-    padding: 14px 16px;
-    background: rgba(15, 23, 42, 0.03);
-    border-radius: var(--radius-md);
-    margin-bottom: 20px;
-  }
-
-  .signup__signoff {
-    font-family: var(--font-display);
-    font-style: italic;
-    color: var(--text-primary);
-    font-weight: 500;
+  .tsu__item p {
     margin: 0;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text-on-dark-muted);
+  }
+  .tsu__more {
+    margin: 30px 0 0;
+    font-size: 14px;
+    color: var(--text-on-dark-muted);
+  }
+  .tsu__more a {
+    color: var(--teal-light);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(51, 196, 209, 0.4);
+  }
+  .tsu__form {
+    position: sticky;
+    top: 110px;
   }
 
-  .signup__form-wrap {
+  .tsu-steps {
+    padding: 96px 0;
     background: var(--white);
+  }
+  .tsu-steps__head {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 48px;
+  }
+  .tsu-steps__head .section-label {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .tsu-steps__heading {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 38px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 12px 0 0;
+  }
+  .tsu-steps__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+  .tsu-step {
+    padding: 30px 28px;
+    background: var(--light);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-lg);
-    padding: 32px;
-    box-shadow: var(--shadow-lg);
-    position: sticky;
-    top: 96px;
   }
-
-  .signup__form-head {
-    margin-bottom: 24px;
-  }
-
-  .signup__form-title {
-    font-family: var(--font-display);
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 1.25;
-    color: var(--text-primary);
-    margin: 0 0 6px;
-  }
-
-  .signup__form-sub {
-    font-size: 14px;
-    line-height: 1.5;
-    color: var(--text-secondary);
-    margin: 0;
-  }
-
-  .signup__form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .signup__field-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-  }
-
-  /* Honeypot: kept in the DOM (and the rendered HTML bots scrape) but
-     pushed off-screen so no real user can see or reach it. */
-  .signup__hp {
-    position: absolute;
-    left: -9999px;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-  }
-
-  .signup__field {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .signup__label {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 6px;
-    letter-spacing: 0.01em;
-  }
-
-  .signup__input {
-    width: 100%;
-    padding: 11px 14px;
-    font-size: 15px;
-    font-family: inherit;
-    color: var(--text-primary);
-    background: var(--white);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-md);
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
-  }
-
-  .signup__input::placeholder {
-    color: var(--text-muted);
-  }
-
-  .signup__input:focus {
-    outline: none;
-    border-color: var(--teal);
-    box-shadow: 0 0 0 3px rgba(45, 175, 175, 0.15);
-  }
-
-  .signup__input:invalid:not(:placeholder-shown) {
-    border-color: #d97a7a;
-  }
-
-  .signup__submit {
-    margin-top: 8px;
-    width: 100%;
+  .tsu-step__n {
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-weight: 700;
+    margin-bottom: 16px;
   }
-
-  .signup__submit:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
+  .tsu-step__title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin: 0 0 8px;
   }
-
-  .signup__alt {
-    min-height: 0;
+  .tsu-step__body {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
   }
-
-  .signup__alt:not(:empty) {
-    margin-top: 12px;
+  .tsu-steps__foot {
     text-align: center;
-    font-size: 13px;
-    color: var(--text-muted);
+    margin: 40px auto 0;
+    max-width: 620px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  .tsu-steps__foot a {
+    color: var(--teal);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(40, 165, 177, 0.35);
   }
 
-  @media (max-width: 960px) {
-    .signup {
-      padding: 88px 0 64px;
-    }
-
-    .signup__layout {
+  @media (max-width: 1024px) {
+    .tsu__inner {
       grid-template-columns: 1fr;
       gap: 40px;
     }
-
-    .signup__form-wrap {
-      padding: 24px;
+    .tsu__form {
       position: static;
+      max-width: 520px;
     }
-
-    .signup__title {
-      font-size: clamp(32px, 7vw, 44px);
+    .tsu-steps__grid {
+      grid-template-columns: 1fr;
+      max-width: 520px;
     }
   }
-
-  @media (max-width: 480px) {
-    .signup__field-row {
-      grid-template-columns: 1fr;
+  @media (max-width: 768px) {
+    .tsu {
+      padding: 120px 0 64px;
+    }
+    .tsu-steps {
+      padding: 64px 0;
     }
   }
 </style>
