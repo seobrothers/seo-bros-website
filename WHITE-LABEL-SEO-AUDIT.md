@@ -17,7 +17,9 @@ No. Nothing I can measure points to suppression. The two terms have different
 histories and the gap has an ordinary explanation.
 
 "White label seo pricing" ranks because `/pricing/` is a continuously live URL
-that has been climbing since March 2025, and the term is difficulty 1.
+that has been climbing steadily, and the term is difficulty 1. Its US position
+by month: 66 in March 2025, 16 in September, 12 in December, 1 by June 2026.
+Nothing was done to it. It simply stayed up.
 
 "White label seo" is missing because **the page that used to rank for it was
 deleted in June 2026**, and its URL now returns a 410 Gone. The rankings were
@@ -25,6 +27,34 @@ real. They were on the previous domain, and they were on one specific URL.
 
 There is one genuine mistake to fix, one large link leak to clean up, and one
 thing to keep an eye on.
+
+### What was checked and came back clean
+
+These are the things that would indicate a technical or algorithmic problem.
+None of them shows one, which is the basis for ruling suppression out.
+
+| Check | Result |
+|---|---|
+| `robots.txt` | `Allow: /` for all agents, sitemap declared |
+| Meta robots on key pages | `index,follow` on home, services, guide, pricing |
+| Canonicals | Self-referencing and correct on every page checked |
+| `www` handling | 301 to the apex domain, single hop |
+| HTTPS and response codes | Clean 200s, no redirect chains on live pages |
+| XML sitemap | Live, 138 URLs, submitted in `robots.txt` |
+| Indexation | Pages return in Google's results when queried directly |
+| Domain authority | Ahrefs DR 50, 968 live referring domains, 4,435 live backlinks |
+
+**Site traffic did not fall after the June restructure.** Ahrefs organic
+traffic for seobrothers.com, all countries, by month: 51 in April 2026, 58 in
+May, 157 in June, 269 in July, 191 in August, 261 in September. The restructure
+cost the head term specifically. It did not cause sitewide damage, which is
+another reason this does not look like a penalty.
+
+One note on the site's shape: of the 138 URLs in the sitemap, 105 are guides and
+82 of those are programmatic city pages following the pattern
+`/guides/{city}-seo/`. They are substantial, roughly 2,500 words each, and they
+are the site's current traffic source. Worth knowing when judging overall
+quality signals.
 
 ---
 
@@ -225,7 +255,7 @@ connected to the platform were checked, including team@seobrothers.co. None of
 them holds the seobrothers.com property.
 
 That means I could not see impressions, average position over time, index
-coverage, or **the manual actions report** — which is the only definitive answer
+coverage, or **the manual actions report**, which is the only definitive answer
 to "are we penalized". Everything above is inferred from third-party data and
 live checks.
 
