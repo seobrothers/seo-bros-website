@@ -1,8 +1,7 @@
 <section class="hero">
   <div class="hero-bg">
     <div class="hero-orb hero-orb--teal"></div>
-    <div class="hero-orb hero-orb--purple"></div>
-    <div class="hero-orb hero-orb--green"></div>
+    <div class="hero-orb hero-orb--teal2"></div>
     <div class="hero-grid"></div>
   </div>
 
@@ -59,8 +58,6 @@
     position: absolute;
     inset: 0;
     overflow: hidden;
-    background-image: url('/images/hero-bg-pattern.png');
-    background-repeat: repeat;
   }
 
   .hero-orb {
@@ -78,20 +75,13 @@
     left: -5%;
   }
 
-  .hero-orb--purple {
-    width: 500px;
-    height: 500px;
-    background: var(--purple);
-    top: -5%;
-    right: -10%;
-  }
-
-  .hero-orb--green {
-    width: 400px;
-    height: 400px;
-    background: var(--green);
-    bottom: -15%;
-    left: 35%;
+  .hero-orb--teal2 {
+    width: 520px;
+    height: 520px;
+    background: var(--teal-light);
+    bottom: -20%;
+    right: -8%;
+    opacity: 0.22;
   }
 
   .hero-grid {
@@ -123,6 +113,7 @@
     position: relative;
     z-index: 1;
     max-width: 1400px;
+    text-align: center;
   }
 
   .hero-badge {
@@ -150,6 +141,7 @@
   .hero-title {
     font-family: var(--font-display);
     font-size: clamp(40px, 6vw, 72px);
+    text-wrap: balance;
     font-weight: 700;
     line-height: 1.08;
     letter-spacing: -0.03em;
@@ -161,8 +153,8 @@
     background: linear-gradient(
       135deg in oklch,
       var(--teal) 0%,
-      var(--purple) 50%,
-      var(--green) 100%
+      var(--teal-light) 55%,
+      #9be6ee 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
@@ -173,13 +165,14 @@
     font-size: clamp(16px, 2vw, 19px);
     line-height: 1.7;
     color: var(--text-on-dark-muted);
-    margin-bottom: 40px;
+    margin: 0 auto 40px;
     max-width: 620px;
   }
 
   .hero-actions {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
   }
