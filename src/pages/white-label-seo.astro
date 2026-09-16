@@ -5,6 +5,10 @@ import Footer from "../components/Footer.astro";
 import GrowthCallEmbed from "../components/GrowthCallEmbed.astro";
 import StickyCta from "../components/StickyCta.astro";
 import { SEO_TIERS, usd } from "../data/pricing";
+import { Image } from "astro:assets";
+import discoveryShot from "../assets/shots/discovery-report.png";
+import aiVisibilityShot from "../assets/shots/ai-visibility.png";
+import campaignShot from "../assets/shots/campaign-setup.png";
 
 const deliverables = [
   {
@@ -783,6 +787,50 @@ const breadcrumbSchema = {
     </div>
   </section>
 
+  <!-- ===== FREE DISCOVERY ===== -->
+  <section class="wls-disc">
+    <div class="container">
+      <div class="wls-disc-grid">
+        <div class="wls-disc-copy" data-animate>
+          <span class="section-label">Free Discovery</span>
+          <h2 class="section-heading">Every Prospect Starts With a Report You Can Sell From</h2>
+          <p class="wls-disc-text">
+            Add a prospect and a discovery runs on their site: technical audit,
+            content and link comparison against the competitors they name, the
+            keywords they should own, and which AI assistants recommend them
+            today. It lands as a shareable report under your brand, with the
+            campaign proposal attached, so you walk into the pitch with
+            findings instead of guesses.
+          </p>
+          <p class="wls-disc-text">
+            Discoveries are free on every account, paid or not.
+          </p>
+          <a href="/sign-up/" class="btn btn-primary wls-btn-lg">
+            Run one on a real prospect
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M3 8h10M9 4l4 4-4 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
+        <figure class="wls-shot wls-shot--tall" data-animate>
+          <Image
+            src={discoveryShot}
+            alt="The summary page of a discovery report for a pizza restaurant: on-page, content, and off-site assessments with key takeaways"
+            widths={[640, 960, 1280, 1440]}
+            sizes="(max-width: 900px) 100vw, 560px"
+            format="webp"
+            loading="lazy"
+          />
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== WHAT YOU GET ===== -->
   <section class="wls-value" id="seo-work">
     <div class="container">
@@ -931,6 +979,32 @@ const breadcrumbSchema = {
           ))
         }
       </div>
+    </div>
+  </section>
+
+  <!-- ===== AI VISIBILITY ===== -->
+  <section class="wls-aiv">
+    <div class="container">
+      <div class="wls-value-header" data-animate>
+        <span class="section-label">AI Visibility</span>
+        <h2 class="section-heading">Who the AI Assistants Recommend, Measured</h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          Every discovery and every campaign asks ChatGPT, Claude, Gemini, and
+          Perplexity the questions a buyer would ask, several times over, and
+          records who gets recommended: your client or their competitors, and
+          which sources the assistants lean on. The gap becomes the plan.
+        </p>
+      </div>
+      <figure class="wls-shot wls-shot--wide" data-animate>
+        <Image
+          src={aiVisibilityShot}
+          alt="An AI visibility report showing the questions buyers ask, how often each of four AI assistants recommends the client versus two competitors, and which third-party sources the recommendations come from"
+          widths={[720, 1080, 1440, 1600]}
+          sizes="(max-width: 1100px) 100vw, 1080px"
+          format="webp"
+          loading="lazy"
+        />
+      </figure>
     </div>
   </section>
 
@@ -1330,6 +1404,21 @@ const breadcrumbSchema = {
           ))
         }
       </div>
+    </div>
+  </section>
+
+  <section class="wls-campaign-shot">
+    <div class="container">
+      <figure class="wls-shot wls-shot--wide" data-animate>
+        <Image
+          src={campaignShot}
+          alt="A campaign's setup phase in the partner portal: the current phase checklist alongside what to expect from the campaign process, from monthly planning to daily monitoring"
+          widths={[720, 1080, 1440, 1600]}
+          sizes="(max-width: 1100px) 100vw, 1080px"
+          format="webp"
+          loading="lazy"
+        />
+      </figure>
     </div>
   </section>
 
@@ -2957,6 +3046,75 @@ const breadcrumbSchema = {
     .wls-cta-actions .btn {
       flex: 1 1 auto;
       justify-content: center;
+    }
+  }
+
+
+  /* ===== SCREEN CAPTURES ===== */
+  .wls-shot {
+    margin: 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-xl);
+    background: var(--white);
+  }
+  .wls-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .wls-shot--wide {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .wls-disc {
+    padding: 100px 0;
+    background: var(--white);
+    border-top: 1px solid var(--border-light);
+  }
+  .wls-disc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+  .wls-disc-text {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+  }
+  .wls-disc-copy .btn {
+    margin-top: 8px;
+  }
+  .wls-aiv {
+    padding: 100px 0;
+    background: var(--light);
+    border-top: 1px solid var(--border-light);
+  }
+  .wls-aiv .wls-value-header {
+    margin-bottom: 40px;
+  }
+  .wls-campaign-shot {
+    padding: 0 0 100px;
+    background: var(--white);
+  }
+  @media (max-width: 900px) {
+    .wls-disc-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+  @media (max-width: 600px) {
+    .wls-disc,
+    .wls-aiv {
+      padding: 72px 0;
+    }
+    .wls-campaign-shot {
+      padding-bottom: 72px;
     }
   }
 

@@ -1,6 +1,10 @@
 ---
 // Homepage: the transparency story. Each row is the client-call moment on the
-// left and what the partner already has in hand on the right.
+// left and what the partner already has in hand on the right, followed by a
+// real capture of the monitoring checks a partner switches on per client.
+import { Image } from "astro:assets";
+import monitoringShot from "../assets/shots/monitoring-checks.png";
+
 const rows = [
   {
     moment: "On the call, scrambling",
@@ -12,7 +16,7 @@ const rows = [
     moment: "Caught flat-footed by a decline",
     quote: "“Rankings dipped. What are we going to do about it?”",
     title: "What's next",
-    body: "Each campaign carries a plan for the month ahead, priced as line items before it runs. The answer to that question is written down before they ask it.",
+    body: "Each campaign carries a plan for the month ahead, written before the month starts: the content, the fixes, the links, the local work. The answer to that question exists before they ask it.",
   },
   {
     moment: "Blindsided by something you should have caught",
@@ -53,10 +57,37 @@ const rows = [
         ))
       }
     </div>
+
+    <figure class="know-shot" data-animate>
+      <Image
+        src={monitoringShot}
+        alt="The monitoring checks a partner can switch on for a client: site health, technical SEO, domain health, page changes, page speed, Business Profile, brand search, authority, and keyword rankings"
+        widths={[720, 1080, 1440, 1600]}
+        sizes="(max-width: 1100px) 100vw, 1080px"
+        format="webp"
+        loading="lazy"
+      />
+    </figure>
   </div>
 </section>
 
 <style>
+  .know-shot {
+    margin: 40px auto 0;
+    max-width: 1080px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-xl);
+    background: var(--white);
+  }
+
+  .know-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
   .know {
     padding: 110px 0;
     background: var(--white);
