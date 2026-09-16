@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import CalendlyInline from "../components/CalendlyInline.astro";
 
 // Crunching/results page. The audit form redirects here with the audit params
 // (?url=&types=&business=&city=&service=). This page:
@@ -70,17 +71,34 @@ const reviewCallUrl = "https://calendly.com/d/d2kj-dd8-pc6/discovery-walkthrough
           Grab a slot below (we block 30 minutes, most calls wrap in 15) and we'll do a full human audit and walk
           you through exactly what we'd do, no pressure.
         </p>
-        <iframe
-          class="disco__calendly"
-          src={`${reviewCallUrl}?hide_gdpr_banner=1`}
-          title="Book a discovery walkthrough call with SEO Brothers"
-          loading="lazy"></iframe>
+        <CalendlyInline url={reviewCallUrl} title="Book a discovery walkthrough call with SEO Brothers" />
         <div class="disco__cta-secondary">
           <a href="/case-studies/">See results we've gotten</a>
           <span aria-hidden="true">·</span>
           <a href="/guides/">Browse our SEO guides</a>
         </div>
       </div>
+
+      <!-- Agency path: the full discovery lives inside the platform -->
+      <aside class="disco__agency" id="disco-agency" hidden>
+        <div class="disco__agency-copy">
+          <span class="disco__agency-label">Run an agency?</span>
+          <h2 class="disco__agency-title">Get the full discovery on this site, or any client's.</h2>
+          <p class="disco__agency-text">
+            Create a free Tideworthy account, add the site, and request a
+            discovery: keyword research, a rank-tracking baseline, the technical
+            read, and a proposal you can put your name on. Your free trial
+            doesn't start until you start a campaign. Using the platform and
+            running free discoveries is free.
+          </p>
+        </div>
+        <a href="/sign-up/" class="btn btn-primary disco__agency-cta">
+          Start Free Trial
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+      </aside>
     </div>
   </section>
 
@@ -98,6 +116,7 @@ const reviewCallUrl = "https://calendly.com/d/d2kj-dd8-pc6/discovery-walkthrough
   const results = el("disco-results");
   const confirm = el("disco-confirm");
   const cta = el("disco-cta");
+  const agency = el("disco-agency");
 
   function show(node: HTMLElement | null) {
     if (node) node.hidden = false;
@@ -107,6 +126,7 @@ const reviewCallUrl = "https://calendly.com/d/d2kj-dd8-pc6/discovery-walkthrough
   if (!url) {
     show(confirm);
     show(cta);
+    show(agency);
   } else {
     // Real submission: fire the conversion event and run the snapshot.
     track("free_audit_form_submission");
@@ -144,6 +164,7 @@ const reviewCallUrl = "https://calendly.com/d/d2kj-dd8-pc6/discovery-walkthrough
         if (loading) loading.hidden = true;
         show(confirm);
         show(cta);
+    show(agency);
       }
     })();
 
@@ -225,6 +246,7 @@ const reviewCallUrl = "https://calendly.com/d/d2kj-dd8-pc6/discovery-walkthrough
       show(results);
       show(confirm);
       show(cta);
+    show(agency);
     }
   }
 </script>
@@ -315,13 +337,47 @@ const reviewCallUrl = "https://calendly.com/d/d2kj-dd8-pc6/discovery-walkthrough
   }
   .disco__cta-title { font-family: var(--font-display); font-size: clamp(24px, 3.4vw, 30px); font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 12px; }
   .disco__cta-text { font-size: 16px; line-height: 1.7; color: var(--text-secondary); max-width: 480px; margin: 0 auto 24px; }
-  .disco__calendly { width: 100%; min-height: 700px; border: 0; border-radius: var(--radius-md); display: block; background: var(--white); }
+  .disco__agency {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 28px;
+    align-items: center;
+    padding: 32px 36px;
+    border-radius: var(--radius-xl);
+    background: var(--dark);
+    color: var(--text-on-dark);
+    box-shadow: var(--shadow-lg);
+  }
+  .disco__agency-label {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 10px;
+  }
+  .disco__agency-title {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.6vw, 26px);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+    text-wrap: balance;
+  }
+  .disco__agency-text { font-size: 15px; line-height: 1.65; color: var(--text-on-dark-muted); }
+  .disco__agency-cta { flex-shrink: 0; }
+  @media (max-width: 720px) {
+    .disco__agency { grid-template-columns: 1fr; padding: 26px 22px; }
+  }
+
   .disco__cta-secondary { margin-top: 20px; font-size: 14px; color: var(--text-muted); display: flex; gap: 10px; justify-content: center; }
   .disco__cta-secondary a { color: var(--teal-dark); text-decoration: underline; text-underline-offset: 3px; }
 
   @media (max-width: 700px) {
     .disco { padding: 130px 0 80px; }
     .disco__cta { padding: 32px 24px; }
-    .disco__calendly { min-height: 980px; }
   }
 </style>

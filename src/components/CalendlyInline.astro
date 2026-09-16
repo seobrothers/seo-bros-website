@@ -1,0 +1,130 @@
+---
+// Inline Calendly scheduler. Uses Calendly's widget.js rather than a bare
+// <iframe> because only the widget posts "calendly.*" messages to the parent
+// page; a plain iframe never does, which is why bookings were not reaching
+// GA4. The listener that turns those messages into the calendar_event_scheduled
+// event lives in src/lib/analytics.ts and runs on every page via Layout.
+//
+// The scheduler looks identical either way: widget.js creates the same iframe
+// inside this div. Height comes from the wrapper's CSS (`.calendly-inline-widget`).
+//
+// UTM parameters on the current page URL are handed to Calendly so the booking
+// carries the same source the visitor arrived with.
+// Sizing lives here (not in the parent) because Astro's scoped styles do not
+// reach into a child component's markup. The widget is initialised with
+// resize: true, so Calendly grows the iframe to fit whichever step is showing
+// (day picker, time list, form). The height props are only the floor while it
+// loads, so the page does not jump.
+//
+// hide_event_type_details=1: in a column narrower than Calendly's two-pane
+// breakpoint the widget stacks the event name above the calendar and pads the
+// gap to a full viewport, so the day picker lands below the fold. Every page
+// that embeds this already says what the call is, so the pane is dropped and
+// the calendar shows first. The duration still appears on the time-slot step.
+interface Props {
+  url: string;
+  title?: string;
+  /** Minimum height in px while the scheduler loads (desktop). */
+  height?: number;
+  /** Minimum height under 900px wide. */
+  heightMobile?: number;
+}
+
+const {
+  url,
+  title = "Book a call with SEO Brothers",
+  height = 560,
+  heightMobile = 600,
+} = Astro.props;
+const src = `${url}${url.includes("?") ? "&" : "?"}hide_gdpr_banner=1&hide_event_type_details=1`;
+---
+
+<div
+  class="calendly-inline-widget"
+  style={`--calendly-h:${height}px;--calendly-h-m:${heightMobile}px`}
+  data-url={src}
+  data-calendly-title={title}
+  data-auto-load="false"
+></div>
+
+<style>
+  .calendly-inline-widget {
+    width: 100%;
+    min-height: var(--calendly-h);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: block;
+    background: var(--white);
+  }
+  @media (max-width: 900px) {
+    .calendly-inline-widget {
+      min-height: var(--calendly-h-m);
+    }
+  }
+</style>
+
+<script>
+  declare global {
+    interface Window {
+      Calendly?: {
+        initInlineWidget: (opts: {
+          url: string;
+          parentElement: HTMLElement;
+          utm?: Record<string, string>;
+          resize?: boolean;
+        }) => void;
+      };
+    }
+  }
+
+  // Calendly's option names are camelCase (utmSource, utmMedium, ...).
+  const UTM_KEYS: Record<string, string> = {
+    utm_source: "utmSource",
+    utm_medium: "utmMedium",
+    utm_campaign: "utmCampaign",
+    utm_term: "utmTerm",
+    utm_content: "utmContent",
+  };
+
+  function utmFromPage(): Record<string, string> {
+    const out: Record<string, string> = {};
+    const params = new URLSearchParams(window.location.search);
+    for (const [param, option] of Object.entries(UTM_KEYS)) {
+      const value = params.get(param);
+      if (value) out[option] = value;
+    }
+    return out;
+  }
+
+  function init(el: HTMLElement) {
+    if (!window.Calendly || el.dataset.calendlyReady) return;
+    el.dataset.calendlyReady = "1";
+    window.Calendly.initInlineWidget({
+      url: el.dataset.url ?? "",
+      parentElement: el,
+      utm: utmFromPage(),
+      resize: true,
+    });
+    const frame = el.querySelector("iframe");
+    if (frame && el.dataset.calendlyTitle) frame.title = el.dataset.calendlyTitle;
+  }
+
+  function initAll() {
+    document
+      .querySelectorAll<HTMLElement>(".calendly-inline-widget[data-auto-load='false']")
+      .forEach(init);
+  }
+
+  if (window.Calendly) {
+    initAll();
+  } else {
+    const existing = document.querySelector<HTMLScriptElement>('script[src*="assets.calendly.com/assets/external/widget.js"]');
+    const script = existing ?? document.createElement("script");
+    script.addEventListener("load", initAll);
+    if (!existing) {
+      script.src = "https://assets.calendly.com/assets/external/widget.js";
+      script.async = true;
+      document.head.appendChild(script);
+    }
+  }
+</script>

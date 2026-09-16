@@ -40,8 +40,8 @@
   // ]
 
   // ── KV for IP rate limiting ───────────────────────────────────────────────
-  // /api/snapshot caps fresh runs per IP (8/hr); /api/audit + /api/partner-lead
-  // cap submits (20/hr). The code no-ops until this binding exists, so it's safe
+  // /api/snapshot caps fresh runs per IP (8/hr); /api/audit caps submits
+  // (20/hr). The code no-ops until this binding exists, so it's safe
   // to leave off. To enable: create the namespace and paste its id below:
   //   npx wrangler kv namespace create RATE_LIMIT
   //

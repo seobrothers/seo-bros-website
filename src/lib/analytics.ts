@@ -50,9 +50,22 @@ export function initCalendlyTracking(): void {
       | { event?: string; payload?: { event?: { uri?: string }; invitee?: { uri?: string } } }
       | null;
     if (!data || data.event !== "calendly.event_scheduled") return;
+    // Calendly then redirects the booker to /call-booked/, which fires the same
+    // event from the URL details. Both paths mark the booking in sessionStorage
+    // (keyed by the invitee id) so it is counted once whichever path wins.
+    const inviteeUri = data.payload?.invitee?.uri ?? "";
+    const inviteeId = inviteeUri.split("/").filter(Boolean).pop();
+    if (inviteeId) {
+      const key = `calendly_tracked:${inviteeId}`;
+      try {
+        if (sessionStorage.getItem(key) === "1") return;
+        sessionStorage.setItem(key, "1");
+      } catch {}
+    }
     track("calendar_event_scheduled", {
       event_uri: data.payload?.event?.uri,
-      invitee_uri: data.payload?.invitee?.uri,
+      invitee_uri: inviteeUri || undefined,
+      method: "embed",
     });
   });
 }
