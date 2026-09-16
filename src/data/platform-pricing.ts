@@ -193,7 +193,7 @@ export function comparisonRows(pricing: PlatformPricing, tiers: MarketingTier[])
   );
   for (const family of families) {
     rows.push({
-      group: "Every month",
+      group: "Every month, up to",
       label: familyLabel[family.key] ?? family.label,
       values: tiers.map((t) => String(t.counts[family.key] ?? 0)),
     });
