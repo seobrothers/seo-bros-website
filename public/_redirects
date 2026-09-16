@@ -253,3 +253,53 @@
 # ============================================================================
 /white-label-seo-services/                                  /white-label-seo/                                 301
 /guides/white-label-seo/                                    /white-label-seo/                                 301
+# LINK EQUITY RECOVERY — legacy URLs that still carry live inbound links but
+# were resolving to 404/410. Sourced from an Ahrefs sweep of every linked URL
+# across seobrothers.com, seobrothers.co and seobrothers.ca (Sept 2026).
+# Referring-domain counts in the comments are live domains at time of mapping.
+#
+# Not mapped on purpose: /casl/*, /resources/*, /index.php, /apply.php,
+# /events.php, /consumer/*, /custom/* and /wp-content/uploads/*. Those links
+# belong to a previous occupant of the .co domain (a library association and a
+# retail careers site) or to scraper directories. They are topically unrelated
+# to anything we publish, so they stay 404 rather than becoming soft-404
+# redirects into the guides.
+# ============================================================================
+
+# Plastic surgery — the old industry hub and its spokes. 214 referring domains,
+# the single largest broken target on the domain. The live guide is the
+# successor and already ranks.
+/industries/plastic-surgery-seo/                            /guides/plastic-surgery-seo/                      301
+/industries/plastic-surgery-seo/content-marketing/          /guides/plastic-surgery-seo/                      301
+/industries/plastic-surgery-seo/keywords/                   /guides/plastic-surgery-seo/                      301
+/industries/plastic-surgery-seo/link-building/              /guides/plastic-surgery-seo/                      301
+/industries/plastic-surgery-seo/local-seo/                  /guides/plastic-surgery-seo/                      301
+/industries/plastic-surgery-seo/on-site-technical/          /guides/plastic-surgery-seo/                      301
+/industries/plastic-surgery-seo/strategy/                   /guides/plastic-surgery-seo/                      301
+/industries/plastic-surgery-seo/success/                    /guides/plastic-surgery-seo/                      301
+/guides/industry/plastic-surgery-seo/                       /guides/plastic-surgery-seo/                      301
+/industry/plastic-surgery-seo/                              /guides/plastic-surgery-seo/                      301
+/industry/plastic-surgery-keyword-research/                 /guides/plastic-surgery-seo/                      301
+
+# Old industry and service hubs
+/industries/                                                /guides/industry/                                 301
+/industry/seo-for-family-lawyers/                           /guides/legal-services-seo/                       301
+/seo/                                                       /guides/seo/                                      301
+/white-label-seo-reporting/                                 /guides/white-label-seo-reporting/                301
+/seo-audit/                                                 /guides/seo-audit/                                301
+/terms-conditions/                                          /terms/                                           301
+
+# Legacy /seo/ and bare-slug guide URLs from the WordPress build
+/seo/keyword-mapping/                                       /guides/keyword-mapping/                          301
+/keyword-research/                                          /guides/keyword-research/                         301
+/seo/keyword-research/                                      /guides/keyword-research/                         301
+/competitive-keyword-insights/                              /guides/keyword-research/                         301
+/seo/competitive-keyword-insights/                          /guides/keyword-research/                         301
+/seo/private-blog-networks-pbn-hosting/                     /guides/private-blog-networks/                    301
+/seo/link-building/                                         /guides/link-building/                            301
+/seo/low-hanging-fruit-backlink-sources/                    /guides/link-building/                            301
+/seo/10-steps-to-dominating-local-seo/                      /guides/local-seo/                                301
+/seo/the-four-most-important-on-page-elements-to-optimize/  /guides/on-page-seo/                              301
+/website-structure-content-silos/                           /guides/on-page-seo/                              301
+/blogging-for-seo-improving-content/                        /guides/what-to-blog-about/                       301
+/how-to-sell-seo-services-to-clients/                       /guides/how-to-sell-seo-services/                 301
