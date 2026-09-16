@@ -1,0 +1,140 @@
+---
+// Homepage: the partnership works for an agency at either end of two axes,
+// how much SEO they already sell and how many websites they already build.
+const profiles = [
+  {
+    axis: "SEO",
+    title: "Never sold SEO",
+    body: "We shape the offer, price it, hand you the branded collateral, and train your team. You sell it as your own from the first pitch.",
+  },
+  {
+    axis: "SEO",
+    title: "Sold it for years",
+    body: "Bring your sales process. We run the strategy and the campaigns behind it, so you add capacity without adding headcount.",
+  },
+  {
+    axis: "Websites",
+    title: "Never built a website",
+    body: "We design, build, host, and maintain the sites. You sell the website and the campaign as one package and never touch a server.",
+  },
+  {
+    axis: "Websites",
+    title: "Built a thousand",
+    body: "Keep building. Plug our SEO in behind every launch, and hand us the hosting and upkeep whenever you would rather not carry it.",
+  },
+];
+---
+
+<section class="any">
+  <div class="container">
+    <div class="any-header" data-animate>
+      <span class="section-label">Who It's For</span>
+      <h2 class="section-heading">
+        Whether You've Sold SEO for a Decade<br />
+        or Never Once
+      </h2>
+      <p class="section-subtext">
+        Set up your account, put your brand on the portal, and start selling.
+        We meet you at your level and carry the rest.
+      </p>
+    </div>
+
+    <div class="any-grid" data-stagger>
+      {
+        profiles.map((p) => (
+          <div class="any-card" data-animate>
+            <span class="any-axis">{p.axis}</span>
+            <h3 class="any-title">{p.title}</h3>
+            <p class="any-body">{p.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .any {
+    padding: 110px 0;
+    background: var(--white);
+  }
+
+  .any-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .any-header .section-subtext {
+    margin: 0 auto;
+  }
+
+  .any-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .any-card {
+    position: relative;
+    padding: 30px 28px;
+    background: var(--light);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition);
+  }
+
+  .any-card:hover {
+    background: var(--white);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+  }
+
+  .any-axis {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+    background: rgba(40, 165, 177, 0.1);
+    border-radius: var(--radius-full);
+    padding: 4px 10px;
+    margin-bottom: 18px;
+  }
+
+  .any-card:nth-child(n + 3) .any-axis {
+    color: var(--purple-dark);
+    background: rgba(140, 99, 170, 0.1);
+  }
+
+  .any-title {
+    font-family: var(--font-display);
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+  }
+
+  .any-body {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 1000px) {
+    .any-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .any {
+      padding: 80px 0;
+    }
+
+    .any-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -181,10 +181,10 @@ const painPoints = [
   {
     moment: "On the call, scrambling",
     quote: "“So... what have you actually done this month?”",
-    chip: "Workbench",
-    title: "Every touchpoint, logged",
+    chip: "Your portal",
+    title: "Every deliverable, logged",
     description:
-      "Workbench, our proprietary project management software, records every touchpoint on the campaign, down to the smallest detail. You walk into the call knowing exactly what's been done, and you choose what the client sees and what stays behind the curtain.",
+      "Every piece of work on every campaign is logged in your portal as it ships, down to the smallest detail. You walk into the call knowing exactly what's been done, and you choose what the client sees and what stays behind the curtain.",
   },
   {
     moment: "Caught flat-footed by a decline",
@@ -197,10 +197,10 @@ const painPoints = [
   {
     moment: "Blindsided by something you should've caught",
     quote: "“How did you not notice my site was down?”",
-    chip: "Performance Pulse",
+    chip: "Monitoring",
     title: "We catch it before the client does",
     description:
-      "Performance Pulse watches each campaign automatically: uptime, IP changes, page-speed shifts, unexpected content edits, and priority keywords moving in or out of the top three and page one, plus traffic and conversion drops that also surface broken tracking. You pick what you're alerted on; a few alerts, like a site going down, are mandatory. We get pinged and so do you, so you bring it to the client instead of the other way around.",
+      "Scheduled checks watch each campaign automatically: site crawl, technical health, page speed, the Business Profile, priority keywords moving in or out of the top three and page one, plus traffic and conversion drops that also surface broken tracking. You pick what you're alerted on. We get pinged and so do you, so you bring it to the client instead of the other way around.",
   },
 ];
 
@@ -284,7 +284,7 @@ const faqs = [
     question:
       "How are you different from a fulfillment shop like The HOTH or E2M?",
     answer:
-      "Fulfillment shops execute the tasks you order and leave the strategy and selling to you. We run the strategy and execution and build you a productized service around how you sell. Our white label SEO guide breaks down the difference in full.",
+      "Fulfillment shops execute the tasks you order and leave the strategy and selling to you. We run the strategy and execution and build you a productized service around how you sell. The three models above break down the difference in full.",
   },
   {
     question: "Do you help us sell SEO, not just deliver it?",
@@ -298,9 +298,146 @@ const faqs = [
       "Either works. Most partners run managed, where we own the strategy and deliver the full campaign as your team. Managed campaigns start with discovery because we're responsible for the result, unless we've already built you a ready-to-sell package. If you already run your own SEO strategy, go self-serve and pull only the pieces you need: white-label reporting, research, links, content, or our posting software. You set the dial.",
   },
   {
+    question: "Is white label SEO worth it?",
+    answer:
+      "For most agencies, yes. Hiring and retaining an in-house SEO team is expensive and slow, and white label lets you offer the service without the overhead. The caveat is choosing the model that matches what you actually need: a fulfillment desk if you already have a strategist, a partner if you want to grow the SEO line.",
+  },
+  {
+    question: "What is the difference between white label and reselling?",
+    answer:
+      "They describe the same arrangement from two sides. White label is the provider's term for delivering work under someone else's brand. Reselling is the agency's term for selling that work to clients as its own. In practice people use them interchangeably.",
+  },
+  {
+    question: "How much margin can I keep?",
+    answer:
+      "It depends on the model and your pricing. Agencies commonly mark white label work up substantially, and our partners typically run 50 percent or more. The real number is what is left after your own labor, which is why fulfillment's fat paper margin and a partner's thinner-looking margin often end up closer than they appear.",
+  },
+  {
+    question: "Do white label providers use PBNs?",
+    answer:
+      "Some fulfillment shops resell private blog network links without saying so. Always ask exactly how links are built. We don't run or resell PBNs; our links come from outreach and from our own Publishing House of owned media properties.",
+  },
+  {
     question: "How do we and our clients stay in the loop on the work?",
     answer:
-      "Every campaign runs through your branded portal. A live work log shows what has been done, the roadmap shows what is coming next, and each campaign is built around clear initiatives tied to the client's goals rather than a loose task list. Our Performance Pulse system also monitors each site automatically and alerts both you and us to issues like downtime or ranking drops, so you are never the last to know. You and your client review and approve as work ships, under your brand.",
+      "Every campaign runs through your branded portal. A live work log shows what has been done, the roadmap shows what is coming next, and each campaign is built around clear initiatives tied to the client's goals rather than a loose task list. Scheduled monitoring also checks each site and alerts both you and us to issues like downtime or ranking drops, so you are never the last to know. You and your client review and approve as work ships, under your brand.",
+  },
+];
+
+const models = [
+  {
+    tone: "grey",
+    name: "Fulfillment desk",
+    summary:
+      "You bring strategy and sales. They execute the tasks you order, à la carte or by the hour.",
+    you: 68,
+    bestFor: "You have strategy and want cheap hands.",
+    examples: "The HOTH · SEOReseller · E2M",
+    logos: [
+      { src: "/images/guides/white-label-seo/logos/hoth.png", alt: "The HOTH", h: 24 },
+      { src: "/images/guides/white-label-seo/logos/seoreseller.svg", alt: "SEOReseller", h: 20 },
+      { src: "/images/guides/white-label-seo/logos/e2m.png", alt: "E2M Solutions", h: 26 },
+    ],
+  },
+  {
+    tone: "light",
+    name: "Managed campaigns",
+    summary:
+      "They run per-client strategy and execution, invisibly. You still sell it and train your team.",
+    you: 45,
+    bestFor: "You want delivery off your plate.",
+    examples: "Semify",
+    logos: [{ src: "/images/guides/white-label-seo/logos/semify.png", alt: "Semify", h: 30 }],
+  },
+  {
+    tone: "teal",
+    name: "Strategic partner",
+    summary:
+      "They run strategy and execution and back your sales. You own the client and the pricing.",
+    you: 30,
+    bestFor: "You want to grow the SEO line.",
+    examples: "Boostability · That! Company · SEO Brothers",
+    logos: [
+      { src: "/images/guides/white-label-seo/logos/boostability.png", alt: "Boostability", h: 18 },
+      { src: "/images/guides/white-label-seo/logos/thatcompany.png", alt: "That! Company", h: 30 },
+      { src: "/images/logo.png", alt: "SEO Brothers", h: 22 },
+    ],
+  },
+];
+
+const compareRows = [
+  ["Who owns strategy", "You", "The provider", "The provider, with you"],
+  ["Who sells the work", "You", "You", "You, with their support behind you"],
+  ["Trains your team", "No", "No", "Sometimes"],
+  ["Typical pricing", "Per deliverable or per hour", "Monthly package per client", "Per campaign, sometimes plus a partner-level fee"],
+  ["Best when", "You have the strategy and want cheap hands", "You want delivery off your plate", "You want to grow the SEO line, not just hold it"],
+];
+
+const chooseSteps = [
+  {
+    q: "Do you have SEO strategy in house?",
+    a: "If yes, and you just need capacity, a fulfillment desk is the cheapest right answer. If no, rule it out: a fulfillment desk will execute your bad brief flawlessly.",
+  },
+  {
+    q: "Do you want to sell more SEO, or just deliver what you already sell?",
+    a: "If you mostly need delivery handled, managed campaigns fit. If growing the SEO line is a real goal, a partner who helps you sell pays for itself faster than the margin difference suggests.",
+  },
+  {
+    q: "What does your client book look like?",
+    a: "A book of small, similar local clients is well served by a volume shop. A mixed book with high-value clients needs a partner fluent across budgets.",
+  },
+  {
+    q: "What is your honest margin target?",
+    a: "Fulfillment gives the fattest paper margin but the most hidden labor, since strategy and QA are yours. Calculate margin after your own time, not before.",
+  },
+];
+
+const askBeforeSigning = [
+  "Who owns the end client if we part ways?",
+  "Is there a contract or lock-in?",
+  "How do you build links, specifically?",
+  "Can I see exactly what work was done, not just a results summary?",
+];
+
+const breakdowns = [
+  {
+    title: "Quality drift",
+    body: "Cheap content and cheap links are cheap for a reason. The first month looks fine; the drift shows up over a quarter, and you are the one explaining why.",
+  },
+  {
+    title: "Margin compression",
+    body: "A provider that needs constant rework, or communicates slowly enough to burn your account managers' hours, eats the margin that justified the arrangement.",
+  },
+  {
+    title: "Communication lag",
+    body: "When the provider sits between you and the work, every client question becomes a relay. Slow relays make you look slow.",
+  },
+  {
+    title: "The resold-link risk",
+    body: "Some fulfillment shops resell low-quality private blog network links. If a provider is cagey about how links are built, assume the worst and ask harder.",
+  },
+  {
+    title: "The reveal",
+    body: "The deepest risk is the client discovering there is a provider behind you, usually through a leaked report or a botched handoff. A good arrangement is invisible by design. A cheap one leaks.",
+  },
+];
+
+const marketPricing = [
+  {
+    model: "Fulfillment, à la carte",
+    range: "Per deliverable. Roughly fifty dollars for a blog post to a few hundred for a link or press release. You assemble and mark up.",
+  },
+  {
+    model: "Fulfillment, hourly",
+    range: "A block of hours or a monthly bucket, often starting in the high hundreds a month and rising with the hours committed.",
+  },
+  {
+    model: "Managed campaigns",
+    range: "Monthly per client, frequently quote-based, with public starting points in the few-hundred-dollar range and climbing with scope.",
+  },
+  {
+    model: "Strategic partner",
+    range: "Per campaign, much like managed, sometimes with a partner-level arrangement on top. Retail tiers run from a few hundred to a couple of thousand a month per client.",
   },
 ];
 
@@ -327,16 +464,16 @@ const breadcrumbSchema = {
     {
       "@type": "ListItem",
       position: 2,
-      name: "White Label SEO Services",
-      item: new URL("/white-label-seo-services/", Astro.site).href,
+      name: "White Label SEO",
+      item: new URL("/white-label-seo/", Astro.site).href,
     },
   ],
 };
 ---
 
 <Layout
-  title="White Label SEO Services | Outsourced SEO for Agencies | SEO Brothers"
-  description="White label SEO services and outsourced SEO for agencies. We run strategy, content, links, local, and technical SEO under your brand, build you a productized service, give you the collateral and training to sell it, and report through a portal on your own domain. Wholesale pricing, free discovery."
+  title="White Label SEO for Agencies | Services, Pricing & How to Choose | SEO Brothers"
+  description="White label SEO for agencies: what it is, the three models behind the term, and how SEO Brothers runs strategy, content, links, local, and technical SEO under your brand, with wholesale pricing, sales support, and a portal on your own domain."
   schema={[breadcrumbSchema, faqSchema]}
 >
   <Nav />
@@ -353,14 +490,14 @@ const breadcrumbSchema = {
     <div class="wls-hero-content container">
       <div class="wls-hero-badge" data-animate>
         <span class="wls-hero-badge-dot"></span>
-        White-label & outsourced SEO for agencies
+        White-label SEO for agencies
       </div>
 
       <h1 class="wls-hero-title" data-animate>
-        <span class="wls-hero-title-line">Stop Dreading the Client Call.</span
+        <span class="wls-hero-title-line">White Label SEO,</span
         ><br />
         <span class="wls-hero-title-gradient"
-          >White-Label SEO, Run Under Your Brand</span
+          >Run Under Your Brand</span
         >
       </h1>
 
@@ -428,24 +565,117 @@ const breadcrumbSchema = {
   <section class="wls-intro">
     <div class="container">
       <div class="wls-intro-content" data-animate>
-        <span class="section-label">Outsourced SEO for Agencies</span>
+        <span class="section-label">What It Is</span>
         <h2 class="section-heading">
-          White Label SEO Services You Can Sell Today
+          SEO Your Agency Sells. A Team You Never Have to Hire.
         </h2>
         <p class="wls-intro-text">
-          Your clients want SEO, and building an in-house team to deliver it is
-          slow and expensive. Outsourcing it to whoever you found last week is a
-          gamble. White label SEO solves that: we do the work, you resell it
-          under your brand, and your client never knows we exist.
+          White label SEO is the arrangement where a specialist provider does
+          the search work and your agency delivers it to the client under its
+          own brand. The client sees one company, one invoice, one point of
+          contact. The provider stays invisible, and you keep the margin between
+          what you pay and what you charge.
         </p>
         <p class="wls-intro-text">
-          We are not a fulfillment desk that runs your brief and disappears. We
-          build the strategy with you, shape a productized service around how
-          your agency actually sells, and run the campaigns under your name. You
-          keep the relationship, the pricing, and the margin. If you want to
-          understand the models first, start with our
-          <a href="/guides/white-label-seo/">white label SEO guide</a>.
+          We are that provider, and not the fulfillment-desk kind that runs your
+          brief and disappears. We build the strategy with you, shape a
+          productized service around how your agency actually sells, and run
+          the campaigns under your name. You keep the relationship, the pricing,
+          and the margin.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE THREE KINDS ===== -->
+  <section class="wls-kinds" id="three-kinds">
+    <div class="container">
+      <div class="wls-value-header" data-animate>
+        <span class="section-label">The Three Models</span>
+        <h2 class="section-heading">White Label SEO Is Three Different Things</h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          The phrase covers three business models, sorted by how much of the
+          work and thinking you keep versus hand over. Agencies pick the wrong
+          one constantly: cheap fulfillment when they needed a strategist, or
+          partner rates for hands they could have ordered à la carte.
+        </p>
+      </div>
+
+      <div class="wls-kinds-grid" data-stagger>
+        {
+          models.map((m) => (
+            <div class={`wls-kind wls-kind--${m.tone}`} data-animate>
+              <div class="wls-kind-head">{m.name}</div>
+              <div class="wls-kind-body">
+                <p class="wls-kind-summary">{m.summary}</p>
+                <p class="wls-kind-label">Who does the work</p>
+                <div class="wls-kind-bar">
+                  <span class="wls-kind-bar-you" style={`width:${m.you}%`}></span>
+                  <span class="wls-kind-bar-them" style={`width:${100 - m.you}%`}></span>
+                </div>
+                <div class="wls-kind-bar-ends"><span>You</span><span>Provider</span></div>
+                <p class="wls-kind-label">Best for</p>
+                <p class="wls-kind-best">{m.bestFor}</p>
+                <div class="wls-kind-logos">
+                  {m.logos.map((l) => (
+                    <img src={l.src} alt={l.alt} style={`height:${l.h}px`} loading="lazy" />
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="wls-compare-wrap" data-animate>
+        <table class="wls-compare">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Fulfillment desk</th>
+              <th>Managed campaigns</th>
+              <th class="wls-compare-us">Strategic partner</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              compareRows.map((r) => (
+                <tr>
+                  <th>{r[0]}</th>
+                  <td>{r[1]}</td>
+                  <td>{r[2]}</td>
+                  <td class="wls-compare-us">{r[3]}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="wls-kinds-notes" data-animate>
+        <div class="wls-kinds-note">
+          <h3 class="wls-kinds-note-title">Reseller versus provider</h3>
+          <p>
+            The terms get used loosely. The <strong>reseller</strong> is you,
+            the agency: you resell SEO to your clients under your brand and keep
+            the margin. The <strong>provider</strong> is the company doing the
+            work behind you. In the fulfillment model, reselling really is
+            passing an invoice along. In the partner model it is not; you still
+            sell, hold the relationship, and decide what the client is worth.
+            The provider makes you more capable, but the client is yours.
+          </p>
+        </div>
+        <div class="wls-kinds-note wls-kinds-note--us">
+          <h3 class="wls-kinds-note-title">Where we sit</h3>
+          <p>
+            We run the strategic-partner model. If you already have an SEO
+            strategist and just want hands, we are not the cheapest fulfillment
+            desk and we won't pretend to be. If you want a partner who helps
+            you sell, deliver, and grow, that is the entire point of us.
+            Competitor offerings shift, so treat the logos above as an
+            illustration of each model rather than a fixed scorecard.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -496,8 +726,8 @@ const breadcrumbSchema = {
         </h2>
         <p class="section-subtext" style="margin:0 auto;">
           The worst moments in this business all happen on a client call you
-          weren't ready for. We built proprietary software so they stop
-          happening to you.
+          weren't ready for. We built the software so they stop happening to
+          you.
         </p>
       </div>
 
@@ -529,7 +759,7 @@ const breadcrumbSchema = {
           <h2 class="wls-cta-title">Never be the last to know again</h2>
           <p class="wls-cta-text">
             That's what the software is for. Book a free discovery and we'll
-            show you the work log, the roadmap, and Performance Pulse in action,
+            show you the work log, the plan, and the monitoring in action,
             all under your brand.
           </p>
         </div>
@@ -1131,6 +1361,58 @@ const breadcrumbSchema = {
     </div>
   </section>
 
+  <!-- ===== HOW TO CHOOSE / WHERE IT BREAKS ===== -->
+  <section class="wls-choose" id="how-to-choose">
+    <div class="container">
+      <div class="wls-value-header" data-animate>
+        <span class="section-label">Before You Choose a Provider</span>
+        <h2 class="section-heading">How to Choose, and Where It Breaks</h2>
+        <p class="section-subtext" style="margin:0 auto;">
+          Work through the questions in order. The answers point to a model.
+          Then read the failure modes, because the honest ones rarely make it
+          into provider marketing, ours included.
+        </p>
+      </div>
+
+      <div class="wls-choose-grid">
+        <div class="wls-choose-col" data-animate>
+          <h3 class="wls-choose-col-title">Four questions that point to a model</h3>
+          <ol class="wls-choose-list">
+            {
+              chooseSteps.map((c) => (
+                <li>
+                  <p class="wls-choose-q">{c.q}</p>
+                  <p class="wls-choose-a">{c.a}</p>
+                </li>
+              ))
+            }
+          </ol>
+          <div class="wls-choose-ask">
+            <p class="wls-choose-ask-title">Ask any provider before signing, regardless of model</p>
+            <ul>
+              {askBeforeSigning.map((q) => <li>{q}</li>)}
+            </ul>
+            <p class="wls-choose-ask-foot">Vague answers to any of those are the answer.</p>
+          </div>
+        </div>
+
+        <div class="wls-choose-col" data-animate>
+          <h3 class="wls-choose-col-title">Where white label SEO breaks down</h3>
+          <div class="wls-break-list">
+            {
+              breakdowns.map((b) => (
+                <div class="wls-break">
+                  <h4 class="wls-break-title">{b.title}</h4>
+                  <p class="wls-break-body">{b.body}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== WHAT WE NEED FROM YOU ===== -->
   <section class="wls-align">
     <div class="container">
@@ -1248,6 +1530,24 @@ const breadcrumbSchema = {
         This is a summary. The complete rate card, add-ons, and website builds
         live on the <a href="/pricing/">pricing page</a>.
       </p>
+      <div class="wls-market" data-animate>
+        <p class="wls-market-title">How the wider market prices each model</p>
+        <dl class="wls-market-list">
+          {
+            marketPricing.map((m) => (
+              <div class="wls-market-row">
+                <dt>{m.model}</dt>
+                <dd>{m.range}</dd>
+              </div>
+            ))
+          }
+        </dl>
+        <p class="wls-market-foot">
+          Prices move, so treat these as the shape of each model, not a quote.
+          The cheapest model on paper is rarely the cheapest once you price your
+          own time.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -1284,7 +1584,7 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="wls-faq-header" data-animate>
         <span class="section-label">Common Questions</span>
-        <h2 class="section-heading">White Label SEO Services FAQ</h2>
+        <h2 class="section-heading">White Label SEO FAQ</h2>
       </div>
 
       <div class="wls-faq-list" data-animate>
@@ -2656,6 +2956,348 @@ const breadcrumbSchema = {
     .wls-cta-actions .btn {
       flex: 1 1 auto;
       justify-content: center;
+    }
+  }
+
+  /* ===== THE THREE KINDS ===== */
+  .wls-kinds {
+    padding: 100px 0;
+    background: var(--light);
+    border-top: 1px solid var(--border-light);
+  }
+  .wls-kinds-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1080px;
+    margin: 0 auto 40px;
+  }
+  .wls-kind {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .wls-kind--teal {
+    border: 1.5px solid var(--teal);
+  }
+  .wls-kind-head {
+    padding: 14px 20px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 17px;
+    color: #fff;
+    background: #94a3b8;
+  }
+  .wls-kind--light .wls-kind-head {
+    background: var(--teal-light);
+  }
+  .wls-kind--teal .wls-kind-head {
+    background: var(--teal);
+  }
+  .wls-kind-body {
+    padding: 20px 20px 22px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .wls-kind-summary {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+  }
+  .wls-kind-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .wls-kind-bar {
+    display: flex;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 5px;
+  }
+  .wls-kind-bar-you {
+    background: var(--dark-600);
+  }
+  .wls-kind-bar-them {
+    background: #cbd5e1;
+  }
+  .wls-kind--light .wls-kind-bar-them {
+    background: var(--teal-light);
+  }
+  .wls-kind--teal .wls-kind-bar-them {
+    background: var(--teal);
+  }
+  .wls-kind-bar-ends {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .wls-kind-best {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 18px;
+  }
+  .wls-kind-logos {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .wls-kind-logos img {
+    width: auto;
+    max-width: 110px;
+    opacity: 0.8;
+  }
+  .wls-compare-wrap {
+    max-width: 1080px;
+    margin: 0 auto 32px;
+    overflow-x: auto;
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+  }
+  .wls-compare {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    min-width: 720px;
+  }
+  .wls-compare th,
+  .wls-compare td {
+    padding: 14px 18px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border-light);
+    line-height: 1.5;
+  }
+  .wls-compare thead th {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    background: var(--light-100);
+  }
+  .wls-compare tbody th {
+    font-weight: 600;
+    color: var(--text-primary);
+    width: 20%;
+  }
+  .wls-compare td {
+    color: var(--text-secondary);
+  }
+  .wls-compare tr:last-child th,
+  .wls-compare tr:last-child td {
+    border-bottom: none;
+  }
+  .wls-compare .wls-compare-us {
+    background: rgba(40, 165, 177, 0.06);
+    color: var(--text-primary);
+  }
+  .wls-kinds-notes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .wls-kinds-note {
+    padding: 28px;
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+  }
+  .wls-kinds-note--us {
+    border-color: var(--teal);
+  }
+  .wls-kinds-note-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+  }
+  .wls-kinds-note p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+
+  /* ===== HOW TO CHOOSE / WHERE IT BREAKS ===== */
+  .wls-choose {
+    padding: 100px 0;
+    background: var(--white);
+    border-top: 1px solid var(--border-light);
+  }
+  .wls-choose-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 40px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .wls-choose-col-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+  }
+  .wls-choose-list {
+    list-style: none;
+    counter-reset: choose;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+  .wls-choose-list li {
+    counter-increment: choose;
+    position: relative;
+    padding-left: 44px;
+  }
+  .wls-choose-list li::before {
+    content: counter(choose, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--teal);
+  }
+  .wls-choose-q {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .wls-choose-a {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  .wls-choose-ask {
+    padding: 22px 24px;
+    background: var(--light);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+  }
+  .wls-choose-ask-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+  }
+  .wls-choose-ask ul {
+    list-style: disc;
+    padding-left: 20px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+  .wls-choose-ask-foot {
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--teal-dark);
+  }
+  .wls-break-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .wls-break {
+    padding: 18px 20px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--purple);
+  }
+  .wls-break-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .wls-break-body {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  /* ===== MARKET PRICING ===== */
+  .wls-market {
+    max-width: 880px;
+    margin: 40px auto 0;
+    padding: 28px 30px;
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+  }
+  .wls-market-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+  }
+  .wls-market-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .wls-market-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 20px;
+    padding: 12px 0;
+    border-top: 1px solid var(--border-light);
+  }
+  .wls-market-row dt {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 15px;
+  }
+  .wls-market-row dd {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  .wls-market-foot {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-light);
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 900px) {
+    .wls-kinds-grid,
+    .wls-kinds-notes,
+    .wls-choose-grid {
+      grid-template-columns: 1fr;
+    }
+    .wls-market-row {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+  }
+  @media (max-width: 600px) {
+    .wls-kinds,
+    .wls-choose {
+      padding: 72px 0;
     }
   }
 </style>

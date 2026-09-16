@@ -160,7 +160,7 @@ Not as a direct traffic source; a podcast will not rank the way a high-intent co
 
 ## How we approach this at SEO Brothers
 
-We are a technology-first SEO company offering [white-label SEO](/white-label-seo-services/) to agencies and growth-focused operators. That means we pay close attention to where the SERP is going, not just where it has been. Multimedia is still the most underweighted area we see in client content calendars, and the gap between operators who ship across formats and operators who publish text and hope has only widened since we first wrote this.
+We are a technology-first SEO company offering [white-label SEO](/white-label-seo/) to agencies and growth-focused operators. That means we pay close attention to where the SERP is going, not just where it has been. Multimedia is still the most underweighted area we see in client content calendars, and the gap between operators who ship across formats and operators who publish text and hope has only widened since we first wrote this.
 
 The way we run it white-label is a workflow, not a menu of separate line items: one researched topic, a blog post plus a long-form video, short cuts and audiograms pulled off the back of it, structured data on everything, and transcripts doing double duty as long-tail text and AI-extractable source material.
 

@@ -1,167 +1,120 @@
+---
+// Homepage: who we are and why the partnership holds. One team of SEOs,
+// developers, and website builders; agent-driven delivery with human
+// strategy; support that stays ahead of the partner's clients.
+const large = [
+  {
+    icon: "spark",
+    title: "Agentic Technology, Human Strategy",
+    body: "Our platform's agents do the daily delivery work on every campaign: research, content, technical fixes, monitoring. Our strategists set the direction and check the work. You get the speed of software at a price that leaves room for your margin.",
+  },
+  {
+    icon: "people",
+    title: "Support That Stays Ahead of Your Clients",
+    body: "A named team that knows your accounts, answers fast when a client asks something hard, and trains your people whenever they want to go deeper. No ticket queue, no bots.",
+  },
+];
+
+const small = [
+  {
+    icon: "eye",
+    title: "We Stay Invisible",
+    body: "Our name is nowhere your client can look. Reports, portal, deliverables, all yours.",
+  },
+  {
+    icon: "server",
+    title: "The DevOps Is Ours",
+    body: "Hosting, deploys, backups, uptime, and updates on every site we build. You sell the website; we keep it running.",
+  },
+  {
+    icon: "scale",
+    title: "Any Budget, Proven Both Ways",
+    body: "We've onboarded 100 clients in a month for one partner and run $10K campaigns for publicly traded companies.",
+  },
+  {
+    icon: "tag",
+    title: "Wholesale Pricing, Your Markup",
+    body: "Partner rates on every campaign and site. You set the retail price and keep the margin.",
+  },
+];
+---
+
 <section class="why">
   <div class="container">
     <div class="why-header" data-animate>
       <span class="section-label section-label--light">Why SEO Brothers</span>
       <h2 class="section-heading section-heading--light">
-        Why Agencies<br />
-        Partner With Us
+        SEOs, Developers, and Website Builders.<br />
+        One Partner.
       </h2>
       <p class="section-subtext section-subtext--light">
-        We are the white-label partner agencies pick over a reseller box:
-        better processes, better pricing, and better results than the
-        generalist agency trying to do everything.
+        Most providers give you hands or a dashboard. We give you the people who
+        run the campaigns, the software they run them in, and the support in
+        between.
       </p>
     </div>
 
     <div class="why-grid" data-stagger>
-      <div class="why-card why-card--large" data-animate>
-        <div class="why-card-icon">
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <circle cx="12" cy="12" r="10"></circle>
-            <circle cx="12" cy="12" r="6"></circle>
-            <circle cx="12" cy="12" r="2"></circle>
-          </svg>
-        </div>
-        <h3 class="why-card-title">SEO and Websites, Nothing Else</h3>
-        <p class="why-card-desc">
-          We don't run paid ads or social. We specialize in SEO and the
-          websites behind it, which means sharper processes, fairer pricing, and
-          better results than the generalist trying to do everything for you.
-        </p>
-      </div>
+      {
+        large.map((c) => (
+          <div class="why-card why-card--large" data-animate>
+            <div class="why-card-icon">
+              {c.icon === "spark" && (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.14 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z" />
+                  <path d="M20 3v4M22 5h-4M4 17v2M5 18H3" />
+                </svg>
+              )}
+              {c.icon === "people" && (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              )}
+            </div>
+            <h3 class="why-card-title">{c.title}</h3>
+            <p class="why-card-desc">{c.body}</p>
+          </div>
+        ))
+      }
 
-      <div class="why-card why-card--large" data-animate>
-        <div class="why-card-icon">
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-          </svg>
-        </div>
-        <h3 class="why-card-title">A Dedicated Account Manager</h3>
-        <p class="why-card-desc">
-          No ticket queues, no bots. You get a dedicated account manager who
-          knows your accounts and your clients, available for regular check-ins
-          and anytime you have a question.
-        </p>
-      </div>
-
-      <div class="why-card" data-animate>
-        <div class="why-card-icon why-card-icon--sm">
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path
-              d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
-            ></path>
-          </svg>
-        </div>
-        <h3 class="why-card-title">Free Discovery Audits</h3>
-        <p class="why-card-desc">
-          Bring us a prospect and we'll run a real discovery audit, free, so you
-          can pitch with findings instead of guesses. It is a sales tool you can
-          use to close before you ever pay us a cent.
-        </p>
-      </div>
-
-      <div class="why-card" data-animate>
-        <div class="why-card-icon why-card-icon--sm">
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-            <polyline points="17 6 23 6 23 12"></polyline>
-          </svg>
-        </div>
-        <h3 class="why-card-title">Scale Up or Down Freely</h3>
-        <p class="why-card-desc">
-          Add accounts, pause them, or change scope as your book shifts. We earn
-          the next month every month. You keep us because the results are
-          working, not because you're locked in.
-        </p>
-      </div>
-
-      <div class="why-card" data-animate>
-        <div class="why-card-icon why-card-icon--sm">
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-            <line x1="8" y1="21" x2="16" y2="21"></line>
-            <line x1="12" y1="17" x2="12" y2="21"></line>
-          </svg>
-        </div>
-        <h3 class="why-card-title">Your White-Label Partner Portal</h3>
-        <p class="why-card-desc">
-          Track rankings across every account, message the team, see the work as
-          it happens, and pull white-labeled reports for your clients, all in
-          one partner portal.
-        </p>
-      </div>
-
-      <div class="why-card" data-animate>
-        <div class="why-card-icon why-card-icon--sm">
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <circle cx="12" cy="12" r="10"></circle>
-            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88"></polygon>
-          </svg>
-        </div>
-        <h3 class="why-card-title">Data-Backed Strategy</h3>
-        <p class="why-card-desc">
-          Every account starts with deep competitor analysis and keyword gap
-          research. We don't guess what works in your client's market, we map
-          it.
-        </p>
-      </div>
+      {
+        small.map((c) => (
+          <div class="why-card" data-animate>
+            <div class="why-card-icon why-card-icon--sm">
+              {c.icon === "eye" && (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                  <line x1="1" y1="1" x2="23" y2="23" />
+                </svg>
+              )}
+              {c.icon === "server" && (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
+                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
+                  <line x1="6" y1="6" x2="6.01" y2="6" />
+                  <line x1="6" y1="18" x2="6.01" y2="18" />
+                </svg>
+              )}
+              {c.icon === "scale" && (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                  <polyline points="17 6 23 6 23 12" />
+                </svg>
+              )}
+              {c.icon === "tag" && (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.59 13.41 13.42 20.6a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
+                  <circle cx="7" cy="7" r="1.5" />
+                </svg>
+              )}
+            </div>
+            <h3 class="why-card-title">{c.title}</h3>
+            <p class="why-card-desc">{c.body}</p>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>

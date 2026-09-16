@@ -101,4 +101,4 @@ If you're a Halifax-area business or agency, [get in touch](/tools/free-seo-audi
 
 ## White-label SEO for agencies serving Halifax
 
-If you're an agency with a client in Halifax or across the HRM, we run this same playbook under your brand. You keep the client, the pricing, and the margin, while we handle the research, the Halifax peninsula, Dartmouth, and Bedford pages, and the reporting behind the scenes. That's our [white-label SEO](/guides/white-label-seo/) model, and the [services we deliver for agencies](/white-label-seo-services/) cover the full program, not just links.
+If you're an agency with a client in Halifax or across the HRM, we run this same playbook under your brand. You keep the client, the pricing, and the margin, while we handle the research, the Halifax peninsula, Dartmouth, and Bedford pages, and the reporting behind the scenes. That's our [white-label SEO](/white-label-seo/) model, and it covers the full program, not just links.

@@ -5,7 +5,7 @@
 # ============================================================================
 # Top-level pages — renamed/reframed
 # ============================================================================
-/who-we-help/                                               /white-label-seo-services/                        301
+/who-we-help/                                               /white-label-seo/                                  301
 
 # ============================================================================
 # PODCAST — legacy niched-agency-podcast hub + episodes collapse to /podcast/
@@ -242,3 +242,14 @@
 /partner-package                                            /sign-up/                                         301
 /partner-welcome/                                           /sign-up/                                         301
 /partner-welcome                                            /sign-up/                                         301
+
+# ============================================================================
+# WHITE-LABEL CONSOLIDATION (Sept 2026). The June 2026 restructure split the
+# original /white-label-seo/ hub into a sales page and a guide. Neither half
+# earned links (2 and 0 referring domains) while the retired URL still holds
+# 32, so the single money page lives at /white-label-seo/ again and both
+# halves fold into it. Anchors on the old sales page (#seo-work etc.) exist on
+# the new page with the same ids.
+# ============================================================================
+/white-label-seo-services/                                  /white-label-seo/                                 301
+/guides/white-label-seo/                                    /white-label-seo/                                 301

@@ -115,4 +115,4 @@ If you're a business or agency anywhere in KW or the Tri-Cities region, [get in 
 
 ## White-label SEO for agencies serving Kitchener-Waterloo
 
-If you're an agency with a client in KW or the wider Waterloo Region, we run this same playbook under your brand. You keep the client, the pricing, and the margin, while we handle the research, the separate Kitchener and Waterloo pages plus a deliberate call on Cambridge, and the reporting behind the scenes. That's our [white-label SEO](/guides/white-label-seo/) model, and the [services we deliver for agencies](/white-label-seo-services/) cover the full program, not just links.
+If you're an agency with a client in KW or the wider Waterloo Region, we run this same playbook under your brand. You keep the client, the pricing, and the margin, while we handle the research, the separate Kitchener and Waterloo pages plus a deliberate call on Cambridge, and the reporting behind the scenes. That's our [white-label SEO](/white-label-seo/) model, and it covers the full program, not just links.

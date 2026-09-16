@@ -3,12 +3,14 @@ import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Hero from "../components/Hero.astro";
 import TrustBar from "../components/TrustBar.astro";
-import AboutBrand from "../components/AboutBrand.astro";
+import AnyAgency from "../components/AnyAgency.astro";
 import Services from "../components/Services.astro";
+import NeverSurprised from "../components/NeverSurprised.astro";
 import Process from "../components/Process.astro";
 import WhyUs from "../components/WhyUs.astro";
-import DasherFeature from "../components/DasherFeature.astro";
+import PortalFeature from "../components/PortalFeature.astro";
 import Testimonials from "../components/Testimonials.astro";
+import AboutBrand from "../components/AboutBrand.astro";
 import AgencyBand from "../components/AgencyBand.astro";
 import CtaBanner from "../components/CtaBanner.astro";
 import Footer from "../components/Footer.astro";
@@ -21,7 +23,7 @@ const orgSchema = {
   url: "https://seobrothers.com",
   logo: "https://seobrothers.com/images/logo.png",
   description:
-    "White-label SEO and website company for agencies. Expert campaigns and fast Astro sites delivered under your brand. Halifax-founded in 2015, 30+ team, 100+ agency partners.",
+    "White-label SEO and website company for agencies. A team of SEOs, software developers, and website builders delivering campaigns and sites under the agency's brand. Halifax-founded in 2015, 100+ agency partners.",
   foundingDate: "2015",
   founders: [
     { "@type": "Person", name: "Devon Bate" },
@@ -52,18 +54,20 @@ const websiteSchema = {
 
 <Layout
   title="SEO Brothers | White-Label SEO & Websites for Agencies"
-  description="SEO Brothers is a white-label SEO and website partner for agencies. Expert SEO campaigns and fast Astro sites delivered under your brand. Halifax-founded, 10+ years, 5,000+ campaigns."
+  description="SEO Brothers is the white-label SEO and website partner behind agencies' work: the strategy on every campaign, the build and DevOps behind every site, and a client portal under your brand. Halifax-founded, 100+ agency partners."
   schema={[orgSchema, websiteSchema]}
 >
   <Nav />
   <Hero />
   <TrustBar />
-  <AboutBrand />
+  <AnyAgency />
   <Services />
+  <NeverSurprised />
   <Process />
   <WhyUs />
-  <DasherFeature />
+  <PortalFeature />
   <Testimonials />
+  <AboutBrand />
   <AgencyBand />
   <CtaBanner variant="partner" />
   <Footer />

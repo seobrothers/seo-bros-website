@@ -1,0 +1,169 @@
+---
+// Homepage: the transparency story. Each row is the client-call moment on the
+// left and what the partner already has in hand on the right.
+const rows = [
+  {
+    moment: "On the call, scrambling",
+    quote: "“So... what have you actually done this month?”",
+    title: "What's been done",
+    body: "Every deliverable on every campaign is logged in your portal as it ships: the content, the fixes, the links, the reviews. You choose what your client sees.",
+  },
+  {
+    moment: "Caught flat-footed by a decline",
+    quote: "“Rankings dipped. What are we going to do about it?”",
+    title: "What's next",
+    body: "Each campaign carries a plan for the month ahead, priced as line items before it runs. The answer to that question is written down before they ask it.",
+  },
+  {
+    moment: "Blindsided by something you should have caught",
+    quote: "“How did you not notice my site was down?”",
+    title: "What went wrong, before they notice",
+    body: "Scheduled checks watch every site: crawl health, speed, the Business Profile, rankings, tracking. You hear about a problem before your client does.",
+  },
+];
+---
+
+<section class="know">
+  <div class="container">
+    <div class="know-header" data-animate>
+      <span class="section-label">Never Get Blindsided</span>
+      <h2 class="section-heading">
+        Walk Into Every Client Call<br />
+        Knowing More Than They Do
+      </h2>
+      <p class="section-subtext">
+        The worst moments in this business happen on a client call you weren't
+        ready for. Your portal is built so they stop happening to you.
+      </p>
+    </div>
+
+    <div class="know-list" data-stagger>
+      {
+        rows.map((r) => (
+          <div class="know-row" data-animate>
+            <div class="know-problem">
+              <span class="know-moment">{r.moment}</span>
+              <p class="know-quote">{r.quote}</p>
+            </div>
+            <div class="know-fix">
+              <h3 class="know-title">{r.title}</h3>
+              <p class="know-body">{r.body}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .know {
+    padding: 110px 0;
+    background: var(--white);
+    border-top: 1px solid var(--border-light);
+  }
+
+  .know-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .know-header .section-subtext {
+    margin: 0 auto;
+  }
+
+  .know-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .know-row {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: box-shadow var(--transition);
+  }
+
+  .know-row:hover {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .know-problem {
+    padding: 30px 32px;
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .know-moment {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-on-dark-muted);
+    margin-bottom: 12px;
+  }
+
+  .know-quote {
+    font-family: var(--font-display);
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--text-on-dark);
+  }
+
+  .know-fix {
+    padding: 30px 36px;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .know-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .know-title::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  .know-body {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 800px) {
+    .know {
+      padding: 80px 0;
+    }
+
+    .know-row {
+      grid-template-columns: 1fr;
+    }
+
+    .know-problem,
+    .know-fix {
+      padding: 26px 24px;
+    }
+  }
+</style>
