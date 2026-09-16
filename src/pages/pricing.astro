@@ -82,7 +82,7 @@ const definitions: Definition[] = [
   },
   {
     term: "Website changes implemented for you",
-    body: `Our team applies the on-page and technical changes we recommend. Off, your team implements them from our briefs. Adds $${implementationAddOn} a month on any plan.`,
+    body: `Our team applies the on-page and technical changes we recommend. Off, your team implements them from our briefs. Each plan shows what it adds a month.`,
   },
 ];
 
@@ -257,15 +257,11 @@ const breadcrumbSchema = {
           </div>
           <button type="button" class="impl-toggle" id="impl-toggle" role="switch" aria-checked="true">
             <span class="impl-toggle__track" aria-hidden="true"><span class="impl-toggle__thumb"></span></span>
-            <span class="impl-toggle__label">
-              Website changes implemented for you
-              <span class="impl-toggle__price">+<span data-usd={implementationAddOn}>{usd(implementationAddOn)}</span>/mo</span>
-            </span>
+            <span class="impl-toggle__label">Website changes implemented for you</span>
           </button>
         </div>
         <p class="currency-toggle__note">
-          CAD billed at a fixed {CAD_RATE}× of the USD price. Implementation adds
-          {usd(implementationAddOn)} a month to any plan.
+          CAD billed at a fixed {CAD_RATE}× of the USD price.
         </p>
       </div>
 
@@ -1069,11 +1065,6 @@ const breadcrumbSchema = {
 
   .impl-toggle[aria-checked="true"] .impl-toggle__thumb {
     transform: translateX(14px);
-  }
-
-  .impl-toggle__price {
-    font-weight: 500;
-    color: var(--text-muted, #6b7280);
   }
 
   .currency-toggle {
