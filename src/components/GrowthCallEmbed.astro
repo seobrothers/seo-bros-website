@@ -5,6 +5,7 @@
 // dual-button CtaBanner (which links to /book-a-growth-call/) instead.
 // ⚙️ CONFIG — Devon: your growth-call Calendly (see /book-a-growth-call/).
 const calendlyUrl = "https://calendly.com/d/d3zk-3y5-dqt/strategy-or-good-fit-alignment";
+import CalendlyInline from "./CalendlyInline.astro";
 
 interface Props {
   heading?: string;
@@ -27,11 +28,7 @@ const {
       <p class="gce__sub">{sub}</p>
     </div>
     <div class="gce__card">
-      <iframe
-        class="gce__calendly"
-        src={`${calendlyUrl}?hide_gdpr_banner=1`}
-        title="Book a growth call with SEO Brothers"
-        loading="lazy"></iframe>
+      <CalendlyInline url={calendlyUrl} title="Book a growth call with SEO Brothers" />
     </div>
     <p class="gce__alt">
       Prefer to explore on your own time?
@@ -54,12 +51,10 @@ const {
   }
   .gce__sub { font-size: 18px; line-height: 1.7; color: var(--text-on-dark-muted); max-width: 560px; margin: 0 auto; }
   .gce__card { background: var(--white); border-radius: var(--radius-xl); padding: 12px; box-shadow: var(--shadow-lg); }
-  .gce__calendly { width: 100%; min-height: 700px; border: 0; border-radius: var(--radius-md); display: block; }
   .gce__alt { text-align: center; margin-top: 22px; font-size: 14px; line-height: 1.6; color: var(--text-on-dark-muted); }
   .gce__alt a { color: var(--teal-light); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 
   @media (max-width: 768px) {
     .gce { padding: 72px 0; }
-    .gce__calendly { min-height: 980px; }
   }
 </style>
