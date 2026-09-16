@@ -1,0 +1,8 @@
+---
+import CallBookedPage from "../../components/CallBookedPage.astro";
+// Partner check-in landing after a Calendly booking: the partner event type
+// redirects here. No trial pitch, no conversion event. See CallBookedPage.astro.
+export const prerender = true;
+---
+
+<CallBookedPage partner />
