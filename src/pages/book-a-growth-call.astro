@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import CalendlyInline from "../components/CalendlyInline.astro";
 
 // Direct, no-gate booking page. The lower-friction counterpart to the
 // /sign-up/ opt-in: an agency books a call with Mike straight away.
@@ -53,11 +54,7 @@ const expect = [
       </div>
 
       <div class="gc__cal">
-        <iframe
-          class="gc__calendly"
-          src={`${calendlyUrl}?hide_gdpr_banner=1`}
-          title="Book a growth call with SEO Brothers"
-          loading="lazy"></iframe>
+        <CalendlyInline url={calendlyUrl} title="Book a growth call with SEO Brothers" />
       </div>
     </div>
   </section>
@@ -89,11 +86,9 @@ const expect = [
     background: var(--white); border: 1px solid var(--border-light);
     border-radius: var(--radius-xl); padding: 12px; box-shadow: var(--shadow-md);
   }
-  .gc__calendly { width: 100%; min-height: 720px; border: 0; border-radius: var(--radius-md); display: block; }
 
   @media (max-width: 900px) {
     .gc { padding: 120px 0 80px; }
     .gc__inner { grid-template-columns: 1fr; gap: 32px; }
-    .gc__calendly { min-height: 1000px; }
   }
 </style>

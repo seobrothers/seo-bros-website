@@ -1,30 +1,21 @@
 import type { APIRoute } from "astro";
-import { syncContact, addToList, applyTag } from "../../lib/activecampaign";
 import { clientIp, logEvent, type AnalyticsEngine } from "../../lib/eventlog";
 import { verifyTurnstile } from "../../lib/turnstile";
 import { rateLimit, type RateLimitKV } from "../../lib/ratelimit";
 
 // Free-audit lead endpoint.
 //
-// Flow: AuditForm.astro POSTs { name, email, url } here -> we create/sync the
-// contact in ActiveCampaign and add them to list 24 -> we post a message to a
-// Slack webhook so Mike can pick the audit up manually. The Slack message
-// carries the URL because the manual audit starts from there.
+// Flow: AuditForm.astro POSTs { name, email, url } here -> we post a message
+// to the sales Slack channel so the team can pick the audit up. The Slack
+// message carries the URL because the manual audit starts from there. No CRM
+// sync: leads live in Slack and, once they sign up, in Tideworthy.
 //
 // Runs on-demand inside the Cloudflare Worker (prerender = false). Cloudflare
 // secrets are read from `locals.runtime.env`; `import.meta.env` is the
 // local-dev fallback (Astro loads .env.local server-side).
 export const prerender = false;
 
-const AC_LIST_ID = 24;
-const AC_TAG = "Free Audit Request";
-// Applied on top of the base tag when those add-on audits are requested.
-const AC_TAG_LOCAL = "Discovery: Local";
-const AC_TAG_AI = "Discovery: AI Citation";
-
 interface Env {
-  ACTIVECAMPAIGN_API_URL?: string;
-  ACTIVECAMPAIGN_API_KEY?: string;
   SLACK_AUDIT_WEBHOOK_URL?: string;
   TURNSTILE_SECRET_KEY?: string;
 }
@@ -32,10 +23,6 @@ interface Env {
 function readEnv(locals: App.Locals): Env {
   const runtimeEnv = (locals as { runtime?: { env?: Env } }).runtime?.env;
   return {
-    ACTIVECAMPAIGN_API_URL:
-      runtimeEnv?.ACTIVECAMPAIGN_API_URL ?? import.meta.env.ACTIVECAMPAIGN_API_URL,
-    ACTIVECAMPAIGN_API_KEY:
-      runtimeEnv?.ACTIVECAMPAIGN_API_KEY ?? import.meta.env.ACTIVECAMPAIGN_API_KEY,
     SLACK_AUDIT_WEBHOOK_URL:
       runtimeEnv?.SLACK_AUDIT_WEBHOOK_URL ?? import.meta.env.SLACK_AUDIT_WEBHOOK_URL,
     TURNSTILE_SECRET_KEY:
@@ -66,26 +53,7 @@ function normalizeUrl(raw: string): string | null {
   }
 }
 
-/**
- * Create/update the contact in ActiveCampaign, add them to the audit list, and
- * apply the audit tag. Contact sync + list-add must succeed (they throw);
- * tagging is best-effort and never blocks the lead.
- */
-async function syncToActiveCampaign(
-  env: Env,
-  { firstName, lastName, email, tags }: { firstName: string; lastName: string; email: string; tags: string[] }
-): Promise<void> {
-  const base = env.ACTIVECAMPAIGN_API_URL;
-  const token = env.ACTIVECAMPAIGN_API_KEY;
-  if (!base || !token) throw new Error("ActiveCampaign credentials are not configured");
-
-  const ac = { base, token };
-  const contactId = await syncContact(ac, { email, firstName, lastName });
-  await addToList(ac, contactId, AC_LIST_ID);
-  for (const tag of tags) await applyTag(ac, contactId, tag);
-}
-
-/** Notify Slack so Mike can run the audit. Best-effort: never throws. */
+/** Notify Slack so the team can run the audit. Best-effort: never throws. */
 async function notifySlack(
   env: Env,
   {
@@ -180,12 +148,6 @@ export const POST: APIRoute = async ({ request, locals }) => {
     );
   }
 
-  const [firstName, ...rest] = name.split(/\s+/);
-  const lastName = rest.join(" ");
-
-  const tags = [AC_TAG];
-  if (wantsLocal) tags.push(AC_TAG_LOCAL);
-  if (wantsAi) tags.push(AC_TAG_AI);
 
   const audits = ["Site & SEO", wantsLocal && "Local", wantsAi && "AI Citation"]
     .filter(Boolean)
@@ -201,15 +163,6 @@ export const POST: APIRoute = async ({ request, locals }) => {
   );
   if (!turnstileOk) {
     return json({ ok: false, error: "Verification failed. Please try again." }, 403);
-  }
-
-  // CRM sync is best-effort: a failure here (missing creds, AC outage) must not
-  // fail the audit request for the lead. They're still captured via Slack +
-  // analytics below, so we log and carry on rather than returning a 502.
-  try {
-    await syncToActiveCampaign(env, { firstName, lastName, email, tags });
-  } catch (err) {
-    console.error("ActiveCampaign sync failed (non-fatal)", err);
   }
 
   // Slack is the durable lead capture for the team to action the audit.

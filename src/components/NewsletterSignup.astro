@@ -1,8 +1,17 @@
 ---
-// Topic-selectable subscribe. Email + pick which lists (SEO / Agency /
-// Build-Product). Posts to /api/subscribe. No Turnstile (low-cost endpoint,
-// guarded by honeypot + IP rate limit). Local Market Research is intentionally
-// not a topic.
+// Newsletter subscribe. Email + pick which lists. Posts JSON to the platform's
+// public subscribe door, which writes pending rows and emails one confirmation
+// link; nothing is subscribed until the person clicks it. Lists are the
+// platform's website-visible newsletter lists (slug = value below).
+//
+//   POST {PUBLIC_PLATFORM_SUBSCRIBE_URL}   default https://app.tideworthy.com/api/public/subscribe
+//   { email, lists: string[], turnstile }
+//   { ok: true, status: "check_inbox" | "already_subscribed" } | { ok: false, error }
+//
+// Turnstile renders when PUBLIC_TURNSTILE_SITE_KEY is set (production). A
+// deployed platform refuses a missing token, so the key must be set in prod.
+import { TURNSTILE_SITE_KEY } from "../lib/turnstile";
+
 interface Props {
   heading?: string;
   sub?: string;
@@ -15,10 +24,13 @@ const {
 const uid = Math.random().toString(36).slice(2, 9);
 
 const topics = [
-  { value: "seo", label: "SEO tips", note: "Bros Knows, monthly", checked: true },
-  { value: "agency", label: "Agency growth", note: "selling & delivering SEO", checked: false },
-  { value: "build", label: "Build / Product", note: "how we build SEO Brothers", checked: false },
+  { value: "seo-updates", label: "SEO Updates", note: "search changes that affect your clients, and what we are doing about them", checked: true },
+  { value: "agentic-agency", label: "Agentic Agency", note: "behind the scenes on running an agency with agents", checked: false },
 ];
+
+const endpoint =
+  (import.meta.env.PUBLIC_PLATFORM_SUBSCRIBE_URL as string | undefined) ||
+  "https://app.tideworthy.com/api/public/subscribe";
 ---
 
 <section class="sub">
@@ -29,8 +41,8 @@ const topics = [
         <p class="sub__sub">{sub}</p>
       </div>
 
-      <form class="sub__form" novalidate>
-        {/* Honeypot — /api/subscribe drops any submit where this is filled. */}
+      <form class="sub__form" novalidate data-endpoint={endpoint}>
+        {/* Honeypot: a filled phone field is a bot, so the submit is swallowed client-side. */}
         <div class="sub__hp" aria-hidden="true">
           <label for={`sub-phone-${uid}`}>Phone number</label>
           <input type="text" id={`sub-phone-${uid}`} name="phoneNumber" tabindex="-1" autocomplete="off" />
@@ -62,16 +74,30 @@ const topics = [
           ))}
         </fieldset>
 
+        {TURNSTILE_SITE_KEY && (
+          <div class="cf-turnstile sub__turnstile" data-sitekey={TURNSTILE_SITE_KEY} data-size="flexible"></div>
+        )}
+
         <p class="sub__error" role="alert" hidden></p>
       </form>
 
-      <p class="sub__success" hidden>Thanks — you're subscribed. Check your inbox to confirm.</p>
+      <p class="sub__success" hidden>Check your inbox to confirm your subscription.</p>
     </div>
   </div>
 </section>
 
+{TURNSTILE_SITE_KEY && (
+  <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+)}
+
 <script>
   import { getLead, saveLead } from "../lib/leadMemory";
+
+  declare global {
+    interface Window {
+      turnstile?: { reset: () => void };
+    }
+  }
 
   document.querySelectorAll<HTMLFormElement>(".sub__form").forEach((form) => {
     const card = form.closest(".sub__card");
@@ -96,6 +122,7 @@ const topics = [
         form.reportValidity();
         return;
       }
+
       if (topics.length === 0) {
         if (errorEl) {
           errorEl.textContent = "Pick at least one topic.";
@@ -110,18 +137,34 @@ const topics = [
 
       const phoneNumber =
         form.querySelector<HTMLInputElement>('input[name="phoneNumber"]')?.value ?? "";
+      if (phoneNumber) {
+        // Bot filled the honeypot: pretend it worked, send nothing.
+        form.hidden = true;
+        if (success) success.hidden = false;
+        return;
+      }
+
+      const turnstile =
+        form.querySelector<HTMLInputElement>('input[name="cf-turnstile-response"]')?.value ?? "";
 
       try {
-        const res = await fetch("/api/subscribe/", {
+        const res = await fetch(form.dataset.endpoint ?? "", {
           method: "POST",
           headers: { "content-type": "application/json" },
-          body: JSON.stringify({ email, topics, phoneNumber }),
+          body: JSON.stringify({ email, lists: topics, turnstile }),
         });
-        const body = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
+        const body = (await res.json().catch(() => ({}))) as {
+          ok?: boolean;
+          status?: string;
+          error?: string;
+        };
         if (res.ok && body.ok) {
           saveLead({ email });
           form.hidden = true;
-          if (success) success.hidden = false;
+          if (success) {
+            if (body.status === "already_subscribed") success.textContent = "You're already subscribed.";
+            success.hidden = false;
+          }
           return;
         }
         throw new Error(body.error ?? "Something went wrong. Please try again.");
@@ -132,6 +175,7 @@ const topics = [
         }
         if (btn) btn.disabled = false;
         if (label) label.textContent = "Subscribe";
+        window.turnstile?.reset();
       }
     });
   });
@@ -261,6 +305,10 @@ const topics = [
     font-size: 13px;
     color: #c0392b;
     margin: 0;
+  }
+  .sub__turnstile {
+    margin-top: 12px;
+    min-height: 65px;
   }
 
   .sub__success {

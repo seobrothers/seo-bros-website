@@ -16,7 +16,7 @@ const SNAPSHOT_WINDOW_SECONDS = 3600;
 
 // The "free discovery" compute endpoint. The crunching/results page calls this
 // (GET, so it's cacheable) after the lead has already been captured by the form
-// via /api/audit. This does NOT touch ActiveCampaign — it only runs the audit
+// via /api/audit. This does NOT capture a lead, it only runs the audit
 // modules (PageSpeed, Places, LLM) and returns the report as JSON.
 //
 // Abuse/cost control: results are cached per query (Cloudflare Cache API, 24h),
