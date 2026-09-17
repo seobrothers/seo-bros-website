@@ -304,7 +304,7 @@ const faqs = [
     question:
       "Do we have to hand you the whole campaign, or can we just buy pieces?",
     answer:
-      "Either works. Most partners run managed, where we own the strategy and deliver the full campaign as your team. Managed campaigns start with discovery because we're responsible for the result, unless we've already built you a ready-to-sell package. If you'd rather stay hands-on, go self-serve: the campaign agents propose the plan and do the work, and you review, give feedback, and approve from inside the portal. You set the dial.",
+      "Campaigns are managed: the agents do the daily work, our team reviews it, and you approve what ships. Pick the plan by how much work a client needs each month, then add pieces on top: extra content, links, Business Profile posts, locations, more strategist time, or a website build. The full rate card is on our pricing page.",
   },
   {
     question: "Is white label SEO worth it?",
@@ -1163,83 +1163,49 @@ const breadcrumbSchema = {
     </div>
   </section>
 
-  <!-- ===== ENGAGEMENT MODELS ===== -->
-  <section class="wls-models" id="how-you-work">
+  <!-- ===== HOW THE WORK GETS DONE ===== -->
+  <section class="wls-engine" id="how-you-work">
     <div class="container">
       <div class="wls-value-header" data-animate>
-        <span class="section-label">How You Work With Us</span>
-        <h2 class="section-heading">Managed or Self-Serve, You Set the Dial</h2>
+        <span class="section-label">How the Work Gets Done</span>
+        <h2 class="section-heading">Agentic SEO, Guided by Humans</h2>
         <p class="section-subtext" style="margin:0 auto;">
-          The real question is who works with the campaign agents day to day.
-          Hand the whole campaign to our team, or run it yourself alongside the
-          agents. Either way, everything ships under your brand.
+          We lean on AI tooling and data harder than anyone, which is how the
+          plans cost what they cost. Behind every campaign is still a team of
+          people who review the work and stand behind it with you.
         </p>
       </div>
 
-      <div class="wls-models-grid" data-stagger>
-        <div class="wls-model-card wls-model-card--managed" data-animate>
-          <span class="wls-model-tag">Most partners</span>
-          <h3 class="wls-model-title">Managed</h3>
-          <p class="wls-model-lede">We own the strategy and the outcome.</p>
-          <p class="wls-model-desc">
-            We run discovery, build the plan, and deliver the full campaign as
-            your team. Because we're on the hook for the result, every managed
-            campaign starts with discovery, unless we've already built you a
-            ready-to-sell package.
+      <div class="wls-engine-grid" data-stagger>
+        <div class="wls-engine-card" data-animate>
+          <span class="wls-engine-who">Agents</span>
+          <h3 class="wls-engine-title">Do the volume</h3>
+          <p class="wls-engine-desc">
+            Research, content, technical fixes, local work, links, monitoring,
+            and reporting run every day on the Tideworthy platform, for every
+            client on your book at once.
           </p>
-
-          <div class="wls-dial">
-            <div class="wls-dial-track">
-              <span class="wls-dial-dot wls-dial-dot--start"></span>
-              <span class="wls-dial-dot wls-dial-dot--end"></span>
-            </div>
-            <div class="wls-dial-ends">
-              <span>Lean on us fully</span>
-              <span>Just keep us on delivery</span>
-            </div>
-          </div>
-
-          <ul class="wls-model-list">
-            <li>
-              <strong>New to SEO?</strong> Take the discovery, proposals, collateral,
-              pricing, and team training. We become your SEO department.
-            </li>
-            <li>
-              <strong>Done this before?</strong> Bring your own sales process and
-              we focus on running great campaigns and strategic value.
-            </li>
-          </ul>
         </div>
-
-        <div class="wls-model-card" data-animate>
-          <h3 class="wls-model-title">Self-Serve</h3>
-          <p class="wls-model-lede">
-            You run it with the agents. We are on support.
+        <div class="wls-engine-card wls-engine-card--us" data-animate>
+          <span class="wls-engine-who">Our team</span>
+          <h3 class="wls-engine-title">Steers and checks</h3>
+          <p class="wls-engine-desc">
+            A strategist sets the direction and our people review the work
+            before it ships. When a client needs more of a strategist's time,
+            Human SEO Time and Human Strategy Reviews are add-ons on every
+            plan.
           </p>
-          <p class="wls-model-desc">
-            The campaign agents research the account, propose each month's
-            plan, and do the daily work. You review what they propose, give
-            feedback, approve what ships, and steer from inside the portal.
-            Nothing client-facing goes out without you.
-          </p>
-          <ul class="wls-model-list">
-            <li>The Tideworthy platform and campaign agents</li>
-            <li>A monthly plan proposed for your approval</li>
-            <li>Content, technical fixes, links, and local work, done by the agents</li>
-            <li>Monitoring and white-label reporting on your own domain</li>
-            <li>Our team on support whenever you want a human</li>
-          </ul>
-          <p class="wls-model-foot">
-            Best for agencies that want to stay hands-on with the campaign
-            without staffing the delivery.
+        </div>
+        <div class="wls-engine-card" data-animate>
+          <span class="wls-engine-who">You</span>
+          <h3 class="wls-engine-title">Own the client</h3>
+          <p class="wls-engine-desc">
+            You sell it, hold the relationship, set the retail price, and
+            approve what ships from inside your portal. Nothing client-facing
+            goes out without you.
           </p>
         </div>
       </div>
-
-      <p class="wls-models-note" data-animate>
-        Not sure which fits? Most partners start managed and pull levers back as
-        their own team gets comfortable. You're never locked in.
-      </p>
     </div>
   </section>
 
@@ -2174,148 +2140,56 @@ const breadcrumbSchema = {
     background: var(--white);
   }
 
-  /* ===== ENGAGEMENT MODELS ===== */
-  .wls-models {
+  /* ===== HOW THE WORK GETS DONE ===== */
+  .wls-engine {
     padding: 100px 0;
-    background: var(--light);
-  }
-  .wls-models-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    max-width: 920px;
-    margin: 0 auto;
-    align-items: start;
-  }
-  .wls-model-card {
-    position: relative;
     background: var(--white);
+  }
+  .wls-engine-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .wls-engine-card {
+    padding: 30px 28px;
+    background: var(--light);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-lg);
-    padding: 36px 32px;
-    box-shadow: var(--shadow-sm);
   }
-  .wls-model-card--managed {
-    border-color: var(--teal);
-    box-shadow: var(--shadow-lg);
+  .wls-engine-card--us {
+    background: var(--white);
+    border: 1.5px solid var(--teal);
   }
-  .wls-model-tag {
-    position: absolute;
-    top: -13px;
-    left: 32px;
-    background: var(--teal);
-    color: var(--white);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    padding: 5px 14px;
-    border-radius: var(--radius-full);
-  }
-  .wls-model-title {
-    font-family: var(--font-display);
-    font-size: 24px;
+  .wls-engine-who {
+    display: inline-block;
+    font-size: 11px;
     font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+    background: rgba(40, 165, 177, 0.1);
+    border-radius: var(--radius-full);
+    padding: 4px 10px;
+    margin-bottom: 16px;
+  }
+  .wls-engine-title {
+    font-family: var(--font-display);
+    font-size: 21px;
+    font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 6px;
+    margin-bottom: 10px;
     letter-spacing: -0.01em;
   }
-  .wls-model-lede {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--teal-dark);
-    margin-bottom: 14px;
-  }
-  .wls-model-desc {
-    font-size: 14.5px;
+  .wls-engine-desc {
+    font-size: 15px;
     line-height: 1.65;
     color: var(--text-secondary);
-    margin-bottom: 22px;
   }
-  .wls-dial {
-    margin-bottom: 22px;
-  }
-  .wls-dial-track {
-    position: relative;
-    height: 6px;
-    border-radius: var(--radius-full);
-    background: linear-gradient(90deg, var(--teal) 0%, var(--green) 100%);
-    margin-bottom: 10px;
-  }
-  .wls-dial-dot {
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--white);
-    border: 2px solid var(--teal);
-  }
-  .wls-dial-dot--start {
-    left: 0;
-  }
-  .wls-dial-dot--end {
-    left: 100%;
-    border-color: var(--green);
-  }
-  .wls-dial-ends {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-muted);
-  }
-  .wls-model-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .wls-model-list li {
-    position: relative;
-    padding-left: 28px;
-    font-size: 14.5px;
-    line-height: 1.55;
-    color: var(--text-secondary);
-  }
-  .wls-model-list li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 2px;
-    width: 16px;
-    height: 16px;
-    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2328a5b1' stroke-width='2.5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-  .wls-model-list li strong {
-    color: var(--text-primary);
-    font-weight: 600;
-  }
-  .wls-model-foot {
-    margin-top: 18px;
-    padding-top: 18px;
-    border-top: 1px solid var(--border-light);
-    font-size: 13.5px;
-    line-height: 1.6;
-    color: var(--text-muted);
-  }
-  .wls-models-note {
-    text-align: center;
-    max-width: 560px;
-    margin: 36px auto 0;
-    font-size: 15px;
-    line-height: 1.6;
-    color: var(--text-secondary);
-  }
-  @media (max-width: 760px) {
-    .wls-models-grid {
+  @media (max-width: 900px) {
+    .wls-engine-grid {
       grid-template-columns: 1fr;
-      max-width: 460px;
     }
   }
 
