@@ -4,11 +4,16 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import GrowthCallEmbed from "../components/GrowthCallEmbed.astro";
 import StickyCta from "../components/StickyCta.astro";
-import { SEO_TIERS, usd } from "../data/pricing";
+import { usd } from "../data/pricing";
+import { loadPlatformPricing, marketingTiers } from "../data/platform-pricing";
 import { Image } from "astro:assets";
 import discoveryShot from "../assets/shots/discovery-report.png";
 import aiVisibilityShot from "../assets/shots/ai-visibility.png";
 import campaignShot from "../assets/shots/campaign-setup.png";
+
+// Live plan pricing from the platform, the same source /pricing/ renders.
+const { data: platformPricing } = await loadPlatformPricing();
+const tiers = marketingTiers(platformPricing);
 
 const deliverables = [
   {
@@ -1592,17 +1597,17 @@ const breadcrumbSchema = {
 
       <div class="wls-pricing-grid" data-stagger>
         {
-          SEO_TIERS.map((tier) => (
+          tiers.map((tier) => (
             <div
               class={`wls-pricing-card${tier.featured ? " wls-pricing-card--featured" : ""}`}
               data-animate
             >
               {tier.featured && (
-                <span class="wls-pricing-badge">Most quoted</span>
+                <span class="wls-pricing-badge">Most popular</span>
               )}
               <h3 class="wls-pricing-tier">{tier.name}</h3>
               <div class="wls-pricing-price">
-                <span class="wls-pricing-amount">{usd(tier.price)}</span>
+                <span class="wls-pricing-amount">{usd(tier.price + tier.implementation)}</span>
                 <span class="wls-pricing-period">/mo wholesale</span>
               </div>
               <p class="wls-pricing-blurb">{tier.blurb}</p>
