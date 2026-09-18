@@ -40,7 +40,12 @@ export interface PlatformPricing {
   trackedKeywords: number;
   processCards: PlatformProcessCard[];
   families: { key: string; label: string }[];
+  /** The units a plan counts monthly. */
   deliverables: { slug: string; label: string; family: string | null }[];
+  /** The units every plan includes with no monthly count: a checked row,
+   *  and the family whose monthly row the comparison drops (older feeds:
+   *  absent, nothing is included this way). */
+  included?: { slug: string; label: string; family: string | null }[];
   plans: PlatformPlan[];
 }
 
@@ -58,6 +63,9 @@ export async function loadPlatformPricing(): Promise<{ data: PlatformPricing; so
     if (!Array.isArray(data.processCards) || !Array.isArray(data.families)) {
       throw new Error("price list predates process cards");
     }
+    // A feed that does not yet say which units are included would show
+    // citations as a count again; the snapshot already has the shape.
+    if (!Array.isArray(data.included)) throw new Error("price list predates included units");
     return { data, source: "live" };
   } catch (err) {
     console.warn(`[pricing] platform price list unavailable (${String(err)}), using snapshot`);
@@ -128,6 +136,11 @@ export interface MarketingTier {
   processes: { key: string; name: string; cadence: string | null }[];
 }
 
+/** The deliverables every plan includes without a count. */
+function includedUnits(pricing: PlatformPricing): { slug: string; label: string; family: string | null }[] {
+  return pricing.included ?? [];
+}
+
 /** The plans as the pricing page shows them: marketing names, the default package's counts. */
 export function marketingTiers(pricing: PlatformPricing): MarketingTier[] {
   return pricing.plans.map((plan) => {
@@ -142,7 +155,7 @@ export function marketingTiers(pricing: PlatformPricing): MarketingTier[] {
     const specialist = plan.defaultPackage?.processes.find((p) => p.key === "ongoing-specialist-work-execution");
     const highlights = [
       `${c.guest_post_link ?? 0} backlinks and ${c.content ?? 0} content pieces a month`,
-      `${c.gbp_post ?? 0} Business Profile posts and ${c.citation ?? 0} citations`,
+      `${c.gbp_post ?? 0} Business Profile posts a month`,
       specialist?.cadence ? `Specialist work ${specialist.cadence.toLowerCase()}` : null,
       id.bestFor || null,
     ].filter((h): h is string => Boolean(h));
@@ -188,15 +201,21 @@ export function comparisonRows(pricing: PlatformPricing, tiers: MarketingTier[])
     citation: "Citations per month",
   };
   const familyOrder = ["content", "guest_post_link", "gbp_post", "citation"];
-  const families = [...pricing.families].sort(
-    (a, b) => (familyOrder.indexOf(a.key) + 1 || 99) - (familyOrder.indexOf(b.key) + 1 || 99)
-  );
+  // A family every plan includes without a count has no monthly row; it is
+  // a check under "In every campaign" instead.
+  const includedFamilies = new Set(includedUnits(pricing).map((u) => u.family));
+  const families = [...pricing.families]
+    .filter((f) => !includedFamilies.has(f.key))
+    .sort((a, b) => (familyOrder.indexOf(a.key) + 1 || 99) - (familyOrder.indexOf(b.key) + 1 || 99));
   for (const family of families) {
     rows.push({
-      group: "Every month, up to",
+      group: "Every month",
       label: familyLabel[family.key] ?? family.label,
       values: tiers.map((t) => String(t.counts[family.key] ?? 0)),
     });
+  }
+  for (const unit of includedUnits(pricing)) {
+    rows.push({ group: "In every campaign", label: unit.label, values: tiers.map(() => true) });
   }
   rows.push({ group: "In every campaign", label: "Live reporting dashboard + AI visibility tracking", values: tiers.map(() => true) });
   rows.push({ group: "In every campaign", label: "Technical crawl review + fixes", values: tiers.map(() => true) });

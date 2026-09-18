@@ -1,63 +1,10 @@
-// Single source of truth for SEO Brothers' white-label rates.
+// The add-on and website rates SEO Brothers quotes beside the plans.
 //
 // These are the WHOLESALE / partner prices an agency pays us. The agency marks
-// them up to their own client. The /pricing/ page, the package builder
-// (src/components/PackageBuilder.astro), and the web-design page all read from
-// here so the numbers never drift apart. Update a price once, here.
-
-export interface SeoTier {
-  id: "tiny" | "typical" | "turbo";
-  name: string;
-  /** Monthly wholesale price in USD. */
-  price: number;
-  blurb: string;
-  highlights: string[];
-  featured?: boolean;
-  accent: "teal" | "purple" | "green";
-}
-
-export const SEO_TIERS: SeoTier[] = [
-  {
-    id: "tiny",
-    name: "Tiny",
-    price: 360,
-    blurb:
-      "Base-level managed campaign. Right for ultra-low-competition industries or sparsely-populated locations where steady fundamentals win.",
-    highlights: [
-      "Semi-annual strategy review",
-      "1 backlink + 1.5 hours of SEO Time each month",
-      "Best for low-competition local",
-    ],
-    accent: "teal",
-  },
-  {
-    id: "typical",
-    name: "Typical",
-    price: 620,
-    blurb:
-      "Our most-quoted package. Full-stack local SEO with content, links, Maps, and SEO Time directed at the Priority Intents that move the campaign.",
-    highlights: [
-      "Quarterly strategy + monthly content",
-      "2 backlinks + 3 hours of SEO Time each month",
-      "Best for most local businesses",
-    ],
-    featured: true,
-    accent: "purple",
-  },
-  {
-    id: "turbo",
-    name: "Turbo",
-    price: 1010,
-    blurb:
-      "When the market is tougher or speed matters more. Quarterly strategy reviews with more SEO Time, more links, and more content each month.",
-    highlights: [
-      "Quarterly strategy reviews",
-      "4 backlinks + 5.5 hours of SEO Time each month",
-      "Best for competitive markets",
-    ],
-    accent: "green",
-  },
-];
+// them up to their own client. The plans themselves (Tiny / Typical / Turbo)
+// come from the platform's public price list (src/data/platform-pricing.ts)
+// and are never written here. The /pricing/ page and the web-design page
+// read these so the numbers never drift apart. Update a price once, here.
 
 /** Monthly add-ons (recurring). */
 export const EXTRA_LOCATION = {
@@ -98,12 +45,8 @@ export const EXTRA_HOUR = {
   note: "Specialist time for ad-hoc scope and projects outside the campaign: a migration, a one-off audit, a build-out the plan does not cover. Billed per hour.",
 };
 
-// Line items for the à-la-carte package builder (src/components/PackageBuilder.astro).
-// Rates: Human SEO Time $75/hr (EXTRA_HOUR), content $29 (EXTRA_BLOG), backlinks $50.
-//
-// Every managed campaign includes a fixed base: reporting + a health/crawl score.
-// These are required by default (only dropped if a partner negotiates, e.g. they
-// run their own reporting), so the builder shows them as included, not toggleable.
+// Every managed campaign includes a fixed base: reporting + a health/crawl
+// score, shown on the rate card as included.
 export const REPORTING = {
   label: "Reporting dashboard",
   price: 25,
@@ -114,10 +57,6 @@ export const HEALTH = {
   price: 25,
   note: "Monthly health and crawl-score check that catches and fixes errors. Proactive technical work like page speed lives in SEO initiatives.",
 };
-/** Always-included managed-campaign base. Sums to $50/mo. */
-export const MANAGED_INCLUDED = [REPORTING, HEALTH];
-export const MANAGED_BASE_TOTAL = MANAGED_INCLUDED.reduce((s, i) => s + i.price, 0);
-
 export const BACKLINK = {
   label: "Backlinks",
   price: 50,
