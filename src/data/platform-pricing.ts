@@ -63,6 +63,9 @@ export async function loadPlatformPricing(): Promise<{ data: PlatformPricing; so
     if (!Array.isArray(data.processCards) || !Array.isArray(data.families)) {
       throw new Error("price list predates process cards");
     }
+    // A feed that does not yet say which units are included would show
+    // citations as a count again; the snapshot already has the shape.
+    if (!Array.isArray(data.included)) throw new Error("price list predates included units");
     return { data, source: "live" };
   } catch (err) {
     console.warn(`[pricing] platform price list unavailable (${String(err)}), using snapshot`);
