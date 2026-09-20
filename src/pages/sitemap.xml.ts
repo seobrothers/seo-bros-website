@@ -21,6 +21,10 @@
 //   once at least one published post exists, so an empty hub never gets
 //   crawled.
 //
+//   Adding a product update: drop a .md file in src/content/updates/.
+//   Same rules as blog posts; the /updates/ hub and feed join once a post
+//   is published.
+//
 //   Adding a new top-level page (e.g. /partners/): add the absolute path
 //   to STATIC_PAGES below. Include trailing slash to match the site's
 //   trailingSlash: 'always' config.
@@ -95,7 +99,12 @@ export const GET: APIRoute = async () => {
   // Hub joins only once it has something published on it.
   const blogPages = blogPosts.length ? ["/blog/", ...blogPosts] : [];
 
-  const paths = [...STATIC_PAGES, ...guides, ...caseStudies, ...authorPages, ...blogPages]
+  const updatePosts = (await getCollection("updates"))
+    .filter((p) => !import.meta.env.PROD || !p.data.draft)
+    .map((p) => `/updates/${p.id}/`);
+  const updatePages = updatePosts.length ? ["/updates/", ...updatePosts] : [];
+
+  const paths = [...STATIC_PAGES, ...guides, ...caseStudies, ...authorPages, ...blogPages, ...updatePages]
     .filter((p) => !EXCLUDED_PATHS.has(p))
     .sort();
 

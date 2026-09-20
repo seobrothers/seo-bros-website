@@ -1,0 +1,277 @@
+---
+// Product updates hub: what changed on the platform, newest first, grouped
+// by month. Each post carries a "For our partners" section and a "Behind
+// the scenes" section. Drafts stay out of the prod build, listing, feed and
+// sitemap; while nothing is published the page is noindexed.
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+import NewsletterSignup from "../../components/NewsletterSignup.astro";
+
+const posts = (await getCollection("updates"))
+  .filter((p) => !import.meta.env.PROD || !p.data.draft)
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+
+function monthKey(d: Date) {
+  return d.toLocaleDateString("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
+}
+function fmtDate(d: Date) {
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+}
+
+const months: { label: string; posts: typeof posts }[] = [];
+for (const post of posts) {
+  const label = monthKey(post.data.publishDate);
+  const last = months[months.length - 1];
+  if (last && last.label === label) last.posts.push(post);
+  else months.push({ label, posts: [post] });
+}
+
+const SPAN_LABEL = { day: "", week: "The week", chapter: "The chapter" } as const;
+---
+
+<Layout
+  title="Product Updates | SEO Brothers"
+  description="What changed on the Tideworthy platform, day by day: what agencies using it will notice, and the work underneath that they will not."
+  noindex={posts.length === 0}
+>
+  <Nav />
+
+  <section class="blog-hero">
+    <div class="blog-hero__bg">
+      <div class="blog-hero__orb"></div>
+      <div class="blog-hero__grid"></div>
+    </div>
+    <div class="container blog-hero__inner">
+      <h1 class="blog-hero__title" data-animate>Product updates</h1>
+      <p class="blog-hero__subtitle" data-animate>
+        What changed on the platform and what we learned building it. One post
+        per working day, from the first commit to today.
+      </p>
+      <a class="blog-hero__feed" href="/updates/rss.xml" data-animate>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path d="M2 2a12 12 0 0 1 12 12h-2A10 10 0 0 0 2 4V2zm0 4a8 8 0 0 1 8 8H8a6 6 0 0 0-6-6V6zm1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" />
+        </svg>
+        RSS
+      </a>
+    </div>
+  </section>
+
+  <section class="blog-list-section">
+    <div class="container">
+      {posts.length === 0 ? (
+        <p class="blog-empty">First update coming soon.</p>
+      ) : (
+        <div class="updates">
+          {months.map((m) => (
+            <section class="updates__month">
+              <h2 class="updates__month-title">{m.label}</h2>
+              <ul class="blog-list" data-stagger>
+                {m.posts.map((post) => (
+                  <li class="blog-card">
+                    <a href={`/updates/${post.id}/`} class="blog-card__link">
+                      <div class="blog-card__meta">
+                        <time datetime={post.data.publishDate.toISOString()}>
+                          {fmtDate(post.data.publishDate)}
+                        </time>
+                        {SPAN_LABEL[post.data.span] && (
+                          <>
+                            <span class="blog-card__dot">·</span>
+                            <span>{SPAN_LABEL[post.data.span]}</span>
+                          </>
+                        )}
+                      </div>
+                      <h3 class="blog-card__title">{post.data.title}</h3>
+                      <p class="blog-card__summary">{post.data.summary}</p>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <NewsletterSignup
+    heading="Get these updates by email"
+    sub="A short note when something changes on the platform, plus whatever else you pick."
+    checked={["build"]}
+  />
+  <CtaBanner variant="partner" />
+  <Footer />
+</Layout>
+
+<style>
+  .blog-hero {
+    position: relative;
+    background: var(--dark);
+    overflow: hidden;
+    padding: 150px 0 90px;
+  }
+
+  .blog-hero__bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .blog-hero__orb {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: var(--teal);
+    filter: blur(140px);
+    opacity: 0.15;
+    top: -20%;
+    right: -10%;
+  }
+
+  .blog-hero__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at 50% 30%, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 30%, black 30%, transparent 75%);
+  }
+
+  .blog-hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+  }
+
+  .blog-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5.5vw, 56px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-on-dark);
+    margin-bottom: 20px;
+  }
+
+  .blog-hero__subtitle {
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--text-on-dark-muted);
+  }
+
+  .blog-hero__feed {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 22px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-on-dark-muted);
+  }
+
+  .blog-hero__feed:hover {
+    color: var(--text-on-dark);
+  }
+
+  .blog-list-section {
+    padding: 80px 0 100px;
+    background: var(--white);
+  }
+
+  .blog-empty {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 40px 0;
+  }
+
+  .updates {
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .updates__month-title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 0 0 18px;
+  }
+
+  .blog-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .blog-card {
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition);
+  }
+
+  .blog-card:hover {
+    border-color: var(--teal);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .blog-card__link {
+    display: block;
+    padding: 22px 28px;
+  }
+
+  .blog-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .blog-card__dot {
+    opacity: 0.5;
+  }
+
+  .blog-card__title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+
+  .blog-card__summary {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .blog-hero {
+      padding: 130px 0 70px;
+    }
+
+    .blog-card__link {
+      padding: 18px 20px;
+    }
+  }
+</style>

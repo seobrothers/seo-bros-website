@@ -98,4 +98,23 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { caseStudies, guides, blog };
+// Product updates: short, dated posts about what changed on the platform,
+// served at /updates/{id}/. Each has a "For our partners" section and a
+// "Behind the scenes" section. A day post is one day's merged changes; a
+// week post covers the pre-launch build; a chapter covers the months before
+// the platform existed. Drafted by scripts/updates in the platform repo and
+// approved by merging the pull request that carries the file.
+const updates = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/updates" }),
+  schema: z.object({
+    title: z.string(),
+    publishDate: z.date(),
+    updatedDate: z.date().optional(),
+    summary: z.string(),
+    author: z.string().default("Devon Bate"),
+    span: z.enum(["day", "week", "chapter"]).default("day"),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { caseStudies, guides, blog, updates };

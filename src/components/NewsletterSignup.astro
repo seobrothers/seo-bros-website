@@ -15,10 +15,13 @@ import { TURNSTILE_SITE_KEY } from "../lib/turnstile";
 interface Props {
   heading?: string;
   sub?: string;
+  /** Which topics start checked. Default: SEO only. */
+  checked?: Array<"seo" | "agency" | "build">;
 }
 const {
   heading = "Get our guides in your inbox",
   sub = "Pick what you want to hear about. No spam, unsubscribe anytime.",
+  checked = ["seo"],
 } = Astro.props;
 
 const uid = Math.random().toString(36).slice(2, 9);
