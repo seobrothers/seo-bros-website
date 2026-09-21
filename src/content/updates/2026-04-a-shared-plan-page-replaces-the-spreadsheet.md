@@ -11,9 +11,10 @@ draft: false
 sources: workbench share-worker 03-31 to 04-14, PR #77 (04-02, planning route, work log, google sheet integrations), PR #73 (04-07), PR #78 (04-07), PR #86 (04-13), citations rebuild 04-07/08, leadership page 04-13; portal PRs #172 (04-02), #173 #174 (04-07), #175 #176 #177 #178 (04-14 to 04-16), commit 9ca83c9 "replace google sheet with sharable campaign plan link" (04-14)
 left out: monorepo restructure and worker apps (wiring); MRR column (money); citation provider name; scope change indicator fix framed as a fix
 unsure: whether webhooks were usable by partners on 04-07 or only wired; the PR says "integrations to webhooks" and "gate integrations for partners". I said webhooks appeared, not that partners were using them.
+edited: reworded the we-have-called opener so it no longer points back at earlier posts
 -->
 
-We have called Workbench and the Portal the beginning of the end for bulk spreadsheets. The record puts the end itself in the first two weeks of April 2026. The monthly plan an agency received had been a Google Sheet. On the 14th the link that used to open that sheet opened a page.
+Workbench and the Portal had been the beginning of the end for bulk spreadsheets. The end itself came in the first two weeks of April 2026. The monthly plan an agency received had been a Google Sheet. On the 14th the link that used to open that sheet opened a page.
 
 ## For our partners
 

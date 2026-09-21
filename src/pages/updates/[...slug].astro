@@ -39,11 +39,14 @@ const at = all.findIndex((p) => p.id === post.id);
 const older = at > 0 ? all[at - 1] : null;
 const newer = at >= 0 && at < all.length - 1 ? all[at + 1] : null;
 
+// Dates in frontmatter parse as UTC midnight; format them in UTC so the
+// post never shows the day before its own date on a machine west of it.
 function fmtDate(date: Date) {
   return date.toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",
     year: "numeric",
+    timeZone: "UTC",
   });
 }
 

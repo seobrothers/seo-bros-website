@@ -11,9 +11,10 @@ draft: false
 sources: partner-portal PRs #41 (Nov 3 discoveries into the portal-workbench queue), #42, #43 (Nov 4 temporary billing agreement route for data migration), #44-#47 (Nov 5-6 CSV importer), #48, #49 (Nov 10 order syncing), #57 (Nov 20 task board card on edit form), #59 (Nov 22 approval marks deliverable approved in Workbench), #60 (Nov 24 queuing campaign onboards); workbench d8789853 (Nov 14 ready for deployment), 93524423 and 0e6dc9a2 (Nov 18 plans, work log, keyword tracking), 9fe8b2fd (Nov 21 approval requests, onboarding), 4d740790 (Nov 23), 9845bd4c (Nov 24 discovery handling forwards to task board and duplicates a sheet), f5444e23 (Nov 26 SOPs), 55422490 (Nov 27 meetings), 043eab0a (Nov 28 sidebar, issues)
 left out: billing branch work Nov 14-18 (invoice, payment, autopay; unmerged); the order platform and meeting transcript vendors; impersonation (Nov 28); permissions commits; internal queue and worker names
 unsure: whether the whole team moved onto Workbench on Nov 14 or a subset; the record says "ready for deployment" and "deploying", not who used it
+edited: cut the commit counts, the same-honesty and worth-recording asides
 -->
 
-November 2025 is the month Workbench became a place people worked rather than a plan, and the month the Portal and Workbench started handing things to each other. Ninety commits landed in Workbench, most of them in the last two weeks. The Portal had forty. Almost none of it was visible to a partner, and almost all of it changed what happened after a partner clicked.
+November 2025 is the month Workbench became a place people worked rather than a plan, and the month the Portal and Workbench started handing things to each other. Almost none of it was visible to a partner, and almost all of it changed what happened after a partner clicked.
 
 ## For our partners
 
@@ -25,10 +26,10 @@ Conversations got quieter improvements: threads linked to their campaign automat
 
 ## Behind the scenes
 
-Workbench was marked ready for deployment on November 14 with tasks, quick tasks, task templates, employee skills and roles, support requests and time entries. Over the next two weeks it grew the pieces a campaign actually needs: plans on November 18, where a campaign's monthly scope becomes a list of plan items by type, and a work log the same day, so every piece of work done on a campaign is recorded against it. Keyword tracking tables landed alongside. Task templates gained rich text procedures on November 26, so the how-to lives inside the task. Meeting transcripts were attached to partner records from November 27. A new sidebar with an issues view came on November 28.
+Workbench was marked ready for deployment on November 14 with tasks, quick tasks, task templates, employee skills and roles, support requests and time entries. Over the rest of the month it grew the pieces a campaign actually needs: plans on November 18, where a campaign's monthly scope becomes a list of plan items by type, and a work log the same day, so every piece of work done on a campaign is recorded against it. Keyword tracking tables landed alongside. Task templates gained rich text procedures on November 26, so the how-to lives inside the task. Meeting transcripts were attached to partner records from November 27. A new sidebar with an issues view came on November 28.
 
 The book came across on November 5. A CSV importer brought the existing campaigns into the Portal, including each campaign's service frequency and, tellingly, the id of its card on our task board. On November 20 that card got a link on the campaign edit form. Both systems ran side by side, on purpose.
 
-The same honesty applies to discoveries. When Workbench received a discovery request on November 24, it created the Workbench task and deliverable, and it also forwarded the request to the task board and duplicated the research spreadsheet, so that whichever system a specialist opened, the work was there. This is what the beginning of the end of the old systems looked like in practice: the new tool did everything the old ones did, in parallel, until it was safe to stop.
+Discoveries worked the same way. When Workbench received a discovery request on November 24, it created the Workbench task and deliverable, and it also forwarded the request to the task board and duplicated the research spreadsheet, so that whichever system a specialist opened, the work was there. This is what the beginning of the end of the old systems looked like in practice: the new tool did everything the old ones did, in parallel, until it was safe to stop.
 
-One more piece of plumbing worth recording: a temporary team-only page on November 4 for entering billing agreements, built to migrate the existing book's agreements before billing shipped. It was scaffolding for December.
+A temporary team-only page on November 4 for entering billing agreements let us migrate the existing book's agreements before billing shipped. It was scaffolding for December.

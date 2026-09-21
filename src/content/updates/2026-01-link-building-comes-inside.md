@@ -11,6 +11,7 @@ draft: false
 sources: workbench commits 2026-01-19 to 01-31 (execlinks 01-19 to 01-29, onboarding/offboarding and link workflows 01-23, campaign assignments 01-26/28, scope items 01-28 to 01-31, share/campaign-plans 01-29/30, content views 01-30/31); portal commits 01-20 (discovery delivery, packages launch form), 01-27 (team view, profile completion), 01-29 (self-pay, URL filter), 01-30 (confirm buttons)
 left out: billing agreements, invoices, void, tax, wallets, manual payments (billing); ssh terminal detail (wiring); "value per content" column (money)
 unsure: whether to keep the one sentence on partners paying invoices themselves (billing, but partner-facing and not a commercial term). Cut if you disagree.
+edited: replaced the ten-days and two-days-later counts with the month and the date
 -->
 
 The second half of January had two threads. One was pulling the last outside tool, our link building system, into Workbench. The other was deciding, in data rather than in someone's head, what a campaign actually includes.
@@ -27,7 +28,7 @@ The first shareable campaign plan pages appeared on the 29th. A link, no login, 
 
 ## Behind the scenes
 
-The link building tool had lived in its own application since 2025. Over ten days it came inside: the sites, the servers, the plugins, the networks, the issues list. Managing the servers moved inside with it, so a specialist could fix a site without leaving the page they were on. Link tasks started running as an automated workflow on the 23rd, and link reporting followed two days later. Terminated sites dropped out of the lists so nobody would build on one by mistake.
+The link building tool had lived in its own application since 2025. By the end of the month it had come inside: the sites, the servers, the plugins, the networks, the issues list. Managing the servers moved inside with it, so a specialist could fix a site without leaving the page they were on. Link tasks started running as an automated workflow on the 23rd, and link reporting followed on the 25th. Terminated sites dropped out of the lists so nobody would build on one by mistake.
 
 The same day the link workflow landed, campaigns got onboarding and offboarding workflows: when a campaign starts, the first month's tasks are created; when it ends, the close-out tasks are. Routine tasks started being added to the queue without anyone creating them.
 

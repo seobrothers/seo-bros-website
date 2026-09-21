@@ -11,6 +11,7 @@ draft: false
 sources: partner-portal PR #63 (Dec 4 billing mega merge), Dec 5 commits 4a8e1a0 56fcb9e 81d31c0 9d129f9 9e41ec7 a7fc84b d9eab19, #64 (Dec 9 discovery editing removed, offboard form, business profile and competitor selectors), #65 (Dec 10 SOP and task tables dropped), #66, e043b88 (Dec 10) and c3b2850 (Dec 11 billing agreement views), #67 (Dec 11 permissions to approval requirements), #69 (Dec 16), #70 and #71 (Dec 19 scope timeline, campaign rules form, access items). Partner nav at year end: Dashboard, Discoveries, Campaigns, Approvals, Conversations, Billing (permission gated), Organization settings
 left out: payment processor name; prices, currencies, autopay mechanics beyond existence; wallet sync and failed-transaction fixes described as fixes; login URLs on access items (credentials)
 unsure: how many partners had the billing permission switched on by Dec 31; the record shows the menu item gated by permission, not who had it
+edited: cut the eleven-weeks and hidden-for-five framing, the fixes-dated line, the lines-of-code count, and the correction-to-our-memory aside
 -->
 
 December 2025 in the Portal is two stories. The first is billing, which had been under construction since September 19 and landed on December 4. The second is the Portal shedding work that belonged in Workbench, so that by the end of the month the Portal was the partner's window and Workbench was the workshop.
@@ -29,10 +30,10 @@ The discovery request form improved on December 9: a partner picks the prospect'
 
 ## Behind the scenes
 
-Billing took eleven weeks and was hidden for five of them. The scaffolding went in on September 19, the first real code merged on October 28 with the menu link commented out, the invoice, payment and autopay work built up on a branch through November, and the whole thing merged on December 4. The fixes are dated December 5.
+Billing was built in stages. The scaffolding went in on September 19, the first real code merged on October 28 with the menu link kept out of the partner menu, the invoice, payment and autopay work built up through November, and the whole thing merged on December 4.
 
-The Portal got smaller in December, deliberately. On December 9 all discovery editing, the audit, keyword, local and proposal editors, left the Portal; that work is done in Workbench now and the result is shared back. On December 10 the Portal's own task and procedure tables were dropped, because Workbench had owned tasks since November. A couple of thousand lines of Portal came out in those two changes. Every removal was a place where two systems could have disagreed, gone.
+The Portal got smaller in December, deliberately. On December 9 all discovery editing, the audit, keyword, local and proposal editors, left the Portal; that work is done in Workbench now and the result is shared back. On December 10 the Portal's own task and procedure tables were dropped, because Workbench had owned tasks since November. Every removal was a place where two systems could have disagreed, gone.
 
 A team-only offboarding form arrived on December 9 as well, so ending a campaign is a recorded process rather than a series of edits.
 
-One correction to our own memory. We tend to say billing was built in December. It shipped in December. It was built from September, and the date it shipped owes a lot to the temporary agreement entry page from November that let us load the existing book before the switch was turned on.
+Billing shipped in December, but it was built from September, and the date it shipped owes a lot to the temporary agreement entry page from November that let us load the existing book before the switch was turned on.

@@ -11,6 +11,7 @@ draft: false
 sources: workbench commits 2026-02-16 to 02-28 (strategist 02-17, onboarding actions 02-17/20, task types 02-20, packages and scope 02-20/21, change log 02-24, estimated time 02-24, discovery sub-routes PR #46 02-24, workflow worker 02-25/26, clientLineItem 02-28); portal PRs #131, #136, #139, #141 (02-19 to 02-21), commits 02-20 (conversations), 02-23 (urgency), 02-24, 02-27 (published URL)
 left out: credits, refunds, one-time invoices, PDF invoices, tax totals (billing); package pricing and currency fields (commercial); IP-gated endpoints (security); vendor model change 02-19
 unsure: whether "one-time package purchasing" reads as commercial. It is a capability, no price stated. Cut if it feels too close.
+edited: rephrased the rebuild-took-two-days line as a date
 -->
 
 The back half of February was about definitions. What is in a package, what a partner's version of it looks like, and what the client sees written on the line. Until now those three had three answers.
@@ -25,7 +26,7 @@ The content table shows the published URL once a piece is live. Campaign lists o
 
 ## Behind the scenes
 
-The catalogue rebuild took the 20th and 21st. Packages, scope items, roles, frequency (ongoing or one-time), meeting tasks and partner overrides all ended up in one structure. The SEO plan's task types were cut down to three that mean something to a client: local, on-page and technical. Planned start and end dates went; a planned month replaced them. The unused version history on task templates was removed while we were in there.
+The catalogue was rebuilt on the 20th and 21st. Packages, scope items, roles, frequency (ongoing or one-time), meeting tasks and partner overrides all ended up in one structure. The SEO plan's task types were cut down to three that mean something to a client: local, on-page and technical. Planned start and end dates went; a planned month replaced them. The unused version history on task templates was removed while we were in there.
 
 A campaign strategist agent arrived on the 17th, with new triggers for when agents wake. Where the planner drafts a month, the strategist reads the whole campaign.
 

@@ -11,6 +11,7 @@ draft: false
 sources: workbench PRs #103 (05-01), #107 (05-12), #114 (05-26), #115 (05-28), #116 (05-28), #117 (05-29); commits 05-05/08 (gbp posting, stock image fallback), 05-08 to 05-11 (dashboard, work route, mobile), 05-11 and 05-14 (sitemap/robots and profile review workflows), 05-19 (campaign monitoring), 05-21/22 (GA4 + Search Console integrations, GSC scope re-enabled), 05-21 (share-worker live branding); workbench-ops 05-08; portal commits 05-04, PRs #182 #183 (05-11), 05-20, 05-26 (webhooks)
 left out: adhoc invoices, tax report, month-by-month report (billing); per-partner auto-approve of GBP posts (names a partner); model names and temperatures; "no more crawler" (unclear what was retired)
 unsure: "one partner told us" is from the PR body (a named partner, generalised). The length figures (three to four times) are from the same body. Cut the numbers if too specific.
+edited: cut the three-to-four-times figure; kept the partner feedback as a one-sentence acknowledgement
 -->
 
 May was the month the writers got edited. The agents built in April had been producing pages for a few weeks, partners had read them, and the feedback was specific enough to act on.
@@ -23,7 +24,7 @@ Webhooks can be tested with a sample message from the settings page. Discovery f
 
 ## Behind the scenes
 
-On the 1st we lowered the length floors. One partner told us their April geo pages had come in at three to four times the length of the rest of their site, which does not fit the site and reads as stuffing. The geo page writer had carried a floor meant for blog posts. It now matches the length of the client's existing pages and falls back to roughly eight hundred words, and the service, location and ecommerce category writers got the same treatment. An explicit instruction against padding went into all four.
+On the 1st we lowered the length floors. A partner pointed out that their April geo pages ran well past the length of the rest of their site, which does not fit the site and reads as stuffing. The geo page writer had carried a floor meant for blog posts. It now matches the length of the client's existing pages and falls back to roughly eight hundred words, and the service, location and ecommerce category writers got the same treatment. An explicit instruction against padding went into all four.
 
 On the 12th, three more rules across all seven writers: no bolding the keyword (optimisation should be invisible to the reader), no closing section that names cities or services the page does not target, and nothing carried over from the client's site that is not prose (no embeds, forms, images or widgets scraped from the homepage). Each rule got a matching check in the review step.
 

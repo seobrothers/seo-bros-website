@@ -11,13 +11,14 @@ draft: false
 sources: workbench PRs #122 (06-05), #123 (06-09), #124 (06-18), #129 #130 (06-23); commits 06-05 to 06-14 (initiatives), 06-11 to 06-16 (AI rank checker, site auditor, tech audit, GBP auditor), 06-18 to 06-25 (keyword mapping), 06-24 to 07-03 (monitoring worker, alerts), 06-29/30 (reporting service, GA4); notification-hub 06-23 to 07-01; portal PRs #185 to #206 (06-03 to 06-30), commits 06-04, 06-23 (notification settings), 07-02 (communication settings)
 left out: duplicate My Tasks rows and un-planning constraint fix (bugs, internal); team offboarding; the 1,102-row GBP sweep figure; provider and model names
 unsure: whether the Portal reporting page was visible to partners on 06-30 or only wired (the PR says "updating the reporting data"; the Portal report itself was reworked 07-06 onward, which is the other writer's period). I said the page arrived, not that it was finished.
+edited: cut the five-weeks count, the zero-links shortfall, the third-of-campaigns proportion and the-week-before; replaced first commit with first line of code
 -->
 
-June closed the Workbench era. The last five weeks before the platform's first commit added the two things a campaign had never had in one place: a report on what happened and a watch on what might go wrong.
+June closed the Workbench era. Before the first line of the platform's code was written, Workbench gained the two things a campaign had never had in one place: a report on what happened and a watch on what might go wrong.
 
 ## For our partners
 
-Tasks appeared in the Portal on the 9th. Each campaign has an SEO task list, and task approvals sit with the rest. A task's share page was redesigned the week before: the month it belongs to, a link to the campaign, a deliverables tab, and comments that reach the manager and the people assigned. Initiatives followed on the 11th: a campaign's work grouped by the thing it is trying to achieve, each with its own shared page, notes and reactions, and approvals grouped the same way.
+Tasks appeared in the Portal on the 9th. Each campaign has an SEO task list, and task approvals sit with the rest. A task's share page was redesigned: the month it belongs to, a link to the campaign, a deliverables tab, and comments that reach the manager and the people assigned. Initiatives followed on the 11th: a campaign's work grouped by the thing it is trying to achieve, each with its own shared page, notes and reactions, and approvals grouped the same way.
 
 Content plan rows show status indicators and a note count, and approving a content idea is a cleaner step. Offboarding campaigns stay visible under their own tab rather than disappearing. Organisation settings got their own page.
 
@@ -27,9 +28,9 @@ A reporting page arrived per campaign on the 30th, drawing on the same data the 
 
 ## Behind the scenes
 
-Blog posts learned to link on the 9th. The writer is handed an inventory of the client's live pages and previously published pieces, ranked by relevance to the post with a preference for the pages that make money, and scales how many it links to the length of the piece. External links are checked live and dropped if dead. Anything the writer invents, or that points at a staging copy of the site, is stripped before the draft is saved. Before this the workflow produced zero links and a person added them.
+Blog posts learned to link on the 9th. The writer is handed an inventory of the client's live pages and previously published pieces, ranked by relevance to the post with a preference for the pages that make money, and scales how many it links to the length of the piece. External links are checked live and dropped if dead. Anything the writer invents, or that points at a staging copy of the site, is stripped before the draft is saved. Before this, a person added the links.
 
-Citations were reorganised around locations. Every citation now belongs to a specific location, which matters for the third of campaigns with more than one. The provider's pre-order scan is imported and each listing scored field by field against the source of truth. Walled directories get a manual verification. Multi-location campaigns see the table grouped by location. Service-area businesses with no public address, which could never be ordered before, can be.
+Citations were reorganised around locations. Every citation now belongs to a specific location. The provider's pre-order scan is imported and each listing scored field by field against the source of truth. Walled directories get a manual verification. Multi-location campaigns see the table grouped by location. Service-area businesses with no public address can be ordered too.
 
 Initiatives arrived internally on the 5th with time tracking and reviews attached. Keyword mapping followed from the 18th: keywords mapped to the pages that should rank for them, linked to the content that targets them, with the crawl folded in. Campaign keyword research came on the 23rd.
 
@@ -39,4 +40,4 @@ Reporting arrived on the 29th and 30th: a report per campaign with period compar
 
 A single notification service took over sending from the 23rd: every event goes through it, batched, backing off when a provider says slow down, rendering the email from the payload.
 
-On July 6 the first commit of the new platform landed.
+On July 6 the first line of the new platform's code was written.
