@@ -536,11 +536,15 @@ const breadcrumbSchema = {
     color: var(--text-primary);
   }
 
+  /* Screenshots of the product: a hairline and a soft shadow so a white
+     screen does not dissolve into the white page. */
   .post-body__prose :global(img) {
     max-width: 100%;
     height: auto;
     border-radius: var(--radius-md);
-    margin: 32px 0;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
+    margin: 28px 0;
   }
 
   .post-body__prose :global(table) {
