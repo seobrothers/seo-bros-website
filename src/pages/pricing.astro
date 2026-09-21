@@ -42,6 +42,11 @@ const rateCard = [
   { name: MAINTENANCE.label, value: usd(MAINTENANCE.price), suffix: "/ mo", note: MAINTENANCE.note },
 ];
 
+// Business Profile posts read back as a weekly rhythm (9 a month is about two a week).
+const perWeek = (n: number) => Math.round(n / (52 / 12));
+const gbpRhythm = tiers
+  .map((t) => `about ${perWeek(t.counts.gbp_post ?? 0)} a week on ${t.name}`)
+  .join(", ");
 const comparison = comparisonRows(platform, tiers);
 const comparisonGroups = [...new Set(comparison.map((r) => r.group ?? ""))];
 
@@ -62,7 +67,7 @@ const definitions: Definition[] = [
   },
   {
     term: "Business Profile posts",
-    body: "Posts published to the client's Google Business Profile each month to keep it active and fresh.",
+    body: `Posts published to the client's Google Business Profile to keep it active and fresh. Counted by the month, published through the week: ${gbpRhythm}.`,
   },
   {
     term: "Citations",
