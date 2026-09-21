@@ -12,13 +12,14 @@ sources: workbench commits 2026-02-01 to 02-15 (content assets and feedback 02-0
 left out: agents moved to a new SDK (vendor); task assignment algorithm January handling (flip-flop); "hide agents to team" (permissions); staff-name notifications
 unsure: whether partners were using the content share link by 02-15 or only the team; the approval action from the share route landed 02-10 and the Portal routed approvals to it 02-12
 edited: replaced two-weeks-later with the date, cut rewritten-three-times and the honest-framing lead-in
+edited: plain-language sweep: session and lock reworded
 -->
 
 February opened with content. Drafts had been documents passed around by link and email, and feedback lived wherever the reply happened to land. By the 15th a draft had one page, one feedback thread, and one approve button.
 
 ## For our partners
 
-A piece of content now has a share page. Open the link, read the draft, leave feedback inline in a session, and approve it there when it is right. Every note is counted and kept with the draft. From the 12th the Portal's plan pages pointed content approvals at that page instead of asking for approval in the plan table, and each plan row gained a notes column that opens the activity around it. Rejecting a plan item became a status you choose rather than a click you cannot take back. Completed deliverables got their own pages, and when a piece was ready for review the row linked straight to the document.
+A piece of content now has a share page. Open the link, read the draft, leave feedback inline, and approve it there when it is right. Every note is counted and kept with the draft. From the 12th the Portal's plan pages pointed content approvals at that page instead of asking for approval in the plan table, and each plan row gained a notes column that opens the activity around it. Rejecting a plan item became a status you choose rather than a click you cannot take back. Completed deliverables got their own pages, and when a piece was ready for review the row linked straight to the document.
 
 The campaign plan itself gained a share link from the Portal on the same day, so an agency could forward the plan to a client without giving them a login.
 
@@ -26,7 +27,7 @@ Smaller things: the Portal works on a phone now, with a proper sidebar menu. A l
 
 ## Behind the scenes
 
-The share page was the visible end of a rebuild of content assets. Drafts got revisions, drag-and-drop uploads, images pasted straight into comments, PDFs and other attachments inline, and a lock so two people editing the same draft do not overwrite each other. Screen recordings embed in a draft's notes. A draft can be published from the same page it was written on.
+The share page was the visible end of a rebuild of content assets. Drafts got revisions, drag-and-drop uploads, images pasted straight into comments, PDFs and other attachments inline, and two people editing the same draft can no longer overwrite each other. Screen recordings embed in a draft's notes. A draft can be published from the same page it was written on.
 
 The first content-writing agent ran on February 6. Given a planned piece and a campaign, it drafts the content, and the prompts it works from were rewritten that week as the team read the output. It reads the client's own homepage before it writes, so the voice starts from theirs rather than ours.
 

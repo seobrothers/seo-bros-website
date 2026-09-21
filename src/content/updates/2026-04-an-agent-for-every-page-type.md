@@ -11,6 +11,7 @@ draft: false
 sources: workbench workflows added 04-22 (geo, blog), 04-27 (service, location, expand, ecomm product/category), 04-28 (page speed audit), 04-30 (GBP posts); citations commits 04-27; team-tools and remote assistants 04-20 to 04-27; keyword polling and project management 04-28/29; workbench-ops commits 04-20 to 04-30; portal PRs #179 #180 (04-20), #181 (04-23), approvals commits 04-27 to 04-30
 left out: price in packages (money); per-user CLAUDE.md, VPS, memory service names (wiring and vendor); HR compensation history (internal HR); token usage summary
 unsure: the ops dashboard is a separate internal app (workbench-ops). I described it as "an ops dashboard" without naming it. The HR directory is mentioned in one clause; cut if you would rather not.
+edited: plain-language sweep: shared server, polling and spawn reworded
 -->
 
 If the first half of April was about what partners see, the second half was about who does the writing. By the 30th there was a writing agent for every kind of page we produce, and every person on the team had an assistant of their own.
@@ -29,8 +30,8 @@ A Business Profile post writer followed on the 30th, and a page speed audit that
 
 Citation ordering went end to end on the 27th. Locations are linked from the campaign, the business category is matched from the client's Business Profile, a description is written when the profile has none, the aggregators nobody wants are off by default, and confirming an order starts submissions immediately. The scan the provider runs before an order is imported so we know what already exists.
 
-The team got assistants. From the 20th every member of the team had a personal assistant on a shared server, with their own instructions and an "about me" section they maintain, shared memory they can add to and recall from, and a set of team tools: place search for finding a business's Google presence, site scraping and mapping, web search, spreadsheets, and historical keyword metrics. A knowledge base joined on the 23rd, and admins got the same assistant in the Workbench sidebar. Bulk task creation and task tools followed. This is the ancestor of the staff-side agents in the platform.
+The team got assistants. From the 20th every member of the team had a personal assistant, with their own instructions and an "about me" section they maintain, shared memory they can add to and recall from, and a set of team tools: place search for finding a business's Google presence, site scraping and mapping, web search, spreadsheets, and historical keyword metrics. A knowledge base joined on the 23rd, and admins got the same assistant in the Workbench sidebar. Bulk task creation and task tools followed. This is the ancestor of the staff-side agents in the platform.
 
-Keyword rankings began polling on a schedule, and project management tasks spawn on their own. Content got an approved status distinct from published, a copy-share-link button, and a publisher assigned automatically.
+Keyword rankings began refreshing on a schedule, and project management tasks are created on their own. Content got an approved status distinct from published, a copy-share-link button, and a publisher assigned automatically.
 
 An ops dashboard went up alongside Workbench between the 20th and the 30th, reading the same data: a resourcing view with task previews and threaded comments, carry-over of overdue tasks so they do not vanish at month end, a monthly pace that counts weekdays rather than days, planning grouped by partner with on-track campaigns collapsed, a content view, and drill-downs that match the numbers on the bars. An HR directory with document storage sits beside it.

@@ -360,6 +360,11 @@ const schema = {
           ))
         }
       </div>
+      <p class="tw-road__more" data-animate>
+        <a href="/updates/">What changed on the platform recently
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+        </a>
+      </p>
     </div>
   </section>
 
@@ -850,6 +855,20 @@ const schema = {
     border: 1px solid var(--border-light);
     border-radius: var(--radius-lg);
     padding: 28px 26px;
+  }
+  .tw-road__more {
+    margin: 28px 0 0;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .tw-road__more a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--teal-dark);
+  }
+  .tw-road__more a:hover {
+    text-decoration: underline;
   }
   .tw-road__status {
     display: inline-block;

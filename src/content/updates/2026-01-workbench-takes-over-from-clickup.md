@@ -12,6 +12,7 @@ sources: workbench commits 2026-01-01 to 2026-01-18 (agents 01-06, campaign data
 left out: portal campaign plan routes (merged hidden "for now"), onboarding address/currency (billing), generate-plan-items (hidden again 01-21)
 unsure: the exact day the last ClickUp campaign came across; migration page work runs 01-16 to 01-28 and a first wave of 71 campaigns moved in Nov 2025 per a later commit
 edited: cut the quick-push commit line, the three-days-later count, and the needed-for-a-long-time clause
+edited: plain-language sweep: migration wording reworded
 -->
 
 January 2026 was the month the team stopped living in two places. Campaigns had been moving into Workbench since November; in the first two weeks of the year the rest of the record followed, and the first agents went to work on it.
@@ -24,7 +25,7 @@ Everything else that month was underneath.
 
 ## Behind the scenes
 
-The end of ClickUp came in two steps. A first group of campaigns had moved into Workbench in November. What remained in January was the history: years of task comments, attachments and notes that the team still opened ClickUp to read. We wrote the migration for comments on the 13th, the rest of the data on the 16th, and put a migration page in Workbench the same day so each remaining campaign could be walked across and its notes synced by hand, one at a time, with a checklist. That page stayed busy until the last week of the month. After that there was no reason to open the old tool.
+The end of ClickUp came in two steps. A first group of campaigns had moved into Workbench in November. What remained in January was the history: years of task comments, attachments and notes that the team still opened ClickUp to read. We moved the comments across on the 13th, the rest of the data on the 16th, and put a page in Workbench the same day so each remaining campaign could be walked across and its notes synced by hand, one at a time, with a checklist. That page stayed busy until the last week of the month. After that there was no reason to open the old tool.
 
 The agents arrived the same week. Since late December Workbench had held three: a campaign chat you could ask about any client, an SEO planner that drafted the month's on-site work, and a link planner. On January 6 they became something the team could actually run. Every agent run got a name and a manager, a person responsible for reading what it produced. Feedback on a run could be filed against that run or against the agent as a whole, so a correction made once applied to every campaign. The team got push notifications, on their phones if they wanted, when an agent finished or a task was assigned.
 

@@ -12,6 +12,7 @@ sources: partner-portal PRs #25 (Oct 13, plans, rules, approval requests, servic
 left out: billing (merged Oct 28 but nav commented out "for now", so not shipped); proration and credit mechanics (commercial terms); staff names in PR bodies; the analytics scraper worker
 unsure: whether the Oct 15 approval emails went to partners in production that month or were exercised only by staff
 edited: cut the PR count, the in-one-week and within-two-weeks framing, the churn-worth-admitting aside, and the we-come-back-to-it pointer
+edited: plain-language sweep: data model and scaffolds reworded
 -->
 
 October 2025 was the month the Portal learned what a campaign is made of. In the same month Workbench went from an empty shell to a designed system, and three other experiments were started and stopped.
@@ -30,6 +31,6 @@ The first billing code was merged on October 28 with the billing link kept out o
 
 The package and catalog work was for the operations team as much as for partners. A service catalog, sellable items, packages and campaign profiles gave the team one vocabulary for what a campaign contains, and by October 27 the campaign tables were pre-filtered with cancelled campaigns moved to their own page so a campaign manager's day-to-day view stayed short.
 
-Workbench got its skeleton. On October 18 we wrote down the design decisions. On October 20 the data model landed: tasks, task templates, task types, assignments, deliverables, approvals, artifacts, content assets and time tracking. On October 21 the task view was built out with notes, attachments and deliverables, and time entries, time off, timesheets and a schedule view arrived with it. Time tracking on day one was deliberate. Our specialists already logged time, and a work tool that ignored that would have been a second place to look.
+Workbench got its skeleton. On October 18 we wrote down the design decisions. On October 20 the underlying structure landed: tasks, task templates, task types, assignments, deliverables, approvals, artifacts, content assets and time tracking. On October 21 the task view was built out with notes, attachments and deliverables, and time entries, time off, timesheets and a schedule view arrived with it. Time tracking on day one was deliberate. Our specialists already logged time, and a work tool that ignored that would have been a second place to look.
 
-October also had experiments that did not continue. Between October 11 and October 30 three separate experiments were started: an agent framework with a chat interface and a prompt tester, and two further scaffolds for the internal tool. All three stopped before November. Workbench is the one that continued, and the agent ideas from the first experiment came back inside Workbench in December, with a better home.
+October also had experiments that did not continue. Between October 11 and October 30 three separate experiments were started: an agent framework with a chat interface and a prompt tester, and two further starts on the internal tool. All three stopped before November. Workbench is the one that continued, and the agent ideas from the first experiment came back inside Workbench in December, with a better home.

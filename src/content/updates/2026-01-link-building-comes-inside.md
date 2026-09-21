@@ -12,6 +12,7 @@ sources: workbench commits 2026-01-19 to 01-31 (execlinks 01-19 to 01-29, onboar
 left out: billing agreements, invoices, void, tax, wallets, manual payments (billing); ssh terminal detail (wiring); "value per content" column (money)
 unsure: whether to keep the one sentence on partners paying invoices themselves (billing, but partner-facing and not a commercial term). Cut if you disagree.
 edited: replaced the ten-days and two-days-later counts with the month and the date
+edited: plain-language sweep: migration page reworded
 -->
 
 The second half of January had two threads. One was pulling the last outside tool, our link building system, into Workbench. The other was deciding, in data rather than in someone's head, what a campaign actually includes.
@@ -36,4 +37,4 @@ Scope items arrived on the 28th. Until then, what a campaign included was a pack
 
 Assignments were reworked so a manager could assign specialists to campaigns in bulk, and notifications went out on assignment. Content got its own views: content tasks, content campaigns, a team resourcing page, a new-content task route, editable content types and templates, and a proper rich text editor. Content optimisation scoring was integrated on the 28th. Discoveries could be downloaded as a CSV.
 
-The ClickUp migration page saw its last real use in the final week of the month, sorted by what was not yet complete until nothing was.
+The page for walking campaigns out of ClickUp saw its last real use in the final week of the month, sorted by what was not yet complete until nothing was.

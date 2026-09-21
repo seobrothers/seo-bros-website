@@ -12,13 +12,14 @@ sources: workbench share-worker 03-31 to 04-14, PR #77 (04-02, planning route, w
 left out: monorepo restructure and worker apps (wiring); MRR column (money); citation provider name; scope change indicator fix framed as a fix
 unsure: whether webhooks were usable by partners on 04-07 or only wired; the PR says "integrations to webhooks" and "gate integrations for partners". I said webhooks appeared, not that partners were using them.
 edited: reworded the we-have-called opener so it no longer points back at earlier posts
+edited: plain-language sweep: polling reworded
 -->
 
 Workbench and the Portal had been the beginning of the end for bulk spreadsheets. The end itself came in the first two weeks of April 2026. The monthly plan an agency received had been a Google Sheet. On the 14th the link that used to open that sheet opened a page.
 
 ## For our partners
 
-The campaign plan became a shared page. One link, no login, generated live from Workbench, showing the plan by month with what is in scope against what is planned, and the client's locations on cards. On the 2nd the Portal's own plan management screens, the tabs, status cells and reject buttons built over the winter, were removed in favour of that link. Agencies who wanted the page on their own domain could have it there from the 7th. Webhooks appeared the same day, so an agency's other systems could hear about events without polling.
+The campaign plan became a shared page. One link, no login, generated live from Workbench, showing the plan by month with what is in scope against what is planned, and the client's locations on cards. On the 2nd the Portal's own plan management screens, the tabs, status cells and reject buttons built over the winter, were removed in favour of that link. Agencies who wanted the page on their own domain could have it there from the 7th. Webhooks appeared the same day, so an agency's other systems can be told when something happens rather than someone checking.
 
 Inside the Portal, planning was rebuilt around the same model on the 16th: a monthly plan grid, location focus and page focus plans, Business Profile and SEO tasks, citations, content recommendations, and an approval banner where something needs a decision. Onboarding a campaign became a three-tab form, and a campaign can be onboarded straight from a package. A pending scope change now shows in the first full month after onboarding, where before it only showed the button to request it.
 

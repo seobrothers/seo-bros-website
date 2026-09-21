@@ -12,6 +12,7 @@ sources: partner-portal PRs #41 (Nov 3 discoveries into the portal-workbench que
 left out: billing branch work Nov 14-18 (invoice, payment, autopay; unmerged); the order platform and meeting transcript vendors; impersonation (Nov 28); permissions commits; internal queue and worker names
 unsure: whether the whole team moved onto Workbench on Nov 14 or a subset; the record says "ready for deployment" and "deploying", not who used it
 edited: cut the commit counts, the same-honesty and worth-recording asides
+edited: plain-language sweep: migrate became bring across, ready for deployment became went to the team
 -->
 
 November 2025 is the month Workbench became a place people worked rather than a plan, and the month the Portal and Workbench started handing things to each other. Almost none of it was visible to a partner, and almost all of it changed what happened after a partner clicked.
@@ -26,10 +27,10 @@ Conversations got quieter improvements: threads linked to their campaign automat
 
 ## Behind the scenes
 
-Workbench was marked ready for deployment on November 14 with tasks, quick tasks, task templates, employee skills and roles, support requests and time entries. Over the rest of the month it grew the pieces a campaign actually needs: plans on November 18, where a campaign's monthly scope becomes a list of plan items by type, and a work log the same day, so every piece of work done on a campaign is recorded against it. Keyword tracking tables landed alongside. Task templates gained rich text procedures on November 26, so the how-to lives inside the task. Meeting transcripts were attached to partner records from November 27. A new sidebar with an issues view came on November 28.
+Workbench went to the team on November 14 with tasks, quick tasks, task templates, employee skills and roles, support requests and time entries. Over the rest of the month it grew the pieces a campaign actually needs: plans on November 18, where a campaign's monthly scope becomes a list of plan items by type, and a work log the same day, so every piece of work done on a campaign is recorded against it. Keyword tracking tables landed alongside. Task templates gained rich text procedures on November 26, so the how-to lives inside the task. Meeting transcripts were attached to partner records from November 27. A new sidebar with an issues view came on November 28.
 
 The book came across on November 5. A CSV importer brought the existing campaigns into the Portal, including each campaign's service frequency and, tellingly, the id of its card on our task board. On November 20 that card got a link on the campaign edit form. Both systems ran side by side, on purpose.
 
 Discoveries worked the same way. When Workbench received a discovery request on November 24, it created the Workbench task and deliverable, and it also forwarded the request to the task board and duplicated the research spreadsheet, so that whichever system a specialist opened, the work was there. This is what the beginning of the end of the old systems looked like in practice: the new tool did everything the old ones did, in parallel, until it was safe to stop.
 
-A temporary team-only page on November 4 for entering billing agreements let us migrate the existing book's agreements before billing shipped. It was scaffolding for December.
+A temporary team-only page on November 4 for entering billing agreements let us bring the existing book's agreements across before billing shipped. It was scaffolding for December.

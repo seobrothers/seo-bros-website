@@ -12,6 +12,7 @@ sources: workbench commits 2026-02-16 to 02-28 (strategist 02-17, onboarding act
 left out: credits, refunds, one-time invoices, PDF invoices, tax totals (billing); package pricing and currency fields (commercial); IP-gated endpoints (security); vendor model change 02-19
 unsure: whether "one-time package purchasing" reads as commercial. It is a capability, no price stated. Cut if it feels too close.
 edited: rephrased the rebuild-took-two-days line as a date
+edited: plain-language sweep: triggers and wake reworded
 -->
 
 The back half of February was about definitions. What is in a package, what a partner's version of it looks like, and what the client sees written on the line. Until now those three had three answers.
@@ -28,7 +29,7 @@ The content table shows the published URL once a piece is live. Campaign lists o
 
 The catalogue was rebuilt on the 20th and 21st. Packages, scope items, roles, frequency (ongoing or one-time), meeting tasks and partner overrides all ended up in one structure. The SEO plan's task types were cut down to three that mean something to a client: local, on-page and technical. Planned start and end dates went; a planned month replaced them. The unused version history on task templates was removed while we were in there.
 
-A campaign strategist agent arrived on the 17th, with new triggers for when agents wake. Where the planner drafts a month, the strategist reads the whole campaign.
+A campaign strategist agent arrived on the 17th, with new rules for when agents start work. Where the planner drafts a month, the strategist reads the whole campaign.
 
 Onboarding got a view of its own and an action to send a task back for realignment when the intake and the scope disagree. A change log appeared in Workbench so the team could see what changed in the tool that week without asking.
 

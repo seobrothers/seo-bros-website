@@ -12,6 +12,7 @@ sources: workbench PRs #122 (06-05), #123 (06-09), #124 (06-18), #129 #130 (06-2
 left out: duplicate My Tasks rows and un-planning constraint fix (bugs, internal); team offboarding; the 1,102-row GBP sweep figure; provider and model names
 unsure: whether the Portal reporting page was visible to partners on 06-30 or only wired (the PR says "updating the reporting data"; the Portal report itself was reworked 07-06 onward, which is the other writer's period). I said the page arrived, not that it was finished.
 edited: cut the five-weeks count, the zero-links shortfall, the third-of-campaigns proportion and the-week-before; replaced first commit with first line of code
+edited: plain-language sweep: endpoint, batched, backing off, rendering and payload reworded
 -->
 
 June closed the Workbench era. Before the first line of the platform's code was written, Workbench gained the two things a campaign had never had in one place: a report on what happened and a watch on what might go wrong.
@@ -22,7 +23,7 @@ Tasks appeared in the Portal on the 9th. Each campaign has an SEO task list, and
 
 Content plan rows show status indicators and a note count, and approving a content idea is a cleaner step. Offboarding campaigns stay visible under their own tab rather than disappearing. Organisation settings got their own page.
 
-From the 23rd an agency chooses its notifications: which kinds, by email or to a webhook endpoint, with a test send. On July 2 communication settings gained a campaign-level fallback and show who at the agency is assigned to what.
+From the 23rd an agency chooses its notifications: which kinds, by email or to a webhook, with a test send. On July 2 communication settings gained a campaign-level fallback and show who at the agency is assigned to what.
 
 A reporting page arrived per campaign on the 30th, drawing on the same data the team sees.
 
@@ -38,6 +39,6 @@ Three tools went up: an AI rank checker that tracks where a client appears in AI
 
 Reporting arrived on the 29th and 30th: a report per campaign with period comparison across keywords, Business Profile, website analytics, crawl health and work delivered. Analytics connected once verification cleared. Monitoring went live over the same days into July 3: checks on the homepage, the domain, the Business Profile and the crawl, raising alerts with an owner into a work queue.
 
-A single notification service took over sending from the 23rd: every event goes through it, batched, backing off when a provider says slow down, rendering the email from the payload.
+One notification service took over sending from the 23rd: every notice goes through it, grouped, slowed when the email provider asks, and each email is built from the record of what happened.
 
 On July 6 the first line of the new platform's code was written.

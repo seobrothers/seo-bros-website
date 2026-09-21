@@ -7,8 +7,27 @@ import mdx from '@astrojs/mdx';
 // Sitemap is hand-rolled at src/pages/sitemap.xml.ts (single /sitemap.xml,
 // no multi-file index). See that file for how to add or exclude pages.
 
+// Strips HTML comments out of Markdown before it renders. Product update
+// posts carry a `<!-- review ... -->` block for the person approving the
+// pull request (sources, what was left out); it must never reach the page
+// source or the RSS feed, since it names internal things the post itself
+// does not.
+function stripHtmlComments() {
+  const walk = (node) => {
+    if (!node.children) return;
+    node.children = node.children.filter(
+      (c) => !(c.type === 'html' && /^\s*<!--[\s\S]*?-->\s*$/.test(c.value)),
+    );
+    node.children.forEach(walk);
+  };
+  return (tree) => walk(tree);
+}
+
 // https://astro.build/config
 export default defineConfig({
+  markdown: {
+    remarkPlugins: [stripHtmlComments],
+  },
   site: 'https://seobrothers.com',
   trailingSlash: 'always',
   build: {
