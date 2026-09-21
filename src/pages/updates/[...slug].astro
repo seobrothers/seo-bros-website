@@ -222,7 +222,43 @@ const breadcrumbSchema = {
       </div>
     </section>
 
-    <NewsletterSignup heading="Get these updates by email" sub="A short note when something changes on the platform, plus whatever else you pick." checked={["build"]} />
+    <script>
+    // Pair each summary item (the numbered list right after a section
+    // heading) with the `### N.` expansion of the same number, so the item
+    // links down to it. Purely additive; without JS the list still reads.
+    document.querySelectorAll<HTMLElement>(".post-body__prose h2").forEach((h2) => {
+      const list = h2.nextElementSibling;
+      if (!list || list.tagName !== "OL") return;
+      const targets = new Map<string, HTMLElement>();
+      let el = list.nextElementSibling as HTMLElement | null;
+      while (el && el.tagName !== "H2") {
+        if (el.tagName === "H3") {
+          const m = /^(\d+)\.\s+/.exec(el.textContent ?? "");
+          if (m) {
+            targets.set(m[1], el);
+            const rest = (el.textContent ?? "").slice(m[0].length);
+            el.textContent = "";
+            const n = document.createElement("span");
+            n.className = "expansion-n";
+            n.textContent = `${m[1]}.`;
+            el.append(n, rest);
+          }
+        }
+        el = el.nextElementSibling as HTMLElement | null;
+      }
+      Array.from(list.children).forEach((li, i) => {
+        const target = targets.get(String(i + 1));
+        if (!target || !target.id) return;
+        const a = document.createElement("a");
+        a.className = "summary-link";
+        a.href = `#${target.id}`;
+        while (li.firstChild) a.append(li.firstChild);
+        li.append(a);
+      });
+    });
+  </script>
+
+  <NewsletterSignup heading="Get these updates by email" sub="A short note when something changes on the platform, plus whatever else you pick." checked={["build"]} />
     <CtaBanner variant="partner" />
   </article>
 
@@ -498,6 +534,80 @@ const breadcrumbSchema = {
 
   .post-body__prose :global(p) {
     margin-bottom: 20px;
+  }
+
+  /* A section that opens with a numbered list is the section's summary:
+     one or two sentences per change, then `### N.` expansions below that
+     reuse the same numbers. The list is set apart so it reads as the
+     at-a-glance layer, and each item links to its expansion when one
+     exists (see the script at the foot of this file). */
+  .post-body__prose :global(h2 + ol) {
+    list-style: none;
+    counter-reset: summary;
+    margin: 0 0 32px;
+    padding: 6px 0 6px 24px;
+    border-left: 3px solid var(--teal);
+    background: var(--light);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  }
+
+  .post-body__prose :global(h2 + ol > li) {
+    counter-increment: summary;
+    position: relative;
+    padding: 10px 24px 10px 34px;
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-primary);
+  }
+
+  .post-body__prose :global(h2 + ol > li)::before {
+    content: counter(summary);
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--teal-dark);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 12.5px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .post-body__prose :global(h2 + ol > li + li) {
+    border-top: 1px solid var(--border-light);
+  }
+
+  .post-body__prose :global(h2 + ol a.summary-link) {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .post-body__prose :global(h2 + ol a.summary-link:hover) {
+    color: var(--teal-dark);
+  }
+
+  .post-body__prose :global(h2 + ol a.summary-link)::after {
+    content: "↓";
+    margin-left: 6px;
+    font-size: 13px;
+    color: var(--teal-dark);
+    opacity: 0.7;
+  }
+
+  /* Expansion headings carry their number in the text ("3. Rules and
+     guidance"); the number is set in the accent so it reads as a pointer
+     back to the summary. */
+  .post-body__prose :global(h3 .expansion-n) {
+    color: var(--teal-dark);
+    font-variant-numeric: tabular-nums;
+    margin-right: 6px;
   }
 
   .post-body__prose :global(ul),

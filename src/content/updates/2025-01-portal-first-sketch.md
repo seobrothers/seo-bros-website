@@ -12,6 +12,7 @@ sources: partner-portal commits 34c2a4f, 6dfb115, 6070dba, 66c8e09, 9e4da38, 240
 left out: auth vendor, accounting system vendor, framework upgrade details
 unsure: whether anyone outside the two of us ever opened this build; the record has no partner user until April 2025
 edited: cut commit counts, the sketch-between-client-work and slow-winter self-deprecation, and the chapter-covers opener
+edited: shape reviewed, left as prose (neither section reaches three changes)
 -->
 
 From October 2024 through January 2025 the Portal existed only as a repository and an idea. It is the quiet start of everything that came after.

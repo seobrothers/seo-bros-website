@@ -12,17 +12,24 @@ sources: partner-portal 78b7a46, 091671e (Aug 4), 6ac614a (Aug 7), ab0ae4a (Aug 
 left out: the shared inbox vendor; per-staff inbox tokens (credentials); billing scaffolding as anything visible (it was not); hosting model change
 unsure: whether partners could reply from inside the Portal in September or only our team could send; record shows sending by staff with a saved inbox token
 edited: cut the day and week counts (first four days, fifteen days before, eleven weeks) and the in-this-chapter-only-because aside
+edited: shaped
 -->
 
 August and September 2025 were two months of the Portal getting more useful to the people who talk to partners every day, and one weekend in September when a new repository was opened for the tool our own team would work in. This is the point where the two-app design became real rather than drawn.
 
 ## For our partners
 
-Conversations. From August 7 the email threads between a partner and our team appeared inside the Portal, attached to the campaign they were about, with the most recent message opened by default from August 14. From September 2 our team could send a message from the Portal itself, so a reply and the record of the reply were the same thing. On September 8 a campaign gained its own contacts, so it was clear which people at a partner belonged to which client's work, and email links opened straight into the thread.
+1. Conversations. From August 7 the email threads between a partner and our team appeared inside the Portal, attached to the campaign they were about.
+2. Discoveries got more substance. From September 3 a discovery in the Portal held the research, not a link to a document that held the research.
+3. Each campaign got a named campaign manager and account manager from August 4, visible on the campaign.
 
-Each campaign also got a named campaign manager and account manager from August 4, visible on the campaign.
+### 1. Conversations
 
-Discoveries got more substance. On September 3 the discovery record was split into proper fields, and over the next two days the team side gained a keyword opportunities table, a supporting data table and inline editing, so a discovery in the Portal held the research, not a link to a document that held the research. By September 18 that work was called done.
+The most recent message opened by default from August 14. From September 2 our team could send a message from the Portal itself, so a reply and the record of the reply were the same thing. On September 8 a campaign gained its own contacts, so it was clear which people at a partner belonged to which client's work, and email links opened straight into the thread.
+
+### 2. Discoveries
+
+On September 3 the discovery record was split into proper fields, and over the next two days the team side gained a keyword opportunities table, a supporting data table and inline editing. By September 18 that work was called done.
 
 ## Behind the scenes
 
