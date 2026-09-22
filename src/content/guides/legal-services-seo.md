@@ -124,7 +124,7 @@ Family law searches skew heavily toward long-tail, question-based, and emotional
 
 **Local intent is heavy.** Family law is a hyper-local practice because clients meet attorneys in person and family courts are jurisdictional. Geographic targeting in keywords, GBP optimization, and location pages all matter more than in some other practice areas.
 
-**Sensitive topic handling.** Family law content covers some of the most painful situations clients ever face. Tone has to be empathetic and informative, not promotional. Trust signals matter especially here: real attorney photos, real credentials, real case-result transparency where ethically permitted.
+**Sensitive topic handling.** Family law content covers some of the most painful situations clients ever face. Tone has to be empathetic and informative. Trust signals matter especially here: real attorney photos, real credentials, real case-result transparency where ethically permitted.
 
 **Jurisdictional variation.** Family law differs significantly by state and even by county. National content templates that don't account for this lose to firms that produce state-specific or county-specific guides.
 
@@ -134,9 +134,9 @@ Immigration SEO has unique structural challenges and opportunities.
 
 - **Service-type keyword universe.** Visa types, status categories, and procedural keywords drive informational traffic: "green card application assistance," "deportation defense lawyer," "EB-5 investor visa attorney," "H-1B specialty occupation."
 - **Long-tail informational queries.** Immigration is a research-heavy decision. Detailed how-to content ("How do I apply for a green card through marriage?", "What happens at a USCIS interview?") drives substantial top-of-funnel traffic.
-- **Multilingual considerations.** Immigration clients often search in their first language. Spanish-language content for firms serving Hispanic communities, Mandarin or Cantonese for firms serving Chinese communities, and so on. This is a major opportunity for firms willing to produce real bilingual content (not machine-translated boilerplate).
+- **Multilingual considerations.** Immigration clients often search in their first language. Spanish-language content for firms serving Hispanic communities, Mandarin or Cantonese for firms serving Chinese communities, and so on. This is a major opportunity for firms willing to produce real bilingual content.
 - **Geographic complexity.** Immigration law is federal, but immigration courts and ICE field offices are regional. Clients search both ways: "immigration lawyer in Texas" and "immigration attorney near me." The page architecture needs both.
-- **Time-sensitivity.** Immigration policy changes frequently. Content has to be maintained, not set-and-forget. Stale content with outdated policy claims hurts trust signals and can produce malpractice exposure.
+- **Time-sensitivity.** Immigration policy changes frequently. Content has to be maintained. Stale content with outdated policy claims hurts trust signals and can produce malpractice exposure.
 - **Cross-border audience.** Some immigration prospects are searching from outside the US. International SEO considerations (hreflang, country targeting) matter for firms with significant international referral business.
 - **Directory presence.** AILA membership, state bar directories, and immigration-specific resources like Avvo's immigration vertical are all worth claiming and optimizing.
 
@@ -145,9 +145,9 @@ Immigration SEO has unique structural challenges and opportunities.
 The most aggressive practice area in legal SEO and the one with the highest stakes.
 
 - **Brutal keyword competition.** "Personal injury lawyer [city]" is one of the most contested phrases in search. PPC costs in this space routinely exceed $200 per click. Organic ranking is a multi-year investment.
-- **Practice-area segmentation as a strategy.** Rather than competing only for the head term, segment into specific accident and injury types: car accidents, motorcycle accidents, truck accidents, slip and fall, medical malpractice, wrongful death, workplace injuries, dog bites. Each becomes a separate page, separate keyword target, less competitive than the head term.
+- **Practice-area segmentation as a strategy.** Segment into specific accident and injury types: car accidents, motorcycle accidents, truck accidents, slip and fall, medical malpractice, wrongful death, workplace injuries, dog bites. Each becomes a separate page, separate keyword target, less competitive than the head term.
 - **High-intent informational content.** "What should I do after a car accident?", "How long do I have to file an injury claim?", "What is my case worth?" These capture searchers in the immediate aftermath of an injury, when legal representation decisions get made fast.
-- **Settlement and case-result content.** Where ethically permitted, sharing case results and settlement amounts builds powerful trust signals. Generic "We won millions" claims do nothing; specific case outcomes (within bar advertising rules) move clients.
+- **Settlement and case-result content.** Where ethically permitted, sharing case results and settlement amounts builds powerful trust signals. Specific case outcomes (within bar advertising rules) move clients; generic "We won millions" claims do nothing.
 - **Mobile optimization is non-negotiable.** Personal injury searches happen on phones, often immediately after an accident. A site that's slow or confusing on mobile loses the conversion regardless of where it ranks.
 - **Click-to-call prominence.** Phone calls dominate personal injury conversion. The phone number has to be prominent on every page, click-to-call enabled, and answered live (or by a 24/7 answering service).
 - **Speed matters more here.** Personal injury searchers shop fast. The first three firms they call get the consultation. Sites that ranked #1 but loaded slowly, or had bad contact forms, lose to faster, simpler #3 sites.
@@ -160,7 +160,7 @@ If your firm covers multiple practice areas, the strategy is hub-and-spoke. A ge
 
 Specific to legal SEO, what to track:
 
-- **Organic traffic** to practice-area and location pages, not just sitewide
+- **Organic traffic** to practice-area and location pages, broken out from sitewide
 - **Keyword rankings** by practice area, with separate tracking for branded versus non-branded queries
 - **Conversions** as form submissions, phone calls (with call tracking), and booked consultations
 - **Cost-per-acquisition** comparison between organic and PPC channels

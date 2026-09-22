@@ -14,9 +14,9 @@ They also keep getting people de-indexed when they're built poorly.
 
 This guide covers what the tactic actually is, how it has evolved through Google's algorithm shifts, where it still produces results, and the operational discipline required to run a network that doesn't get killed. It's written for agency owners, in-house SEOs, and anyone trying to figure out whether PBNs fit into a link-building strategy.
 
-I've been working with link networks since the early 2010s, going back to the public-network era when Post Runner and BuildMyRank were a thing. I'll tell that story in a minute. The point is: this isn't theoretical. The opinions in this guide are from the operating side, not the observer side.
+I've been working with link networks since the early 2010s, going back to the public-network era when Post Runner and BuildMyRank were a thing. I'll tell that story in a minute. The point is: the opinions in this guide come from the operating side.
 
-One thing to get out of the way: PBNs violate Google's webmaster guidelines. There's no version of this where that's not true. The point isn't to evangelize the tactic or moralize about it. The point is to treat it honestly.
+One thing to get out of the way: PBNs violate Google's webmaster guidelines. There's no version of this where that's not true. The point is to treat it honestly, without evangelizing the tactic or moralizing about it.
 
 ## What a PBN actually is
 
@@ -24,7 +24,7 @@ A private blog network is a group of websites, owned or effectively controlled b
 
 Most of the time, those domains were bought at auction or registered after they expired, which means they came with backlink profiles and topical authority that would take years to build from scratch.
 
-That's the distinction worth understanding. A PBN isn't just "a bunch of blogs." The leverage comes from the pre-existing link equity sitting on those domains.
+That's the distinction worth understanding. The leverage comes from the pre-existing link equity sitting on those domains.
 
 The use cases are usually one of three:
 
@@ -44,7 +44,7 @@ We used both aggressively and sat happily in the top three Canadian SERPs for "w
 
 Google ran a coordinated de-indexing pass on BuildMyRank and several adjacent networks in a single move. Spencer Haws of Niche Pursuits famously wrote a post that month that read, in essence, "Alright Google, you win, I'll never use private blog networks again." Lots of people had that same week. Including me.
 
-The lesson wasn't that link networks didn't work. The lesson was that public services, where everyone shares the same network, were dead. So I went private. Picked up expired domains at GoDaddy Auctions, maybe 30 or 40 to start, and built out my own. From there spun up a local SEO service that was link-building-only, leveraging that small network to help local businesses rank.
+The lesson was that public services, where everyone shares the same network, were dead. Link networks themselves still worked. So I went private. Picked up expired domains at GoDaddy Auctions, maybe 30 or 40 to start, and built out my own. From there spun up a local SEO service that was link-building-only, leveraging that small network to help local businesses rank.
 
 The bigger shift since 2014 has been on Google's side. SpamBrain, the link spam updates of 2021 and 2022, the Helpful Content Update in 2022, and the broader move toward ML-based pattern detection have raised the floor on what a PBN has to look like to survive.
 
@@ -134,7 +134,7 @@ Hosting is where most PBNs die. The footprints are technical, persistent, and vi
 
 **Avoid services explicitly marketed as "SEO hosting."** Any hosting provider whose homepage advertises C-class IP diversity to SEOs is, by definition, hosting other people's PBNs. A network that ends up sharing IP space and infrastructure patterns with networks that get killed every quarter is collateral damage waiting to happen.
 
-**IP diversity has to extend beyond C-class.** Varying the last octet across 192.168.100.50, 192.168.101.50, and 192.168.102.50 isn't real diversity. Real diversity means different B-class ranges, different A-class blocks, different physical regions, and ideally different ASNs.
+**IP diversity has to extend beyond C-class.** Real diversity means different B-class ranges, different A-class blocks, different physical regions, and ideally different ASNs. Varying the last octet across 192.168.100.50, 192.168.101.50, and 192.168.102.50 doesn't count.
 
 **Share infrastructure with legitimate sites.** A shared hosting plan from a mainstream provider, where the PBN domain is one of hundreds on a server, gives cover that dedicated PBN hosting will never provide. The downside is account and login management gets complicated. A spreadsheet is mandatory.
 
@@ -156,7 +156,7 @@ In 2026, the AI factor cuts both ways.
 
 **The good side.** AI compresses the time and cost of producing real content. A network operator who would have struggled to keep up with content production for 30 sites can now ship substantive posts at meaningful pace.
 
-**The bad side.** It's much easier to be lazy. Pure AI output without editing is detectable, both algorithmically and by human reviewers. AI-only PBNs are now one of the leading reasons networks get killed quickly. The bar isn't "did you use AI." The bar is "is the result something a real person would actually write."
+**The bad side.** It's much easier to be lazy. Pure AI output without editing is detectable, both algorithmically and by human reviewers. AI-only PBNs are now one of the leading reasons networks get killed quickly. The bar is "is the result something a real person would actually write," not "did you use AI."
 
 **The quality floor is higher than it used to be.** Posts should be substantive, ideally over 800 words, with the structure and depth a real blog post would have. Original images or properly licensed stock. Author attribution with a real-looking bio. Embedded video where it fits.
 
@@ -214,7 +214,7 @@ Monitoring suggestions:
 
 ## What good PBNs actually look like in 2026
 
-The bar for a network that lasts has gone up, and the networks that survive now don't really look like PBNs anymore. They look like real publications.
+The bar for a network that lasts has gone up, and the networks that survive now look like real publications.
 
 The best operators in 2026 are running multi-site networks of news and digital assets that have:
 
@@ -228,11 +228,11 @@ That last one matters more than it used to, and it's worth pausing on.
 
 A common question from clients about PBN-style links: **"Why don't I see any referral traffic from these backlinks?"**
 
-The framing is wrong. You wouldn't expect referral traffic from a backlink any more than you'd expect a published research citation to send you customers. PBN links drive **keyword performance**, not referrals. Referral traffic is what you get from PR coverage in publications people actually read for editorial reasons. Different tools, different jobs.
+PBN links drive **keyword performance**, not referrals. You wouldn't expect referral traffic from a backlink any more than you'd expect a published research citation to send you customers. Referral traffic is what you get from PR coverage in publications people actually read for editorial reasons. Different tools, different jobs.
 
 That said, here's what's interesting: when a PBN domain itself ranks and pulls its own organic traffic, **that's a significant quality signal** for the link source. A site that earns visibility on its own terms is, almost by definition, a more valuable link source than one that just sits there as link infrastructure. Google can see that, and the link math reflects it.
 
-That's why the best modern operators are pushing their network properties toward becoming real publications. The traffic isn't the product. The traffic is evidence the link source has authority worth borrowing.
+That's why the best modern operators are pushing their network properties toward becoming real publications. The traffic is evidence the link source has authority worth borrowing.
 
 ## Should you do this yourself?
 

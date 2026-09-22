@@ -71,6 +71,7 @@ const STATIC_PAGES = [
   "/white-label-link-building/",
   "/white-label-local-seo/",
   "/white-label-web-design/",
+  "/white-label-web-design/early-access/",
 ];
 
 const EXCLUDED_PATHS = new Set<string>([]);

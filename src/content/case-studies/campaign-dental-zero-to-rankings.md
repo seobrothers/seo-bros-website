@@ -47,12 +47,12 @@ A new or newly optimized domain with near-zero authority. No established keyword
 
 ## What we shipped
 
-Month one was the technical foundation and every core service page. We built out cosmetic, restorative, pediatric, and specialty treatment pages from day one rather than staging the rollout, since the goal was to get every page indexed and ranking-eligible quickly.
+Month one was the technical foundation and every core service page. We built out cosmetic, restorative, pediatric, and specialty treatment pages from day one, since the goal was to get every page indexed and ranking-eligible quickly.
 
 Months two and three were the first traffic signals: 212 sessions in month two from 5 in month one. Months four through seven were compounding work, with each page gaining authority as the broader site matured.
 
 ## Outcome
 
-Traffic moved from 5 monthly organic sessions to 499 by month seven. The headline percentage is mathematically true but slightly misleading on a base of 5; the more useful framing is that every month delivered higher traffic than the month before.
+Traffic moved from 5 monthly organic sessions to 499 by month seven. The more useful framing is that every month delivered higher traffic than the month before; the headline percentage is mathematically true but slightly misleading on a base of 5.
 
 Ten priority cosmetic and restorative terms reached top-5 positions, with three at #1 or #2. Tracked GA4 leads grew 4x, from 2 a month early to 8 in the final month, totaling 32 across the campaign. Per-session lead rate is lower than other studies in our portfolio because the practice had no Google Business Profile authority signals at launch. That is the next compounding gain.

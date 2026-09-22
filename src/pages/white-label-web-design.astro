@@ -12,21 +12,21 @@ const valueProps = [
     accent: "teal",
     title: "Lightning fast on Astro",
     description:
-      "Built on the Astro framework and engineered for Core Web Vitals. Pages load near-instantly, with clean markup and no bloated page builder dragging things down. Speed is the experience your client's visitors feel, and it's a Google ranking factor working in their favor.",
+      "Built on the Astro framework and engineered for Core Web Vitals. Pages load near-instantly on clean, lightweight markup. Speed is the experience your client's visitors feel, and it's a Google ranking factor working in their favor.",
   },
   {
     icon: "cloud",
     accent: "green",
     title: "Secure on Cloudflare's edge",
     description:
-      "Hosted on Cloudflare's secure global edge: DDoS protection, automatic SSL, and the same network that serves a huge slice of the internet. Fast everywhere, locked down by default, and cheap to run. No plugin update treadmill, no surprise downtime when a host has a bad day.",
+      "Hosted on Cloudflare's secure global edge: DDoS protection, automatic SSL, and the same network that serves a huge slice of the internet. Fast everywhere, locked down by default, and cheap to run. There are no plugins to patch, and the site stays up when a shared host has a bad day.",
   },
   {
     icon: "edit",
     accent: "teal",
     title: "Clients edit it themselves",
     description:
-      "Your client updates copy, swaps images, and publishes pages without touching code or waiting on a developer. It is easy to manage, with none of the page-builder bloat that drags a site down.",
+      "Your client updates copy, swaps images, and publishes pages without touching code or waiting on a developer. It is easy to manage and quick to load.",
   },
   {
     icon: "brand",
@@ -49,7 +49,7 @@ const ongoing = [
     title: HOSTING.label,
     price: hostingPrice,
     description:
-      "Fast, secure hosting on Cloudflare's edge, handled for you. SSL, uptime, and platform updates covered so the site stays quick and protected without anyone babysitting it. Bill it monthly under your brand.",
+      "Fast, secure hosting on Cloudflare's edge, handled for you. We cover SSL, uptime, and platform updates, and the site stays quick and protected. Bill it monthly under your brand.",
   },
   {
     icon: "edit",
@@ -57,7 +57,7 @@ const ongoing = [
     title: MAINTENANCE.label,
     price: "from " + maintenancePrice,
     description:
-      "Ongoing content edits, fixes, and small changes so the site never goes stale. A recurring line your agency resells, with the work staying invisible behind your name.",
+      "Ongoing content edits, fixes, and small changes keep the site current. A recurring line your agency resells, with the work staying invisible behind your name.",
   },
 ];
 
@@ -66,7 +66,7 @@ const steps = [
     number: "01",
     title: "Kickoff",
     description:
-      "You hand us scope, content, and brand direction. We confirm sitemap, page count, and whether the build needs the redesign-SEO tier. No drawn-out discovery cycle.",
+      "You hand us scope, content, and brand direction. We confirm sitemap, page count, and whether the build needs the redesign-SEO tier.",
   },
   {
     number: "02",
@@ -78,7 +78,7 @@ const steps = [
     number: "03",
     title: "SEO protection (if it's a redesign)",
     description:
-      "On the $2,500 tier we map every old URL to its new home, set the redirects, and preserve on-page signals so search visibility carries over instead of cratering on launch day.",
+      "On the $2,500 tier we map every old URL to its new home, set the redirects, and preserve on-page signals so rankings carry over on launch day.",
   },
   {
     number: "04",
@@ -92,12 +92,12 @@ const faqs = [
   {
     question: "Is it really white-label?",
     answer:
-      "Yes. We work behind the scenes and the site ships under your brand. We don't put our name in the footer, we don't email your client, and we don't show up on their invoice. The relationship is yours.",
+      "Yes. We work behind the scenes and the site ships under your brand. Your name is in the footer and on the invoice, and your client only ever hears from you. The relationship is yours.",
   },
   {
     question: "Can our client edit the site themselves?",
     answer:
-      "Yes. We set up the editable regions during the build, and your client updates copy, images, and pages through a clean, simple editor. No code, no developer, no ticket queue for a typo fix.",
+      "Yes. We set up the editable regions during the build, and your client updates copy, images, and pages through a clean, simple editor. A typo fix takes them a minute, with no developer involved.",
   },
   {
     question: "Why not just build on WordPress?",
@@ -107,17 +107,17 @@ const faqs = [
   {
     question: "Will a redesign hurt our client's rankings?",
     answer:
-      "It can, and it routinely does when redirects and on-page SEO are handled carelessly. That's exactly what the $2,500 tier protects against. We're an SEO company first, so we map the redirects and preserve search signals through the migration. If you don't need that protection, the $1,500 build is for sites where rankings aren't on the line.",
+      "Rankings hold when the redirects and on-page SEO are handled, and that is what the $2,500 tier covers. Redesigns routinely lose traffic when nobody does that work. We're an SEO company first, so we map the redirects and preserve search signals through the migration. The $1,500 build is for sites where rankings aren't on the line.",
   },
   {
     question: "Do you build from scratch or from templates?",
     answer:
-      "We build on proven, battle-tested templates. That's deliberate: it keeps the site fast, consistent, and quick to ship, and it means the Core Web Vitals and security work is already done instead of reinvented on every project. If your agency already has a design or a look the client expects, we can closely mirror it. You get fast turnaround and flexibility, not a blank-page project that drags for months.",
+      "We build on proven, battle-tested templates. That's deliberate: it keeps the site fast, consistent, and quick to ship, and the speed and security work is already done. If your agency already has a design or a look the client expects, we can closely mirror it. You get fast turnaround and flexibility.",
   },
   {
     question: "How fast is turnaround?",
     answer:
-      "It depends on scope and how quickly content and feedback come back, but a typical site lands in a few weeks. We'll give you a real timeline at kickoff once we see the page count and requirements. We won't promise a number we can't hit.",
+      "A typical site lands in a few weeks. Scope and how quickly content and feedback come back set the exact timeline, and we give you a real one at kickoff once we see the page count and requirements.",
   },
 ];
 
@@ -179,8 +179,8 @@ const breadcrumbSchema = {
       </p>
 
       <div class="wd-hero-actions" data-animate>
-        <a href="/sign-up/" class="btn btn-primary wd-btn-lg">
-          Start Free Trial
+        <a href="#book-a-call" class="btn btn-primary wd-btn-lg">
+          Book a Call
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path
               d="M3 8h10M9 4l4 4-4 4"
@@ -223,18 +223,16 @@ const breadcrumbSchema = {
         <span class="section-label">For Agencies & Resellers</span>
         <h2 class="section-heading">White Label Web Development You Can Sell Today</h2>
         <p class="wd-intro-text">
-          Your clients keep asking for websites. Building a development team to
-          deliver them is expensive and slow, and outsourcing to a freelancer
-          you found last week is a gamble. White label web design solves that:
-          we build the site, you resell it under your brand, and your client
-          never knows we exist.
+          White label web design gives your agency a website team without
+          hiring one. Your clients keep asking for websites. We build them, you
+          resell them under your brand, and your client never knows we exist.
         </p>
         <p class="wd-intro-text">
           We build white label websites on Astro and deploy them on Cloudflare,
           and make it easy for your clients to edit their own
-          content. The result is a fast, modern, secure site with none of the
-          maintenance baggage that comes with a typical page-builder build. It's
-          ready to sell now, with two clear price points and no setup fee.
+          content. The result is a fast, modern, secure site that takes very
+          little maintenance. It's ready to sell now, with two clear price
+          points and no setup fee.
         </p>
       </div>
     </div>
@@ -249,9 +247,9 @@ const breadcrumbSchema = {
           What You're Reselling
         </h2>
         <p class="section-subtext" style="margin:0 auto;">
-          White label website design that doesn't fall apart six months after
-          launch. Lightning fast to load, secure by default, easy to edit, and
-          branded as yours.
+          White label website design that holds up years after launch.
+          Lightning fast to load, secure by default, easy to edit, and branded
+          as yours.
         </p>
       </div>
 
@@ -297,8 +295,8 @@ const breadcrumbSchema = {
           <span class="section-label">Recurring Revenue</span>
           <h3 class="wd-ongoing-heading">Ongoing White-Label Offerings</h3>
           <p class="wd-ongoing-subtext">
-            The build is one-time. Hosting and maintenance are monthly, so the
-            website keeps paying your agency long after launch. Both ship under
+            The website keeps paying your agency after launch. The build is
+            one-time, and hosting and maintenance bill monthly. Both ship under
             your brand and bill at your markup.
           </p>
         </div>
@@ -374,27 +372,26 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="wd-redesign-inner" data-animate>
         <div class="wd-redesign-copy">
-          <span class="section-label section-label--light">The Part Most Builds Get Wrong</span>
+          <span class="section-label section-label--light">Redesign SEO</span>
           <h2 class="section-heading section-heading--light">
-            Redesigns Tank Rankings.<br />
-            Ours Don't Have To.
+            Your Client's Rankings<br />
+            Survive the Redesign.
           </h2>
           <p class="wd-redesign-text">
-            When a site gets rebuilt, the URLs change, the on-page structure
-            shifts, and search engines lose track of what ranked where. If
-            nobody maps the old URLs to the new ones and sets the redirects, the
-            site relaunches and traffic falls off a cliff. We see it constantly:
-            a clean new design that quietly erased a year of organic growth. Our
+            A redesign can quietly erase a year of organic growth. When a site
+            gets rebuilt, the URLs change, the on-page structure shifts, and
+            search engines lose track of what ranked where. If nobody maps the
+            old URLs to the new ones and sets the redirects, the site relaunches
+            and traffic falls off a cliff. We see it constantly. Our
             <a href="/guides/website-redesign-seo/" class="wd-redesign-inline-link">website redesign SEO guide</a>
             breaks down exactly how that happens and how we prevent it.
           </p>
           <p class="wd-redesign-text">
-            We're an SEO company first. So the $2,500 tier bakes that protection
-            in. We map every old URL to its new home, set the redirects,
+            The $2,500 tier protects those rankings. We're an SEO company
+            first, so we map every old URL to its new home, set the redirects,
             preserve the on-page signals that earned the rankings, and watch the
-            launch so visibility carries over instead of cratering. If your
-            client has organic traffic worth protecting, this is the tier to
-            sell them.
+            launch so visibility carries over. If your client has organic
+            traffic worth protecting, this is the tier to sell them.
           </p>
           <a href="/white-label-seo/" class="wd-redesign-link">
             See our white-label SEO
@@ -428,9 +425,9 @@ const breadcrumbSchema = {
           <div class="wd-pricing-card-header">
             <h3 class="wd-pricing-tier">Website Build</h3>
             <p class="wd-pricing-tier-desc">
-              A fast, modern site built on Astro, deployed on Cloudflare, with
-              easy for your client to edit. For new sites and rebuilds
-              where rankings aren't on the line.
+              A fast, modern site built on Astro, deployed on Cloudflare, and
+              easy for your client to edit. For new sites and rebuilds where
+              rankings aren't on the line.
             </p>
           </div>
           <div class="wd-pricing-price">
@@ -445,7 +442,7 @@ const breadcrumbSchema = {
             <li>Shipped under your brand</li>
             <li>No setup fee</li>
           </ul>
-          <a href="/sign-up/" class="btn btn-outline--dark wd-pricing-btn">Start Free Trial</a>
+          <a href="#book-a-call" class="btn btn-outline--dark wd-pricing-btn">Book a Call</a>
         </div>
 
         <div class="wd-pricing-card wd-pricing-card--featured" data-animate>
@@ -455,7 +452,7 @@ const breadcrumbSchema = {
             <p class="wd-pricing-tier-desc">
               Everything in the build, plus full redesign-SEO support. We handle
               the redirects and protect search visibility through the migration
-              so traffic doesn't drop on relaunch.
+              so traffic holds on relaunch.
             </p>
           </div>
           <div class="wd-pricing-price">
@@ -470,7 +467,7 @@ const breadcrumbSchema = {
             <li>Visibility protected through migration</li>
             <li>Launch monitored so rankings hold</li>
           </ul>
-          <a href="/sign-up/" class="btn btn-primary wd-pricing-btn">Start Free Trial</a>
+          <a href="#book-a-call" class="btn btn-primary wd-pricing-btn">Book a Call</a>
         </div>
       </div>
 
@@ -515,18 +512,58 @@ const breadcrumbSchema = {
   <section class="wd-mid-cta">
     <div class="container">
       <div class="wd-mid-cta-card" data-animate>
-        <h2 class="wd-mid-cta-title">Want to see the quality first?</h2>
+        <h2 class="wd-mid-cta-title">Want to talk it through first?</h2>
         <p class="wd-mid-cta-text">
-          Get a free discovery for your agency. No commitment, no credit card.
-          We'll walk you through how the white-label build works and what your
-          clients receive.
+          Book a call. We'll walk you through how the white-label build works,
+          what your clients receive, and what a first project would look like.
         </p>
-        <a href="/sign-up/" class="btn btn-primary wd-mid-cta-btn">
-          Get a Free Discovery
+        <a href="#book-a-call" class="btn btn-primary wd-mid-cta-btn">
+          Book a Call
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SELF SERVE BUILD (EARLY ACCESS) ===== -->
+  <section class="wd-self">
+    <div class="container">
+      <div class="wd-self-card" data-animate>
+        <div class="wd-self-copy">
+          <span class="section-label">Early Access</span>
+          <h2 class="section-heading wd-self-heading">Agentic Self Serve Website Build</h2>
+          <p class="wd-self-text">
+            Build the site yourself inside Tideworthy. The platform drafts your
+            client's website from the campaign you already run there, you change
+            it by conversation, and you put it live on their domain from the same
+            screen. Hosted and versioned, under your brand.
+          </p>
+          <ul class="wd-self-list">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
+              Drafted from the client's current site, Business Profile, keywords and locations
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
+              Edited by conversation, reviewed on a staging link
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
+              Live on the client's domain, with every version kept
+            </li>
+          </ul>
+        </div>
+        <div class="wd-self-action">
+          <p class="wd-self-status"><span class="wd-self-status-dot"></span>Beta, opening in small groups</p>
+          <a href="/white-label-web-design/early-access/" class="btn btn-primary wd-btn-lg">
+            Get Early Access
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -567,7 +604,7 @@ const breadcrumbSchema = {
     sub="Book a growth call and we'll walk through building and reselling fast white-label sites under your brand."
   />
 
-  <StickyCta label="Start Free Trial" href="/sign-up/" />
+  <StickyCta label="Book a Call" href="#book-a-call" />
 
   <Footer />
 </Layout>
@@ -1366,6 +1403,105 @@ const breadcrumbSchema = {
     color: var(--text-on-dark-muted);
     max-width: 480px;
     margin: 0 auto 28px;
+  }
+
+  /* ===== SELF SERVE BUILD ===== */
+  .wd-self {
+    padding: 0 0 110px;
+    background: var(--light);
+  }
+
+  .wd-self-card {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+    align-items: center;
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    padding: 48px;
+    box-shadow: var(--shadow-md);
+  }
+
+  .wd-self-heading {
+    text-align: left;
+    margin: 12px 0 16px;
+  }
+
+  .wd-self-text {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin-bottom: 22px;
+  }
+
+  .wd-self-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .wd-self-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text-primary);
+  }
+
+  .wd-self-list svg {
+    flex-shrink: 0;
+    margin-top: 3px;
+    color: var(--green);
+  }
+
+  .wd-self-action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, var(--dark-800) 0%, var(--dark) 100%);
+  }
+
+  .wd-self-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-on-dark-muted);
+  }
+
+  .wd-self-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--teal-light);
+    box-shadow: 0 0 0 4px rgba(51, 196, 209, 0.18);
+  }
+
+  @media (max-width: 900px) {
+    .wd-self-card {
+      grid-template-columns: 1fr;
+      padding: 32px 24px;
+    }
+    .wd-self-action {
+      width: 100%;
+    }
+    .wd-self-action .btn {
+      width: 100%;
+      justify-content: center;
+    }
   }
 
   /* ===== FAQ ===== */

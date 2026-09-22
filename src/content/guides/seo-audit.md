@@ -29,7 +29,7 @@ An audit answers four questions:
 3. Which fixes will move the needle most?
 4. In what order should the work happen?
 
-The output isn't a list of every issue. It's a prioritized roadmap that maps findings to actions, with rough effort and impact estimates. A 40-page audit document a client can't act on is worth less than a 10-page audit that ships work.
+The output is a prioritized roadmap that maps findings to actions, with rough effort and impact estimates. A 40-page audit document a client can't act on is worth less than a 10-page audit that ships work.
 
 Time investment ranges from an hour to a full day depending on the depth of the audit and the size of the site. Free prospecting audits skew lighter. Paid audits or pre-engagement diagnostics for substantial campaigns warrant the full day.
 
@@ -46,7 +46,7 @@ What to pull:
 - **Organic traffic.** Month-over-month, year-over-year, percentage of total site traffic. Trend matters as much as absolute numbers.
 - **Top landing pages.** Which pages currently get organic traffic. Is it diversified across content, or is it all going to the homepage like most small business websites? Is there conversion tracking? These observations spark the right client conversations later.
 - **Current keyword rankings.** Some quick keyword research up front (don't spend a ton of time here) to see where the site shows up. Mix in higher-volume head terms, competitive geo-modifiers, and long-tail queries. Include the keyword difficulty alongside so the client understands that some of those rankings are much harder than others, and the plan and budget have to reflect that.
-- **Domain authority signals.** Moz Domain Authority and Page Authority, Majestic Trust Flow and Citation Flow, do-follow versus no-follow root linking domain split. Don't just dump the metrics. Explain what each one means and what it implies for the specific situation. Comparing them to the top competitors (when you know them) adds significant value over the raw numbers alone.
+- **Domain authority signals.** Moz Domain Authority and Page Authority, Majestic Trust Flow and Citation Flow, do-follow versus no-follow root linking domain split. Explain what each one means and what it implies for the specific situation, rather than dumping raw metrics. Comparing them to the top competitors (when you know them) adds significant value over the raw numbers alone.
 - **Link profile health.** Total links, anchor text distribution, types of links pointing in, any high-risk links worth disavowing, any obvious gaps in the kinds of links the profile should have but doesn't.
 
 Tools used:
@@ -126,11 +126,11 @@ A default WordPress-style template title would be:
 
 > SEO Audit | Brand Name
 
-That follows the "Page Name | Brand Name" convention that's the default for WordPress and many CMSes. It's not wrong, but it's wasted space on smaller business sites where the brand isn't already a search trigger.
+That follows the "Page Name | Brand Name" convention that's the default for WordPress and many CMSes. It works, but it's wasted space on smaller business sites where the brand isn't already a search trigger.
 
-The audit's job here isn't to fix every page title. It's to identify the duplicate titles and the optimization opportunities, and to recommend the priorities.
+The audit's job here is to identify the duplicate titles and the optimization opportunities, and to recommend the priorities, not to fix every page title.
 
-**Meta descriptions.** Meta keywords are dead. Stop using them. Now that that's out of the way, the meta description still matters indirectly. It's not a ranking signal, but it impacts click-through from the SERPs, and click-through is a ranking signal. Plus matching the description to the body copy reduces bounce rate.
+**Meta descriptions.** Meta keywords are dead. Stop using them. Now that that's out of the way, the meta description still matters indirectly. It impacts click-through from the SERPs, and click-through is a ranking signal, even though the description itself isn't one. Plus matching the description to the body copy reduces bounce rate.
 
 The crawl data will tell you whether meta descriptions exist, are duplicated, or have room to be better optimized.
 
@@ -155,7 +155,7 @@ Tools:
 
 ## The audit deliverable
 
-The audit is only as good as how it's delivered. Findings sent as a PDF attachment in an email rarely produce action. Findings walked through in a presentation produce engagement and project signoff.
+The audit is only as good as how it's delivered. Findings walked through in a presentation produce engagement and project signoff. Findings sent as a PDF attachment in an email rarely produce action.
 
 ### Delivery methods, ranked by impact
 
@@ -171,7 +171,7 @@ I'd recommend recording over a slide deck rather than a written document. That w
 
 **4. Written document via email.** The lowest-impact option. The audit gets opened, scrolled through quickly, and forgotten. Use this only for very small audits that are essentially supplementary to other work. If you're using the audit to close a client, do not do this. If the client paid thousands of dollars for the audit, definitely do not do this.
 
-The principle: audits don't sell themselves. They require explanation. Build the explanation into the delivery format.
+The principle: audits need an explanation to sell. Build the explanation into the delivery format.
 
 ### Deliverable formats
 
@@ -181,7 +181,7 @@ I'm all for saving time and using the right tools. But you need to create someth
 
 **PowerPoint or Google Slides presentations** for both live and recorded walkthroughs. Free audits warrant shorter, more focused decks. Paid audits warrant deeper, more comprehensive ones.
 
-**Spreadsheet companions** for the implementation team. The presentation explains the findings; the spreadsheet contains the prioritized to-do list with assigned owners and target dates. Without the spreadsheet, the audit doesn't translate into work that ships.
+**Spreadsheet companions** for the implementation team. The presentation explains the findings; the spreadsheet contains the prioritized to-do list with assigned owners and target dates. The spreadsheet is what turns the audit into work that ships.
 
 ### Presentation structure that works
 
@@ -189,7 +189,7 @@ Effective audit presentations follow a consistent shape:
 
 1. **Context.** Why the audit matters, what was examined, brief overview of methodology.
 2. **Performance baseline.** Current state. Traffic, rankings, link profile, conversion. The "you are here" moment.
-3. **Major findings, ranked by impact.** Top three to five issues that, if fixed, will move the needle. Not the full issue list, just the leverage points.
+3. **Major findings, ranked by impact.** Top three to five issues that, if fixed, will move the needle. The leverage points, not the full issue list.
 4. **Detailed findings by category.** Technical, on-page, content, off-page. Issues with severity and recommended fix.
 5. **Recommendations and roadmap.** Prioritized action list with rough effort estimates and expected impact.
 6. **Next steps.** Whether the recommendation is to engage on implementation, to hand off the document for in-house execution, or to schedule a follow-up.
@@ -204,7 +204,7 @@ A strategic decision worth making explicitly. Are audits part of your sales proc
 
 Both models work. The choice depends on the agency's positioning, target market, and sales motion.
 
-What doesn't work is splitting the difference. A free audit with the depth of a paid audit bleeds margin. A paid audit with the depth of a free one leaves clients feeling ripped off.
+Splitting the difference doesn't work. A free audit with the depth of a paid audit bleeds margin. A paid audit with the depth of a free one leaves clients feeling ripped off.
 
 For most partner agencies we work with, free audits as part of a sales process produce the strongest pipeline. For specialized firms with established expertise, paid audits work better.
 
@@ -235,7 +235,7 @@ A few patterns we see repeatedly.
 - **No prioritization.** Everything labeled "important." The client picks what's easy, not what matters.
 - **No delivery beyond the document.** Audit emailed and forgotten.
 
-If the audit you delivered didn't produce implemented changes, the audit failed. The artifact isn't the goal. The work that follows is.
+If the audit you delivered didn't produce implemented changes, the audit failed. The goal is the work that follows, not the artifact.
 
 ## How we approach SEO audits at SEO Brothers
 

@@ -39,7 +39,7 @@ charts:
 
 Business coaching is a trust-driven, high-consideration purchase. Buyers research extensively, compare multiple coaches, and often follow content for months before reaching out. The Los Angeles market is also one of the most competitive coaching markets in the country.
 
-Ranking in this category is less about beating competitors on a single search and more about owning enough surface area in the buyer's research process that "the coach who keeps showing up" becomes the obvious choice.
+Ranking in this category means owning enough surface area in the buyer's research process that "the coach who keeps showing up" becomes the obvious choice.
 
 ## Audit findings
 

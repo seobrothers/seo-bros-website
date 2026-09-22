@@ -13,7 +13,7 @@ This guide covers what INP measures, why the new metric is stricter, how to read
 
 ## What INP measures
 
-INP measures the time between a deliberate user interaction (a click, a tap, a key press) and when the resulting visual change appears on screen. It doesn't measure passive interactions (hover, scroll). It measures the actions where the user expects feedback.
+INP measures the time between a deliberate user interaction (a click, a tap, a key press) and when the resulting visual change appears on screen. It measures the actions where the user expects feedback. Passive interactions (hover, scroll) are excluded.
 
 The metric reports the worst experience users had on the page during their session, not the average. If 99 of 100 interactions were fast and one was slow, INP reports the slow one. This matters because the worst experience is what users remember.
 
@@ -35,7 +35,7 @@ A few specific reasons sites that passed FID are failing INP.
 
 **FID didn't measure rendering delay.** A page where the JavaScript completed quickly but the resulting DOM update took a long time to paint passed FID. INP catches the rendering bottleneck.
 
-The cumulative effect is that INP reflects what users actually experience, not just one optimized first-interaction moment.
+The cumulative effect is that INP reflects what users actually experience.
 
 ## The thresholds
 
@@ -57,7 +57,7 @@ Two distinct data sources matter.
 - **CrUX (Chrome User Experience Report).** The underlying dataset Search Console pulls from. Available directly via the CrUX API for sites that want raw access.
 - **PageSpeed Insights.** Shows the field data alongside the lab data on a per-URL basis.
 
-**Lab data** is what a synthetic test produces in a controlled environment. Useful for debugging, not authoritative for ranking. Sources:
+**Lab data** is what a synthetic test produces in a controlled environment. Useful for debugging. Google does not use it for ranking. Sources:
 
 - **PageSpeed Insights** (lab section)
 - **Lighthouse** in Chrome DevTools
@@ -73,7 +73,7 @@ The other diagnostic tool worth using:
 
 Yes. INP is part of the Core Web Vitals, which are part of the page experience signal, which is one of Google's ranking factors. The weighting is real but modest. INP is unlikely to single-handedly move a page's ranking by many positions, but combined with other ranking signals it contributes meaningfully.
 
-What's more important than the direct ranking effect: INP correlates strongly with bounce rate and conversion. A slow, unresponsive page loses users regardless of where it ranks. Fixing INP improves user behavior, which improves engagement signals, which feeds back into rankings.
+INP correlates strongly with bounce rate and conversion, which matters more than the direct ranking effect. A slow, unresponsive page loses users regardless of where it ranks. Fixing INP improves user behavior, which improves engagement signals, which feeds back into rankings.
 
 ## How to optimize INP
 
@@ -127,7 +127,7 @@ Third-party scripts are a frequent culprit. Common offenders:
 - Social media share widgets
 - Heavy advertising scripts
 
-The fix is rarely to remove the script. The fix is to load it later (when the page is idle), or to evaluate whether the marginal value justifies the performance cost.
+The fix is to load it later (when the page is idle), or to evaluate whether the marginal value justifies the performance cost. Removing the script is rarely necessary.
 
 ## Common INP failures we see
 

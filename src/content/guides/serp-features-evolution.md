@@ -30,7 +30,7 @@ In May 2007, Google launched Universal Search, blending non-text results (images
 
 What changed: queries with mixed intent or visual character started showing image carousels, video thumbnails, and news boxes interleaved with the traditional results. The pure text-list paradigm broke for the first time.
 
-What it meant for SEO: video and image content became part of the SEO surface. Optimizing a YouTube video for search wasn't just about YouTube ranking anymore; it was about ranking on Google itself for queries where a video would surface. Image SEO became its own discipline.
+What it meant for SEO: video and image content became part of the SEO surface. Optimizing a YouTube video for search came to mean ranking on Google itself for queries where a video would surface, beyond YouTube's own results. Image SEO became its own discipline.
 
 ## Knowledge Graph and panels (2012)
 
@@ -69,7 +69,7 @@ Featured snippets created the first significant zero-click pattern outside of br
 
 People Also Ask (PAA) boxes emerged around 2015. The expandable accordion of related questions sits within the SERP, and clicking any question expands an inline answer drawn from a ranking page.
 
-What changed: queries surfaced not just one answer (featured snippet) but a network of related questions, each with its own pulled answer. PAA boxes are dynamic and infinite-scrolling: clicking a question often loads more related questions.
+What changed: queries surfaced a network of related questions, each with its own pulled answer, on top of the single featured-snippet answer. PAA boxes are dynamic and infinite-scrolling: clicking a question often loads more related questions.
 
 What it meant for SEO: PAA inclusion became a content opportunity. The questions themselves became valuable keyword research input (these are the questions Google sees as related to your topic). Pages structured around clear question-answer pairs got cited in PAA boxes for multiple related questions, capturing visibility well beyond their primary ranking.
 
@@ -128,7 +128,7 @@ The traditional organic listings are now interspersed throughout the page rather
 
 Practical implications for SEO strategy.
 
-**Layered visibility.** The goal isn't just to rank #1 organically. It's to surface in as many SERP features as possible for the target query. AI Overview citation, featured snippet, PAA inclusion, video result, image result, plus organic ranking. Each contributes to total share of attention on the page.
+**Layered visibility.** The goal is to surface in as many SERP features as possible for the target query, beyond ranking #1 organically. AI Overview citation, featured snippet, PAA inclusion, video result, image result, plus organic ranking. Each contributes to total share of attention on the page.
 
 **Structured data matters more.** Rich features increasingly depend on schema markup. FAQ schema for question content. HowTo schema for procedural content. Product schema for ecommerce. Article schema for editorial content. Sites without proper schema miss feature qualification.
 
@@ -146,7 +146,7 @@ Several directions visible from where we sit in 2026.
 
 **More AI integration.** AI Overviews are likely to expand in coverage and depth. Conversational follow-up queries, multi-modal results (text plus images plus comparison data), and personalized synthesis all seem like the trajectory.
 
-**Continued zero-click pressure on informational queries.** The shift toward in-SERP answers will continue for queries where Google can summarize. The implication isn't that informational content is dead. It's that informational content increasingly serves audience-building and brand visibility roles rather than direct traffic.
+**Continued zero-click pressure on informational queries.** The shift toward in-SERP answers will continue for queries where Google can summarize. The implication is that informational content increasingly serves audience-building and brand visibility roles rather than direct traffic.
 
 **Stronger weight on commercial and transactional content.** As informational queries get answered in-SERP, commercial intent queries become a larger share of the click-through opportunity. Content investment is shifting toward mid- and bottom-funnel.
 

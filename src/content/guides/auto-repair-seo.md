@@ -136,7 +136,7 @@ Independent shops that serve both fleet customers and consumers are running two 
 
 **Dedicated fleet section.** A fleet services page (or section) speaks to fleet managers in the language they care about: preventive maintenance scheduling, vehicle downtime, account billing, multi-vehicle service, priority scheduling.
 
-**Different conversion path.** Fleet decisions involve contracts, account setup, and procurement. The CTA isn't "book online," it's "request a fleet quote" or "set up an account." The form fields and the response time expectations differ.
+**Different conversion path.** Fleet decisions involve contracts, account setup, and procurement. The CTA is "request a fleet quote" or "set up an account." The form fields and the response time expectations differ.
 
 **Different keywords.** "Fleet maintenance [city]," "commercial vehicle service [city]," "fleet account auto repair," "preventive maintenance program for fleets." These don't overlap meaningfully with consumer queries.
 
@@ -191,7 +191,7 @@ Yes. A single "Services" page listing twenty offerings loses to competitors with
 
 **Should I list prices on my website?**
 
-Ranges, not exact quotes. Honest pricing windows ("brake pad replacement: $250 to $450 depending on vehicle") build trust and capture cost-comparison searchers. Shops that hide pricing entirely send buyers to call competitors who answer the question.
+Yes, as ranges. Honest pricing windows ("brake pad replacement: $250 to $450 depending on vehicle") build trust and capture cost-comparison searchers. Shops that hide pricing entirely send buyers to call competitors who answer the question.
 
 **Can an independent shop outrank a national chain?**
 

@@ -27,8 +27,8 @@ The first two days, October 3 and 4, 2024, produced a placeholder app, a logo, d
 
 November and December went to editor and preview configuration, a few fleshed-out pages, and code to talk to our accounting system, because at the time the accounting system was where the record of a deal actually lived.
 
-The first real object in the Portal was the discovery: the research report we produce on a prospect before an agency pitches them. On January 8, 2025 the team side got a bare list of discoveries, with each one's status read from the accounting system rather than kept in the Portal. That was the honest state of things. The Portal did not yet own any data. It was a window onto systems that already existed.
+The first real object in the Portal was the discovery: the research report we produce on a prospect before an agency pitches them. On January 8, 2025 the team side got a bare list of discoveries, with each one's status read from the accounting system. That was the honest state of things. The Portal did not yet own any data. It was a window onto systems that already existed.
 
 Two other choices from this period stuck. The app was built on the same component library and framework we still use, upgraded to the stable release at the end of October, and every list in the Portal has been a sortable data table since the starter for it landed on October 29. Neither was a big decision at the time. Both saved us from rebuilding later.
 
-We had a service business to run, and the Portal was built alongside it. What these months produced, sign-in with protected pages, the split between a partner's dashboard and the team's, sortable tables on every list, and a first list of discoveries, is what a partner logged into when the Portal opened to them in February.
+We had a service business to run, and the Portal was built alongside it. What a partner logged into when the Portal opened to them in February is what these months produced: sign-in with protected pages, the split between a partner's dashboard and the team's, sortable tables on every list, and a first list of discoveries.

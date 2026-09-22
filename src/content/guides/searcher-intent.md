@@ -52,7 +52,7 @@ The classic three-category framework misses several distinctions that matter in 
 - "Compare iPhone vs Pixel"
 - "Top SEO agencies in Toronto"
 
-Commercial investigation queries are top-of-funnel commercial intent. The user has decided they're going to buy something, they're now figuring out what. Content for these queries: comparison pages, "best of" lists, review content, buyer's guides. The right destination is rarely a single product page; it's content that helps the searcher narrow their consideration set.
+Commercial investigation queries are top-of-funnel commercial intent. The user has decided they're going to buy something, they're now figuring out what. Content for these queries: comparison pages, "best of" lists, review content, buyer's guides. The right destination is content that helps the searcher narrow their consideration set, rarely a single product page.
 
 **Local intent** is more of an overlay than a separate category. Any of the above can carry local intent, signaled by geographic modifiers, "near me" queries, or Google's interpretation of the query as locally relevant. The local-pack results above traditional organic depend on local intent being detected.
 
@@ -126,7 +126,7 @@ For the full mapping process, see our [keyword mapping guide](/guides/keyword-ma
 
 ## Intent shifts over time
 
-Intent for a given query is not static. Google's interpretation can shift as user behavior changes, new SERP features roll out, or events change the meaning of a query.
+Intent for a given query changes over time. Google's interpretation can shift as user behavior changes, new SERP features roll out, or events change the meaning of a query.
 
 A few examples of intent that has shifted in recent years:
 

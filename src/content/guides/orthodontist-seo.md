@@ -19,9 +19,9 @@ A few patterns set this category apart from general dentistry (which we cover se
 
 **Two distinct service categories under one roof.** A practice that does both Invisalign and traditional braces is targeting two different keyword universes that barely overlap. Invisalign queries skew adult, often professional, and price-conscious in a particular way. Traditional braces queries skew toward parents researching for kids and teens. Treating them as one audience produces a homepage that serves neither.
 
-**Parent-driven research for pediatric and teen patients.** When the patient is a child, the searcher is a parent (usually the mother, based on the data most practices see). The questions are different: "what age should my child see an orthodontist," "do braces hurt," "how to talk to my kid about braces," "Invisalign for teens versus braces." The tone has to address the parent's concerns, not just the clinical facts.
+**Parent-driven research for pediatric and teen patients.** When the patient is a child, the searcher is a parent (usually the mother, based on the data most practices see). The questions are different: "what age should my child see an orthodontist," "do braces hurt," "how to talk to my kid about braces," "Invisalign for teens versus braces." The tone has to address the parent's concerns.
 
-**Consultations are the conversion event.** Almost no one books treatment from a search. They book a consultation. The site's primary job is producing booked consults from local searchers. Everything from page structure to CTA placement to scheduling tool friction needs to be aligned to that.
+**Consultations are the conversion event.** People book a consultation from a search, almost never treatment. The site's primary job is producing booked consults from local searchers. Everything from page structure to CTA placement to scheduling tool friction needs to be aligned to that.
 
 **Treatment cycles are long enough that content compounds.** A family that starts researching when a 9-year-old has crowding may not start treatment until age 12. The [American Association of Orthodontists recommends a first orthodontic check-up no later than age 7](https://aaoinfo.org/whats-trending/when-should-my-child-see-an-orthodontist-age-7/), which means a meaningful share of your audience is researching years before any treatment begins. Content that serves the early researcher builds authority and brand recognition that pays off when the family is finally ready.
 
@@ -73,7 +73,7 @@ The single biggest content decision for an orthodontic practice site is how to h
 
 **Cost content for each.** "How much does Invisalign cost," "how much do braces cost." The volume tables above make the case. Practices that publish honest cost ranges, with explanation of what drives variation, outrank practices that hide pricing entirely.
 
-**Don't ignore the in-between options.** Clear ceramic braces, lingual braces, accelerated treatment, retention-only cases. Each is searched, and most practice sites cover none of them.
+**Cover the in-between options.** Clear ceramic braces, lingual braces, accelerated treatment, retention-only cases. Each is searched, and most practice sites cover none of them.
 
 ## Content topics that work for orthodontists
 
@@ -90,7 +90,7 @@ The content that produces results in this category falls into a few clear bucket
 
 The informational and cost queries that drive this category, "do braces hurt," "how long does Invisalign take," "Invisalign vs braces," "what age should a child see an orthodontist," are increasingly answered in an AI Overview at the top of the results. These are exactly the questions a parent or adult researcher types first, and a growing share of them now resolve without a click.
 
-The strategic response is the same one that works across healthcare verticals: build the cost and decision content to be the cited source, not to chase a click that may not happen. Put the direct answer up top in plain language, structure it for extraction, and keep it clinically accurate and conservatively worded (this is YMYL content, and overclaiming is a liability). The practice that gets cited in the AI Overview for "Invisalign vs braces" earns recognition at the decision moment, and that recognition is what produces the local "orthodontist near me" search and the booked consult later. Cost and comparison content stays worth building precisely because it is what the AI systems pull from.
+The strategic response is the same one that works across healthcare verticals: build the cost and decision content to be the cited source. Put the direct answer up top in plain language, structure it for extraction, and keep it clinically accurate and conservatively worded (this is YMYL content, and overclaiming is a liability). The practice that gets cited in the AI Overview for "Invisalign vs braces" earns recognition at the decision moment, and that recognition is what produces the local "orthodontist near me" search and the booked consult later. Cost and comparison content stays worth building precisely because it is what the AI systems pull from.
 
 ## Local SEO for orthodontists
 
@@ -114,9 +114,9 @@ For pediatric and teen patients, the searcher is almost always a parent. This sh
 
 **Address parent concerns explicitly.** Will this hurt. How will my child handle this socially. What does this cost. How do I know if my child even needs this. Will treatment interfere with sports or band or school.
 
-**Speak to mom-as-researcher, not patient-as-decider.** The tone, examples, and reassurance language should reflect that the person reading is trying to make a decision for someone else.
+**Speak to mom-as-researcher.** The tone, examples, and reassurance language should reflect that the person reading is trying to make a decision for someone else.
 
-**Photos of real kids and teens.** Stock photography of teenagers with perfect teeth holding aligners is unconvincing. Real practice patients (with consent) build trust.
+**Photos of real kids and teens.** Real practice patients (with consent) build trust. Stock photography of teenagers with perfect teeth holding aligners is unconvincing.
 
 **Frictionless consultation booking.** The consultation is the conversion. Online booking, clear pricing for the consultation (or "free consultation" if applicable), and a parent-friendly intake process all matter.
 
@@ -127,7 +127,7 @@ Patterns that show up over and over:
 - **One generic "Treatments" page.** A bullet list of services without depth on any of them. Loses to competitors with real per-treatment hubs.
 - **No cost content.** Sends parents to call three other practices first, and cedes 130,000-plus monthly cost searches to national publishers.
 - **Stock photography throughout.** Reduces trust, especially for parents.
-- **Underbuilt blog with shallow listicles.** "5 reasons to choose Invisalign" content adds nothing. Real explainers and real comparison pieces work.
+- **Underbuilt blog with shallow listicles.** Real explainers and real comparison pieces work; "5 reasons to choose Invisalign" content adds nothing.
 - **Ignored GBP.** Set up once, never updated, no posts, few photos. The profile is doing half the local work for the practice.
 - **No real reviews strategy.** Rely on patients to spontaneously leave reviews and end up with 12 over five years while the competitor has 400.
 - **Slow site, especially on mobile.** Most orthodontic searches are mobile, and Core Web Vitals failures cost both rankings and consults.
@@ -150,7 +150,7 @@ For the broader playbook, see our [link building guide](/guides/link-building/).
 
 **How long does SEO take to work for an orthodontic practice?**
 
-Local pack movement from GBP optimization and reviews usually appears in 60 to 120 days. Rankings on the cost and comparison content build over three to six months. Because the treatment decision cycle is long (often years for pediatric cases), the content you publish now is still working on a family that converts much later, so the program compounds rather than spikes.
+Local pack movement from GBP optimization and reviews usually appears in 60 to 120 days. Rankings on the cost and comparison content build over three to six months. The content you publish now is still working on a family that converts much later, because the treatment decision cycle is long (often years for pediatric cases), so the program compounds rather than spikes.
 
 **How much does orthodontic SEO cost?**
 

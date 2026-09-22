@@ -24,7 +24,7 @@ export const GUIDE_GROUPS: Record<string, GuideGroup[]> = {
     {
       title: "Technical SEO",
       blurb:
-        "The plumbing. Crawlability, page speed, and the Core Web Vitals Google actually measures. If search engines can't read your site fast, nothing else matters.",
+        "The plumbing. Crawlability, page speed, and the Core Web Vitals Google actually measures. Nothing else matters if search engines can't read your site fast.",
       ids: [
         "on-page-seo",
         "seo-audit",
@@ -37,7 +37,7 @@ export const GUIDE_GROUPS: Record<string, GuideGroup[]> = {
     {
       title: "Content & Keywords",
       blurb:
-        "Targeting the right searches and building pages that answer them better than the competition. Not about volume, about covering what brings in customers.",
+        "Targeting the right searches and building pages that answer them better than the competition. The goal is covering the searches that bring in customers.",
       ids: ["keyword-research", "keyword-mapping", "searcher-intent", "what-to-blog-about", "multimedia-seo"],
     },
     {
@@ -63,7 +63,7 @@ export const GUIDE_GROUPS: Record<string, GuideGroup[]> = {
     {
       title: "Delivering Under Your Brand",
       blurb:
-        "White-label work that holds up in front of your client, so the deliverables carry your name and never ours.",
+        "White-label work that holds up in front of your client, so the deliverables carry your name.",
       ids: ["white-label-seo", "white-label-seo-audits", "white-label-seo-reporting"],
     },
   ],

@@ -1,0 +1,398 @@
+---
+// Early-access questionnaire for the self serve website build. Posts JSON to
+// /api/early-access, which relays the answers to Slack. On success the form is
+// replaced by a confirmation.
+//
+// Turnstile renders only when PUBLIC_TURNSTILE_SITE_KEY is set; the endpoint
+// skips verification when its secret is unset, so local dev works without keys.
+import { TURNSTILE_SITE_KEY } from "../lib/turnstile";
+
+interface Props {
+  heading?: string;
+  id?: string;
+}
+
+const { heading = "Get early access", id = "early-access-form" } = Astro.props;
+
+const sitesPerYear = [
+  { value: "1-5", label: "1 to 5" },
+  { value: "6-15", label: "6 to 15" },
+  { value: "16-50", label: "16 to 50" },
+  { value: "50+", label: "More than 50" },
+];
+
+const buildsOn = [
+  { value: "wordpress", label: "WordPress" },
+  { value: "duda", label: "Duda" },
+  { value: "webflow", label: "Webflow" },
+  { value: "wix-squarespace", label: "Wix or Squarespace" },
+  { value: "custom", label: "Custom code" },
+  { value: "outsourced", label: "We outsource builds" },
+  { value: "none", label: "We don't build sites today" },
+];
+
+const useFor = [
+  { value: "new-client-site", label: "A new site for a new client" },
+  { value: "rebuild", label: "Rebuilding a client's existing site" },
+  { value: "location-pages", label: "Location or service pages on a site we run" },
+  { value: "prospect-demos", label: "Demo sites to win a prospect" },
+];
+---
+
+<form id={id} class="eaf" data-endpoint="/api/early-access/" novalidate>
+  {heading && <h2 class="eaf__title">{heading}</h2>}
+
+  <div class="eaf__row">
+    <label class="eaf__field">
+      <span class="eaf__label">First name</span>
+      <input name="firstName" class="eaf__input" autocomplete="given-name" required />
+    </label>
+    <label class="eaf__field">
+      <span class="eaf__label">Last name</span>
+      <input name="lastName" class="eaf__input" autocomplete="family-name" />
+    </label>
+  </div>
+
+  <div class="eaf__row">
+    <label class="eaf__field">
+      <span class="eaf__label">Agency name</span>
+      <input name="agencyName" class="eaf__input" autocomplete="organization" required />
+    </label>
+    <label class="eaf__field">
+      <span class="eaf__label">Agency website</span>
+      <input name="website" class="eaf__input" type="text" inputmode="url" autocomplete="url" placeholder="youragency.com" />
+    </label>
+  </div>
+
+  <label class="eaf__field">
+    <span class="eaf__label">Work email</span>
+    <input name="email" class="eaf__input" type="email" autocomplete="email" required />
+  </label>
+
+  <fieldset class="eaf__group">
+    <legend class="eaf__label">Do you have a Tideworthy account?</legend>
+    <div class="eaf__chips">
+      <label class="eaf__chip"><input type="radio" name="platformAccount" value="yes" /><span>Yes</span></label>
+      <label class="eaf__chip"><input type="radio" name="platformAccount" value="no" checked /><span>Not yet</span></label>
+    </div>
+  </fieldset>
+
+  <fieldset class="eaf__group">
+    <legend class="eaf__label">Client websites your agency builds or rebuilds in a year</legend>
+    <div class="eaf__chips">
+      {sitesPerYear.map((o) => (
+        <label class="eaf__chip"><input type="radio" name="sitesPerYear" value={o.value} /><span>{o.label}</span></label>
+      ))}
+    </div>
+  </fieldset>
+
+  <fieldset class="eaf__group">
+    <legend class="eaf__label">What you build on today</legend>
+    <div class="eaf__chips">
+      {buildsOn.map((o) => (
+        <label class="eaf__chip"><input type="checkbox" name="buildsOn" value={o.value} /><span>{o.label}</span></label>
+      ))}
+    </div>
+  </fieldset>
+
+  <fieldset class="eaf__group">
+    <legend class="eaf__label">What you would use it for first</legend>
+    <div class="eaf__chips">
+      {useFor.map((o) => (
+        <label class="eaf__chip"><input type="checkbox" name="useFor" value={o.value} /><span>{o.label}</span></label>
+      ))}
+    </div>
+  </fieldset>
+
+  <label class="eaf__field">
+    <span class="eaf__label">A client site you would rebuild first <em>(optional)</em></span>
+    <input name="exampleSite" class="eaf__input" type="text" inputmode="url" placeholder="clientsite.com" />
+  </label>
+
+  <label class="eaf__field">
+    <span class="eaf__label">Anything else we should know <em>(optional)</em></span>
+    <textarea name="notes" class="eaf__input eaf__textarea" rows="3"></textarea>
+  </label>
+
+  {TURNSTILE_SITE_KEY && <div class="cf-turnstile eaf__turnstile" data-sitekey={TURNSTILE_SITE_KEY}></div>}
+
+  <p class="eaf__error" role="alert" hidden></p>
+
+  <button type="submit" class="btn btn-primary eaf__submit">
+    Get Early Access
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  </button>
+</form>
+
+<div class="eaf eaf--done" data-early-access-done hidden>
+  <span class="eaf__check" aria-hidden="true">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+  </span>
+  <h2 class="eaf__title">You're on the list</h2>
+  <p class="eaf__done-text">We open access in small groups and will email you at <strong data-early-access-email></strong> when your turn comes.</p>
+  <a href="/white-label-web-design/" class="eaf__done-link">Back to Websites</a>
+</div>
+
+{TURNSTILE_SITE_KEY && (
+  <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+)}
+
+<script>
+  import { track } from "../lib/analytics";
+
+  declare global {
+    interface Window {
+      turnstile?: { reset: () => void };
+    }
+  }
+
+  function utmFromUrl(): Record<string, string> {
+    const out: Record<string, string> = {};
+    new URLSearchParams(window.location.search).forEach((value, key) => {
+      if (key.startsWith("utm_") && value) out[key] = value;
+    });
+    return out;
+  }
+
+  document.querySelectorAll<HTMLFormElement>("form.eaf").forEach((form) => {
+    const endpoint = form.dataset.endpoint ?? "/api/early-access/";
+    const errorEl = form.querySelector<HTMLElement>(".eaf__error")!;
+    const submitBtn = form.querySelector<HTMLButtonElement>(".eaf__submit")!;
+    const done = form.parentElement?.querySelector<HTMLElement>("[data-early-access-done]");
+    const showError = (message: string) => {
+      errorEl.textContent = message;
+      errorEl.hidden = false;
+    };
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      errorEl.hidden = true;
+
+      const data = new FormData(form);
+      const payload = {
+        firstName: String(data.get("firstName") ?? "").trim(),
+        lastName: String(data.get("lastName") ?? "").trim(),
+        agencyName: String(data.get("agencyName") ?? "").trim(),
+        website: String(data.get("website") ?? "").trim(),
+        email: String(data.get("email") ?? "").trim(),
+        platformAccount: String(data.get("platformAccount") ?? "no"),
+        sitesPerYear: String(data.get("sitesPerYear") ?? ""),
+        buildsOn: data.getAll("buildsOn").map(String),
+        useFor: data.getAll("useFor").map(String),
+        exampleSite: String(data.get("exampleSite") ?? "").trim(),
+        notes: String(data.get("notes") ?? "").trim(),
+        turnstile: String(data.get("cf-turnstile-response") ?? ""),
+        utm: utmFromUrl(),
+      };
+
+      if (!payload.firstName || !payload.agencyName || !payload.email) {
+        showError("Fill in your name, agency, and email.");
+        return;
+      }
+
+      submitBtn.disabled = true;
+      const label = submitBtn.firstChild;
+      const original = label?.textContent ?? "";
+      if (label) label.textContent = "Sending… ";
+
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const body = (await res.json()) as { ok: boolean; message?: string };
+        if (!body.ok) {
+          showError(body.message || "Something went wrong. Try again.");
+          submitBtn.disabled = false;
+          if (label) label.textContent = original;
+          window.turnstile?.reset();
+          return;
+        }
+        track("early_access_request");
+        if (done) {
+          const emailEl = done.querySelector<HTMLElement>("[data-early-access-email]");
+          if (emailEl) emailEl.textContent = payload.email;
+          form.hidden = true;
+          done.hidden = false;
+          done.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      } catch {
+        showError("Something went wrong. Try again.");
+        submitBtn.disabled = false;
+        if (label) label.textContent = original;
+        window.turnstile?.reset();
+      }
+    });
+  });
+</script>
+
+<style>
+  .eaf {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px;
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    text-align: left;
+  }
+  .eaf[hidden] {
+    display: none;
+  }
+  .eaf__title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 0 0 4px;
+  }
+  .eaf__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .eaf__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .eaf__label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+  .eaf__label em {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+  .eaf__input {
+    width: 100%;
+    padding: 11px 13px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    background: var(--light);
+    font: inherit;
+    font-size: 15px;
+    color: var(--text-primary);
+    transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  }
+  .eaf__input:focus {
+    outline: none;
+    border-color: var(--teal);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(40, 165, 177, 0.15);
+  }
+  .eaf__textarea {
+    resize: vertical;
+    min-height: 84px;
+  }
+  .eaf__group {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .eaf__group legend {
+    padding: 0;
+    margin-bottom: 8px;
+  }
+  .eaf__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .eaf__chip {
+    position: relative;
+    cursor: pointer;
+  }
+  .eaf__chip input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+  }
+  .eaf__chip span {
+    display: inline-block;
+    padding: 8px 14px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-full);
+    background: var(--light);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: border-color var(--transition), background var(--transition), color var(--transition);
+  }
+  .eaf__chip:hover span {
+    border-color: var(--teal);
+  }
+  .eaf__chip input:checked + span {
+    border-color: var(--teal);
+    background: rgba(40, 165, 177, 0.1);
+    color: var(--teal-dark);
+  }
+  .eaf__chip input:focus-visible + span {
+    box-shadow: 0 0 0 3px rgba(40, 165, 177, 0.25);
+  }
+  .eaf__turnstile {
+    min-height: 65px;
+  }
+  .eaf__error {
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    background: #fef2f2;
+    color: #b91c1c;
+    font-size: 14px;
+  }
+  .eaf__submit {
+    width: 100%;
+    justify-content: center;
+  }
+  .eaf--done {
+    align-items: center;
+    text-align: center;
+    padding: 48px 32px;
+  }
+  .eaf__check {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(68, 185, 123, 0.14);
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .eaf__done-text {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 420px;
+  }
+  .eaf__done-link {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--teal-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  @media (max-width: 560px) {
+    .eaf {
+      padding: 24px 20px;
+    }
+    .eaf__row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

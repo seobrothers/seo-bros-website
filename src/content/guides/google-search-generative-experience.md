@@ -10,7 +10,7 @@ featured: false
 
 Google's Search Generative Experience launched in May 2023 as an opt-in experiment. By May 2024 it had been renamed "AI Overviews" and rolled out as the default for many query types. By 2026 it's the standard SERP layout for a substantial portion of searches in the US, with continued geographic expansion.
 
-For SEO, this is the largest single shift in SERP layout in a decade. The question is no longer "will this happen" or "should I prepare for it." The question is what's working in the new layout and what isn't.
+For SEO, this is the largest single shift in SERP layout in a decade. The question now is what's working in the new layout and what isn't.
 
 This guide covers what AI Overviews are, what changed in click-through behavior, the optimization tactics that have proven out since launch, and where the dust is still settling.
 
@@ -58,13 +58,13 @@ Optimizing for both matters. Getting cited in the overview is valuable but isn't
 
 A year and a half into the broader rollout, some optimization patterns have become clearer.
 
-**Direct answer formatting at the top of pages.** Pages that answer the query explicitly in the first paragraph (rather than burying the answer below contextual setup) are cited more frequently in overviews. Same principle as featured snippet optimization, just with the new generation system as the audience.
+**Direct answer formatting at the top of pages.** Pages that answer the query explicitly in the first paragraph are cited more frequently in overviews. Same principle as featured snippet optimization, just with the new generation system as the audience.
 
 **Question-and-answer structure.** Content organized as questions with clear, direct answers maps cleanly onto how the language model parses and reuses information. FAQ pages and FAQ sections within other pages perform well as overview source candidates.
 
 **Entity clarity and schema markup.** Structured data continues to matter. The model uses schema-derived understanding to determine what a page is about and how it relates to other entities. Sites with strong schema markup are cited more often.
 
-**Original information.** Generated summaries pull most heavily from sources that contribute distinct information rather than rehashes of the same general advice. Original research, distinctive analysis, first-hand expertise, and proprietary data all increase citation rates.
+**Original information.** Generated summaries pull most heavily from sources that contribute distinct information. Original research, distinctive analysis, first-hand expertise, and proprietary data all increase citation rates.
 
 **E-E-A-T signals strengthened.** Author markup, real credentials, transparent sourcing, and trust signals have always mattered in YMYL categories. They now matter more broadly because the model factors source authority into its citation decisions.
 
@@ -84,7 +84,7 @@ A few approaches that came up early and haven't panned out.
 
 ## The strategic shift
 
-The broader implication for SEO strategy isn't a tactical recipe. It's a shift in how to think about value.
+The broader implication for SEO strategy is a shift in how to think about value.
 
 **Pure top-of-funnel informational content is harder.** A guide to "how does X work" was historically a strong traffic driver. With AI Overviews summarizing the answer, the same guide produces less traffic for the same effort.
 
@@ -138,7 +138,7 @@ Several things are still in flux as of 2026 and worth monitoring rather than act
 
 **YMYL handling continues to evolve.** Medical, legal, and financial query handling has changed multiple times since rollout, with Google sometimes pulling back AI Overview frequency in these categories and sometimes expanding.
 
-**Competitive search engine response.** Bing's Copilot, Brave Search's AI features, Perplexity, and other AI-driven search products are changing the broader search landscape, not just Google's. SEO strategy increasingly needs to consider visibility across multiple AI-driven discovery surfaces.
+**Competitive search engine response.** Bing's Copilot, Brave Search's AI features, Perplexity, and other AI-driven search products are changing the broader search landscape beyond Google. SEO strategy increasingly needs to consider visibility across multiple AI-driven discovery surfaces.
 
 ## How we approach AI Overview optimization at SEO Brothers
 

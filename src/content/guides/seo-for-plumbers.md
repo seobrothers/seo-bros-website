@@ -8,7 +8,7 @@ summary: Plumbing is one of the most competitive local-search verticals. The arc
 featured: true
 ---
 
-Plumbing SEO isn't won by the agency with the most blog posts. It's won by the one that understands service-area architecture, Google Business Profile optimization, and the way plumbing customers actually search. The vertical is competitive in almost every market, the conversion economics are favorable, and the gap between strong and weak SEO is the difference between a thriving client and a quiet phone. If you've got a plumbing client, this is the part we run for you, under your brand.
+Plumbing SEO is won by the agency that understands service-area architecture, Google Business Profile optimization, and the way plumbing customers actually search. The vertical is competitive in almost every market, the conversion economics are favorable, and the gap between strong and weak SEO is the difference between a thriving client and a quiet phone. If you've got a plumbing client, this is the part we run for you, under your brand.
 
 This guide covers the framework we use on plumbing SEO campaigns. Architecture, keyword strategy, GBP, citations, reviews, link building, and the tactical layer that produces booked service calls.
 
@@ -182,7 +182,7 @@ For the broader content approach, see our [what to blog about guide](/guides/wha
 
 ### 10. Link building
 
-The supporting layer of authority. In most local plumbing markets, you don't need hundreds of links. A few dozen high-quality, locally-relevant links substantially outperform hundreds of mediocre ones.
+The supporting layer of authority. In most local plumbing markets, a few dozen high-quality, locally-relevant links substantially outperform hundreds of mediocre ones.
 
 Sources to start with:
 
@@ -206,7 +206,7 @@ Standard stack we use across plumbing campaigns.
 - **CallRail or similar.** Call tracking with attribution to marketing source
 - **Agency Analytics or similar.** Consolidated client reporting
 
-Without call tracking, the plumbing business can't tell which marketing channels actually produce calls. CallRail or equivalent should run on every plumbing site.
+CallRail or equivalent should run on every plumbing site. Without call tracking, the plumbing business can't tell which marketing channels actually produce calls.
 
 ## Common plumbing SEO mistakes
 

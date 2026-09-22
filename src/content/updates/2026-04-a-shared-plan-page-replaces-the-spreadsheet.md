@@ -23,7 +23,7 @@ Workbench and the Portal had been the beginning of the end for bulk spreadsheets
 1. The campaign plan became a shared page. One link, no login, generated live from Workbench, showing the plan by month with what is in scope against what is planned, and the client's locations on cards.
 2. Inside the Portal, planning was rebuilt around the same model on the 16th: a monthly plan grid, location focus and page focus plans, Business Profile and SEO tasks, citations, content recommendations, and an approval banner where something needs a decision.
 3. Onboarding a campaign became a three-tab form, and a campaign can be onboarded straight from a package.
-4. Webhooks appeared on the 7th, so an agency's other systems can be told when something happens rather than someone checking.
+4. Webhooks appeared on the 7th, so an agency's other systems can be told when something happens.
 5. A pending scope change now shows in the first full month after onboarding, where before it only showed the button to request it.
 
 ### 1. The shared plan page

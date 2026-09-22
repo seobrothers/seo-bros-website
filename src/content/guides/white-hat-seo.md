@@ -30,9 +30,9 @@ White hat SEO is rule-following. Optimization that adheres to the published guid
 - Original, substantive content
 - Topical authority built through depth and breadth of coverage
 - Genuinely useful information that answers real searcher questions
-- Refreshed and updated rather than left to stagnate
+- Refreshed and updated over time
 
-**Link building that earns rather than buys.**
+**Link building that earns its links.**
 
 - Resources valuable enough that people share and link organically
 - Editorial coverage from journalists and publications
@@ -89,7 +89,7 @@ Real white hat SEO is more expensive than most clients expect. The cost componen
 
 - **Content production.** Substantive, expert-driven content costs real money. Either you hire experienced writers in your industry, or you use the team's expertise (which has an opportunity cost), or you produce mediocre content that won't rank.
 - **Earned media outreach.** Pitching journalists, building relationships, producing the kind of original work worth covering. This is PR work, and PR is expensive.
-- **Patience.** White hat SEO operates on slower timelines than other channels, which means budget commitment over multi-quarter or multi-year horizons. Cash-flow-sensitive businesses often can't make the commitment.
+- **Patience.** White hat SEO needs budget commitment over multi-quarter or multi-year horizons, because it operates on slower timelines than other channels. Cash-flow-sensitive businesses often can't make the commitment.
 
 The pricing disconnect we see most often: a small business expects national-level results on a $500 to $1,000 monthly budget. The math doesn't work at that level for any approach, and white hat is the most expensive approach. The provider either has to accept the budget and use cheaper tactics (gray hat), or pass on the engagement.
 

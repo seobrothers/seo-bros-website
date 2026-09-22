@@ -16,7 +16,7 @@ edited: plain-language sweep: migrate became bring across, ready for deployment 
 edited: shaped
 -->
 
-November 2025 is the month Workbench became a place people worked rather than a plan, and the month the Portal and Workbench started handing things to each other. Almost none of it was visible to a partner, and almost all of it changed what happened after a partner clicked.
+November 2025 is the month Workbench became a place people worked, and the month the Portal and Workbench started handing things to each other. Almost none of it was visible to a partner, and almost all of it changed what happened after a partner clicked.
 
 ## For our partners
 

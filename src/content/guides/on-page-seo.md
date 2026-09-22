@@ -60,7 +60,7 @@ Things that matter:
 - **Original content.** Duplicate content across pages on the same site cannibalizes rankings. Boilerplate copy on service-area pages is a common offender.
 - **Topic depth.** The page should cover the topic well enough that a reader doesn't immediately bounce back to Google to find more. Bounce signals matter more than they used to.
 
-Keyword stuffing doesn't work. Mentioning the keyword and its variations naturally throughout the content does.
+Mentioning the keyword and its variations naturally throughout the content works. Keyword stuffing doesn't.
 
 ![Bar chart of average word count for pages on Google's first page, ranked positions 1 through 10. Position 1 averages around 2,050 words; position 10 averages around 1,660. Source: Backlinko.](/images/guides/word-count-vs-ranking.svg)
 
@@ -91,7 +91,7 @@ The strategic layer underneath the body-text element.
 The technical layer of head-section optimization.
 
 - **Page title** as covered above. Highest-weight on-page signal.
-- **Meta description** is the snippet shown in search results. Not a direct ranking factor, but heavily affects click-through rate. Include keywords (Google bolds them in the snippet) and action-oriented language. Phrases like "click here," "save x%," and "get a free quote" all earn clicks.
+- **Meta description** is the snippet shown in search results. Heavily affects click-through rate, though it is not a direct ranking factor. Include keywords (Google bolds them in the snippet) and action-oriented language. Phrases like "click here," "save x%," and "get a free quote" all earn clicks.
 - **Meta keywords** is dead. **Please, if you're still using and stuffing keywords into the meta keywords tag, please stop.** This was already obsolete when I first wrote about on-page SEO years ago. It is more obsolete now.
 
 For WordPress sites, the Yoast SEO plugin handles the metadata side cleanly. I've used Yoast on every WordPress install I've worked on for years. Rank Math is the alternative most agencies have moved to since. Either is fine.
@@ -102,14 +102,14 @@ For WordPress sites, the Yoast SEO plugin handles the metadata side cleanly. I'v
 
 Single H1 per page. Multiple H2s for major sections. H3s for sub-sections inside body content (the high-leverage element). H4 and below for finer structure.
 
-Hierarchical, not skipping levels. Pages with H1 → H4 → H2 disorder confuse both screen readers and crawlers.
+Hierarchical, with no skipped levels. Pages with H1 → H4 → H2 disorder confuse both screen readers and crawlers.
 
 ### Images and rich media
 
 Images need three things to add real value:
 
 - **Filename.** `plumber-vancouver.jpg`, not `IMG_4837.jpg`. Search engines parse the filename for context.
-- **Alt text.** Descriptive of what the image actually shows, including the keyword if it fits naturally. Don't stuff alt text with the keyword across every image. That's a footprint, not optimization.
+- **Alt text.** Descriptive of what the image actually shows, including the keyword if it fits naturally. Don't stuff alt text with the keyword across every image. That's a footprint.
 - **File weight.** Compressed, modern format like WebP, lazy-loaded if below the fold.
 
 Embedded video adds topical signal and tends to lift time-on-page. YouTube embeds are the easiest path. Self-hosted video is heavier and rarely worth the technical overhead unless there's a specific reason.
@@ -165,7 +165,7 @@ What you want:
 - Parent pages link down to all relevant child pages
 - Child pages link back up to parent pages
 - Sibling pages link to each other when topically related
-- Cross-silo links are rare and editorial, not structural
+- Cross-silo links are rare and editorial
 
 Done well, siloing produces ranking lifts even without acquiring a single new backlink. The internal link graph itself is doing the work.
 
@@ -192,7 +192,7 @@ Depending on scope, we add columns and tabs for canonical URLs, page speed metri
 
 Live data comes from Sitebulb in combination with Screaming Frog crawls, refreshed on a cadence so the document stays current. Both have been the core of our on-page tooling for years.
 
-The exact tab structure isn't sacred. What matters is that the document captures every page, every recommendation, every priority, and every change as it ships. Without that, on-page work fragments across emails and tickets and never lands cleanly.
+What matters is that the document captures every page, every recommendation, every priority, and every change as it ships. The exact tab structure isn't sacred. Without that, on-page work fragments across emails and tickets and never lands cleanly.
 
 ## How we approach on-page SEO at SEO Brothers
 

@@ -106,7 +106,7 @@ Regardless of audience, six categories of data make up a complete white-label SE
 - PPC integration where the agency runs both
 - Call tracking attribution data
 
-The mistake to avoid: pulling every metric a tool produces and dumping it into the report. Density doesn't equal insight. Curated metrics with explanation outperform comprehensive metric dumps.
+The mistake to avoid: pulling every metric a tool produces and dumping it into the report. Curated metrics with explanation outperform comprehensive metric dumps.
 
 ## Branding considerations
 
@@ -162,7 +162,7 @@ Specialized for local SEO and multi-location reporting. Strongest for local-only
 
 Free, infinitely customizable, and integrates with most data sources. The trade-off is build effort: you're constructing the dashboard yourself rather than using a templated platform. Cost-effective for agencies willing to invest the build time.
 
-The choice between platforms isn't usually about features. It's about which one matches your existing workflow and the depth of customization you need.
+The choice between platforms usually comes down to which one matches your existing workflow and the depth of customization you need.
 
 ## When to do reporting yourself
 

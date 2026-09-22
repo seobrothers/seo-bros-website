@@ -16,7 +16,7 @@ edited: plain-language sweep: endpoint, batched, backing off, rendering and payl
 edited: shaped
 -->
 
-June closed the Workbench era. Before the first line of the platform's code was written on July 6, Workbench gained the two things a campaign had never had in one place: a report on what happened and a watch on what might go wrong.
+June closed the Workbench era. Workbench gained the two things a campaign had never had in one place: a report on what happened and a watch on what might go wrong. The first line of the platform's code was written on July 6.
 
 ## For our partners
 
@@ -25,7 +25,7 @@ June closed the Workbench era. Before the first line of the platform's code was 
 3. A reporting page arrived per campaign on the 30th, drawing on the same data the team sees.
 4. From the 23rd an agency chooses its notifications: which kinds, by email or to a webhook, with a test send. On July 2 communication settings gained a campaign-level fallback and show who at the agency is assigned to what.
 5. Content plan rows show status indicators and a note count, and approving a content idea is a cleaner step.
-6. Offboarding campaigns stay visible under their own tab rather than disappearing, and organisation settings got their own page.
+6. Offboarding campaigns stay visible under their own tab, and organisation settings got their own page.
 
 ## Behind the scenes
 
@@ -35,7 +35,7 @@ June closed the Workbench era. Before the first line of the platform's code was 
 4. Citations were reorganised around locations. Every citation now belongs to a specific location.
 5. Three tools went up: an AI rank checker that tracks where a client appears in AI answers across several domains, a site auditor with a technical audit that does not need a full crawl, and a Business Profile auditor with reviews.
 6. Initiatives arrived internally on the 5th with time tracking and reviews attached. Keyword mapping followed from the 18th, keywords mapped to the pages that should rank for them and linked to the content that targets them, with the crawl folded in, and campaign keyword research came on the 23rd.
-7. Business Profile posts were tightened after a sweep of every post written so far: they had been landing at the bottom of the length band, so the target moved up, and images the platform rejects are filtered before upload.
+7. Business Profile posts were tightened after a sweep of every post written so far: the length target moved up, since posts had been landing at the bottom of the band, and images the platform rejects are filtered before upload.
 8. One notification service took over sending from the 23rd: every notice goes through it, grouped, slowed when the email provider asks, and each email is built from the record of what happened.
 
 ### 3. Blog posts learn to link

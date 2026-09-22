@@ -26,11 +26,11 @@ A few traits define the category:
 
 ## Keyword strategy by intent
 
-Two numbers frame this category. "Carpet cleaning near me" pulls about 49,000 US searches a month, but at a keyword difficulty of 37 the local pack and first page are crowded with national franchises (Stanley Steemer, Zerorez, Chem-Dry, Oxi Fresh) and aggregators (Angi, Thumbtack, Yelp). An independent competes there on local relevance and reviews, not by out-muscling the chains for the head term. The second number is the one most operators miss: the adjacent surface-cleaning services a carpet cleaner already performs carry huge volume at almost no competition. More on that below.
+Two numbers frame this category. "Carpet cleaning near me" pulls about 49,000 US searches a month, but at a keyword difficulty of 37 the local pack and first page are crowded with national franchises (Stanley Steemer, Zerorez, Chem-Dry, Oxi Fresh) and aggregators (Angi, Thumbtack, Yelp). An independent competes there on local relevance and reviews. The second number is the one most operators miss: the adjacent surface-cleaning services a carpet cleaner already performs carry huge volume at almost no competition. More on that below.
 
 We map carpet cleaning keywords across four buckets. Volumes are US monthly from Ahrefs, June 2026. Difficulty is Ahrefs KD on a 0-100 scale; single digits are essentially uncontested.
 
-**Transactional, the contested core.** High intent, high competition. This is a local-pack and reviews fight, not a pure-content one.
+**Transactional, the contested core.** High intent, high competition. This is a local-pack and reviews fight.
 
 | Query | Monthly searches | Difficulty |
 |---|---:|---:|
@@ -41,7 +41,7 @@ We map carpet cleaning keywords across four buckets. Volumes are US monthly from
 | carpet cleaning company near me | 7,000 | 13 |
 | carpet steam cleaning | 2,500 | 5 |
 
-City-qualified terms ("carpet cleaning Las Vegas" 1,600, Houston 1,200, Phoenix 1,200, Los Angeles 1,200) sit underneath these and are won the same way: local relevance and reviews, not by out-muscling Stanley Steemer, Zerorez, and the aggregators for the bare head term.
+City-qualified terms ("carpet cleaning Las Vegas" 1,600, Houston 1,200, Phoenix 1,200, Los Angeles 1,200) sit underneath these and are won the same way: local relevance and reviews.
 
 **Adjacent surface services, the real unlock.** Most carpet cleaners also do upholstery, rugs, tile, and mattresses, but their site only has a carpet page. The missed volume is large and barely contested:
 
@@ -53,7 +53,7 @@ City-qualified terms ("carpet cleaning Las Vegas" 1,600, Houston 1,200, Phoenix 
 | tile and grout cleaning | 5,400 | 2 |
 | mattress cleaning | 3,300 | 2 |
 
-These are not different businesses. They are services the operator already runs with the same truck and crew. A dedicated page for each captures demand the carpet-only site is invisible for, at a difficulty a new site can clear in months.
+These are services the operator already runs with the same truck and crew. A dedicated page for each captures demand the carpet-only site is invisible for, at a difficulty a new site can clear in months.
 
 **Commercial.** "Commercial carpet cleaning" (10,000, KD 9) and "commercial carpet cleaning services" (5,000, KD 10) sit at a fraction of the competition the residential head terms carry, with far higher per-deal value and recurring-contract potential. Different buyer (facilities and office managers), different page, different proof points (insurance, certifications, references, after-hours availability). Most sites under-build this because the volume looks small next to residential; the contract math says otherwise.
 
@@ -67,7 +67,7 @@ These are not different businesses. They are services the operator already runs 
 | carpet cleaning prices | 1,000 | 0 |
 | how much does carpet cleaning cost | 700 | 0 |
 
-One number to treat with caution: "carpet cleaner" shows about 148,000 searches a month at KD 5, but the intent is mixed. Rental machines, the appliance itself, and the person doing the work all share the term. It is not the clean service-intent target the volume makes it look like, so chase the qualified phrases above instead.
+One number to treat with caution: "carpet cleaner" shows about 148,000 searches a month at KD 5, but the intent is mixed. Rental machines, the appliance itself, and the person doing the work all share the term. Chase the qualified phrases above instead; it is not the clean service-intent target the volume makes it look like.
 
 For the keyword research framework underneath this, see [our keyword research guide](/guides/keyword-research/) and [keyword mapping guide](/guides/keyword-mapping/).
 
@@ -88,7 +88,7 @@ For the on-page mechanics, see [our on-page SEO guide](/guides/on-page-seo/).
 
 The informational queries in this category, "how to get stains out of carpet," "how much does carpet cleaning cost," "steam cleaning vs dry cleaning," are increasingly answered in an AI Overview before the searcher clicks. The stain-removal content that used to pull steady top-of-funnel traffic now often resolves at the top of the results.
 
-This matters less in carpet cleaning than in most categories, because the money queries here are transactional and local ("carpet cleaning near me," the adjacent-service terms), and those still resolve to the local pack and the map, not an AI Overview. The informational content is still worth building, but treat it as an authority and brand play: structure stain and cost content for extraction, lead with the direct answer, and aim to be the cited source. The operator cited for "how much does carpet cleaning cost in [city]" earns recognition that feeds the local search where the actual booking happens. Don't over-invest in informational content at the expense of the local-pack foundation, which is where the calls come from.
+This matters less in carpet cleaning than in most categories, because the money queries here are transactional and local ("carpet cleaning near me," the adjacent-service terms), and those still resolve to the local pack and the map. The informational content is still worth building, but treat it as an authority and brand play: structure stain and cost content for extraction, lead with the direct answer, and aim to be the cited source. The operator cited for "how much does carpet cleaning cost in [city]" earns recognition that feeds the local search where the actual booking happens. Don't over-invest in informational content at the expense of the local-pack foundation, which is where the calls come from.
 
 ## Local SEO is the whole game
 
@@ -120,7 +120,7 @@ Most carpet cleaning sites under-build the commercial side because the volume lo
 
 ## Seasonal patterns and emergency positioning
 
-Spring and early fall are peak residential demand. End-of-tenancy demand spikes around end-of-month and end-of-quarter cycles in rental markets. Holiday-prep cleaning concentrates in November and early December. Plan content publication and GBP posts to anticipate, not chase, the demand.
+Spring and early fall are peak residential demand. End-of-tenancy demand spikes around end-of-month and end-of-quarter cycles in rental markets. Holiday-prep cleaning concentrates in November and early December. Plan content publication and GBP posts ahead of the demand.
 
 Emergency positioning is a smaller volume but higher-intent stream. "Emergency carpet cleaning," "24-hour carpet cleaner," "water damage carpet cleaning [city]." Operators with real same-day or after-hours capacity should build dedicated pages and emphasize the capability in GBP attributes.
 
@@ -141,7 +141,7 @@ Patterns we see in audits:
 
 **How long does SEO take to work for a carpet cleaning company?**
 
-Faster than most categories on the local side. GBP optimization, reviews, and citation work can move the local pack in 60 to 90 days. The adjacent-service and location pages build over three to four months. Because so many of the best targets (upholstery, rug, tile, cost terms) sit at single-digit difficulty, a clean site can rank for them quickly.
+Faster than most categories on the local side. GBP optimization, reviews, and citation work can move the local pack in 60 to 90 days. The adjacent-service and location pages build over three to four months. A clean site can rank for the best targets (upholstery, rug, tile, cost terms) quickly, because so many of them sit at single-digit difficulty.
 
 **How much does carpet cleaning SEO cost?**
 

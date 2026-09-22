@@ -8,7 +8,7 @@ summary: Local SEO has fewer variables than enterprise SEO and is more predictab
 featured: true
 ---
 
-Local SEO isn't rocket science. It's the most straightforward and forgiving SEO out there.
+Local SEO is the most straightforward and forgiving SEO out there.
 
 That's why so many SEO companies focus on it. Fewer variables, more predictable outcomes, smaller sites, smaller keyword universes. A 30-page local site is a different animal than a 30,000-page enterprise site, and the work-to-result ratio is much more favorable.
 
@@ -42,7 +42,7 @@ Most local-business websites are built on the wrong foundation. I've done hundre
 
 It's not always the business owner's fault. They get $2,500 websites with five pages from agencies that need to keep margins workable, and the result is a foundation that can't support real SEO work.
 
-I usually use the foundation analogy. If your website is a 10/10 foundation, every dollar you put into growth multiplies. If it's a 1/10, you're paying for compensation, not growth.
+I usually use the foundation analogy. If your website is a 10/10 foundation, every dollar you put into growth multiplies. If it's a 1/10, you're paying for compensation.
 
 Get it? Because something times ten is higher than something times one.
 
@@ -60,13 +60,13 @@ The homepage anchors the brand. It doesn't try to rank for every service the bus
 
 ### 2. Service pages focused on what they do
 
-Gone are the days of getting away with a single "Services" page. If the business offers more than one service, give each one its own page with real content.
+If the business offers more than one service, give each one its own page with real content. The days of getting away with a single "Services" page are gone.
 
 For our Halifax dentist: separate pages for general cleanings, Invisalign, teeth whitening, dental implants, root canals, emergency dental.
 
 I get it, more pages is more template work and more content budget. Don't skimp here. Build out the service pages. Answer questions, solve problems, include calls to action.
 
-These pages target the intent of what the business does, often with a geo modifier. "Invisalign Halifax." "Emergency dental Halifax." Keep them substantive, not 200-word brochure stubs.
+These pages target the intent of what the business does, often with a geo modifier. "Invisalign Halifax." "Emergency dental Halifax." Keep them substantive.
 
 ### 3. Service-area or location pages focused on where they do it
 
@@ -100,7 +100,7 @@ Each one targets a specific search intent and a specific customer profile. They 
 
 ### 5. Educational blog content that supports the services
 
-One to two posts per service offering. Not press releases. Content that solves problems, answers common patient questions, or explains things customers actually search for.
+One to two posts per service offering. Content that solves problems, answers common patient questions, or explains things customers actually search for.
 
 For our dentist: how often you should replace your toothbrush, what to do for a knocked-out tooth, recovery time after wisdom teeth removal, how Invisalign actually works, how to floss a child's teeth properly.
 
@@ -203,7 +203,7 @@ Optimization checklist:
 
   Same business. Two different signal trails. Pick one format and use it everywhere.
 
-- **Categories.** All relevant categories selected, not just the primary. Primary category drives most of the ranking weight, so pick that one carefully.
+- **Categories.** All relevant categories selected. Primary category drives most of the ranking weight, so pick that one carefully.
 - **Description.** Compelling, keyword-natural, accurately describes the business. Keywords in the description help. Stuffing them gets the profile filtered or suspended.
 - **Hours.** Including holiday hours and any special hours.
 - **Photos.** Multiple, high-quality, regularly added. Interior, exterior, team, work-in-progress.
@@ -215,7 +215,7 @@ Optimization checklist:
 
 A side note on proximity. If you're trying to rank for a popular city keyword and your business is way out in the suburbs, you'll have a much harder time than someone right downtown. Google uses radius from the searcher's location to display the closest results, and an address ten kilometres outside the searched-for city is going to lose to one inside it. You'll usually still show up for searches in your immediate suburb, which is fine, but the city-level keyword is harder to win from outside the city.
 
-A complete profile is a baseline expectation in 2026, not a competitive advantage. The advantage comes from updating it consistently.
+A complete profile is a baseline expectation in 2026. The advantage comes from updating it consistently.
 
 <!-- TODO: replace with current screenshots of a 3-pack map result and a fully-optimized Google Business Profile dashboard -->
 
@@ -245,15 +245,15 @@ Two approaches that work:
 
 **Automated review funnels.** Tools like Grade.us, NiceJob, and Birdeye send review requests automatically after a service, route happy customers to public review sites, and flag unhappy customers for private feedback first. Effective at scale.
 
-Automation isn't always the right move. A few well-timed personal emails can outperform a fully automated system, especially for high-touch service businesses. Pick the approach that matches your operational style.
+A few well-timed personal emails can outperform a fully automated system, especially for high-touch service businesses. Pick the approach that matches your operational style.
 
-What matters: review velocity (steady stream, not a one-time burst), review quality (real reviews from real customers, no fakes, no incentivized reviews), and response (reply to every review, including the negative ones, professionally).
+What matters: review velocity (a steady stream), review quality (real reviews from real customers, no fakes, no incentivized reviews), and response (reply to every review, including the negative ones, professionally).
 
 Don't buy reviews. Profile gets suspended, business loses its primary local-search asset, and there's no good recovery path.
 
 ### Step 9: Build links to your website
 
-In most local markets, you don't need a hundred links to win. A dozen high-quality, locally relevant links often outperform a hundred mediocre links.
+In most local markets, a dozen high-quality, locally relevant links often outperform a hundred mediocre ones.
 
 Sources to start with:
 
@@ -279,7 +279,7 @@ What to track:
 
 Tools: Google Analytics 4, Google Search Console, and a consolidated reporting tool. We use Agency Analytics for client-facing dashboards. It's reasonably priced and handles the multi-platform consolidation cleanly.
 
-You don't need a complex stack. You need consistent visibility into the metrics that map to revenue.
+You need consistent visibility into the metrics that map to revenue.
 
 ## Common local-SEO mistakes
 

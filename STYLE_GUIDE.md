@@ -54,6 +54,11 @@ A degree more serious than Adam. Drier humor, light sarcasm, fewer fireworks. Gr
 
 These apply regardless of author.
 
+- **Say what it is, not what it isn't. Lead with the point.** Avoid negative parallelism and backloaded rationale in headings, bullet points, descriptions, and body copy. Write instead, targeting how an average, everyday human would understand.
+  - *Negative parallelism* frames a point by first naming the wrong thing: "It's not X, it's Y." "Not a dashboard. A decision." "No fluff, no jargon, just results." "Less about rankings, more about revenue." The reader has to hold the thing you reject before they get the thing you mean. State the thing you mean. ("It's not about traffic, it's about leads" becomes "The goal is leads.")
+  - *Backloaded rationale* makes the reader wait for the point. The setup, condition, or reason comes first and the claim arrives at the end: "Because redesigns change URLs and search engines lose track of pages, we map every old URL before launch." Put the claim first, then the reason, in the order a person would say it out loud: "We map every old URL before launch. Redesigns change URLs, and search engines lose track of pages that move."
+  - Headings and bullets get the same treatment. "Redesigns Tank Rankings. Ours Don't Have To." becomes "Your Client's Rankings Survive the Redesign." A bullet that reads "Not another page builder" becomes what it actually is.
+  - A plain negative fact is fine ("No setup fee." "We never email your client."). The pattern to cut is the rhetorical one, where the negative exists to set up a contrast or a reveal.
 - **No em dashes (—) anywhere in prose.** Use commas, parens, colons, or sentence breaks. Exception: stylistic attribution lines (signoffs like `— The Brothers`, pull-quote attributions, byline credits in design contexts). Those are fine.
 - **Preserve visual elements during rework.** If the legacy version had inline images, charts, screenshots, embedded videos, or linked downloads, carry them forward. Images get downloaded to `public/images/guides/[slug]/[filename]` and referenced via markdown `![alt](path)` in the guide body. Embeds (YouTube, etc.) stay as embeds. External resource links stay. Don't ship a text-only rewrite of a guide that originally had visual context. If a legacy image is dated or low-quality, surface it as a TODO for replacement rather than silently dropping it.
 - **Never refer to SEO Brothers' work as "PBN" or "private blog network."** The internal product name is the **Publishing House** (a managed network of owned media properties plus supplemental aged/auction domains). The term PBN can appear in educational/observational content as an industry term, but never as a label for what we do. No "we run PBNs," no "our PBN," no "PBNs we use." See `LinkBuilding_Partner_Overview.docx` and `LinkBuilding_Client_Overview.docx` (in Devon's iCloud Desktop) for the canonical positioning language. Note those source docs are marked confidential, so don't copy their text verbatim into public site content.
@@ -74,7 +79,8 @@ When reworking a migrated guide, run through this:
 1. **Voice match.** Is this Adam's voice or Devon's? Frontmatter set correctly?
 2. **Adam guides: are the personal stories preserved?** If they were stripped during the original migration, restore them from the legacy version.
 3. **Em dashes scrubbed?** Search for `—` and replace.
-4. **Bullets earning their place?** Convert bolded-bullet walls back to prose where the content is actually flowing argument.
-5. **Hot takes intact?** If the original had an opinion and the migration softened it, restore the edge.
-6. **Closing CTA.** One paragraph, link to `/sign-up` or `/white-label-seo`, no over-design.
-7. **Length and rhythm.** Adam guides can run long with lots of breaks. Devon guides should feel tighter, shorter paragraphs, less single-line breaks.
+4. **Negative parallelism and backloaded rationale gone?** Every "not X, it's Y" becomes Y. Every sentence, heading, and bullet leads with its point and follows with the reason.
+5. **Bullets earning their place?** Convert bolded-bullet walls back to prose where the content is actually flowing argument.
+6. **Hot takes intact?** If the original had an opinion and the migration softened it, restore the edge.
+7. **Closing CTA.** One paragraph, link to `/sign-up` or `/white-label-seo`, no over-design.
+8. **Length and rhythm.** Adam guides can run long with lots of breaks. Devon guides should feel tighter, shorter paragraphs, less single-line breaks.

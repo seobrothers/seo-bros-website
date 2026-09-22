@@ -20,7 +20,7 @@ The strategic positioning Sitebulb has held since launch is the middle ground be
 
 ## What Sitebulb does well
 
-The crawl output is the differentiator. Most crawlers give you tables. Sitebulb gives you tables plus interactive visualizations that surface patterns the tables don't.
+The crawl output is the differentiator. Sitebulb gives you tables plus interactive visualizations that surface patterns the tables don't. Most crawlers stop at the tables.
 
 Specifically:
 
@@ -58,7 +58,7 @@ A few situations where we reach for Sitebulb specifically rather than alternativ
 
 **Architectural reviews.** When the question is "is the site structured well?" rather than "what specific issues exist?", the link-graph visualization is the fastest way to answer.
 
-## Use cases where it's not the right tool
+## Use cases where another tool fits better
 
 A few cases where we reach for something else.
 

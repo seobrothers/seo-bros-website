@@ -50,7 +50,7 @@ Lower volume per keyword, but cumulatively long-tail volume often exceeds head-t
 
 ### Informational keywords
 
-Knowledge-seeking queries. The user wants to learn, not buy.
+Knowledge-seeking queries. The user wants to learn.
 
 - "How to clean a French press"
 - "What is keyword research"
@@ -66,7 +66,7 @@ Action-oriented queries indicating purchase intent.
 - "Buy French press online"
 - "[Service] near me"
 
-Lower volume, much higher conversion intent. Maps to product, category, and service pages, not blog content.
+Lower volume, much higher conversion intent. Maps to product, category, and service pages.
 
 For the full framework on intent reading, see our [searcher intent guide](/guides/searcher-intent/).
 
@@ -149,7 +149,7 @@ If the SERP is dominated by sites with massive authority (Wikipedia, major news 
 
 Ahrefs, SEMrush, and Moz all generate keyword difficulty scores. Each uses a slightly different methodology, but all return a 0-to-100 score where higher means harder.
 
-Treat these scores as relative, not absolute. A "30" in your category against your domain's authority might be hard. The same "30" in another category against a different domain might be easy. The score is most useful for comparing keywords against each other within the same context, not as a universal threshold.
+Treat these scores as relative. A "30" in your category against your domain's authority might be hard. The same "30" in another category against a different domain might be easy. The score is most useful for comparing keywords against each other within the same context.
 
 ### Backlink and authority analysis
 
@@ -171,7 +171,7 @@ CTR estimates by position (rough benchmarks; actual rates vary by SERP compositi
 - Positions 6-10: 2 to 4% combined
 - Page 2: <1%
 
-Note that the introduction of AI Overviews, featured snippets, and local pack results has compressed organic CTR for many queries. The benchmarks above are starting points, not guarantees.
+Note that the introduction of AI Overviews, featured snippets, and local pack results has compressed organic CTR for many queries. The benchmarks above are starting points.
 
 Example calculation:
 

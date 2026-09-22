@@ -18,7 +18,7 @@ This guide covers how we run white-label audits, what's in the deliverable, the 
 
 Three things determine whether a white-label audit is actually useful to the agency and the end client.
 
-**It has to be actionable.** An audit that produces a 200-page PDF nobody reads isn't an audit, it's an artifact. The deliverable has to identify specific issues, prioritize them by impact, and recommend specific actions that someone (the agency, the client, or the SEO partner) can implement.
+**It has to be actionable.** A 200-page PDF nobody reads is an artifact, not an audit. The deliverable has to identify specific issues, prioritize them by impact, and recommend specific actions that someone (the agency, the client, or the SEO partner) can implement.
 
 **It has to be branded as the agency's.** The end client should see a deliverable that looks like the agency produced it. Not a third-party template with the agency's logo slapped on top. The branding signals quality and reinforces the agency's positioning.
 
@@ -96,7 +96,7 @@ The trade-off is real and depends on the agency's positioning.
 - The agency wants to differentiate on the quality of its strategic thinking
 - The audit feeds directly into a paid implementation
 
-We run human audits because that's where our value sits. Software audits are a different category, and we're not going to pretend they're inferior in every case. They're worse when the use case calls for human analysis. They're fine when the use case is volume lead-magnet work.
+We run human audits because that's where our value sits. Software audits are a different category. They're worse when the use case calls for human analysis and fine when the use case is volume lead-magnet work.
 
 ## Branding and customization
 

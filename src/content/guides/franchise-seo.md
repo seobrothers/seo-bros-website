@@ -47,7 +47,7 @@ That market, where most readers of this guide sit, is real and almost entirely u
 
 *(Ahrefs, US, July 2026)*
 
-The consumer-side keyword set is a different exercise, and it changes with the vertical. A fitness franchise chases "gym in [city]," a home services franchise chases "AC repair near me," a childcare brand chases "daycare near me." There is no single franchise keyword list, which is why the strategy has to be built per brand and per market. The vertical-specific playbooks live in guides like our [HVAC SEO breakdown](/guides/hvac-seo/); the architecture below is what holds them together across a network.
+The consumer-side keyword set is a different exercise, and it changes with the vertical. A fitness franchise chases "gym in [city]," a home services franchise chases "AC repair near me," a childcare brand chases "daycare near me." The strategy has to be built per brand and per market, because there is no single franchise keyword list. The vertical-specific playbooks live in guides like our [HVAC SEO breakdown](/guides/hvac-seo/); the architecture below is what holds them together across a network.
 
 ## Domain architecture: one site or many
 
@@ -61,7 +61,7 @@ The first decision in any franchise SEO program is the domain model. Each option
 
 The default we recommend for most franchise systems is the single-domain subdirectory model, with strong location-page architecture and franchisee access controls.
 
-## Location pages without the duplicate-content trap
+## Location pages that earn their own ranking
 
 Templated location pages are the engine of franchise SEO and the most common failure point. The template gives you scale, but the content has to differentiate enough that each page earns its own ranking.
 
@@ -132,7 +132,7 @@ Google Business Profile is the highest-leverage local asset a franchise owns. "G
 
 The programs that hold up centralize what should be consistent and distribute what has to be local. Corporate sets the category strategy, naming convention, photo standards, and posting cadence, and keeps admin access to every profile. Franchisees handle the day to day: real photos of the location, responses to reviews and questions, local posts. Bulk management through the Google Business Profile API or a listings platform is what makes this tractable past a dozen locations. The profiles that get skipped are the ones that quietly stop ranking.
 
-Reviews sit right alongside. BrightLocal's 2026 survey found 80 percent of US consumers search for local businesses at least weekly, and reviews are a primary input to which one they call ([BrightLocal Local Consumer Review Survey](https://www.brightlocal.com/research/local-consumer-review-survey/)). Across a franchise that plays out per location: a branch with 200 reviews at 4.7 stars pulls calls from the sister branch sitting at 12 reviews and 3.9. The fix is a network-wide review generation system so every location asks consistently, response standards set by corporate and executed locally, and monitoring that flags the profiles going quiet. Reviews accrue to the individual profile, not the brand, so there is no network-level shortcut.
+Reviews sit right alongside. BrightLocal's 2026 survey found 80 percent of US consumers search for local businesses at least weekly, and reviews are a primary input to which one they call ([BrightLocal Local Consumer Review Survey](https://www.brightlocal.com/research/local-consumer-review-survey/)). Across a franchise that plays out per location: a branch with 200 reviews at 4.7 stars pulls calls from the sister branch sitting at 12 reviews and 3.9. The fix is a network-wide review generation system so every location asks consistently, response standards set by corporate and executed locally, and monitoring that flags the profiles going quiet. Reviews accrue to the individual profile, so there is no network-level shortcut.
 
 ## Technical SEO across a franchise network
 
@@ -154,7 +154,7 @@ At the location level, the metrics that matter are local-pack position by keywor
 
 AI Overviews and assistant-style search are changing local discovery. BrightLocal's 2026 survey found the share of consumers using AI tools like ChatGPT for local business recommendations jumped from 6 percent in 2025 to 45 percent in 2026 ([BrightLocal](https://www.brightlocal.com/research/lcrs-ai-trust/)). Those systems still lean on the same foundation as local search: an accurate, well-reviewed Google Business Profile, consistent NAP across the web, and location pages with real, extractable content.
 
-None of that is a separate AI strategy. It is the organic and local foundation done well, structured so machines can read it. For a franchise the leverage is consistency: clean, structured location data across hundreds of profiles is exactly what an AI system can trust and surface, while half-maintained profiles and templated pages give it nothing to work with. Build the foundation, keep it current, and the AI layer follows.
+All of that is the organic and local foundation done well, structured so machines can read it. For a franchise the leverage is consistency: clean, structured location data across hundreds of profiles is exactly what an AI system can trust and surface, while half-maintained profiles and templated pages give it nothing to work with. Build the foundation, keep it current, and the AI layer follows.
 
 ## Common mistakes
 

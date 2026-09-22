@@ -67,7 +67,7 @@ Standard on-page work applied to the dual-audience structure.
 
 - Title tags and meta descriptions tuned to the specific audience the page serves
 - Heading hierarchy that mirrors the intended user journey
-- Body copy that doesn't try to address both audiences in the same paragraph
+- Body copy written for one audience at a time
 - Mobile-friendly responsive design (critical for tenant searches, which are heavily mobile)
 - Internal linking that keeps owners on owner pages and tenants on tenant pages
 - Image optimization with descriptive filenames and alt text (especially important for unit photos)
@@ -159,7 +159,7 @@ If the firm operates apartment communities directly (rather than just managing t
 
 **Reviews dominate selection.** Apartment community reviews on Google, Yelp, ApartmentRatings, and Apartments.com weigh heavily in renter decision-making. Active review management is non-negotiable.
 
-**Lease-up cycle alignment.** New properties or properties with major turnover need a lease-up campaign that maps to the timeline. SEO won't deliver day-one rankings, so PPC and paid social typically handle the immediate-occupancy push while SEO builds the longer-term traffic foundation.
+**Lease-up cycle alignment.** New properties or properties with major turnover need a lease-up campaign that maps to the timeline. PPC and paid social typically handle the immediate-occupancy push while SEO builds the longer-term traffic foundation, since SEO won't deliver day-one rankings.
 
 **Geo-targeted paid ads complement SEO.** Hyper-local Google Ads, Facebook ads, and Instagram ads work alongside organic visibility, especially for newer properties or competitive submarkets.
 
@@ -172,7 +172,7 @@ A few patterns we see repeatedly.
 - **Single-page websites.** A property management firm with a one-page brochure can't rank for either owner or tenant queries. The content depth doesn't exist.
 - **Conflated content.** Pages that try to address both owners and tenants in the same paragraph confuse both audiences and rank for neither.
 - **Generic service-area pages.** "We serve [city]" pages with the same boilerplate copy. Filtered by Google, no ranking value.
-- **No virtual tours.** In a category where renters expect to evaluate units online, sites without virtual tours convert dramatically worse and miss engagement signals that affect rankings.
+- **No virtual tours.** Sites without them convert dramatically worse and miss engagement signals that affect rankings, because renters expect to evaluate units online.
 - **Stale property listings.** Listings that show units as available when they're actually leased damage trust and waste lead-form submissions.
 - **No reputation management.** Negative reviews ignored, no active asking for positive reviews from satisfied tenants or owner clients. The reputation signal weakens over time.
 

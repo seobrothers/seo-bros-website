@@ -58,8 +58,8 @@ const reviewCallUrl = "https://calendly.com/d/d2kj-dd8-pc6/discovery-walkthrough
       <!-- Confirmation (direct visits, or after results) -->
       <div class="disco__confirm" id="disco-confirm" hidden>
         <p class="disco__confirm-text">
-          We've also logged your request. Our team reviews these by hand, so the
-          fastest way to a full human audit is to grab a time below, we'll walk
+          We've also logged your request. The fastest way to a full human audit is
+          to grab a time below. Our team reviews these by hand, and we'll walk
           through everything with you.
         </p>
       </div>
@@ -214,7 +214,7 @@ const reviewCallUrl = "https://calendly.com/d/d2kj-dd8-pc6/discovery-walkthrough
         const localEl = el("disco-local")!;
         localEl.hidden = false;
         if (data.local.found) {
-          localEl.textContent = `Google Business Profile: ${data.local.name ?? "found"} — ${data.local.rating ?? "n/a"}★ from ${data.local.reviews ?? 0} reviews.`;
+          localEl.textContent = `Google Business Profile: ${data.local.name ?? "found"}, ${data.local.rating ?? "n/a"}★ from ${data.local.reviews ?? 0} reviews.`;
         } else {
           localEl.textContent = "Google Business Profile: we couldn't find one in that market. For local search, that's the biggest miss to fix first.";
         }
