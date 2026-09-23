@@ -4,22 +4,22 @@ import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import EarlyAccessForm from "../../components/EarlyAccessForm.astro";
 
-// Early access to the self serve website build inside Tideworthy. The
-// questionnaire on the right posts to /api/early-access; the team opens
-// access in small groups from the Slack thread it lands in.
+// Early access to Websites inside Tideworthy. The questionnaire on the right
+// is rendered from the platform's public form definition and posts back to it;
+// the email joins the early-access list once the confirmation is clicked.
 
 const gets = [
   {
-    title: "Built from what the campaign already knows",
-    body: "The current site, the Business Profile, the keywords and the locations on the client's campaign become the first draft of the new site.",
+    title: "Fully managed and agentic",
+    body: "SEO Brothers builds and manages the site through the platform, the way your SEO campaigns already run.",
   },
   {
-    title: "Edited by conversation",
-    body: "Ask for the change in plain words and review it on a staging link. Every version is kept.",
+    title: "Or self serve for your team",
+    body: "Your team, or your clients, make the changes themselves.",
   },
   {
-    title: "Live on the client's domain, under your brand",
-    body: "Hosting, SSL and go-live happen from the same screen. Your client sees your name on all of it.",
+    title: "The same approvals and reporting",
+    body: "Website work shows up in the queue and the reports your clients already see, under your brand.",
   },
 ];
 
@@ -36,7 +36,7 @@ const breadcrumbSchema = {
 
 <Layout
   title="Get Early Access | Self Serve Website Build | SEO Brothers"
-  description="Early access to the self serve website build in Tideworthy: your client's site drafted from their campaign, edited by conversation, and put live on their domain under your brand."
+  description="Early access to Websites inside Tideworthy: client sites built and managed through the platform, fully managed or self serve, with the same approvals and reporting as your SEO campaigns."
   schema={[breadcrumbSchema]}
 >
   <Nav variant="light" hideCta={true} />
@@ -57,9 +57,8 @@ const breadcrumbSchema = {
           <span class="ea__title-gradient">Website Build</span>
         </h1>
         <p class="ea__lede">
-          Tideworthy builds your client's website from the campaign you already run
-          there, and you take it live yourself. We are opening access in small groups.
-          Tell us about your agency and we will email you when your turn comes.
+          We build and host websites for agencies today. What comes next lives
+          inside Tideworthy, and the first agencies in help shape it.
         </p>
         <ul class="ea__list">
           {
@@ -82,7 +81,7 @@ const breadcrumbSchema = {
         </p>
       </div>
       <div class="ea__form" data-animate>
-        <EarlyAccessForm heading="Get early access" />
+        <EarlyAccessForm />
       </div>
     </div>
   </section>
