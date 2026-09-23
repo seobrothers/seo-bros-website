@@ -4,11 +4,11 @@ category: agency
 publishDate: 2025-02-13
 author: "Adam Bate"
 updatedDate: 2026-04-30
-summary: You don't need to be an SEO expert to sell SEO. You need to understand your client's business and bring in the right delivery team. The framework, the sales process, and the pricing reality most agencies avoid.
+summary: You can sell SEO by understanding your client's business and bringing in the right delivery team. The framework, the sales process, and the pricing reality most agencies avoid.
 featured: true
 ---
 
-Most agency owners think they need to master SEO before they can sell it. They don't. The agencies that grow fastest sell the outcome and let a partner handle the technical execution.
+The agencies that grow fastest sell the outcome and let a partner handle the technical execution. Most agency owners think they need to master SEO before they can sell it, and they don't.
 
 This guide is for agency owners who already sell something (web design, paid media, branding, full-service marketing) and are considering adding SEO to their service offering. It covers the sales framework, the three sales scenarios you'll encounter, the discovery process that separates real prospects from time-wasters, and the pricing reality that most SEO content avoids talking about.
 
@@ -16,7 +16,7 @@ This guide is for agency owners who already sell something (web design, paid med
 
 The dominant story in SEO sales says you have to know SEO deeply to sell it. Years of experience, certifications, conference badges. Without all that, you can't earn a client's trust.
 
-The story isn't true. We've watched agency owners with no technical SEO background outsell self-described SEO experts consistently. The variable isn't technical depth. It's whether the seller understands the client's business well enough to recommend the right outcome.
+The story isn't true. We've watched agency owners with no technical SEO background outsell self-described SEO experts consistently. The variable is whether the seller understands the client's business well enough to recommend the right outcome.
 
 What clients actually want when they buy SEO:
 
@@ -25,7 +25,7 @@ What clients actually want when they buy SEO:
 - Transparent reporting on what's being done and what it's producing
 - Someone they can talk to who understands their business
 
-None of those require deep personal SEO expertise from the seller. They require business understanding, sales process, and a delivery team you trust.
+Those take business understanding, sales process, and a delivery team you trust. None of them require deep personal SEO expertise from the seller.
 
 ## Three sales scenarios
 
@@ -35,13 +35,13 @@ The SEO sale takes three forms, each with a different sales motion.
 
 The easiest scenario. A prospect contacts you specifically asking about SEO. They've already decided they need it. Your job is to convince them you're the right firm to deliver it.
 
-These conversations are short. The prospect is sold on SEO; they need to be sold on you. Focus the discovery on understanding their business priorities and demonstrating that your approach will produce the outcome they care about. Avoid getting drawn into deep technical conversations. The decision is being made on trust and fit, not on whether you can recite the latest algorithm update.
+These conversations are short. The prospect is sold on SEO; they need to be sold on you. Focus the discovery on understanding their business priorities and demonstrating that your approach will produce the outcome they care about. Avoid getting drawn into deep technical conversations. The decision is being made on trust and fit.
 
 ### 2. SEO as an add-on to existing services
 
 The most common scenario for established agencies. A current client (web design, paid media, branding) needs SEO but hasn't asked for it yet. Your existing relationship and trust are the leverage.
 
-The conversation is different. The client trusts your agency already. They need to be sold on SEO itself, not on you. Frame the recommendation around the gap you've identified in their current marketing mix. Position SEO as the natural extension of work you're already doing. Tie the recommendation to specific outcomes they care about (more qualified traffic, better lead quality, lower customer acquisition cost).
+The conversation is different. The client trusts your agency already. They need to be sold on SEO itself. Frame the recommendation around the gap you've identified in their current marketing mix. Position SEO as the natural extension of work you're already doing. Tie the recommendation to specific outcomes they care about (more qualified traffic, better lead quality, lower customer acquisition cost).
 
 This scenario produces the highest close rates of the three.
 
@@ -73,7 +73,7 @@ The output of this conversation is enough business context to recommend somethin
 
 Free SEO audit. Technical issues, keyword opportunities, content gaps, link profile, competitive position. The audit produces specific findings tied to specific business outcomes.
 
-The goal isn't to dump every issue on the prospect. It's to identify the top three to five problems whose resolution would meaningfully move the business. Quick wins in the first 90 days plus the longer-term opportunity.
+The goal is to identify the top three to five problems whose resolution would meaningfully move the business. Quick wins in the first 90 days plus the longer-term opportunity.
 
 For the audit framework, see our [SEO audit guide](/guides/seo-audit/).
 
@@ -93,7 +93,7 @@ If the answer to too many of these is "no," the right move is to either re-scope
 
 The presentation that closes the deal is the one that makes the prospect feel understood. Lead with the business context (what you learned about their priorities), then the audit findings (what's holding them back), then your process (how you'd address it).
 
-Educate on your methodology without going deep on technical detail. The prospect doesn't need to know which tools you use. They need to know you have a repeatable process and a delivery team they can trust.
+Educate on your methodology without going deep on technical detail. They need to know you have a repeatable process and a delivery team they can trust.
 
 ### Step 5: Deliver a written proposal
 

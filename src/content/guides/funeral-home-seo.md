@@ -38,7 +38,7 @@ Group queries by where the searcher is in the decision. Volumes below are US mon
 | direct cremation | 4,600 | 4 |
 | green burial | 3,400 | 16 |
 
-"Funeral homes near me" at KD 53 is contested by Legacy.com, the big consolidators (SCI/Dignity), and directory aggregators, so an independent competes there on local relevance and reviews rather than raw authority. The openings are the service-specific terms: "direct cremation" (4,600, KD 4) and "green burial" (3,400, KD 16) are winnable pages that match rising demand and carry strong intent.
+"Funeral homes near me" at KD 53 is contested by Legacy.com, the big consolidators (SCI/Dignity), and directory aggregators, so an independent competes there on local relevance and reviews. The openings are the service-specific terms: "direct cremation" (4,600, KD 4) and "green burial" (3,400, KD 16) are winnable pages that match rising demand and carry strong intent.
 
 **Cost, planning, and informational.** The cost and pre-need queries sit at low difficulty, and most funeral homes avoid them out of discomfort. That avoidance is the opportunity.
 
@@ -74,7 +74,7 @@ Avoid filler content. The blog full of "5 ways to honor a loved one" listicles m
 
 The informational and cost queries that families search, "how much does a funeral cost," "cremation vs burial," "what to do when someone dies," are increasingly answered in an AI Overview at the top of the results. These are exactly the questions a family an hour into the process types, and a growing share now resolve before any click.
 
-The response is to build the cost and guidance content to be the cited source. Lead with the direct answer in plain, compassionate language, structure it for extraction, and ground the cost content in current, specific figures (the NFDA medians, your own published ranges) rather than vague generalities. A firm that gets cited for "how much does a funeral cost" in its region earns recognition at the most vulnerable moment of the search, and for the pre-need researcher who reads it months ahead of any need, that recognition is what brings them back. The empathetic, accurate answer wins both the citation and the family.
+The response is to build the cost and guidance content to be the cited source. Lead with the direct answer in plain, compassionate language, structure it for extraction, and ground the cost content in current, specific figures (the NFDA medians, your own published ranges). A firm that gets cited for "how much does a funeral cost" in its region earns recognition at the most vulnerable moment of the search, and for the pre-need researcher who reads it months ahead of any need, that recognition is what brings them back. The empathetic, accurate answer wins both the citation and the family.
 
 ## Local SEO for funeral homes
 
@@ -123,11 +123,11 @@ The [link building guide](/guides/link-building/) lays out the broader framework
 
 **How long does SEO take to work for a funeral home?**
 
-Local pack movement from GBP and citation work usually shows in 60 to 120 days. The cost, pre-need, and accommodation content builds over three to six months. Because the at-need search is urgent and local, the local-pack foundation tends to produce the first measurable lift, with content compounding behind it.
+Local pack movement from GBP and citation work usually shows in 60 to 120 days. The cost, pre-need, and accommodation content builds over three to six months. The local-pack foundation tends to produce the first measurable lift, with content compounding behind it, because the at-need search is urgent and local.
 
 **How much does funeral home SEO cost?**
 
-Most firms invest $1,500 to $4,000 per month, scaling with the number of locations and service areas. Given the value of a single arrangement and the long-term value of a pre-need relationship, the program typically pays for itself on a small number of additional families per month.
+Most firms invest $1,500 to $4,000 per month, scaling with the number of locations and service areas. The program typically pays for itself on a small number of additional families per month, given the value of a single arrangement and the long-term value of a pre-need relationship.
 
 **Should a funeral home publish prices online?**
 

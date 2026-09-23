@@ -33,7 +33,7 @@ Every note is counted and kept with the draft. From the 12th the Portal's plan p
 1. The share page was the visible end of a rebuild of content assets, and two people editing the same draft can no longer overwrite each other.
 2. The first content-writing agent ran on February 6. Given a planned piece and a campaign, it drafts the content.
 3. Workbench got a library. Standard operating procedures and playbooks that had been scattered documents moved into it on the 9th and 10th.
-4. Spreadsheets did not die this month. On the 12th we built the opposite: Workbench could push a campaign's plan into the deliverable spreadsheet template a partner already received, filling the tab a person used to fill.
+4. On the 12th we built the piece that pushes a campaign's plan into the deliverable spreadsheet template a partner already received, filling the tab a person used to fill.
 5. Notifications were overhauled: they open where the work is, mark themselves read when you act, and clearing them no longer loses the ones underneath. My Tasks split by type, and a manager can see another person's task list.
 6. A discovery keyword research agent arrived on the 12th, analysing the search results for a prospect's terms as a step in the discovery.
 
@@ -43,11 +43,11 @@ Drafts got revisions, drag-and-drop uploads, images pasted straight into comment
 
 ### 2. The first content-writing agent
 
-The prompts it works from were rewritten that week as the team read the output. It reads the client's own homepage before it writes, so the voice starts from theirs rather than ours.
+The prompts it works from were rewritten that week as the team read the output. It reads the client's own homepage before it writes, so the voice starts from theirs.
 
 ### 3. A library
 
-It has at-mentions, image uploads, labels, and pages per business function that can be reordered by hand. The point was less the documents than where the team looks when a question comes up.
+It has at-mentions, image uploads, labels, and pages per business function that can be reordered by hand. The point was where the team looks when a question comes up.
 
 ### 4. Plans into spreadsheets
 

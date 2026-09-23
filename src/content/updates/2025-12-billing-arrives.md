@@ -33,7 +33,7 @@ Organization settings gained the partner's contact details, address and team on 
 
 1. Billing was built in stages: scaffolding on September 19, the first real code merged on October 28 with the menu link kept out of the partner menu, invoice, payment and autopay work through November, and the whole thing merged on December 4. The date it shipped owes a lot to the temporary agreement entry page from November that let us load the existing book before the switch was turned on.
 2. The Portal got smaller in December, deliberately. Every removal was a place where two systems could have disagreed, gone.
-3. A team-only offboarding form arrived on December 9, so ending a campaign is a recorded process rather than a series of edits.
+3. A team-only offboarding form arrived on December 9, so ending a campaign is a recorded process.
 
 ### 2. The Portal gets smaller
 

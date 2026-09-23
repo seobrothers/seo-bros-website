@@ -65,7 +65,7 @@ Procedure pages are the centerpiece. One dedicated page per procedure offered: b
 
 Location pages handle geographic targeting for multi-city practices. Boilerplate "We serve [city]" content with the city name swapped gets filtered. Each location page needs its own substance: service-area context, transit and parking notes, local imagery, and any city-specific information a patient would actually want.
 
-Blog content captures the informational long tail. Question-driven posts on recovery, cost, comparisons, suitability. Each post links back to the relevant procedure page. The job of the blog is to feed the procedure pages, not to be a destination in itself.
+Blog content captures the informational long tail. Question-driven posts on recovery, cost, comparisons, suitability. Each post links back to the relevant procedure page. The job of the blog is to feed the procedure pages.
 
 Surgeon and team bios round out the content layer. Real bios with credentials, board certifications, fellowship training, hospital privileges, and society memberships. These are crucial trust signals in a YMYL category. Vague bios with stock photos do active damage.
 
@@ -91,7 +91,7 @@ Standard hygiene with a few category-specific notes.
 
 Mobile experience is decisive in this category more than most. The audience is heavily mobile and a slow or awkward mobile experience loses to a faster competitor regardless of how deep the content is.
 
-Image-heavy procedure and gallery pages need aggressive optimization. WebP format, lazy loading, CDN delivery, and page-level Core Web Vitals work. The content is image-driven by nature, which makes the technical work harder, not optional.
+Image-heavy procedure and gallery pages need aggressive optimization. WebP format, lazy loading, CDN delivery, and page-level Core Web Vitals work. The content is image-driven by nature, which makes the technical work harder, and unavoidable.
 
 Schema markup pulls real weight here: MedicalProcedure for procedures, Physician for the surgeons, FAQ for question content, LocalBusiness for the practice. Validate it with Google's Rich Results Test and don't trust the WordPress plugin to have done it correctly.
 
@@ -105,7 +105,7 @@ For the on-page mechanics in detail, see our [on-page SEO guide](/guides/on-page
 
 For most practices, this is where the leverage actually lives.
 
-Google Business Profile gets one entry per practice location, fully populated. Categories matched to actual services, not stuffed. Hours, photos, posts, pre-populated Q&A. Avoid keyword-stuffed business names; that's the fastest path to a suspended listing.
+Google Business Profile gets one entry per practice location, fully populated. Categories matched to actual services. Hours, photos, posts, pre-populated Q&A. Avoid keyword-stuffed business names; that's the fastest path to a suspended listing.
 
 Citations matter more here than in most verticals because the industry-specific ones (RealSelf, Healthgrades, Vitals, Zocdoc, Castle Connolly) are weighted heavily. The general local citations (Yelp, BBB, Yellow Pages) still matter but the medical-specific ones do more work.
 
@@ -119,7 +119,7 @@ For the full local playbook, see our [local SEO guide](/guides/local-seo/).
 
 A few link opportunities that work specifically in this category.
 
-Industry-specific medical directories carry more weight here than they do elsewhere, so they're worth claiming and optimizing rather than treating as an afterthought.
+Industry-specific medical directories carry more weight here than they do elsewhere, so they're worth claiming and optimizing.
 
 Editorial coverage in beauty and lifestyle media is high-authority and high-relevance. The publications worth pitching are usually the ones a patient would actually read.
 
@@ -129,7 +129,7 @@ Adjacent professional networks (dermatologists, OBGYN practices, primary care, w
 
 Surgeon-authored guest content on relevant health and wellness publications builds both credibility and links. The credibility is the harder thing to build, so this isn't work to outsource to a content mill.
 
-A note on scholarship link building: it used to be a reliable tactic and it's now mostly a liability. Google has cracked down on the obvious ones and a lot of universities have started filtering them. We don't recommend it.
+A note on scholarship link building: it's now mostly a liability. It used to be a reliable tactic, but Google has cracked down on the obvious ones and a lot of universities have started filtering them. We don't recommend it.
 
 For the broader link-building methodology, see our [link building guide](/guides/link-building/).
 
@@ -139,7 +139,7 @@ Ranking gets the prospective patient to the site. Whether they become a consulta
 
 ### Forms and CTAs
 
-Keep forms short. Name, phone, email, procedure of interest. That's enough to qualify and follow up. Long forms with insurance questions, detailed medical history, and demographic profiling kill conversion. The qualifying questions belong on the consultation call, not the contact form.
+Keep forms short. Name, phone, email, procedure of interest. That's enough to qualify and follow up. Long forms with insurance questions, detailed medical history, and demographic profiling kill conversion. The qualifying questions belong on the consultation call.
 
 Place CTAs where the patient is likely to act. Above the fold on procedure pages. Sidebar on blog content. Sticky on mobile. Plus a dedicated landing page that the navigation can route to.
 
@@ -153,7 +153,7 @@ For practices comfortable with it, online consultation booking is a step-change 
 
 What works:
 
-Real availability shown in the booking flow, not "we'll call back to confirm."
+Real availability shown in the booking flow.
 
 Procedure selection built into the booking so the practice can route to the right surgeon.
 
@@ -171,7 +171,7 @@ Photography should be real. Real surgeons, real practice, real recovery suite. S
 
 Testimonials carry weight. Written and video, with patient consent. Real names where allowed, anonymized where required.
 
-Surgeon-led content (video introductions, surgeon-authored articles, AMA-style Q&A) builds the personal connection that closes consultations. Patients book surgeons, not practices.
+Surgeon-led content (video introductions, surgeon-authored articles, AMA-style Q&A) builds the personal connection that closes consultations. Patients book surgeons.
 
 ### Lead magnets and nurture
 
@@ -187,7 +187,7 @@ Email nurture sequences segmented by procedure interest. Education, social proof
 
 Video content for the procedure pages, the social channels, and YouTube. Procedure walkthroughs, FAQs, surgeon introductions, testimonials.
 
-Without a nurture layer, the SEO traffic costs more per converted patient than it should.
+SEO traffic costs more per converted patient than it should without a nurture layer.
 
 ## Common mistakes
 
@@ -199,7 +199,7 @@ Thin procedure pages. A 200-word page on a flagship procedure is not going to ra
 
 Boilerplate location pages. Same content, city name swapped. Filtered by Google and ineffective for the patient.
 
-No before-and-after gallery, or a thin one. Patients shop on results. This is a strength to lean into, not a checkbox to tick.
+No before-and-after gallery, or a thin one. Patients shop on results. This is a strength to lean into.
 
 Poor mobile experience. Heavy procedure pages that load slowly on mobile lose every comparison-shopper.
 

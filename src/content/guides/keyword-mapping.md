@@ -52,13 +52,13 @@ A few notes that make mapping easier downstream:
 
 For each keyword (or keyword group), figure out which page on your site is most relevant from both the user's and Google's perspective. Two complementary checks.
 
-**The intent check.** If a user searched this query, which of your pages would actually answer it? A query about cost goes on a pricing page, not the homepage. A query about a specific service goes on the service page, not a generic capabilities page.
+**The intent check.** If a user searched this query, which of your pages would actually answer it? A query about cost goes on a pricing page. A query about a specific service goes on the service page.
 
 **The Google check.** Run the query as `site:yourdomain.com [keyword]` in Google. The page Google returns first is the page Google currently associates with that keyword. If that matches your intended page, you're aligned. If it doesn't, either Google needs to be re-pointed (through on-page changes and internal linking) or you've picked the wrong page.
 
 Example. Searching `site:seobrothers.co link building` should return our [link building guide](/guides/link-building/) first. If it returned the homepage or the about page instead, that's a misalignment to fix.
 
-Hopefully your intent check and your Google check agree. When they don't, I always go with the human read first. Google is usually right, but when it isn't, the fix is on-page work to re-point the signal, not capitulation to a wrong assignment.
+Hopefully your intent check and your Google check agree. When they don't, I always go with the human read first. Google is usually right, but when it isn't, the fix is on-page work to re-point the signal.
 
 <!-- TODO: replace with current screenshot of a site: operator search demonstrating the relevancy check -->
 
@@ -109,21 +109,21 @@ A side note. I bought a wood stove once. Started exactly there: searching the si
 
 **Transactional keywords** are bottom-of-funnel queries indicating purchase intent. "Halifax wood stove for sale," "buy wood stove online," "where to buy a wood stove near me." These map to product pages, category pages, service pages, or location pages. Putting transactional keywords on a blog post is a common mistake that wastes the opportunity. The searcher is ready to act; meet them with a page that lets them act.
 
-The match between intent and page type also has to align with what Google ranks. If a query returns 9 of 10 results that are blog posts, Google has decided this query is informational. Pointing a product page at it won't work no matter how well-optimized the page is. Match Google's interpretation, not your preferred one.
+The match between intent and page type also has to align with what Google ranks. If a query returns 9 of 10 results that are blog posts, Google has decided this query is informational. Pointing a product page at it won't work no matter how well-optimized the page is. Match Google's interpretation.
 
 ### Step 5: Handle existing site versus redesign
 
 The mapping process changes slightly depending on whether you're working on a live site or a redesign.
 
-**Existing site.** Use the current URLs. Map keywords to pages that already exist. If you have keyword excess (more good keywords than relevant pages), flag the gap. New pages may be needed, but that's a content-strategy decision, not a mapping one.
+**Existing site.** Use the current URLs. Map keywords to pages that already exist. If you have keyword excess (more good keywords than relevant pages), flag the gap. New pages may be needed, but that's a content-strategy decision.
 
 **Redesign.** Use the planned new URLs. If you're redirecting old URLs, list the final destination URL in the mapping. Add rows for newly created pages. Be cautious about moving rankings: a homepage that ranks well for a service-area term may rank worse on a dedicated service-area page initially, and the migration can cost rankings if not handled carefully. Sometimes the right call is to leave a strong homepage ranking alone and add the new page for adjacent variations.
 
-A common scenario. An established site has the homepage ranking #2 for "[city] plumber." The instinct is to move that ranking to a dedicated `/plumbing-services/` page. Sometimes that works. Sometimes the homepage holds the ranking better because of historical link equity, and creating the new page splits the authority and drops the campaign to #5. The mapping should reflect a deliberate decision either way, not an automatic move.
+A common scenario. An established site has the homepage ranking #2 for "[city] plumber." The instinct is to move that ranking to a dedicated `/plumbing-services/` page. Sometimes that works. Sometimes the homepage holds the ranking better because of historical link equity, and creating the new page splits the authority and drops the campaign to #5. The mapping should reflect a deliberate decision either way.
 
 ## Competitor analysis as a mapping shortcut
 
-You don't have to start every keyword research and mapping cycle from scratch. Pulling competitor keyword data accelerates the process and surfaces terms you may have missed.
+Pulling competitor keyword data accelerates the research and mapping cycle and surfaces terms you may have missed.
 
 I recorded a video on this back in 2019 walking through the two methods I use:
 
@@ -142,7 +142,7 @@ Open a competitor's main pages and look at:
 
 Once you have a list of head keywords, validate the search volume in Ahrefs, SEMrush, or Google Keyword Planner before committing.
 
-If the competition is ranking well for a term and the volume is solid, consider mirroring their meta-data approach. Not copying. Mirroring the structure: if they're putting the city in the title, you should be too.
+If the competition is ranking well for a term and the volume is solid, consider mirroring the structure of their meta-data, without copying it: if they're putting the city in the title, you should be too.
 
 ### Method 2: Use SEO tools to extract competitor rankings
 
@@ -158,7 +158,7 @@ Things to look at:
 
 Run this for three to five competitors and you'll have a baseline keyword list that took an hour to assemble instead of a week.
 
-The goal isn't to copy their map. It's to make sure your map isn't missing opportunities they've already validated.
+The goal is to make sure your map isn't missing opportunities they've already validated.
 
 ## Common mapping mistakes
 
@@ -168,7 +168,7 @@ A few patterns we see often.
 
 **Identical mappings across pages.** Two service pages with the same primary keyword. They cannibalize each other and Google chooses arbitrarily which to rank, often picking the weaker one. Fix: differentiate the keyword target for each page, even if the difference is just a modifier.
 
-**Old-school keyword variation splitting.** "Cleveland home builder" mapped to one page, "home builder in Cleveland" mapped to another. Same searcher intent, different page assignments. This used to be common practice. It just doesn't cut it anymore. It produces duplicate content, thin content, or content that's been written for the search engine instead of the user. Group by intent, not by exact phrasing.
+**Old-school keyword variation splitting.** "Cleveland home builder" mapped to one page, "home builder in Cleveland" mapped to another. Same searcher intent, different page assignments. This used to be common practice. It just doesn't cut it anymore. It produces duplicate content, thin content, or content that's been written for the search engine instead of the user. Group by intent.
 
 **Intent mismatch.** Transactional keywords on blog posts, informational keywords on product pages. Fix: re-check the SERP for each query and match the page type to what Google ranks.
 

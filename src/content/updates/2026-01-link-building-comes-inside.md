@@ -16,7 +16,7 @@ edited: plain-language sweep: migration page reworded
 edited: shaped
 -->
 
-The second half of January had two threads. One was pulling the last outside tool, our link building system, into Workbench. The other was deciding, in data rather than in someone's head, what a campaign actually includes.
+The second half of January had two threads. One was pulling the last outside tool, our link building system, into Workbench. The other was recording, as data, what a campaign actually includes.
 
 ## For our partners
 

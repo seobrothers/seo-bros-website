@@ -26,14 +26,14 @@ February to April 2025 is when the building stopped being a sketch. The Portal g
 
 ### 1. Discoveries
 
-On March 13 the team began updating a discovery's status inside the Portal itself, so what a partner saw was what our team had marked, not a status copied from somewhere else. In April 2025 the Portal was a discovery request desk with a dashboard in front of it. It was a real thing partners used, and the request form has been the front door for discoveries since.
+On March 13 the team began updating a discovery's status inside the Portal itself, so what a partner saw was what our team had marked. In April 2025 the Portal was a discovery request desk with a dashboard in front of it. It was a real thing partners used, and the request form has been the front door for discoveries since.
 
 ## Behind the scenes
 
 1. The link building tool went from nothing to daily use, starting on February 4 as a registry of sites and networks.
 2. On April 14 the accounting system integration came out of the Portal, which got its own tables for partners, contacts and employees and started owning data instead of reflecting it. "Admin" became "team" in the same change, which is the language we still use.
 3. On April 16 the link tool moved onto the same component library as the Portal.
-4. Two content repositories opened on April 18 and April 29. Neither had much in them yet; they were the first sign that content, like links, was going to get a tool of its own rather than a spreadsheet.
+4. Two content repositories opened on April 18 and April 29. Neither had much in them yet; they were the first sign that content, like links, was going to get a tool of its own.
 
 ### 1. The link building tool
 

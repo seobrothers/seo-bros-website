@@ -10,7 +10,7 @@ featured: true
 
 There's no doubt that consistent content helps. It establishes you as an authority in your industry, makes you a better writer (or a better outsourcer, manager, editor), and over time builds the topical depth that lifts the rest of the site.
 
-But the hardest part isn't the writing. It's deciding what to write.
+But the hardest part is deciding what to write.
 
 This guide is the consolidated process I use for content topic selection, from the first round of theme generation through validation, internal linking, and pruning the content that isn't earning its keep. Most of it I first wrote up around 2019 and 2020. The fundamentals haven't moved. The tools and the AI angle have.
 
@@ -40,7 +40,7 @@ Let me run this with a different example. Pretend we're working with a home reno
 - Kitchens
 - Water softeners
 
-These either align with what the business actually does or with topics that support what they do. Anyone in this industry has more than enough subject knowledge for any of them. The subject knowledge isn't the issue. Neither is the writing or the shooting.
+These either align with what the business actually does or with topics that support what they do. Anyone in this industry has more than enough subject knowledge for any of them, and can handle the writing or the shooting.
 
 **The issue is making sure the content you produce actually has a shot at being found and read, listened to, or watched.**
 
@@ -63,7 +63,7 @@ Those are off the top of my head. Use yours.
 
 If you want to get fancy, break out a spreadsheet at this point. I know. So fancy.
 
-The point of this stage isn't to commit to topics yet. It's to identify the sites and creators producing content people are actually finding, so we can validate and steal opportunities from them.
+The point of this stage is to identify the sites and creators producing content people are actually finding, so we can validate and steal opportunities from them. Committing to topics comes later.
 
 ## Validate the topics with real data
 
@@ -89,7 +89,7 @@ Rinse and repeat across your themes and you'll have a topic list with built-in d
 
 ## Use blog content to lift the rest of the site
 
-Standalone blog content has limited value. Blog content connected to your service pages and category pages through internal linking has compounding value.
+Blog content connected to your service pages and category pages through internal linking has compounding value. Standalone blog content has limited value.
 
 I covered this in a 2019 video about three things you can do right now to get more value out of your blog:
 
@@ -117,7 +117,7 @@ For each underperforming post, you've got three options.
 
 **Delete and redirect.** If the topic no longer serves the business or the post is unsalvageable, delete it. Redirect the URL to the most relevant remaining page (a category page, a service page, or a related post) to preserve any link equity.
 
-The goal isn't a smaller blog. The goal is a blog where every post is justified by current performance or clear strategic purpose.
+The goal is a blog where every post is justified by current performance or clear strategic purpose, not a smaller blog.
 
 ## A note on AI-generated content
 
@@ -154,7 +154,7 @@ A few patterns that come up repeatedly in content audits.
 
 That's the foundation of a successful content marketing strategy.
 
-The piece I haven't covered is what the actual finished post should look like to rank well. That part doesn't have a one-size-fits-all framework. The blueprint already exists for any topic you pick. It's positions #1 through #10 in the SERPs.
+The piece I haven't covered is what the actual finished post should look like to rank well. That part has no one-size-fits-all framework. The blueprint for any topic you pick is positions #1 through #10 in the SERPs.
 
 Read those. Learn from them. Make yours similar, [but 10x better](https://moz.com/blog/how-to-create-10x-content-whiteboard-friday).
 

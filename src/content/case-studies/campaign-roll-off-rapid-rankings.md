@@ -39,7 +39,7 @@ charts:
 
 The brand was strong on the ground but invisible on Google. Seven organic sessions a month, no top-100 rankings for the terms that drive rentals, and a service area spread across small Western Colorado communities where buyers search with high local specificity.
 
-In sparse regional markets, that's good news. The competitive density is low, the search behavior is predictable, and the barrier is execution rather than budget.
+In sparse regional markets, that's good news. The competitive density is low, the search behavior is predictable, and the barrier is execution.
 
 ## Audit findings
 

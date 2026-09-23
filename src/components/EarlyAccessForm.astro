@@ -1,0 +1,420 @@
+---
+// Early-access questionnaire for Websites inside Tideworthy. The questions,
+// title, intro and button label come from the platform at page load, so a
+// wording change there needs no site deploy:
+//
+//   GET  {PUBLIC_PLATFORM_FORMS_URL}   default https://app.tideworthy.com/api/public/forms/websites-early-access
+//        { ok: true, form: { title, intro, submitLabel, questions: [...] } }
+//   POST same URL  { email, answers: { key: value }, turnstile }
+//        { ok: true, status: "check_inbox" | "already_subscribed" | "saved" }
+//        { ok: false, error }
+//
+// The email joins the websites-early-access list once they click the
+// confirmation the platform sends. Turnstile renders only when
+// PUBLIC_TURNSTILE_SITE_KEY is set; the platform verifies the token.
+import { TURNSTILE_SITE_KEY } from "../lib/turnstile";
+
+interface Props {
+  id?: string;
+}
+
+const { id = "early-access-form" } = Astro.props;
+
+const endpoint =
+  (import.meta.env.PUBLIC_PLATFORM_FORMS_URL as string | undefined) ||
+  "https://app.tideworthy.com/api/public/forms/websites-early-access";
+---
+
+<div class="eaf-wrap" data-early-access data-endpoint={endpoint} data-turnstile={TURNSTILE_SITE_KEY}>
+  <form id={id} class="eaf" novalidate hidden>
+    <h2 class="eaf__title" data-eaf-title></h2>
+    <p class="eaf__intro" data-eaf-intro></p>
+
+    <label class="eaf__field">
+      <span class="eaf__label">Work email</span>
+      <input name="email" class="eaf__input" type="email" autocomplete="email" required />
+    </label>
+
+    <div data-eaf-questions></div>
+
+    {TURNSTILE_SITE_KEY && <div class="cf-turnstile eaf__turnstile" data-sitekey={TURNSTILE_SITE_KEY}></div>}
+
+    <p class="eaf__error" role="alert" hidden></p>
+
+    <button type="submit" class="btn btn-primary eaf__submit">
+      <span data-eaf-submit-label>Get Early Access</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </button>
+  </form>
+
+  <div class="eaf eaf--loading" data-eaf-loading aria-busy="true">
+    <span class="eaf__spinner" aria-hidden="true"></span>
+  </div>
+
+  <div class="eaf eaf--done" data-eaf-unavailable hidden>
+    <h2 class="eaf__title">Early access opens soon</h2>
+    <p class="eaf__done-text">The sign-up is not reachable right now. <a href="/book-a-growth-call/">Book a call</a> and we will add you by hand.</p>
+  </div>
+
+  <div class="eaf eaf--done" data-eaf-done hidden>
+    <span class="eaf__check" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+    </span>
+    <h2 class="eaf__title" data-eaf-done-title></h2>
+    <p class="eaf__done-text" data-eaf-done-text></p>
+    <a href="/white-label-web-design/" class="eaf__done-link">Back to Websites</a>
+  </div>
+</div>
+
+{TURNSTILE_SITE_KEY && (
+  <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+)}
+
+<script>
+  import { track } from "../lib/analytics";
+
+  declare global {
+    interface Window {
+      turnstile?: { reset: () => void };
+    }
+  }
+
+  type Option = { value: string; label: string };
+  type Question =
+    | { key: string; label: string; type: "single" | "multi"; options: Option[] }
+    | { key: string; label: string; type: "text"; optional?: boolean; placeholder?: string };
+  type FormDef = { title: string; intro: string; submitLabel: string; questions: Question[] };
+
+  function el<K extends keyof HTMLElementTagNameMap>(tag: K, className?: string, text?: string): HTMLElementTagNameMap[K] {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function renderQuestion(q: Question): HTMLElement {
+    if (q.type === "text") {
+      const label = el("label", "eaf__field");
+      const caption = el("span", "eaf__label", q.label + (q.optional ? " " : ""));
+      if (q.optional) caption.appendChild(el("em", undefined, "(optional)"));
+      const input = el("textarea", "eaf__input eaf__textarea");
+      input.name = q.key;
+      input.rows = 3;
+      if (q.placeholder) input.placeholder = q.placeholder;
+      if (!q.optional) input.required = true;
+      label.append(caption, input);
+      return label;
+    }
+    const group = el("fieldset", "eaf__group");
+    group.dataset.type = q.type;
+    group.dataset.key = q.key;
+    group.appendChild(el("legend", "eaf__label", q.label));
+    const chips = el("div", "eaf__chips");
+    for (const o of q.options) {
+      const chip = el("label", "eaf__chip");
+      const input = el("input");
+      input.type = q.type === "single" ? "radio" : "checkbox";
+      input.name = q.key;
+      input.value = o.value;
+      chip.append(input, el("span", undefined, o.label));
+      chips.appendChild(chip);
+    }
+    group.appendChild(chips);
+    return group;
+  }
+
+  document.querySelectorAll<HTMLElement>("[data-early-access]").forEach(async (wrap) => {
+    const endpoint = wrap.dataset.endpoint ?? "";
+    const form = wrap.querySelector<HTMLFormElement>("form.eaf")!;
+    const loading = wrap.querySelector<HTMLElement>("[data-eaf-loading]")!;
+    const unavailable = wrap.querySelector<HTMLElement>("[data-eaf-unavailable]")!;
+    const done = wrap.querySelector<HTMLElement>("[data-eaf-done]")!;
+    const errorEl = form.querySelector<HTMLElement>(".eaf__error")!;
+    const submitBtn = form.querySelector<HTMLButtonElement>(".eaf__submit")!;
+    const submitLabel = form.querySelector<HTMLElement>("[data-eaf-submit-label]")!;
+
+    let def: FormDef | null = null;
+    try {
+      const res = await fetch(endpoint, { headers: { Accept: "application/json" } });
+      const body = (await res.json()) as { ok: boolean; form?: FormDef };
+      if (body.ok && body.form) def = body.form;
+    } catch {
+      /* handled below */
+    }
+    loading.hidden = true;
+    if (!def) {
+      unavailable.hidden = false;
+      return;
+    }
+
+    form.querySelector<HTMLElement>("[data-eaf-title]")!.textContent = def.title;
+    form.querySelector<HTMLElement>("[data-eaf-intro]")!.textContent = def.intro;
+    submitLabel.textContent = def.submitLabel || "Get Early Access";
+    const slot = form.querySelector<HTMLElement>("[data-eaf-questions]")!;
+    for (const q of def.questions) slot.appendChild(renderQuestion(q));
+    form.hidden = false;
+
+    const showError = (message: string) => {
+      errorEl.textContent = message;
+      errorEl.hidden = false;
+    };
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      errorEl.hidden = true;
+      const data = new FormData(form);
+      const email = String(data.get("email") ?? "").trim();
+      if (!email) {
+        showError("Enter your work email.");
+        return;
+      }
+      const answers: Record<string, string | string[]> = {};
+      for (const q of def!.questions) {
+        if (q.type === "multi") {
+          const picked = data.getAll(q.key).map(String);
+          if (picked.length === 0) {
+            showError(`Pick at least one for "${q.label}".`);
+            return;
+          }
+          answers[q.key] = picked;
+        } else {
+          const v = String(data.get(q.key) ?? "").trim();
+          if (!v && !(q.type === "text" && q.optional)) {
+            showError(q.type === "text" ? `Answer "${q.label}".` : `Pick an answer for "${q.label}".`);
+            return;
+          }
+          if (v) answers[q.key] = v;
+        }
+      }
+
+      submitBtn.disabled = true;
+      const original = submitLabel.textContent ?? "";
+      submitLabel.textContent = "Sending…";
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, answers, turnstile: String(data.get("cf-turnstile-response") ?? "") }),
+        });
+        const body = (await res.json()) as { ok: boolean; status?: string; error?: string };
+        if (!body.ok) {
+          showError(body.error || "Something went wrong. Try again.");
+          submitBtn.disabled = false;
+          submitLabel.textContent = original;
+          window.turnstile?.reset();
+          return;
+        }
+        track("early_access_request");
+        const title = done.querySelector<HTMLElement>("[data-eaf-done-title]")!;
+        const text = done.querySelector<HTMLElement>("[data-eaf-done-text]")!;
+        if (body.status === "already_subscribed") {
+          title.textContent = "You're already on the list";
+          text.textContent = `${email} is signed up for early access. Invites and updates go there.`;
+        } else if (body.status === "check_inbox") {
+          title.textContent = "Check your inbox";
+          text.textContent = `We sent a confirmation to ${email}. Click it and you're on the early access list.`;
+        } else {
+          title.textContent = "You're on the list";
+          text.textContent = `We'll email ${email} when your access opens.`;
+        }
+        form.hidden = true;
+        done.hidden = false;
+        done.scrollIntoView({ behavior: "smooth", block: "center" });
+      } catch {
+        showError("Something went wrong. Try again.");
+        submitBtn.disabled = false;
+        submitLabel.textContent = original;
+        window.turnstile?.reset();
+      }
+    });
+  });
+</script>
+
+<style is:global>
+  /* Global on purpose: the questions are built at runtime, so scoped styles would miss them. Every selector is eaf-prefixed. */
+  .eaf {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px;
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    text-align: left;
+  }
+  .eaf[hidden] {
+    display: none;
+  }
+  .eaf--loading {
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+  }
+  .eaf__spinner {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 3px solid var(--border-light);
+    border-top-color: var(--teal);
+    animation: eaf-spin 0.9s linear infinite;
+  }
+  @keyframes eaf-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .eaf__title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 0;
+  }
+  .eaf__intro {
+    margin: -6px 0 4px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+  .eaf__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .eaf__label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+  .eaf__label em {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+  .eaf__input {
+    width: 100%;
+    padding: 11px 13px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    background: var(--light);
+    font: inherit;
+    font-size: 15px;
+    color: var(--text-primary);
+    transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  }
+  .eaf__input:focus {
+    outline: none;
+    border-color: var(--teal);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(40, 165, 177, 0.15);
+  }
+  .eaf__textarea {
+    resize: vertical;
+    min-height: 84px;
+  }
+  .eaf__group {
+    border: 0;
+    padding: 0;
+    margin: 0 0 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .eaf__group legend {
+    padding: 0;
+    margin-bottom: 8px;
+  }
+  .eaf__chips {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .eaf__chip {
+    position: relative;
+    cursor: pointer;
+  }
+  .eaf__chip input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+  }
+  .eaf__chip span {
+    display: block;
+    padding: 10px 14px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    background: var(--light);
+    font-size: 14px;
+    line-height: 1.45;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: border-color var(--transition), background var(--transition), color var(--transition);
+  }
+  .eaf__chip:hover span {
+    border-color: var(--teal);
+  }
+  .eaf__chip input:checked + span {
+    border-color: var(--teal);
+    background: rgba(40, 165, 177, 0.1);
+    color: var(--teal-dark);
+  }
+  .eaf__chip input:focus-visible + span {
+    box-shadow: 0 0 0 3px rgba(40, 165, 177, 0.25);
+  }
+  .eaf__turnstile {
+    min-height: 65px;
+  }
+  .eaf__error {
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    background: #fef2f2;
+    color: #b91c1c;
+    font-size: 14px;
+  }
+  .eaf__submit {
+    width: 100%;
+    justify-content: center;
+  }
+  .eaf--done {
+    align-items: center;
+    text-align: center;
+    padding: 48px 32px;
+  }
+  .eaf__check {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(68, 185, 123, 0.14);
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .eaf__done-text {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 420px;
+  }
+  .eaf__done-text a,
+  .eaf__done-link {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--teal-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  @media (max-width: 560px) {
+    .eaf {
+      padding: 24px 20px;
+    }
+  }
+</style>

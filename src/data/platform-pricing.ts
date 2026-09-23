@@ -102,7 +102,7 @@ export const TIER_IDENTITY: Record<string, TierIdentity> = {
     name: "Turbo",
     accent: "green",
     blurb:
-      "When the market is tougher or speed matters more. The most content, links and Business Profile activity we run on one campaign.",
+      "The most content, links and Business Profile activity we run on one campaign. For tougher markets, or when speed matters more.",
     bestFor: "Best for competitive and multi-location markets",
   },
 };

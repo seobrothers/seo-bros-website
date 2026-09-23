@@ -64,7 +64,7 @@ The cosmetic services ("teeth whitening near me," "veneers near me," "dental cro
 | chipped tooth | 16,000 | 2 |
 | broken tooth | 10,000 | 15 |
 
-"Emergency dentist near me" is 49,000 US monthly at Difficulty 0. Most practices do not have an emergency page, which is why it remains uncontested.
+"Emergency dentist near me" is 49,000 US monthly at Difficulty 0. It remains uncontested because most practices do not have an emergency page.
 
 **Insurance queries.** "Dentist that takes [insurance] [city]," "in-network dentist [insurance]," "PPO dentist near me." Build pages for each major plan you accept.
 
@@ -194,7 +194,7 @@ Yes. A single thin "Services" page covering whitening, implants, Invisalign, ven
 
 **Should I list prices on my website?**
 
-Ranges, not exact quotes. Honest pricing windows ("single dental implant: $3,500 to $5,500 depending on case complexity") build trust and capture cost-comparison searchers. Practices that hide pricing entirely send patients to call competitors who answer the question. Veneers, implants, and Invisalign cost queries are some of the highest-volume in the entire vertical.
+Yes, as ranges. Honest pricing windows ("single dental implant: $3,500 to $5,500 depending on case complexity") build trust and capture cost-comparison searchers. Practices that hide pricing entirely send patients to call competitors who answer the question. Veneers, implants, and Invisalign cost queries are some of the highest-volume in the entire vertical.
 
 **Are insurance pages actually worth the effort?**
 

@@ -25,7 +25,7 @@ keyTactics:
   - "Built and now host an all-new high-speed website"
   - "Custom CMS to allocate inbound leads to the right sales reps"
   - "National keyword expansion across commercial cleaning service lines"
-  - "Reporting tied to real lead and CRM data, not vanity metrics"
+  - "Reporting tied to real lead and CRM data"
 ---
 
 Executive Clean came to us already running, but underserved. A previous agency
@@ -65,7 +65,6 @@ of volume, and tens of thousands of keywords now rank where the program started
 from a far smaller base. It has been a national success story in the commercial
 cleaning space, and the partnership is ongoing.
 
-The throughline is the one we care most about: this was never about ranking for
-its own sake. It was about building the site, the systems, and the reporting
-that turn search demand into leads, and leads into revenue Executive Clean can
-actually attribute.
+The throughline is the one we care most about: building the site, the systems,
+and the reporting that turn search demand into leads, and leads into revenue
+Executive Clean can actually attribute.

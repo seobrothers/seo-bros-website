@@ -49,10 +49,10 @@ Minimal organic footprint at the campaign start. Missing specialty pages for TMJ
 
 ## What we shipped
 
-Month one was the technical foundation and a pass on every existing service page. Months two through four were the specialty buildout: TMJ, pediatric, denture, emergency, and cosmetic dental pages, each written for the patient's specific concern rather than as boilerplate. From month five we moved into citation work, link acquisition, and the E-E-A-T content depth the dental category increasingly rewards.
+Month one was the technical foundation and a pass on every existing service page. Months two through four were the specialty buildout: TMJ, pediatric, denture, emergency, and cosmetic dental pages, each written for the patient's specific concern. From month five we moved into citation work, link acquisition, and the E-E-A-T content depth the dental category increasingly rewards.
 
 ## Outcome
 
 Traffic moved from 52 monthly organic sessions to 787 at peak, a 1,202% lift over seven months. Ten specialty terms reached top-3 placements, including TMJ, pediatric dentist, dentures, and several cosmetic dental terms.
 
-Tracked GA4 leads totaled 301 across the campaign, averaging 43 a month with a best month of 60. The specialty terms outperform the general dental terms on conversion every time we measure it: a patient searching "TMJ treatment [city]" is in pain and trying to book, not browsing.
+Tracked GA4 leads totaled 301 across the campaign, averaging 43 a month with a best month of 60. The specialty terms outperform the general dental terms on conversion every time we measure it: a patient searching "TMJ treatment [city]" is in pain and trying to book.

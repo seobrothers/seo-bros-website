@@ -103,7 +103,7 @@ Real Keyword Planner data, Canada targeting, May 2026. We're using "dentist [are
 
 This is the most striking dataset across any Canadian market we've looked at. Vancouver itself pulls 2,900/mo for dentist queries. Surrey, Langley, and New Westminster each pull 2,400. Burnaby pulls 1,600. North Vancouver and Coquitlam each pull 1,300. Maple Ridge runs 1,000, Pitt Meadows 880. Richmond, Port Coquitlam, and Port Moody each pull 480. The volume is genuinely distributed across the region, not concentrated in the city of Vancouver.
 
-A business optimizing only for "Vancouver" in this region misses more search volume than it captures. The other municipalities aren't a long-tail rounding error; they're comparable markets in their own right.
+A business optimizing only for "Vancouver" in this region misses more search volume than it captures. The other municipalities are comparable markets in their own right.
 
 The other half of the table is the inverse. "Greater Vancouver," "Metro Vancouver," and "Lower Mainland" all return zero across dentist, plumber, and roofing exact-match volume. The regional designations exist for media, government, and real-estate framing, not for service queries. A page titled "Greater Vancouver Plumber" is targeting a query that doesn't really get typed.
 
@@ -117,7 +117,7 @@ Practical takeaways for businesses serving this market.
 
 **Build dedicated pages for the major separate municipalities you serve.** Burnaby, Richmond, Surrey, Coquitlam, North Vancouver, West Vancouver. Each is its own market. A boilerplate "we serve all of Metro Vancouver" without specific content for each underperforms.
 
-**Don't conflate North Van with Vancouver.** This is a specific trap. The City of Vancouver and the City/District of North Vancouver are different municipalities with different markets. Optimizing as if they're the same hurts both.
+**Treat North Van as a separate market from Vancouver.** This is a specific trap. The City of Vancouver and the City/District of North Vancouver are different municipalities with different markets. Optimizing as if they're the same hurts both.
 
 **Neighborhood-level content captures real volume in the city proper.** Yaletown, Kitsilano, Mount Pleasant, Gastown, Commercial Drive, Main Street. Each warrants consideration for businesses with genuinely neighborhood-specific positioning.
 

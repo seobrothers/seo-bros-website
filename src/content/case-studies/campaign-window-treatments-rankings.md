@@ -55,4 +55,4 @@ Month one was a technical audit and a metadata pass. Months two through four wer
 
 Traffic moved from 57 monthly organic sessions to 137, a 140% lift over six months. More importantly, ten priority terms moved into the top 30, with several into the top 5, including "window shutters Carson" at #2 and "shades for windows Garden Grove" at #5.
 
-Tracked GA4 leads grew 5x, from 4 a month at launch to 20 by campaign end. The pattern was the one we expected: top-3 rankings for community-specific buyer intent translate directly into in-home consultation requests, not just clicks.
+Tracked GA4 leads grew 5x, from 4 a month at launch to 20 by campaign end. The pattern was the one we expected: top-3 rankings for community-specific buyer intent translate directly into in-home consultation requests.

@@ -15,7 +15,7 @@ edited: cut the day and week counts (first four days, fifteen days before, eleve
 edited: shaped
 -->
 
-August and September 2025 were two months of the Portal getting more useful to the people who talk to partners every day, and one weekend in September when a new repository was opened for the tool our own team would work in. This is the point where the two-app design became real rather than drawn.
+August and September 2025 were two months of the Portal getting more useful to the people who talk to partners every day, and one weekend in September when a new repository was opened for the tool our own team would work in. This is the point where the two-app design became real.
 
 ## For our partners
 

@@ -18,7 +18,7 @@ A few characteristics shape the category.
 
 **Hyper-local intent.** Almost every transactional query carries local intent. "Tree removal in [city]," "arborist near me," "stump grinding [neighborhood]." Geographic targeting is the foundation, not optional.
 
-**Seasonal demand patterns.** Spring brings storm cleanup and post-winter assessment work. Summer is steady pruning and tree health. Fall is dead-tree removal before winter. Winter is dormant pruning and emergency storm response. Demand isn't uniform, and the content calendar should align with the arc.
+**Seasonal demand patterns.** Spring brings storm cleanup and post-winter assessment work. Summer is steady pruning and tree health. Fall is dead-tree removal before winter. Winter is dormant pruning and emergency storm response. The content calendar should align with that arc, because demand isn't uniform.
 
 **Emergency and storm-driven spikes.** A major storm can produce months of work in a few weeks. Companies positioned to capture that demand (through emergency-service GBP categories, storm-response content, and 24/7 phone availability) outperform those that don't.
 
@@ -117,7 +117,7 @@ The volumes here are smaller per query than the transactional set, but the bucke
 | tree removal estimate | 500 | 4 |
 | signs of a dying tree | 250 | 0 |
 
-These rarely convert directly, but they build authority and earn the relationship. The company customers research is the company they call when they need work done.
+These build authority and earn the relationship, even though they rarely convert directly. The company customers research is the company they call when they need work done.
 
 ### Comparison and decision keywords
 

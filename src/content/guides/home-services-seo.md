@@ -16,9 +16,9 @@ This is the hub guide for the category. The general framework here applies to an
 
 Home services businesses share characteristics that don't all apply to other local-business categories.
 
-**Service-area model, not storefront.** The customer rarely visits the business location. The work happens at the customer's home. This affects how Google Business Profile is configured (service-area businesses often hide the business address) and what kind of location pages make sense (service-area pages, not "visit our showroom" pages).
+**Service-area model.** The customer rarely visits the business location. The work happens at the customer's home. This affects how Google Business Profile is configured (service-area businesses often hide the business address) and what kind of location pages make sense (service-area pages).
 
-**Heavy local intent.** Almost every transactional query in home services carries local intent. "Plumber near me," "[city] HVAC repair," "emergency plumber [neighborhood]." Geographic targeting is foundational, not optional.
+**Heavy local intent.** Almost every transactional query in home services carries local intent. "Plumber near me," "[city] HVAC repair," "emergency plumber [neighborhood]." Geographic targeting is foundational.
 
 **Urgency-of-need queries.** A burst pipe, a broken AC in summer, a backed-up drain. Customers often search at the moment of need with urgency, and conversion behavior is fast. The company that ranks first AND answers the phone fastest often wins the call.
 
@@ -26,13 +26,13 @@ Home services businesses share characteristics that don't all apply to other loc
 
 **Review-driven selection.** Trust is heavily review-mediated. A 4.7-star rating with 200 reviews regularly outperforms a 5-star rating with 8 reviews, even if the latter sounds more impressive. Review velocity and recency matter as much as raw rating.
 
-**Phone-call dominance.** Home services conversion happens predominantly by phone, not by web form. The phone number being prominently displayed, click-to-call enabled on mobile, and answered live (or by a competent answering service) drives more conversion than any other on-site element.
+**Phone-call dominance.** Home services conversion happens predominantly by phone. The phone number being prominently displayed, click-to-call enabled on mobile, and answered live (or by a competent answering service) drives more conversion than any other on-site element.
 
 ## Keyword demand across the category
 
 The thing to internalize about home services search is the sheer size of the "near me" head terms and how uneven the difficulty is behind them. Volumes below are US monthly from Ahrefs, July 2026. Difficulty is Ahrefs KD on a 0-100 scale, where single digits mean the term is essentially uncontested organically.
 
-**Service plus geo head terms.** These are the homepage and service-page targets. The volumes aggregate nationally, but the ranking battle is local: a well-built service page in a defined service area competes against the handful of other local operators, not the whole country. That is why a term like "plumber near me" can show 355,000 searches at KD 4. The national score understates the local fight and overstates the national one at the same time.
+**Service plus geo head terms.** These are the homepage and service-page targets. The volumes aggregate nationally, but the ranking battle is local: a well-built service page in a defined service area competes against the handful of other local operators. That is why a term like "plumber near me" can show 355,000 searches at KD 4. The national score understates the local fight and overstates the national one at the same time.
 
 | Query | Monthly searches | Difficulty |
 |---|---:|---:|
@@ -96,7 +96,7 @@ Six components, applied across the category. Vertical-specific tactics layer on 
 The architecture that works for most home services businesses:
 
 - **Homepage** as the primary brand and overview entry point
-- **Service pages** for each distinct service offering (one page per service, not a single "Services" page)
+- **Service pages** for each distinct service offering (one page per service)
 - **Service-area pages** for each city, suburb, or neighborhood served (with unique content per page)
 - **Industry segment pages** where applicable (residential vs commercial, emergency vs scheduled)
 - **Educational blog content** addressing common customer questions
@@ -164,7 +164,7 @@ For broader link-building strategy, see our [link building guide](/guides/link-b
 Ranking gets the phone to ring. Conversion architecture determines whether the call gets booked.
 
 - **Phone number prominent on every page.** Header, sticky on mobile, in the contact section.
-- **Click-to-call on mobile.** Tap-to-dial behavior, not "copy and paste this number."
+- **Click-to-call on mobile.** The number dials when tapped.
 - **Live phone answering.** Or a competent 24/7 answering service for after-hours and overflow.
 - **Online booking where appropriate.** For services with scheduled availability (HVAC tune-ups, carpet cleaning, etc.), online booking captures customers who prefer not to call.
 - **Speed and mobile experience.** Most home services searches happen on phones. Slow mobile sites lose to faster, simpler competitors.
@@ -176,15 +176,15 @@ Most home services trades have a demand curve, and the sites that plan around it
 
 Lawn care and landscaping demand builds through spring and holds into fall, then collapses in winter in most of the country. "Lawn care service near me" carries 6,800 searches a month at KD 2, and almost all of it lands inside a six-month window. Pest control peaks in summer when ants, wasps, and mosquitoes are active. Snow removal is the mirror image: "snow removal near me" runs 7,300 searches a month at KD 19, concentrated in the weeks around the first storms. Pool service, drain and sewer work after heavy rain, gutter cleaning in fall, HVAC in both temperature extremes. Each has its own arc.
 
-The practical consequence is a content calendar that ships the right pages before the season, not during it. Spring lawn-care content published in October is a wasted asset. The page needs to be indexed, aged, and ranking by the time the searches arrive, which means building it two to three months ahead of the curve. For multi-service operators, this also means rotating homepage and GBP emphasis through the year: snow and heating in winter, cooling and pest in summer, cleanup and gutters in fall.
+The practical consequence is a content calendar that ships the right pages before the season. Spring lawn-care content published in October is a wasted asset. The page needs to be indexed, aged, and ranking by the time the searches arrive, which means building it two to three months ahead of the curve. For multi-service operators, this also means rotating homepage and GBP emphasis through the year: snow and heating in winter, cooling and pest in summer, cleanup and gutters in fall.
 
-Off-season is not downtime. It is when you build and age the pages for the next peak, refresh cost content, and run the link and citation work that has no seasonality of its own.
+Off-season is when you build and age the pages for the next peak, refresh cost content, and run the link and citation work that has no seasonality of its own.
 
 ## How AI Overviews change home services search
 
 A growing share of the cost, symptom, and how-to queries now resolves in an AI Overview before the searcher clicks anything. "How to unclog a drain," "why is my water heater not working," "how much does it cost to replace a water heater." These are the exact informational queries that used to send steady traffic to educational and cost pages, and they are increasingly answered at the top of the results.
 
-To be clear about the framing: AI SEO, GEO, whatever the current label is, is a layer on top of an organic foundation, not a replacement for it. The site still has to rank and convert on the commercial "near me" queries that no AI Overview touches, because those are the ones that book jobs. What changes is the informational tier. Three adjustments matter. Put the direct answer near the top of the page in plain language, before the explanatory depth. Structure content for extraction with short definitions, scannable steps, and headings that mirror the question. And accept that the value of the raw click on informational queries drops while the value of being the cited source rises, which compounds authority back into the commercial terms that still pay.
+AI SEO, GEO, whatever the current label is, is a layer on top of an organic foundation. The site still has to rank and convert on the commercial "near me" queries that no AI Overview touches, because those are the ones that book jobs. What changes is the informational tier. Three adjustments matter. Put the direct answer near the top of the page in plain language, before the explanatory depth. Structure content for extraction with short definitions, scannable steps, and headings that mirror the question. And accept that the value of the raw click on informational queries drops while the value of being the cited source rises, which compounds authority back into the commercial terms that still pay.
 
 The blog earns its keep here as an authority signal. Cost and symptom content is still worth building precisely because it is what AI systems pull from, and the operator who gets cited on "how much does drain cleaning cost" is the one whose brand the searcher recognizes when the drain actually backs up.
 
@@ -226,11 +226,11 @@ Most independent operators pay between $1,000 and $3,500 per month for ongoing l
 
 **Do I need a separate page for each service and each city?**
 
-Yes for services, selectively for cities. Each distinct service needs its own page with real depth, not one "Services" page listing twenty offerings. City pages should be built for the areas that actually generate demand, with genuine local content, not 50 templated pages with the town name swapped in. Google has filtered those for years.
+Yes for services, selectively for cities. Each distinct service needs its own page with real depth. City pages should be built for the areas that actually generate demand, with genuine local content. Google has filtered templated pages with the town name swapped in for years.
 
 **Should I publish pricing on my site?**
 
-Ranges, not exact quotes. Honest cost windows build trust and capture the cost queries in the table above, which most competitors ignore. Operators who hide pricing entirely send shoppers to call whoever answers the question first.
+Publish ranges. Honest cost windows build trust and capture the cost queries in the table above, which most competitors ignore. Operators who hide pricing entirely send shoppers to call whoever answers the question first.
 
 **Is local SEO different from regular SEO for home services?**
 

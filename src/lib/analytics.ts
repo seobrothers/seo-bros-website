@@ -6,7 +6,8 @@ export type AnalyticsEvent =
   | "free_audit_form_submission"
   | "partner_optin"
   | "portal_signups"
-  | "calendar_event_scheduled";
+  | "calendar_event_scheduled"
+  | "early_access_request";
 
 export type EventProperties = Record<string, string | number | boolean | undefined>;
 

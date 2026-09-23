@@ -39,7 +39,7 @@ We map audiology keywords across four intent buckets. Volumes below are US month
 | hearing clinic near me | 800 | 2 |
 | tinnitus treatment near me | 800 | 18 |
 
-These are the bread-and-butter local-pack targets, and the difficulty is low enough that a well-optimized practice site competes on local relevance rather than domain muscle. "Hearing aids near me" at 22,000 and KD 6 is the single best transactional target in the category.
+These are the bread-and-butter local-pack targets, and the difficulty is low enough that a well-optimized practice site competes on local relevance. "Hearing aids near me" at 22,000 and KD 6 is the single best transactional target in the category.
 
 **Informational, product, and insurance.** This is where the OTC shift and the Medicare question live, and where the easy, high-intent wins sit.
 
@@ -112,7 +112,7 @@ Patterns we see across audiology audits:
 1. **Pretending OTC doesn't exist.** Sites that ignore OTC entirely lose both the comparison-stage traffic and the trust of patients who already know OTC is an option.
 2. **Generic medical-website templates.** Many practices run on platforms that produce nearly identical sites across competitors. The differentiation isn't there for either users or Google.
 3. **Thin team and credentials pages.** A single sentence on the audiologist with no photo, no credentials list, no bio. Every other YMYL signal compounds from this.
-4. **Slow sites with stock photos.** Older patients are not impressed by glossy stock imagery. Real photos of the actual office, equipment, and team build more trust.
+4. **Slow sites with stock photos.** Real photos of the actual office, equipment, and team build more trust with older patients than glossy stock imagery.
 5. **No insurance or Medicare content.** Patients want to know if you take their plan, and whether Medicare helps, before they call. With the Medicare question alone drawing 9,100 monthly searches, leaving it unanswered hands the visit to a competitor.
 6. **Ignoring tinnitus as a sub-vertical.** Real search volume with high commercial intent, often skipped because the practice "also does hearing aids."
 7. **No content depth on hearing aid technology.** Patients spend weeks researching. The site that explains technology clearly captures the patient before they walk into a competitor.
@@ -121,11 +121,11 @@ Patterns we see across audiology audits:
 
 **How long does SEO take to work for a hearing clinic?**
 
-The foundation work pays back relatively fast in this category. Local pack movement from GBP and reviews typically shows in 60 to 120 days. Rankings on technology, insurance, and condition content build over three to six months. Because the patient researches deliberately, early content keeps working on prospects who book months later.
+The foundation work pays back relatively fast in this category. Local pack movement from GBP and reviews typically shows in 60 to 120 days. Rankings on technology, insurance, and condition content build over three to six months. Early content keeps working on prospects who book months later, because the patient researches deliberately.
 
 **How much does audiology SEO cost?**
 
-Most independent practices invest $1,500 to $4,000 per month. Given premium fittings run several thousand dollars per pair, the program typically pays for itself on a handful of fittings, which is why even single-location clinics see clear ROI.
+Most independent practices invest $1,500 to $4,000 per month. The program typically pays for itself on a handful of fittings, since premium fittings run several thousand dollars per pair, which is why even single-location clinics see clear ROI.
 
 **Should I address OTC hearing aids on my site, or does that send patients away?**
 

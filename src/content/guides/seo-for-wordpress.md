@@ -16,7 +16,7 @@ This guide is the version of WordPress SEO advice that holds up in 2026. It cove
 
 A few foundational pieces that have not changed since WordPress's earliest SEO-friendly days.
 
-**WordPress is genuinely SEO-friendly out of the box.** Clean URLs, proper heading structure, sensible markup, easy metadata management. Compared to building from scratch or using less mature CMSs, WordPress gives you most of what you need without configuration.
+**WordPress is genuinely SEO-friendly out of the box.** Clean URLs, proper heading structure, sensible markup, easy metadata management. WordPress gives you most of what you need without configuration, compared to building from scratch or using less mature CMSs.
 
 **The plugin layer matters more than the theme layer for SEO.** A great theme on top of poorly configured plugins will underperform a basic theme with the right plugins doing the right work.
 
@@ -57,7 +57,7 @@ The 2016 plugin landscape recommended Yoast SEO, WP Super Cache, WP Smush, WP Mi
 
 ## Page speed: the major shift since 2016
 
-The 2016 version of this guide claimed page speed wasn't a major ranking factor. That's not true anymore. It hasn't been true since 2018 when speed signals were rolled into the algorithm explicitly, and it became dramatically less true in 2021 when Core Web Vitals became part of the page experience signal.
+The 2016 version of this guide claimed page speed wasn't a major ranking factor. Page speed is a ranking factor now. It has been since 2018, when speed signals were rolled into the algorithm explicitly, and it became dramatically more important in 2021 when Core Web Vitals became part of the page experience signal.
 
 What matters now:
 

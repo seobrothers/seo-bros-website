@@ -38,7 +38,7 @@ All of the new sections were placeholders except links. The idea was already cle
 
 ### 2. The first agent
 
-It was a prototype in a folder and it did not become the agent we run today, but the shape of it, a plan an agent drafts and a person corrects, is exactly the shape we ended up with.
+Its shape, a plan an agent drafts and a person corrects, is exactly the shape we ended up with, though it was a prototype in a folder and did not become the agent we run today.
 
 ### 4. The link tool feeds the old systems
 

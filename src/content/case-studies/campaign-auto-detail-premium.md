@@ -72,4 +72,4 @@ Months four through eight were premium-positioning content (case galleries, pack
 
 Traffic moved from 187 monthly organic sessions to 614 at peak, a 228% lift over thirteen months. Ten priority terms climbed dramatically: "car ceramic coating services [city]" from #75 to #2, plus top-3 placements across PPF and tinting terms.
 
-Tracked GA4 leads grew from 13 a month early to 93 in the best month, totaling 494 across the campaign. The longer timeline matters: thirteen months gave the studio enough authority depth to defend top placements against the existing regional players, not just temporarily occupy them.
+Tracked GA4 leads grew from 13 a month early to 93 in the best month, totaling 494 across the campaign. The longer timeline matters: thirteen months gave the studio enough authority depth to defend top placements against the existing regional players.

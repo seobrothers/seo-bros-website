@@ -9,7 +9,7 @@ featured: false
 draft: false
 ---
 
-Most acupuncture patients don't search for acupuncture. They search for back pain. Or fertility help. Or anxiety relief. Or migraine relief. The acupuncture practice that ranks for those condition queries, with content that explains how the modality fits the problem, captures a category of patient that the practice down the street, ranking only for "acupuncture [city]," never sees. If you're an agency with an acupuncture client, that gap is exactly where you win the account.
+Most acupuncture patients search for back pain. Or fertility help. Or anxiety relief. Or migraine relief. Very few search for acupuncture itself. The acupuncture practice that ranks for those condition queries, with content that explains how the modality fits the problem, captures a category of patient that the practice down the street, ranking only for "acupuncture [city]," never sees. If you're an agency with an acupuncture client, that gap is exactly where you win the account.
 
 That condition-first reality shapes the entire SEO playbook for acupuncture. Combine it with YMYL classification (Google treats anything health-adjacent as Your Money or Your Life), insurance complexity that varies by state and plan, and a Traditional Chinese Medicine positioning question that every practice has to answer, and the work has its own shape.
 
@@ -19,7 +19,7 @@ This is the framework we run for agencies whose clients sit in this vertical, de
 
 A few category traits matter:
 
-- **Condition-driven search behavior.** Most prospective patients search for what's wrong, not for acupuncture. The clinics that rank well are the ones with depth on the conditions they treat, not the ones with one generic services page.
+- **Condition-driven search behavior.** Most prospective patients search for what's wrong with them. The clinics that rank well have depth on the conditions they treat; a single generic services page doesn't.
 - **YMYL classification.** Health content gets stricter quality scrutiny. Author credentials (LAc, DACM, DAOM, NCCAOM certification), real practitioner bios, and clinical sourcing matter to both Google and patients.
 - **Insurance variability.** Some states require insurance to cover acupuncture (with limits), others don't. Medicare covers acupuncture for chronic low back pain only, since 2020. Practices that publish insurance specifics convert better.
 - **Modality positioning.** Some practices emphasize Traditional Chinese Medicine, herbs, cupping, and the broader system. Others lead with biomedical framing for Western patients. The positioning shapes the content, the keyword targeting, and the audience.
@@ -50,7 +50,7 @@ We map acupuncture keywords across five buckets. The figures below are US monthl
 | acupuncture for plantar fasciitis | 800 | 1 |
 | acupuncture for TMJ | 700 | 2 |
 
-Several of these (tinnitus, plantar fasciitis, TMJ, shoulder pain, vertigo) sit below KD 5. A practice that treats those conditions and has no page for them is leaving easy rankings on the table. Each condition earns a real page with depth, not a line on a shared services page.
+Several of these (tinnitus, plantar fasciitis, TMJ, shoulder pain, vertigo) sit below KD 5. A practice that treats those conditions and has no page for them is leaving easy rankings on the table. Each condition earns its own page with real depth.
 
 **The dry needling comparison.** Worth pulling out on its own: "dry needling vs acupuncture" runs about 6,100 searches a month at a keyword difficulty of 0. It is the most winnable high-volume page in the category, the question comes up in nearly every new-patient conversation, and most acupuncture sites don't have it. If a practice ships one comparison page this quarter, it's this one.
 
@@ -63,7 +63,7 @@ Several of these (tinnitus, plantar fasciitis, TMJ, shoulder pain, vertigo) sit 
 | does insurance cover acupuncture | 1,200 | 2 |
 | does medicare pay for acupuncture | 800 | 3 |
 
-**Modality-specific.** "Gua sha" (137,000), "cupping therapy" (61,000), and "moxibustion" (16,000) look tempting, but be honest about what they are: high-volume, mostly informational terms at national difficulty (KD 55 to 59), dominated by health publishers. They earn a page for topical authority and top-of-funnel reach, not because they convert into local bookings. "Auricular acupuncture" (1,500, KD 2) and "electroacupuncture" (700, KD 11) are the more rankable, more practice-relevant modality terms.
+**Modality-specific.** "Gua sha" (137,000), "cupping therapy" (61,000), and "moxibustion" (16,000) look tempting, but be honest about what they are: high-volume, mostly informational terms at national difficulty (KD 55 to 59), dominated by health publishers. They earn a page for topical authority and top-of-funnel reach; they rarely convert into local bookings. "Auricular acupuncture" (1,500, KD 2) and "electroacupuncture" (700, KD 11) are the more rankable, more practice-relevant modality terms.
 
 For the broader keyword approach, see [our keyword research guide](/guides/keyword-research/) and [keyword mapping guide](/guides/keyword-mapping/).
 
@@ -132,11 +132,11 @@ Patterns we see in acupuncture audits:
 
 **How long does SEO take to work for an acupuncture practice?**
 
-Local pack movement from GBP and reviews typically appears in 60 to 120 days. The condition-page content, which is where most of the upside lives, builds over three to six months as the pages accrue authority. Because so many target terms sit at single-digit difficulty, a new practice site can clear them faster than in most healthcare categories.
+Local pack movement from GBP and reviews typically appears in 60 to 120 days. The condition-page content, which is where most of the upside lives, builds over three to six months as the pages accrue authority. A new practice site can clear them faster than in most healthcare categories, because so many target terms sit at single-digit difficulty.
 
 **How much does acupuncture SEO cost?**
 
-Most independent practices invest $1,000 to $3,000 per month. The condition-content build is the main variable: a practice treating many conditions has more pages to develop, but each one is a low-difficulty, durable asset, so the program compounds rather than requiring constant spend to hold position.
+Most independent practices invest $1,000 to $3,000 per month. The condition-content build is the main variable: a practice treating many conditions has more pages to develop, but each one is a low-difficulty, durable asset, so the program compounds and doesn't need constant spend to hold position.
 
 **Should I publish prices and insurance information on my site?**
 

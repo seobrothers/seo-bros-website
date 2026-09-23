@@ -51,7 +51,7 @@ Now I want to drive a point home.
 
 If a provider is promising you 20 white-hat links a month for a fixed price, they're lying. If you can predict the volume, you're not earning it. The link-building dialect is built on a polite fiction that everyone in the industry agrees to maintain in front of clients.
 
-The honest version: most effective link building is gray hat, white-hat doesn't always mean safe, and gray-hat tactics can be extremely safe when executed carefully. The risk isn't determined by the label. It's determined by how the work is done.
+The honest version: most effective link building is gray hat, white-hat doesn't always mean safe, and gray-hat tactics can be extremely safe when executed carefully. The risk is determined by how the work is done.
 
 What clients deserve, regardless: transparency about what's actually being done on their site, and a real conversation about risk tolerance.
 
@@ -59,7 +59,7 @@ What clients deserve, regardless: transparency about what's actually being done 
 
 Before any outreach, audit. There are four elements worth understanding about your current link profile, and they should drive everything that comes next.
 
-**1. Referring domains, not total links.** A hundred websites linking to you once each is far more valuable than one website linking to you a hundred times. Total backlinks is a vanity number. Referring domains is the metric that maps to ranking power.
+**1. Referring domains.** A hundred websites linking to you once each is far more valuable than one website linking to you a hundred times. Total backlinks is a vanity number. Referring domains is the metric that maps to ranking power.
 
 Tools: Ahrefs, Majestic, SEMrush. Majestic has been my personal favorite for link auditing for over a decade, but pick whichever one you actually use.
 
@@ -83,7 +83,7 @@ Still works. Got harder.
 
 Matt Cutts famously tried to kill guest posting back in 2014, and it didn't take. The Helpful Content Update raised the quality floor on the publications worth targeting, and Google has been more aggressive about devaluing the obvious paid-placement networks that flooded the space in the late 2010s. But genuinely good guest posts from genuinely industry-relevant publications still produce strong, long-lasting links.
 
-What works now: build genuine relationships with industry publications, contribute substantive content (not 600-word filler), receive a contextual link in the body or a credible author bio link. Stay focused on your industry. The same guest post pitched to twelve unrelated sites is the move that gets caught.
+What works now: build genuine relationships with industry publications, contribute substantive content, receive a contextual link in the body or a credible author bio link. Stay focused on your industry. The same guest post pitched to twelve unrelated sites is the move that gets caught.
 
 ### Digital PR and journalist outreach
 
@@ -131,24 +131,24 @@ How to find them: in Ahrefs, run Site Explorer on your domain, navigate to Pages
 
 I once ran this for novascotia.com and surfaced over 100 pages with active inbound links pointing nowhere. Mapped each to the most topically relevant live page, then 301'd them. The ranking lift from that single audit was substantial.
 
-The instinct to redirect everything to the homepage is wrong. Page-level relevance preserves more equity. Generic homepage redirects often get treated as soft 404s and pass nothing.
+Redirect each one to the most relevant page, since page-level relevance preserves more equity. Generic homepage redirects often get treated as soft 404s and pass nothing.
 
 **Building links from competitors' broken pages.** The reverse strategy: find broken pages on industry sites that still have inbound links, register equivalent domains or pages, and either redirect or recreate the resource. This crosses into PBN-adjacent territory depending on how you do it.
 
 ### Local and industry link sources
 
-Often dismissed as low-yield, but for local and small-to-mid-market businesses these are the foundation.
+For local and small-to-mid-market businesses these are the foundation, even though they're often dismissed as low-yield.
 
 - **Local business networks.** Mastermind groups, chamber of commerce listings, BNI chapters, trade associations. Most include member directories with links. Free or cheap, contextually relevant, and Google trusts them.
 - **Sponsorships.** Local sporting events, charity events, industry conferences. Even no-follow links from these contexts contribute to a natural-looking profile, and many are do-follow.
 - **Industry associations.** National and regional industry bodies, trade publications, community sites. Compare similar businesses in other major cities to identify common industry linking opportunities you can replicate.
 - **Partner and supplier links.** Companies you do business with often have customer-spotlight pages, supplier directories, or partner lists. Just ask.
 
-These tactics aren't dramatic, but the cumulative effect on a local business's profile is significant.
+The cumulative effect of these tactics on a local business's profile is significant, even if none of them is dramatic.
 
 ### Infographic marketing
 
-Lower-yield than it used to be (the infographic-link-building era peaked around 2015), but still works for industries with genuinely visual content. Two requirements: the infographic has to be high quality, not a generic icon-and-stats template, and the outreach has to be systematic. Without both, you've spent design money for nothing.
+Lower-yield than it used to be (the infographic-link-building era peaked around 2015), but still works for industries with genuinely visual content. Two requirements: the infographic has to be high quality, and the outreach has to be systematic. Without both, you've spent design money for nothing.
 
 ### PBNs
 
@@ -160,7 +160,7 @@ A lot has changed since then. Google's pattern detection is dramatically better,
 
 But for local SEO, the math is very much still in favor.
 
-Most local backlink profiles are thin to begin with. A small set of contextually relevant links from aged, locally relevant domains creates real differentiation against competitors who are stuck on chamber listings and a couple of partner sites. You don't need a massive budget to move the needle, and the risk is bounded to the network itself, not the receiving site. For most local businesses, this is one of the most underrated link strategies still available.
+Most local backlink profiles are thin to begin with. A small set of contextually relevant links from aged, locally relevant domains creates real differentiation against competitors who are stuck on chamber listings and a couple of partner sites. You don't need a massive budget to move the needle, and the risk is bounded to the network itself. For most local businesses, this is one of the most underrated link strategies still available.
 
 The full breakdown of how the tactic has evolved and what it takes to do it well today is in the [private blog networks guide](/guides/private-blog-networks/).
 

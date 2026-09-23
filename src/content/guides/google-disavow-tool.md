@@ -44,13 +44,13 @@ A long list of situations where people reach for the Disavow tool and shouldn't.
 
 **"I see some sketchy-looking links pointing at my site."** Most sites have some sketchy links pointing at them. Forum profile links, scraper sites, low-quality directory aggregators. Google ignores these automatically. Disavowing them won't help and may hurt by removing links that were already discounted plus accidentally targeting marginal-but-real links you'd want to keep.
 
-**"I'm doing a routine link profile cleanup."** There is no productive routine link profile cleanup that involves the Disavow tool. Routine link work is about building good links, not disavowing average ones.
+**"I'm doing a routine link profile cleanup."** There is no productive routine link profile cleanup that involves the Disavow tool. Routine link work is about building good links.
 
 **"I read in a blog post that I should disavow links."** Most of the SEO content recommending broad disavow strategies is several years old and predates Google's algorithmic improvements. The advice was reasonable in 2014. It's no longer reasonable in 2026.
 
 **"My competitor disavows links and ranks well, so it must work."** Survivorship bias. The competitor likely ranks well for reasons unrelated to disavow activity. Many high-ranking sites have never disavowed anything.
 
-**"I want to disavow proactively in case Google penalizes me later."** Disavowing isn't a precaution. It's an active intervention with downside risk. Proactive disavow is roughly equivalent to taking medicine for an illness you don't have.
+**"I want to disavow proactively in case Google penalizes me later."** Disavowing is an active intervention with downside risk. Proactive disavow is roughly equivalent to taking medicine for an illness you don't have.
 
 ## Why misuse damages sites
 
@@ -68,25 +68,25 @@ The Disavow tool's downside isn't widely understood.
 
 Traffic drops are usually not link-related. The diagnostic order we use:
 
-1. **Algorithm update timing.** Did the drop coincide with a known Google update? Most major drops trace to algorithm updates rather than link issues. Check Search Engine Land, Search Engine Roundtable, and similar sources for confirmed update dates.
+1. **Algorithm update timing.** Did the drop coincide with a known Google update? Most major drops trace to algorithm updates. Check Search Engine Land, Search Engine Roundtable, and similar sources for confirmed update dates.
 
 2. **Search Console diagnostics.** Check for manual actions, security issues, indexation issues, and Core Web Vitals changes. These are the things Google tells you about directly.
 
-3. **Technical regressions.** Did the site change recently? A bad redirect, a broken canonical, a robots.txt edit, a CDN change. Most "mysterious" drops trace to technical regressions, not external factors.
+3. **Technical regressions.** Did the site change recently? A bad redirect, a broken canonical, a robots.txt edit, a CDN change. Most "mysterious" drops trace to technical regressions.
 
 4. **Content changes.** Did pages get updated, deleted, or restructured? Unintended content changes are a common cause.
 
 5. **Competitive movement.** Are competitors gaining? A drop relative to specific competitors looks different from a drop in absolute traffic.
 
-6. **Search behavior shifts.** AI Overviews, changes in user query patterns, broader search-volume changes. Some traffic drops trace to user behavior, not algorithm changes.
+6. **Search behavior shifts.** AI Overviews, changes in user query patterns, broader search-volume changes. Some traffic drops trace to user behavior.
 
-7. **Link profile audit.** Last on the list, not first. Even when you do audit, the action is usually to build better links, not to disavow average ones.
+7. **Link profile audit.** Last on the list. Even when you do audit, the action is usually to build better links.
 
 ## The narrow how-to
 
 If after the diagnostic above you've genuinely concluded disavow is the right action, the process:
 
-**Audit the link profile carefully.** Use Ahrefs, Majestic, or SEMrush. Manual review of every flagged link, not just the spam-score-based filter. Identify links that are clearly harmful (paid PBN networks you bought from, spammy footer links across many sites, attacks designed to damage you).
+**Audit the link profile carefully.** Use Ahrefs, Majestic, or SEMrush. Manual review of every flagged link, on top of the spam-score-based filter. Identify links that are clearly harmful (paid PBN networks you bought from, spammy footer links across many sites, attacks designed to damage you).
 
 **Try direct outreach first.** Where the link is on a real site, ask the site owner to remove it. This is preferred by Google and produces a cleaner result than disavowing.
 
@@ -94,7 +94,7 @@ If after the diagnostic above you've genuinely concluded disavow is the right ac
 
 **Submit cautiously.** Once submitted, the file is active. Document what you submitted and why. Re-evaluate after several months.
 
-**Don't expect immediate ranking recovery.** Disavow is part of cleanup, not a ranking lever. Sites that recover do so over months as the broader profile restores credibility.
+**Don't expect immediate ranking recovery.** Disavow is part of cleanup. Sites that recover do so over months as the broader profile restores credibility.
 
 ## How we approach the Disavow question at SEO Brothers
 

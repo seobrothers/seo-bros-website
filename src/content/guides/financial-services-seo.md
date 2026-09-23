@@ -23,7 +23,7 @@ A few characteristics shape this category:
 - **Strong seasonality.** Tax season for accountants. Open enrollment for insurance. Spring buying season for mortgage. Content strategy has to align with the calendar.
 - **Niche specialization opportunity.** Financial services skews toward generalists. Specializing by industry (accounting for medical practices, insurance for contractors, mortgage for first-time buyers) creates a defensible position with less competition.
 - **Regulatory and licensing variation.** State licensing for insurance and mortgage. CPA versus non-CPA distinctions for accounting. Compliance disclaimers required in some jurisdictions. Content has to be jurisdictionally aware.
-- **Trust deficit at the category level.** Many consumers approach financial services with skepticism. Content has to overcome that, not just inform.
+- **Trust deficit at the category level.** Many consumers approach financial services with skepticism. Content has to overcome that.
 
 ## The framework that works across all three
 
@@ -37,7 +37,7 @@ This baseline informs the rest of the strategy. If three competitors all have a 
 
 ### 2. Target audience identification
 
-The mistake in financial services is trying to serve everyone. The win is picking specific client profiles and building content around them.
+The win in financial services is picking specific client profiles and building content around them. Trying to serve everyone is the common mistake.
 
 - For accounting: small business owners, self-employed professionals, dental practices, restaurants, real estate investors
 - For insurance: homeowners, small business owners, contractors, auto-only customers, life insurance buyers
@@ -69,13 +69,13 @@ Three layers of content for financial services sites:
 
 **Core service pages.** Dedicated page per primary offering. Tax preparation, bookkeeping, financial planning, payroll for accountants. Different insurance product pages for brokers. Purchase, refinance, FHA, jumbo for mortgage. Each page targets specific keywords with depth.
 
-**Service-area pages.** Geographic targeting for each city or region the firm serves. Unique content per page, not boilerplate.
+**Service-area pages.** Geographic targeting for each city or region the firm serves. Unique content per page.
 
 **Niche or vertical pages.** This is where the differentiation lives. "Accounting for dentists," "insurance for general contractors," "mortgage for self-employed borrowers." These pages capture motivated, specific searchers who are willing to pay more for someone who understands their situation.
 
 **Blog content.** Question-driven informational posts that capture top-of-funnel traffic and build topical authority.
 
-Google ranks pages, not entire websites. The page-level depth matters more than overall site word count.
+Google ranks individual pages. The page-level depth matters more than overall site word count.
 
 ### 6. Technical SEO
 
@@ -129,7 +129,7 @@ What to track:
 - Revenue attribution from organic channel
 - GBP metrics
 
-Without measurement, the rest of the work is invisible. Set this up at week one.
+Set this up at week one. Without measurement, the rest of the work is invisible.
 
 ## Vertical-specific tactics
 
@@ -185,7 +185,7 @@ Each gets its own service page with depth, plus location variants where the firm
 
 - **Optimize existing content first.** Most broker sites have thin existing pages. Beefing those up before producing new content typically produces faster ranking gains than starting from scratch.
 - **Long-tail educational content.** "How much does auto insurance cost in [state]?", "Do I need umbrella insurance?", "What does homeowners insurance actually cover?". Top-of-funnel content that captures research-stage searchers.
-- **Authority through value, not promotion.** Genuinely useful content beats sales-focused content for both ranking and conversion. Don't write for the sake of writing.
+- **Authority through value.** Genuinely useful content beats sales-focused content for both ranking and conversion. Don't write for the sake of writing.
 - **Partnership resources.** Comparison guides, coverage checklists, "what to ask your agent" content. Useful enough that adjacent professionals (realtors for homeowners insurance, contractors for commercial insurance) will link to it.
 
 **Niche angles worth pursuing.** Contractor insurance, restaurant insurance, gig-economy worker insurance (rideshare, delivery), high-net-worth personal coverage, classic car insurance. Specialization separates a firm from generic agents.

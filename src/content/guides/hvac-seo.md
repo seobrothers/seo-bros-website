@@ -19,7 +19,7 @@ Three things shape every HVAC SEO program:
 
 **Seasonal swings.** Cooling queries spike in summer, heating queries spike in winter, and the shoulder seasons lean toward maintenance and replacement decisions. A site that only ranks for "AC repair" loses half the year. Plan content and ranking targets across the full calendar.
 
-**Emergency intent dominates the high-value queries.** "Furnace not working," "AC blowing warm air," "no heat at night." These are not research queries. The searcher needs someone on the truck within hours. The site that loads fast, shows the phone number above the fold, and has visible 24/7 messaging wins the call.
+**Emergency intent dominates the high-value queries.** "Furnace not working," "AC blowing warm air," "no heat at night." The searcher needs someone on the truck within hours. The site that loads fast, shows the phone number above the fold, and has visible 24/7 messaging wins the call.
 
 **Service-area business model.** Most HVAC contractors do not want walk-in customers visiting an office. They serve a radius, sometimes covering a dozen suburbs from a single shop. Google Business Profile handles this differently than a brick-and-mortar listing, and the location-page strategy on the site has to mirror it.
 
@@ -27,7 +27,7 @@ Three things shape every HVAC SEO program:
 
 Group HVAC keywords into four buckets and assign each to a different page type. Volumes below are US monthly from Ahrefs, June 2026. Difficulty is Ahrefs KD on a 0-100 scale; anything in single digits is essentially uncontested.
 
-**Service and geo head terms.** "AC repair," "furnace repair," "HVAC contractor near me," "heat pump installation." These are your homepage and service-page targets. The "near me" volumes aggregate nationally, but the ranking battle is local: a well-built service page in a defined service area competes against the handful of other local contractors, not the whole country.
+**Service and geo head terms.** "AC repair," "furnace repair," "HVAC contractor near me," "heat pump installation." These are your homepage and service-page targets. The "near me" volumes aggregate nationally, but the ranking battle is local: a well-built service page in a defined service area competes against the handful of other local contractors.
 
 | Query | Monthly searches | Difficulty |
 |---|---:|---:|
@@ -83,7 +83,7 @@ The biggest single fix on most HVAC sites is going from a generic "Services" pag
 
 **One page per major service.** AC repair, AC installation, furnace repair, furnace replacement, heat pump installation, ductless mini-split installation, maintenance plans, indoor air quality, emergency service. Each gets its own page with real content: what the work involves, the symptoms that signal you need it, rough cost ranges, and why your crew is qualified.
 
-**A controlled service-area matrix.** Each meaningful city or suburb gets a page, and the high-volume services get crossed with the high-volume areas. The discipline is restraint: build out the cities that produce real demand with real content, not 500 templated pages with the town name swapped in. Google has filtered those for years.
+**A controlled service-area matrix.** Each meaningful city or suburb gets a page, and the high-volume services get crossed with the high-volume areas. The discipline is restraint: build out the cities that produce real demand with real content. Google has filtered templated pages with the town name swapped in for years.
 
 **Emergency pages stand on their own.** "Emergency AC repair [city]" and "24-hour furnace repair [city]" deserve dedicated pages with the phone number, response-time promise, and after-hours messaging above the fold. The emergency searcher does not scroll.
 
@@ -121,7 +121,7 @@ Three things shift in response. First, put the direct answer near the top of the
 
 Local SEO is the lever for HVAC. Most national keywords are unwinnable, and most homeowners have no interest in calling a contractor they cannot picture as a neighbor.
 
-**Google Business Profile.** Set up as a service-area business, not a storefront. Hide the address if you operate from a residential or warehouse location. List the actual cities and ZIPs you cover. Primary category should be the closest match (HVAC contractor, air conditioning contractor, heating contractor) with secondary categories rounding out the services you offer. Add photos of trucks, technicians, and completed installs. Post seasonal reminders.
+**Google Business Profile.** Set up as a service-area business. Hide the address if you operate from a residential or warehouse location. List the actual cities and ZIPs you cover. Primary category should be the closest match (HVAC contractor, air conditioning contractor, heating contractor) with secondary categories rounding out the services you offer. Add photos of trucks, technicians, and completed installs. Post seasonal reminders.
 
 **Service-area pages.** Each meaningful city or suburb you serve gets a dedicated page with real content: local landmarks, neighborhood climate notes, actual job examples where allowed, and a clear list of services in that area. Boilerplate "We proudly serve [city]" pages do nothing.
 
@@ -143,7 +143,7 @@ A few patterns we see repeatedly:
 - **Outdated content.** Old refrigerant references, expired tax credits, and 2021 cost numbers. Contractor sites that don't maintain lose to sites that do.
 - **No cost content.** Skipping the highest-intent research queries entirely and sending shoppers to competitors who answer the question.
 - **No tracking on the phone.** HVAC converts overwhelmingly on calls. A site that doesn't run call tracking has no idea which pages and keywords actually drive revenue.
-- **Skipping technical fundamentals.** Slow mobile load times kill emergency conversions. Core Web Vitals are not optional in a category where the searcher is panicking on a phone.
+- **Skipping technical fundamentals.** Slow mobile load times kill emergency conversions. Core Web Vitals are mandatory in a category where the searcher is panicking on a phone.
 
 For the page-level fixes, see our [on-page SEO guide](/guides/on-page-seo/), and our [SEO audit guide](/guides/seo-audit/) covers the structured technical review.
 
@@ -171,11 +171,11 @@ Most independent HVAC contractors pay between $1,000 and $3,500 per month for on
 
 **Do I need separate pages for each service and each city?**
 
-Yes for services, selectively for cities. Each major service needs its own page with real depth. City pages should be built for the areas that actually generate demand, with genuine local content, not 40 templated pages with the town name swapped in.
+Yes for services, selectively for cities. Each major service needs its own page with real depth. City pages should be built for the areas that actually generate demand, with genuine local content.
 
 **Should I publish HVAC pricing on my site?**
 
-Ranges, not exact quotes. Honest cost windows ("furnace replacement typically runs $4,000 to $7,500 installed depending on size and efficiency") build trust and capture the high-volume cost queries. Contractors who hide pricing entirely send shoppers to call competitors who answer the question.
+Publish ranges. Honest cost windows ("furnace replacement typically runs $4,000 to $7,500 installed depending on size and efficiency") build trust and capture the high-volume cost queries. Contractors who hide pricing entirely send shoppers to call competitors who answer the question.
 
 **Is local SEO different from regular SEO for HVAC?**
 
