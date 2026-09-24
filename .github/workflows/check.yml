@@ -1,0 +1,20 @@
+name: Check
+
+# Typechecks the automation scripts and builds the site on every pull
+# request, so a broken drafter is caught here and not on a Friday.
+on:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check:updates
+      - run: npm run build

@@ -7,11 +7,20 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "pricing:snapshot": "curl -sf ${PLATFORM_PRICING_URL:-https://app.tideworthy.com/api/public/pricing} -o src/data/platform-pricing.fallback.json && echo snapshot refreshed"
+    "pricing:snapshot": "curl -sf ${PLATFORM_PRICING_URL:-https://app.tideworthy.com/api/public/pricing} -o src/data/platform-pricing.fallback.json && echo snapshot refreshed",
+    "check:updates": "tsc --noEmit -p scripts/updates/tsconfig.json",
+    "updates:draft": "tsx scripts/updates/draft.ts",
+    "updates:linkedin": "tsx scripts/updates/linkedin.ts"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/mdx": "^4.3.14",
     "astro": "^5.17.1"
+  },
+  "devDependencies": {
+    "@anthropic-ai/sdk": "^0.127.0",
+    "@types/node": "^22.15.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0"
   }
 }
