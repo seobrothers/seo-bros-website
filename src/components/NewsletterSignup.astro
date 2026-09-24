@@ -12,23 +12,27 @@
 // deployed platform refuses a missing token, so the key must be set in prod.
 import { TURNSTILE_SITE_KEY } from "../lib/turnstile";
 
+// List slugs as the platform knows them (newsletter_lists.slug).
+type ListSlug = "seo-updates" | "agentic-agency" | "product-updates";
+
 interface Props {
   heading?: string;
   sub?: string;
-  /** Which topics start checked. Default: SEO only. */
-  checked?: Array<"seo" | "agency" | "build">;
+  /** Which lists start checked. Default: SEO Updates only. */
+  checked?: ListSlug[];
 }
 const {
   heading = "Get our guides in your inbox",
   sub = "Pick what you want to hear about. No spam, unsubscribe anytime.",
-  checked = ["seo"],
+  checked = ["seo-updates"],
 } = Astro.props;
 
 const uid = Math.random().toString(36).slice(2, 9);
 
-const topics = [
-  { value: "seo-updates", label: "SEO Updates", note: "search changes that affect your clients, and what we are doing about them", checked: true },
-  { value: "agentic-agency", label: "Agentic Agency", note: "behind the scenes on running an agency with agents", checked: false },
+const topics: Array<{ value: ListSlug; label: string; note: string; checked: boolean }> = [
+  { value: "seo-updates", label: "SEO Updates", note: "search changes that affect your clients, and what we are doing about them", checked: checked.includes("seo-updates") },
+  { value: "agentic-agency", label: "Agentic Agency", note: "behind the scenes on running an agency with agents", checked: checked.includes("agentic-agency") },
+  { value: "product-updates", label: "Product Updates", note: "what changed on the platform, and what we learned building it", checked: checked.includes("product-updates") },
 ];
 
 const endpoint =
