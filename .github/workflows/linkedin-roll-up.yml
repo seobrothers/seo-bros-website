@@ -1,0 +1,43 @@
+name: LinkedIn roll-up
+
+# Every Friday afternoon, turn the week's published product updates into
+# three LinkedIn options (Lesson, Agency problem, Arc), append them to
+# Devon's LinkedIn bank sheet as Proposed, and tell him on Slack. It reads
+# this repo's published posts, so it never runs ahead of what is public.
+# 17:00 UTC is 14:00 in Halifax during daylight time, 13:00 in winter.
+on:
+  schedule:
+    - cron: '0 17 * * 5'
+  workflow_dispatch:
+    inputs:
+      week_ending:
+        description: 'Last day of the week to roll up (YYYY-MM-DD). Default: today.'
+        required: false
+
+concurrency:
+  group: linkedin-roll-up
+  cancel-in-progress: false
+
+jobs:
+  roll-up:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Write the three options
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          LINKEDIN_SHEET_ID: ${{ vars.LINKEDIN_SHEET_ID }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        run: |
+          args=()
+          if [ -n "${{ inputs.week_ending }}" ]; then args+=(--week-ending "${{ inputs.week_ending }}"); fi
+          npx tsx scripts/updates/linkedin.ts "${args[@]}"

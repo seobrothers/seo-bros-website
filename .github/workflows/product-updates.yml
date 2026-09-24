@@ -1,0 +1,45 @@
+name: Product update draft
+
+# Every morning, draft yesterday's product update from the platform's merged
+# PRs and open a pull request here for review. Merging that PR publishes;
+# this job never publishes anything itself. 09:30 UTC is 06:30 in Halifax
+# during daylight time, 05:30 in winter.
+on:
+  schedule:
+    - cron: '30 9 * * *'
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Day to draft (YYYY-MM-DD, Atlantic). Default: yesterday.'
+        required: false
+
+concurrency:
+  group: product-updates
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Draft and open the pull request
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PLATFORM_READ_TOKEN: ${{ secrets.PLATFORM_READ_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        run: |
+          args=()
+          if [ -n "${{ inputs.date }}" ]; then args+=(--date "${{ inputs.date }}"); fi
+          npx tsx scripts/updates/draft.ts "${args[@]}"
