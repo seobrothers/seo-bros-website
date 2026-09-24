@@ -26,6 +26,14 @@
 
 ## Deployment
 
-- **To deploy, just push to `main`.** That is the entire deploy step. Cloudflare is connected to the GitHub repo (`seobrothers/seo-bros-website`) and auto-deploys the site whenever `main` updates. There is no CI workflow or deploy script in the repo because the build/deploy lives on Cloudflare's side.
+- **To deploy, just push to `main`.** That is the entire deploy step. Cloudflare is connected to the GitHub repo (`seobrothers/seo-bros-website`) and auto-deploys the site whenever `main` updates. There is no deploy script in the repo because the build/deploy lives on Cloudflare's side. The GitHub Actions in `.github/workflows/` never deploy anything themselves: `check.yml` typechecks and builds every PR, and the product update jobs are described below.
 - **Do NOT run `wrangler deploy` locally.** The app is a Cloudflare Worker (`wrangler.jsonc`, name `seobrothers`, serves `dist/`), but the local wrangler token sees multiple CF accounts and is not the production deploy path. Manual deploys hit account-selection prompts and auth errors. Pushing is correct and sufficient.
 - Production is seobrothers.com (the `.com`). Allow a couple of minutes after pushing for Cloudflare to build and go live.
+
+## Product Updates
+
+- The `/updates/` feed is automated. Details live in `scripts/updates/README.md`; the writing brief is `scripts/updates/VOICE.md`.
+- Every morning a GitHub Action drafts yesterday's post from the platform's merged PRs and opens a review PR on an `updates/YYYY-MM-DD` branch. Merging the PR publishes the post.
+- An update PR left unreviewed for 7 days publishes itself (`updates-auto-publish.yml`). Add the `hold` label to stop that for one PR.
+- Every Friday a job adds three LinkedIn options from the week's posts to the LinkedIn bank sheet.
+- Open `updates/*` branches are the review queue, not stale work. Don't delete them.

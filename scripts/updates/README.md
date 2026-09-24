@@ -9,6 +9,7 @@ public post and `announce` to let a billing PR in).
 | --- | --- |
 | `VOICE.md` | The whole writing brief: the two-section shape, the voice, what never goes in, the LinkedIn lanes. Change it here and the next run follows. |
 | `draft.ts` | Every morning (`product-updates.yml`): reads yesterday's merged PRs on the platform by reach label, writes `src/content/updates/YYYY-MM-DD.md`, pushes a branch and opens the review PR here, pings Devon on Slack. Merging the PR publishes. `--date`, `--dry-run`, `--no-pr`, `--no-slack`. |
+| `updates-auto-publish.yml` | Every day: any open `updates/*` PR that is 7 days old gets a site build and is squash merged, so an unreviewed update publishes itself a week later. Label a PR `hold` to keep it out. Build failures and conflicts stay open and ping Devon on Slack, as does each auto-publish. Run it by hand with `dry_run` to see what would go. |
 | `linkedin.ts` | Every Friday (`linkedin-roll-up.yml`): the week's published posts become three LinkedIn options (Lesson, Agency problem, Arc), appended to the LinkedIn bank sheet as Proposed, with a Slack ping. `--week-ending`, `--dry-run`. |
 
 Secrets on this repo: `ANTHROPIC_API_KEY`, `SLACK_BOT_TOKEN`,
