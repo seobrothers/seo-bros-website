@@ -1,0 +1,84 @@
+name: Product update auto-publish
+
+# A product update PR that sits unreviewed for 7 days publishes itself.
+# Every day this finds open PRs from updates/* branches that are at least
+# 7 days old, builds the site on each one, and squash merges it. Merging to
+# main is the publish (Cloudflare deploys on push). Add the `hold` label to a
+# PR to keep it out. A PR that fails to build or has merge conflicts is left
+# open and Devon gets a Slack message either way. 13:00 UTC is 10:00 in
+# Halifax during daylight time, 09:00 in winter.
+on:
+  schedule:
+    - cron: '0 13 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'List what would publish without merging.'
+        type: boolean
+        default: false
+
+concurrency:
+  group: updates-auto-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      SLACK_TO: ${{ vars.UPDATES_SLACK_TO || 'U1A6LAR25' }}
+      MAX_AGE_DAYS: 7
+      DRY_RUN: ${{ inputs.dry_run || false }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Publish updates older than 7 days
+        run: |
+          slack() {
+            [ -z "$SLACK_BOT_TOKEN" ] && { echo "SLACK_BOT_TOKEN not set; skipping Slack"; return; }
+            jq -n --arg c "$SLACK_TO" --arg t "$1" '{channel:$c,text:$t,unfurl_links:false,unfurl_media:false}' |
+              curl -s -X POST https://slack.com/api/chat.postMessage \
+                -H "Authorization: Bearer $SLACK_BOT_TOKEN" -H 'Content-Type: application/json' --data @- > /dev/null
+          }
+
+          cutoff=$(date -u -d "-${MAX_AGE_DAYS} days" +%s)
+          prs=$(gh pr list --state open --base main --limit 100 \
+            --json number,title,url,headRefName,createdAt,isDraft,labels |
+            jq -c --argjson cutoff "$cutoff" '.[]
+              | select(.headRefName | startswith("updates/"))
+              | select(.isDraft | not)
+              | select([.labels[].name] | index("hold") | not)
+              | select((.createdAt | fromdateiso8601) <= $cutoff)')
+
+          if [ -z "$prs" ]; then echo "Nothing is 7 days old yet."; exit 0; fi
+
+          while read -r pr; do
+            n=$(jq -r .number <<<"$pr"); title=$(jq -r .title <<<"$pr"); url=$(jq -r .url <<<"$pr")
+            echo "::group::#$n $title"
+            if [ "$DRY_RUN" = "true" ]; then echo "Would publish #$n"; echo "::endgroup::"; continue; fi
+
+            gh pr checkout "$n"
+            if ! npm run build; then
+              slack "Product update #$n did not build, so it was not auto-published: $url"
+              git checkout -q main; echo "::endgroup::"; continue
+            fi
+            git checkout -q main
+
+            if gh pr merge "$n" --squash --delete-branch; then
+              slack "Auto-published after ${MAX_AGE_DAYS} days without review: $title $url"
+            else
+              slack "Product update #$n could not be merged (conflict?), so it is still waiting: $url"
+            fi
+            echo "::endgroup::"
+          done <<<"$prs"
