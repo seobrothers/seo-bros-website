@@ -617,6 +617,32 @@ const faqSchema =
     margin: 32px 0;
   }
 
+  /* Screenshot figures: framed image plus a short caption underneath */
+  .guide-body__prose :global(figure) {
+    margin: 36px 0 40px;
+  }
+
+  .guide-body__prose :global(figure img) {
+    display: block;
+    margin: 0;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
+    background: var(--white);
+  }
+
+  .guide-body__prose :global(figure.figure--narrow img) {
+    max-width: 640px;
+    margin-inline: auto;
+  }
+
+  .guide-body__prose :global(figcaption) {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    text-align: center;
+  }
+
   /* Tables: data-tables for keyword research, comparison rows, etc. */
   .guide-body__prose :global(table) {
     width: 100%;
