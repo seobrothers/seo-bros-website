@@ -1,0 +1,169 @@
+---
+// Process timeline for guides (via MDX). Each step is done by an agent or by
+// a person, and can carry a count, so a reader sees at a glance where people
+// stand in an otherwise automated pipeline.
+interface Step {
+  name: string;
+  count?: string;
+  detail?: string;
+  human?: boolean;
+}
+
+interface Props {
+  title: string;
+  source?: string;
+  steps: Step[];
+}
+
+const { title, source, steps } = Astro.props;
+---
+
+<figure class="flow">
+  <figcaption class="flow__head">
+    <span class="flow__title">{title}</span>
+    {source && <span class="flow__source">{source}</span>}
+  </figcaption>
+  <ol class="flow__steps">
+    {
+      steps.map((s) => (
+        <li class:list={["flow__step", s.human && "flow__step--human"]}>
+          <span class="flow__dot" aria-hidden="true" />
+          <div class="flow__body">
+            <span class="flow__who">{s.human ? "Person" : "Agent"}</span>
+            <span class="flow__name">{s.name}</span>
+            {s.detail && <span class="flow__detail">{s.detail}</span>}
+          </div>
+          {s.count && <span class="flow__count">{s.count}</span>}
+        </li>
+      ))
+    }
+  </ol>
+</figure>
+
+<style>
+  .flow {
+    margin: 32px 0;
+    padding: 24px 28px 14px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+  }
+
+  .flow__head {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 14px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .flow__title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .flow__source {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .flow .flow__steps {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .flow .flow__step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 22px 1fr auto;
+    align-items: start;
+    gap: 14px;
+    margin: 0;
+    padding: 12px 0;
+  }
+
+  /* The connecting line runs through the dots, stopping at the last step. */
+  .flow .flow__step:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 30px;
+    bottom: -10px;
+    width: 2px;
+    background: var(--border-light);
+  }
+
+  .flow .flow__dot {
+    position: relative;
+    z-index: 1;
+    width: 14px;
+    height: 14px;
+    margin: 4px 0 0 4px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 3px solid var(--text-muted);
+  }
+
+  .flow__step--human .flow__dot {
+    width: 22px;
+    height: 22px;
+    margin: 0;
+    border-color: var(--teal);
+    background: var(--teal);
+    box-shadow: inset 0 0 0 3px var(--white);
+  }
+
+  .flow .flow__body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .flow .flow__who {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .flow__step--human .flow__who {
+    color: var(--teal-dark);
+  }
+
+  .flow .flow__name {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--text-primary);
+  }
+
+  .flow .flow__detail {
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--text-secondary);
+  }
+
+  .flow .flow__count {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    color: var(--text-primary);
+  }
+
+  @media (max-width: 560px) {
+    .flow {
+      padding: 18px 18px 8px;
+    }
+
+    .flow .flow__count {
+      font-size: 18px;
+    }
+  }
+</style>

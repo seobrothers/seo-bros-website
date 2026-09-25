@@ -1,0 +1,44 @@
+---
+// Pull-out callout for guides (via MDX): one rule or line worth stopping on,
+// set large so a skimmer catches it. Use sparingly, two or three per guide.
+interface Props {
+  label?: string;
+}
+
+const { label = "The rule" } = Astro.props;
+---
+
+<aside class="rule">
+  <span class="rule__label">{label}</span>
+  <div class="rule__text"><slot /></div>
+</aside>
+
+<style>
+  .rule {
+    margin: 32px 0;
+    padding: 22px 26px;
+    background: var(--light);
+    border-left: 4px solid var(--teal);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  }
+
+  .rule .rule__label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+  }
+
+  .rule .rule__text :global(p) {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+  }
+</style>

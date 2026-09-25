@@ -128,6 +128,6 @@ It tracks closely with organic progress, because the same authority drives both.
 
 ## How we approach this at SEO Brothers
 
-We've folded every shift in search into our campaigns the same way: build the foundation, earn the authority, measure what converts. AI search is the latest one, and we take it seriously without the hype. If a client already has the presence, we'll lead with it. If they're still building, we get them there first and make AI search the next phase.
+We've folded every shift in search into our campaigns the same way: build the foundation, earn the authority, measure what converts. AI search is the latest one, and we take it seriously without the hype. The work itself is increasingly done by AI agents with a person approving each change, and our [field report on AI agents for SEO](/guides/ai-agents-for-seo/) shows what that looks like across 360 campaigns. If a client already has the presence, we'll lead with it. If they're still building, we get them there first and make AI search the next phase.
 
 We run this work white-label for agencies and partners who want AI search handled properly under their own brand, without bolting on a separate "AI SEO" product they can't really measure. If that's you, see how we work with [white-label partners](/white-label-seo/), or start by running a [free SEO audit](/tools/free-seo-audit/) to see where a foundation actually stands before anyone talks about AI.
