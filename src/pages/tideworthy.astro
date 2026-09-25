@@ -69,6 +69,50 @@ const capabilities = [
   },
 ];
 
+// The agent roster, grouped by job. Targets the "ai seo agent" family of
+// searches; the long version lives in /guides/ai-agents-for-seo/.
+const agents = [
+  {
+    title: "Strategy agents",
+    body: "Plan each client's month one lane at a time: page optimization against what outranks you, site-wide fixes, crawl health, content, links and Business Profile posts. Every task arrives with the data behind it.",
+  },
+  {
+    title: "Content agents",
+    body: "Write the brief first, then the draft, then check the draft against the brief. Blog posts, location pages, guest articles and Business Profile posts, built from the facts on file for that client.",
+  },
+  {
+    title: "Feedback agents",
+    body: "When you send work back, the agent that wrote it revises it inside the same task, so the approval thread stays in one place.",
+  },
+  {
+    title: "Operations agents",
+    body: "Onboard new campaigns, triage monitoring alerts and keep each client's knowledge current, so the rest of the roster works from the right facts.",
+  },
+];
+
+const faqs = [
+  {
+    question: "What is an AI SEO agent?",
+    answer: "A program that wakes up on a trigger, reads live data about one campaign (rankings, Search Console, the site crawl, the results page), decides what should happen next and does it through tools, with a language model doing the reasoning. In Tideworthy, each agent owns one job on one client.",
+  },
+  {
+    question: "Do the agents change my client's website on their own?",
+    answer: "No. Website edits are filed as tasks with the exact new titles, copy and schema, and they wait in your approval queue. Nothing client-facing ships until you approve it.",
+  },
+  {
+    question: "How is this different from an AI SEO tool?",
+    answer: "Most AI SEO tools recommend changes or write drafts for you to use. Tideworthy's agents run the delivery for each client: they plan the month, write the briefs and drafts, turn crawl issues into fixes and file everything into one approval queue, under your brand, with our team QA checking the work.",
+  },
+  {
+    question: "Can I white-label it for my agency's clients?",
+    answer: "Yes. The client portal, reports and emails carry your logo on your domain, and our name is nowhere your client will look.",
+  },
+  {
+    question: "What does it cost?",
+    answer: `Plans are wholesale, per client per month, starting at ${usd(tiny?.price ?? 174)}. Creating an account, using the platform and running discoveries is free, and your trial starts when you start a campaign.`,
+  },
+];
+
 const roadmap = [
   {
     status: "Live",
@@ -137,7 +181,7 @@ const schema = {
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
   description:
-    "AI agents that do white-label SEO delivery work for agencies: content, local SEO, technical fixes, monitoring, and reporting, under the agency's own brand.",
+    "AI SEO agents for agencies: strategy, content, technical fixes, monitoring and reporting done for every client under the agency's own brand, with every website change approved first.",
   publisher: {
     "@type": "Organization",
     name: "SEO Brothers, Inc.",
@@ -150,12 +194,22 @@ const schema = {
     url: "https://seobrothers.com/pricing/",
   },
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
+};
 ---
 
 <Layout
-  title="Tideworthy | AI Agents That Do the Delivery Work | SEO Brothers"
-  description="Tideworthy is the platform behind SEO Brothers: AI agents do the daily SEO delivery work for every client, our team QA checks the work, and it all ships under your agency's brand. You pick the plan and draw the approval line."
-  schema={schema}
+  title="AI SEO Agents for Agencies | Tideworthy by SEO Brothers"
+  description="Tideworthy's AI SEO agents do the daily delivery work for every client: strategy, content, technical fixes, monitoring and reporting. Our team QA checks it, you approve it, and it ships under your agency's brand."
+  schema={[schema, faqSchema]}
 >
   <Nav />
 
@@ -180,12 +234,12 @@ const schema = {
           The Platform Behind Our Work
         </span>
         <h1 class="tw-hero__title" data-animate>
-          One engine.
+          AI SEO agents that do the work.
           <span class="tw-hero__title-gradient">Your name on all of it.</span>
         </h1>
         <p class="tw-hero__sub" data-animate>
           Tideworthy is the software we built to run campaigns, and it is what
-          your clients' work runs in. AI agents learn your agency and every
+          your clients' work runs in. AI SEO agents learn your agency and every
           client's business, then do the daily delivery: content, local SEO,
           technical fixes, monitoring, reporting. Our team QA checks the work.
           You pick the plan, draw the approval line, and put your logo on top.
@@ -230,6 +284,31 @@ const schema = {
               <h3 class="tw-step__title">{s.title}</h3>
               <p class="tw-step__body">{s.body}</p>
             </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ THE AGENTS ═══════════════ -->
+  <section class="tw-caps tw-agents">
+    <div class="container">
+      <div class="tw-sec-head" data-animate>
+        <span class="section-label">The AI SEO Agents</span>
+        <h2 class="tw-sec-title">AI SEO agents with one job each.</h2>
+        <p class="tw-sec-sub">
+          Each agent owns one slice of one client's campaign and files its work
+          into your approval queue. They run on more than 360 client campaigns
+          today. <a href="/guides/ai-agents-for-seo/">Read how we run them, and where they fall short</a>.
+        </p>
+      </div>
+      <div class="tw-agents__grid" data-stagger>
+        {
+          agents.map((a) => (
+            <article class="tw-cap" data-animate>
+              <h3 class="tw-cap__title">{a.title}</h3>
+              <p class="tw-cap__body">{a.body}</p>
+            </article>
           ))
         }
       </div>
@@ -401,6 +480,26 @@ const schema = {
         Add {usd(implementation)} a month on any plan and our team implements the
         website changes for you. Your free trial doesn't start until you start a campaign. Using the platform and running discoveries is free. <a href="/pricing/">See the full comparison</a>.
       </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FAQ ═══════════════ -->
+  <section class="tw-faq">
+    <div class="container tw-faq__inner">
+      <div class="tw-sec-head tw-sec-head--center" data-animate>
+        <span class="section-label">Questions</span>
+        <h2 class="tw-sec-title">AI SEO agent questions agencies ask us.</h2>
+      </div>
+      <div class="tw-faq__list" data-animate>
+        {
+          faqs.map((f, i) => (
+            <details class="tw-faq__item" open={i === 0}>
+              <summary class="tw-faq__q">{f.question}</summary>
+              <p class="tw-faq__a">{f.answer}</p>
+            </details>
+          ))
+        }
+      </div>
     </div>
   </section>
 
@@ -678,6 +777,72 @@ const schema = {
     line-height: 1.6;
     color: var(--text-secondary);
     margin: 0;
+  }
+
+  /* ═══════════ AGENTS ═══════════ */
+  .tw-agents__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+  .tw-human .tw-sec-sub a,
+  .tw-agents .tw-sec-sub a {
+    color: var(--teal-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ═══════════ FAQ ═══════════ */
+  .tw-faq {
+    padding: 100px 0;
+    background: var(--light);
+    border-top: 1px solid var(--border-light);
+  }
+  .tw-faq__inner {
+    max-width: 820px;
+  }
+  .tw-faq__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .tw-faq__item {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 0 24px;
+  }
+  .tw-faq__q {
+    cursor: pointer;
+    list-style: none;
+    padding: 20px 28px 20px 0;
+    position: relative;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .tw-faq__q::-webkit-details-marker {
+    display: none;
+  }
+  .tw-faq__q::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--teal-dark);
+  }
+  .tw-faq__item[open] .tw-faq__q::after {
+    content: "\2212";
+  }
+  .tw-faq__a {
+    margin: 0 0 20px;
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--text-secondary);
   }
 
   /* ═══════════ THESIS ═══════════ */
@@ -1072,7 +1237,8 @@ const schema = {
       grid-template-columns: 1fr;
       max-width: 520px;
     }
-    .tw-caps__grid {
+    .tw-caps__grid,
+    .tw-agents__grid {
       grid-template-columns: repeat(2, 1fr);
     }
     .tw-human__grid {
@@ -1107,6 +1273,7 @@ const schema = {
     }
     .tw-steps__grid,
     .tw-caps__grid,
+    .tw-agents__grid,
     .tw-road__grid,
     .tw-get__grid {
       grid-template-columns: 1fr;
