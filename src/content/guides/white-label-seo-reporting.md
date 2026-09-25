@@ -89,7 +89,7 @@ Domain rating, referring domains, and organic traffic and keywords as a snapshot
 
 ### Work delivered
 
-Content published and links acquired this period, with live URLs. This is often the section the client most wants to verify, and it's the one most standalone reporting platforms can't produce because they don't know what work was done. A report that shows movement without showing the work behind it invites the question "so what did you actually do?"
+Content published and links acquired this period, with live URLs. This is often the section the client most wants to verify, and it's the one most standalone reporting platforms can't produce because they don't know what work was done. A report that shows movement without showing the work behind it invites the question "so what did you actually do?" When AI agents do part of the delivery, this section matters even more. Our guide to [AI agents for SEO](/guides/ai-agents-for-seo/) explains how agent-filed work gets approved before it counts as delivered.
 
 <figure>
 <img src="/images/guides/white-label-seo-reporting/report-work-delivered.png" alt="Example Work Delivered section of a monthly SEO report: a list of content published this month with the article title, and a list of links acquired with dates." width="1600" height="331" loading="lazy" />

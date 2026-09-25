@@ -190,7 +190,7 @@ The base tabs:
 
 Depending on scope, we add columns and tabs for canonical URLs, page speed metrics (TTFB, total load time), internal and external link counts, Search Console visibility data, and any site-wide technical changes (canonical tags, hreflang management).
 
-Live data comes from Sitebulb in combination with Screaming Frog crawls, refreshed on a cadence so the document stays current. Both have been the core of our on-page tooling for years.
+Live data comes from Sitebulb in combination with Screaming Frog crawls, refreshed on a cadence so the document stays current. Both have been the core of our on-page tooling for years. More of the recommendation writing is now done by AI agents that read the crawl, the rankings and the results page and file each change for approval as exact strings. Our [field report on AI agents for SEO](/guides/ai-agents-for-seo/) covers what they get right and where a person still has to check.
 
 What matters is that the document captures every page, every recommendation, every priority, and every change as it ships. The exact tab structure isn't sacred. Without that, on-page work fragments across emails and tickets and never lands cleanly.
 

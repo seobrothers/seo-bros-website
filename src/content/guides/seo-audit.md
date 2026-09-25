@@ -239,7 +239,7 @@ If the audit you delivered didn't produce implemented changes, the audit failed.
 
 ## How we approach SEO audits at SEO Brothers
 
-Our default audit deliverable is a recorded walkthrough plus a branded PDF and an implementation spreadsheet. The recording handles the explanation and scales across multiple stakeholders at the client. The PDF is the durable artifact. The spreadsheet is what ships work.
+Our default audit deliverable is a recorded walkthrough plus a branded PDF and an implementation spreadsheet. The recording handles the explanation and scales across multiple stakeholders at the client. The PDF is the durable artifact. The spreadsheet is what ships work. Between audits, AI agents now keep the crawl findings moving, turning each open issue into a fix, a redirect or a question for approval. See [AI agents for SEO](/guides/ai-agents-for-seo/) for how that works and where it goes wrong.
 
 For partner agencies, we white-label the audit so it goes out under their brand. We build the audit, they deliver it. The recording is recorded by them or by us under their brand depending on the engagement.
 

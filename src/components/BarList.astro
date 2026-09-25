@@ -1,0 +1,194 @@
+---
+// Horizontal bar table for guides (via MDX). Same pattern as VolumeChart
+// (one element is both the chart and the accessible table), generalized for
+// any single-series magnitude: counts or percentages, with an optional note
+// per row. Single series, so one hue and no legend; the title names it.
+interface Row {
+  label: string;
+  value: number;
+  note?: string;
+}
+
+interface Props {
+  title: string;
+  source: string;
+  rows: Row[];
+  /** "percent" renders 9 as "9%"; bars scale to 100 unless `max` is set. */
+  format?: "number" | "percent";
+  max?: number;
+  valueLabel?: string;
+}
+
+const {
+  title,
+  source,
+  rows,
+  format = "number",
+  max: maxProp,
+  valueLabel = "Value",
+} = Astro.props;
+const max = maxProp ?? (format === "percent" ? 100 : Math.max(...rows.map((r) => r.value)));
+const fmt = (v: number) =>
+  format === "percent" ? `${v}%` : v.toLocaleString("en-US");
+---
+
+<figure class="bars">
+  <figcaption class="bars__head">
+    <span class="bars__title">{title}</span>
+    <span class="bars__source">{source}</span>
+  </figcaption>
+  <table class="bars__table">
+    <thead class="bars__sr">
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">{valueLabel}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map((r) => (
+          <tr title={`${r.label}: ${fmt(r.value)}${r.note ? ` (${r.note})` : ""}`}>
+            <th scope="row" class="bars__label">
+              {r.label}
+              {r.note && <span class="bars__note">{r.note}</span>}
+            </th>
+            <td class="bars__track" aria-hidden="true">
+              <span
+                class="bars__bar"
+                style={`width:${Math.min(100, (r.value / max) * 100).toFixed(1)}%`}
+              />
+            </td>
+            <td class="bars__value">{fmt(r.value)}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</figure>
+
+<style>
+  .bars {
+    margin: 32px 0;
+    padding: 24px 28px 20px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+  }
+
+  .bars__head {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .bars__title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+  }
+
+  .bars__source {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* Neutralize the guide template's global prose table styles. */
+  .bars .bars__table {
+    display: table;
+    width: 100%;
+    margin: 10px 0 0;
+    border-collapse: collapse;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    white-space: normal;
+  }
+
+  .bars .bars__table tbody tr:hover {
+    background: transparent;
+  }
+
+  .bars .bars__table tbody tr:hover .bars__bar {
+    background: var(--teal-dark);
+  }
+
+  .bars .bars__label {
+    width: 1%;
+    padding: 7px 14px 7px 0;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--font-body);
+    letter-spacing: normal;
+    text-transform: none;
+    text-align: left;
+    white-space: nowrap;
+    color: var(--text-primary);
+    border: none;
+  }
+
+  .bars .bars__note {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+
+  .bars .bars__track {
+    width: 100%;
+    padding: 7px 0;
+    vertical-align: middle;
+    border: none;
+  }
+
+  .bars .bars__bar {
+    display: block;
+    height: 14px;
+    min-width: 3px;
+    background: var(--teal);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .bars .bars__value {
+    width: 1%;
+    padding: 7px 0 7px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    white-space: nowrap;
+    color: var(--text-primary);
+    border: none;
+  }
+
+  .bars__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 560px) {
+    .bars {
+      padding: 18px 18px 14px;
+    }
+
+    .bars .bars__label {
+      font-size: 13px;
+      padding-right: 10px;
+      white-space: normal;
+      min-width: 110px;
+    }
+
+    .bars .bars__value {
+      font-size: 13px;
+      padding-left: 10px;
+    }
+  }
+</style>
