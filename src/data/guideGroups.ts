@@ -44,7 +44,7 @@ export const GUIDE_GROUPS: Record<string, GuideGroup[]> = {
       title: "AI Search",
       blurb:
         "How you show up as more people start their search with AI Overviews, ChatGPT, and Perplexity. The fundamentals still apply; how you get cited is shifting.",
-      ids: ["ai-seo", "ai-agents-for-seo", "google-search-generative-experience", "serp-features-evolution", "ai-data-center-batteries"],
+      ids: ["ai-seo", "google-search-generative-experience", "serp-features-evolution", "ai-data-center-batteries"],
     },
     {
       title: "Link Building",
@@ -65,6 +65,12 @@ export const GUIDE_GROUPS: Record<string, GuideGroup[]> = {
       blurb:
         "White-label work that holds up in front of your client, so the deliverables carry your name.",
       ids: ["white-label-seo", "white-label-seo-audits", "white-label-seo-reporting"],
+    },
+    {
+      title: "Delivering With AI Agents",
+      blurb:
+        "What AI agents can take off your team's plate, where a person still has to approve the work, and how to tell a good agent platform from a demo.",
+      ids: ["ai-agents-for-seo"],
     },
   ],
 };
