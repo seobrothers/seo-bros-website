@@ -9,7 +9,7 @@ summary: "What a white-label SEO report should contain, what to check before you
 
 The reporting layer is where most white-label SEO partnerships fall apart. Either the report is generic and unconvincing, or it leaks the fulfillment partner's branding everywhere, or it shows the wrong metrics for the person reading it. Each failure produces a different kind of client unhappiness, and all of them undermine the agency's positioning.
 
-This guide covers what white-label SEO reporting is, what should be in the report, what "branded" actually has to mean, how much control you should expect over what each client sees, how the report should reach the client, and the platform options. Where a screenshot makes a point faster than a paragraph, I've used examples from the reporting we run for partner agencies, with client names redacted.
+This guide covers what white-label SEO reporting is, what should be in the report, what "branded" actually has to mean, how much control you should expect over what each client sees, how the report should reach the client, and the platform options. Where a screenshot makes a point faster than a paragraph, I've used examples from the reporting we run for partner agencies, shown with a demo agency and a stand-in client so nothing real is exposed.
 
 ## What white-label SEO reporting is
 
@@ -47,7 +47,7 @@ One addition that has become non-negotiable: traffic from AI assistants as its o
 
 <figure>
 <img src="/images/guides/white-label-seo-reporting/report-website-performance.png" alt="Example Website Performance section of a monthly SEO report: four KPI cards for organic sessions, AI sessions, organic users and organic conversions with month-over-month and year-over-year change, above a daily traffic chart splitting organic search from AI assistants." width="1600" height="867" loading="lazy" />
-<figcaption>Example: the opening section of a monthly report, with AI assistant traffic on its own line next to organic search. Client name redacted.</figcaption>
+<figcaption>Example: the opening section of a monthly report, with AI assistant traffic on its own line next to organic search.</figcaption>
 </figure>
 
 Check what counts as a conversion. The number is only as good as the analytics events behind it, so the platform should let you choose those events per client and keep the list short. A client who sees "conversions" and finds out later it included scroll depth stops trusting the whole report.
@@ -58,7 +58,7 @@ For local businesses this section often matters more than the website one. Total
 
 <figure>
 <img src="/images/guides/white-label-seo-reporting/report-gbp.png" alt="Example Google Business Profile section of a monthly SEO report: KPI cards for total impressions, calls, website clicks and direction requests, above a chart of impressions by surface split across mobile search, desktop search, mobile maps and desktop maps." width="1600" height="1311" loading="lazy" />
-<figcaption>Example: Business Profile visibility and customer actions, broken out by surface, with a per-location table for a six-location business. Location names blurred.</figcaption>
+<figcaption>Example: Business Profile visibility and customer actions, broken out by surface, with a per-location table for a six-location business.</figcaption>
 </figure>
 
 One thing to know: Google's Business Profile performance data trails by roughly a week. A report generated on the first of the month will under-count the last few days. Any platform that schedules PDFs should let you pick a later day of the month for that reason.
@@ -69,7 +69,7 @@ Tracked keyword count, distribution across positions 1 to 3, 4 to 10 and 11 to 2
 
 <figure>
 <img src="/images/guides/white-label-seo-reporting/report-keywords.png" alt="Example Keyword Performance section of a monthly SEO report: KPI cards for tracked keywords and positions 1-3, 4-10 and 11-20, a stacked bar chart of keywords in the top twenty by month, and a table of every keyword with location, current position, change, local pack status and AI Overview status." width="1600" height="1198" loading="lazy" />
-<figcaption>Example: keyword distribution, the top-twenty trend, and the priority keyword table with local pack and AI Overview columns. Keywords and locations blurred.</figcaption>
+<figcaption>Example: keyword distribution, the top-twenty trend, and the priority keyword table with local pack and AI Overview columns.</figcaption>
 </figure>
 
 Report the change, not just the position. A client can't tell whether position seven is good news without knowing it was nineteen last month.
@@ -93,7 +93,7 @@ Content published and links acquired this period, with live URLs. This is often 
 
 <figure>
 <img src="/images/guides/white-label-seo-reporting/report-work-delivered.png" alt="Example Work Delivered section of a monthly SEO report: a list of content published this month with the article title, and a list of links acquired with dates." width="1600" height="331" loading="lazy" />
-<figcaption>Example: content published and links acquired in the month, dated. Article title blurred.</figcaption>
+<figcaption>Example: content published and links acquired in the month, dated.</figcaption>
 </figure>
 
 ### AI visibility
@@ -173,15 +173,15 @@ Three delivery modes cover nearly every client. The thing to check is whether th
 **A monthly PDF, on a schedule.** Generated automatically on a chosen day of the month, emailed from the agency's own address with the PDF attached, to every contact on the client. The subject line should read "Your August SEO report," not "Report #4471 from [vendor]." Look for the option to send the PDF to the agency's own team first, so the account manager can review it and forward it with a note. Every generated PDF should land in a saved list for both the agency and the client.
 
 <figure>
-<img src="/images/guides/white-label-seo-reporting/pdf-cover-and-page.png" alt="Example of two pages of a white-label SEO report PDF side by side: a cover page with the agency name at the top, the title SEO Performance Report, the client name, the month, a linked contents list, and Prepared by the agency at the bottom; and the Website Performance page with KPI cards and charts." width="1600" height="1176" loading="lazy" />
-<figcaption>Example PDF: the cover carries the agency logo, a linked contents list, and "Prepared by" the agency. Each section starts on its own page. Agency and client names redacted.</figcaption>
+<img src="/images/guides/white-label-seo-reporting/pdf-cover-and-page.png" alt="Example of two pages of a white-label SEO report PDF side by side: a cover page with the agency name at the top, the title SEO Performance Report, the client name, the month, a linked contents list, and Prepared by the agency at the bottom; and the Website Performance page with KPI cards and charts." width="1600" height="1037" loading="lazy" />
+<figcaption>Example PDF: the cover carries the agency name, a linked contents list, and "Prepared by" the agency. Each section starts on its own page.</figcaption>
 </figure>
 
 **A live portal.** The same report on the client's own login, with a period picker. Monthly by default, and a quarterly view for the clients who prefer to zoom out. A download button for the client who wants to forward the PDF internally.
 
 <figure>
 <img src="/images/guides/white-label-seo-reporting/portal-reports.png" alt="Example Reports page inside a branded client portal, with the agency name in the sidebar, a period picker, buttons for delivered reports and download PDF, and the Website Performance section of the report." width="1600" height="819" loading="lazy" />
-<figcaption>Example: what the client sees when they log in. Same report, the agency's logo in the sidebar (redacted here), period picker, PDF download.</figcaption>
+<figcaption>Example: what the client sees when they log in. Same report, the agency's name in the sidebar, period picker, PDF download.</figcaption>
 </figure>
 
 **A public link or embed.** Some clients won't log in to anything. A tokenized link that opens the whole portal on one page with no login, optionally behind an email prompt, and can be embedded in another tool the agency already uses with the client. The agency should be able to rotate or turn off the link at any time.
