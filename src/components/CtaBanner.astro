@@ -3,7 +3,7 @@
 //   variant="audit"   (default) business-facing free-audit CTA with an inline
 //                     AuditForm. The #book-audit anchor lives here so hero
 //                     "Get My Free Audit" buttons can scroll to it.
-//   variant="partner" agency/white-label CTA pointing at the partner package.
+//   variant="partner" agency/white-label CTA: growth call, or start a free account.
 import AuditForm from "./AuditForm.astro";
 
 interface Props {
@@ -54,8 +54,8 @@ const { variant = "audit" } = Astro.props;
         <p class="cta-text">
           We've been a white-label SEO and website partner to agencies since
           2015. Book a growth call and we'll walk through how we deliver under
-          your brand, or unlock the partner package to explore pricing, sample
-          reports, and a free discovery on your own time.
+          your brand, or start free to see partner pricing, sample reports, and
+          run a free discovery on your own time.
         </p>
         <div class="cta-actions cta-actions--dual">
           <a href="/book-a-growth-call/" class="btn btn-primary btn-lg">
@@ -65,7 +65,7 @@ const { variant = "audit" } = Astro.props;
             </svg>
           </a>
           <a href="/sign-up/" class="btn btn-outline btn-lg">
-            Unlock the Partner Package
+            Start Free
           </a>
         </div>
         <div class="cta-meta">
