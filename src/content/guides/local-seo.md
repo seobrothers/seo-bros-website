@@ -231,7 +231,7 @@ Tools for citation building and cleanup:
 - **Yext** is the enterprise option. Real-time updates across hundreds of directories. Expensive.
 - **SweetIQ** falls between the two.
 
-For most local businesses, BrightLocal handles the work fine. Yext is worth the cost for multi-location chains where centralized management saves real time.
+For most local businesses, BrightLocal handles the work fine. Yext is worth the cost for multi-location chains where centralized management saves real time. If you are working with a franchise or a brand with dozens of locations, the structure question comes before the citation question; our [franchise SEO guide](/guides/franchise-seo/) covers it.
 
 Effort level: low. Most citations require email verification only. A handful require phone verification. The whole process for a typical local business takes a few weeks of low-friction work.
 

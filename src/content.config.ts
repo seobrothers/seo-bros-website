@@ -77,6 +77,10 @@ const guides = defineCollection({
     draft: z.boolean().default(false),
     showToc: z.boolean().default(true),
     showAuditCta: z.boolean().default(false),
+    // Guide ids to show first in the "Keep reading" block at the end of the
+    // guide. The block fills the rest automatically from the guide's topic
+    // group and category, so only list ids when a specific pairing matters.
+    related: z.array(z.string()).default([]),
   }),
 });
 

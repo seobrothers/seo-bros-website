@@ -7,6 +7,7 @@ author: "Devon Bate"
 summary: Hair transplant SEO is built on FUE versus FUT keyword splits, cost-driven research content, and gallery-led conversion. The framework that wins for clinics ranging from a single-city practice to a destination clinic serving international patients.
 featured: false
 draft: false
+related: ["medspa-seo", "plastic-surgery-seo", "local-seo", "link-building"]
 ---
 
 Hair transplant is a long, expensive, irreversible decision. Patients research it for months before they book a consultation, and the research is mostly online. That makes it one of the most SEO-responsive verticals in cosmetic medicine, and one of the most punishing if you treat it like a generic medspa play.

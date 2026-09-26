@@ -266,7 +266,7 @@ PBNs work in the right hands. The tactic isn't dead, the local-search math is st
 
 What separates lasting networks from dead ones is operational discipline. Domain vetting, hosting diversity, content quality, footprint protection, ongoing maintenance. Skip any one of those and the network has a clock on it.
 
-For agencies with the scale to run networks across many client campaigns, this remains one of the strongest levers in local SEO. For individual local businesses trying to do it themselves, the cost and complexity rarely justify the effort. Build a great business, write content people want to read, and pursue the link strategies that don't require running a parallel publishing operation.
+For agencies with the scale to run networks across many client campaigns, this remains one of the strongest levers in local SEO. For individual local businesses trying to do it themselves, the cost and complexity rarely justify the effort. Build a great business, write content people want to read, and pursue the [link strategies that don't require running a parallel publishing operation](/guides/white-hat-seo/).
 
 If you're trying to figure out the right link strategy for your situation, [get in touch](/tools/free-seo-audit/) and we'll walk through what's likely to work.
 

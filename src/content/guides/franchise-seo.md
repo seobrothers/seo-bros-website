@@ -6,6 +6,7 @@ updatedDate: 2026-07-03
 author: "Devon Bate"
 summary: "Franchise SEO has to solve two problems at once: a corporate brand campaign and a network of local campaigns that don't cannibalize each other. The framework that actually works across hundreds of locations."
 featured: false
+related: ["local-seo", "home-services-seo", "keyword-mapping", "white-label-seo-reporting"]
 ---
 
 Franchise SEO is two campaigns running on top of each other. There's the corporate brand campaign, where the franchisor builds domain authority, owns the head terms, and keeps the brand consistent across every market. And there's the local campaign, where each franchisee has to win their specific city's local pack against independent competitors. The two campaigns share infrastructure, but they have different goals and different owners. If you're an agency running multi-location or franchise clients, this is the work we handle under your brand: the architecture and per-location execution that doesn't scale on its own.
