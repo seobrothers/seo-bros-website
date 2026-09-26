@@ -12,6 +12,8 @@ import NearbyCities from "../../components/NearbyCities.astro";
 import StickyCta from "../../components/StickyCta.astro";
 import { authorByName } from "../../data/authors";
 import { CITY_SCORECARDS } from "../../data/cityScorecards";
+import { GUIDE_GROUPS } from "../../data/guideGroups";
+import { INDUSTRIES } from "../../data/industries";
 
 export async function getStaticPaths() {
   const reservedSlugs = new Set(["seo", "industry", "agency", "cities"]);
@@ -142,6 +144,54 @@ function extractFaqs(markdown: string) {
   }
   flush();
   return faqs;
+}
+
+// "Keep reading" block. Every guide links to four others so no guide is
+// reachable only from its hub page. Order: the guide's own `related` ids,
+// then its topic-group neighbours (walked cyclically from the guide's own
+// position so a group spreads its inbound links across every member instead
+// of all pointing at the first few), then the newest guides in the same
+// category. City guides use NearbyCities instead.
+const RELATED_COUNT = 4;
+const publishedGuides = (await getCollection("guides"))
+  .filter((g) => !["seo", "industry", "agency", "cities"].includes(g.id))
+  .filter((g) => !import.meta.env.PROD || !g.data.draft);
+const guideById = new Map(publishedGuides.map((g) => [g.id, g]));
+
+function topicGroupIds(): string[] {
+  if (d.category === "industry") {
+    const me = INDUSTRIES.find((i) => i.guideId === guide.id);
+    return me ? INDUSTRIES.filter((i) => i.group === me.group).map((i) => i.guideId) : [];
+  }
+  const groups = GUIDE_GROUPS[d.category] ?? [];
+  return groups.find((g) => g.ids.includes(guide.id))?.ids ?? [];
+}
+
+function fromOwnPosition(ids: string[]): string[] {
+  const i = ids.indexOf(guide.id);
+  return i === -1 ? ids : [...ids.slice(i + 1), ...ids.slice(0, i)];
+}
+
+const relatedIds: string[] = [];
+const addRelated = (id: string) => {
+  if (relatedIds.length >= RELATED_COUNT) return;
+  if (id === guide.id || relatedIds.includes(id) || !guideById.has(id)) return;
+  relatedIds.push(id);
+};
+(d.related ?? []).forEach(addRelated);
+fromOwnPosition(topicGroupIds()).forEach(addRelated);
+publishedGuides
+  .filter((g) => g.data.category === d.category)
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+  .forEach((g) => addRelated(g.id));
+
+const relatedGuides =
+  d.category === "cities" ? [] : relatedIds.map((id) => guideById.get(id)!);
+
+function trimSummary(text: string, max = 120): string {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  return cut.slice(0, cut.lastIndexOf(" ")).replace(/[,;:]$/, "") + "…";
 }
 
 const faqs = extractFaqs(guide.body);
@@ -278,6 +328,26 @@ const faqSchema =
         </div>
       </div>
     </section>
+
+    {relatedGuides.length > 0 && (
+      <section class="guide-related" aria-labelledby="keep-reading">
+        <div class="container guide-related__inner">
+          <h2 id="keep-reading" class="guide-related__title">Keep reading</h2>
+          <div class="guide-related__grid" data-stagger>
+            {relatedGuides.map((r) => (
+              <a href={`/guides/${r.id}/`} class="guide-related__card" data-animate>
+                <span class="guide-related__kicker">{categoryLabels[r.data.category].label}</span>
+                <span class="guide-related__label">{r.data.title}</span>
+                <span class="guide-related__note">{trimSummary(r.data.summary)}</span>
+                <span class="guide-related__arrow" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
 
     <NewsletterSignup />
     <CtaBanner />
@@ -764,6 +834,80 @@ const faqSchema =
   }
 
   /* ═══════════════════════════════════════════════════════════════════
+     KEEP READING
+     ═══════════════════════════════════════════════════════════════════ */
+  .guide-related {
+    padding: 0 0 96px;
+    background: var(--white);
+  }
+
+  .guide-related__inner {
+    max-width: 1100px;
+  }
+
+  .guide-related__title {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+  }
+
+  .guide-related__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .guide-related__card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 22px 44px 22px 22px;
+    border-radius: var(--radius-lg);
+    background: var(--light);
+    border: 1px solid var(--border-light);
+    position: relative;
+    transition: all var(--transition);
+  }
+
+  .guide-related__card:hover {
+    border-color: var(--teal);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .guide-related__kicker {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+  }
+
+  .guide-related__label {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--text-primary);
+  }
+
+  .guide-related__note {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
+
+  .guide-related__arrow {
+    position: absolute;
+    top: 20px;
+    right: 18px;
+    color: var(--teal);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
      RESPONSIVE
      ═══════════════════════════════════════════════════════════════════ */
   @media (max-width: 960px) {
@@ -798,7 +942,11 @@ const faqSchema =
     }
 
     .guide-body {
-      padding: 56px 0 80px;
+      padding: 56px 0 64px;
+    }
+
+    .guide-related {
+      padding-bottom: 64px;
     }
 
     .guide-summary {

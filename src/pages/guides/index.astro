@@ -50,7 +50,7 @@ function guidesFor(slug: string, n: number): CardItem[] {
 const liveIndustries = INDUSTRIES.filter((i) =>
   allGuides.some((g) => g.id === i.guideId),
 );
-const industryItems: CardItem[] = liveIndustries.slice(0, 3).map((i) => ({
+const industryItems: CardItem[] = liveIndustries.slice(0, 6).map((i) => ({
   title: `${i.name} SEO`,
   href: `/guides/${i.guideId}/`,
   meta: i.group,
@@ -64,7 +64,7 @@ const categories: CategorySpec[] = [
     accent: "teal",
     hubHref: "/guides/seo/",
     cta: "Explore all SEO guides",
-    items: guidesFor("seo", 3),
+    items: guidesFor("seo", 6),
   },
   {
     label: "Agency Guides",
@@ -73,7 +73,7 @@ const categories: CategorySpec[] = [
     accent: "green",
     hubHref: "/guides/agency/",
     cta: "Explore all agency guides",
-    items: guidesFor("agency", 3),
+    items: guidesFor("agency", 6),
   },
   {
     label: "Industries",
@@ -91,7 +91,7 @@ const categories: CategorySpec[] = [
     accent: "teal",
     hubHref: "/guides/cities/",
     cta: "Explore all markets",
-    items: guidesFor("cities", 3),
+    items: guidesFor("cities", 6),
   },
 ];
 ---

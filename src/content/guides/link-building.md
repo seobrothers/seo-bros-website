@@ -6,6 +6,7 @@ updatedDate: 2026-05-06
 author: "Adam Bate"
 summary: An honest guide to link building. The strategies that work, the ones that get sites penalized, the metrics worth watching, and the budget reality most SEO content avoids talking about.
 featured: true
+related: ["white-hat-seo", "private-blog-networks", "google-disavow-tool", "local-seo"]
 ---
 
 Most link-building content lies.
@@ -53,7 +54,7 @@ If a provider is promising you 20 white-hat links a month for a fixed price, the
 
 The honest version: most effective link building is gray hat, white-hat doesn't always mean safe, and gray-hat tactics can be extremely safe when executed carefully. The risk is determined by how the work is done.
 
-What clients deserve, regardless: transparency about what's actually being done on their site, and a real conversation about risk tolerance.
+What clients deserve, regardless: transparency about what's actually being done on their site, and a real conversation about risk tolerance. For where the white-hat line actually sits, and why it matters less than how the work is done, see our [white hat SEO guide](/guides/white-hat-seo/).
 
 ## Audit your existing link profile first
 

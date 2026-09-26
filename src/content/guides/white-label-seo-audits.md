@@ -6,6 +6,7 @@ updatedDate: 2026-05-06
 author: "Devon Bate"
 summary: White-label audits for digital agencies who want to offer SEO without operating an in-house SEO team. The deliverable, the process, and the difference between automated audit software and human-run audits.
 featured: false
+related: ["seo-audit", "white-label-seo-reporting", "how-to-sell-seo-services", "ai-agents-for-seo"]
 ---
 
 White-label SEO audits are how digital agencies offer SEO without building an in-house SEO team. The audit goes out under the agency's brand, the analysis is done by a partner, and the agency keeps the client relationship.
