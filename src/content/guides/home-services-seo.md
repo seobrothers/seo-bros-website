@@ -190,11 +190,18 @@ The blog earns its keep here as an authority signal. Cost and symptom content is
 
 ## Vertical-specific guides
 
-Home services covers a wide range of trades, each with category-specific tactics. The dedicated playbook below covers the vertical where the strategy diverges most meaningfully from the general framework above.
+Home services covers a wide range of trades, each with category-specific tactics. The dedicated playbooks below cover the verticals where the strategy diverges most from the general framework above.
 
 - [SEO for Plumbers](/guides/seo-for-plumbers/)
+- [HVAC SEO](/guides/hvac-seo/)
+- [Roofing SEO](/guides/roofing-seo/)
+- [Tree Service SEO](/guides/tree-service-seo/)
+- [Carpet Cleaning SEO](/guides/carpet-cleaning-seo/)
+- [Auto Repair SEO](/guides/auto-repair-seo/)
+- [SEO for Home Builders](/guides/home-builder-seo/)
+- [SEO for Property Management](/guides/property-management-seo/)
 
-Other home services categories (HVAC, carpet cleaning, tree service, roofing, electrical, painting, landscaping, pest control) follow the same framework with vertical-specific keyword and content adjustments. Dedicated guides for these are in the works.
+Other home services categories (electrical, painting, landscaping, pest control) follow the same framework with vertical-specific keyword and content adjustments.
 
 ## Common home services SEO mistakes
 

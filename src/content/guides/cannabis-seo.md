@@ -6,6 +6,7 @@ updatedDate: 2026-07-03
 author: "Devon Bate"
 summary: Organic search is the primary acquisition channel for cannabis businesses, because paid ads on Google or Meta are off the table in most markets. This guide covers dispensary, CBD, and ancillary-service SEO with real keyword volumes, the 2026 rescheduling context, and the trust signals the category demands.
 featured: false
+related: ["local-seo", "franchise-seo", "link-building", "on-page-seo"]
 ---
 
 Cannabis is one of the few categories where SEO is effectively the only scalable digital channel. Google Ads policy still restricts most cannabis-related advertising, Meta does the same, and payment processors continue to make e-commerce checkout flows brittle. Combine that with state-by-state and province-by-province regulatory variation, age-gate requirements, and a YMYL category posture from Google, and the result is a vertical where organic visibility carries disproportionate weight. For an agency, that is a rare position: a client whose growth depends almost entirely on the channel you control. We run the cannabis SEO layer under your brand so you can take on dispensaries and CBD brands without untangling the regulatory complexity in-house.

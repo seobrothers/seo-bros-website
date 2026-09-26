@@ -6,6 +6,7 @@ updatedDate: 2026-05-06
 author: "Adam Bate"
 summary: A practical look at white hat SEO. The legitimate version of the strategy, the honest limits of "white hat only" promises, and the relationship between white hat, gray hat, and the realities of competing in modern search.
 featured: false
+related: ["link-building", "private-blog-networks", "google-disavow-tool", "seo-audit"]
 ---
 
 White hat SEO is the version of search optimization that follows Google's webmaster guidelines. Cleanly, fully, with no shortcuts. It's also the strategy most SEO providers loudly claim to practice and most actually don't, which makes the conversation about white hat one of the more confused topics in the industry.

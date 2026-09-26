@@ -124,7 +124,7 @@ This positioning compounds with the E-E-A-T signals Google looks for in YMYL ver
 
 ## Hair restoration for practices that offer it
 
-A growing number of aesthetic practices add hair restoration, whether that's PRP and exosome treatments for thinning or surgical FUE and FUT through an on-staff or partner surgeon. The SEO works like the rest of the medspa, with a few specifics worth knowing.
+A growing number of aesthetic practices add hair restoration, whether that's PRP and exosome treatments for thinning or surgical FUE and FUT through an on-staff or partner surgeon. The SEO works like the rest of the medspa, with a few specifics worth knowing. If hair restoration is a major line for the practice, the full playbook is in our [hair transplant SEO guide](/guides/hair-transplant-seo/).
 
 Patients shop the technique before they shop the practice. "FUE hair transplant," "FUT hair transplant," and "PRP for hair loss" are largely separate keyword universes with different intent, so they earn separate pages. Cost-anchored queries ("hair transplant cost," "cost per graft," "PRP for hair cost") drive heavy volume, and practices that publish realistic ranges beat the ones that hide pricing.
 

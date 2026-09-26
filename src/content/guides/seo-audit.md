@@ -6,6 +6,7 @@ updatedDate: 2026-05-06
 author: "Adam Bate"
 summary: A practical SEO audit framework. The performance review, technical audit, and content audit components, the tools, the deliverable formats that produce action versus the ones that produce nothing, and the strategic call about whether to run audits free or paid.
 featured: true
+related: ["white-label-seo-audits", "on-page-seo", "sitebulb-review", "interaction-to-next-paint"]
 ---
 
 Ahh the SEO audit.
@@ -241,6 +242,6 @@ If the audit you delivered didn't produce implemented changes, the audit failed.
 
 Our default audit deliverable is a recorded walkthrough plus a branded PDF and an implementation spreadsheet. The recording handles the explanation and scales across multiple stakeholders at the client. The PDF is the durable artifact. The spreadsheet is what ships work. Between audits, AI agents now keep the crawl findings moving, turning each open issue into a fix, a redirect or a question for approval. See [AI agents for SEO](/guides/ai-agents-for-seo/) for how that works and where it goes wrong.
 
-For partner agencies, we white-label the audit so it goes out under their brand. We build the audit, they deliver it. The recording is recorded by them or by us under their brand depending on the engagement.
+For partner agencies, we white-label the audit so it goes out under their brand. We build the audit, they deliver it. The recording is recorded by them or by us under their brand depending on the engagement. The mechanics of that handoff, and what the partner sees at each step, are in our [white-label SEO audits guide](/guides/white-label-seo-audits/).
 
 If you're trying to figure out whether to run audits in-house or partner on them, [get in touch](/sign-up/) and we'll walk through your model.
