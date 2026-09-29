@@ -118,6 +118,7 @@ const endpoint =
 
 <script>
   import { track } from "../lib/analytics";
+  import { ENTRY_STORAGE_KEY } from "../lib/consent";
 
   declare global {
     interface Window {
@@ -131,6 +132,38 @@ const endpoint =
       if (key.startsWith("utm_") && value) out[key] = value;
     });
     return out;
+  }
+
+  interface Entry {
+    landingPage?: string;
+    referrer?: string;
+    utm?: Record<string, string>;
+    at?: string;
+  }
+
+  // First-touch capture from the layout (sessionStorage): the page and
+  // referrer that started this visit, and any UTM values on it.
+  function readEntry(): Entry | null {
+    try {
+      const raw = sessionStorage.getItem(ENTRY_STORAGE_KEY);
+      return raw ? (JSON.parse(raw) as Entry) : null;
+    } catch {
+      return null;
+    }
+  }
+
+  // What the platform stores as the partner's measured acquisition: UTM values
+  // (entry first, current URL wins), the entry referrer and landing page, and
+  // the page the form was submitted from. No cookies involved.
+  function acquisition() {
+    const entry = readEntry();
+    return {
+      utm: { ...(entry?.utm ?? {}), ...utmFromUrl() },
+      referrer: entry?.referrer || document.referrer || "",
+      landingPage: entry?.landingPage || window.location.pathname + window.location.search,
+      signupPage: window.location.pathname,
+      enteredAt: entry?.at,
+    };
   }
 
   document.querySelectorAll<HTMLFormElement>("form.tws").forEach((form) => {
@@ -156,7 +189,9 @@ const endpoint =
         password: String(data.get("password") ?? ""),
         lists: data.getAll("lists").map(String),
         turnstile: String(data.get("cf-turnstile-response") ?? ""),
-        utm: utmFromUrl(),
+        acquisition: acquisition(),
+        // `utm` stays for the platform's existing reader; acquisition.utm is the same set.
+        utm: acquisition().utm,
       };
 
       if (!payload.firstName || !payload.agencyName || !payload.email) {
