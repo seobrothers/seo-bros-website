@@ -213,4 +213,4 @@ Plastic surgery campaigns get the standard framework with category-specific weig
 
 For partner agencies serving plastic surgery practices, we run the SEO and on-site conversion layers while the agency manages the practice relationship. Practices that also offer hair restoration get a second set of technique-level keywords on top of this framework; we cover those in the [hair transplant SEO guide](/guides/hair-transplant-seo/).
 
-If you've got a plastic surgery client and you're trying to figure out where the funnel is leaking, [run a free discovery with us](/sign-up/) and we'll diagnose it, then deliver the fix under your brand.
+If you've got a plastic surgery client and you're trying to figure out where the funnel is leaking, [run a free discovery with us](/tideworthy/) and we'll diagnose it, then deliver the fix under your brand.

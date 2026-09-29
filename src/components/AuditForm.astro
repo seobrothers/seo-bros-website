@@ -40,7 +40,7 @@ const uid = Math.random().toString(36).slice(2, 9);
     {/*
       Honeypot. Hidden from humans but present in the HTML bots scrape. The
       /api/audit endpoint silently drops any submission where phoneNumber is
-      filled. Mirrors the pattern in sign-up.astro. Do not add a real phone
+      filled. Mirrors the pattern in TideworthySignupForm.astro. Do not add a real phone
       field with this name.
     */}
     <div class="audit-form__hp" aria-hidden="true">

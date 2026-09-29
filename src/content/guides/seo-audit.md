@@ -244,4 +244,4 @@ Our default audit deliverable is a recorded walkthrough plus a branded PDF and a
 
 For partner agencies, we white-label the audit so it goes out under their brand. We build the audit, they deliver it. The recording is recorded by them or by us under their brand depending on the engagement. The mechanics of that handoff, and what the partner sees at each step, are in our [white-label SEO audits guide](/guides/white-label-seo-audits/).
 
-If you're trying to figure out whether to run audits in-house or partner on them, [get in touch](/sign-up/) and we'll walk through your model.
+If you're trying to figure out whether to run audits in-house or partner on them, [get in touch](/tideworthy/) and we'll walk through your model.

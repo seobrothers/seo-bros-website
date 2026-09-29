@@ -229,4 +229,4 @@ We're an SEO-only agency that operates almost entirely through partner agencies.
 
 The analysis runs on our own platform, the review is done by our senior team, and the presentation is built around each partner's brand. The end client never sees us in the deliverable.
 
-If you're a digital agency thinking about offering SEO without building an in-house team, [get in touch](/sign-up/) and we'll walk through how the partnership works, starting with a free audit on a prospect of yours.
+If you're a digital agency thinking about offering SEO without building an in-house team, [get in touch](/tideworthy/) and we'll walk through how the partnership works, starting with a free audit on a prospect of yours.
