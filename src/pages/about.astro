@@ -57,7 +57,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: "Sino Baduza",
-    role: "Partner Onboarding",
+    role: "Partner Success",
     photo: "/images/team/sino-baduza.png",
   },
   {
@@ -67,10 +67,9 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: "Kelly-Anne Forbes",
-    role: "SEO Manager",
+    role: "Partner Success",
     photo: "/images/team/kelly-anne-forbes.png",
   },
-
   {
     name: "Maja Jeremic",
     role: "SEO Manager",
@@ -82,47 +81,15 @@ const teamMembers: TeamMember[] = [
     photo: "/images/team/sasa-ratkovic.png",
   },
   {
-    name: "Igor Pančić",
-    role: "SEO Strategist",
-    photo: "/images/team/igor-pancic.png",
-  },
-  {
-    name: "Joemar Pasco",
-    role: "Lead SEO Specialist",
-    photo: "/images/team/joemar-pasco.png",
-  },
-  {
     name: "James Pasco",
     role: "SEO Specialist",
     photo: "/images/team/james-pasco.png",
   },
-
   {
     name: "Jay Pasco",
     role: "SEO Specialist",
     photo: "/images/team/jay-pasco.png",
   },
-  {
-    name: "Meca Pasco-Asuro",
-    role: "SEO Specialist",
-    photo: "/images/team/meca-pasco-asuro.png",
-  },
-  {
-    name: "Ron Concepcion",
-    role: "SEO Specialist",
-    photo: "/images/team/ron-concepcion.png",
-  },
-  {
-    name: "Russel Ramos",
-    role: "SEO Specialist",
-    photo: "/images/team/russel-ramos.png",
-  },
-  {
-    name: "Jacob Amanza",
-    role: "SEO Specialist",
-    photo: "/images/team/jacob-amanza.png",
-  },
-
   {
     name: "Tyler Ewald",
     role: "Hosting & Security",
@@ -1270,15 +1237,18 @@ const teamMembers: TeamMember[] = [
     margin-bottom: 64px;
   }
 
+  /* Flex instead of grid so a short last row centers rather than left-aligns */
   .team__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 40px 32px;
     max-width: 900px;
     margin: 0 auto;
   }
 
   .team__member {
+    flex: 0 0 calc(25% - 24px);
     text-align: center;
     transition: all var(--transition);
   }
@@ -1444,8 +1414,11 @@ const teamMembers: TeamMember[] = [
     }
 
     .team__grid {
-      grid-template-columns: repeat(3, 1fr);
       gap: 28px 16px;
+    }
+
+    .team__member {
+      flex-basis: calc(33.333% - 11px);
     }
   }
 
@@ -1464,8 +1437,11 @@ const teamMembers: TeamMember[] = [
     }
 
     .team__grid {
-      grid-template-columns: repeat(3, 1fr);
       gap: 24px 12px;
+    }
+
+    .team__member {
+      flex-basis: calc(33.333% - 8px);
     }
 
     .team__avatar {
