@@ -6,9 +6,10 @@ import { rateLimit, type RateLimitKV } from "../../lib/ratelimit";
 // Free-audit lead endpoint.
 //
 // Flow: AuditForm.astro POSTs { name, email, url } here -> we post a message
-// to the sales Slack channel so the team can pick the audit up. The Slack
-// message carries the URL because the manual audit starts from there. No CRM
-// sync: leads live in Slack and, once they sign up, in Tideworthy.
+// to the sales Slack channel so the team can pick the audit up, and hand the
+// lead to Tideworthy, where it becomes a prospect on the Sales list (origin
+// "Free audit") so a later signup or booked call lands on the same record.
+// Both are best effort: the visitor's request never fails because of them.
 //
 // Runs on-demand inside the Cloudflare Worker (prerender = false). Cloudflare
 // secrets are read from `locals.runtime.env`; `import.meta.env` is the
@@ -18,7 +19,14 @@ export const prerender = false;
 interface Env {
   SLACK_AUDIT_WEBHOOK_URL?: string;
   TURNSTILE_SECRET_KEY?: string;
+  // Tideworthy's lead door and the shared secret it expects (set with
+  // `wrangler secret put PLATFORM_LEAD_SECRET`; the platform holds the same
+  // value as WEBSITE_LEAD_SECRET).
+  PLATFORM_LEADS_URL?: string;
+  PLATFORM_LEAD_SECRET?: string;
 }
+
+const DEFAULT_PLATFORM_LEADS_URL = "https://app.tideworthy.com/api/public/leads/audit";
 
 function readEnv(locals: App.Locals): Env {
   const runtimeEnv = (locals as { runtime?: { env?: Env } }).runtime?.env;
@@ -27,7 +35,40 @@ function readEnv(locals: App.Locals): Env {
       runtimeEnv?.SLACK_AUDIT_WEBHOOK_URL ?? import.meta.env.SLACK_AUDIT_WEBHOOK_URL,
     TURNSTILE_SECRET_KEY:
       runtimeEnv?.TURNSTILE_SECRET_KEY ?? import.meta.env.TURNSTILE_SECRET_KEY,
+    PLATFORM_LEADS_URL:
+      runtimeEnv?.PLATFORM_LEADS_URL ?? import.meta.env.PLATFORM_LEADS_URL,
+    PLATFORM_LEAD_SECRET:
+      runtimeEnv?.PLATFORM_LEAD_SECRET ?? import.meta.env.PLATFORM_LEAD_SECRET,
   };
+}
+
+/** Hand the lead to Tideworthy as a prospect. Best-effort: never throws. */
+async function notifyPlatform(
+  env: Env,
+  lead: {
+    name: string;
+    email: string;
+    url: string;
+    business?: string;
+    city?: string;
+    service?: string;
+    placeId?: string;
+    local: boolean;
+    ai: boolean;
+  }
+): Promise<void> {
+  const secret = env.PLATFORM_LEAD_SECRET;
+  if (!secret) return;
+  try {
+    const res = await fetch(env.PLATFORM_LEADS_URL || DEFAULT_PLATFORM_LEADS_URL, {
+      method: "POST",
+      headers: { "content-type": "application/json", authorization: `Bearer ${secret}` },
+      body: JSON.stringify(lead),
+    });
+    if (!res.ok) console.error("Tideworthy lead handoff failed", res.status, await res.text());
+  } catch (err) {
+    console.error("Tideworthy lead handoff failed", err);
+  }
 }
 
 function json(body: unknown, status = 200): Response {
@@ -165,8 +206,11 @@ export const POST: APIRoute = async ({ request, locals }) => {
     return json({ ok: false, error: "Verification failed. Please try again." }, 403);
   }
 
-  // Slack is the durable lead capture for the team to action the audit.
-  await notifySlack(env, { name, email, url, source, audits, business, city, service, placeId });
+  // Slack tells the team; Tideworthy keeps the lead as a prospect.
+  await Promise.all([
+    notifySlack(env, { name, email, url, source, audits, business, city, service, placeId }),
+    notifyPlatform(env, { name, email, url, business, city, service, placeId, local: wantsLocal, ai: wantsAi }),
+  ]);
 
   const ae = (locals as { runtime?: { env?: { AE?: AnalyticsEngine } } }).runtime?.env?.AE;
   logEvent({ AE: ae }, "audit_lead", {
