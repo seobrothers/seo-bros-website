@@ -265,7 +265,8 @@ const breadcrumbSchema = {
           </button>
         </div>
         <p class="currency-toggle__note">
-          CAD billed at a fixed {platform.cadRate}× of the USD price.
+          CAD billed at {platform.cadRate}× the USD price.<sup>*</sup>
+          <span class="currency-toggle__asterisk"><sup>*</sup>Rate subject to change.</span>
         </p>
       </div>
 
@@ -1103,6 +1104,11 @@ const breadcrumbSchema = {
     margin: 0;
     font-size: 0.75rem;
     color: var(--text-muted, #6b7280);
+  }
+  .currency-toggle__asterisk {
+    display: block;
+    margin-top: 0.25rem;
+    opacity: 0.75;
   }
 
   .wholesale-banner-wrap {
