@@ -17,7 +17,6 @@ import {
   HOSTING,
   MAINTENANCE,
   WEB_BUILDS,
-  CAD_RATE,
   usd,
 } from "../data/pricing";
 
@@ -266,7 +265,7 @@ const breadcrumbSchema = {
           </button>
         </div>
         <p class="currency-toggle__note">
-          CAD billed at a fixed {CAD_RATE}× of the USD price.
+          CAD billed at a fixed {platform.cadRate}× of the USD price.
         </p>
       </div>
 
@@ -542,7 +541,7 @@ const breadcrumbSchema = {
     </div>
   </section>
 
-  <script define:vars={{ cadRate: CAD_RATE }}>
+  <script define:vars={{ cadRate: platform.cadRate }}>
     // USD / CAD and the implementation switch drive the same price elements:
     // every [data-usd] re-renders at the chosen currency, and plan prices
     // ([data-impl]) add the implementation amount when the switch is on. Both

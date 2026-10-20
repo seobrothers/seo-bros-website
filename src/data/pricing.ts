@@ -110,9 +110,6 @@ export const WEB_BUILDS: WebBuild[] = [
 
 export const CURRENCY = "$";
 
-/** CAD shown at a fixed multiple of the USD list price (the pricing page toggle). */
-export const CAD_RATE = 1.4;
-
 /** Format a whole-dollar USD amount, e.g. 1210 -> "$1,210". */
 export function usd(n: number): string {
   return CURRENCY + Math.round(n).toLocaleString("en-US");
