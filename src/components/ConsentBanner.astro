@@ -94,13 +94,19 @@ import { CONSENT_VERSION, CONSENT_STORAGE_KEY } from "../lib/consent";
       }, 300);
     }
 
-    function shouldShow() {
+    function hasCurrentChoice() {
       const existing = readChoice();
-      if (!existing) return true;
-      return existing.version !== CONSENT_VERSION;
+      return !!existing && existing.version === CONSENT_VERSION;
     }
 
-    if (shouldShow()) show();
+    // Show only where the layout's region decision says opt-in is required
+    // (see Layout.astro). No decision available = show, the safe default.
+    if (!hasCurrentChoice()) {
+      const region = window.__sbConsentRegion || Promise.resolve({ required: true });
+      region.then((r) => {
+        if (r && r.required && !hasCurrentChoice()) show();
+      });
+    }
 
     banner.addEventListener("click", (event) => {
       const target = event.target;

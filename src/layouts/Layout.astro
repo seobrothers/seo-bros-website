@@ -1,6 +1,6 @@
 ---
 import ConsentBanner from "../components/ConsentBanner.astro";
-import { CONSENT_VERSION, CONSENT_STORAGE_KEY } from "../lib/consent";
+import { CONSENT_VERSION, CONSENT_STORAGE_KEY, GEO_STORAGE_KEY, ENTRY_STORAGE_KEY } from "../lib/consent";
 
 interface Props {
   title?: string;
@@ -58,10 +58,13 @@ const socialImageUrl = new URL(ogImage ?? "/images/logo.png", Astro.site).href;
       <script type="application/ld+json" set:html={JSON.stringify(s)} />
     ))}
 
-    <script is:inline define:vars={{ GA4_ID, GOOGLE_ADS_ID, CONSENT_VERSION, CONSENT_STORAGE_KEY }}>
+    <script is:inline define:vars={{ GA4_ID, GOOGLE_ADS_ID, CONSENT_VERSION, CONSENT_STORAGE_KEY, GEO_STORAGE_KEY, ENTRY_STORAGE_KEY }}>
       window.dataLayer = window.dataLayer || [];
       window.gtag = function () { window.dataLayer.push(arguments); };
 
+      // Consent Mode. Everything non-essential starts denied; the stored
+      // choice or the region decision below lifts it. wait_for_update holds
+      // the first hits long enough for the geo lookup to land.
       window.gtag("consent", "default", {
         ad_storage: "denied",
         ad_user_data: "denied",
@@ -70,28 +73,87 @@ const socialImageUrl = new URL(ogImage ?? "/images/logo.png", Astro.site).href;
         personalization_storage: "denied",
         functionality_storage: "granted",
         security_storage: "granted",
-        wait_for_update: 500,
+        wait_for_update: 1000,
       });
 
+      var choice = null;
       try {
         var raw = localStorage.getItem(CONSENT_STORAGE_KEY);
         if (raw) {
           var stored = JSON.parse(raw);
-          if (stored && stored.version === CONSENT_VERSION && stored.choice === "accept") {
-            window.gtag("consent", "update", {
-              ad_storage: "granted",
-              ad_user_data: "granted",
-              ad_personalization: "granted",
-              analytics_storage: "granted",
-              personalization_storage: "granted",
-            });
-          }
+          if (stored && stored.version === CONSENT_VERSION) choice = stored.choice;
         }
       } catch (e) {}
+
+      if (choice === "accept") {
+        window.gtag("consent", "update", {
+          ad_storage: "granted",
+          ad_user_data: "granted",
+          ad_personalization: "granted",
+          analytics_storage: "granted",
+          personalization_storage: "granted",
+        });
+      }
+
+      // Region decision. A recorded choice always wins. Otherwise ask the edge
+      // where the visitor is: opt-in regions (EU/EEA, UK, Switzerland, Quebec)
+      // get the banner; everywhere else analytics runs on implied consent, and
+      // a Global Privacy Control signal keeps advertising storage denied.
+      // The banner waits on this promise before deciding whether to show.
+      window.__sbConsentRegion = (function () {
+        if (choice) return Promise.resolve({ required: false, choice: choice });
+        function implied() {
+          var gpc = navigator.globalPrivacyControl === true;
+          var ads = gpc ? "denied" : "granted";
+          window.gtag("consent", "update", {
+            analytics_storage: "granted",
+            personalization_storage: "granted",
+            ad_storage: ads,
+            ad_user_data: ads,
+            ad_personalization: ads,
+          });
+        }
+        function apply(geo) {
+          var required = !geo || geo.consent !== "implied";
+          if (!required) implied();
+          return { required: required, country: geo && geo.country };
+        }
+        try {
+          var cached = sessionStorage.getItem(GEO_STORAGE_KEY);
+          if (cached) return Promise.resolve(apply(JSON.parse(cached)));
+        } catch (e) {}
+        return fetch("/api/geo", { credentials: "same-origin" })
+          .then(function (res) { return res.ok ? res.json() : null; })
+          .then(function (geo) {
+            if (geo && geo.consent) {
+              try { sessionStorage.setItem(GEO_STORAGE_KEY, JSON.stringify(geo)); } catch (e) {}
+            }
+            return apply(geo);
+          })
+          .catch(function () { return { required: true }; });
+      })();
 
       window.gtag("js", new Date());
       window.gtag("config", GA4_ID);
       window.gtag("config", GOOGLE_ADS_ID);
+
+      // First-touch attribution, kept for the session so the sign-up form can
+      // say which page and referrer brought this visitor. First-party and
+      // functional: it only ever travels with a sign-up the visitor submits.
+      try {
+        if (!sessionStorage.getItem(ENTRY_STORAGE_KEY)) {
+          var utm = {};
+          new URLSearchParams(window.location.search).forEach(function (value, key) {
+            if (key.indexOf("utm_") === 0 && value) utm[key] = value.slice(0, 200);
+          });
+          sessionStorage.setItem(ENTRY_STORAGE_KEY, JSON.stringify({
+            landingPage: window.location.pathname + window.location.search,
+            referrer: document.referrer || "",
+            utm: utm,
+            at: new Date().toISOString(),
+          }));
+        }
+      } catch (e) {}
     </script>
     <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}></script>
 
