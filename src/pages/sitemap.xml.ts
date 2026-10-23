@@ -64,6 +64,7 @@ const STATIC_PAGES = [
   "/terms/",
   "/tools/",
   "/tools/free-seo-audit/",
+  "/tools/php-version-checker/",
   "/tools/seo-forecasting-tool/",
   "/white-label-seo/",
   "/white-label-ai-seo/",
